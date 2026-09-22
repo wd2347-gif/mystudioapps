@@ -15,7 +15,12 @@
 이 저장소의 `site/` 를 그쪽 main 으로 밀어 올린다:
 
     git subtree split --prefix site -b site-publish
+    git fetch https://github.com/wd2347-gif/mystudioapps.git main:refs/remotes/site/main
+    git checkout site-publish && git merge -s ours --no-edit site/main && git checkout -
     git push https://github.com/wd2347-gif/mystudioapps.git site-publish:main
     git branch -D site-publish
+
+(GitHub 설정 화면에서 도메인을 바꾸면 GitHub 가 그쪽 저장소에 CNAME 커밋을 직접 남긴다 —
+`merge -s ours` 로 그 커밋을 이어받되 내용은 site/ 그대로 둔다. 강제 푸시는 쓰지 않는다.)
 
 DNS(가비아): A @ → 185.199.108.153 / .109.153 / .110.153 / .111.153, CNAME www → wd2347-gif.github.io.

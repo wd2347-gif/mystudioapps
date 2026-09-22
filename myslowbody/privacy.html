@@ -1,75 +1,48 @@
 <!doctype html>
-<html lang="ko">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>MySlowBody 개인정보처리방침 · Privacy Policy</title>
+<title>MySlowBody — Privacy Policy</title>
+<link rel="icon" href="../assets/favicon.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
 <style>
-  :root { color-scheme: light dark; }
-  body { margin: 0; font-family: -apple-system, "Pretendard", "Apple SD Gothic Neo", "Noto Sans KR", sans-serif; background: #F6F8F6; color: #1C2A22; }
-  @media (prefers-color-scheme: dark) { body { background: #0E140F; color: #E8EFE9; } a { color: #7BE39A; } }
-  main { max-width: 680px; margin: 0 auto; padding: 40px 24px 80px; line-height: 1.75; }
-  h1 { font-size: 26px; margin: 0 0 4px; }
+  :root { color-scheme: dark; --bg: #0E110D; --surface: #191D18; --ink: #F1F3EE; --ink-soft: #9BA49A; --line: #2C332B; --green: #43D873; --wash: rgba(67, 216, 115, .12); }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font-family: "Pretendard", -apple-system, "Apple SD Gothic Neo", "Hiragino Sans", "PingFang SC", "Noto Sans JP", sans-serif; }
+  a { color: var(--green); }
+  header { position: sticky; top: 0; background: rgba(14, 17, 13, .92); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); z-index: 1; }
+  .bar { max-width: 760px; margin: 0 auto; padding: 14px 20px; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+  .brand { font-weight: 800; font-size: 17px; color: var(--ink); text-decoration: none; white-space: nowrap; }
+  .brand span { color: var(--green); }
+  .langs { display: flex; gap: 2px; background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 3px; }
+  .langs button { border: 0; background: transparent; color: var(--ink-soft); font: inherit; font-size: 13px; font-weight: 600; padding: 6px 11px; border-radius: 999px; cursor: pointer; }
+  .langs button[aria-pressed="true"] { background: var(--wash); color: var(--green); }
+  main { max-width: 760px; margin: 0 auto; padding: 32px 20px 80px; line-height: 1.75; }
+  article { display: none; }
+  article.on { display: block; }
+  h1 { font-size: 28px; margin: 0 0 4px; letter-spacing: -.01em; }
   h2 { font-size: 19px; margin: 32px 0 8px; }
-  h3 { font-size: 16px; margin: 20px 0 6px; }
-  p.meta { color: #5B6B61; margin: 0 0 24px; font-size: 14px; }
-  hr { border: 0; border-top: 1px solid #D9E2DB; margin: 48px 0; }
-  a { color: #1E8E4B; }
+  h3 { font-size: 16px; margin: 20px 0 4px; }
+  p.meta { color: var(--ink-soft); margin: 0 0 24px; font-size: 14px; }
   ul { padding-left: 20px; }
+  @media (max-width: 480px) { .langs button { padding: 6px 8px; font-size: 12px; } h1 { font-size: 24px; } }
 </style>
 </head>
 <body>
+<header>
+  <div class="bar">
+    <a class="brand" href="../#myslowbody">My<span>Studio</span></a>
+    <div class="langs" role="group" aria-label="Language">
+      <button data-lang="en">English</button>
+      <button data-lang="ko">한국어</button>
+      <button data-lang="ja">日本語</button>
+      <button data-lang="zh">中文</button>
+    </div>
+  </div>
+</header>
 <main>
-<h1>개인정보처리방침</h1>
-<p class="meta">시행일 2026년 9월 22일 · 앱: MySlowBody · 운영자: MyStudio(마이스튜디오) · 문의 wd2347@gmail.com</p>
-
-<p>MySlowBody(이하 "앱")는 이용자의 개인정보를 최소한으로 다루며, 계정 가입 없이 사용할 수 있습니다. 이 방침은 앱이 어떤 정보를 다루고 어디로 보내는지를 설명합니다.</p>
-
-<h2>1. 기기 안에만 저장되는 정보</h2>
-<p>다음 정보는 이용자의 기기 안에만 저장되며 운영자의 서버로 전송되지 않습니다.</p>
-<ul>
-  <li>설정(언어, 캐릭터, 배경음, 호흡 시간, 수면 타이머, 알림 시간)</li>
-  <li>내가 만든 루틴, 즐겨찾기</li>
-  <li>운동 기록(루틴을 끝낸 날짜와 시각)</li>
-  <li>무료 체험 시작·종료 시각</li>
-</ul>
-<p>앱을 삭제하면 이 정보도 함께 삭제됩니다. 운영자는 이 정보를 열람할 수 없습니다.</p>
-
-<h2>2. 제3자 서비스로 전송되는 정보</h2>
-<h3>구독 결제 — Apple App Store, Google Play, RevenueCat</h3>
-<p>프리미엄 구독은 Apple 또는 Google의 결제 시스템으로 처리됩니다. 앱은 결제 카드 정보를 다루지 않습니다. 구독 상태를 확인하기 위해 결제 영수증과 앱이 생성한 익명 식별자가 RevenueCat(RevenueCat, Inc., 미국)으로 전송됩니다. 이름·이메일 등 신원 정보는 포함되지 않습니다.</p>
-<h3>광고 — Google AdMob</h3>
-<p>무료 이용자에게는 루틴을 마친 뒤 전면 광고가 표시될 수 있습니다. 광고 표시를 위해 Google AdMob이 기기의 광고 식별자, 대략적인 위치(IP 기반), 기기 정보를 수집할 수 있습니다. iOS에서는 앱 추적 허용 여부를 묻고, 허용하지 않으면 맞춤 광고 대신 일반 광고가 표시됩니다. 프리미엄 이용자에게는 광고가 표시되지 않습니다. 자세한 내용은 <a href="https://policies.google.com/technologies/ads">Google 광고 정책</a>을 참고하세요.</p>
-<h3>사용 통계와 오류 보고 — Firebase Analytics, Crashlytics</h3>
-<p>앱 개선을 위해 화면 이동, 체험 시작, 결제 팝업 노출, 구독 시작·해지 같은 사용 이벤트와 앱 오류 정보가 Google Firebase(Google LLC, 미국)로 전송됩니다. 이 정보는 기기 식별자와 함께 익명으로 처리되며 운영자가 개인을 식별하는 데 쓰지 않습니다.</p>
-
-<h3>피드백과 동작 추가 요청 — Google 스프레드시트</h3>
-<p>앱의 피드백 보내기(앱 정보)와 동작 추가 요청(루틴 빌더, 정식 구독자)을 이용하면, 이용자가 적은 내용과 함께 앱 언어, 앱 버전, 기기 종류(iOS/Android), 구독 확인용 익명 식별자가 운영자의 Google 스프레드시트(Google LLC, 미국)로 전송됩니다. 이름·이메일은 받지 않으므로 답장은 드리지 못합니다. 적은 내용에 개인정보를 넣지 말아 주세요. 받은 내용은 앱 개선에만 쓰고, 처리한 뒤 1년 안에 지웁니다.</p>
-
-<h2>3. 앱이 요청하는 권한</h2>
-<ul>
-  <li><b>알림</b> — 이용자가 정한 시간에 스트레칭 알림을 보내기 위해서만 사용합니다.</li>
-  <li><b>추적(iOS)</b> — 맞춤 광고를 위한 광고 식별자 접근에만 사용합니다. 거부해도 앱은 그대로 쓸 수 있습니다.</li>
-  <li><b>백그라운드 오디오</b> — 수면 모드에서 화면을 끄고도 음악이 이어지게 하기 위해서입니다.</li>
-</ul>
-
-<h2>4. 보관 기간</h2>
-<p>기기 안의 정보는 이용자가 삭제하거나 앱을 지울 때까지 보관됩니다. 제3자 서비스로 전송된 정보는 각 서비스의 정책에 따라 보관됩니다.</p>
-
-<h2>5. 아동의 개인정보</h2>
-<p>앱은 만 14세 미만 아동을 대상으로 하지 않으며, 아동의 개인정보를 의도적으로 수집하지 않습니다.</p>
-
-<h2>6. 이용자의 권리</h2>
-<p>기기 안의 정보는 앱 설정과 삭제로 직접 지울 수 있습니다. 광고 식별자는 기기 설정(iOS: 개인정보 보호 › 추적, Android: 광고 › 광고 ID 재설정)에서 관리할 수 있습니다. 그 밖의 문의는 아래 연락처로 보내 주세요.</p>
-
-<h2>7. 방침의 변경</h2>
-<p>방침이 바뀌면 이 페이지에 시행일과 함께 게시합니다. 중요한 변경은 앱 안에서도 안내합니다.</p>
-
-<h2>8. 문의</h2>
-<p>이메일: <a href="mailto:wd2347@gmail.com">wd2347@gmail.com</a></p>
-
-<hr>
-
+<article data-lang="en" lang="en">
 <h1>Privacy Policy</h1>
 <p class="meta">Effective September 22, 2026 · App: MySlowBody · Operator: MyStudio · Contact wd2347@gmail.com</p>
 
@@ -117,6 +90,179 @@
 
 <h2>8. Contact</h2>
 <p>Email: <a href="mailto:wd2347@gmail.com">wd2347@gmail.com</a></p>
+</article>
+
+<article data-lang="ko" lang="ko">
+<h1>개인정보처리방침</h1>
+<p class="meta">시행일 2026년 9월 22일 · 앱: MySlowBody · 운영자: MyStudio(마이스튜디오) · 문의 wd2347@gmail.com</p>
+
+<p>MySlowBody(이하 "앱")는 이용자의 개인정보를 최소한으로 다루며, 계정 가입 없이 사용할 수 있습니다. 이 방침은 앱이 어떤 정보를 다루고 어디로 보내는지를 설명합니다.</p>
+
+<h2>1. 기기 안에만 저장되는 정보</h2>
+<p>다음 정보는 이용자의 기기 안에만 저장되며 운영자의 서버로 전송되지 않습니다.</p>
+<ul>
+  <li>설정(언어, 캐릭터, 배경음, 호흡 시간, 수면 타이머, 알림 시간)</li>
+  <li>내가 만든 루틴, 즐겨찾기</li>
+  <li>운동 기록(루틴을 끝낸 날짜와 시각)</li>
+  <li>무료 체험 시작·종료 시각</li>
+</ul>
+<p>앱을 삭제하면 이 정보도 함께 삭제됩니다. 운영자는 이 정보를 열람할 수 없습니다.</p>
+
+<h2>2. 제3자 서비스로 전송되는 정보</h2>
+<h3>구독 결제 — Apple App Store, Google Play, RevenueCat</h3>
+<p>프리미엄 구독은 Apple 또는 Google의 결제 시스템으로 처리됩니다. 앱은 결제 카드 정보를 다루지 않습니다. 구독 상태를 확인하기 위해 결제 영수증과 앱이 생성한 익명 식별자가 RevenueCat(RevenueCat, Inc., 미국)으로 전송됩니다. 이름·이메일 등 신원 정보는 포함되지 않습니다.</p>
+<h3>광고 — Google AdMob</h3>
+<p>무료 이용자에게는 루틴을 마친 뒤 전면 광고가 표시될 수 있습니다. 광고 표시를 위해 Google AdMob이 기기의 광고 식별자, 대략적인 위치(IP 기반), 기기 정보를 수집할 수 있습니다. iOS에서는 앱 추적 허용 여부를 묻고, 허용하지 않으면 맞춤 광고 대신 일반 광고가 표시됩니다. 프리미엄 이용자에게는 광고가 표시되지 않습니다. 자세한 내용은 <a href="https://policies.google.com/technologies/ads">Google 광고 정책</a>을 참고하세요.</p>
+<h3>사용 통계와 오류 보고 — Firebase Analytics, Crashlytics</h3>
+<p>앱 개선을 위해 화면 이동, 체험 시작, 결제 팝업 노출, 구독 시작·해지 같은 사용 이벤트와 앱 오류 정보가 Google Firebase(Google LLC, 미국)로 전송됩니다. 이 정보는 기기 식별자와 함께 익명으로 처리되며 운영자가 개인을 식별하는 데 쓰지 않습니다.</p>
+
+<h3>피드백과 동작 추가 요청 — Google 스프레드시트</h3>
+<p>앱의 피드백 보내기(앱 정보)와 동작 추가 요청(루틴 빌더, 정식 구독자)을 이용하면, 이용자가 적은 내용과 함께 앱 언어, 앱 버전, 기기 종류(iOS/Android), 구독 확인용 익명 식별자가 운영자의 Google 스프레드시트(Google LLC, 미국)로 전송됩니다. 이름·이메일은 받지 않으므로 답장은 드리지 못합니다. 적은 내용에 개인정보를 넣지 말아 주세요. 받은 내용은 앱 개선에만 쓰고, 처리한 뒤 1년 안에 지웁니다.</p>
+
+<h2>3. 앱이 요청하는 권한</h2>
+<ul>
+  <li><b>알림</b> — 이용자가 정한 시간에 스트레칭 알림을 보내기 위해서만 사용합니다.</li>
+  <li><b>추적(iOS)</b> — 맞춤 광고를 위한 광고 식별자 접근에만 사용합니다. 거부해도 앱은 그대로 쓸 수 있습니다.</li>
+  <li><b>백그라운드 오디오</b> — 수면 모드에서 화면을 끄고도 음악이 이어지게 하기 위해서입니다.</li>
+</ul>
+
+<h2>4. 보관 기간</h2>
+<p>기기 안의 정보는 이용자가 삭제하거나 앱을 지울 때까지 보관됩니다. 제3자 서비스로 전송된 정보는 각 서비스의 정책에 따라 보관됩니다.</p>
+
+<h2>5. 아동의 개인정보</h2>
+<p>앱은 만 14세 미만 아동을 대상으로 하지 않으며, 아동의 개인정보를 의도적으로 수집하지 않습니다.</p>
+
+<h2>6. 이용자의 권리</h2>
+<p>기기 안의 정보는 앱 설정과 삭제로 직접 지울 수 있습니다. 광고 식별자는 기기 설정(iOS: 개인정보 보호 › 추적, Android: 광고 › 광고 ID 재설정)에서 관리할 수 있습니다. 그 밖의 문의는 아래 연락처로 보내 주세요.</p>
+
+<h2>7. 방침의 변경</h2>
+<p>방침이 바뀌면 이 페이지에 시행일과 함께 게시합니다. 중요한 변경은 앱 안에서도 안내합니다.</p>
+
+<h2>8. 문의</h2>
+<p>이메일: <a href="mailto:wd2347@gmail.com">wd2347@gmail.com</a></p>
+</article>
+
+<article data-lang="ja" lang="ja">
+<h1>プライバシーポリシー</h1>
+<p class="meta">施行日 2026年9月22日 · アプリ: MySlowBody · 運営者: MyStudio · お問い合わせ wd2347@gmail.com</p>
+
+<p>MySlowBody（以下「本アプリ」）は、利用者の個人情報を必要最小限にとどめ、アカウント登録なしで利用できます。本ポリシーでは、本アプリがどのような情報を扱い、どこへ送るかを説明します。</p>
+
+<h2>1. 端末内にのみ保存される情報</h2>
+<p>次の情報は利用者の端末内にのみ保存され、運営者のサーバーへは送信されません。</p>
+<ul>
+  <li>設定（言語、キャラクター、BGM、呼吸の時間、スリープタイマー、通知の時刻）</li>
+  <li>作成したルーティン、お気に入り</li>
+  <li>運動記録（ルーティンを終えた日時）</li>
+  <li>無料体験の開始・終了日時</li>
+</ul>
+<p>アプリを削除すると、これらの情報も削除されます。運営者はこれらの情報を閲覧できません。</p>
+
+<h2>2. 第三者サービスへ送信される情報</h2>
+<h3>サブスクリプションの決済 — Apple App Store、Google Play、RevenueCat</h3>
+<p>プレミアムのサブスクリプションは Apple または Google の決済システムで処理されます。本アプリはクレジットカード情報を扱いません。サブスクリプションの状態を確認するため、購入のレシートとアプリが生成した匿名の識別子が RevenueCat（RevenueCat, Inc.、米国）へ送信されます。氏名やメールアドレスなどの個人を特定する情報は含まれません。</p>
+<h3>広告 — Google AdMob</h3>
+<p>無料の利用者には、ルーティンの終了後に全画面広告が表示される場合があります。広告の表示のため、Google AdMob が端末の広告識別子、おおよその位置情報（IPアドレスに基づく）、端末情報を収集することがあります。iOS ではトラッキングの許可を確認し、許可しない場合はパーソナライズされていない広告が表示されます。プレミアムの利用者には広告は表示されません。詳しくは <a href="https://policies.google.com/technologies/ads">Google の広告ポリシー</a>をご覧ください。</p>
+<h3>利用統計とエラー報告 — Firebase Analytics、Crashlytics</h3>
+<p>アプリの改善のため、画面の移動、体験の開始、購入画面の表示、サブスクリプションの開始・解約などの利用イベントと、アプリのエラー情報が Google Firebase（Google LLC、米国）へ送信されます。これらの情報は端末の識別子とともに匿名で処理され、運営者が個人を特定するために使うことはありません。</p>
+<h3>フィードバックと動作の追加リクエスト — Google スプレッドシート</h3>
+<p>アプリのフィードバック（アプリ情報）と動作の追加リクエスト（ルーティンビルダー、有料の購読者）を利用すると、入力した内容とともに、アプリの言語、アプリのバージョン、端末の種類（iOS/Android）、購読確認用の匿名識別子が運営者の Google スプレッドシート（Google LLC、米国）へ送信されます。氏名やメールアドレスは受け取らないため、返信はできません。入力内容に個人情報を含めないでください。受け取った内容はアプリの改善にのみ使い、対応後1年以内に削除します。</p>
+
+<h2>3. 本アプリが求める権限</h2>
+<ul>
+  <li><b>通知</b> — 利用者が設定した時刻にストレッチの通知を送るためだけに使います。</li>
+  <li><b>トラッキング（iOS）</b> — パーソナライズ広告のための広告識別子へのアクセスにのみ使います。許可しなくても本アプリはそのまま使えます。</li>
+  <li><b>バックグラウンドオーディオ</b> — おやすみモードで画面を消しても音楽が続くようにするためです。</li>
+</ul>
+
+<h2>4. 保存期間</h2>
+<p>端末内の情報は、利用者が削除するかアプリをアンインストールするまで保存されます。第三者サービスへ送信された情報は、各サービスのポリシーに従って保存されます。</p>
+
+<h2>5. 子どもの個人情報</h2>
+<p>本アプリは14歳未満の子どもを対象としておらず、子どもの個人情報を意図的に収集することはありません。</p>
+
+<h2>6. 利用者の権利</h2>
+<p>端末内の情報は、アプリの設定や削除によってご自身で消去できます。広告識別子は端末の設定（iOS: プライバシーとセキュリティ › トラッキング、Android: 広告 › 広告IDをリセット）で管理できます。その他のお問い合わせは下記の連絡先までお送りください。</p>
+
+<h2>7. ポリシーの変更</h2>
+<p>ポリシーを変更する場合は、このページに施行日とともに掲載します。重要な変更はアプリ内でもお知らせします。</p>
+
+<h2>8. お問い合わせ</h2>
+<p>メール: <a href="mailto:wd2347@gmail.com">wd2347@gmail.com</a></p>
+</article>
+
+<article data-lang="zh" lang="zh">
+<h1>隐私政策</h1>
+<p class="meta">生效日期 2026年9月22日 · 应用: MySlowBody · 运营方: MyStudio · 联系 wd2347@gmail.com</p>
+
+<p>MySlowBody（以下简称"本应用"）尽量少地处理用户个人信息，无需注册账户即可使用。本政策说明本应用处理哪些信息以及这些信息被发送到哪里。</p>
+
+<h2>1. 仅保存在设备上的信息</h2>
+<p>以下信息仅保存在用户的设备上，不会发送到运营方的服务器。</p>
+<ul>
+  <li>设置（语言、角色、背景音乐、呼吸时长、睡眠定时、提醒时间）</li>
+  <li>你创建的计划、收藏</li>
+  <li>运动记录（完成计划的日期和时间）</li>
+  <li>免费体验的开始和结束时间</li>
+</ul>
+<p>删除应用后，这些信息也会一并删除。运营方无法查看这些信息。</p>
+
+<h2>2. 发送给第三方服务的信息</h2>
+<h3>订阅付款 — Apple App Store、Google Play、RevenueCat</h3>
+<p>高级版订阅通过 Apple 或 Google 的支付系统处理。本应用不处理银行卡信息。为确认订阅状态，购买收据和应用生成的匿名标识符会发送给 RevenueCat（RevenueCat, Inc.，美国）。其中不包含姓名、邮箱等身份信息。</p>
+<h3>广告 — Google AdMob</h3>
+<p>免费用户在完成计划后可能会看到全屏广告。为展示广告，Google AdMob 可能会收集设备的广告标识符、大致位置（基于 IP 地址）和设备信息。在 iOS 上，应用会询问是否允许跟踪；如果不允许，将展示非个性化广告。高级版用户不会看到广告。详情请参阅 <a href="https://policies.google.com/technologies/ads">Google 广告政策</a>。</p>
+<h3>使用统计与错误报告 — Firebase Analytics、Crashlytics</h3>
+<p>为改进应用，页面浏览、开始体验、购买页面展示、订阅开始与取消等使用事件以及应用错误信息会发送给 Google Firebase（Google LLC，美国）。这些信息与设备标识符一起以匿名方式处理，运营方不会用其识别个人。</p>
+<h3>意见反馈与添加动作请求 — Google 表格</h3>
+<p>使用应用中的意见反馈（应用信息）和添加动作请求（计划编辑器，付费订阅用户）时，你填写的内容以及应用语言、应用版本、设备类型（iOS/Android）和用于确认订阅的匿名标识符会发送到运营方的 Google 表格（Google LLC，美国）。我们不收集姓名和邮箱，因此无法回复。请不要在内容中填写个人信息。收到的内容仅用于改进应用，并在处理后一年内删除。</p>
+
+<h2>3. 本应用请求的权限</h2>
+<ul>
+  <li><b>通知</b> — 仅用于在你设定的时间发送拉伸提醒。</li>
+  <li><b>跟踪（iOS）</b> — 仅用于访问个性化广告所需的广告标识符。拒绝后仍可正常使用本应用。</li>
+  <li><b>后台音频</b> — 让睡眠模式在熄屏后继续播放音乐。</li>
+</ul>
+
+<h2>4. 保存期限</h2>
+<p>设备上的信息会一直保存，直到你删除或卸载应用。发送给第三方服务的信息按各服务的政策保存。</p>
+
+<h2>5. 儿童个人信息</h2>
+<p>本应用不面向 14 岁以下儿童，也不会有意收集儿童的个人信息。</p>
+
+<h2>6. 用户的权利</h2>
+<p>设备上的信息可以通过应用设置或删除应用自行清除。广告标识符可在设备设置中管理（iOS：隐私与安全性 › 跟踪；Android：广告 › 重置广告 ID）。其他问题请通过下方联系方式与我们联系。</p>
+
+<h2>7. 政策变更</h2>
+<p>政策变更时，将在本页面连同生效日期一并公布。重要变更也会在应用内通知。</p>
+
+<h2>8. 联系方式</h2>
+<p>邮箱: <a href="mailto:wd2347@gmail.com">wd2347@gmail.com</a></p>
+</article>
 </main>
+<script>
+const LANGS = ['en', 'ko', 'ja', 'zh'];
+const TITLES = {"en": "Privacy Policy", "ko": "개인정보처리방침", "ja": "プライバシーポリシー", "zh": "隐私政策"};
+function pick() {
+  const q = new URLSearchParams(location.search).get('lang');
+  if (LANGS.includes(q)) return q;
+  try { const s = localStorage.getItem('lang'); if (LANGS.includes(s)) return s; } catch (e) {}
+  for (const l of (navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || 'en'])) {
+    const n = String(l).slice(0, 2).toLowerCase(); if (LANGS.includes(n)) return n;
+  }
+  return 'en';
+}
+function show(lang) {
+  document.documentElement.lang = lang;
+  document.title = 'MySlowBody — ' + TITLES[lang];
+  document.querySelectorAll('article').forEach(a => a.classList.toggle('on', a.dataset.lang === lang));
+  document.querySelectorAll('.langs button').forEach(b => b.setAttribute('aria-pressed', b.dataset.lang === lang));
+}
+document.querySelectorAll('.langs button').forEach(b => b.addEventListener('click', () => {
+  try { localStorage.setItem('lang', b.dataset.lang); } catch (e) {}
+  show(b.dataset.lang);
+}));
+show(pick());
+</script>
 </body>
 </html>

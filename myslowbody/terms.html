@@ -1,62 +1,48 @@
 <!doctype html>
-<html lang="ko">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>MySlowBody 이용약관 · Terms of Use</title>
+<title>MySlowBody — Terms of Use</title>
+<link rel="icon" href="../assets/favicon.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
 <style>
-  :root { color-scheme: light dark; }
-  body { margin: 0; font-family: -apple-system, "Pretendard", "Apple SD Gothic Neo", "Noto Sans KR", sans-serif; background: #F6F8F6; color: #1C2A22; }
-  @media (prefers-color-scheme: dark) { body { background: #0E140F; color: #E8EFE9; } a { color: #7BE39A; } }
-  main { max-width: 680px; margin: 0 auto; padding: 40px 24px 80px; line-height: 1.75; }
-  h1 { font-size: 26px; margin: 0 0 4px; }
+  :root { color-scheme: dark; --bg: #0E110D; --surface: #191D18; --ink: #F1F3EE; --ink-soft: #9BA49A; --line: #2C332B; --green: #43D873; --wash: rgba(67, 216, 115, .12); }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font-family: "Pretendard", -apple-system, "Apple SD Gothic Neo", "Hiragino Sans", "PingFang SC", "Noto Sans JP", sans-serif; }
+  a { color: var(--green); }
+  header { position: sticky; top: 0; background: rgba(14, 17, 13, .92); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); z-index: 1; }
+  .bar { max-width: 760px; margin: 0 auto; padding: 14px 20px; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+  .brand { font-weight: 800; font-size: 17px; color: var(--ink); text-decoration: none; white-space: nowrap; }
+  .brand span { color: var(--green); }
+  .langs { display: flex; gap: 2px; background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 3px; }
+  .langs button { border: 0; background: transparent; color: var(--ink-soft); font: inherit; font-size: 13px; font-weight: 600; padding: 6px 11px; border-radius: 999px; cursor: pointer; }
+  .langs button[aria-pressed="true"] { background: var(--wash); color: var(--green); }
+  main { max-width: 760px; margin: 0 auto; padding: 32px 20px 80px; line-height: 1.75; }
+  article { display: none; }
+  article.on { display: block; }
+  h1 { font-size: 28px; margin: 0 0 4px; letter-spacing: -.01em; }
   h2 { font-size: 19px; margin: 32px 0 8px; }
-  p.meta { color: #5B6B61; margin: 0 0 24px; font-size: 14px; }
-  hr { border: 0; border-top: 1px solid #D9E2DB; margin: 48px 0; }
-  a { color: #1E8E4B; }
+  h3 { font-size: 16px; margin: 20px 0 4px; }
+  p.meta { color: var(--ink-soft); margin: 0 0 24px; font-size: 14px; }
   ul { padding-left: 20px; }
+  @media (max-width: 480px) { .langs button { padding: 6px 8px; font-size: 12px; } h1 { font-size: 24px; } }
 </style>
 </head>
 <body>
+<header>
+  <div class="bar">
+    <a class="brand" href="../#myslowbody">My<span>Studio</span></a>
+    <div class="langs" role="group" aria-label="Language">
+      <button data-lang="en">English</button>
+      <button data-lang="ko">한국어</button>
+      <button data-lang="ja">日本語</button>
+      <button data-lang="zh">中文</button>
+    </div>
+  </div>
+</header>
 <main>
-<h1>이용약관</h1>
-<p class="meta">시행일 2026년 9월 22일 · 앱: MySlowBody · 운영자: MyStudio(마이스튜디오) · 문의 wd2347@gmail.com</p>
-
-<h2>1. 서비스</h2>
-<p>MySlowBody(이하 "앱")는 스트레칭 루틴, 3D 캐릭터 동작 안내, 음성 안내, 느린 호흡, 수면 모드, 루틴 빌더, 운동 기록 기능을 제공합니다. 기본 기능은 무료이며 일부 기능은 프리미엄 구독으로 제공됩니다.</p>
-
-<h2>2. 건강과 안전</h2>
-<p>앱의 동작과 안내는 일반적인 운동 정보이며 의학적 조언이 아닙니다. 부상, 질환, 임신 등 몸 상태에 우려가 있으면 운동 전에 의사와 상의하세요. 운동 중 통증이나 어지러움이 있으면 즉시 멈추세요. 앱 이용에 따른 운동은 이용자 본인의 판단과 책임으로 합니다.</p>
-
-<h2>3. 프리미엄 구독</h2>
-<ul>
-  <li>프리미엄은 루틴 빌더, 수면 모드 전체, 광고 제거를 포함하며 월간 또는 연간 구독으로 제공됩니다. 가격은 결제 화면과 스토어에 표시된 금액을 따릅니다.</li>
-  <li>처음 설치 후 7일 동안 프리미엄을 무료로 이용할 수 있습니다. 이 체험은 앱 안에서 제공되며 결제 수단 등록이 필요 없고, 기간이 끝나면 자동으로 결제되지 않습니다.</li>
-  <li>구독은 Apple App Store 또는 Google Play를 통해 결제되며, 해지하지 않으면 같은 기간·가격으로 자동 갱신됩니다. 갱신 24시간 전까지 스토어 계정 설정에서 해지할 수 있습니다.</li>
-  <li>환불은 각 스토어의 정책에 따릅니다. 운영자는 스토어 결제를 직접 환불할 수 없습니다.</li>
-  <li>구독은 결제한 스토어 계정에 귀속됩니다. 같은 스토어 계정으로 다른 기기에서 "구매 복원"을 누르면 다시 이용할 수 있습니다.</li>
-</ul>
-
-<h2>4. 광고</h2>
-<p>무료 이용자에게는 광고가 표시될 수 있습니다. 광고 내용은 광고 네트워크가 제공하며 운영자가 보증하지 않습니다.</p>
-
-<h2>5. 지식재산권</h2>
-<p>앱의 캐릭터, 동작 데이터, 음성, 음악, 디자인, 코드에 대한 권리는 운영자에게 있습니다. 개인적·비상업적 이용 외의 복제, 배포, 수정은 허용되지 않습니다.</p>
-
-<h2>6. 이용자의 데이터</h2>
-<p>내가 만든 루틴과 운동 기록은 기기 안에만 저장됩니다. 앱을 삭제하거나 기기를 바꾸면 복구되지 않을 수 있으니 필요하면 미리 확인하세요. 자세한 내용은 <a href="privacy.html">개인정보처리방침</a>을 참고하세요.</p>
-
-<h2>7. 책임의 제한</h2>
-<p>운영자는 앱을 현재 상태로 제공하며, 관련 법이 허용하는 범위에서 앱 이용으로 발생한 간접적·부수적 손해에 책임지지 않습니다. 앱 기능은 예고 없이 변경되거나 중단될 수 있습니다.</p>
-
-<h2>8. 약관의 변경</h2>
-<p>약관이 바뀌면 이 페이지에 시행일과 함께 게시합니다. 변경 후 앱을 계속 이용하면 변경된 약관에 동의한 것으로 봅니다.</p>
-
-<h2>9. 준거법과 문의</h2>
-<p>이 약관은 대한민국 법을 따릅니다. 문의: <a href="mailto:wd2347@gmail.com">wd2347@gmail.com</a></p>
-
-<hr>
-
+<article data-lang="en" lang="en">
 <h1>Terms of Use</h1>
 <p class="meta">Effective September 22, 2026 · App: MySlowBody · Operator: MyStudio · Contact wd2347@gmail.com</p>
 
@@ -82,7 +68,7 @@
 <p>The characters, exercise data, voices, music, design and code of the App belong to the operator. Copying, distributing or modifying them beyond personal, non-commercial use is not permitted.</p>
 
 <h2>6. Your data</h2>
-<p>Routines you create and your workout history are stored only on your device and may not be recoverable if you delete the App or change devices. See the <a href="privacy.html">Privacy Policy</a> for details.</p>
+<p>Routines you create and your workout history are stored only on your device and may not be recoverable if you delete the App or change devices. See the <a href="privacy.html?lang=en">Privacy Policy</a> for details.</p>
 
 <h2>7. Limitation of liability</h2>
 <p>The App is provided as is. To the extent permitted by law, the operator is not liable for indirect or incidental damages arising from use of the App. Features may change or be discontinued without notice.</p>
@@ -92,6 +78,145 @@
 
 <h2>9. Governing law and contact</h2>
 <p>These terms are governed by the laws of the Republic of Korea. Contact: <a href="mailto:wd2347@gmail.com">wd2347@gmail.com</a></p>
+</article>
+
+<article data-lang="ko" lang="ko">
+<h1>이용약관</h1>
+<p class="meta">시행일 2026년 9월 22일 · 앱: MySlowBody · 운영자: MyStudio(마이스튜디오) · 문의 wd2347@gmail.com</p>
+
+<h2>1. 서비스</h2>
+<p>MySlowBody(이하 "앱")는 스트레칭 루틴, 3D 캐릭터 동작 안내, 음성 안내, 느린 호흡, 수면 모드, 루틴 빌더, 운동 기록 기능을 제공합니다. 기본 기능은 무료이며 일부 기능은 프리미엄 구독으로 제공됩니다.</p>
+
+<h2>2. 건강과 안전</h2>
+<p>앱의 동작과 안내는 일반적인 운동 정보이며 의학적 조언이 아닙니다. 부상, 질환, 임신 등 몸 상태에 우려가 있으면 운동 전에 의사와 상의하세요. 운동 중 통증이나 어지러움이 있으면 즉시 멈추세요. 앱 이용에 따른 운동은 이용자 본인의 판단과 책임으로 합니다.</p>
+
+<h2>3. 프리미엄 구독</h2>
+<ul>
+  <li>프리미엄은 루틴 빌더, 수면 모드 전체, 광고 제거를 포함하며 월간 또는 연간 구독으로 제공됩니다. 가격은 결제 화면과 스토어에 표시된 금액을 따릅니다.</li>
+  <li>처음 설치 후 7일 동안 프리미엄을 무료로 이용할 수 있습니다. 이 체험은 앱 안에서 제공되며 결제 수단 등록이 필요 없고, 기간이 끝나면 자동으로 결제되지 않습니다.</li>
+  <li>구독은 Apple App Store 또는 Google Play를 통해 결제되며, 해지하지 않으면 같은 기간·가격으로 자동 갱신됩니다. 갱신 24시간 전까지 스토어 계정 설정에서 해지할 수 있습니다.</li>
+  <li>환불은 각 스토어의 정책에 따릅니다. 운영자는 스토어 결제를 직접 환불할 수 없습니다.</li>
+  <li>구독은 결제한 스토어 계정에 귀속됩니다. 같은 스토어 계정으로 다른 기기에서 "구매 복원"을 누르면 다시 이용할 수 있습니다.</li>
+</ul>
+
+<h2>4. 광고</h2>
+<p>무료 이용자에게는 광고가 표시될 수 있습니다. 광고 내용은 광고 네트워크가 제공하며 운영자가 보증하지 않습니다.</p>
+
+<h2>5. 지식재산권</h2>
+<p>앱의 캐릭터, 동작 데이터, 음성, 음악, 디자인, 코드에 대한 권리는 운영자에게 있습니다. 개인적·비상업적 이용 외의 복제, 배포, 수정은 허용되지 않습니다.</p>
+
+<h2>6. 이용자의 데이터</h2>
+<p>내가 만든 루틴과 운동 기록은 기기 안에만 저장됩니다. 앱을 삭제하거나 기기를 바꾸면 복구되지 않을 수 있으니 필요하면 미리 확인하세요. 자세한 내용은 <a href="privacy.html?lang=ko">개인정보처리방침</a>을 참고하세요.</p>
+
+<h2>7. 책임의 제한</h2>
+<p>운영자는 앱을 현재 상태로 제공하며, 관련 법이 허용하는 범위에서 앱 이용으로 발생한 간접적·부수적 손해에 책임지지 않습니다. 앱 기능은 예고 없이 변경되거나 중단될 수 있습니다.</p>
+
+<h2>8. 약관의 변경</h2>
+<p>약관이 바뀌면 이 페이지에 시행일과 함께 게시합니다. 변경 후 앱을 계속 이용하면 변경된 약관에 동의한 것으로 봅니다.</p>
+
+<h2>9. 준거법과 문의</h2>
+<p>이 약관은 대한민국 법을 따릅니다. 문의: <a href="mailto:wd2347@gmail.com">wd2347@gmail.com</a></p>
+</article>
+
+<article data-lang="ja" lang="ja">
+<h1>利用規約</h1>
+<p class="meta">施行日 2026年9月22日 · アプリ: MySlowBody · 運営者: MyStudio · お問い合わせ wd2347@gmail.com</p>
+
+<h2>1. サービス</h2>
+<p>MySlowBody（以下「本アプリ」）は、ストレッチのルーティン、3Dキャラクターによる動作の案内、音声ガイド、ゆっくり呼吸、おやすみモード、ルーティンビルダー、運動記録の機能を提供します。基本機能は無料で、一部の機能はプレミアムサブスクリプションで提供されます。</p>
+
+<h2>2. 健康と安全</h2>
+<p>本アプリの動作と案内は一般的な運動情報であり、医学的な助言ではありません。けが、持病、妊娠など体の状態に不安がある場合は、運動の前に医師に相談してください。運動中に痛みやめまいを感じたら、すぐに中止してください。本アプリを利用した運動は、利用者ご自身の判断と責任で行ってください。</p>
+
+<h2>3. プレミアムサブスクリプション</h2>
+<ul>
+  <li>プレミアムにはルーティンビルダー、おやすみモードの全機能、広告の非表示が含まれ、月額または年額のサブスクリプションで提供されます。価格は購入画面とストアに表示される金額に従います。</li>
+  <li>初回インストールから7日間、プレミアムを無料でご利用いただけます。この体験はアプリ内で提供され、支払い方法の登録は不要で、期間終了後に自動で課金されることはありません。</li>
+  <li>サブスクリプションは Apple App Store または Google Play を通じて課金され、解約しない限り同じ期間・価格で自動更新されます。更新の24時間前までに、ストアのアカウント設定から解約できます。</li>
+  <li>返金は各ストアのポリシーに従います。運営者はストアでの購入を直接返金することはできません。</li>
+  <li>サブスクリプションは購入したストアアカウントに帰属します。同じストアアカウントで別の端末から「購入を復元」を押すと、再びご利用いただけます。</li>
+</ul>
+
+<h2>4. 広告</h2>
+<p>無料の利用者には広告が表示される場合があります。広告の内容は広告ネットワークが提供するもので、運営者が保証するものではありません。</p>
+
+<h2>5. 知的財産権</h2>
+<p>本アプリのキャラクター、動作データ、音声、音楽、デザイン、コードに関する権利は運営者に帰属します。個人的・非商業的な利用を超える複製、配布、改変は認められません。</p>
+
+<h2>6. 利用者のデータ</h2>
+<p>作成したルーティンと運動記録は端末内にのみ保存されます。アプリを削除したり端末を変更したりすると復元できない場合がありますので、必要に応じて事前にご確認ください。詳しくは<a href="privacy.html?lang=ja">プライバシーポリシー</a>をご覧ください。</p>
+
+<h2>7. 責任の制限</h2>
+<p>運営者は本アプリを現状のまま提供し、関係法令が認める範囲で、本アプリの利用により生じた間接的・付随的な損害について責任を負いません。アプリの機能は予告なく変更または終了されることがあります。</p>
+
+<h2>8. 規約の変更</h2>
+<p>規約を変更する場合は、このページに施行日とともに掲載します。変更後も本アプリの利用を続けた場合、変更後の規約に同意したものとみなします。</p>
+
+<h2>9. 準拠法とお問い合わせ</h2>
+<p>本規約は大韓民国の法律に準拠します。お問い合わせ: <a href="mailto:wd2347@gmail.com">wd2347@gmail.com</a></p>
+</article>
+
+<article data-lang="zh" lang="zh">
+<h1>使用条款</h1>
+<p class="meta">生效日期 2026年9月22日 · 应用: MySlowBody · 运营方: MyStudio · 联系 wd2347@gmail.com</p>
+
+<h2>1. 服务</h2>
+<p>MySlowBody（以下简称"本应用"）提供拉伸计划、3D 角色动作演示、语音引导、缓慢呼吸、睡眠模式、计划编辑器和运动记录等功能。基础功能免费，部分功能通过高级版订阅提供。</p>
+
+<h2>2. 健康与安全</h2>
+<p>本应用中的动作和引导属于一般运动信息，并非医疗建议。如有受伤、疾病、怀孕等身体状况方面的顾虑，请在运动前咨询医生。运动中如感到疼痛或头晕，请立即停止。使用本应用进行运动，由用户自行判断并承担责任。</p>
+
+<h2>3. 高级版订阅</h2>
+<ul>
+  <li>高级版包括计划编辑器、完整的睡眠模式和去除广告，以按月或按年订阅的方式提供。价格以购买页面和商店显示的金额为准。</li>
+  <li>首次安装后 7 天内可免费使用高级版。此体验在应用内提供，无需绑定付款方式，期满后不会自动扣费。</li>
+  <li>订阅通过 Apple App Store 或 Google Play 付款，除非取消，否则将按相同周期和价格自动续订。可在续订前 24 小时通过商店账户设置取消。</li>
+  <li>退款遵循各商店的政策。运营方无法直接退还商店中的购买款项。</li>
+  <li>订阅归属于购买时使用的商店账户。在其他设备上使用同一商店账户点击"恢复购买"即可继续使用。</li>
+</ul>
+
+<h2>4. 广告</h2>
+<p>免费用户可能会看到广告。广告内容由广告网络提供，运营方不对其作出保证。</p>
+
+<h2>5. 知识产权</h2>
+<p>本应用的角色、动作数据、语音、音乐、设计和代码的权利归运营方所有。未经许可，不得超出个人、非商业用途进行复制、传播或修改。</p>
+
+<h2>6. 用户数据</h2>
+<p>你创建的计划和运动记录仅保存在设备上。删除应用或更换设备后可能无法恢复，如有需要请事先确认。详情请参阅<a href="privacy.html?lang=zh">隐私政策</a>。</p>
+
+<h2>7. 责任限制</h2>
+<p>本应用按现状提供。在相关法律允许的范围内，运营方不对因使用本应用而产生的间接或附带损害承担责任。应用功能可能在不事先通知的情况下变更或终止。</p>
+
+<h2>8. 条款变更</h2>
+<p>条款变更时，将在本页面连同生效日期一并公布。变更后继续使用本应用，即视为同意变更后的条款。</p>
+
+<h2>9. 适用法律与联系方式</h2>
+<p>本条款适用大韩民国法律。联系: <a href="mailto:wd2347@gmail.com">wd2347@gmail.com</a></p>
+</article>
 </main>
+<script>
+const LANGS = ['en', 'ko', 'ja', 'zh'];
+const TITLES = {"en": "Terms of Use", "ko": "이용약관", "ja": "利用規約", "zh": "使用条款"};
+function pick() {
+  const q = new URLSearchParams(location.search).get('lang');
+  if (LANGS.includes(q)) return q;
+  try { const s = localStorage.getItem('lang'); if (LANGS.includes(s)) return s; } catch (e) {}
+  for (const l of (navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || 'en'])) {
+    const n = String(l).slice(0, 2).toLowerCase(); if (LANGS.includes(n)) return n;
+  }
+  return 'en';
+}
+function show(lang) {
+  document.documentElement.lang = lang;
+  document.title = 'MySlowBody — ' + TITLES[lang];
+  document.querySelectorAll('article').forEach(a => a.classList.toggle('on', a.dataset.lang === lang));
+  document.querySelectorAll('.langs button').forEach(b => b.setAttribute('aria-pressed', b.dataset.lang === lang));
+}
+document.querySelectorAll('.langs button').forEach(b => b.addEventListener('click', () => {
+  try { localStorage.setItem('lang', b.dataset.lang); } catch (e) {}
+  show(b.dataset.lang);
+}));
+show(pick());
+</script>
 </body>
 </html>

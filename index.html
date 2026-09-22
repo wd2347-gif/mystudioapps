@@ -313,8 +313,8 @@ function renderApp() {
       <button class="shot-nav next" type="button" aria-label="Next">›</button>
     </div>
     <nav class="links">
-      <a href="${a.privacy}">${esc(t.privacy)}</a>
-      <a href="${a.terms}">${esc(t.terms)}</a>
+      <a href="${a.privacy}?lang=${lang}">${esc(t.privacy)}</a>
+      <a href="${a.terms}?lang=${lang}">${esc(t.terms)}</a>
       <a href="${a.support}">${esc(t.support)}</a>
     </nav>`;
 }

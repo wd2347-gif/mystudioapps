@@ -12,19 +12,9 @@
 <meta property="og:image" content="assets/myslowbody/icon.png">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
 <style>
+  /* 어두운 화면 하나로(2026-09-22) — 앱 첫인상(밤하늘·짙은 녹색)과 같게. */
   :root {
-    --bg: #F6F7F4; --surface: #FFFFFF; --ink: #12150F; --ink-soft: #6B726A;
-    --line: #E6EAE3; --green: #1C9A46; --green-fill: #2FC85E; --wash: rgba(47, 200, 94, .10);
-    --shadow: 0 10px 30px rgba(18, 21, 15, .06);
-  }
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) {
-      --bg: #0E110D; --surface: #191D18; --ink: #F1F3EE; --ink-soft: #9BA49A;
-      --line: #2C332B; --green: #43D873; --green-fill: #43D873; --wash: rgba(67, 216, 115, .12);
-      --shadow: none;
-    }
-  }
-  :root[data-theme="dark"] {
+    color-scheme: dark;
     --bg: #0E110D; --surface: #191D18; --ink: #F1F3EE; --ink-soft: #9BA49A;
     --line: #2C332B; --green: #43D873; --green-fill: #43D873; --wash: rgba(67, 216, 115, .12);
     --shadow: none;
@@ -46,11 +36,6 @@
   .brand { font-weight: 800; font-size: 20px; letter-spacing: -.01em; color: var(--ink); text-decoration: none; }
   .brand span { color: var(--green); }
   .controls { display: flex; align-items: center; gap: 8px; }
-  .theme-btn {
-    width: 38px; height: 38px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface);
-    color: var(--green); display: grid; place-items: center; cursor: pointer; padding: 0;
-  }
-  .theme-btn svg { width: 18px; height: 18px; fill: currentColor; }
   .langs { display: flex; gap: 4px; background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 4px; }
   .langs button {
     border: 0; background: transparent; color: var(--ink-soft); font: inherit; font-size: 13px; font-weight: 600;
@@ -153,11 +138,11 @@
 <header>
   <a class="brand" href="./">My<span>Studio</span></a>
   <div class="controls">
-    <button class="theme-btn" id="theme-btn" type="button"></button>
     <div class="langs" role="group" aria-label="Language">
       <button data-lang="en">English</button>
       <button data-lang="ko">한국어</button>
       <button data-lang="ja">日本語</button>
+      <button data-lang="zh">中文</button>
     </div>
   </div>
 </header>
@@ -172,6 +157,7 @@
 
 <footer>
   <span data-i18n="footer"></span>
+  · <a href="https://instagram.com/mystudio_apps" target="_blank" rel="noopener">Instagram @mystudio_apps</a>
 </footer>
 
 <script>
@@ -186,6 +172,9 @@ const UI = {
   ja: { apps: 'アプリ', soonApp: '次のアプリ', soonAppSub: '準備中です', appStore: 'App Store', playStore: 'Google Play',
         comingSoon: '近日公開', privacy: 'プライバシーポリシー', terms: '利用規約', support: 'お問い合わせ',
         footer: '© 2026 MyStudio. 体と心をやわらげる小さなアプリをつくっています。' },
+  zh: { apps: '应用', soonApp: '下一款应用', soonAppSub: '正在准备中', appStore: 'App Store', playStore: 'Google Play',
+        comingSoon: '即将上线', privacy: '隐私政策', terms: '使用条款', support: '联系我们',
+        footer: '© 2026 MyStudio。我们制作让身心更放松的小应用。' },
 };
 
 // ── 앱 목록 — 새 앱은 여기에 하나 더 넣으면 오른쪽 아이콘과 소개가 생긴다. ──
@@ -232,6 +221,17 @@ const APPS = [
           ['🧸', '3Dキャラクターと音声ガイド', 'ゼリーボディとジョイントボディが先に動き、動作名と説明を落ち着いた声で読み上げます。'],
           ['🛠️', '自分だけのルーティン', '動作を選んで順番と時間を決めれば、自分だけのルーティン。基本ルーティンも編集できます。'],
           ['🌙', 'ゆっくり呼吸 · おやすみモード', '4·7·8呼吸で心を落ち着け、眠りを助ける周波数とともに眠りへ。'],
+        ],
+      },
+      zh: {
+        sub: '拉伸 · 缓慢呼吸 · 安睡',
+        tagline: '只要一会儿。',
+        desc: '早上、工作间隙、睡前——选一套适合当下场景的计划，跟着 3D 角色和平静的语音引导慢慢做。再用睡眠模式安心入睡。',
+        features: [
+          ['🌿', '适合当下的计划', '100 多个动作，按站着 · 椅子上 · 地面 · 泡沫轴分类。'],
+          ['🧸', '3D 角色和语音引导', '果冻身体或关节身体先做示范，平静的声音读出动作名称和要点。'],
+          ['🛠️', '我的计划', '挑选动作、设定顺序和时长，就是你的计划。内置计划也能修改。'],
+          ['🌙', '缓慢呼吸 · 睡眠模式', '用 4·7·8 呼吸让心平静下来，在助眠频率中入睡。'],
         ],
       },
     },
@@ -318,30 +318,6 @@ function renderApp() {
       <a href="${a.support}">${esc(t.support)}</a>
     </nav>`;
 }
-
-// ── 밝게/어둡게 — 처음엔 기기 설정, 누르면 바꾸고 기억한다. ──
-const SUN = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0-5 1.2 3h-2.4zm0 20-1.2-3h2.4zM2 12l3-1.2v2.4zm20 0-3 1.2v-2.4zM4.9 4.9l3 1.3-1.7 1.7zm14.2 14.2-3-1.3 1.7-1.7zM4.9 19.1l1.3-3 1.7 1.7zM19.1 4.9l-1.3 3-1.7-1.7z"/></svg>';
-const MOON = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.7 14.9A8.5 8.5 0 0 1 9.1 3.3 8.5 8.5 0 1 0 20.7 14.9z"/></svg>';
-function systemDark() { return window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches; }
-function isDark() {
-  const t = document.documentElement.dataset.theme;
-  return t ? t === 'dark' : systemDark();
-}
-function paintThemeBtn() {
-  const b = document.getElementById('theme-btn');
-  const dark = isDark();
-  b.innerHTML = dark ? SUN : MOON;   // 누르면 갈 쪽을 보여 준다
-  b.setAttribute('aria-label', dark ? 'Light mode' : 'Dark mode');
-  b.title = b.getAttribute('aria-label');
-}
-try { const t = localStorage.getItem('theme'); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
-document.getElementById('theme-btn').addEventListener('click', () => {
-  const next = isDark() ? 'light' : 'dark';
-  document.documentElement.dataset.theme = next;
-  try { localStorage.setItem('theme', next); } catch (e) {}
-  paintThemeBtn();
-});
-paintThemeBtn();
 
 // ── 스크린샷 넘기기 — PC 는 화살표와 마우스 끌기, 휴대폰은 손가락으로. ──
 function wireShots() {

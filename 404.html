@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MyStudio</title>
+<meta name="robots" content="noindex">
+<!-- 없는 주소(2026-10-03) — 짧은 링크를 밑줄·대문자·빈칸으로 적어도(ig_kr, IG-KR, igkr) 앱 링크로 넘긴다.
+     그 밖의 주소는 홈으로. GitHub Pages 가 없는 경로에 이 파일을 보여 준다. -->
+<script>
+  (function () {
+    var codes = ['ig_kr', 'ig_jp', 'ig_en', 'yt_kr', 'yt_jp', 'yt_en', 'tt_kr', 'tt_jp', 'tt_en',
+                 'igad_kr', 'igad_jp', 'igad_en'];
+    var p = decodeURIComponent(location.pathname).toLowerCase().replace(/^\/+|\/+$/g, '').replace(/[-\s.]/g, '_');
+    var flat = p.replace(/_/g, '');
+    for (var i = 0; i < codes.length; i++) {
+      if (p === codes[i] || flat === codes[i].replace(/_/g, '')) {
+        location.replace('/myslowbody/?c=' + codes[i]);
+        return;
+      }
+    }
+    location.replace('/');
+  })();
+</script>
+</head>
+<body><p><a href="/">MyStudio</a></p></body>
+</html>

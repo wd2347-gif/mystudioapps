@@ -11,7 +11,7 @@
   (function () {
     var codes = ['ig_kr', 'ig_jp', 'ig_en', 'yt_kr', 'yt_jp', 'yt_en', 'tt_kr', 'tt_jp', 'tt_en',
                  'igad_kr', 'igad_jp', 'igad_en'];
-    var p = decodeURIComponent(location.pathname).toLowerCase().replace(/^\/+|\/+$/g, '').replace(/[-\s.]/g, '_');
+    var p = decodeURIComponent(location.pathname).toLowerCase().replace(/^\/+|\/+$/g, '').replace(/^myslowbody\//, '').replace(/[-\s.]/g, '_');
     var flat = p.replace(/_/g, '');
     for (var i = 0; i < codes.length; i++) {
       if (p === codes[i] || flat === codes[i].replace(/_/g, '')) {

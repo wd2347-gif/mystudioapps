@@ -35,7 +35,7 @@
     var m = /[?&]c=([A-Za-z0-9_\-]{1,40})/.exec(location.search);
     var c = m ? m[1] : '';
     var appStore = 'https://apps.apple.com/app/id6812821519' + (c ? '?pt=129467809&ct=' + c + '&mt=8' : '');
-    var playStore = 'https://play.google.com/store/apps/details?id=com.ymc.myslowbody'; // Play 공개 2026-10-05(1.0.1)
+    var playStore = ''; // Play 공개 뒤: 'https://play.google.com/store/apps/details?id=com.ymc.myslowbody'
     if (playStore && c) {
       playStore += '&referrer=' + encodeURIComponent('utm_source=' + c.split('_')[0] + '&utm_medium=social&utm_campaign=' + c);
     }

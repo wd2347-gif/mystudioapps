@@ -11,7 +11,7 @@
   비어 있으면 그 칸을 뺀다. 출시 때 아이콘·스크린샷·스토어 주소를 넣으면 '다음 앱' 칸이 돌아온다.
 - 바닥글의 방침·약관·문의는 지금 보는 앱의 것을 연다.
 - 앱별 약관: `myslowbody/privacy.html`, `myslowbody/terms.html` (store/legal 에서 옮김).
-- MyScore 약관: `myscore/privacy.html`, `myscore/terms.html` (7개 언어, `?lang=`). 문구 원본은
+- MyScore 약관: `myscore/privacy.html`, `myscore/terms.html` (한·영·일, `?lang=`). 문구 원본은
   my_score 레포 `tool/legal/gen_legal.py` — 거기서 고쳐 이 폴더로 다시 만든다. 앱이 이 주소를 연다.
 - `CNAME` = mystudioapps.com (GitHub Pages 사용자 도메인).
 

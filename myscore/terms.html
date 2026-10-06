@@ -16,7 +16,9 @@
   .brand { font-weight: 800; font-size: 17px; color: var(--ink); text-decoration: none; white-space: nowrap; }
   .brand span { color: var(--green); }
   .brand small { color: var(--ink-soft); font-weight: 600; font-size: 14px; margin-left: 6px; }
-  select { background: var(--surface); color: var(--ink); border: 1px solid var(--line); border-radius: 999px; font: inherit; font-size: 14px; font-weight: 600; padding: 7px 12px; }
+  .langs { display: flex; gap: 2px; background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 3px; }
+  .langs button { border: 0; background: transparent; color: var(--ink-soft); font: inherit; font-size: 13px; font-weight: 600; padding: 6px 11px; border-radius: 999px; cursor: pointer; }
+  .langs button[aria-pressed="true"] { background: var(--wash); color: var(--green); }
   main { max-width: 760px; margin: 0 auto; padding: 32px 20px 80px; line-height: 1.75; }
   article { display: none; }
   article.on { display: block; }
@@ -29,7 +31,7 @@
   table { border-collapse: collapse; width: 100%; min-width: 520px; font-size: 14px; line-height: 1.5; }
   th, td { border: 1px solid var(--line); padding: 8px 10px; text-align: left; vertical-align: top; }
   th { background: var(--surface); color: var(--ink-soft); font-weight: 700; }
-  @media (max-width: 480px) { h1 { font-size: 24px; } .brand small { display: none; } }
+  @media (max-width: 480px) { .langs button { padding: 6px 8px; font-size: 12px; } h1 { font-size: 24px; } .brand small { display: none; } }
 </style>
 <noscript><style>article { display: block; margin-bottom: 48px; }</style></noscript>
 </head>
@@ -37,15 +39,11 @@
 <header>
   <div class="bar">
     <a class="brand" href="../">My<span>Studio</span><small>MyScore</small></a>
-    <select id="lang" aria-label="Language">
-      <option value="en">English</option>
-      <option value="ko">한국어</option>
-      <option value="ja">日本語</option>
-      <option value="zh">繁體中文</option>
-      <option value="de">Deutsch</option>
-      <option value="fr">Français</option>
-      <option value="es">Español</option>
-    </select>
+    <div class="langs" role="group" aria-label="Language">
+      <button data-lang="en">English</button>
+      <button data-lang="ko">한국어</button>
+      <button data-lang="ja">日本語</button>
+    </div>
   </div>
 </header>
 <main>
@@ -163,185 +161,29 @@
 <h2>9. 準拠法とお問い合わせ</h2>
 <p>本規約は大韓民国の法律に準拠します。ただし、利用者が居住する国の強行的な消費者保護規定は影響を受けません。お問い合わせ：<a href="mailto:support@mystudioapps.com">support@mystudioapps.com</a></p>
 </article>
-<article data-lang="zh" lang="zh-Hant">
-<h1>使用條款</h1>
-<p class="meta">生效日期 2026年10月6日 · App：MyScore · 營運者：MyStudio · 聯絡 support@mystudioapps.com</p>
-<h2>1. 服務</h2>
-<p>MyScore（以下稱「本App」）會讀取你在裝置上開啟的管弦樂分譜PDF，自動配置弓法（下弓 ⊓ / 上弓 ∨），並疊加顯示在原譜上。以輕量引擎自動配置弓法等基本功能免費提供，部分功能則透過一次性購買的進階版提供。</p>
-
-<h2>2. 自動弓法的限制</h2>
-<p>弓法是依據本App從樂譜辨識的內容自動配置，辨識與配置都可能出錯。本App無法確實讀取的段落會以淡色顯示，並提示需要確認。請在排練與演出前自行確認弓法。營運者不保證自動結果正確，或適合任何特定的演奏。</p>
-
-<h2>3. 進階版（一次性購買）</h2>
-<ul>
-  <li>進階版會解鎖進階引擎、手動弓法與標記樣式，價格以App與商店顯示的金額為準。這不是訂閱，不會自動續訂，也不會再次收費。</li>
-  <li>付款透過Apple App Store或Google Play處理，購買項目屬於付款的商店帳號。重新安裝App或更換裝置後，請以同一商店帳號點選<b>恢復購買</b>。</li>
-  <li>退款依各商店的政策辦理，營運者無法直接退還商店的款項。</li>
-</ul>
-
-<h2>4. 樂譜與著作權</h2>
-<ul>
-  <li>你在本App中開啟的樂譜檔案，其權利屬於各權利人。請只使用你合法擁有或已獲授權使用的樂譜。租用樂譜等依契約禁止複製的樂譜，請遵守該契約。</li>
-  <li>本App不會修改你的原始PDF，弓法標記與原譜分開儲存，再疊加顯示於其上。樂譜檔案只在你的裝置上，本App不會將其上傳到伺服器。</li>
-  <li>樂譜檔案的使用責任由你自行承擔。營運者不對你匯入的檔案所造成的侵權負責。</li>
-</ul>
-
-<h2>5. 智慧財產權</h2>
-<p>本App的設計、程式碼以及辨識與配置引擎的權利屬於營運者。除法律允許的範圍外，不得複製、散布、修改或進行還原工程。你建立的弓法標記屬於你，營運者不主張任何權利。</p>
-
-<h2>6. 你的資料</h2>
-<p>樂譜、弓法標記與版本紀錄只儲存在你的裝置上。此版本的App沒有備份或同步功能，刪除App或更換裝置後可能無法復原。詳情請參閱<a href="privacy.html?lang=zh">隱私權政策</a>。</p>
-
-<h2>7. 責任限制</h2>
-<p>本App依現狀提供。在法律允許的範圍內，營運者不對因使用本App而產生的間接或附隨損害負責。App功能可能隨改善而變更。</p>
-
-<h2>8. 條款變更</h2>
-<p>條款變更時，會在本頁公告並註明新的生效日期。變更後繼續使用本App，即表示你同意變更後的條款。</p>
-
-<h2>9. 準據法與聯絡方式</h2>
-<p>本條款以大韓民國法律為準據法，但不影響你居住國家的強制性消費者保護規定。聯絡：<a href="mailto:support@mystudioapps.com">support@mystudioapps.com</a></p>
-</article>
-<article data-lang="de" lang="de">
-<h1>Nutzungsbedingungen</h1>
-<p class="meta">Gültig ab 6. Oktober 2026 · App: MyScore · Betreiber: MyStudio · Kontakt support@mystudioapps.com</p>
-<h2>1. Leistung</h2>
-<p>MyScore (die „App“) liest Orchesterstimmen im PDF-Format, die du auf deinem Gerät öffnest, verteilt automatisch Striche (Abstrich ⊓ / Aufstrich ∨) und zeigt sie als Ebene über dem Original an. Grundfunktionen wie die Auto-Striche mit der leichten Engine sind kostenlos; einige Funktionen gibt es mit Premium, einem einmaligen Kauf.</p>
-
-<h2>2. Automatische Striche und ihre Grenzen</h2>
-<p>Striche werden automatisch auf Grundlage dessen verteilt, was die App in den Noten erkennt; Erkennung und Verteilung können fehlerhaft sein. Stellen, die die App nicht sicher lesen konnte, werden blass dargestellt und als zu prüfen markiert. Prüfe die Striche vor Proben und Konzerten selbst. Der Betreiber übernimmt keine Gewähr dafür, dass die automatischen Ergebnisse richtig oder für eine bestimmte Aufführung geeignet sind.</p>
-
-<h2>3. Premium (einmaliger Kauf)</h2>
-<ul>
-  <li>Premium schaltet die erweiterte Engine, manuelle Striche und die Strich-Darstellung frei – zu dem Preis, der in der App und im Store angezeigt wird. Es ist kein Abonnement: Es verlängert sich nicht, und es wird nichts erneut berechnet.</li>
-  <li>Käufe werden über den Apple App Store oder Google Play abgewickelt und gehören zu dem Store-Konto, mit dem gekauft wurde. Nach einer Neuinstallation oder einem Gerätewechsel tippe mit demselben Konto auf <b>Kauf wiederherstellen</b>.</li>
-  <li>Erstattungen richten sich nach den Richtlinien des jeweiligen Stores. Der Betreiber kann Store-Käufe nicht selbst erstatten.</li>
-</ul>
-
-<h2>4. Noten und Urheberrecht</h2>
-<ul>
-  <li>Die Rechte an den Notendateien, die du öffnest, liegen bei den jeweiligen Rechteinhabern. Verwende nur Noten, die du rechtmäßig besitzt oder nutzen darfst. Manche Noten, etwa Leihmaterial für Orchester, unterliegen Verträgen, die das Kopieren verbieten – halte dich an diese Bedingungen.</li>
-  <li>Die App verändert dein Original-PDF nie; Strichbezeichnungen werden getrennt gespeichert und darüber gezeichnet. Notendateien bleiben auf deinem Gerät und werden von der App nicht hochgeladen.</li>
-  <li>Für die Nutzung von Notendateien bist du verantwortlich. Der Betreiber haftet nicht für Rechtsverletzungen durch Dateien, die du importierst.</li>
-</ul>
-
-<h2>5. Geistiges Eigentum</h2>
-<p>Design, Code sowie die Erkennungs- und Strich-Engines der App gehören dem Betreiber. Kopieren, Verbreiten, Verändern oder Zurückentwickeln über das gesetzlich Erlaubte hinaus ist nicht gestattet. Die Strichbezeichnungen, die du erstellst, gehören dir; der Betreiber beansprucht keine Rechte daran.</p>
-
-<h2>6. Deine Daten</h2>
-<p>Noten, Strichbezeichnungen und Versionsverlauf werden nur auf deinem Gerät gespeichert. Diese Version der App hat keine Sicherung oder Synchronisierung; nach dem Löschen der App oder einem Gerätewechsel lassen sie sich daher möglicherweise nicht wiederherstellen. Einzelheiten in der <a href="privacy.html?lang=de">Datenschutzerklärung</a>.</p>
-
-<h2>7. Haftungsbeschränkung</h2>
-<p>Die App wird bereitgestellt, wie sie ist. Soweit gesetzlich zulässig, haftet der Betreiber nicht für mittelbare Schäden oder Folgeschäden aus der Nutzung der App. Funktionen können sich im Zuge von Verbesserungen ändern.</p>
-
-<h2>8. Änderungen</h2>
-<p>Änderungen werden auf dieser Seite mit neuem Gültigkeitsdatum veröffentlicht. Wenn du die App nach einer Änderung weiter nutzt, stimmst du den geänderten Bedingungen zu.</p>
-
-<h2>9. Anwendbares Recht und Kontakt</h2>
-<p>Es gilt das Recht der Republik Korea. Zwingende Verbraucherschutzvorschriften deines Wohnsitzlandes bleiben unberührt. Kontakt: <a href="mailto:support@mystudioapps.com">support@mystudioapps.com</a></p>
-</article>
-<article data-lang="fr" lang="fr">
-<h1>Conditions d'utilisation</h1>
-<p class="meta">En vigueur le 6 octobre 2026 · Application : MyScore · Exploitant : MyStudio · Contact support@mystudioapps.com</p>
-<h2>1. Service</h2>
-<p>MyScore (l'« Application ») lit les parties d'orchestre en PDF que vous ouvrez sur votre appareil, attribue automatiquement les coups d'archet (tiré ⊓ / poussé ∨) et les affiche en surimpression sur l'original. Les fonctions de base, dont les archets auto avec le moteur léger, sont gratuites ; certaines fonctions sont proposées avec Premium, un achat unique.</p>
-
-<h2>2. Archets automatiques et leurs limites</h2>
-<p>Les coups d'archet sont attribués automatiquement à partir de ce que l'Application reconnaît dans la partition ; la reconnaissance comme l'attribution peuvent se tromper. Les passages que l'Application n'a pas pu lire de façon fiable sont affichés en clair et signalés comme à vérifier. Vérifiez vous-même les coups d'archet avant les répétitions et les concerts. L'exploitant ne garantit pas que les résultats automatiques sont exacts ou adaptés à une interprétation particulière.</p>
-
-<h2>3. Premium (achat unique)</h2>
-<ul>
-  <li>Premium débloque le moteur avancé, les archets manuels et le style des marques, au prix affiché dans l'Application et dans le store. Ce n'est pas un abonnement : il ne se renouvelle pas et rien ne vous est facturé à nouveau.</li>
-  <li>Les achats sont traités par l'Apple App Store ou Google Play et appartiennent au compte store qui les a effectués. Après une réinstallation ou un changement d'appareil, touchez <b>Restaurer l'achat</b> avec le même compte.</li>
-  <li>Les remboursements suivent la politique de chaque store. L'exploitant ne peut pas rembourser directement les achats effectués via un store.</li>
-</ul>
-
-<h2>4. Partitions et droit d'auteur</h2>
-<ul>
-  <li>Les droits sur les fichiers de partitions que vous ouvrez appartiennent à leurs titulaires. N'utilisez que des partitions que vous possédez légalement ou que vous êtes autorisé à utiliser. Certaines partitions, comme le matériel d'orchestre en location, sont soumises à des contrats qui en interdisent la copie : respectez-les.</li>
-  <li>L'Application ne modifie jamais votre PDF d'origine ; les coups d'archet sont enregistrés séparément et dessinés par-dessus. Les fichiers de partitions restent sur votre appareil et l'Application ne les envoie sur aucun serveur.</li>
-  <li>Vous êtes responsable de l'utilisation que vous faites des fichiers de partitions. L'exploitant n'est pas responsable des atteintes aux droits liées aux fichiers que vous importez.</li>
-</ul>
-
-<h2>5. Propriété intellectuelle</h2>
-<p>Le design, le code et les moteurs de reconnaissance et d'attribution de l'Application appartiennent à l'exploitant. Toute copie, diffusion, modification ou ingénierie inverse au-delà de ce que la loi permet est interdite. Les coups d'archet que vous créez vous appartiennent ; l'exploitant ne revendique aucun droit sur eux.</p>
-
-<h2>6. Vos données</h2>
-<p>Les partitions, les coups d'archet et l'historique des versions sont stockés uniquement sur votre appareil. Cette version de l'Application n'offre ni sauvegarde ni synchronisation : ils peuvent donc être perdus si vous supprimez l'Application ou changez d'appareil. Voir la <a href="privacy.html?lang=fr">politique de confidentialité</a>.</p>
-
-<h2>7. Limitation de responsabilité</h2>
-<p>L'Application est fournie en l'état. Dans les limites permises par la loi, l'exploitant n'est pas responsable des dommages indirects ou accessoires résultant de son utilisation. Les fonctions peuvent évoluer au fil des améliorations.</p>
-
-<h2>8. Modifications</h2>
-<p>Les modifications sont publiées sur cette page avec une nouvelle date d'entrée en vigueur. Continuer à utiliser l'Application après une modification vaut acceptation des nouvelles conditions.</p>
-
-<h2>9. Droit applicable et contact</h2>
-<p>Les présentes conditions sont régies par le droit de la République de Corée, sans préjudice des dispositions impératives de protection des consommateurs de votre pays de résidence. Contact : <a href="mailto:support@mystudioapps.com">support@mystudioapps.com</a></p>
-</article>
-<article data-lang="es" lang="es">
-<h1>Condiciones de uso</h1>
-<p class="meta">Vigente desde el 6 de octubre de 2026 · App: MyScore · Operador: MyStudio · Contacto support@mystudioapps.com</p>
-<h2>1. Servicio</h2>
-<p>MyScore (la «App») lee las partes orquestales en PDF que abres en tu dispositivo, asigna automáticamente las arcadas (arco abajo ⊓ / arco arriba ∨) y las muestra superpuestas sobre el original. Las funciones básicas, como las arcadas auto con el motor ligero, son gratuitas; algunas funciones se ofrecen con Premium, una compra única.</p>
-
-<h2>2. Arcadas automáticas y sus límites</h2>
-<p>Las arcadas se asignan automáticamente a partir de lo que la App reconoce en la partitura, y tanto el reconocimiento como la asignación pueden fallar. Los pasajes que la App no pudo leer con seguridad se muestran atenuados y se marcan para revisar. Revisa tú mismo las arcadas antes de ensayos y conciertos. El operador no garantiza que los resultados automáticos sean correctos ni adecuados para una interpretación concreta.</p>
-
-<h2>3. Premium (compra única)</h2>
-<ul>
-  <li>Premium desbloquea el motor avanzado, las arcadas manuales y el estilo de las marcas, al precio que se muestra en la App y en la tienda. No es una suscripción: no se renueva ni se vuelve a cobrar.</li>
-  <li>Las compras las procesan Apple App Store o Google Play y pertenecen a la cuenta de la tienda con la que se hicieron. Si reinstalas la App o cambias de dispositivo, toca <b>Restaurar compra</b> con la misma cuenta.</li>
-  <li>Los reembolsos siguen la política de cada tienda. El operador no puede reembolsar directamente las compras hechas en una tienda.</li>
-</ul>
-
-<h2>4. Partituras y derechos de autor</h2>
-<ul>
-  <li>Los derechos sobre los archivos de partituras que abres pertenecen a sus titulares. Usa solo partituras que poseas legalmente o que tengas permiso para usar. Algunas partituras, como el material orquestal de alquiler, se rigen por contratos que prohíben copiarlas: respeta esas condiciones.</li>
-  <li>La App nunca modifica tu PDF original; las marcas de arco se guardan por separado y se dibujan encima. Los archivos de partituras se quedan en tu dispositivo y la App no los sube a ningún servidor.</li>
-  <li>Eres responsable del uso que hagas de los archivos de partituras. El operador no responde de las infracciones derivadas de los archivos que importes.</li>
-</ul>
-
-<h2>5. Propiedad intelectual</h2>
-<p>El diseño, el código y los motores de reconocimiento y asignación de la App pertenecen al operador. No se permite copiarlos, distribuirlos, modificarlos ni aplicarles ingeniería inversa más allá de lo que permita la ley. Las marcas de arco que creas son tuyas; el operador no reclama ningún derecho sobre ellas.</p>
-
-<h2>6. Tus datos</h2>
-<p>Las partituras, las marcas de arco y el historial de versiones se guardan solo en tu dispositivo. Esta versión de la App no tiene copia de seguridad ni sincronización, así que podrían no recuperarse si borras la App o cambias de dispositivo. Consulta la <a href="privacy.html?lang=es">política de privacidad</a>.</p>
-
-<h2>7. Limitación de responsabilidad</h2>
-<p>La App se ofrece tal cual. En la medida en que lo permita la ley, el operador no responde de daños indirectos o accesorios derivados de su uso. Las funciones pueden cambiar a medida que se mejora la App.</p>
-
-<h2>8. Cambios</h2>
-<p>Los cambios se publicarán en esta página con una nueva fecha de vigencia. Si sigues usando la App después de un cambio, aceptas las condiciones actualizadas.</p>
-
-<h2>9. Ley aplicable y contacto</h2>
-<p>Estas condiciones se rigen por las leyes de la República de Corea, sin perjuicio de las normas imperativas de protección del consumidor de tu país de residencia. Contacto: <a href="mailto:support@mystudioapps.com">support@mystudioapps.com</a></p>
-</article>
 </main>
 <script>
-const LANGS = ["en", "ko", "ja", "zh", "de", "fr", "es"];
-const TITLES = {"en": "Terms of Use", "ko": "이용약관", "ja": "利用規約", "zh": "使用條款", "de": "Nutzungsbedingungen", "fr": "Conditions d'utilisation", "es": "Condiciones de uso"};
+const LANGS = ["en", "ko", "ja"];
+const TITLES = {"en": "Terms of Use", "ko": "이용약관", "ja": "利用規約"};
 function pick() {
   const q = new URLSearchParams(location.search).get('lang');
   if (LANGS.includes(q)) return q;
   try { const s = localStorage.getItem('lang'); if (LANGS.includes(s)) return s; } catch (e) {}
   for (const l of (navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || 'en'])) {
-    const s = String(l).toLowerCase();
-    // 번체만 있다. 간체(중국 본토·싱가포르)는 영어로 — 앱과 같은 규칙.
-    if (s.startsWith('zh')) { if (/hant|tw|hk|mo/.test(s)) return 'zh'; continue; }
-    const n = s.slice(0, 2); if (LANGS.includes(n)) return n;
+    const n = String(l).slice(0, 2).toLowerCase(); if (LANGS.includes(n)) return n;
   }
   return 'en';
 }
-const select = document.getElementById('lang');
 function show(lang) {
-  document.documentElement.lang = lang === 'zh' ? 'zh-Hant' : lang;
+  document.documentElement.lang = lang;
   document.title = 'MyScore — ' + TITLES[lang];
   document.querySelectorAll('article').forEach(a => a.classList.toggle('on', a.dataset.lang === lang));
-  select.value = lang;
+  document.querySelectorAll('.langs button').forEach(b => b.setAttribute('aria-pressed', b.dataset.lang === lang));
 }
-select.addEventListener('change', () => {
-  try { localStorage.setItem('lang', select.value); } catch (e) {}
-  show(select.value);
-});
+document.querySelectorAll('.langs button').forEach(b => b.addEventListener('click', () => {
+  try { localStorage.setItem('lang', b.dataset.lang); } catch (e) {}
+  show(b.dataset.lang);
+}));
 show(pick());
 </script>
 </body>

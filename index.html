@@ -265,8 +265,8 @@ const APPS = [
     },
   },
   {
-    // 출시 준비 중(2026-10-06 사용자: "다음 앱에 들어가게"). 아이콘·스크린샷·스토어 주소는
-    // 출시 때 넣는다 — 그때까지 아이콘 자리에 내림활 기호를 두고, '다음 앱' 칸을 대신한다.
+    // 출시 준비 중(2026-10-06). 아이콘·스크린샷·스토어 주소는 출시 때 넣는다 — 그때까지
+    // 아이콘 자리에 내림활 기호를 둔다. '다음 앱 +' 칸은 이 뒤(세 번째)에 그대로 둔다.
     // 문구의 얼굴은 "보잉 자동 배분"이다. "악보 공유"를 앞세우지 말 것(my_score CLAUDE.md §저작권).
     id: 'myscore',
     name: 'MyScore',
@@ -279,37 +279,38 @@ const APPS = [
     terms: 'myscore/terms.html',
     shots: [],
     text: {
+      // 이점 위주 — 얼굴은 "악보를 올리면 활 표시가 자동으로"(2026-10-06 사용자: "이게 메인이야").
       ko: {
-        sub: '보잉 자동 배분',
-        tagline: '활 방향, 자동으로.',
-        desc: '오케스트라 파트보 PDF를 열면 내림활·올림활을 자동으로 배분해 악보 위에 표시해요. 악보 파일은 기기 밖으로 나가지 않아요.',
+        sub: '활 표시 자동으로',
+        tagline: '악보를 올리면, 활 표시는 자동으로.',
+        desc: '앱에 파트보를 올리면 내림활·올림활을 알아서 표시해 줘요. 연습 전에 보잉을 하나하나 적어 넣던 시간을 줄이고, 고칠 곳만 손보면 돼요.',
         features: [
-          ['🎻', '자동 보잉', '음표와 마디를 읽어 활 방향을 배분해요. 확실하지 않은 곳은 흐리게 그려 어디를 확인할지 알려 줘요.'],
-          ['✍️', '내 손으로 다듬기', '틀린 곳은 탭해서 고쳐요. 고친 보잉은 다시 배분해도 그대로 남아요. (프리미엄)'],
-          ['🎨', '보잉 표시 꾸미기', '악보마다 표시의 크기·모양·색·굵기를 음표 크기에 맞게 바꿔요. (프리미엄)'],
-          ['🔒', '악보는 내 기기에만', 'PDF를 읽고 배분하는 일은 전부 기기 안에서 해요. 원본 PDF는 고치지 않아요.'],
+          ['🎻', '올리기만 하면 끝', '음표와 마디를 읽어 활 방향을 악보 위에 자동으로 표시해요. 연필로 하나하나 적지 않아도 돼요.'],
+          ['👀', '확인할 곳만 골라 보기', '자신 없는 곳은 흐리게 보여 줘요. 처음부터 다시 볼 필요 없이 그 부분만 확인하면 돼요.'],
+          ['✍️', '내 보잉으로 다듬기', '틀린 곳은 탭 한 번으로 고쳐요. 고친 보잉은 다시 배분해도 그대로 남아요. (프리미엄)'],
+          ['🔒', '악보는 내 기기 안에서만', '악보를 읽고 표시하는 일은 전부 기기 안에서 해요. 서버로 보내지 않고, 원본 파일도 그대로 둬요.'],
         ],
       },
       en: {
-        sub: 'Automatic bowings',
-        tagline: 'Bowings, done for you.',
-        desc: 'Open an orchestra part PDF and MyScore marks down-bows and up-bows on the page automatically. Your score files never leave your device.',
+        sub: 'Bow marks, automatically',
+        tagline: 'Add a score. Get the bowings.',
+        desc: 'Add an orchestra part and MyScore marks the down-bows and up-bows for you. Spend less time pencilling in bowings before rehearsal — just touch up what needs it.',
         features: [
-          ['🎻', 'Auto bowing', 'Reads notes and bars to assign bow directions. Unsure spots are drawn faintly, so you know where to check.'],
-          ['✍️', 'Fine-tune by hand', 'Tap a mark to fix it. Your edits stay put even when bowings are reassigned. (Premium)'],
-          ['🎨', 'Mark style', 'Change the size, shape, color and weight of the marks for each score to fit its notes. (Premium)'],
-          ['🔒', 'Scores stay on your device', 'Reading and assigning all happen on your device. Your original PDF is never changed.'],
+          ['🎻', 'Just add your part', 'MyScore reads the notes and bars and marks the bow directions right on the page. No more pencilling them in one by one.'],
+          ['👀', 'Check only what matters', "Spots it isn't sure about are shown faintly, so you review just those instead of the whole part."],
+          ['✍️', 'Make it yours', 'Fix a bowing with one tap. Your edits stay put even when the bowings are redone. (Premium)'],
+          ['🔒', 'Your scores stay on your device', 'Reading and marking all happen on your device. Nothing is uploaded to a server, and your original file is left untouched.'],
         ],
       },
       ja: {
-        sub: 'ボウイング自動配分',
-        tagline: 'ボウイング、自動で。',
-        desc: 'オーケストラのパート譜PDFを開くと、ダウンボウ・アップボウを自動で配分して楽譜の上に表示します。楽譜ファイルが端末の外に出ることはありません。',
+        sub: 'ボウイングを自動で',
+        tagline: '楽譜を入れるだけで、ボウイングは自動で。',
+        desc: 'パート譜を入れると、ダウンボウ・アップボウを自動で書き込みます。練習前にボウイングを一つずつ書き込む時間を減らして、直すところだけ手を入れればOKです。',
         features: [
-          ['🎻', '自動ボウイング', '音符と小節を読み取ってボウイングを配分します。自信のない箇所は薄く表示して、確認する場所を知らせます。'],
-          ['✍️', '手で仕上げる', '違うところはタップで直せます。直したボウイングは再配分しても残ります。（プレミアム）'],
-          ['🎨', '記号のスタイル', '楽譜ごとに記号の大きさ・形・色・太さを音符に合わせて変えられます。（プレミアム）'],
-          ['🔒', '楽譜は端末の中だけ', 'PDFの読み取りも配分もすべて端末の中で行います。元のPDFは変更しません。'],
+          ['🎻', '入れるだけ', '音符と小節を読み取って、ボウイングを楽譜の上に自動で表示します。鉛筆で一つずつ書き込む必要はありません。'],
+          ['👀', '確認はポイントだけ', '自信のない箇所は薄く表示するので、全体を見直さずにそこだけ確認できます。'],
+          ['✍️', '自分のボウイングに', 'タップ一つで直せます。直したボウイングは再配分しても残ります。（プレミアム）'],
+          ['🔒', '楽譜は端末の中だけ', '読み取りも表示もすべて端末の中で行います。サーバーには送らず、元のファイルもそのままです。'],
         ],
       },
     },
@@ -318,8 +319,6 @@ const APPS = [
 
 // 고르지 않은 언어의 문구가 없는 앱(MyScore 는 한·영·일)은 영어로.
 const textOf = a => a.text[lang] || a.text.en;
-// 스토어 주소가 아직 없으면 출시 준비 중이다.
-const upcoming = a => !a.appStore && !a.playStore;
 function iconOf(a, cls = '') {
   return a.icon
     ? `<img${cls ? ` class="${cls}"` : ''} src="${a.icon}" alt="${esc(a.name)}">`
@@ -360,10 +359,10 @@ function renderList() {
   const items = APPS.map(a => `
     <button class="app-btn" data-app="${a.id}" aria-current="${a.id === cur}">
       ${iconOf(a)}
-      <span><strong>${esc(a.name)}</strong><small>${esc(upcoming(a) ? `${t.soonApp} · ${textOf(a).sub}` : textOf(a).sub)}</small></span>
+      <span><strong>${esc(a.name)}</strong><small>${esc(textOf(a).sub)}</small></span>
     </button>`).join('');
-  // 출시 준비 중인 앱이 있으면 그 앱이 '다음 앱' 칸을 대신한다. 출시하면(스토어 주소를 넣으면) 돌아온다.
-  const soon = APPS.some(upcoming) ? '' : `
+  // '다음 앱 +' 칸은 늘 맨 끝에 (2026-10-06 사용자: 세 번째 자리에 그대로).
+  const soon = `
     <button class="app-btn" disabled>
       <span class="soon-icon">+</span>
       <span><strong>${esc(t.soonApp)}</strong><small>${esc(t.soonAppSub)}</small></span>

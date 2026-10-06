@@ -79,6 +79,7 @@
     display: grid; grid-template-columns: 120px minmax(0, 1fr); gap: 28px; align-items: center;
   }
   .hero img.icon { width: 120px; height: 120px; border-radius: 27px; box-shadow: 0 8px 24px rgba(28, 154, 70, .25); }
+  .hero .soon-icon.icon { width: 120px; height: 120px; border-radius: 27px; font-size: 52px; }
   .hero h1 { margin: 0; font-size: 34px; line-height: 1.2; letter-spacing: -.02em; }
   .tagline { margin: 6px 0 10px; font-size: 20px; font-weight: 700; color: var(--green); }
   .desc { margin: 0 0 18px; color: var(--ink-soft); }
@@ -140,6 +141,7 @@
     .app-btn img, .app-btn .soon-icon { width: 40px; height: 40px; border-radius: 10px; }
     .hero { grid-template-columns: minmax(0, 1fr); padding: 24px; text-align: left; gap: 16px; }
     .hero img.icon { width: 88px; height: 88px; border-radius: 20px; }
+    .hero .soon-icon.icon { width: 88px; height: 88px; border-radius: 20px; font-size: 40px; }
     .hero h1 { font-size: 28px; }
     .features { grid-template-columns: minmax(0, 1fr); }
     .shots img { width: 160px; }
@@ -262,7 +264,67 @@ const APPS = [
       },
     },
   },
+  {
+    // 출시 준비 중(2026-10-06 사용자: "다음 앱에 들어가게"). 아이콘·스크린샷·스토어 주소는
+    // 출시 때 넣는다 — 그때까지 아이콘 자리에 내림활 기호를 두고, '다음 앱' 칸을 대신한다.
+    // 문구의 얼굴은 "보잉 자동 배분"이다. "악보 공유"를 앞세우지 말 것(my_score CLAUDE.md §저작권).
+    id: 'myscore',
+    name: 'MyScore',
+    icon: '',
+    iconText: '⊓',
+    appStore: '',
+    playStore: '',
+    support: 'mailto:support@mystudioapps.com',
+    privacy: 'myscore/privacy.html',
+    terms: 'myscore/terms.html',
+    shots: [],
+    text: {
+      ko: {
+        sub: '보잉 자동 배분',
+        tagline: '활 방향, 자동으로.',
+        desc: '오케스트라 파트보 PDF를 열면 내림활·올림활을 자동으로 배분해 악보 위에 표시해요. 악보 파일은 기기 밖으로 나가지 않아요.',
+        features: [
+          ['🎻', '자동 보잉', '음표와 마디를 읽어 활 방향을 배분해요. 확실하지 않은 곳은 흐리게 그려 어디를 확인할지 알려 줘요.'],
+          ['✍️', '내 손으로 다듬기', '틀린 곳은 탭해서 고쳐요. 고친 보잉은 다시 배분해도 그대로 남아요. (프리미엄)'],
+          ['🎨', '보잉 표시 꾸미기', '악보마다 표시의 크기·모양·색·굵기를 음표 크기에 맞게 바꿔요. (프리미엄)'],
+          ['🔒', '악보는 내 기기에만', 'PDF를 읽고 배분하는 일은 전부 기기 안에서 해요. 원본 PDF는 고치지 않아요.'],
+        ],
+      },
+      en: {
+        sub: 'Automatic bowings',
+        tagline: 'Bowings, done for you.',
+        desc: 'Open an orchestra part PDF and MyScore marks down-bows and up-bows on the page automatically. Your score files never leave your device.',
+        features: [
+          ['🎻', 'Auto bowing', 'Reads notes and bars to assign bow directions. Unsure spots are drawn faintly, so you know where to check.'],
+          ['✍️', 'Fine-tune by hand', 'Tap a mark to fix it. Your edits stay put even when bowings are reassigned. (Premium)'],
+          ['🎨', 'Mark style', 'Change the size, shape, color and weight of the marks for each score to fit its notes. (Premium)'],
+          ['🔒', 'Scores stay on your device', 'Reading and assigning all happen on your device. Your original PDF is never changed.'],
+        ],
+      },
+      ja: {
+        sub: 'ボウイング自動配分',
+        tagline: 'ボウイング、自動で。',
+        desc: 'オーケストラのパート譜PDFを開くと、ダウンボウ・アップボウを自動で配分して楽譜の上に表示します。楽譜ファイルが端末の外に出ることはありません。',
+        features: [
+          ['🎻', '自動ボウイング', '音符と小節を読み取ってボウイングを配分します。自信のない箇所は薄く表示して、確認する場所を知らせます。'],
+          ['✍️', '手で仕上げる', '違うところはタップで直せます。直したボウイングは再配分しても残ります。（プレミアム）'],
+          ['🎨', '記号のスタイル', '楽譜ごとに記号の大きさ・形・色・太さを音符に合わせて変えられます。（プレミアム）'],
+          ['🔒', '楽譜は端末の中だけ', 'PDFの読み取りも配分もすべて端末の中で行います。元のPDFは変更しません。'],
+        ],
+      },
+    },
+  },
 ];
+
+// 고르지 않은 언어의 문구가 없는 앱(MyScore 는 한·영·일)은 영어로.
+const textOf = a => a.text[lang] || a.text.en;
+// 스토어 주소가 아직 없으면 출시 준비 중이다.
+const upcoming = a => !a.appStore && !a.playStore;
+function iconOf(a, cls = '') {
+  return a.icon
+    ? `<img${cls ? ` class="${cls}"` : ''} src="${a.icon}" alt="${esc(a.name)}">`
+    : `<span class="soon-icon${cls ? ` ${cls}` : ''}" aria-hidden="true">${esc(a.iconText || '+')}</span>`;
+}
 
 // ── 언어 ── 한·영·일 셋(2026-10-02 사용자: 중국어는 뺀다 — 문구는 남아 있어도 고르지 않는다).
 const LANGS = ['en', 'ko', 'ja'];
@@ -297,10 +359,11 @@ function renderList() {
   const cur = currentAppId();
   const items = APPS.map(a => `
     <button class="app-btn" data-app="${a.id}" aria-current="${a.id === cur}">
-      <img src="${a.icon}" alt="">
-      <span><strong>${esc(a.name)}</strong><small>${esc(a.text[lang].sub)}</small></span>
+      ${iconOf(a)}
+      <span><strong>${esc(a.name)}</strong><small>${esc(upcoming(a) ? `${t.soonApp} · ${textOf(a).sub}` : textOf(a).sub)}</small></span>
     </button>`).join('');
-  const soon = `
+  // 출시 준비 중인 앱이 있으면 그 앱이 '다음 앱' 칸을 대신한다. 출시하면(스토어 주소를 넣으면) 돌아온다.
+  const soon = APPS.some(upcoming) ? '' : `
     <button class="app-btn" disabled>
       <span class="soon-icon">+</span>
       <span><strong>${esc(t.soonApp)}</strong><small>${esc(t.soonAppSub)}</small></span>
@@ -319,11 +382,11 @@ function storeButton(url, icon, label, t) {
 function renderApp() {
   const t = UI[lang];
   const a = APPS.find(x => x.id === currentAppId());
-  const x = a.text[lang];
+  const x = textOf(a);
   document.title = `${a.name} — MyStudio`;
   document.getElementById('app-panel').innerHTML = `
     <section class="hero">
-      <img class="icon" src="${a.icon}" alt="${esc(a.name)}">
+      ${iconOf(a, 'icon')}
       <div>
         <h1>${esc(a.name)}</h1>
         <p class="tagline">${esc(x.tagline)}</p>
@@ -338,13 +401,13 @@ function renderApp() {
       ${x.features.map(([e, h, p]) => `
         <div class="feature"><div class="emoji">${e}</div><h3>${esc(h)}</h3><p>${esc(p)}</p></div>`).join('')}
     </section>
-    <div class="shots-wrap">
+    ${a.shots.length ? `<div class="shots-wrap">
       <button class="shot-nav prev" type="button" aria-label="Previous">‹</button>
       <section class="shots" aria-label="Screenshots">
         ${a.shots.map(s => `<img loading="lazy" draggable="false" src="assets/${a.id}/${lang}_${s}.jpg" alt="">`).join('')}
       </section>
       <button class="shot-nav next" type="button" aria-label="Next">›</button>
-    </div>
+    </div>` : ''}
 `;
 }
 
@@ -389,13 +452,19 @@ function wireShots() {
   box.addEventListener('pointercancel', end);
 }
 
+// 바닥글의 방침·약관·문의 — 앱 칸 아래에 있던 것을 내렸다(2026-09-30 사용자). 지금 보는 앱의 것을
+// 지금 언어로 연다 (앱이 둘이 되며 2026-10-06: 전에는 늘 첫 앱의 것이었다).
+function renderFooter() {
+  const a = APPS.find(x => x.id === currentAppId());
+  document.getElementById('foot-privacy').href = `${a.privacy}?lang=${lang}`;
+  document.getElementById('foot-terms').href = `${a.terms}?lang=${lang}`;
+  document.getElementById('foot-support').href = a.support;
+}
+
 function render() {
   document.documentElement.lang = lang;
   document.querySelectorAll('[data-i18n]').forEach(el => { el.textContent = UI[lang][el.dataset.i18n]; });
-  // 바닥글의 방침·약관·문의 — 앱 칸 아래에 있던 것을 내렸다(2026-09-30 사용자). 지금 언어로 연다.
-  document.getElementById('foot-privacy').href = `${APPS[0].privacy}?lang=${lang}`;
-  document.getElementById('foot-terms').href = `${APPS[0].terms}?lang=${lang}`;
-  document.getElementById('foot-support').href = APPS[0].support;
+  renderFooter();
   const sns = SNS[lang] || SNS.en;
   const ig = document.getElementById('sns-ig'), yt = document.getElementById('sns-yt');
   ig.href = `https://www.instagram.com/${sns.ig}`; ig.setAttribute('aria-label', `Instagram @${sns.ig}`);
@@ -413,7 +482,7 @@ document.querySelectorAll('.langs button').forEach(b => b.addEventListener('clic
   try { localStorage.setItem('lang', lang); } catch (e) {}
   render();
 }));
-window.addEventListener('hashchange', () => { renderList(); renderApp(); wireShots(); window.scrollTo({ top: 0, behavior: 'smooth' }); });
+window.addEventListener('hashchange', () => { renderList(); renderApp(); renderFooter(); wireShots(); window.scrollTo({ top: 0, behavior: 'smooth' }); });
 render();
 </script>
 </body>

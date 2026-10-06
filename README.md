@@ -6,6 +6,10 @@
   언어 ko/en/ja(오른쪽 위, `?lang=` 로도). 휴대폰(820px 이하)에서는 아이콘 줄이 위로.
 - **새 앱 추가**: `index.html` 의 `APPS` 배열에 하나 더 넣고 `assets/<앱id>/` 에 아이콘·스크린샷.
 - **출시 후**: `APPS[0].appStore` 에 App Store 주소를 넣으면 버튼이 살아난다.
+- **출시 준비 중인 앱**: 스토어 주소가 비어 있으면 '출시 준비 중' 버튼이 되고, 목록의 '다음 앱' 칸을
+  그 앱이 대신한다(지금 MyScore). 아이콘이 없으면 `iconText` 글자를 점선 틀에 둔다. 스크린샷(`shots`)이
+  비어 있으면 그 칸을 뺀다. 출시 때 아이콘·스크린샷·스토어 주소를 넣으면 '다음 앱' 칸이 돌아온다.
+- 바닥글의 방침·약관·문의는 지금 보는 앱의 것을 연다.
 - 앱별 약관: `myslowbody/privacy.html`, `myslowbody/terms.html` (store/legal 에서 옮김).
 - MyScore 약관: `myscore/privacy.html`, `myscore/terms.html` (7개 언어, `?lang=`). 문구 원본은
   my_score 레포 `tool/legal/gen_legal.py` — 거기서 고쳐 이 폴더로 다시 만든다. 앱이 이 주소를 연다.

@@ -7,6 +7,8 @@
 - **새 앱 추가**: `index.html` 의 `APPS` 배열에 하나 더 넣고 `assets/<앱id>/` 에 아이콘·스크린샷.
 - **출시 후**: `APPS[0].appStore` 에 App Store 주소를 넣으면 버튼이 살아난다.
 - 앱별 약관: `myslowbody/privacy.html`, `myslowbody/terms.html` (store/legal 에서 옮김).
+- MyScore 약관: `myscore/privacy.html`, `myscore/terms.html` (7개 언어, `?lang=`). 문구 원본은
+  my_score 레포 `tool/legal/gen_legal.py` — 거기서 고쳐 이 폴더로 다시 만든다. 앱이 이 주소를 연다.
 - `CNAME` = mystudioapps.com (GitHub Pages 사용자 도메인).
 
 ## 올리기(배포)

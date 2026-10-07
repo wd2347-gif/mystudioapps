@@ -10,7 +10,18 @@
 <meta property="og:image" content="https://mystudioapps.com/assets/myslowbody/icon.png">
 <!-- 짧은 링크(2026-10-03 사용자: 깔끔한 링크) — mystudioapps.com/tt-kr → 앱 링크에 꼬리표 tt_kr 를 붙여 넘긴다(myslowbody/index.html). -->
 <meta http-equiv="refresh" content="0; url=/myslowbody/?c=tt_kr">
+<meta name="color-scheme" content="light dark">
+<style>
+  /* 이동 중 화면과 같은 배경·같은 자리의 아이콘(2026-10-07) — 넘어가는 동안 튀거나 파란 링크만 보이지 않게. */
+  :root { --bg: #F3F6F2; --ink: #13201A; --line: #D8E1D7; --surface: #FFFFFF; --green: #1E8E4E; }
+  @media (prefers-color-scheme: dark) { :root { --bg: #0E110D; --ink: #F1F3EE; --line: #2C332B; --surface: #191D18; --green: #43D873; } }
+  html, body { margin: 0; background: var(--bg); color: var(--ink); }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Hiragino Sans", sans-serif; }
+  .wrap { min-height: 100vh; min-height: 100svh; display: flex; flex-direction: column; align-items: center; padding: 26vh 24px 40px; padding-top: 26svh; }
+  .icon { width: 88px; height: 88px; border-radius: 22px; display: block; box-shadow: 0 6px 20px rgba(0, 0, 0, .12); }
+  .btn { margin-top: 22px; display: block; padding: 13px 22px; border-radius: 14px; text-decoration: none; font-weight: 700; color: var(--ink); background: var(--surface); border: 1px solid var(--line); }
+</style>
 <script>location.replace('/myslowbody/?c=tt_kr');</script>
 </head>
-<body><p><a href="/myslowbody/?c=tt_kr">MySlowBody</a></p></body>
+<body><main class="wrap"><img class="icon" src="/assets/myslowbody/icon.png" alt="MySlowBody" width="88" height="88"><noscript><a class="btn" href="/myslowbody/?c=tt_kr">MySlowBody</a></noscript></main></body>
 </html>

@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MySlowSleep — MyStudio</title>
+<meta name="description" content="잠들기 소리 · 호흡 · 수면 타이머 — Sleep sounds · Breathing · Sleep timer">
+<link rel="canonical" href="https://mystudioapps.com/myslowsleep/">
+<link rel="icon" href="/assets/myslowsleep/icon.png">
+<link rel="apple-touch-icon" href="/assets/myslowsleep/icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="MyStudio">
+<meta property="og:title" content="MySlowSleep">
+<meta property="og:description" content="잠들기 소리 · 호흡 · 수면 타이머 — Sleep sounds · Breathing · Sleep timer">
+<meta property="og:url" content="https://mystudioapps.com/myslowsleep/">
+<meta property="og:image" content="https://mystudioapps.com/assets/myslowsleep/icon.png">
+<meta property="og:image:width" content="512">
+<meta property="og:image:height" content="512">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<!-- MySlowSleep 소개(2026-10-08, My_SlowSleep 세션 부탁). 출시 전이라 스토어 단추 대신 '곧 출시'.
+     공개되면 myslowbody/index.html 처럼 기기별로 App Store(id6819059115)·Play(com.ymc.myslowsleep)로 넘기는 한 링크로 바꿀 수 있다.
+     색은 앱과 같게 — 완전 검정 바탕과 상아빛 크림(#F1E6CB). MySlowBody 의 초록·노란 크림(#F3E4A6)·3D 캐릭터는 쓰지 않는다(App Store 4.3).
+     문구 규칙: 곡·소리 개수, 무료 체험·결제·가격, 효과 과장(불면 치료 등), NEW 딱지 쓰지 않기. -->
+<style>
+  :root {
+    color-scheme: dark;
+    --bg: #000000; --surface: #0D0F15; --line: #1E222C; --ink: #EEF0F5; --ink-soft: #8A8F9C;
+    --accent: #F1E6CB; --deep: #CDB98E; --on-accent: #2A2210; --wash: rgba(241, 230, 203, .10);
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink); line-height: 1.65;
+    font-family: "Pretendard", -apple-system, "Apple SD Gothic Neo", "Hiragino Sans", "Noto Sans JP", sans-serif;
+  }
+  a { color: var(--accent); }
+  header { max-width: 860px; margin: 0 auto; padding: 18px 20px; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+  .brand { font-weight: 800; font-size: 17px; color: var(--ink); text-decoration: none; white-space: nowrap; }
+  .brand span { color: var(--accent); }
+  .langs { display: flex; gap: 2px; background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 3px; }
+  .langs button { border: 0; background: transparent; color: var(--ink-soft); font: inherit; font-size: 13px; font-weight: 600; padding: 6px 11px; border-radius: 999px; cursor: pointer; }
+  .langs button[aria-pressed="true"] { background: var(--wash); color: var(--accent); }
+  /* 별 — 밤하늘처럼 아주 옅게 */
+  .sky { position: fixed; inset: 0; pointer-events: none; z-index: -1;
+    background:
+      radial-gradient(1.5px 1.5px at 12% 18%, rgba(241,230,203,.55), transparent 60%),
+      radial-gradient(1px 1px at 78% 12%, rgba(241,230,203,.45), transparent 60%),
+      radial-gradient(1.5px 1.5px at 64% 34%, rgba(241,230,203,.35), transparent 60%),
+      radial-gradient(1px 1px at 28% 52%, rgba(241,230,203,.30), transparent 60%),
+      radial-gradient(1px 1px at 88% 58%, rgba(241,230,203,.35), transparent 60%),
+      radial-gradient(1.5px 1.5px at 42% 8%, rgba(241,230,203,.40), transparent 60%),
+      radial-gradient(1px 1px at 6% 74%, rgba(241,230,203,.30), transparent 60%),
+      radial-gradient(1px 1px at 54% 82%, rgba(241,230,203,.25), transparent 60%); }
+  main { max-width: 860px; margin: 0 auto; padding: 24px 20px 72px; }
+  .hero { text-align: center; padding: 40px 0 28px; }
+  .icon { width: 112px; height: 112px; border-radius: 26px; display: block; margin: 0 auto;
+    box-shadow: 0 0 0 1px var(--line), 0 0 60px rgba(241, 230, 203, .14); }
+  h1 { margin: 22px 0 6px; font-size: 34px; font-weight: 800; letter-spacing: -.01em; }
+  .sub { margin: 0; color: var(--ink-soft); font-size: 15px; font-weight: 600; }
+  .tagline { margin: 22px 0 10px; font-size: 22px; font-weight: 700; color: var(--accent); }
+  .desc { margin: 0 auto; max-width: 560px; color: var(--ink); opacity: .9; font-size: 16px; }
+  .soon { display: inline-flex; align-items: center; gap: 8px; margin-top: 24px; padding: 10px 18px; border-radius: 999px;
+    background: var(--wash); border: 1px solid rgba(241, 230, 203, .22); color: var(--accent); font-weight: 700; font-size: 14px; }
+  .soon i { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 10px var(--accent); }
+  .features { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-top: 18px; }
+  .feature { background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 20px; }
+  .feature .emoji { font-size: 24px; }
+  .feature h3 { margin: 8px 0 4px; font-size: 16px; }
+  .feature p { margin: 0; color: var(--ink-soft); font-size: 14.5px; }
+  .devices { margin: 22px 0 0; text-align: center; color: var(--ink-soft); font-size: 14px; }
+  footer { max-width: 860px; margin: 0 auto; padding: 24px 20px 48px; border-top: 1px solid var(--line);
+    display: flex; flex-wrap: wrap; gap: 8px 18px; justify-content: center; font-size: 14px; color: var(--ink-soft); }
+  footer a { color: var(--ink-soft); text-decoration: none; }
+  footer a:hover, footer a:focus-visible { color: var(--accent); }
+  @media (max-width: 600px) {
+    .features { grid-template-columns: 1fr; }
+    h1 { font-size: 30px; }
+    .langs button { padding: 6px 8px; font-size: 12px; }
+  }
+</style>
+</head>
+<body>
+<div class="sky" aria-hidden="true"></div>
+<header>
+  <a class="brand" href="../#myslowsleep">My<span>Studio</span></a>
+  <div class="langs" role="group" aria-label="Language">
+    <button data-lang="en">English</button>
+    <button data-lang="ko">한국어</button>
+    <button data-lang="ja">日本語</button>
+  </div>
+</header>
+<main>
+  <section class="hero">
+    <img class="icon" src="/assets/myslowsleep/icon.png" alt="MySlowSleep" width="112" height="112">
+    <h1>MySlowSleep</h1>
+    <p class="sub" id="sub"></p>
+    <p class="tagline" id="tagline"></p>
+    <p class="desc" id="desc"></p>
+    <div class="soon"><i aria-hidden="true"></i><span id="soon"></span></div>
+  </section>
+  <section class="features" id="features"></section>
+  <p class="devices" id="devices"></p>
+</main>
+<footer>
+  <a id="f-home" href="../#myslowsleep">MyStudio</a>
+  <a id="f-terms" href="terms.html"></a>
+  <a id="f-privacy" href="privacy.html"></a>
+  <a id="f-support" href="mailto:support@mystudioapps.com"></a>
+</footer>
+<script>
+const LANGS = ['en', 'ko', 'ja'];
+const T = {
+  ko: {
+    sub: '잠들기 소리 · 호흡 · 수면 타이머',
+    tagline: '불을 끄고, 달을 켜요.',
+    desc: '빗소리 같은 자연 소리와 잔잔한 주파수, 음악을 내 귀에 맞게 섞고, 보름달을 따라 숨을 고르며 잠들어 보세요. 홈 화면 위젯으로 앱을 열지 않고도 켜고 끌 수 있어요.',
+    soon: '곧 출시',
+    features: [
+      ['🌧️', '내 귀에 맞는 소리', '자연 소리·주파수·음악의 크기를 따로 맞춰 섞어요. 고르기 어려우면 자동으로 맡겨도 돼요.'],
+      ['🌕', '달을 따라 호흡', '4-7-8 같은 박자에 맞춰 보름달이 차고 기울며 숨을 이끌어요. 차분한 음성 안내도 함께해요.'],
+      ['⏲️', '천천히 꺼지는 타이머', '정한 시각이 다가오면 소리가 서서히 줄다 조용히 꺼져요. 화면을 꺼도 잠금 화면에서 이어져요.'],
+      ['📱', '위젯 리모컨', '홈 화면 위젯에서 앱을 열지 않고 켜고 끄고, 크기·소리·타이머를 바꿔요. 색도 마음에 드는 걸로 골라요.'],
+    ],
+    devices: '아이폰 · 아이패드(가로 화면) · 안드로이드 — 언어는 기기 설정을 따라요.',
+    terms: '이용약관', privacy: '개인정보처리방침', support: '문의',
+  },
+  en: {
+    sub: 'Sleep sounds · Breathing · Sleep timer',
+    tagline: 'Lights off. Moon on.',
+    desc: 'Blend nature sounds like rain, a soft frequency and calm music to your liking, then breathe along with the full moon as you drift off. Turn it on or off from your home-screen widget without opening the app.',
+    soon: 'Coming soon',
+    features: [
+      ['🌧️', 'Your mix, your way', 'Set nature sounds, frequency and music separately — or let Auto choose for you.'],
+      ['🌕', 'Breathe with the moon', 'The full moon waxes and wanes to 4-7-8 and other patterns, with a calm voice guide.'],
+      ['⏲️', 'A timer that fades', 'As your set time nears, the sound slowly fades and stops. It keeps playing on the lock screen.'],
+      ['📱', 'Widget remote', 'Play, pause and change levels, sounds and the timer right from your home screen. Pick the color you like.'],
+    ],
+    devices: 'iPhone · iPad (landscape) · Android — the language follows your device.',
+    terms: 'Terms of Use', privacy: 'Privacy Policy', support: 'Support',
+  },
+  ja: {
+    sub: '眠りの音 · 呼吸 · スリープタイマー',
+    tagline: '灯りを消して、月をともす。',
+    desc: '雨音などの自然の音、やさしい周波数、音楽を好みに合わせて重ね、満月に合わせて呼吸しながら眠りへ。ホーム画面のウィジェットから、アプリを開かずにオン・オフできます。',
+    soon: '近日公開',
+    features: [
+      ['🌧️', '音を自分好みに', '自然の音・周波数・音楽の大きさを別々に調整。迷ったらおまかせでも。'],
+      ['🌕', '月と一緒に呼吸', '4-7-8などのリズムに合わせて満月が満ち欠けし、呼吸を導きます。落ち着いた音声ガイドも。'],
+      ['⏲️', 'ゆっくり消えるタイマー', '設定した時刻が近づくと、音が少しずつ小さくなり静かに止まります。ロック画面でも再生が続きます。'],
+      ['📱', 'ウィジェットでリモコン', 'ホーム画面のウィジェットから、アプリを開かずに再生・停止、音量・音・タイマーを変更。色も好きなものを選べます。'],
+    ],
+    devices: 'iPhone · iPad（横画面）· Android — 言語は端末の設定に合わせます。',
+    terms: '利用規約', privacy: 'プライバシーポリシー', support: 'お問い合わせ',
+  },
+};
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+function pick() {
+  const q = new URLSearchParams(location.search).get('lang');
+  if (LANGS.includes(q)) return q;
+  try { const s = localStorage.getItem('lang'); if (LANGS.includes(s)) return s; } catch (e) {}
+  for (const l of (navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || 'en'])) {
+    const n = String(l).slice(0, 2).toLowerCase(); if (LANGS.includes(n)) return n;
+  }
+  return 'en';
+}
+function show(lang) {
+  const t = T[lang];
+  document.documentElement.lang = lang;
+  for (const k of ['sub', 'tagline', 'desc', 'soon', 'devices']) document.getElementById(k).textContent = t[k];
+  document.getElementById('features').innerHTML = t.features.map(([e, h, p]) =>
+    `<div class="feature"><div class="emoji">${e}</div><h3>${esc(h)}</h3><p>${esc(p)}</p></div>`).join('');
+  const terms = document.getElementById('f-terms'), privacy = document.getElementById('f-privacy');
+  terms.textContent = t.terms; terms.href = `terms.html?lang=${lang}`;
+  privacy.textContent = t.privacy; privacy.href = `privacy.html?lang=${lang}`;
+  document.getElementById('f-support').textContent = t.support;
+  document.querySelectorAll('.langs button').forEach(b => b.setAttribute('aria-pressed', b.dataset.lang === lang));
+}
+document.querySelectorAll('.langs button').forEach(b => b.addEventListener('click', () => {
+  try { localStorage.setItem('lang', b.dataset.lang); } catch (e) {}
+  show(b.dataset.lang);
+}));
+show(pick());
+</script>
+</body>
+</html>

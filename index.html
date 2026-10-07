@@ -267,8 +267,107 @@ const APPS = [
     },
   },
   {
+    // MyFidget — 손끝으로 노는 피젯 장난감 앱(2026-10-08, My_Fidget 세션 부탁·사용자 순서: 둘째 자리). 소개 문구는 My_Fidget 세션이 보낸 것.
+    // 출시 전이라 스토어 주소는 비워 둔다('출시 준비 중'). 약관·방침 원본은 my_fidget 저장소 store/legal/(그대로 옮김).
+    // 문구 규칙: 놀이·소리 개수, 가격·무료 체험 이야기 쓰지 않기.
+    id: 'myfidget',
+    name: 'MyFidget',
+    icon: 'assets/myfidget/icon.png',
+    appStore: '',
+    playStore: '',
+    support: 'mailto:support@mystudioapps.com',
+    privacy: 'myfidget/privacy.html',
+    terms: 'myfidget/terms.html',
+    shots: [],
+    text: {
+      ko: {
+        sub: '소리·진동이 딱 맞는 피젯 장난감',
+        tagline: '손끝으로 톡, 마음이 말랑.',
+        desc: '소리 · 진동 · 화면이 딱 맞는 피젯 장난감. 팝잇 · 스피너 · 고양이 쓰다듬기 · 살얼음 깨기 · 불꽃놀이까지, 손끝으로 잠깐 쉬어 가세요.',
+        features: [
+          ['🫧', '만지면 바로 반응', '누르고, 쓸고, 돌리면 소리 · 진동 · 빛이 한순간에 함께 터져요.'],
+          ['🌀', '기분 따라 골라 노는 놀이', '뽁뽁이 · 팝잇 · 스피너부터 모래 정원 · 잉어 연못 · 모닥불까지, 그날 기분에 맞게 골라요.'],
+          ['🔔', '마음이 차분해지는 소리', '싱잉볼 · 칼림바 · 핸드팬 · 풍경처럼 어떤 순서로 쳐도 어울리는 소리로 숨을 돌려요.'],
+          ['🌙', '밤에도 조용히', '야간 모드와 소리 끄기로 언제 어디서든 편하게 놀아요.'],
+        ],
+      },
+      en: {
+        sub: 'Fidget toys in perfect sync',
+        tagline: 'Tap, pop and unwind.',
+        desc: 'Fidget toys where sound, haptics and motion land in perfect sync. Pop-its, spinners, a cat to stroke, ice to crack, fireworks and more.',
+        features: [
+          ['🫧', 'Instant response', 'Press, swipe or spin, and sound, vibration and light burst together.'],
+          ['🌀', 'Toys for every mood', 'From bubble wrap, pop-its and spinners to a sand garden, koi pond and campfire — pick what fits your mood.'],
+          ['🔔', 'Calming sounds', 'Singing bowl, kalimba, handpan and wind chimes that sound good in any order.'],
+          ['🌙', 'Quiet at night', 'Night mode and mute let you play calmly anywhere.'],
+        ],
+      },
+      ja: {
+        sub: '音と振動がぴったりのフィジェット',
+        tagline: '指先でぷちぷち、心がほぐれる。',
+        desc: '音・振動・動きがぴったり重なるフィジェットおもちゃ。ポップイット、スピナー、ねこなで、薄氷わり、花火まで。',
+        features: [
+          ['🫧', 'さわるとすぐ反応', '押す・なぞる・回すと、音・振動・光が同時にはじけます。'],
+          ['🌀', '気分で選べるあそび', 'プチプチやポップイット、スピナーから砂の庭・鯉の池・焚き火まで、その日の気分で選べます。'],
+          ['🔔', '心が落ち着く音', 'シンギングボウル・カリンバ・ハンドパン・風鈴。どんな順番で鳴らしても心地よく響きます。'],
+          ['🌙', '夜も静かに', 'ナイトモードと消音で、いつでもどこでも静かに遊べます。'],
+        ],
+      },
+    },
+  },
+  {
+    // MyStudio 둘째 앱 — 밤 전용 잠들기 앱(2026-10-08, My_SlowSleep 세션 부탁, 사용자: "앱 순서는 세번째" — 최종 순서 MySlowBody · MyFidget · MySlowSleep · MyScore).
+    // 출시 전이라 스토어 주소는 비워 둔다('출시 준비 중'). 공개되면 appStore 'https://apps.apple.com/app/id6819059115',
+    // playStore 'https://play.google.com/store/apps/details?id=com.ymc.myslowsleep'. 가격은 사용자가 정하기 전까지 쓰지 않는다.
+    // 문구 규칙: 곡·소리 개수, 무료 체험·결제 이야기, 효과 과장(불면 치료 등) 쓰지 않기.
+    id: 'myslowsleep',
+    name: 'MySlowSleep',
+    icon: 'assets/myslowsleep/icon.png',
+    appStore: '',
+    playStore: '',
+    support: 'mailto:support@mystudioapps.com',
+    privacy: 'myslowsleep/privacy.html',
+    terms: 'myslowsleep/terms.html',
+    shots: [],
+    text: {
+      ko: {
+        sub: '잠들기 소리 · 호흡 · 수면 타이머',
+        tagline: '불을 끄고, 달을 켜요.',
+        desc: '빗소리 같은 자연 소리와 잔잔한 주파수, 음악을 내 귀에 맞게 섞고, 보름달을 따라 숨을 고르며 잠들어 보세요. 홈 화면 위젯으로 앱을 열지 않고도 켜고 끌 수 있어요.',
+        features: [
+          ['🌧️', '내 귀에 맞는 소리', '자연 소리·주파수·음악의 크기를 따로 맞춰 섞어요. 고르기 어려우면 자동으로 맡겨도 돼요.'],
+          ['🌕', '달을 따라 호흡', '4-7-8 같은 박자에 맞춰 보름달이 차고 기울며 숨을 이끌어요. 차분한 음성 안내도 함께해요.'],
+          ['⏲️', '천천히 꺼지는 타이머', '정한 시각이 다가오면 소리가 서서히 줄다 조용히 꺼져요. 화면을 꺼도 잠금 화면에서 이어져요.'],
+          ['📱', '위젯 리모컨', '홈 화면 위젯에서 앱을 열지 않고 켜고 끄고, 크기·소리·타이머를 바꿔요. 색도 마음에 드는 걸로 골라요.'],
+        ],
+      },
+      en: {
+        sub: 'Sleep sounds · Breathing · Sleep timer',
+        tagline: 'Lights off. Moon on.',
+        desc: 'Blend nature sounds like rain, a soft frequency and calm music to your liking, then breathe along with the full moon as you drift off. Turn it on or off from your home-screen widget without opening the app.',
+        features: [
+          ['🌧️', 'Your mix, your way', 'Set nature sounds, frequency and music separately — or let Auto choose for you.'],
+          ['🌕', 'Breathe with the moon', 'The full moon waxes and wanes to 4-7-8 and other patterns, with a calm voice guide.'],
+          ['⏲️', 'A timer that fades', 'As your set time nears, the sound slowly fades and stops. It keeps playing on the lock screen.'],
+          ['📱', 'Widget remote', 'Play, pause and change levels, sounds and the timer right from your home screen. Pick the color you like.'],
+        ],
+      },
+      ja: {
+        sub: '眠りの音 · 呼吸 · スリープタイマー',
+        tagline: '灯りを消して、月をともす。',
+        desc: '雨音などの自然の音、やさしい周波数、音楽を好みに合わせて重ね、満月に合わせて呼吸しながら眠りへ。ホーム画面のウィジェットから、アプリを開かずにオン・オフできます。',
+        features: [
+          ['🌧️', '音を自分好みに', '自然の音・周波数・音楽の大きさを別々に調整。迷ったらおまかせでも。'],
+          ['🌕', '月と一緒に呼吸', '4-7-8などのリズムに合わせて満月が満ち欠けし、呼吸を導きます。落ち着いた音声ガイドも。'],
+          ['⏲️', 'ゆっくり消えるタイマー', '設定した時刻が近づくと、音が少しずつ小さくなり静かに止まります。ロック画面でも再生が続きます。'],
+          ['📱', 'ウィジェットでリモコン', 'ホーム画面のウィジェットから、アプリを開かずに再生・停止、音量・音・タイマーを変更。色も好きなものを選べます。'],
+        ],
+      },
+    },
+  },
+  {
     // 출시 준비 중(2026-10-06). 아이콘·스크린샷·스토어 주소는 출시 때 넣는다 — 그때까지
-    // 아이콘 자리에 내림활 기호를 둔다. '다음 앱 +' 칸은 이 뒤(세 번째)에 그대로 둔다.
+    // 아이콘 자리에 내림활 기호를 둔다. '다음 앱 +' 칸은 늘 맨 끝(2026-10-08 순서: MySlowBody · MyFidget · MySlowSleep · MyScore).
     // 문구의 얼굴은 "보잉 자동 배분"이다. "악보 공유"를 앞세우지 말 것(my_score CLAUDE.md §저작권).
     id: 'myscore',
     name: 'MyScore',
@@ -319,7 +418,7 @@ const APPS = [
   },
 ];
 
-// 고르지 않은 언어의 문구가 없는 앱(MyScore 는 한·영·일)은 영어로.
+// 고르지 않은 언어의 문구가 없는 앱(MyFidget·MySlowSleep·MyScore 는 한·영·일)은 영어로.
 const textOf = a => a.text[lang] || a.text.en;
 function iconOf(a, cls = '') {
   return a.icon
@@ -363,7 +462,7 @@ function renderList() {
       ${iconOf(a)}
       <span><strong>${esc(a.name)}</strong><small>${esc(textOf(a).sub)}</small></span>
     </button>`).join('');
-  // '다음 앱 +' 칸은 늘 맨 끝에 (2026-10-06 사용자: 세 번째 자리에 그대로).
+  // '다음 앱 +' 칸은 늘 맨 끝에 (2026-10-06 사용자, 2026-10-08 앱 넷 뒤로).
   const soon = `
     <button class="app-btn" disabled>
       <span class="soon-icon">+</span>

@@ -126,6 +126,8 @@
   footer .social a { display: inline-flex; align-items: center; gap: 5px; padding: 6px 12px 6px 9px; border: 1px solid var(--line);
     border-radius: 999px; color: var(--ink); text-decoration: none; font-weight: 600; background: var(--surface); }
   footer .social a:hover { border-color: var(--ink-soft); }
+  /* 유튜브 아이콘은 공식 모양·색 그대로, 높이 24px(브랜드 규칙 최소 20 — 2026-10-07 YouTube API 감사 III.F.2a).
+     크기를 줄이거나 색·투명도·필터를 걸지 않는다. */
   footer .social svg { flex: none; display: block; }
 
   /* ── 휴대폰: 아이콘 줄을 위로, 가로로 ── */
@@ -179,10 +181,10 @@
   </div>
   <nav class="social" aria-label="Social">
     <a id="sns-ig" href="https://www.instagram.com/mystudio_kr" target="_blank" rel="noopener" aria-label="Instagram @mystudio_kr">
-      <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><defs><radialGradient id="igGrad" cx="30%" cy="107%" r="150%"><stop offset="0" stop-color="#fdf497"/><stop offset=".05" stop-color="#fdf497"/><stop offset=".45" stop-color="#fd5949"/><stop offset=".6" stop-color="#d6249f"/><stop offset=".9" stop-color="#285AEB"/></radialGradient></defs><rect width="24" height="24" rx="6.5" fill="url(#igGrad)"/><rect x="5" y="5" width="14" height="14" rx="4.2" fill="none" stroke="#fff" stroke-width="1.8"/><circle cx="12" cy="12" r="3.3" fill="none" stroke="#fff" stroke-width="1.8"/><circle cx="16.4" cy="7.6" r="1.1" fill="#fff"/></svg>
+      <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><defs><radialGradient id="igGrad" cx="30%" cy="107%" r="150%"><stop offset="0" stop-color="#fdf497"/><stop offset=".05" stop-color="#fdf497"/><stop offset=".45" stop-color="#fd5949"/><stop offset=".6" stop-color="#d6249f"/><stop offset=".9" stop-color="#285AEB"/></radialGradient></defs><rect width="24" height="24" rx="6.5" fill="url(#igGrad)"/><rect x="5" y="5" width="14" height="14" rx="4.2" fill="none" stroke="#fff" stroke-width="1.8"/><circle cx="12" cy="12" r="3.3" fill="none" stroke="#fff" stroke-width="1.8"/><circle cx="16.4" cy="7.6" r="1.1" fill="#fff"/></svg>
       <span id="sns-ig-name">@mystudio_kr</span></a>
     <a id="sns-yt" href="https://www.youtube.com/@mystudioapps" target="_blank" rel="noopener" aria-label="YouTube @mystudioapps">
-      <svg viewBox="0 0 28 20" width="25" height="18" aria-hidden="true"><rect width="28" height="20" rx="5.5" fill="#FF0000"/><path d="M11.2 5.6v8.8L18.8 10z" fill="#fff"/></svg>
+      <svg viewBox="0 0 28.57 20" width="34" height="24" aria-hidden="true"><path fill="#FF0000" d="M27.973 3.123A3.578 3.578 0 0 0 25.447.597C23.22 0 14.285 0 14.285 0S5.35 0 3.123.597A3.578 3.578 0 0 0 .597 3.123C0 5.35 0 10 0 10s0 4.65.597 6.877a3.578 3.578 0 0 0 2.526 2.526C5.35 20 14.285 20 14.285 20s8.935 0 11.162-.597a3.578 3.578 0 0 0 2.526-2.526C28.57 14.65 28.57 10 28.57 10s-.002-4.65-.597-6.877Z"/><path fill="#fff" d="M11.425 14.285 18.848 10l-7.423-4.285v8.57Z"/></svg>
       <span id="sns-yt-name">@mystudioapps</span></a>
   </nav>
 </footer>

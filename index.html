@@ -473,7 +473,31 @@ function renderList() {
     b.addEventListener('click', () => { location.hash = b.dataset.app; }));
 }
 
+// 짧은 링크(ig-kr·tt-jp·yt-en …)로 온 사람(?c=꼬리표, 2026-10-08 사용자: 프로필 링크는 홈페이지로) — 스토어 단추에 꼬리표를 붙여
+// 어디서 와서 설치했는지 보이게(App Store pt·ct, Play referrer utm), GA4 app_link(link=꼬리표) 는 들어올 때 한 번.
+const CAMPAIGN = (/[?&]c=([A-Za-z0-9_\-]{1,40})/.exec(location.search) || [])[1] || '';
+if (CAMPAIGN) {
+  const g = document.createElement('script');
+  g.async = true; g.src = 'https://www.googletagmanager.com/gtag/js?id=G-CK4SB37EH2';
+  document.head.appendChild(g);
+  window.dataLayer = window.dataLayer || [];
+  window.gtag = function () { window.dataLayer.push(arguments); };
+  gtag('consent', 'default', { ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied' });
+  gtag('js', new Date());
+  gtag('config', 'G-CK4SB37EH2', { send_page_view: false, allow_google_signals: false });
+  const ua = navigator.userAgent || '';
+  const st = /iPhone|iPad|iPod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1) ? 'ios' : /Android/.test(ua) ? 'android' : 'web';
+  gtag('event', 'app_link', { link: CAMPAIGN, store: st });
+}
+function tagged(url) {
+  if (!CAMPAIGN || !url) return url;
+  if (url.includes('apps.apple.com')) return url + (url.includes('?') ? '&' : '?') + 'pt=129467809&ct=' + CAMPAIGN + '&mt=8';
+  if (url.includes('play.google.com')) return url + '&referrer=' + encodeURIComponent('utm_source=' + CAMPAIGN.split('_')[0] + '&utm_medium=social&utm_campaign=' + CAMPAIGN);
+  return url;
+}
+
 function storeButton(url, icon, label, t) {
+  url = tagged(url);
   return url
     ? `<a class="store" href="${url}" target="_blank" rel="noopener">${icon}${esc(label)}</a>`
     : `<span class="store soon">${icon}${esc(label)} · ${esc(t.comingSoon)}</span>`;

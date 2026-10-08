@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MyFidget — MyStudio</title>
+<meta name="description" content="언제든지 스트레스 해소 — Stress Relief Fidget Toys">
+<link rel="canonical" href="https://mystudioapps.com/myfidget/">
+<link rel="icon" href="/assets/myfidget/icon.png">
+<link rel="apple-touch-icon" href="/assets/myfidget/icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="MyStudio">
+<meta property="og:title" content="MyFidget">
+<meta property="og:description" content="언제든지 스트레스 해소 — Stress Relief Fidget Toys">
+<meta property="og:url" content="https://mystudioapps.com/myfidget/">
+<meta property="og:image" content="https://mystudioapps.com/assets/myfidget/icon.png">
+<meta property="og:image:width" content="512">
+<meta property="og:image:height" content="512">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<!-- MyFidget 소개(2026-10-09). App Store 출시(10/09) — App Store 단추(캠페인 ct=site_fidget), Play 는 '곧 출시'.
+     App Store 마케팅 URL(1.0.1~)이 이 주소 — AdMob 이 이 도메인의 app-ads.txt 로 앱을 인증한다.
+     색은 MyFidget 홍보 영상·스크린샷처럼 분홍·살구 바탕, 짙은 갈색 글, 산호색 강조. 문구는 홈페이지 카드(APPS) 그대로.
+     문구 규칙: 놀이·소리 개수, 가격·무료 체험 이야기 쓰지 않기. -->
+<style>
+  :root {
+    color-scheme: light;
+    --bg: #FFF1EE; --bg2: #FCD9CF; --surface: #FFFFFF; --line: #F3D3CB; --ink: #4A2B2A; --ink-soft: #8A6461;
+    --accent: #D9363E; --wash: rgba(217, 54, 62, .08);
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0; color: var(--ink); line-height: 1.65; min-height: 100vh;
+    background: linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%) fixed;
+    font-family: "Pretendard", -apple-system, "Apple SD Gothic Neo", "Hiragino Sans", "Noto Sans JP", sans-serif;
+  }
+  a { color: var(--accent); }
+  header { max-width: 860px; margin: 0 auto; padding: 18px 20px; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+  .brand { font-weight: 800; font-size: 17px; color: var(--ink); text-decoration: none; white-space: nowrap; }
+  .brand span { color: var(--accent); }
+  .langs { display: flex; gap: 2px; background: rgba(255,255,255,.7); border: 1px solid var(--line); border-radius: 999px; padding: 3px; }
+  .langs button { border: 0; background: transparent; color: var(--ink-soft); font: inherit; font-size: 13px; font-weight: 600; padding: 6px 11px; border-radius: 999px; cursor: pointer; }
+  .langs button[aria-pressed="true"] { background: var(--wash); color: var(--accent); }
+  main { max-width: 860px; margin: 0 auto; padding: 24px 20px 72px; }
+  .hero { text-align: center; padding: 40px 0 28px; }
+  .icon { width: 112px; height: 112px; border-radius: 26px; display: block; margin: 0 auto; box-shadow: 0 14px 36px rgba(140, 60, 50, .22); }
+  h1 { margin: 22px 0 6px; font-size: 34px; font-weight: 800; letter-spacing: -.01em; }
+  .sub { margin: 0; color: var(--ink-soft); font-size: 15px; font-weight: 600; }
+  .tagline { margin: 22px 0 10px; font-size: 22px; font-weight: 800; color: var(--accent); }
+  .desc { margin: 0 auto; max-width: 560px; font-size: 16px; }
+  .soon { display: inline-flex; align-items: center; gap: 8px; margin-top: 24px; padding: 10px 18px; border-radius: 999px;
+    background: rgba(255,255,255,.7); border: 1px solid var(--line); color: var(--ink-soft); font-weight: 700; font-size: 14px; }
+  .stores { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+  a.store { text-decoration: none; background: var(--ink); color: #fff; border-color: var(--ink); }
+  .soon i { width: 8px; height: 8px; border-radius: 50%; background: var(--ink-soft); }
+  .features { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-top: 18px; }
+  .feature { background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 20px; box-shadow: 0 6px 18px rgba(140, 60, 50, .06); }
+  .feature .emoji { font-size: 24px; }
+  .feature h3 { margin: 8px 0 4px; font-size: 16px; }
+  .feature p { margin: 0; color: var(--ink-soft); font-size: 14.5px; }
+  .devices { margin: 22px 0 0; text-align: center; color: var(--ink-soft); font-size: 14px; }
+  footer { max-width: 860px; margin: 0 auto; padding: 24px 20px 48px; border-top: 1px solid var(--line);
+    display: flex; flex-wrap: wrap; gap: 8px 18px; justify-content: center; font-size: 14px; color: var(--ink-soft); }
+  footer a { color: var(--ink-soft); text-decoration: none; }
+  footer a:hover, footer a:focus-visible { color: var(--accent); }
+  @media (max-width: 600px) {
+    .features { grid-template-columns: 1fr; }
+    h1 { font-size: 30px; }
+    .langs button { padding: 6px 8px; font-size: 12px; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <a class="brand" href="../#myfidget">My<span>Studio</span></a>
+  <div class="langs" role="group" aria-label="Language">
+    <button data-lang="en">English</button>
+    <button data-lang="ko">한국어</button>
+    <button data-lang="ja">日本語</button>
+  </div>
+</header>
+<main>
+  <section class="hero">
+    <img class="icon" src="/assets/myfidget/icon.png" alt="MyFidget" width="112" height="112">
+    <h1>MyFidget</h1>
+    <p class="sub" id="sub"></p>
+    <p class="tagline" id="tagline"></p>
+    <p class="desc" id="desc"></p>
+    <div class="stores"><a class="soon store" id="store" href="https://apps.apple.com/app/apple-store/id6819669400?pt=129467809&ct=site_fidget&mt=8" rel="noopener"><svg aria-hidden="true" width="16" height="18" viewBox="0 0 384 512" fill="currentColor"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg><span id="soon"></span></a><span class="soon"><i aria-hidden="true"></i><span id="play"></span></span></div>
+  </section>
+  <section class="features" id="features"></section>
+  <p class="devices" id="devices"></p>
+</main>
+<footer>
+  <a id="f-home" href="../#myfidget">MyStudio</a>
+  <a id="f-terms" href="terms.html"></a>
+  <a id="f-privacy" href="privacy.html"></a>
+  <a id="f-support" href="mailto:support@mystudioapps.com"></a>
+</footer>
+<script>
+const LANGS = ['en', 'ko', 'ja'];
+const T = {
+  ko: {
+    sub: '언제든지 스트레스 해소',
+    tagline: '손끝으로 톡, 스트레스 해소.',
+    desc: '소리 · 진동 · 화면이 딱 맞는 피젯 장난감. 팝잇 · 스피너 · 고양이 쓰다듬기 · 살얼음 깨기 · 불꽃놀이까지.',
+    soon: 'App Store에서 받기',
+    play: 'Google Play · 곧 출시',
+    features: [
+      ['🫧', '만지면 바로 반응', '누르고, 쓸고, 돌리면 소리 · 진동 · 빛이 한순간에 함께 터져요.'],
+      ['🌀', '기분 따라 골라 노는 놀이', '뽁뽁이 · 팝잇 · 스피너부터 모래 정원 · 잉어 연못 · 모닥불까지, 그날 기분에 맞게 골라요.'],
+      ['🔔', '마음이 차분해지는 소리', '싱잉볼 · 칼림바 · 핸드팬 · 풍경처럼 어떤 순서로 쳐도 어울리는 소리로 숨을 돌려요.'],
+      ['🌙', '밤에도 조용히', '야간 모드와 소리 끄기로 언제 어디서든 편하게 놀아요.'],
+    ],
+    devices: '휴대폰에서도 태블릿에서도 — 언어는 기기 설정을 따라요.',
+    terms: '이용약관', privacy: '개인정보처리방침', support: '문의',
+  },
+  en: {
+    sub: 'Stress Relief Fidget Toys',
+    tagline: 'Stress relief at your fingertips.',
+    desc: 'Fidget toys where sound, haptics and motion land in perfect sync. Pop-its, spinners, a cat to stroke, ice to crack, fireworks and more.',
+    soon: 'Download on the App Store',
+    play: 'Google Play · Coming soon',
+    features: [
+      ['🫧', 'Instant response', 'Press, swipe or spin, and sound, vibration and light burst together.'],
+      ['🌀', 'Toys for every mood', 'From bubble wrap, pop-its and spinners to a sand garden, koi pond and campfire — pick what fits your mood.'],
+      ['🔔', 'Calming sounds', 'Singing bowl, kalimba, handpan and wind chimes that sound good in any order.'],
+      ['🌙', 'Quiet at night', 'Night mode and mute let you play calmly anywhere.'],
+    ],
+    devices: 'On phones and tablets — the language follows your device.',
+    terms: 'Terms of Use', privacy: 'Privacy Policy', support: 'Support',
+  },
+  ja: {
+    sub: 'ストレス解消フィジェットおもちゃ',
+    tagline: '指先でぷちぷち、ストレス解消。',
+    desc: '音・振動・動きがぴったり重なるフィジェットおもちゃ。ポップイット、スピナー、ねこなで、薄氷わり、花火まで。',
+    soon: 'App Storeでダウンロード',
+    play: 'Google Play・近日公開',
+    features: [
+      ['🫧', 'さわるとすぐ反応', '押す・なぞる・回すと、音・振動・光が同時にはじけます。'],
+      ['🌀', '気分で選べるあそび', 'プチプチやポップイット、スピナーから砂の庭・鯉の池・焚き火まで、その日の気分で選べます。'],
+      ['🔔', '心が落ち着く音', 'シンギングボウル・カリンバ・ハンドパン・風鈴。どんな順番で鳴らしても心地よく響きます。'],
+      ['🌙', '夜も静かに', 'ナイトモードと消音で、いつでもどこでも静かに遊べます。'],
+    ],
+    devices: 'スマホでもタブレットでも — 言語は端末の設定に合わせます。',
+    terms: '利用規約', privacy: 'プライバシーポリシー', support: 'お問い合わせ',
+  },
+};
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+function pick() {
+  const q = new URLSearchParams(location.search).get('lang');
+  if (LANGS.includes(q)) return q;
+  try { const s = localStorage.getItem('lang'); if (LANGS.includes(s)) return s; } catch (e) {}
+  for (const l of (navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || 'en'])) {
+    const n = String(l).slice(0, 2).toLowerCase(); if (LANGS.includes(n)) return n;
+  }
+  return 'en';
+}
+function show(lang) {
+  const t = T[lang];
+  document.documentElement.lang = lang;
+  for (const k of ['sub', 'tagline', 'desc', 'soon', 'play', 'devices']) document.getElementById(k).textContent = t[k];
+  document.getElementById('features').innerHTML = t.features.map(([e, h, p]) =>
+    `<div class="feature"><div class="emoji">${e}</div><h3>${esc(h)}</h3><p>${esc(p)}</p></div>`).join('');
+  const terms = document.getElementById('f-terms'), privacy = document.getElementById('f-privacy');
+  terms.textContent = t.terms; terms.href = `terms.html?lang=${lang}`;
+  privacy.textContent = t.privacy; privacy.href = `privacy.html?lang=${lang}`;
+  document.getElementById('f-support').textContent = t.support;
+  document.querySelectorAll('.langs button').forEach(b => b.setAttribute('aria-pressed', b.dataset.lang === lang));
+}
+document.querySelectorAll('.langs button').forEach(b => b.addEventListener('click', () => {
+  try { localStorage.setItem('lang', b.dataset.lang); } catch (e) {}
+  show(b.dataset.lang);
+}));
+show(pick());
+</script>
+</body>
+</html>

@@ -416,6 +416,54 @@ const APPS = [
       },
     },
   },
+  {
+    // MyVocal — 보컬 기본기 연습 앱(2026-10-09, My_Vocal 세션). 출시 전이라 스토어 주소는 비워 둔다('출시 준비 중').
+    // 약관 · 방침 원본은 my_vocal 저장소 tool/legal/gen_legal.py → store/site/myvocal/(그대로 옮김). 문구 규칙: 연습 개수, 가격 · 체험, 건강 효과 쓰지 않기.
+    id: 'myvocal',
+    name: 'MyVocal',
+    icon: 'assets/myvocal/icon.png',
+    appStore: '',
+    playStore: '',
+    support: 'mailto:support@mystudioapps.com',
+    privacy: 'myvocal/privacy.html',
+    terms: 'myvocal/terms.html',
+    shots: [],
+    text: {
+      ko: {
+        sub: '보컬 트레이닝 · 발성 연습',
+        tagline: '하루 10분 보컬 기본기.',
+        desc: '피아노가 스케일을 쳐 주면 따라 부르고, 내 음정이 선으로 바로 보여요. 목 풀기 · 호흡 · 발성 · 현음 · 음감까지 한 앱에서.',
+        features: [
+          ['🎹', '피아노 스케일과 실시간 음정', '시작 화음 뒤에 패턴을 따라 부르면 마이크가 내 음정을 막대 위에 선으로 그려요.'],
+          ['🌬️', '노래를 받쳐 주는 호흡', '복식 호흡 · 호흡 사다리 · 스타카토 호흡, 그리고 한 숨으로 "스~" 얼마나 길게?'],
+          ['🎤', '목 풀기와 현음', '립트릴 · 허밍 · 사이렌으로 목을 깨우고, 빠른 런과 리프로 여러 음을 또렷하게.'],
+          ['🎧', '음감 연습', '실시간 음정 · 음 따라 부르기 · 음정 맞히기 · 음역 측정.'],
+        ],
+      },
+      en: {
+        sub: 'Vocal warm-up & pitch practice',
+        tagline: 'Vocal basics, 10 minutes a day.',
+        desc: 'Sing along as the piano plays each scale, and watch your pitch as a live line. Warm-ups, breathing, vocalizing, agility and ear training in one app.',
+        features: [
+          ['🎹', 'Piano scales with live pitch', 'After a starting chord, sing the pattern while the mic draws your pitch over the note bars.'],
+          ['🌬️', 'Breath that carries your voice', 'Belly breathing, a breath ladder, staccato breath — and how long can your “Sss” last?'],
+          ['🎤', 'Warm-ups and agility', 'Wake up with lip trills, hums and sirens, then sharpen fast runs and riffs.'],
+          ['🎧', 'Ear training', 'Live pitch, pitch match, interval quiz and range finder.'],
+        ],
+      },
+      ja: {
+        sub: 'ボイトレ・発声練習',
+        tagline: '1日10分、ボーカルの基礎。',
+        desc: 'ピアノが弾くスケールに合わせて歌うと、自分の音程がその場で線になって見えます。ウォームアップ・呼吸・発声・フェイク・音感までひとつのアプリで。',
+        features: [
+          ['🎹', 'ピアノのスケールとリアルタイム音程', '始まりの和音のあとパターンを歌うと、マイクが音程をバーの上に線で描きます。'],
+          ['🌬️', '歌を支える呼吸', '腹式呼吸・呼吸はしご・スタッカート呼吸、そしてひと息で「スー」はどこまで？'],
+          ['🎤', 'ウォームアップとフェイク', 'リップロール・ハミング・サイレンで声を起こし、速いランやリフで音をくっきり。'],
+          ['🎧', '音感トレーニング', 'リアルタイム音程・音まね・音程当て・音域チェック。'],
+        ],
+      },
+    },
+  },
 ];
 
 // 고르지 않은 언어의 문구가 없는 앱(MyFidget·MySlowSleep·MyScore 는 한·영·일)은 영어로.

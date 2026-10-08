@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MyVocal — MyStudio</title>
+<meta name="description" content="보컬 기본기 연습 — Vocal Warm-up &amp; Practice">
+<link rel="canonical" href="https://mystudioapps.com/myvocal/">
+<link rel="icon" href="/assets/myvocal/icon.png">
+<link rel="apple-touch-icon" href="/assets/myvocal/icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="MyStudio">
+<meta property="og:title" content="MyVocal">
+<meta property="og:description" content="보컬 기본기 연습 — Vocal Warm-up &amp; Practice">
+<meta property="og:url" content="https://mystudioapps.com/myvocal/">
+<meta property="og:image" content="https://mystudioapps.com/assets/myvocal/icon.png">
+<meta property="og:image:width" content="512">
+<meta property="og:image:height" content="512">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<!-- MyVocal 소개(2026-10-09, My_Vocal 세션이 만듦 — 원본은 my_vocal/store/site/myvocal/). 아직 출시 전이라 스토어 단추 대신 '곧 출시'.
+     출시되면 myfidget/index.html 처럼 App Store 단추(캠페인 ct=site_vocal)로 바꾼다. App Store 마케팅 URL 로 쓰면 AdMob 이
+     이 도메인의 app-ads.txt 로 앱을 인증한다.
+     색은 앱과 같은 MyStudio 초록 — 연초록 바탕(#EEF8F1 → #D5EFDD), 짙은 초록빛 회색 글, 강조 #1C9A46(앱 kGreenDark —
+     큰 글씨 · 점), 작은 글씨(단추 · 링크)는 대비를 맞추려 한 톤 짙은 #157A37.
+     MyFidget 의 분홍은 쓰지 않는다. 카드 네 장은 앱 홈의 네 묶음(목 풀기 · 호흡 · 발성 · 음감).
+     문구 규칙: 연습 · 스케일 개수, 가격 · 무료 체험 이야기, 건강 효과(교정 · 치료 · 개선 약속) 쓰지 않기. -->
+<style>
+  :root {
+    color-scheme: light;
+    --bg: #EEF8F1; --bg2: #D5EFDD; --surface: #FFFFFF; --line: #C9E4D2; --ink: #1E2F25; --ink-soft: #5B7064;
+    --accent: #1C9A46; --accent-ink: #157A37; --wash: rgba(28, 154, 70, .09);
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0; color: var(--ink); line-height: 1.65; min-height: 100vh;
+    background: linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%) fixed;
+    font-family: "Pretendard", -apple-system, "Apple SD Gothic Neo", "Hiragino Sans", "Noto Sans JP", sans-serif;
+  }
+  a { color: var(--accent-ink); }
+  header { max-width: 860px; margin: 0 auto; padding: 18px 20px; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+  .brand { font-weight: 800; font-size: 17px; color: var(--ink); text-decoration: none; white-space: nowrap; }
+  .brand span { color: var(--accent); }
+  .langs { display: flex; gap: 2px; background: rgba(255,255,255,.7); border: 1px solid var(--line); border-radius: 999px; padding: 3px; }
+  .langs button { border: 0; background: transparent; color: var(--ink-soft); font: inherit; font-size: 13px; font-weight: 600; padding: 6px 11px; border-radius: 999px; cursor: pointer; }
+  .langs button[aria-pressed="true"] { background: var(--wash); color: var(--accent-ink); }
+  main { max-width: 860px; margin: 0 auto; padding: 24px 20px 72px; }
+  .hero { text-align: center; padding: 40px 0 28px; }
+  .icon { width: 112px; height: 112px; border-radius: 26px; display: block; margin: 0 auto; box-shadow: 0 14px 36px rgba(28, 110, 60, .24); }
+  h1 { margin: 22px 0 6px; font-size: 34px; font-weight: 800; letter-spacing: -.01em; }
+  .sub { margin: 0; color: var(--ink-soft); font-size: 15px; font-weight: 600; }
+  .tagline { margin: 22px 0 10px; font-size: 22px; font-weight: 800; color: var(--accent); }
+  .desc { margin: 0 auto; max-width: 560px; font-size: 16px; }
+  .soon { display: inline-flex; align-items: center; gap: 8px; margin-top: 24px; padding: 10px 18px; border-radius: 999px;
+    background: rgba(255,255,255,.7); border: 1px solid var(--line); color: var(--accent-ink); font-weight: 700; font-size: 14px; }
+  .stores { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+  .soon i { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 4px var(--wash); }
+  .features { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-top: 18px; }
+  .feature { background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 20px; box-shadow: 0 6px 18px rgba(28, 110, 60, .06); }
+  .feature .emoji { font-size: 24px; }
+  .feature h3 { margin: 8px 0 4px; font-size: 16px; }
+  .feature p { margin: 0; color: var(--ink-soft); font-size: 14.5px; }
+  .devices { margin: 22px 0 0; text-align: center; color: var(--ink-soft); font-size: 14px; }
+  footer { max-width: 860px; margin: 0 auto; padding: 24px 20px 48px; border-top: 1px solid var(--line);
+    display: flex; flex-wrap: wrap; gap: 8px 18px; justify-content: center; font-size: 14px; color: var(--ink-soft); }
+  footer a { color: var(--ink-soft); text-decoration: none; }
+  footer a:hover, footer a:focus-visible { color: var(--accent-ink); }
+  @media (max-width: 600px) {
+    .features { grid-template-columns: 1fr; }
+    h1 { font-size: 30px; }
+    .langs button { padding: 6px 8px; font-size: 12px; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <a class="brand" href="../#myvocal">My<span>Studio</span></a>
+  <div class="langs" role="group" aria-label="Language">
+    <button data-lang="en">English</button>
+    <button data-lang="ko">한국어</button>
+    <button data-lang="ja">日本語</button>
+  </div>
+</header>
+<main>
+  <section class="hero">
+    <img class="icon" src="/assets/myvocal/icon.png" alt="MyVocal" width="112" height="112">
+    <h1>MyVocal</h1>
+    <p class="sub" id="sub"></p>
+    <p class="tagline" id="tagline"></p>
+    <p class="desc" id="desc"></p>
+    <div class="stores"><span class="soon"><i aria-hidden="true"></i><span id="soon"></span></span></div>
+  </section>
+  <section class="features" id="features"></section>
+  <p class="devices" id="devices"></p>
+</main>
+<footer>
+  <a id="f-home" href="../#myvocal">MyStudio</a>
+  <a id="f-terms" href="terms.html"></a>
+  <a id="f-privacy" href="privacy.html"></a>
+  <a id="f-support" href="mailto:support@mystudioapps.com"></a>
+</footer>
+<script>
+const LANGS = ['en', 'ko', 'ja'];
+const T = {
+  ko: {
+    sub: '보컬 기본기 연습',
+    tagline: '목 풀기부터 음감까지, 노래의 기본기.',
+    desc: '피아노를 따라 부르면 내 음정이 실시간 선으로 그려져요. 목 풀기 · 호흡 · 발성 · 음감을 한곳에서 차근차근 연습해요.',
+    soon: '곧 출시',
+    features: [
+      ['🧣', '목 풀기', '소리 내기 전에 목 · 어깨 · 턱의 긴장을 풀고, 립트릴과 허밍으로 입과 울림을 깨워요.'],
+      ['🌬️', '호흡', '복식 호흡과 스타카토 호흡, 한 숨으로 길게 이어 가는 롱 "스"까지 — 노래를 받쳐 줄 숨을 만들어요.'],
+      ['🎹', '발성', '피아노에 맞춰 스케일을 부르면, 내 목소리의 음정이 실시간 선으로 함께 그려져요.'],
+      ['👂', '음감', '실시간 음정으로 내 목소리를 보고, 음 따라 부르기 · 음정 맞히기 · 음역 측정으로 귀와 목소리를 맞춰요.'],
+    ],
+    devices: '휴대폰에서도 태블릿에서도 — 언어는 기기 설정을 따르고 앱 안에서도 바꿀 수 있어요. 마이크 소리는 기기 안에서만 분석하고 녹음하지 않아요.',
+    terms: '이용약관', privacy: '개인정보처리방침', support: '문의',
+  },
+  en: {
+    sub: 'Vocal Warm-up & Practice',
+    tagline: 'Singing basics, from warm-up to ear training.',
+    desc: 'Sing along with the piano and watch your pitch drawn as a live line. Warm-ups, breathing, vocal scales and ear training, step by step in one place.',
+    soon: 'Coming soon',
+    features: [
+      ['🧣', 'Warm-up', 'Release your neck, shoulders and jaw before you sing, then wake up your lips and resonance with lip trills and humming.'],
+      ['🌬️', 'Breath', 'Belly breathing, staccato breaths and a long “Sss” on a single breath — build the breath that carries your voice.'],
+      ['🎹', 'Vocalize', 'Sing scales along with the piano while your own pitch is drawn as a live line.'],
+      ['👂', 'Ear', 'See your voice with Live Pitch, then tune ear and voice together with Pitch Match, Interval Quiz and Range Finder.'],
+    ],
+    devices: 'On phones and tablets — the language follows your device and can be changed in the app. Microphone sound is analysed on your device only and never recorded.',
+    terms: 'Terms of Use', privacy: 'Privacy Policy', support: 'Support',
+  },
+  ja: {
+    sub: 'ボーカルの基礎練習',
+    tagline: 'ウォームアップから音感まで、歌の基礎を。',
+    desc: 'ピアノに合わせて歌うと、自分の音程がリアルタイムの線で描かれます。ウォームアップ・呼吸・発声・音感を、ひとつのアプリで少しずつ。',
+    soon: '近日公開',
+    features: [
+      ['🧣', 'ウォームアップ', '声を出す前に首・肩・あごをほぐし、リップロールとハミングで口と響きを目覚めさせます。'],
+      ['🌬️', '呼吸', '腹式呼吸やスタッカート呼吸から、ひと息で長く続けるロング「スー」まで。歌を支える息をつくります。'],
+      ['🎹', '発声', 'ピアノに合わせてスケールを歌うと、自分の声の音程がリアルタイムの線で描かれます。'],
+      ['👂', '音感', 'リアルタイム音程で自分の声を見て、音に合わせて歌う・音程クイズ・声域測定で耳と声を合わせます。'],
+    ],
+    devices: 'スマホでもタブレットでも — 言語は端末の設定に合わせ、アプリ内でも変えられます。マイクの音は端末の中だけで分析し、録音しません。',
+    terms: '利用規約', privacy: 'プライバシーポリシー', support: 'お問い合わせ',
+  },
+};
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+function pick() {
+  const q = new URLSearchParams(location.search).get('lang');
+  if (LANGS.includes(q)) return q;
+  try { const s = localStorage.getItem('lang'); if (LANGS.includes(s)) return s; } catch (e) {}
+  for (const l of (navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || 'en'])) {
+    const n = String(l).slice(0, 2).toLowerCase(); if (LANGS.includes(n)) return n;
+  }
+  return 'en';
+}
+function show(lang) {
+  const t = T[lang];
+  document.documentElement.lang = lang;
+  for (const k of ['sub', 'tagline', 'desc', 'soon', 'devices']) document.getElementById(k).textContent = t[k];
+  document.getElementById('features').innerHTML = t.features.map(([e, h, p]) =>
+    `<div class="feature"><div class="emoji">${e}</div><h3>${esc(h)}</h3><p>${esc(p)}</p></div>`).join('');
+  const terms = document.getElementById('f-terms'), privacy = document.getElementById('f-privacy');
+  terms.textContent = t.terms; terms.href = `terms.html?lang=${lang}`;
+  privacy.textContent = t.privacy; privacy.href = `privacy.html?lang=${lang}`;
+  document.getElementById('f-support').textContent = t.support;
+  document.querySelectorAll('.langs button').forEach(b => b.setAttribute('aria-pressed', b.dataset.lang === lang));
+}
+document.querySelectorAll('.langs button').forEach(b => b.addEventListener('click', () => {
+  try { localStorage.setItem('lang', b.dataset.lang); } catch (e) {}
+  show(b.dataset.lang);
+}));
+show(pick());
+</script>
+</body>
+</html>

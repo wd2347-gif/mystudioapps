@@ -23,7 +23,7 @@
      ?c=ig_kr 처럼 캠페인 이름을 붙이면(2026-10-03, 광고·프로필 링크별 설치 세기) App Store 엔 캠페인 링크
      (pt 공급자 ID·ct — App Store Connect 분석 › 캠페인), Play 엔 referrer(utm_campaign — Play Console 획득 보고서)로 넘긴다. -->
 <noscript><meta http-equiv="refresh" content="0; url=../#myslowbody"></noscript>
-<!-- 접속 집계(2026-10-03 사용자: 소셜별 접속 수) — Firebase 웹 앱 'mystudioapps.com'의 GA4(G-CK4SB37EH2).
+<!-- 접속 집계(2026-10-03 사용자: 소셜별 접속 수) — Firebase 프로젝트 'MyStudio Links' 웹 앱의 GA4(G-LXDJEBG8BD, 2026-10-09 옮김).
      넘기기 전에 app_link 이벤트(link=꼬리표, store=ios|android|web)를 보내고, 0.8초 안에 답이 없어도 넘긴다.
      광고용 저장소·개인 맞춤 광고 신호는 끈다. -->
 <meta name="color-scheme" content="light dark">
@@ -71,7 +71,7 @@
   .btn.primary { background: var(--green); border-color: var(--green); color: var(--on-green); }
   .btn:focus-visible { outline: 2px solid var(--green); outline-offset: 2px; }
 </style>
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-CK4SB37EH2"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LXDJEBG8BD"></script>
 <script>
   (function () {
     var ua = navigator.userAgent || '';
@@ -95,8 +95,6 @@
     function gtag() { window.dataLayer.push(arguments); }
     gtag('consent', 'default', { ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied' });
     gtag('js', new Date());
-    gtag('config', 'G-CK4SB37EH2', { send_page_view: false, allow_google_signals: false });
-    // 2026-10-09 짧은 링크 전용 Firebase 프로젝트 'MyStudio Links'(웹 앱 G-LXDJEBG8BD)로 옮기는 중 — 옛 속성과 둘 다에 보낸다
     gtag('config', 'G-LXDJEBG8BD', { send_page_view: false, allow_google_signals: false });
     gtag('event', 'app_link', {
       link: c || 'none',

@@ -526,14 +526,12 @@ function renderList() {
 const CAMPAIGN = (/[?&]c=([A-Za-z0-9_\-]{1,40})/.exec(location.search) || [])[1] || '';
 if (CAMPAIGN) {
   const g = document.createElement('script');
-  g.async = true; g.src = 'https://www.googletagmanager.com/gtag/js?id=G-CK4SB37EH2';
+  g.async = true; g.src = 'https://www.googletagmanager.com/gtag/js?id=G-LXDJEBG8BD';
   document.head.appendChild(g);
   window.dataLayer = window.dataLayer || [];
   window.gtag = function () { window.dataLayer.push(arguments); };
   gtag('consent', 'default', { ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied' });
   gtag('js', new Date());
-  gtag('config', 'G-CK4SB37EH2', { send_page_view: false, allow_google_signals: false });
-  // 2026-10-09 짧은 링크 전용 Firebase 프로젝트 'MyStudio Links'(웹 앱 G-LXDJEBG8BD)로 옮기는 중 — 옛 속성과 둘 다에 보낸다
   gtag('config', 'G-LXDJEBG8BD', { send_page_view: false, allow_google_signals: false });
   const ua = navigator.userAgent || '';
   const st = /iPhone|iPad|iPod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1) ? 'ios' : /Android/.test(ua) ? 'android' : 'web';

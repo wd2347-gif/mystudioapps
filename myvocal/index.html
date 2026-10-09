@@ -18,7 +18,7 @@
 <meta property="og:image:height" content="512">
 <meta name="twitter:card" content="summary">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
-<!-- MyVocal 소개(2026-10-09, My_Vocal 세션이 만듦 — 원본은 my_vocal/store/site/myvocal/). 아직 출시 전이라 스토어 단추 대신 '곧 출시'.
+<!-- MyVocal 소개(2026-10-09, My_Vocal 세션이 만듦 — 원본은 my_vocal/store/site/myvocal/). App Store 출시(10/09) — App Store 단추(캠페인 ct=site_vocal), Play 는 '곧 출시'. (옛: 출시 전이라 '곧 출시')
      출시되면 myfidget/index.html 처럼 App Store 단추(캠페인 ct=site_vocal)로 바꾼다. App Store 마케팅 URL 로 쓰면 AdMob 이
      이 도메인의 app-ads.txt 로 앱을 인증한다.
      색은 앱과 같은 MyStudio 초록 — 연초록 바탕(#EEF8F1 → #D5EFDD), 짙은 초록빛 회색 글, 강조 #1C9A46(앱 kGreenDark —
@@ -55,6 +55,7 @@
   .soon { display: inline-flex; align-items: center; gap: 8px; margin-top: 24px; padding: 10px 18px; border-radius: 999px;
     background: rgba(255,255,255,.7); border: 1px solid var(--line); color: var(--accent-ink); font-weight: 700; font-size: 14px; }
   .stores { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+  a.store { text-decoration: none; background: var(--ink); color: #fff; border-color: var(--ink); }
   .soon i { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 4px var(--wash); }
   .features { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-top: 18px; }
   .feature { background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 20px; box-shadow: 0 6px 18px rgba(28, 110, 60, .06); }
@@ -89,7 +90,7 @@
     <p class="sub" id="sub"></p>
     <p class="tagline" id="tagline"></p>
     <p class="desc" id="desc"></p>
-    <div class="stores"><span class="soon"><i aria-hidden="true"></i><span id="soon"></span></span></div>
+    <div class="stores"><a class="soon store" id="store" href="https://apps.apple.com/app/apple-store/id6820647919?pt=129467809&ct=site_vocal&mt=8" rel="noopener"><svg aria-hidden="true" width="16" height="18" viewBox="0 0 384 512" fill="currentColor"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg><span id="soon"></span></a><span class="soon"><i aria-hidden="true"></i><span id="play"></span></span></div>
   </section>
   <section class="features" id="features"></section>
   <p class="devices" id="devices"></p>
@@ -107,7 +108,8 @@ const T = {
     sub: '보컬 기본기 연습',
     tagline: '목 풀기부터 음감까지, 노래의 기본기.',
     desc: '피아노를 따라 부르면 내 음정이 실시간 선으로 그려져요. 목 풀기 · 호흡 · 발성 · 음감을 한곳에서 차근차근 연습해요.',
-    soon: '곧 출시',
+    soon: 'App Store에서 받기',
+    play: 'Google Play · 곧 출시',
     features: [
       ['🧣', '목 풀기', '소리 내기 전에 목 · 어깨 · 턱의 긴장을 풀고, 립트릴과 허밍으로 입과 울림을 깨워요.'],
       ['🌬️', '호흡', '복식 호흡과 스타카토 호흡, 한 숨으로 길게 이어 가는 롱 "스"까지 — 노래를 받쳐 줄 숨을 만들어요.'],
@@ -121,7 +123,8 @@ const T = {
     sub: 'Vocal Warm-up & Practice',
     tagline: 'Singing basics, from warm-up to ear training.',
     desc: 'Sing along with the piano and watch your pitch drawn as a live line. Warm-ups, breathing, vocal scales and ear training, step by step in one place.',
-    soon: 'Coming soon',
+    soon: 'Download on the App Store',
+    play: 'Google Play · Coming soon',
     features: [
       ['🧣', 'Warm-up', 'Release your neck, shoulders and jaw before you sing, then wake up your lips and resonance with lip trills and humming.'],
       ['🌬️', 'Breath', 'Belly breathing, staccato breaths and a long “Sss” on a single breath — build the breath that carries your voice.'],
@@ -135,7 +138,8 @@ const T = {
     sub: 'ボーカルの基礎練習',
     tagline: 'ウォームアップから音感まで、歌の基礎を。',
     desc: 'ピアノに合わせて歌うと、自分の音程がリアルタイムの線で描かれます。ウォームアップ・呼吸・発声・音感を、ひとつのアプリで少しずつ。',
-    soon: '近日公開',
+    soon: 'App Storeでダウンロード',
+    play: 'Google Play・近日公開',
     features: [
       ['🧣', 'ウォームアップ', '声を出す前に首・肩・あごをほぐし、リップロールとハミングで口と響きを目覚めさせます。'],
       ['🌬️', '呼吸', '腹式呼吸やスタッカート呼吸から、ひと息で長く続けるロング「スー」まで。歌を支える息をつくります。'],
@@ -159,7 +163,7 @@ function pick() {
 function show(lang) {
   const t = T[lang];
   document.documentElement.lang = lang;
-  for (const k of ['sub', 'tagline', 'desc', 'soon', 'devices']) document.getElementById(k).textContent = t[k];
+  for (const k of ['sub', 'tagline', 'desc', 'soon', 'play', 'devices']) document.getElementById(k).textContent = t[k];
   document.getElementById('features').innerHTML = t.features.map(([e, h, p]) =>
     `<div class="feature"><div class="emoji">${e}</div><h3>${esc(h)}</h3><p>${esc(p)}</p></div>`).join('');
   const terms = document.getElementById('f-terms'), privacy = document.getElementById('f-privacy');

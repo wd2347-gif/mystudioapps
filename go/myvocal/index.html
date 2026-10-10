@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MyVocal — MyStudio</title>
+<meta name="description" content="보컬의 기본기. 매일하는 훈련. — Vocal basics. Daily training.">
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://mystudioapps.com/myvocal/">
+<!-- 친구에게 공유한 링크의 미리보기(메신저·공유 창) — 앱 아이콘과 이름(2026-09-28). -->
+<link rel="icon" href="/assets/myvocal/icon.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="MyStudio">
+<meta property="og:title" content="MyVocal">
+<meta property="og:description" content="보컬의 기본기. 매일하는 훈련. — Vocal basics. Daily training.">
+<meta property="og:url" content="https://mystudioapps.com/go/myvocal/">
+<meta property="og:image" content="https://mystudioapps.com/assets/myvocal/icon.png">
+<meta property="og:image:width" content="512">
+<meta property="og:image:height" content="512">
+<meta name="twitter:card" content="summary">
+<!-- MyVocal 광고 이동(2026-10-10 — go/myslowsleep 복사 — 메타 트래픽 광고는 App Store 주소를 못 써서 웹 주소로 받아 넘긴다, ?c=igad_*). 이동 화면은 myslowbody/index.html 복사.
+     한 링크(2026-09-30, 인스타 프로필 링크 등): 아이폰·아이패드는 App Store 로 바로, 안드로이드는 Play 가
+     공개되면 Play 로(그 전엔 홈페이지), 그 밖(컴퓨터)은 홈페이지의 앱 소개로.
+     ?c=ig_kr 처럼 캠페인 이름을 붙이면(2026-10-03, 광고·프로필 링크별 설치 세기) App Store 엔 캠페인 링크
+     (pt 공급자 ID·ct — App Store Connect 분석 › 캠페인), Play 엔 referrer(utm_campaign — Play Console 획득 보고서)로 넘긴다. -->
+<noscript><meta http-equiv="refresh" content="0; url=/myvocal/"></noscript>
+<!-- 접속 집계(2026-10-03 사용자: 소셜별 접속 수) — Firebase 프로젝트 'MyStudio Links' 웹 앱의 GA4(G-LXDJEBG8BD, 2026-10-09 옮김).
+     넘기기 전에 app_link 이벤트(link=꼬리표, store=ios|android|web)를 보내고, 0.8초 안에 답이 없어도 넘긴다.
+     광고용 저장소·개인 맞춤 광고 신호는 끈다. -->
+<meta name="color-scheme" content="light dark">
+<!-- 이동 중 화면(2026-10-07 사용자: 넘어가는 동안 'MySlowBody' 파란 링크 한 줄만 보이던 것이 별로) —
+     가운데 앱 아이콘·이름·한 줄 소개·이동 상태·대체 버튼 둘. 아이콘 자리는 짧은 링크 페이지(ig-·yt-·tt-·igad-)와
+     같아 넘어갈 때 튀지 않는다. 라이트·다크, 앱 초록. -->
+<style>
+  :root {
+    --bg: #F3F6F2; --surface: #FFFFFF; --ink: #13201A; --ink-soft: #5A6A60; --line: #D8E1D7;
+    --green: #1E8E4E; --on-green: #FFFFFF;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0E110D; --surface: #191D18; --ink: #F1F3EE; --ink-soft: #9BA49A; --line: #2C332B;
+      --green: #43D873; --on-green: #06120A;
+    }
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--bg); color: var(--ink); }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Hiragino Sans", "Noto Sans JP", "Noto Sans KR", sans-serif;
+    -webkit-text-size-adjust: 100%;
+  }
+  .wrap {
+    min-height: 100vh; min-height: 100svh;
+    display: flex; flex-direction: column; align-items: center;
+    padding: 26vh 24px 40px; padding-top: 26svh; text-align: center;
+  }
+  .icon { width: 88px; height: 88px; border-radius: 22px; display: block; box-shadow: 0 6px 20px rgba(0, 0, 0, .12); }
+  h1 { margin: 18px 0 4px; font-size: 24px; font-weight: 800; letter-spacing: -.01em; }
+  .tag { margin: 0; color: var(--ink-soft); font-size: 15px; }
+  .status {
+    margin: 26px 0 0; display: inline-flex; align-items: center; gap: 8px;
+    color: var(--ink-soft); font-size: 14px; min-height: 20px;
+  }
+  .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); animation: pulse 1.1s ease-in-out infinite; }
+  @keyframes pulse { 0%, 100% { opacity: .25; } 50% { opacity: 1; } }
+  @media (prefers-reduced-motion: reduce) { .dot { animation: none; } }
+  .btns { margin-top: 22px; width: 100%; max-width: 300px; display: flex; flex-direction: column; gap: 10px; }
+  .btn {
+    display: block; padding: 13px 16px; border-radius: 14px; text-decoration: none;
+    font-size: 15px; font-weight: 700; color: var(--ink);
+    background: var(--surface); border: 1px solid var(--line);
+  }
+  .btn.primary { background: var(--green); border-color: var(--green); color: var(--on-green); }
+  .btn:focus-visible { outline: 2px solid var(--green); outline-offset: 2px; }
+</style>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LXDJEBG8BD"></script>
+<script>
+  (function () {
+    var ua = navigator.userAgent || '';
+    var ios = /iPhone|iPad|iPod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+    var android = /Android/.test(ua);
+    var m = /[?&]c=([A-Za-z0-9_\-]{1,40})/.exec(location.search);
+    var c = m ? m[1] : '';
+    var appStore = 'https://apps.apple.com/app/id6820647919' + (c ? '?pt=129467809&ct=' + c + '&mt=8' : '');
+    var playStore = ''; // Play 공개되면 'https://play.google.com/store/apps/details?id=com.ymc.myvocal'
+    if (playStore && c) {
+      playStore += '&referrer=' + encodeURIComponent('utm_source=' + c.split('_')[0] + '&utm_medium=social&utm_campaign=' + c);
+    }
+    var dest = ios ? appStore
+      : android && playStore ? playStore
+      : '/myvocal/';
+    // 이동 중 화면이 쓸 값(본문 끝 스크립트가 글·버튼을 채운다).
+    window.__ml = { ios: ios, android: android, appStore: appStore, playStore: playStore };
+    var gone = false;
+    function go() { if (!gone) { gone = true; location.replace(dest); } }
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { window.dataLayer.push(arguments); }
+    gtag('consent', 'default', { ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied' });
+    gtag('js', new Date());
+    gtag('config', 'G-LXDJEBG8BD', { send_page_view: false, allow_google_signals: false });
+    gtag('event', 'app_link', {
+      link: c || 'none',
+      store: ios ? 'ios' : android ? 'android' : 'web',
+      event_callback: go,
+      event_timeout: 800
+    });
+    setTimeout(go, 900);
+  })();
+</script>
+</head>
+<body>
+<main class="wrap">
+  <img class="icon" src="/assets/myvocal/icon.png" alt="" width="88" height="88">
+  <h1>MyVocal</h1>
+  <p class="tag" id="tag">보컬의 기본기. 매일하는 훈련.</p>
+  <p class="status"><span class="dot" aria-hidden="true"></span><span id="status">이동 중…</span></p>
+  <div class="btns" id="btns">
+    <a class="btn" id="btn-ios" href="https://apps.apple.com/app/id6820647919">App Store</a>
+    <a class="btn" id="btn-play" href="/myvocal/">Google Play</a>
+  </div>
+</main>
+<script>
+  // 글은 기기 언어로(한·일·영, 그 밖은 영어), 버튼은 꼬리표(?c=)가 붙은 주소로, 기기에 맞는 쪽을 먼저.
+  (function () {
+    var m = window.__ml || {};
+    var lang = (navigator.language || 'en').toLowerCase();
+    var L = lang.indexOf('ko') === 0 ? 'ko' : lang.indexOf('ja') === 0 ? 'ja' : 'en';
+    var T = {
+      ko: { tag: '보컬의 기본기. 매일하는 훈련.', ios: 'App Store로 이동 중…', android: 'Google Play로 이동 중…', web: '앱 소개로 이동 중…' },
+      ja: { tag: 'ボーカルの基本。毎日のトレーニング。', ios: 'App Storeに移動中…', android: 'Google Playに移動中…', web: 'アプリ紹介に移動中…' },
+      en: { tag: 'Vocal basics. Daily training.', ios: 'Opening the App Store…', android: 'Opening Google Play…', web: 'Opening the app page…' }
+    }[L];
+    document.documentElement.lang = L;
+    document.getElementById('tag').textContent = T.tag;
+    document.getElementById('status').textContent = m.ios ? T.ios : m.android ? T.android : T.web;
+    var a = document.getElementById('btn-ios'), g = document.getElementById('btn-play');
+    if (m.appStore) a.href = m.appStore;
+    if (m.playStore) g.href = m.playStore; else g.remove();  // Play 공개 전엔 단추 없음
+    if (m.android && m.playStore) { a.parentNode.insertBefore(g, a); g.className = 'btn primary'; }
+    else { a.className = 'btn primary'; }
+  })();
+</script>
+</body>
+</html>

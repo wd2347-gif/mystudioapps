@@ -82,7 +82,7 @@
     var m = /[?&]c=([A-Za-z0-9_\-]{1,40})/.exec(location.search);
     var c = m ? m[1] : '';
     var appStore = 'https://apps.apple.com/app/id6819059115' + (c ? '?pt=129467809&ct=' + c + '&mt=8' : '');
-    var playStore = ''; // Play 공개되면 'https://play.google.com/store/apps/details?id=com.ymc.myslowsleep'
+    var playStore = 'https://play.google.com/store/apps/details?id=com.ymc.myslowsleep'; // Play 공개 2026-10-10
     if (playStore && c) {
       playStore += '&referrer=' + encodeURIComponent('utm_source=' + c.split('_')[0] + '&utm_medium=social&utm_campaign=' + c);
     }
@@ -116,7 +116,7 @@
   <p class="status"><span class="dot" aria-hidden="true"></span><span id="status">이동 중…</span></p>
   <div class="btns" id="btns">
     <a class="btn" id="btn-ios" href="https://apps.apple.com/app/id6819059115">App Store</a>
-    <a class="btn" id="btn-play" href="/myslowsleep/">Google Play</a>
+    <a class="btn" id="btn-play" href="https://play.google.com/store/apps/details?id=com.ymc.myslowsleep">Google Play</a>
   </div>
 </main>
 <script>

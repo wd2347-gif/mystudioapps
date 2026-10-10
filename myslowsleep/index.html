@@ -18,7 +18,7 @@
 <meta property="og:image:height" content="512">
 <meta name="twitter:card" content="summary">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
-<!-- MySlowSleep 소개(2026-10-08, My_SlowSleep 세션 부탁). 10/08 App Store 출시 — App Store 단추(캠페인 ct=site_sleep), Play 는 '곧 출시'.
+<!-- MySlowSleep 소개(2026-10-08, My_SlowSleep 세션 부탁). 10/08 App Store 출시 — App Store 단추(캠페인 ct=site_sleep), Google Play 공개 10/10 — Play 단추(referrer utm_campaign=site_sleep).
      공개되면 myslowbody/index.html 처럼 기기별로 App Store(id6819059115)·Play(com.ymc.myslowsleep)로 넘기는 한 링크로 바꿀 수 있다.
      색은 앱과 같게 — 완전 검정 바탕과 상아빛 크림(#F1E6CB). MySlowBody 의 초록·노란 크림(#F3E4A6)·3D 캐릭터는 쓰지 않는다(App Store 4.3).
      문구 규칙: 곡·소리 개수, 무료 체험·결제·가격, 효과 과장(불면 치료 등), NEW 딱지 쓰지 않기. -->
@@ -101,7 +101,7 @@
     <p class="sub" id="sub"></p>
     <p class="tagline" id="tagline"></p>
     <p class="desc" id="desc"></p>
-    <div class="stores"><a class="soon store" id="store" href="https://apps.apple.com/app/apple-store/id6819059115?pt=129467809&ct=site_sleep&mt=8" rel="noopener"><svg aria-hidden="true" width="16" height="18" viewBox="0 0 384 512" fill="currentColor"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg><span id="soon"></span></a><span class="soon muted"><i aria-hidden="true"></i><span id="play"></span></span></div>
+    <div class="stores"><a class="soon store" id="store" href="https://apps.apple.com/app/apple-store/id6819059115?pt=129467809&ct=site_sleep&mt=8" rel="noopener"><svg aria-hidden="true" width="16" height="18" viewBox="0 0 384 512" fill="currentColor"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg><span id="soon"></span></a><a class="soon store" id="playstore" href="https://play.google.com/store/apps/details?id=com.ymc.myslowsleep&amp;referrer=utm_source%3Dsite%26utm_medium%3Dweb%26utm_campaign%3Dsite_sleep" rel="noopener"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M3.6 1.8 13.8 12 3.6 22.2c-.4-.2-.6-.6-.6-1.1V2.9c0-.5.2-.9.6-1.1zm11.3 11.3 2.6 2.6-11.9 6.8 9.3-9.4zm3.8-3.8 2.8 1.6c.8.5.8 1.7 0 2.2l-2.8 1.6-2.9-2.8 2.9-2.6zM5.6 1.5l11.9 6.8-2.6 2.6-9.3-9.4z"/></svg><span id="play"></span></a></div>
   </section>
   <section class="features" id="features"></section>
   <p class="devices" id="devices"></p>
@@ -120,7 +120,7 @@ const T = {
     tagline: '불을 끄고, 달을 켜요.',
     desc: '빗소리 같은 자연 소리와 잔잔한 주파수, 음악을 내 귀에 맞게 섞고, 보름달을 따라 숨을 고르며 잠들어 보세요. 홈 화면 위젯으로 앱을 열지 않고도 켜고 끌 수 있어요.',
     soon: 'App Store에서 받기',
-    play: 'Google Play · 곧 출시',
+    play: 'Google Play에서 받기',
     features: [
       ['🌧️', '내 귀에 맞는 소리', '자연 소리·주파수·음악의 크기를 따로 맞춰 섞어요. 고르기 어려우면 자동으로 맡겨도 돼요.'],
       ['🌕', '달을 따라 호흡', '4-7-8 같은 박자에 맞춰 보름달이 차고 기울며 숨을 이끌어요. 차분한 음성 안내도 함께해요.'],
@@ -135,7 +135,7 @@ const T = {
     tagline: 'Lights off. Moon on.',
     desc: 'Blend nature sounds like rain, a soft frequency and calm music to your liking, then breathe along with the full moon as you drift off. Turn it on or off from your home-screen widget without opening the app.',
     soon: 'Download on the App Store',
-    play: 'Google Play · Coming soon',
+    play: 'Get it on Google Play',
     features: [
       ['🌧️', 'Your mix, your way', 'Set nature sounds, frequency and music separately — or let Auto choose for you.'],
       ['🌕', 'Breathe with the moon', 'The full moon waxes and wanes to 4-7-8 and other patterns, with a calm voice guide.'],
@@ -150,7 +150,7 @@ const T = {
     tagline: '灯りを消して、月をともす。',
     desc: '雨音などの自然の音、やさしい周波数、音楽を好みに合わせて重ね、満月に合わせて呼吸しながら眠りへ。ホーム画面のウィジェットから、アプリを開かずにオン・オフできます。',
     soon: 'App Storeでダウンロード',
-    play: 'Google Play・近日公開',
+    play: 'Google Playで手に入れよう',
     features: [
       ['🌧️', '音を自分好みに', '自然の音・周波数・音楽の大きさを別々に調整。迷ったらおまかせでも。'],
       ['🌕', '月と一緒に呼吸', '4-7-8などのリズムに合わせて満月が満ち欠けし、呼吸を導きます。落ち着いた音声ガイドも。'],

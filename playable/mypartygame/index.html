@@ -953,12 +953,18 @@ button { font: inherit; color: inherit; cursor: pointer; touch-action: none; -we
     };
   }
 
-  /* ---------- game 3: 2048 (pastel tiles from light green to gold) ---------- */
+  /* ---------- game 3: 2048 (app colours: g2048.dart _tileColor, white → greens → teal → sky → violet → gold) ---------- */
+  var D = '#1B1F1A', W = '#FFFFFF';
   var TILE = {
-    2: ['#CDEFD6', '#1D4A2C'], 4: ['#BDE9AE', '#1D4A2C'], 8: ['#E8F19C', '#3B3A10'], 16: ['#FFE88A', '#4A3600'],
-    32: ['#FFD27A', '#4A3000'], 64: ['#FFBC6B', '#4A2800'], 128: ['#F4C64F', '#3A2600'], 256: ['#EDB93F', '#3A2600'],
-    512: ['#E5AC32', '#3A2600'], 1024: ['#DC9F26', '#2E1E00'], 2048: ['#FFB020', '#2E1E00']
+    2: ['#FFFFFF', D], 4: ['#DDF5E4', D], 8: ['#B2EAC3', D], 16: ['#7FDDA0', D], 32: ['#2FC85E', D], 64: ['#16A889', D],
+    128: ['#00C2C7', D], 256: ['#3E9BFF', D], 512: ['#5B4BDB', W], 1024: ['#A368FF', D], 2048: ['#FFB020', D],
+    4096: ['#FF5C7A', D], 8192: ['#2D3A8C', W]
   };
+  var TILE_DARK = { 2: ['#3A4A3E', W], 4: ['#2F5C3E', W], 8: ['#337A4C', W] };
+  function tileCol(v) {
+    var dk = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    return (dk && TILE_DARK[v]) || TILE[v] || ['#14361F', W];
+  }
   function G2048(ctx) {
     var root = mk('div', 'g g3',
       '<div class="top"><div class="sc"><span class="sl">' + esc(t.score) + '</span><b class="sv">0</b></div>' +
@@ -975,7 +981,7 @@ button { font: inherit; color: inherit; cursor: pointer; touch-action: none; -we
     function pos(r, c) { return [gap + c * (cell + gap), gap + r * (cell + gap)]; }
     function place(tile) { var p = pos(tile.r, tile.c); tile.el.style.transform = 'translate(' + p[0].toFixed(1) + 'px,' + p[1].toFixed(1) + 'px)'; }
     function paint(tile) {
-      var v = tile.v, col = TILE[v] || ['#C98F1A', '#2E1E00'], f = tile.f;
+      var v = tile.v, col = tileCol(v), f = tile.f;
       f.textContent = v; f.style.background = col[0]; f.style.color = col[1];
       f.style.fontSize = Math.round(cell * (v < 100 ? 0.44 : v < 1000 ? 0.36 : 0.29)) + 'px';
       f.style.borderRadius = Math.round(cell * 0.16) + 'px';

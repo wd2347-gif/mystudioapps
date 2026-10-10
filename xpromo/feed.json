@@ -1,6 +1,6 @@
 {
  "_doc": "MyStudio 자체 광고(교차 홍보) — 2026-10-10 사용자: \"AdMob 승인 전까지 MyStudio 앱끼리 서로 광고, 승인되고 내가 요청하면 AdMob 으로\". mode admob + house_fallback: AdMob 을 계속 요청(계정 검토에 요청 기록이 필요할 수 있어)하고, 실패하면(지금은 늘 code 3) 자체 광고. house = AdMob 요청 없이 자체 광고만, off = 광고 칸 없음. 바꾸는 사람: My_Studio 세션.",
- "version": 7,
+ "version": 8,
  "mode": "admob",
  "house_fallback": true,
  "house_share": 0.3,
@@ -77,7 +77,8 @@
      "tagline": "Stress relief fidget toys",
      "cta": "Get it free"
     }
-   }
+   },
+   "playable": "https://mystudioapps.com/playable/myfidget/"
   },
   {
    "id": "myvocal",
@@ -146,5 +147,6 @@
   }
  ],
  "interstitial_close_after_sec": 15,
- "_doc_close": "자체 전면 광고의 닫기 단추가 나오는 시각(초). 2026-10-11 사용자: 7초 → 15초."
+ "_doc_close": "자체 전면 광고의 닫기 단추가 나오는 시각(초). 2026-10-11 사용자: 7초 → 15초.",
+ "_doc_playable": "2026-10-11 사용자: 우리 앱끼리 전면 광고에 직접 해 보는 체험판(다른 게임 두 번 바뀌고 세 번째는 설치). apps[].playable 이 있으면 자체 전면 차례에 WebView, JS 채널 XPromo(ready · switch:n · install)."
 }

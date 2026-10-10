@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>MySlowBody — Terms of Use</title>
+<title>MySlowBody: Terms of Use</title>
 <link rel="icon" href="../assets/favicon.png">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
 <style>
@@ -208,7 +208,7 @@ function pick() {
 }
 function show(lang) {
   document.documentElement.lang = lang;
-  document.title = 'MySlowBody — ' + TITLES[lang];
+  document.title = 'MySlowBody: ' + TITLES[lang];
   document.querySelectorAll('article').forEach(a => a.classList.toggle('on', a.dataset.lang === lang));
   document.querySelectorAll('.langs button').forEach(b => b.setAttribute('aria-pressed', b.dataset.lang === lang));
 }

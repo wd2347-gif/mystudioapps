@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>MyScore — Terms of Use</title>
+<title>MyScore: Terms of Use</title>
 <link rel="icon" href="../assets/favicon.png">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
 <style>
@@ -68,7 +68,7 @@
 
 <h2>4. Scores and copyright</h2>
 <ul>
-  <li>Rights in the score files you open belong to their rights holders. Use only scores you lawfully own or are permitted to use. Some scores, such as rental orchestral parts, come with contracts that forbid copying — follow those terms.</li>
+  <li>Rights in the score files you open belong to their rights holders. Use only scores you lawfully own or are permitted to use. Some scores, such as rental orchestral parts, come with contracts that forbid copying: follow those terms.</li>
   <li>The App never modifies your original file (PDF or image); bowing marks are stored separately as an overlay. Score files stay on your device and the App does not upload them.</li>
   <li>Files you export (PDF, JPG or PNG) contain the score together with your bowings. Use them for your own practice and performance, and don't distribute them without the rights holder's permission.</li>
   <li>You are responsible for how you use score files. The operator is not responsible for infringement arising from files you import.</li>
@@ -233,7 +233,7 @@ function pick() {
 }
 function show(lang) {
   document.documentElement.lang = lang;
-  document.title = 'MyScore — ' + TITLES[lang];
+  document.title = 'MyScore: ' + TITLES[lang];
   document.querySelectorAll('article').forEach(a => a.classList.toggle('on', a.dataset.lang === lang));
   document.querySelectorAll('.langs button').forEach(b => b.setAttribute('aria-pressed', b.dataset.lang === lang));
 }

@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>MySlowBody — Delete account & data</title>
+<title>MySlowBody: Delete account & data</title>
 <link rel="icon" href="../assets/favicon.png">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
 <style>
@@ -59,15 +59,15 @@
 
 <h2>What is deleted</h2>
 <ul>
-  <li>Your sign-in account (Apple or Google link, email address, user ID) — immediately.</li>
-  <li>Everything in your backup: routines you made, favorites, workout history and settings — immediately.</li>
+  <li>Your sign-in account (Apple or Google link, email address, user ID): immediately.</li>
+  <li>Everything in your backup: routines you made, favorites, workout history and settings: immediately.</li>
   <li>For Apple sign-in, the app's Apple sign-in authorization is revoked.</li>
 </ul>
 
 <h2>What is kept, and for how long</h2>
 <ul>
   <li><b>Data on your device</b> stays until you delete it or uninstall the app. The account deletion does not touch it.</li>
-  <li><b>Purchase records</b> (anonymous ID and store receipts at RevenueCat) are kept as long as needed for billing, tax and legal obligations. Subscriptions are not cancelled by deleting the account — cancel in App Store or Google Play settings.</li>
+  <li><b>Purchase records</b> (anonymous ID and store receipts at RevenueCat) are kept as long as needed for billing, tax and legal obligations. Subscriptions are not cancelled by deleting the account: cancel in App Store or Google Play settings.</li>
   <li><b>Anonymous usage statistics and crash reports</b> (Firebase) are not linked to your account and are deleted automatically by Google after at most 14 months.</li>
   <li><b>Feedback and move requests</b> you sent are deleted within 1 year after they are handled, or sooner on request.</li>
 </ul>
@@ -95,8 +95,8 @@
 
 <h2>삭제되는 데이터</h2>
 <ul>
-  <li>로그인 계정(Apple·Google 연결, 이메일 주소, 사용자 ID) — 즉시</li>
-  <li>백업된 내 루틴·즐겨찾기·운동 기록·설정 전부 — 즉시</li>
+  <li>로그인 계정(Apple·Google 연결, 이메일 주소, 사용자 ID): 즉시</li>
+  <li>백업된 내 루틴·즐겨찾기·운동 기록·설정 전부: 즉시</li>
   <li>Apple로 로그인했다면 앱의 Apple 로그인 권한도 해제돼요.</li>
 </ul>
 
@@ -131,8 +131,8 @@
 
 <h2>削除されるデータ</h2>
 <ul>
-  <li>ログインアカウント（Apple・Google の連携、メールアドレス、ユーザーID）— すぐに</li>
-  <li>バックアップされたルーティン・お気に入り・運動記録・設定のすべて — すぐに</li>
+  <li>ログインアカウント（Apple・Google の連携、メールアドレス、ユーザーID）：すぐに</li>
+  <li>バックアップされたルーティン・お気に入り・運動記録・設定のすべて：すぐに</li>
   <li>Apple でログインした場合は、アプリの Apple ログイン許可も取り消されます。</li>
 </ul>
 
@@ -167,8 +167,8 @@
 
 <h2>会被删除的数据</h2>
 <ul>
-  <li>登录账户（Apple 或 Google 关联、邮箱地址、用户 ID）— 立即删除</li>
-  <li>备份中的全部计划、收藏、运动记录和设置 — 立即删除</li>
+  <li>登录账户（Apple 或 Google 关联、邮箱地址、用户 ID）：立即删除</li>
+  <li>备份中的全部计划、收藏、运动记录和设置：立即删除</li>
   <li>如果使用 Apple 登录，应用的 Apple 登录授权也会被撤销。</li>
 </ul>
 
@@ -202,7 +202,7 @@ function pick() {
 }
 function show(lang) {
   document.documentElement.lang = lang;
-  document.title = 'MySlowBody — ' + TITLES[lang];
+  document.title = 'MySlowBody: ' + TITLES[lang];
   document.querySelectorAll('article').forEach(a => a.classList.toggle('on', a.dataset.lang === lang));
   document.querySelectorAll('.langs button').forEach(b => b.setAttribute('aria-pressed', b.dataset.lang === lang));
 }

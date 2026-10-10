@@ -1,10 +1,10 @@
 {
  "_doc": "MyStudio 자체 광고(교차 홍보) — 2026-10-10 사용자: \"AdMob 승인 전까지 MyStudio 앱끼리 서로 광고, 승인되고 내가 요청하면 AdMob 으로\". mode admob + house_fallback: AdMob 을 계속 요청(계정 검토에 요청 기록이 필요할 수 있어)하고, 실패하면(지금은 늘 code 3) 자체 광고. house = AdMob 요청 없이 자체 광고만, off = 광고 칸 없음. 바꾸는 사람: My_Studio 세션.",
- "version": 6,
+ "version": 7,
  "mode": "admob",
  "house_fallback": true,
  "house_share": 0.3,
- "_doc_house_share": "2026-10-11 사용자: AdMob 이 잘 나와도 10번 중 3번은 자체 광고(AdMob 7 : 자체 3), AdMob 실패 시 자체. 모든 앱 · 앞으로 나올 앱 같게. 0~1, 없으면 앱 기본 0.3.",
+ "_doc_house_share": "2026-10-11 사용자: AdMob 이 잘 나와도 자체 광고 몫 0.3(AdMob 7 : 자체 3), 차례마다 무작위로 정함(순번 아님), AdMob 실패 시 자체. 모든 앱 · 앞으로 나올 앱 같게. 0~1, 없으면 앱 기본 0.3.",
  "label": {
   "ko": "MyStudio의 다른 앱",
   "ja": "MyStudioのほかのアプリ",
@@ -145,5 +145,6 @@
    }
   }
  ],
- "interstitial_close_after_sec": 7
+ "interstitial_close_after_sec": 15,
+ "_doc_close": "자체 전면 광고의 닫기 단추가 나오는 시각(초). 2026-10-11 사용자: 7초 → 15초."
 }

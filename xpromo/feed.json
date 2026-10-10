@@ -1,0 +1,146 @@
+{
+ "_doc": "MyStudio 자체 광고(교차 홍보) — 2026-10-10 사용자: \"AdMob 승인 전까지 MyStudio 앱끼리 서로 광고, 승인되고 내가 요청하면 AdMob 으로\". 앱은 이 파일을 받아(캐시) mode 에 따라 광고 칸을 채운다. 바꾸는 사람: My_Studio 세션.",
+ "version": 1,
+ "mode": "house",
+ "house_fallback": true,
+ "label": {
+  "ko": "MyStudio의 다른 앱",
+  "ja": "MyStudioのほかのアプリ",
+  "en": "More from MyStudio"
+ },
+ "link_tags": {
+  "ios": "pt=129467809&ct=xp_{from}_{to}&mt=8",
+  "android_referrer": "utm_source=xpromo&utm_medium=app&utm_campaign=xp_{from}_{to}"
+ },
+ "apps": [
+  {
+   "id": "myslowbody",
+   "name": "MySlowBody",
+   "icon": "https://mystudioapps.com/assets/myslowbody/icon.png",
+   "color": "#1C9A46",
+   "shot": {
+    "ko": "https://mystudioapps.com/assets/myslowbody/ko_s1.jpg",
+    "ja": "https://mystudioapps.com/assets/myslowbody/ja_s1.jpg",
+    "en": "https://mystudioapps.com/assets/myslowbody/en_s1.jpg"
+   },
+   "store": {
+    "ios": "https://apps.apple.com/app/id6812821519",
+    "android": "https://play.google.com/store/apps/details?id=com.ymc.myslowbody"
+   },
+   "text": {
+    "ko": {
+     "headline": "목·어깨·허리 뻐근할 때, 하루 3분",
+     "tagline": "스트레칭 · 느린 호흡 · 수면",
+     "cta": "무료로 받기"
+    },
+    "ja": {
+     "headline": "首・肩・腰のこりに、1日3分",
+     "tagline": "ストレッチ・ゆっくり呼吸・睡眠",
+     "cta": "無料で入手"
+    },
+    "en": {
+     "headline": "3 minutes a day for a stiff neck & back",
+     "tagline": "Stretch · Slow breathing · Sleep",
+     "cta": "Get it free"
+    }
+   }
+  },
+  {
+   "id": "myfidget",
+   "name": "MyFidget",
+   "icon": "https://mystudioapps.com/assets/myfidget/icon.png",
+   "color": "#D9363E",
+   "shot": {
+    "ko": "https://mystudioapps.com/assets/myfidget/ko_s1.jpg",
+    "ja": "https://mystudioapps.com/assets/myfidget/ja_s1.jpg",
+    "en": "https://mystudioapps.com/assets/myfidget/en_s1.jpg"
+   },
+   "store": {
+    "ios": "https://apps.apple.com/app/id6819669400",
+    "android": "https://play.google.com/store/apps/details?id=com.ymc.myfidget"
+   },
+   "text": {
+    "ko": {
+     "headline": "내 손안의 장난감, 스트레스 해소",
+     "tagline": "피젯 토이 · 팝잇 · 뽁뽁이",
+     "cta": "무료로 받기"
+    },
+    "ja": {
+     "headline": "手のひらのおもちゃでストレス解消",
+     "tagline": "フィジェット・プチプチ・プッシュポップ",
+     "cta": "無料で入手"
+    },
+    "en": {
+     "headline": "A little toy in your hand",
+     "tagline": "Stress relief fidget toys",
+     "cta": "Get it free"
+    }
+   }
+  },
+  {
+   "id": "myvocal",
+   "name": "MyVocal",
+   "icon": "https://mystudioapps.com/assets/myvocal/icon.png",
+   "color": "#1F8F5F",
+   "shot": {
+    "ko": "https://mystudioapps.com/assets/myvocal/ko_s1.jpg",
+    "ja": "https://mystudioapps.com/assets/myvocal/ja_s1.jpg",
+    "en": "https://mystudioapps.com/assets/myvocal/en_s1.jpg"
+   },
+   "store": {
+    "ios": "https://apps.apple.com/app/id6820647919",
+    "android": "https://play.google.com/store/apps/details?id=com.ymc.myvocal"
+   },
+   "android_live": false,
+   "text": {
+    "ko": {
+     "headline": "매일 하는 보컬 기본기 훈련",
+     "tagline": "발성 연습 · 음정 트레이닝 · 목풀기",
+     "cta": "무료로 받기"
+    },
+    "ja": {
+     "headline": "毎日のボーカル基礎トレーニング",
+     "tagline": "ボイトレ・発声練習・音程",
+     "cta": "無料で入手"
+    },
+    "en": {
+     "headline": "Daily singing basics training",
+     "tagline": "Vocal warm up · Pitch",
+     "cta": "Get it free"
+    }
+   }
+  },
+  {
+   "id": "myslowsleep",
+   "name": "MySlowSleep",
+   "icon": "https://mystudioapps.com/assets/myslowsleep/icon.png",
+   "color": "#1A1B3A",
+   "shot": {
+    "ko": "https://mystudioapps.com/assets/myslowsleep/ko_s1.jpg",
+    "ja": "https://mystudioapps.com/assets/myslowsleep/ja_s1.jpg",
+    "en": "https://mystudioapps.com/assets/myslowsleep/en_s1.jpg"
+   },
+   "store": {
+    "ios": "https://apps.apple.com/app/id6819059115",
+    "android": "https://play.google.com/store/apps/details?id=com.ymc.myslowsleep"
+   },
+   "text": {
+    "ko": {
+     "headline": "불을 끄고, 달을 켜요",
+     "tagline": "수면 소리 · 빗소리 · 호흡",
+     "cta": "자세히 보기"
+    },
+    "ja": {
+     "headline": "灯りを消して、月をともす",
+     "tagline": "睡眠音・雨音・呼吸",
+     "cta": "詳しく見る"
+    },
+    "en": {
+     "headline": "Lights off. Moon on.",
+     "tagline": "Sleep sounds · Rain · Breathing",
+     "cta": "Learn more"
+    }
+   }
+  }
+ ]
+}

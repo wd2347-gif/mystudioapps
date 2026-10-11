@@ -1,4 +1,4 @@
-# MyPartyGame playable: game contract
+# MyPartyGames playable: game contract
 
 One self-contained HTML page shown full-screen in our apps' interstitial WebView (and openable in a browser).
 The shell (`shell.html`) owns the page: header, title row, play area, bottom bar ("other game" + "install"),

@@ -1,0 +1,29 @@
+.g-bomb .top { flex: none; height: clamp(34px, calc(var(--u) * 9), 40px); display: flex; align-items: center; justify-content: center; }
+.g-bomb .cnt { display: flex; align-items: center; gap: 6px; padding: 6px 14px; border-radius: 999px; background: rgba(255,122,61,.16);
+  font-size: clamp(14px, calc(var(--u) * 3.7), 16px); font-weight: 800; white-space: nowrap; opacity: 0; transition: opacity .2s; }
+@media (prefers-color-scheme: dark) { .g-bomb .cnt { background: rgba(255,122,61,.24); } }
+.g-bomb .cnt svg { width: 1.15em; height: 1.15em; flex: none; color: #FF7A3D; }
+.g-bomb.run .cnt { opacity: 1; }
+.g-bomb .cnt.bump { animation: bomb-bump .26s cubic-bezier(.3,1.6,.5,1); }
+@keyframes bomb-bump { from { transform: scale(1.2); } to { transform: none; } }
+.g-bomb .bw { position: relative; flex: 1; width: 100%; min-height: 0; cursor: pointer; }
+.g-bomb .bw canvas { position: absolute; left: 0; top: 0; }
+.g-bomb .burst { position: absolute; left: 50%; top: 50%; width: 230px; height: 170px; pointer-events: none; opacity: 0; transform: translate(-50%, -50%) rotate(-7deg) scale(0); }
+.g-bomb .burst svg { width: 100%; height: 100%; display: block; overflow: visible; }
+.g-bomb.boomed .burst { animation: bomb-burst .65s linear forwards; }
+@keyframes bomb-burst {
+  0% { opacity: 1; transform: translate(-50%, -50%) rotate(-7deg) scale(0); } 20% { opacity: 1; transform: translate(-50%, -50%) rotate(-7deg) scale(1.16); }
+  38% { opacity: 1; transform: translate(-50%, -50%) rotate(-7deg) scale(.94); } 58% { opacity: 1; transform: translate(-50%, -50%) rotate(-7deg) scale(1.04); }
+  78% { opacity: 1; transform: translate(-50%, -50%) rotate(-7deg) scale(.99); } 100% { opacity: 1; transform: translate(-50%, -50%) rotate(-7deg) scale(1); }
+}
+.g-bomb .msg { flex: none; width: 100%; height: clamp(70px, calc(var(--u) * 19), 84px); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; text-align: center; }
+.g-bomb .ml { font-size: clamp(14px, calc(var(--u) * 3.6), 15.5px); font-weight: 600; color: var(--soft); line-height: 1.22; }
+.g-bomb.run .ml { font-size: clamp(16px, calc(var(--u) * 4.3), 18px); font-weight: 800; color: var(--ink); }
+.g-bomb.boomed .ml { font-size: clamp(19px, calc(var(--u) * 5.6), 24px); font-weight: 900; color: var(--ink); opacity: 0; }
+.g-bomb.stamped .ml { animation: bomb-stamp .24s cubic-bezier(.34,1.56,.64,1) forwards; }
+@keyframes bomb-stamp { 0% { opacity: 0; transform: scale(1.7); } 40% { opacity: 1; } 100% { opacity: 1; transform: none; } }
+.g-bomb .ms { font-size: clamp(13px, calc(var(--u) * 3.5), 15px); font-weight: 600; color: var(--soft); min-height: 1.2em; }
+.g-bomb .act { margin: 4px 0 4px; text-shadow: 0 1px 1px rgba(122,28,12,.25); }
+.g-bomb.run .act { visibility: hidden; }
+.g-bomb.boomed .act { opacity: 0; pointer-events: none; }
+.g-bomb.armed .act { opacity: 1; pointer-events: auto; }

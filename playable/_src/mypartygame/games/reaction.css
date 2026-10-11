@@ -1,0 +1,47 @@
+.g-reaction { overflow: hidden; background: #15181C; cursor: pointer; }
+.g-reaction .z { position: absolute; border-radius: 22px; border: 5px solid #FF5C7A; background: #3A4048; overflow: hidden; transition: background-color .18s; --k: 1; }
+.g-reaction .z1 { border-color: #3E9BFF; }
+.g-reaction .z.now { transition: none; }
+.g-reaction .zi { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; pointer-events: none; }
+.g-reaction .z0 .zi { transform: rotate(180deg); }
+.g-reaction .fit { flex: none; display: flex; justify-content: center; }
+.g-reaction .pop { display: flex; flex-direction: column; align-items: center; color: #FFFFFF; white-space: nowrap; }
+.g-reaction .pop.pp { animation: reaction-pop .42s linear; }
+@keyframes reaction-pop { 0% { transform: scale(.6); } 22% { transform: scale(1.06); } 40% { transform: scale(.97); } 60% { transform: scale(1.015); } 80% { transform: scale(.995); } 100% { transform: scale(1); } }
+.g-reaction .tro { width: calc(54px * var(--k)); height: calc(54px * var(--k)); color: #FFFFFF; filter: drop-shadow(0 3px 6px rgba(0,0,0,.2)); }
+.g-reaction .tro svg { width: 100%; height: 100%; display: block; }
+.g-reaction .lb { font-size: calc(34px * var(--k)); font-weight: 900; line-height: 1.15; text-shadow: 0 3px 8px rgba(0,0,0,.25); }
+.g-reaction .lb.big { font-size: calc(52px * var(--k)); }
+.g-reaction .bs { margin-top: calc(4px * var(--k)); font-size: calc(17px * var(--k)); font-weight: 800; text-shadow: 0 3px 8px rgba(0,0,0,.25); }
+.g-reaction .pips { display: flex; margin-top: calc(12px * var(--k)); }
+.g-reaction .pips i { width: calc(18px * var(--k)); height: calc(18px * var(--k)); margin: 0 calc(4px * var(--k)); border-radius: 50%; box-sizing: border-box;
+  background: rgba(0,0,0,.22); border: calc(2.5px * var(--k)) solid rgba(255,255,255,.55); }
+.g-reaction .pips i.on { background: #FFFFFF; border-color: #FF5C7A; }
+.g-reaction .z1 .pips i.on { border-color: #3E9BFF; }
+.g-reaction .tag { position: absolute; left: 10px; padding: 3px 9px; border-radius: 999px; background: rgba(0,0,0,.24); color: rgba(255,255,255,.92); pointer-events: none;
+  font-size: clamp(11.5px, calc(var(--u) * 3.2), 13px); font-weight: 800; line-height: 1.25; white-space: nowrap; }
+.g-reaction .z0 .tag { bottom: 8px; }
+.g-reaction .z1 .tag { top: 8px; }
+.g-reaction .badge { position: absolute; left: 50%; top: 50%; width: 62px; height: 62px; margin: -31px 0 0 -31px; border-radius: 50%; pointer-events: none;
+  display: flex; align-items: center; justify-content: center; background: #2A2F36; color: #8A929C; border: 3px solid rgba(255,255,255,.12);
+  transition: background-color .15s, color .15s, opacity .2s; }
+.g-reaction .badge svg { width: 38px; height: 38px; }
+.g-reaction .badge.wait { animation: reaction-breathe .65s ease-in-out infinite alternate; }
+.g-reaction .badge.go { background: #2FC85E; color: #FFFFFF; box-shadow: 0 0 18px 2px rgba(47,200,94,.45); transition: none; }
+.g-reaction .badge.gold { background: #FFB020; color: #FFFFFF; box-shadow: 0 0 18px 2px rgba(255,176,32,.45); }
+.g-reaction .badge.off { opacity: 0; }
+@keyframes reaction-breathe { from { transform: scale(1); border-color: rgba(255,255,255,.12); } to { transform: scale(1.08); border-color: rgba(255,255,255,.3); box-shadow: 0 0 18px 2px rgba(255,255,255,.06); } }
+.g-reaction .rip { position: absolute; width: 0; height: 0; pointer-events: none; }
+.g-reaction .rip::after { content: ""; position: absolute; left: -26px; top: -26px; width: 52px; height: 52px; border-radius: 50%; border: 3px solid rgba(255,255,255,.8);
+  animation: reaction-rip .6s ease-out forwards; }
+@keyframes reaction-rip { from { transform: scale(.3); opacity: 1; } to { transform: scale(1.6); opacity: 0; } }
+.g-reaction .res { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; padding: 0 40px; pointer-events: none;
+  opacity: 0; transform: scale(.85); transition: opacity .26s, transform .32s cubic-bezier(.34,1.56,.64,1); }
+.g-reaction .res.on { opacity: 1; transform: none; }
+.g-reaction .res .box { width: 100%; max-width: 260px; padding: 10px; border-radius: 28px; background: #15181C; box-shadow: 0 8px 24px rgba(0,0,0,.4); }
+.g-reaction .res.on .box { pointer-events: auto; }
+.g-reaction .res .go { width: 100%; height: clamp(50px, calc(var(--u) * 14), 58px); border: 0; border-radius: 20px; background: #2FC85E; color: #06120A;
+  display: flex; align-items: center; justify-content: center; gap: 8px; font-weight: 800; font-size: clamp(16px, calc(var(--u) * 4.6), 19px); white-space: nowrap;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.3); transition: transform .1s; }
+.g-reaction .res .go:active { transform: scale(.96); }
+.g-reaction .res .go svg { width: 1.2em; height: 1.2em; flex: none; }

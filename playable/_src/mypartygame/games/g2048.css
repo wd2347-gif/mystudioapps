@@ -1,0 +1,21 @@
+.g-g2048 .top { width: var(--bd, 300px); display: flex; align-items: center; justify-content: space-between; margin-top: 2px; }
+.g-g2048 .sc { display: flex; align-items: baseline; gap: 8px; padding: 6px 14px; border-radius: 14px; background: var(--surface); border: 1px solid var(--hair); }
+.g-g2048 .sl { font-size: 12.5px; font-weight: 700; color: var(--soft); }
+.g-g2048 .sv { font-size: 20px; font-weight: 900; min-width: 1.5em; }
+.g-g2048 .rs { width: 42px; height: 42px; border-radius: 14px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); display: flex; align-items: center; justify-content: center; padding: 0; }
+.g-g2048 .rs svg { width: 20px; height: 20px; }
+.g-g2048 .rs:active { transform: scale(.94); }
+.g-g2048 .bw { flex: 1; width: 100%; min-height: 0; display: flex; align-items: center; justify-content: center; }
+.g-g2048 .board { position: relative; width: var(--bd, 300px); height: var(--bd, 300px); border-radius: calc(var(--bd, 300px) * .05); background: var(--board); flex: none; }
+.g-g2048 .cell { position: absolute; border-radius: 12px; background: var(--slot); }
+.g-g2048 .tile { position: absolute; left: 0; top: 0; transition: transform .11s ease-out; will-change: transform; }
+.g-g2048 .tiles.nt .tile { transition: none; }
+.g-g2048 .tf { width: 100%; height: 100%; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-weight: 900; box-shadow: 0 2px 0 rgba(0,0,0,.1); }
+.g-g2048 .tf.in { animation: g2048-in .16s ease-out both; }
+.g-g2048 .tf.mg { animation: g2048-mg .2s ease-out; }
+@keyframes g2048-in { from { transform: scale(0); } to { transform: scale(1); } }
+@keyframes g2048-mg { 0% { transform: scale(1); } 45% { transform: scale(1.17); } 100% { transform: scale(1); } }
+.g-g2048 .over { position: absolute; inset: 0; border-radius: calc(var(--bd, 300px) * .05); background: var(--veil); display: none; flex-direction: column; align-items: center; justify-content: center; gap: 14px; }
+.g-g2048 .board.dead .over { display: flex; animation: pf-enter .3s ease-out; }
+.g-g2048 .ot { font-size: 20px; font-weight: 900; text-align: center; padding: 0 12px; }
+.g-g2048 .ob { height: 48px; padding: 0 28px; border: 0; border-radius: 16px; font-weight: 900; font-size: 17px; color: #1B1F1A; background: #FFB020; }

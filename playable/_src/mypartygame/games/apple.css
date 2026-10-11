@@ -1,0 +1,22 @@
+.g-apple { padding-bottom: 8px; justify-content: center; }
+.g-apple .top { flex: none; width: var(--bw, 300px); max-width: 100%; height: 40px; margin-top: 2px; display: flex; align-items: center; gap: 10px; }
+.g-apple .sp { flex: none; display: flex; align-items: center; gap: 5px; padding: 5px 11px 5px 8px; border-radius: 999px; background: rgba(229,72,77,.12); }
+.g-apple .sp svg { width: 20px; height: 20px; display: block; }
+.g-apple .sp b { min-width: 1.2em; font-size: 17px; font-weight: 900; font-variant-numeric: tabular-nums; }
+.g-apple .tb { flex: 1; height: 10px; border-radius: 999px; background: rgba(47,200,94,.15); overflow: hidden; }
+.g-apple .tb i { display: block; width: 100%; height: 100%; border-radius: 999px; background: #2FC85E; transform-origin: 0 50%; transition: transform .2s linear, background-color .3s; }
+.g-apple .tb i.low { background: #E5484D; }
+.g-apple .sec { flex: none; width: 40px; text-align: right; font-size: 17px; font-weight: 900; font-variant-numeric: tabular-nums; transform-origin: 100% 50%; }
+.g-apple .sec.danger { color: #E5484D; }
+.g-apple .bw { flex: none; width: 100%; margin-top: 10px; display: flex; align-items: center; justify-content: center; }
+.g-apple .bd { position: relative; flex: none; }
+.g-apple .bd canvas { position: absolute; touch-action: none; }
+.g-apple .end { position: absolute; inset: 0; display: none; align-items: center; justify-content: center; padding: 16px; background: var(--veil); pointer-events: none; z-index: 3; }
+.g-apple .end.on { display: flex; animation: pf-enter .3s ease-out; }
+.g-apple .pn { max-width: 340px; width: 100%; padding: 18px; border-radius: 24px; background: var(--surface); border: 1px solid var(--hair); box-shadow: 0 12px 30px var(--shadow);
+  text-align: center; animation: apple-pop .6s cubic-bezier(.3,1.6,.5,1) both; }
+@keyframes apple-pop { from { transform: scale(.6); } to { transform: none; } }
+.g-apple .e1 { font-size: 14px; font-weight: 700; color: var(--soft); }
+.g-apple .e2 { margin-top: 8px; display: flex; align-items: center; justify-content: center; gap: 8px; }
+.g-apple .e2 svg { width: 36px; height: 36px; flex: none; }
+.g-apple .e2 b { font-size: clamp(24px, calc(var(--u) * 8), 30px); font-weight: 900; line-height: 1.2; }

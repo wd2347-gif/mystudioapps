@@ -1,0 +1,786 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#F6F7F4" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0E110D" media="(prefers-color-scheme: dark)">
+<meta name="color-scheme" content="light dark">
+<meta name="robots" content="noindex">
+<title>MyPartyGame</title>
+<!-- MyPartyGame playable ad (shell, 2026-10-11, My_Studio session). Built by playable/_src/build.py: do not edit playable/mypartygame/index.html by hand.
+     One self-contained file: no network at all (icon, fonts and art are drawn). Games live in _src/mypartygame/games/<id>.js(+css), sets in sets.js.
+     Each load picks one set of 3 games at random (never the same set twice in a row), ?set=N forces one, ?game=K starts at position K.
+     Nothing on screen shows how many games are left (owner rule 10/11). Bridge: window.XPromo.postMessage 'ready' | 'switch:2' | 'switch:3' | 'install'.
+     The top-right 64x64 stays empty for the app's close button. Query: lang=ko|ja|en, from=<app>, host=app, set=N, game=K, test=1. -->
+<style>
+:root {
+  color-scheme: light dark;
+  --bg: #F6F7F4; --outer: #E7EAE4; --surface: #FFFFFF; --ink: #12150F; --soft: #6B726A;
+  --line: #D8DCD5; --hair: #EBEEEA; --green: #2FC85E; --green-ink: #1C9A46; --on-green: #06120A;
+  --board: #D9E3D6; --slot: #E9EFE7; --veil: rgba(246,247,244,.86); --shadow: rgba(16,20,16,.10);
+  --u: 4.3px;
+  --sat: env(safe-area-inset-top, 0px); --sab: env(safe-area-inset-bottom, 0px);
+  --sal: env(safe-area-inset-left, 0px); --sar: env(safe-area-inset-right, 0px);
+  --font: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Hiragino Sans", "Noto Sans JP", Roboto, "Segoe UI", sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0E110D; --outer: #060806; --surface: #191D18; --ink: #F1F3EE; --soft: #9BA49A;
+    --line: #3A4137; --hair: #2C332B; --green-ink: #43D873;
+    --board: #20261F; --slot: #2A3128; --veil: rgba(14,17,13,.84); --shadow: rgba(0,0,0,.35);
+  }
+}
+:lang(ja) { --font: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic UI", "Apple SD Gothic Neo", Roboto, sans-serif; }
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+html, body {
+  margin: 0; height: 100%; overflow: hidden; background: var(--outer); overscroll-behavior: none;
+  touch-action: none; -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; -webkit-text-size-adjust: 100%;
+}
+body { position: fixed; inset: 0; font-family: var(--font); color: var(--ink); }
+button { font: inherit; color: inherit; cursor: pointer; touch-action: none; -webkit-user-select: none; user-select: none; }
+#stage { position: absolute; top: 0; bottom: 0; left: 0; right: 0; margin: 0 auto; width: 100%; overflow: hidden; background: var(--bg); }
+#stage.boxed { box-shadow: 0 0 0 1px var(--hair), 0 0 60px var(--shadow); }
+.deco { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+#shell { position: absolute; inset: 0; display: flex; flex-direction: column; }
+#shell.shake { animation: pf-shake .7s linear; }
+@keyframes pf-shake {
+  0% { transform: none; } 7% { transform: translate(-14px, 9px); } 14% { transform: translate(13px, -11px); }
+  22% { transform: translate(-11px, 8px); } 30% { transform: translate(10px, -7px); } 40% { transform: translate(-7px, 5px); }
+  51% { transform: translate(5px, -4px); } 63% { transform: translate(-3px, 2px); } 78% { transform: translate(2px, -1px); } 100% { transform: none; }
+}
+/* full-screen flash: --f1 for a beat, then --f2, fading out */
+#flash { position: absolute; inset: 0; background: #FFFFFF; opacity: 0; pointer-events: none; --f1: #FFFFFF; --f2: #FF8A3D; }
+#flash.on { animation: pf-flash 1s linear; }
+@keyframes pf-flash {
+  0% { opacity: 1; background: var(--f1); } 6% { opacity: 1; background: var(--f1); }
+  30% { opacity: .95; background: var(--f2); } 100% { opacity: 0; background: var(--f2); }
+}
+#fx { position: absolute; left: 0; top: 0; pointer-events: none; }
+
+/* header: the top-right 64x64 stays empty for the app's close button */
+#hd { display: flex; align-items: center; gap: 10px; padding: calc(var(--sat) + 12px) 72px 4px calc(var(--sal) + 16px); min-height: calc(var(--sat) + 72px); }
+#hd .icon { width: clamp(38px, calc(var(--u) * 10.6), 48px); height: clamp(38px, calc(var(--u) * 10.6), 48px); border-radius: 23%; flex: none; box-shadow: 0 4px 14px var(--shadow); display: block; }
+.ht { min-width: 0; line-height: 1.22; }
+.ht > div { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.kick { font-size: clamp(10.5px, calc(var(--u) * 2.6), 12px); font-weight: 800; color: var(--green-ink); letter-spacing: .02em; }
+.nm { font-size: clamp(14px, calc(var(--u) * 4.3), 19px); font-weight: 900; }
+.sb { font-size: clamp(11px, calc(var(--u) * 2.95), 13px); font-weight: 600; color: var(--soft); }
+
+#gh { padding: 6px calc(var(--sar) + 16px) 0 calc(var(--sal) + 16px); }
+.gt { display: flex; align-items: center; gap: 8px; min-width: 0; }
+#gname { font-size: clamp(19px, calc(var(--u) * 5.6), 25px); font-weight: 900; white-space: nowrap; flex: none; max-width: 70%; overflow: hidden; text-overflow: ellipsis; }
+.chip { font-size: clamp(11px, calc(var(--u) * 2.9), 13px); font-weight: 800; padding: 4px 10px; border-radius: 999px; white-space: nowrap; color: var(--ink); border: 1px solid transparent; min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+.chip:empty { display: none; }
+#ghint { margin-top: 3px; font-size: clamp(13px, calc(var(--u) * 3.6), 15.5px); font-weight: 600; color: var(--soft); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+#area { position: relative; flex: 1; min-height: 0; margin: 8px 0 4px; }
+
+#bar { padding: 6px calc(var(--sar) + 16px) calc(var(--sab) + 14px) calc(var(--sal) + 16px); }
+/* columns never shrink below their label ("Another game" needs ~155px at 320px wide) */
+.btns { display: grid; grid-template-columns: minmax(max-content, 1fr) minmax(max-content, 1.2fr); gap: 10px; }
+.btn { height: clamp(48px, calc(var(--u) * 13), 58px); padding: 0 12px; border-radius: 18px; border: 0; display: flex; align-items: center; justify-content: center; gap: 8px;
+  font-weight: 800; font-size: clamp(15px, calc(var(--u) * 4.1), 18px); transition: transform .12s; position: relative; overflow: hidden; white-space: nowrap; }
+.btn:active { transform: scale(.96); }
+.btn svg { width: 1.15em; height: 1.15em; flex: none; }
+#bOther { background: var(--surface); color: var(--ink); border: 1.5px solid var(--line); }
+#bInstall { background: var(--green); color: var(--on-green); box-shadow: 0 8px 22px rgba(47,200,94,.32), inset 0 1px 0 rgba(255,255,255,.3); }
+#bInstall::after { content: ""; position: absolute; top: 0; bottom: 0; width: 40%; left: -60%;
+  background: linear-gradient(100deg, rgba(255,255,255,0), rgba(255,255,255,.4), rgba(255,255,255,0)); animation: pf-shine 3.4s ease-in-out 1.2s infinite; }
+@keyframes pf-shine { 0% { left: -60%; } 30%, 100% { left: 130%; } }
+
+/* one game = one .g root (ctx.el); .g-<id> scopes the game's own CSS */
+.g { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; padding: 0 calc(var(--sar) + 16px) 0 calc(var(--sal) + 16px);
+  --acc: #2FC85E; --acc-ink: #1B1F1A; --acc-soft: rgba(47,200,94,.16); --acc-glow: rgba(47,200,94,.32); }
+.g.full { padding: 0; }
+.g.enter { animation: pf-enter .3s ease-out; }
+@keyframes pf-enter { from { opacity: 0; transform: translateX(22px); } to { opacity: 1; transform: none; } }
+/* big round game button (start / spin / again) in the game's accent colour: ctx.button() */
+.act { flex: none; width: 100%; max-width: 380px; height: clamp(52px, calc(var(--u) * 14.2), 62px); border: 0; border-radius: 22px; display: flex; align-items: center; justify-content: center; gap: 8px;
+  font-size: clamp(17px, calc(var(--u) * 4.7), 20px); font-weight: 800; white-space: nowrap; transition: transform .1s, opacity .2s;
+  background: var(--acc); color: var(--acc-ink); box-shadow: 0 8px 20px var(--acc-glow), inset 0 1px 0 rgba(255,255,255,.35); }
+.act:active { transform: scale(.96); }
+.act svg { width: 1.25em; height: 1.25em; flex: none; }
+/* shared little animations a game may reuse */
+.pf-pop { animation: pf-pop .26s cubic-bezier(.3,1.6,.5,1); }
+@keyframes pf-pop { from { transform: scale(1.2); } to { transform: none; } }
+
+/* touch hint: white hand with a dark edge + ripple ring, the fingertip sits on the target point */
+.pf-hint { position: absolute; left: 0; top: 0; width: 0; height: 0; pointer-events: none; z-index: 30; opacity: 0; transition: opacity .25s; }
+.pf-hint.on { opacity: 1; }
+.pf-hint .rg { position: absolute; left: -27px; top: -27px; width: 54px; height: 54px; border-radius: 50%; border: 3px solid #FFFFFF;
+  box-shadow: 0 0 0 1.5px rgba(0,0,0,.22), inset 0 0 0 1.5px rgba(0,0,0,.12); opacity: 0; }
+.pf-hint .hd { position: absolute; left: -15px; top: -3px; width: 44px; height: 52px; transform-origin: 15px 3px; filter: drop-shadow(0 3px 4px rgba(0,0,0,.28)); }
+.pf-hint.tap .rg, .pf-hint.hold .rg { animation: pf-ring 1.25s ease-out infinite; }
+.pf-hint.tap .hd { animation: pf-press 1.25s ease-in-out infinite; }
+.pf-hint.hold .hd { animation: pf-hold 1.8s ease-in-out infinite; }
+.pf-hint.hold .rg { animation-duration: 1.8s; }
+.pf-hint.swipe, .pf-hint.drag { animation: pf-swipe 1.6s ease-in-out infinite; }
+.pf-hint.drag { animation-duration: 2.3s; }
+.pf-hint.swipe .hd, .pf-hint.drag .hd { transform: scale(.92); }
+@keyframes pf-ring { 0%, 22% { transform: scale(.35); opacity: 0; } 30% { opacity: .95; } 100% { transform: scale(1.3); opacity: 0; } }
+@keyframes pf-press { 0%, 100% { transform: translate(7px, 12px); } 22%, 40% { transform: none; } 30% { transform: scale(.9); } }
+@keyframes pf-hold { 0%, 100% { transform: translate(7px, 12px); } 18%, 80% { transform: scale(.9); } }
+@keyframes pf-swipe { 0% { transform: none; opacity: 0; } 12% { transform: none; opacity: 1; } 70% { transform: translate(var(--dx, 0px), var(--dy, 0px)); opacity: 1; } 85%, 100% { transform: translate(var(--dx, 0px), var(--dy, 0px)); opacity: 0; } }
+
+/* ---- per-game CSS (games/<id>.css) ---- */
+/*@@CSS@@*/
+</style>
+</head>
+<body>
+<div id="stage">
+  <svg class="deco" viewBox="0 0 360 640" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <g opacity=".42">
+      <rect x="14" y="98" width="15" height="5" rx="2.5" fill="#3E9BFF" transform="rotate(-25 21 100)"/>
+      <circle cx="40" cy="150" r="4" fill="#FF5C7A"/>
+      <rect x="330" y="176" width="13" height="5" rx="2.5" fill="#FFB020" transform="rotate(35 336 178)"/>
+      <circle cx="316" cy="128" r="3.5" fill="#A368FF"/>
+      <rect x="8" y="372" width="13" height="5" rx="2.5" fill="#00C2C7" transform="rotate(60 14 374)"/>
+      <circle cx="344" cy="420" r="4" fill="#FFB020"/>
+      <rect x="20" y="560" width="14" height="5" rx="2.5" fill="#FF7A3D" transform="rotate(20 27 562)"/>
+      <circle cx="334" cy="596" r="3.5" fill="#FF5C7A"/>
+      <rect x="306" y="520" width="12" height="5" rx="2.5" fill="#3E9BFF" transform="rotate(-40 312 522)"/>
+      <circle cx="22" cy="470" r="3" fill="#2FC85E"/>
+      <rect x="338" y="300" width="12" height="5" rx="2.5" fill="#A368FF" transform="rotate(70 344 302)"/>
+      <circle cx="20" cy="250" r="3" fill="#2FC85E"/>
+    </g>
+  </svg>
+  <div id="shell">
+    <header id="hd">
+      <!-- app icon (tool/gen_icon.py "dice"): green gradient, two white dice with coloured pips, confetti -->
+      <svg class="icon" viewBox="0 0 100 100" aria-hidden="true">
+        <defs>
+          <linearGradient id="pfIg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5CDB8A"/><stop offset="1" stop-color="#14733A"/></linearGradient>
+          <radialGradient id="pfIl" cx=".22" cy=".18" r=".75"><stop offset="0" stop-color="#FFFFFF" stop-opacity=".24"/><stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/></radialGradient>
+        </defs>
+        <rect width="100" height="100" fill="url(#pfIg)"/>
+        <rect width="100" height="100" fill="url(#pfIl)"/>
+        <g fill="#0A4A22" opacity=".2"><rect x="24.2" y="45.2" width="30" height="30" rx="6" transform="rotate(-12.6 39.2 60.2)"/><rect x="50.2" y="34.2" width="30" height="30" rx="6" transform="rotate(10.3 65.2 49.2)"/></g>
+        <g transform="rotate(-12.6 38 58)"><rect x="23" y="43" width="30" height="30" rx="6" fill="#FFFFFF"/>
+          <circle cx="29.9" cy="49.9" r="2.25" fill="#FF5C7A"/><circle cx="46.1" cy="49.9" r="2.25" fill="#3E9BFF"/><circle cx="38" cy="58" r="2.25" fill="#FFB020"/>
+          <circle cx="29.9" cy="66.1" r="2.25" fill="#A368FF"/><circle cx="46.1" cy="66.1" r="2.25" fill="#00C2C7"/></g>
+        <g transform="rotate(10.3 64 47)"><rect x="49" y="32" width="30" height="30" rx="6" fill="#FFFFFF"/>
+          <circle cx="55.9" cy="38.9" r="2.25" fill="#FF5C7A"/><circle cx="64" cy="47" r="2.25" fill="#3E9BFF"/><circle cx="72.1" cy="55.1" r="2.25" fill="#FFB020"/></g>
+        <g><rect x="12" y="10" width="5" height="2" rx="1" fill="#3E9BFF" transform="rotate(-15 14 11)"/><rect x="16" y="8" width="2" height="6" rx="1" fill="#FFB020" transform="rotate(-20 17 11)"/>
+          <circle cx="22" cy="19" r="1.7" fill="#FF5C7A"/><rect x="27" y="17" width="2" height="5" rx="1" fill="#3E9BFF"/><rect x="27" y="7" width="5" height="2" rx="1" fill="#3E9BFF" transform="rotate(35 29 8)"/>
+          <rect x="37" y="20" width="2" height="6" rx="1" fill="#FFB020" transform="rotate(40 38 23)"/><rect x="45" y="13" width="5" height="2" rx="1" fill="#00C2C7" transform="rotate(10 47 14)"/>
+          <circle cx="63" cy="12" r="1.9" fill="#FF5C7A"/><circle cx="59" cy="16" r="1.7" fill="#A368FF"/><rect x="69" y="22" width="6" height="2" rx="1" fill="#FFE27A"/>
+          <circle cx="74" cy="20" r="1.9" fill="#FF5C7A"/><rect x="79" y="15" width="2" height="6" rx="1" fill="#FFE27A" transform="rotate(30 80 18)"/><circle cx="73" cy="27" r="1.5" fill="#A368FF"/></g>
+      </svg>
+      <div class="ht"><div class="kick">MyPartyGame</div><div class="nm" id="nm"></div><div class="sb" id="sb"></div></div>
+    </header>
+    <section id="gh">
+      <div class="gt"><span id="gname"></span><span class="chip" id="gchip"></span></div>
+      <div id="ghint"></div>
+    </section>
+    <main id="area"></main>
+    <nav id="bar">
+      <div class="btns">
+        <button class="btn" id="bOther" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 3h5v5"/><path d="M4 20 21 3"/><path d="M21 16v5h-5"/><path d="M15 15l6 6"/><path d="M4 4l5 5"/></svg><span id="tOther"></span></button>
+        <button class="btn" id="bInstall" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11"/><path d="M7 10.5 12 15.5 17 10.5"/><path d="M5 20h14"/></svg><span id="tInstall"></span></button>
+      </div>
+    </nav>
+  </div>
+  <div id="flash"></div>
+  <canvas id="fx"></canvas>
+</div>
+<script>
+/* Games register here: GAMES['<id>'] = { name, tip, cat, who, accent, make(ctx) }. See _src/mypartygame/INTERFACE.md. */
+var GAMES = {};
+/*@@GAMES@@*/
+</script>
+<script>
+(function () {
+  'use strict';
+
+  /* ---------- store links ---------- */
+  var IOS_URL = 'https://apps.apple.com/app/id6821380529?pt=129467809&ct=xp_play_party&mt=8';
+  var AND_URL = 'https://play.google.com/store/apps/details?id=com.ymc.mypartygame&referrer=utm_source%3Dxpromo%26utm_medium%3Dplayable%26utm_campaign%3Dxp_play_party';
+  var HOME_URL = 'https://mystudioapps.com/mypartygame/';
+
+  /* ---------- language ---------- */
+  var Q = new URLSearchParams(location.search);
+  var LANGS = ['ko', 'ja', 'en'];
+  function pickLang() {
+    var q = String(Q.get('lang') || '').toLowerCase();
+    if (LANGS.indexOf(q) >= 0) return q;
+    var list = navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || 'en'];
+    for (var i = 0; i < list.length; i++) {
+      var n = String(list[i] || '').slice(0, 2).toLowerCase();
+      if (LANGS.indexOf(n) >= 0) return n;
+    }
+    return 'en';
+  }
+  var lang = pickLang();
+  document.documentElement.lang = lang;
+  if (Q.get('host') === 'app') document.documentElement.setAttribute('data-host', 'app');
+  var TEST = Q.get('test') === '1';
+
+  var T = {
+    ko: {
+      name: '우리들의 파티게임', sub: '모여서, 내기할 때, 혼자서도', other: '다른 게임', install: '설치', sep: ' · ',
+      names: ['민지', '서윤', '하린', '도윤', '지호', '준서'],
+      cat: { bet: '내기할 때', party: '모여서', duel: '둘이서 대결', solo: '혼자서도' },
+      who: { '1': '1인용', '2': '2인', '1+': '1인 이상', '2+': '2인 이상' }
+    },
+    ja: {
+      name: 'みんなのパーティーゲーム', sub: '集まって、賭けて、ひとりでも', other: '別のゲーム', install: 'インストール', sep: '・',
+      names: ['ハルト', 'ユイ', 'ソウタ', 'ミオ', 'レン', 'ヒナ'],
+      cat: { bet: '賭けるとき', party: 'みんなで', duel: 'ふたりで対決', solo: 'ひとりでも' },
+      who: { '1': '1人用', '2': '2人', '1+': '1人以上', '2+': '2人以上' }
+    },
+    en: {
+      name: 'Party Games', sub: 'Group games, bets & solo fun', other: 'Another game', install: 'Install', sep: ' · ',
+      names: ['Mia', 'Leo', 'Ava', 'Noah', 'Zoe', 'Max'],
+      cat: { bet: 'For bets', party: 'Get together', duel: 'Head to head', solo: 'Solo' },
+      who: { '1': '1 player', '2': '2 players', '1+': '1 or more', '2+': '2 or more' }
+    }
+  };
+  var t = T[lang];
+  // app player colours (lib/games/game.dart kPlayerColors, same order); confetti uses the first six
+  var SLOTS = ['#FF5C7A', '#3E9BFF', '#FFB020', '#2FC85E', '#A368FF', '#00C2C7', '#FF7A3D', '#8C9BAB', '#E0A526', '#5B4BDB', '#D9363E', '#8D6E4A'];
+  var PALETTE = SLOTS.slice(0, 6);
+  var FONT = getComputedStyle(document.documentElement).getPropertyValue('--font').trim() || 'sans-serif';
+  var TAU = Math.PI * 2;
+  var DPR = Math.min(2, window.devicePixelRatio || 1);
+
+  function $(id) { return document.getElementById(id); }
+  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  function rnd(n) { return Math.floor(Math.random() * n); }
+  function mk(tag, cls, html) { var e = document.createElement(tag); if (cls) e.className = cls; if (html) e.innerHTML = html; return e; }
+  function rgb(hex) { var n = parseInt(String(hex).slice(1), 16); return [n >> 16 & 255, n >> 8 & 255, n & 255]; }
+  function rgba(hex, a) { var c = rgb(hex); return 'rgba(' + c[0] + ',' + c[1] + ',' + c[2] + ',' + a + ')'; }
+  function lum(hex) {
+    var c = rgb(hex).map(function (v) { v /= 255; return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4); });
+    return 0.2126 * c[0] + 0.7152 * c[1] + 0.0722 * c[2];
+  }
+  // text on a solid colour: dark on the light ones (yellow, green, mint), white on the rest
+  function inkOn(hex) { return lum(hex) > 0.4 ? '#1B1F1A' : '#FFFFFF'; }
+  function pick(o) { return o == null ? '' : typeof o === 'string' ? o : (o[lang] != null ? o[lang] : o.en != null ? o.en : ''); }
+  // fmt('{0} got {1}', a, b) or fmt('{n}!', { n: 'Mia' })
+  function fmt(s) {
+    var args = arguments, map = args.length === 2 && args[1] && typeof args[1] === 'object' ? args[1] : null;
+    return String(s).replace(/\{(\w+)\}/g, function (m, k) {
+      var v = map ? map[k] : args[+k + 1];
+      return v == null ? m : String(v);
+    });
+  }
+
+  var mq = window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)') : null;
+  var DARK = !!(mq && mq.matches);
+
+  var stage = $('stage'), shell = $('shell'), area = $('area'), flashEl = $('flash');
+
+  /* ---------- app bridge ---------- */
+  function hasXP() { return !!(window.XPromo && typeof window.XPromo.postMessage === 'function'); }
+  function post(msg) { if (!hasXP()) return; try { window.XPromo.postMessage(msg); } catch (e) {} }
+
+  var lastInstall = 0;
+  function install() {
+    var now = Date.now();
+    if (now - lastInstall < 1200) return;
+    lastInstall = now;
+    if (hasXP()) { post('install'); return; }
+    var ua = navigator.userAgent || '';
+    var ios = /iPhone|iPad|iPod/i.test(ua) || (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1);
+    var android = /Android/i.test(ua);
+    var url = ios ? IOS_URL : android ? AND_URL : HOME_URL + '?lang=' + lang;
+    var framed = false;
+    try { framed = window.top !== window.self; } catch (e) { framed = true; }
+    // 'noopener' would make window.open return null and the frame would navigate too; open, then cut the opener
+    if (framed) {
+      var w = null;
+      try { w = window.open(url, '_blank'); } catch (e) {}
+      if (w) { try { w.opener = null; } catch (e) {} return; }
+    }
+    location.href = url;
+  }
+
+  /* ---------- sound (WebAudio synth, unlocked on the first touch) ---------- */
+  var S = (function () {
+    var ac = null, master = null, dead = false, noiseBuf = null;
+    function unlock() {
+      if (ac || dead) return;
+      var AC = window.AudioContext || window.webkitAudioContext;
+      if (!AC) { dead = true; return; }
+      try {
+        ac = new AC();
+        master = ac.createGain(); master.gain.value = 0.55; master.connect(ac.destination);
+        var b = ac.createBuffer(1, 1, 22050), s = ac.createBufferSource(); s.buffer = b; s.connect(ac.destination); s.start(0);
+        if (ac.state === 'suspended') ac.resume().catch(function () {});
+      } catch (e) { dead = true; ac = null; }
+    }
+    function ok() {
+      if (!ac) return false;
+      if (ac.state === 'suspended' && !document.hidden) ac.resume().catch(function () {});
+      return true;
+    }
+    // one oscillator note: f Hz for d s, optional glide to f2, delay s
+    function tone(f, d, type, v, f2, delay) {
+      if (!ok()) return;
+      var t0 = ac.currentTime + (delay || 0);
+      var o = ac.createOscillator(), g = ac.createGain();
+      o.type = type || 'sine';
+      o.frequency.setValueAtTime(f, t0);
+      if (f2) o.frequency.exponentialRampToValueAtTime(f2, t0 + d);
+      g.gain.setValueAtTime(0.0001, t0);
+      g.gain.exponentialRampToValueAtTime(v || 0.3, t0 + 0.006);
+      g.gain.exponentialRampToValueAtTime(0.0001, t0 + d);
+      o.connect(g); g.connect(master);
+      o.start(t0); o.stop(t0 + d + 0.03);
+    }
+    // filtered noise: lowpass sweep for bangs, bandpass with a soft attack for whooshes
+    function noise(d, v, f1, f2, type, attack, delay) {
+      if (!ok()) return;
+      if (!noiseBuf) {
+        var n = Math.floor(ac.sampleRate), ch;
+        noiseBuf = ac.createBuffer(1, n, ac.sampleRate); ch = noiseBuf.getChannelData(0);
+        for (var i = 0; i < n; i++) ch[i] = Math.random() * 2 - 1;
+      }
+      var t0 = ac.currentTime + (delay || 0), s = ac.createBufferSource(), fl = ac.createBiquadFilter(), g = ac.createGain();
+      s.buffer = noiseBuf; fl.type = type || 'lowpass';
+      fl.frequency.setValueAtTime(f1, t0); fl.frequency.exponentialRampToValueAtTime(f2, t0 + d);
+      if (attack) { g.gain.setValueAtTime(0.0001, t0); g.gain.exponentialRampToValueAtTime(v, t0 + attack); }
+      else g.gain.setValueAtTime(v, t0);
+      g.gain.exponentialRampToValueAtTime(0.0001, t0 + d);
+      s.connect(fl); fl.connect(g); g.connect(master);
+      s.start(t0); s.stop(t0 + d + 0.05);
+    }
+    return {
+      unlock: unlock,
+      suspend: function () { if (ac && ac.state === 'running') ac.suspend().catch(function () {}); },
+      resume: function () { if (ac && ac.state === 'suspended') ac.resume().catch(function () {}); },
+      tone: tone, noise: noise,
+      click: function () { tone(1100, 0.045, 'triangle', 0.16, 700); },
+      peg: function () { tone(2500, 0.022, 'triangle', 0.09, 1700); },
+      tick: function (hi) { tone(hi ? 2100 : 1600, 0.03, 'square', 0.055); },
+      beep: function (hi) { tone(hi ? 1320 : 880, hi ? 0.22 : 0.12, 'square', 0.09); },
+      win: function () { [523, 659, 784, 1047].forEach(function (f, i) { tone(f, 0.18, 'triangle', 0.22, null, 0.07 + i * 0.085); }); },
+      bang: function () { noise(0.22, 0.95, 7500, 380); tone(150, 0.12, 'square', 0.16, 60); },
+      go: function () { tone(660, 0.07, 'square', 0.08); tone(990, 0.13, 'square', 0.08, null, 0.08); },
+      whoosh: function (delay) { noise(0.22, 0.32, 600, 3600, 'bandpass', 0.07, delay); },
+      boom: function () { noise(0.9, 0.9, 2400, 60); tone(120, 0.5, 'sine', 0.6, 38); noise(1.1, 0.55, 900, 40, 'lowpass', 0, 0.09); },
+      stamp: function () { tone(118, 0.14, 'square', 0.2, 70); noise(0.08, 0.45, 3200, 300); },
+      lose: function () { [392, 349, 294].forEach(function (f, i) { tone(f, i === 2 ? 0.45 : 0.16, 'triangle', 0.18, i === 2 ? 247 : null, i * 0.17); }); },
+      merge: function (v) { var f = 240 + Math.log2(v) * 55; tone(f, 0.12, 'sine', 0.28, f * 1.6); },
+      swipe: function () { tone(520, 0.06, 'triangle', 0.07, 320); },
+      bump: function () { tone(170, 0.07, 'sine', 0.12, 120); },
+      pop: function (k) { var f = 700 + 500 * (k == null ? Math.random() : k); tone(f, 0.07, 'sine', 0.22, f * 0.45); noise(0.04, 0.18, 5000, 1500, 'bandpass'); },
+      ding: function () { tone(1568, 0.35, 'sine', 0.2); tone(2093, 0.25, 'sine', 0.08, null, 0.01); },
+      fail: function () { tone(220, 0.28, 'sawtooth', 0.09, 150); tone(233, 0.28, 'square', 0.05, 160); },
+      thud: function () { tone(160, 0.11, 'sine', 0.35, 70); noise(0.06, 0.3, 1800, 200); },
+      chomp: function () { noise(0.16, 0.8, 3000, 200); tone(95, 0.22, 'square', 0.22, 50); },
+      boing: function () { tone(180, 0.35, 'sine', 0.3, 720); }
+    };
+  })();
+  // haptics only after the first real tap (Chrome logs an error for vibrate before any user activation, e.g. on a first swipe)
+  function buzz(p) {
+    try {
+      var ua = navigator.userActivation;
+      if (ua && !ua.hasBeenActive) return;
+      if (navigator.vibrate) navigator.vibrate(p || 10);
+    } catch (e) {}
+  }
+
+  /* ---------- confetti (stage coordinates) ---------- */
+  var fx = (function () {
+    var cv = $('fx'), g = cv.getContext('2d'), w = 0, h = 0, parts = [], dirty = false;
+    function resize() {
+      w = stage.clientWidth; h = stage.clientHeight;
+      cv.width = Math.round(w * DPR); cv.height = Math.round(h * DPR);
+      cv.style.width = w + 'px'; cv.style.height = h + 'px';
+    }
+    function add(p) { parts.push(p); if (parts.length > 360) parts.shift(); }
+    function burst(x, y, n, colors, o) {
+      o = o || {}; colors = colors || PALETTE;
+      var sp = o.speed || 650, size = o.size || 1;
+      for (var i = 0; i < n; i++) {
+        var a = o.ring ? Math.random() * TAU : -Math.PI / 2 + (Math.random() - 0.5) * Math.PI * 1.5;
+        var s = sp * (0.35 + Math.random() * 0.75);
+        add({ x: x, y: y, vx: Math.cos(a) * s, vy: Math.sin(a) * s, r: Math.random() * 6.28, vr: (Math.random() - 0.5) * 14,
+          w: (5 + Math.random() * 5) * size, h: (8 + Math.random() * 8) * size, c: colors[i % colors.length],
+          life: 2 + Math.random() * 1.4, round: !!o.round && Math.random() < 0.65 });
+      }
+      wake();
+    }
+    function rain(n, colors) {
+      colors = colors || PALETTE;
+      for (var i = 0; i < n; i++) {
+        add({ x: Math.random() * w, y: -10 - Math.random() * h * 0.35, vx: (Math.random() - 0.5) * 90, vy: 60 + Math.random() * 120,
+          r: Math.random() * 6.28, vr: (Math.random() - 0.5) * 10, w: 5 + Math.random() * 5, h: 8 + Math.random() * 8,
+          c: colors[i % colors.length], life: 3.2 + Math.random(), round: false });
+      }
+      wake();
+    }
+    function frame(dt) {
+      if (!parts.length) { if (dirty) { g.setTransform(1, 0, 0, 1, 0, 0); g.clearRect(0, 0, cv.width, cv.height); dirty = false; } return false; }
+      dirty = true;
+      g.setTransform(DPR, 0, 0, DPR, 0, 0); g.clearRect(0, 0, w, h);
+      var kx = Math.exp(-2.4 * dt), ky = Math.exp(-2.8 * dt);
+      for (var i = parts.length - 1; i >= 0; i--) {
+        var p = parts[i];
+        p.vy = (p.vy + 760 * dt) * ky; p.vx *= kx;
+        p.x += p.vx * dt; p.y += p.vy * dt; p.r += p.vr * dt; p.life -= dt;
+        if (p.life <= 0 || p.y > h + 30) { parts.splice(i, 1); continue; }
+        g.save(); g.translate(p.x, p.y); g.rotate(p.r);
+        g.globalAlpha = Math.min(1, p.life * 2); g.fillStyle = p.c;
+        if (p.round) { g.beginPath(); g.arc(0, 0, p.w * 0.55, 0, 6.2832); g.fill(); }
+        else { var sy = Math.cos(p.r * 1.7); g.fillRect(-p.w / 2, -p.h / 2 * sy, p.w, p.h * sy); }
+        g.restore();
+      }
+      return true;
+    }
+    function clear() { parts.length = 0; g.setTransform(1, 0, 0, 1, 0, 0); g.clearRect(0, 0, cv.width, cv.height); dirty = false; }
+    return { resize: resize, burst: burst, rain: rain, frame: frame, clear: clear };
+  })();
+  function shake() { shell.classList.remove('shake'); void shell.offsetWidth; shell.classList.add('shake'); }
+  function flash(c1, c2) {
+    flashEl.style.setProperty('--f1', c1 || '#FFFFFF'); flashEl.style.setProperty('--f2', c2 || '#FF8A3D');
+    flashEl.classList.remove('on'); void flashEl.offsetWidth; flashEl.classList.add('on');
+  }
+  shell.addEventListener('animationend', function (e) { if (e.target === shell) shell.classList.remove('shake'); });
+  flashEl.addEventListener('animationend', function () { flashEl.classList.remove('on'); });
+
+  /* ---------- frame loop: runs only while visible and while something animates ---------- */
+  var raf = 0, lastTs = 0, pending = false, active = null, frameBroken = false;
+  function wake() {
+    pending = true;
+    if (!raf && !document.hidden) { lastTs = 0; raf = requestAnimationFrame(loop); }
+  }
+  function loop(ts) {
+    raf = 0;
+    var dt = lastTs ? Math.min(0.05, (ts - lastTs) / 1000) : 1 / 60;
+    lastTs = ts;
+    var more = false;
+    if (active && active.frame && !frameBroken) {
+      try { if (active.frame(dt) === true) more = true; } catch (e) { frameBroken = true; if (window.console) console.error(e); }
+    }
+    if (fx.frame(dt)) more = true;
+    pending = more;
+    if (more && !document.hidden) raf = requestAnimationFrame(loop);
+  }
+  document.addEventListener('visibilitychange', function () {
+    if (document.hidden) {
+      if (raf) { cancelAnimationFrame(raf); raf = 0; pending = true; }
+      lastTs = 0; S.suspend();
+    } else {
+      S.resume();
+      if (pending) wake();
+    }
+  });
+
+  /* ---------- icons a game may use (ctx.ICON) ---------- */
+  var SV = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">';
+  var ICON = {
+    spin: SV + '<path d="M20 12a8 8 0 1 1-2.4-5.7"/><path d="M20 4v5h-5"/></svg>',
+    again: SV + '<path d="M20 12a8 8 0 1 1-2.4-5.7"/><path d="M20 4v5h-5"/></svg>',
+    play: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.2v13.6c0 .8.9 1.3 1.6.8l10-6.8a1 1 0 0 0 0-1.6l-10-6.8A1 1 0 0 0 8 5.2z"/></svg>',
+    spark: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M10 2.5l1.9 5.2 5.2 1.9-5.2 1.9L10 16.7l-1.9-5.2L2.9 9.6l5.2-1.9z"/><path d="M18.3 13.2l1 2.5 2.5 1-2.5 1-1 2.5-1-2.5-2.5-1 2.5-1z"/></svg>',
+    fire: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.6 2.2c.5 3 2.6 4.6 4.1 6.4 1.3 1.6 2.1 3.3 2.1 5.4a6.8 6.8 0 0 1-13.6 0c0-2.3 1-4.3 2.6-5.8.2 1.7.9 2.9 2 3.6-.3-3.6.9-6.9 2.8-9.6z"/></svg>',
+    swap: SV + '<path d="M4 8h15"/><path d="M15 4l4 4-4 4"/><path d="M20 16H5"/><path d="M9 12l-4 4 4 4"/></svg>',
+    trophy: '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 3h10v2h3a1 1 0 0 1 1 1c0 3.2-1.9 5.4-4.6 5.9A5 5 0 0 1 13 15v2h3a1 1 0 0 1 1 1v2H7v-2a1 1 0 0 1 1-1h3v-2a5 5 0 0 1-3.4-3.1C4.9 11.4 3 9.2 3 6a1 1 0 0 1 1-1h3V3zm10 4v2.8c1.1-.5 1.8-1.4 2-2.8h-2zM7 7H5c.2 1.4.9 2.3 2 2.8V7z"/></svg>'
+  };
+
+  /* ---------- touch hint ---------- */
+  // a white hand (index finger up) with a dark edge; drawn twice: thick dark outline, then white fill
+  var HAND_SHAPES = '<rect x="11" y="1" width="9" height="30" rx="4.5"/><rect x="19" y="16" width="8" height="17" rx="4"/><rect x="26" y="18.5" width="7.5" height="15" rx="3.75"/>' +
+    '<rect x="32.5" y="21.5" width="6.5" height="13" rx="3.25"/><rect x="11" y="25" width="28" height="22" rx="9"/><rect x="3" y="24" width="8" height="16" rx="4" transform="rotate(-38 7 32)"/>';
+  var HAND = '<svg class="hd" viewBox="0 0 42 50" aria-hidden="true"><g fill="#1B1F1A" stroke="#1B1F1A" stroke-width="3.2" stroke-linejoin="round">' + HAND_SHAPES + '</g>' +
+    '<g fill="#FFFFFF">' + HAND_SHAPES + '</g><path d="M14.5 6.5v8" stroke="#E3E7E1" stroke-width="2" stroke-linecap="round"/></svg>';
+
+  function makeHint(root) {
+    var el = null, target = null, opts = null, timer = 0;
+    function where() {
+      if (!target) return null;
+      if (typeof target === 'function') { try { return target(); } catch (e) { return null; } }
+      if (target.nodeType === 1) {
+        if (!target.isConnected) return null;
+        var r = target.getBoundingClientRect(), b = root.getBoundingClientRect();
+        return { x: r.left + r.width / 2 - b.left, y: r.top + r.height / 2 - b.top };
+      }
+      return { x: +target.x || 0, y: +target.y || 0 };
+    }
+    function place() {
+      if (!el) return;
+      var p = where();
+      if (!p) { el.classList.remove('on'); return; }
+      el.style.left = p.x.toFixed(1) + 'px'; el.style.top = p.y.toFixed(1) + 'px';
+    }
+    function hide() {
+      clearTimeout(timer); timer = 0; target = null;
+      if (el) { var e = el; el = null; e.classList.remove('on'); setTimeout(function () { if (e.parentNode) e.parentNode.removeChild(e); }, 300); }
+    }
+    function show(tg, o) {
+      hide();
+      if (!tg) return;
+      target = tg; opts = o || {};
+      var kind = opts.kind || 'tap';
+      el = mk('div', 'pf-hint ' + kind, '<i class="rg"></i>' + HAND);
+      if (kind === 'swipe' || kind === 'drag') {
+        el.style.setProperty('--dx', (opts.dx || 0) + 'px'); el.style.setProperty('--dy', (opts.dy || 0) + 'px');
+      }
+      root.appendChild(el);
+      place();
+      var my = el;
+      timer = setTimeout(function () { if (el === my) { place(); my.classList.add('on'); } }, opts.delay == null ? 450 : opts.delay);
+    }
+    return { show: show, hide: hide, place: place };
+  }
+
+  /* ---------- per-game context: every listener, timer and hint is torn down on switch ---------- */
+  function makeCtx(id, def, pos, el) {
+    var offs = [], timers = [], alive = true, hint = makeHint(el);
+    var ctx = {
+      id: id, pos: pos, lang: lang, el: el, name: pick(def.name), accent: def.accent || '#2FC85E',
+      names: t.names.slice(), SLOTS: SLOTS, PALETTE: PALETTE, FONT: FONT, TAU: TAU, dpr: DPR, ICON: ICON,
+      pick: pick, fmt: fmt, esc: esc, mk: mk, rnd: rnd, rgba: rgba, inkOn: inkOn,
+      sfx: S, buzz: buzz,
+      click: function () { S.click(); buzz(10); },
+      wake: wake,
+      shake: shake, flash: flash,
+      token: function (name) { return getComputedStyle(el).getPropertyValue(name).trim(); },
+      box: function () {
+        var cs = getComputedStyle(el);
+        return { w: el.clientWidth - (parseFloat(cs.paddingLeft) || 0) - (parseFloat(cs.paddingRight) || 0), h: el.clientHeight };
+      },
+      local: function (e) {
+        var r = el.getBoundingClientRect(), p = e.touches && e.touches[0] ? e.touches[0] : e;
+        return { x: p.clientX - r.left, y: p.clientY - r.top };
+      },
+      // confetti at a point in ctx.el coordinates (or at an element's centre with burstAt)
+      burst: function (x, y, n, o) {
+        var r = el.getBoundingClientRect(), s = stage.getBoundingClientRect();
+        fx.burst(r.left - s.left + x, r.top - s.top + y, n || 80, (o && o.colors) || PALETTE, o);
+      },
+      burstAt: function (target, n, o) {
+        var r = target.getBoundingClientRect(), s = stage.getBoundingClientRect();
+        fx.burst(r.left + r.width / 2 - s.left, r.top + r.height / 2 - s.top, n || 80, (o && o.colors) || PALETTE, o);
+      },
+      rain: function (n, colors) { fx.rain(n || 50, colors || PALETTE); },
+      hint: function (target, o) { if (alive) hint.show(target, o); },
+      on: function (target, type, fn, opts) {
+        target.addEventListener(type, fn, opts);
+        offs.push(function () { target.removeEventListener(type, fn, opts); });
+      },
+      later: function (fn, ms) {
+        var tid = setTimeout(function () { var i = timers.indexOf(tid); if (i >= 0) timers.splice(i, 1); if (alive) fn(); }, ms);
+        timers.push(tid); return tid;
+      },
+      every: function (fn, ms) {
+        var tid = setInterval(function () { if (alive) fn(); }, ms);
+        timers.push(tid); return tid;
+      },
+      clear: function (tid) { clearTimeout(tid); clearInterval(tid); var i = timers.indexOf(tid); if (i >= 0) timers.splice(i, 1); },
+      // <canvas> filling `parent` (default ctx.el): fit() sizes it to the parent's box (or w, h) at the capped dpr
+      canvas: function (parent, cls) {
+        parent = parent || el;
+        var cv = mk('canvas', cls || ''), o = { cv: cv, g: cv.getContext('2d'), w: 0, h: 0 };
+        o.fit = function (w, h) {
+          o.w = Math.max(1, Math.round(w == null ? parent.clientWidth : w));
+          o.h = Math.max(1, Math.round(h == null ? parent.clientHeight : h));
+          cv.width = Math.round(o.w * DPR); cv.height = Math.round(o.h * DPR);
+          cv.style.width = o.w + 'px'; cv.style.height = o.h + 'px';
+          o.g.setTransform(DPR, 0, 0, DPR, 0, 0);
+          return o;
+        };
+        parent.appendChild(cv);
+        return o;
+      },
+      button: function (label, icon) {
+        return mk('button', 'act', (icon || '') + '<span>' + esc(label) + '</span>');
+      },
+      _dispose: function () {
+        alive = false;
+        hint.hide();
+        offs.forEach(function (f) { try { f(); } catch (e) {} }); offs.length = 0;
+        timers.forEach(function (x) { clearTimeout(x); clearInterval(x); }); timers.length = 0;
+      },
+      _hint: hint
+    };
+    Object.defineProperty(ctx, 'dark', { get: function () { return DARK; } });
+    Object.defineProperty(ctx, 'alive', { get: function () { return alive; } });
+    // the first touch inside the game hides the hint
+    ctx.on(el, 'pointerdown', function () { hint.hide(); }, true);
+    return ctx;
+  }
+
+  /* ---------- the set for this load ---------- */
+  var SETS_ALL = (typeof SETS !== 'undefined' && SETS && SETS.length) ? SETS : [];
+  function validSet(s) {
+    if (!s || s.length !== 3) return false;
+    for (var i = 0; i < 3; i++) {
+      var d = GAMES[s[i]];
+      if (!d || typeof d.make !== 'function') return false;
+      if (s.indexOf(s[i]) !== i) return false;
+    }
+    return true;
+  }
+  var valid = [];
+  for (var si = 0; si < SETS_ALL.length; si++) if (validSet(SETS_ALL[si])) valid.push(si);
+  var LS_KEY = 'mypartygame_playable_lastset';
+  var setIdx = -1, ids = null;
+  var qs = parseInt(Q.get('set'), 10);
+  if (qs >= 1 && valid.indexOf(qs - 1) >= 0) setIdx = qs - 1;
+  else if (valid.length) {
+    var last = -1;
+    try { var lv = localStorage.getItem(LS_KEY); if (lv != null) last = parseInt(lv, 10); } catch (e) {}
+    var choices = valid.filter(function (i) { return i !== last; });
+    if (!choices.length) choices = valid;
+    setIdx = choices[rnd(choices.length)];
+  }
+  if (setIdx >= 0) ids = SETS_ALL[setIdx].slice();
+  else {
+    // no usable set (should not happen: build.py checks): take the first three registered games
+    ids = Object.keys(GAMES).filter(function (k) { return GAMES[k] && typeof GAMES[k].make === 'function'; }).slice(0, 3);
+  }
+  try { if (setIdx >= 0) localStorage.setItem(LS_KEY, String(setIdx)); } catch (e) {}
+
+  /* ---------- showing a game ---------- */
+  var pos = 1, ctxNow = null, chip = $('gchip');
+  var qg = parseInt(Q.get('game'), 10);
+  if (qg >= 1 && qg <= ids.length) pos = qg;
+
+  $('nm').textContent = t.name;
+  $('sb').textContent = t.sub;
+  $('tOther').textContent = t.other;
+  $('tInstall').textContent = t.install;
+
+  function paintChip() {
+    var def = GAMES[ids[pos - 1]], acc = (def && def.accent) || '#2FC85E';
+    chip.style.background = rgba(acc, DARK ? 0.24 : 0.16);
+    chip.style.borderColor = rgba(acc, DARK ? 0.5 : 0.45);
+  }
+  function chipText(def, short) {
+    var parts = [];
+    if (def.chip) parts.push(pick(def.chip));
+    else {
+      if (def.cat && t.cat[def.cat]) parts.push(t.cat[def.cat]);
+      if (!short && def.who && t.who[def.who]) parts.push(t.who[def.who]);
+    }
+    return parts.join(t.sep);
+  }
+
+  // title row at narrow widths (320 px with a long name like 'Crocodile Teeth'): shrink the chip, then drop its 'who' part;
+  // the name and the tip line shrink a little instead of being cut with an ellipsis
+  var gnameEl = $('gname'), ghintEl = $('ghint');
+  function over(e) { return e.scrollWidth > e.clientWidth + 0.5; }
+  function shrink(e, min) {
+    e.style.fontSize = '';
+    var fs = parseFloat(getComputedStyle(e).fontSize) || 14;
+    while (over(e) && fs > min) { fs = Math.max(min, fs - 0.5); e.style.fontSize = fs + 'px'; }
+  }
+  function fitTitle() {
+    var def = GAMES[ids[pos - 1]];
+    if (!def) return;
+    shrink(gnameEl, 15);
+    chip.textContent = chipText(def, false);
+    shrink(chip, 9.5);
+    if (over(chip) && !def.chip && def.who) { chip.textContent = chipText(def, true); shrink(chip, 9.5); }
+    shrink(ghintEl, 11);
+  }
+
+  function teardown() {
+    if (active) { try { if (active.destroy) active.destroy(); } catch (e) { if (window.console) console.error(e); } }
+    active = null;
+    if (ctxNow) ctxNow._dispose();
+    ctxNow = null;
+    area.innerHTML = '';
+    fx.clear();
+  }
+
+  // builds game `n` of the set; a game that throws while starting is skipped (the next one shows instead)
+  function show(n) {
+    teardown();
+    for (; n <= ids.length; n++) {
+      var id = ids[n - 1], def = GAMES[id];
+      pos = n;
+      $('gname').textContent = pick(def.name);
+      chip.textContent = chipText(def);
+      $('ghint').textContent = pick(def.tip);
+      paintChip();
+      fitTitle();
+      var acc = def.accent || '#2FC85E';
+      var el = mk('div', 'g g-' + id + (def.full ? ' full' : ''));
+      el.style.setProperty('--acc', acc);
+      el.style.setProperty('--acc-ink', inkOn(acc));
+      el.style.setProperty('--acc-soft', rgba(acc, DARK ? 0.24 : 0.16));
+      el.style.setProperty('--acc-glow', rgba(acc, 0.32));
+      area.appendChild(el);
+      ctxNow = makeCtx(id, def, n, el);
+      frameBroken = false;
+      try {
+        active = def.make(ctxNow) || {};
+        if (active.resize) active.resize();
+        ctxNow._hint.place();
+        el.classList.add('enter');
+        wake();
+        return true;
+      } catch (e) {
+        if (window.console) console.error('game ' + id + ' failed to start', e);
+        teardown();
+      }
+    }
+    return false;
+  }
+
+  function layout() {
+    var vw = window.innerWidth, vh = window.innerHeight;
+    var w = vw / vh > 0.62 ? Math.round(vh * 9 / 16) : vw;
+    stage.style.width = w + 'px';
+    stage.classList.toggle('boxed', w < vw);
+    document.documentElement.style.setProperty('--u', (w / 100).toFixed(3) + 'px');
+    if (ids && ids.length) fitTitle();
+    fx.resize();
+    if (active && active.resize) { try { active.resize(); } catch (e) { if (window.console) console.error(e); } }
+    if (ctxNow) ctxNow._hint.place();
+  }
+  var resizeTimer = 0;
+  window.addEventListener('resize', function () {
+    if (resizeTimer) return;
+    resizeTimer = setTimeout(function () { resizeTimer = 0; layout(); wake(); }, 60);
+  });
+  // light / dark follows the device
+  if (mq) {
+    var onScheme = function () {
+      DARK = mq.matches; paintChip();
+      if (ctxNow) { var acc = ctxNow.accent; ctxNow.el.style.setProperty('--acc-soft', rgba(acc, DARK ? 0.24 : 0.16)); }
+      if (active && active.redraw) { try { active.redraw(); } catch (e) {} }
+      wake();
+    };
+    if (mq.addEventListener) mq.addEventListener('change', onScheme); else if (mq.addListener) mq.addListener(onScheme);
+  }
+
+  var lastOther = 0;
+  $('bOther').addEventListener('click', function () {
+    var now = Date.now();
+    if (now - lastOther < 350) return;
+    lastOther = now;
+    S.click(); buzz();
+    if (pos < ids.length) { if (show(pos + 1)) post('switch:' + pos); else install(); }
+    else install();
+  });
+  $('bInstall').addEventListener('click', function () { buzz(); install(); });
+
+  // first tap unlocks audio; no scrolling, pinch zoom, double-tap zoom or long-press menu
+  document.addEventListener('pointerdown', S.unlock, true);
+  document.addEventListener('touchend', S.unlock, true);
+  ['gesturestart', 'gesturechange', 'gestureend'].forEach(function (ev) { document.addEventListener(ev, function (e) { e.preventDefault(); }, { passive: false }); });
+  document.addEventListener('touchmove', function (e) { e.preventDefault(); }, { passive: false });
+  document.addEventListener('dblclick', function (e) { e.preventDefault(); }, { passive: false });
+  document.addEventListener('contextmenu', function (e) { e.preventDefault(); });
+
+  if (TEST) {
+    window.__pf = {
+      set: function () { return setIdx + 1; },
+      ids: function () { return ids.slice(); },
+      game: function () { return pos; },
+      state: function () { try { return active && active.debug ? active.debug() : null; } catch (e) { return null; } }
+    };
+  }
+
+  layout();
+  if (ids.length && show(pos)) post('ready');
+})();
+</script>
+</body>
+</html>

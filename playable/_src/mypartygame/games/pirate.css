@@ -1,0 +1,15 @@
+.g-pirate { justify-content: space-between; cursor: pointer; }
+.g-pirate > canvas { position: absolute; left: 0; top: 0; z-index: 0; }
+.g-pirate .top { position: relative; z-index: 1; flex: none; width: 100%; height: clamp(50px, calc(var(--u) * 14.5), 64px); display: flex; align-items: center; justify-content: center; pointer-events: none; }
+.g-pirate .pill { max-width: 100%; padding: 8px 20px; border-radius: 999px; font-size: clamp(17px, calc(var(--u) * 5), 21px); font-weight: 900; line-height: 1.2;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; transition: opacity .15s, transform .15s; }
+.g-pirate .pill.big { padding: 9px 26px; font-size: clamp(22px, calc(var(--u) * 6.6), 28px); }
+.g-pirate .pill.in { animation: pirate-pill .55s linear both; }
+.g-pirate .pill.gone { animation: none; opacity: 0; transform: scale(.6); }
+@keyframes pirate-pill {
+  0% { opacity: 0; transform: scale(.3); } 22% { opacity: 1; transform: scale(1.12); } 42% { transform: scale(.95); }
+  62% { transform: scale(1.03); } 82% { transform: scale(.99); } 100% { opacity: 1; transform: none; }
+}
+.g-pirate .ft { position: relative; z-index: 1; flex: none; width: 100%; height: clamp(42px, calc(var(--u) * 12), 52px); display: flex; align-items: center; justify-content: center;
+  padding: 0 4px 4px; text-align: center; font-size: clamp(13px, calc(var(--u) * 3.7), 16px); font-weight: 700; line-height: 1.25; color: var(--soft); pointer-events: none; }
+.g-pirate .ft.res { color: var(--ink); font-weight: 800; font-size: clamp(14px, calc(var(--u) * 4.1), 17px); }

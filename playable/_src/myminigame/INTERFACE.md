@@ -1,4 +1,4 @@
-# MyMiniGame playable: game interface
+# MyPocketGames playable: game interface
 
 One page (`playable/myminigame/index.html`) is built from:
 

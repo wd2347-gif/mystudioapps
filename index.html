@@ -4,94 +4,119 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="google-site-verification" content="RHHxHqTP4mg9k8mJcjvB59TJl3NN3yn1MLvxylLmvNo" />
-<!-- 아이폰·아이패드 Safari 위의 'App Store에서 받기' 띠(Smart App Banner, 2026-10-02 사용자). 이미 깔린 기기에서는 '열기'. -->
+<!-- 2026-10-11 사용자: 첫 화면에 앱 전체 + 다운로드 단추(앱 카드 → #앱 소개). -->
 <meta name="apple-itunes-app" content="app-id=6812821519">
 <title>MyStudio</title>
 <meta name="description" content="MyStudio: small apps for a calmer body and mind. 몸과 마음을 편하게 하는 작은 앱들.">
 <link rel="icon" href="assets/favicon.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <meta property="og:title" content="MyStudio">
-<meta property="og:description" content="MySlowBody: Stretch · Slow breathing · Deep sleep">
+<meta property="og:description" content="MyStudio apps: body and mind, play, music">
 <meta property="og:image" content="https://mystudioapps.com/assets/myslowbody/icon.png">
 <meta property="og:url" content="https://mystudioapps.com/">
 <meta property="og:type" content="website">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
 <style>
-  /* 어두운 화면 하나로(2026-09-22) — 앱 첫인상(밤하늘·짙은 녹색)과 같게. */
+  /* 어두운 화면 하나(지금 사이트와 같은 색). */
   :root {
     color-scheme: dark;
-    --bg: #0E110D; --surface: #191D18; --ink: #F1F3EE; --ink-soft: #9BA49A;
-    --line: #2C332B; --green: #43D873; --green-fill: #43D873; --wash: rgba(67, 216, 115, .12);
-    --shadow: none;
+    --bg: #0E110D; --surface: #171B16; --surface-2: #1E231D; --ink: #F1F3EE; --ink-soft: #9BA49A; --ink-faint: #6E776D;
+    --line: #2A3129; --green: #43D873; --wash: rgba(67, 216, 115, .12);
   }
   * { box-sizing: border-box; }
   html { -webkit-text-size-adjust: 100%; }
   body {
     margin: 0; background: var(--bg); color: var(--ink);
     font-family: "Pretendard", -apple-system, "Apple SD Gothic Neo", "Hiragino Sans", "Noto Sans JP", sans-serif;
-    line-height: 1.6;
+    line-height: 1.55;
   }
   a { color: var(--green); }
+  html:lang(ko) body { word-break: keep-all; overflow-wrap: anywhere; }
+  .intro p, .desc, .feature p, footer .foot-copy { text-wrap: pretty; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
 
   /* ── 머리글 ── */
-  header {
-    max-width: 1160px; margin: 0 auto; padding: 22px 24px;
-    display: flex; align-items: center; justify-content: space-between; gap: 16px;
-  }
+  header .wrap { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-top: 20px; padding-bottom: 20px; }
   .brand { font-weight: 800; font-size: 20px; letter-spacing: -.01em; color: var(--ink); text-decoration: none; }
   .brand span { color: var(--green); }
-  .controls { display: flex; align-items: center; gap: 8px; }
-  .langs { display: flex; gap: 4px; background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 4px; }
+  .langs { display: flex; gap: 2px; background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 3px; }
   .langs button {
     border: 0; background: transparent; color: var(--ink-soft); font: inherit; font-size: 13px; font-weight: 600;
-    padding: 6px 12px; border-radius: 999px; cursor: pointer;
+    padding: 5px 11px; border-radius: 999px; cursor: pointer;
   }
   .langs button[aria-pressed="true"] { background: var(--wash); color: var(--green); }
 
-  /* ── 본문: 왼쪽 앱 소개 · 오른쪽 앱 아이콘 ── */
-  .layout {
-    max-width: 1160px; margin: 0 auto; padding: 8px 24px 64px;
-    display: grid; grid-template-columns: minmax(0, 1fr) 260px; gap: 32px; align-items: start;
+  /* ── 첫 화면: 소개 한 줄 + 분류 ── */
+  .intro { padding: 12px 0 4px; }
+  .intro h1 { margin: 0; font-size: 34px; line-height: 1.25; letter-spacing: -.025em; font-weight: 800; }
+  .intro h1 em { font-style: normal; color: var(--green); }
+  .intro p { margin: 8px 0 0; color: var(--ink-soft); font-size: 16px; }
+  .chips { display: flex; gap: 8px; margin: 22px 0 6px; overflow-x: auto; scrollbar-width: none; padding-bottom: 2px; }
+  .chips::-webkit-scrollbar { display: none; }
+  .chip {
+    flex: none; border: 1px solid var(--line); background: var(--surface); color: var(--ink-soft);
+    font: inherit; font-size: 14px; font-weight: 600; padding: 7px 14px; border-radius: 999px; cursor: pointer;
   }
-  aside {
-    position: sticky; top: 24px;
-    background: var(--surface); border: 1px solid var(--line); border-radius: 24px; padding: 18px; box-shadow: var(--shadow);
-  }
-  aside h2 { margin: 2px 6px 12px; font-size: 13px; font-weight: 700; color: var(--ink-soft); letter-spacing: .04em; text-transform: uppercase; }
-  .apps { display: flex; flex-direction: column; gap: 6px; }
-  .app-btn {
-    display: flex; align-items: center; gap: 12px; width: 100%; text-align: left;
-    border: 1px solid transparent; background: transparent; color: inherit; font: inherit;
-    padding: 10px; border-radius: 18px; cursor: pointer;
-  }
-  .app-btn:hover { background: var(--wash); }
-  .app-btn[aria-current="true"] { background: var(--wash); border-color: var(--green-fill); }
-  .app-btn img, .app-btn .soon-icon { width: 52px; height: 52px; border-radius: 13px; flex: none; }
-  .soon-icon { border: 2px dashed var(--line); display: grid; place-items: center; color: var(--ink-soft); font-size: 22px; }
-  .app-btn strong { display: block; font-size: 15px; }
-  .app-btn small { display: block; color: var(--ink-soft); font-size: 12px; line-height: 1.4; }
-  .app-btn[disabled] { cursor: default; opacity: .75; }
-  .app-btn[disabled]:hover { background: transparent; }
+  .chip[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
 
-  /* ── 앱 소개 ── */
+  .group { margin-top: 26px; }
+  .group h2 { margin: 0 0 12px; font-size: 13px; font-weight: 700; color: var(--ink-soft); letter-spacing: .04em; display: flex; align-items: center; gap: 8px; }
+  .group h2 .n { color: var(--ink-faint); font-weight: 600; }
+  .grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+
+  /* ── 앱 카드: 카드 전체가 소개로 가는 링크, 스토어 단추만 따로 ── */
+  .card {
+    position: relative; display: flex; flex-direction: column; gap: 14px;
+    background: var(--surface); border: 1px solid var(--line); border-radius: 22px; padding: 18px;
+    transition: border-color .15s, background .15s;
+  }
+  .card:hover { border-color: #3D473C; background: var(--surface-2); }
+  .card .top { display: flex; align-items: center; gap: 14px; min-width: 0; }
+  .card img.ic { width: 60px; height: 60px; border-radius: 14px; flex: none; background: var(--surface-2); }
+  .card .txt { min-width: 0; flex: 1; }
+  .card h3 { margin: 0; font-size: 17px; line-height: 1.3; letter-spacing: -.01em; }
+  .card h3 a { color: var(--ink); text-decoration: none; }
+  .card h3 a::after { content: ""; position: absolute; inset: 0; border-radius: 22px; }  /* 카드 전체를 누를 수 있게 */
+  .card h3 a:focus-visible { outline: none; }
+  .card:focus-within { border-color: var(--green); }
+  .card .sub { margin: 2px 0 0; color: var(--ink-soft); font-size: 13.5px; line-height: 1.4;
+    display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .card .cat { display: inline-block; margin-top: 6px; font-size: 11.5px; font-weight: 600; color: var(--ink-faint); }
+  .card .go { flex: none; color: var(--ink-faint); font-size: 20px; line-height: 1; }
+  .card .dl { margin-top: auto; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; position: relative; z-index: 1; }
+  .card.soon img.ic { opacity: .8; }
+  .pill.mini { display: none; }
+
+  .store {
+    display: inline-flex; align-items: center; justify-content: center; gap: 7px; min-height: 40px; padding: 8px 12px; border-radius: 12px;
+    background: var(--ink); color: var(--bg); text-decoration: none; font-weight: 700; font-size: 14px; white-space: nowrap;
+  }
+  .store:hover { background: #fff; }
+  .store svg { width: 17px; height: 17px; fill: currentColor; flex: none; }
+  .store.soon { background: transparent; color: var(--ink-faint); border: 1px dashed var(--line); font-weight: 600; font-size: 13px; cursor: default; }
+  .pill {
+    grid-column: 1 / -1; justify-self: start; display: inline-flex; align-items: center; gap: 6px;
+    min-height: 32px; padding: 5px 12px; border-radius: 999px; background: var(--wash); color: var(--green); font-size: 13px; font-weight: 700;
+  }
+  .pill::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+
+  /* ── 앱 소개(#앱) ── */
+  .back { display: inline-flex; align-items: center; gap: 6px; margin: 4px 0 16px; color: var(--ink-soft); text-decoration: none; font-weight: 600; font-size: 15px;
+    padding: 7px 14px 7px 10px; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); }
+  .back:hover { color: var(--ink); }
   .hero {
-    background: var(--surface); border: 1px solid var(--line); border-radius: 28px; padding: 36px; box-shadow: var(--shadow);
+    background: var(--surface); border: 1px solid var(--line); border-radius: 28px; padding: 32px;
     display: grid; grid-template-columns: 120px minmax(0, 1fr); gap: 28px; align-items: center;
   }
-  .hero img.icon { width: 120px; height: 120px; border-radius: 27px; box-shadow: 0 8px 24px rgba(28, 154, 70, .25); }
-  .hero .soon-icon.icon { width: 120px; height: 120px; border-radius: 27px; font-size: 52px; }
+  .hero img.icon { width: 120px; height: 120px; border-radius: 27px; }
   .hero h1 { margin: 0; font-size: 34px; line-height: 1.2; letter-spacing: -.02em; }
   .tagline { margin: 6px 0 10px; font-size: 20px; font-weight: 700; color: var(--green); }
   .desc { margin: 0 0 18px; color: var(--ink-soft); }
   .stores { display: flex; flex-wrap: wrap; gap: 10px; }
-  .store {
-    display: inline-flex; align-items: center; gap: 8px; padding: 11px 18px; border-radius: 14px;
-    background: var(--ink); color: var(--bg); text-decoration: none; font-weight: 700; font-size: 14px;
-  }
-  .store.soon { background: transparent; color: var(--ink-soft); border: 1px solid var(--line); cursor: default; }
-  .store svg { width: 18px; height: 18px; fill: currentColor; }
+  .stores .store { padding: 10px 18px; min-height: 44px; }
+  .more-link { display: inline-block; margin-top: 14px; font-weight: 600; text-decoration: none; }
 
-  .features { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin: 18px 0; }
+  .features { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin: 16px 0; }
   .feature { background: var(--surface); border: 1px solid var(--line); border-radius: 22px; padding: 22px; }
   .feature .emoji { font-size: 24px; }
   .feature h3 { margin: 8px 0 4px; font-size: 17px; }
@@ -101,50 +126,72 @@
   .shots { display: flex; gap: 14px; overflow-x: auto; padding: 4px 2px 12px; scroll-snap-type: x mandatory; scroll-behavior: smooth; scrollbar-width: none; }
   .shots::-webkit-scrollbar { display: none; }
   .shots.dragging { scroll-snap-type: none; scroll-behavior: auto; cursor: grabbing; }
-  .shots img { user-select: none; -webkit-user-drag: none; }
+  .shots img { user-select: none; -webkit-user-drag: none; width: 200px; height: auto; border-radius: 22px; border: 1px solid var(--line); flex: none; scroll-snap-align: start; background: var(--surface); }
   .shot-nav {
     position: absolute; top: 50%; transform: translateY(-50%); width: 44px; height: 44px; border-radius: 999px;
     border: 1px solid var(--line); background: var(--surface); color: var(--ink); cursor: pointer;
-    display: none; place-items: center; box-shadow: var(--shadow); font-size: 22px; line-height: 1;
+    display: none; place-items: center; font-size: 22px; line-height: 1;
   }
   .shot-nav.prev { left: -14px; } .shot-nav.next { right: -14px; }
   .shot-nav[disabled] { opacity: 0; pointer-events: none; }
-  @media (hover: hover) and (pointer: fine) {
-    .shot-nav { display: grid; }
-    .shots { cursor: grab; }
-  }
-  .shots img {
-    width: 200px; height: auto; border-radius: 22px; border: 1px solid var(--line); flex: none;
-    scroll-snap-align: start; background: var(--surface);
-  }
+  @media (hover: hover) and (pointer: fine) { .shot-nav { display: grid; } .shots { cursor: grab; } }
 
-  footer { max-width: 1160px; margin: 0 auto; padding: 20px 24px 28px; color: var(--ink-soft); font-size: 13px; border-top: 1px solid var(--line);
-    display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 24px; }
-  footer .social { display: flex; flex-wrap: wrap; gap: 8px; }
+  .others { margin-top: 28px; }
+  .others h2 { margin: 0 0 12px; font-size: 13px; font-weight: 700; color: var(--ink-soft); letter-spacing: .04em; }
+  .others .row { display: flex; gap: 10px; overflow-x: auto; scrollbar-width: none; padding-bottom: 4px; }
+  .others .row::-webkit-scrollbar { display: none; }
+  .others a { flex: none; display: flex; align-items: center; gap: 10px; padding: 8px 14px 8px 8px; border: 1px solid var(--line); border-radius: 16px;
+    background: var(--surface); color: var(--ink); text-decoration: none; font-weight: 600; font-size: 14px; }
+  .others a img { width: 36px; height: 36px; border-radius: 9px; }
+  .others a:hover { border-color: #3D473C; }
+
+  main.wrap { padding-bottom: 56px; }
+
+  footer { border-top: 1px solid var(--line); color: var(--ink-soft); font-size: 13px; }
+  footer .wrap { padding-top: 20px; padding-bottom: 28px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 24px; }
   footer .foot-left { display: grid; gap: 6px; }
   footer .foot-links { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 14px; }
+  footer .social { display: flex; flex-wrap: wrap; gap: 8px; }
   footer .social a { display: inline-flex; align-items: center; gap: 5px; padding: 6px 12px 6px 9px; border: 1px solid var(--line);
     border-radius: 999px; color: var(--ink); text-decoration: none; font-weight: 600; background: var(--surface); }
   footer .social a:hover { border-color: var(--ink-soft); }
-  /* 유튜브 아이콘은 공식 모양·색 그대로, 높이 24px(브랜드 규칙 최소 20 — 2026-10-07 YouTube API 감사 III.F.2a).
-     크기를 줄이거나 색·투명도·필터를 걸지 않는다. */
+  /* 유튜브 아이콘은 공식 모양·색 그대로, 높이 24px(브랜드 규칙). */
   footer .social svg { flex: none; display: block; }
 
-  /* ── 휴대폰: 아이콘 줄을 위로, 가로로 ── */
-  @media (max-width: 820px) {
-    .layout { grid-template-columns: minmax(0, 1fr); gap: 16px; padding: 4px 16px 48px; }
-    header { padding: 16px; }
-    .langs button { padding: 6px 9px; }
-    aside { position: static; order: -1; padding: 12px; border-radius: 20px; }
-    aside h2 { display: none; }
-    .apps { flex-direction: row; overflow-x: auto; }
-    .app-btn { width: auto; flex: none; padding: 8px 12px 8px 8px; }
-    .app-btn small { display: none; }
-    .app-btn img, .app-btn .soon-icon { width: 40px; height: 40px; border-radius: 10px; }
-    .hero { grid-template-columns: minmax(0, 1fr); padding: 24px; text-align: left; gap: 16px; }
-    .hero img.icon { width: 88px; height: 88px; border-radius: 20px; }
-    .hero .soon-icon.icon { width: 88px; height: 88px; border-radius: 20px; font-size: 40px; }
-    .hero h1 { font-size: 28px; }
+  /* ── 태블릿: 2열 ── */
+  @media (max-width: 960px) { .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+  /* ── 휴대폰: 한 줄 카드, 단추는 아래 두 칸 ── */
+  @media (max-width: 640px) {
+    .wrap { padding: 0 16px; }
+    header .wrap { padding-top: 14px; padding-bottom: 10px; }
+    .langs button { padding: 5px 9px; }
+    .intro { padding: 6px 0 0; }
+    .intro h1 { font-size: 24px; }
+    .intro p { font-size: 14px; margin-top: 4px; }
+    .chips { margin: 14px -16px 0; padding: 0 16px 2px; }
+    .chip { font-size: 13.5px; padding: 6px 13px; }
+    .group { margin-top: 18px; }
+    .group h2 { margin-bottom: 8px; }
+    .grid { grid-template-columns: minmax(0, 1fr); gap: 10px; }
+    .card { padding: 14px; gap: 12px; border-radius: 20px; }
+    .card h3 a::after { border-radius: 20px; }
+    .card img.ic { width: 52px; height: 52px; border-radius: 12px; }
+    .card h3 { font-size: 16px; }
+    .card .sub { font-size: 13px; -webkit-line-clamp: 1; }
+    .card .cat { display: none; }
+    .store { min-height: 38px; font-size: 13.5px; }
+    .pill { min-height: 28px; }
+    .card.soon .dl { display: none; }
+    .pill.mini { display: inline-flex; flex: none; font-size: 12px; padding: 4px 10px; min-height: 26px; }
+    .card.soon .go { display: none; }
+    .others .row { margin: 0 -16px; padding: 0 16px 4px; }
+
+    .hero { grid-template-columns: minmax(0, 1fr); padding: 22px; gap: 14px; border-radius: 24px; }
+    .hero img.icon { width: 80px; height: 80px; border-radius: 18px; }
+    .hero h1 { font-size: 27px; }
+    .tagline { font-size: 18px; }
+    .stores .store { flex: 1 1 0; padding: 10px 12px; }
     .features { grid-template-columns: minmax(0, 1fr); }
     .shots img { width: 160px; }
   }
@@ -152,8 +199,8 @@
 </head>
 <body>
 <header>
-  <a class="brand" href="./">My<span>Studio</span></a>
-  <div class="controls">
+  <div class="wrap">
+    <a class="brand" href="#">My<span>Studio</span></a>
     <div class="langs" role="group" aria-label="Language">
       <button data-lang="en">English</button>
       <button data-lang="ko">한국어</button>
@@ -162,51 +209,55 @@
   </div>
 </header>
 
-<div class="layout">
-  <main id="app-panel" aria-live="polite"></main>
-  <aside>
-    <h2 data-i18n="apps">Apps</h2>
-    <nav class="apps" id="app-list"></nav>
-  </aside>
-</div>
+<main class="wrap" id="view" aria-live="polite"></main>
 
 <footer>
-  <div class="foot-left">
-    <nav class="foot-links" aria-label="Policies">
-      <a id="foot-privacy" href="myslowbody/privacy.html" data-i18n="privacy">Privacy Policy</a>
-      <a id="foot-terms" href="myslowbody/terms.html" data-i18n="terms">Terms of Use</a>
-      <a id="foot-support" href="mailto:support@mystudioapps.com" data-i18n="support">Support</a>
+  <div class="wrap">
+    <div class="foot-left">
+      <nav class="foot-links" aria-label="Policies">
+        <a id="foot-privacy" href="myslowbody/privacy.html" data-i18n="privacy">Privacy Policy</a>
+        <a id="foot-terms" href="myslowbody/terms.html" data-i18n="terms">Terms of Use</a>
+        <a id="foot-support" href="mailto:support@mystudioapps.com" data-i18n="support">Support</a>
+      </nav>
+      <div class="foot-copy" data-i18n="footer"></div>
+    </div>
+    <nav class="social" aria-label="Social">
+      <a id="sns-ig" href="https://www.instagram.com/mystudio_kr" target="_blank" rel="noopener" aria-label="Instagram @mystudio_kr">
+        <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><defs><radialGradient id="igGrad" cx="30%" cy="107%" r="150%"><stop offset="0" stop-color="#fdf497"/><stop offset=".05" stop-color="#fdf497"/><stop offset=".45" stop-color="#fd5949"/><stop offset=".6" stop-color="#d6249f"/><stop offset=".9" stop-color="#285AEB"/></radialGradient></defs><rect width="24" height="24" rx="6.5" fill="url(#igGrad)"/><rect x="5" y="5" width="14" height="14" rx="4.2" fill="none" stroke="#fff" stroke-width="1.8"/><circle cx="12" cy="12" r="3.3" fill="none" stroke="#fff" stroke-width="1.8"/><circle cx="16.4" cy="7.6" r="1.1" fill="#fff"/></svg>
+        <span id="sns-ig-name">@mystudio_kr</span></a>
+      <a id="sns-yt" href="https://www.youtube.com/@mystudioapps" target="_blank" rel="noopener" aria-label="YouTube @mystudioapps">
+        <svg viewBox="0 0 28.57 20" width="34" height="24" aria-hidden="true"><path fill="#FF0000" d="M27.973 3.123A3.578 3.578 0 0 0 25.447.597C23.22 0 14.285 0 14.285 0S5.35 0 3.123.597A3.578 3.578 0 0 0 .597 3.123C0 5.35 0 10 0 10s0 4.65.597 6.877a3.578 3.578 0 0 0 2.526 2.526C5.35 20 14.285 20 14.285 20s8.935 0 11.162-.597a3.578 3.578 0 0 0 2.526-2.526C28.57 14.65 28.57 10 28.57 10s-.002-4.65-.597-6.877Z"/><path fill="#fff" d="M11.425 14.285 18.848 10l-7.423-4.285v8.57Z"/></svg>
+        <span id="sns-yt-name">@mystudioapps</span></a>
     </nav>
-    <div class="foot-copy" data-i18n="footer"></div>
   </div>
-  <nav class="social" aria-label="Social">
-    <a id="sns-ig" href="https://www.instagram.com/mystudio_kr" target="_blank" rel="noopener" aria-label="Instagram @mystudio_kr">
-      <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><defs><radialGradient id="igGrad" cx="30%" cy="107%" r="150%"><stop offset="0" stop-color="#fdf497"/><stop offset=".05" stop-color="#fdf497"/><stop offset=".45" stop-color="#fd5949"/><stop offset=".6" stop-color="#d6249f"/><stop offset=".9" stop-color="#285AEB"/></radialGradient></defs><rect width="24" height="24" rx="6.5" fill="url(#igGrad)"/><rect x="5" y="5" width="14" height="14" rx="4.2" fill="none" stroke="#fff" stroke-width="1.8"/><circle cx="12" cy="12" r="3.3" fill="none" stroke="#fff" stroke-width="1.8"/><circle cx="16.4" cy="7.6" r="1.1" fill="#fff"/></svg>
-      <span id="sns-ig-name">@mystudio_kr</span></a>
-    <a id="sns-yt" href="https://www.youtube.com/@mystudioapps" target="_blank" rel="noopener" aria-label="YouTube @mystudioapps">
-      <svg viewBox="0 0 28.57 20" width="34" height="24" aria-hidden="true"><path fill="#FF0000" d="M27.973 3.123A3.578 3.578 0 0 0 25.447.597C23.22 0 14.285 0 14.285 0S5.35 0 3.123.597A3.578 3.578 0 0 0 .597 3.123C0 5.35 0 10 0 10s0 4.65.597 6.877a3.578 3.578 0 0 0 2.526 2.526C5.35 20 14.285 20 14.285 20s8.935 0 11.162-.597a3.578 3.578 0 0 0 2.526-2.526C28.57 14.65 28.57 10 28.57 10s-.002-4.65-.597-6.877Z"/><path fill="#fff" d="M11.425 14.285 18.848 10l-7.423-4.285v8.57Z"/></svg>
-      <span id="sns-yt-name">@mystudioapps</span></a>
-  </nav>
 </footer>
 
 <script>
 // ── 문구 ──────────────────────────────────────────────────────────────
 const UI = {
-  ko: { apps: '앱', soonApp: '다음 앱', soonAppSub: '준비 중이에요', appStore: 'App Store', playStore: 'Google Play',
-        comingSoon: '출시 준비 중', privacy: '개인정보처리방침', terms: '이용약관', support: '문의',
-        footer: '© 2026 MyStudio · 마이스튜디오. 몸과 마음을 편하게 하는 작은 앱을 만듭니다.' },
-  en: { apps: 'Apps', soonApp: 'Next app', soonAppSub: 'In the works', appStore: 'App Store', playStore: 'Google Play',
-        comingSoon: 'Coming soon', privacy: 'Privacy Policy', terms: 'Terms of Use', support: 'Support',
-        footer: '© 2026 MyStudio. Small apps for a calmer body and mind.' },
-  ja: { apps: 'アプリ', soonApp: '次のアプリ', soonAppSub: '準備中です', appStore: 'App Store', playStore: 'Google Play',
-        comingSoon: '近日公開', privacy: 'プライバシーポリシー', terms: '利用規約', support: 'お問い合わせ',
-        footer: '© 2026 MyStudio. 体と心をやわらげる小さなアプリをつくっています。' },
-  zh: { apps: '应用', soonApp: '下一款应用', soonAppSub: '正在准备中', appStore: 'App Store', playStore: 'Google Play',
-        comingSoon: '即将上线', privacy: '隐私政策', terms: '使用条款', support: '联系我们',
-        footer: '© 2026 MyStudio。我们制作让身心更放松的小应用。' },
+  ko: { appStore: 'App Store', playStore: 'Google Play', comingSoon: '출시 준비 중', privacy: '개인정보처리방침', terms: '이용약관', support: '문의',
+        footer: '© 2026 MyStudio · 마이스튜디오. 매일 곁에 두는 작은 앱을 만듭니다.',
+        heroTitle: '매일 곁에 두는 <em>작은 앱</em>들', heroSub: '몸과 마음은 편하게, 손끝은 즐겁게. 모든 앱을 한눈에.',
+        all: '전체', released: '출시된 앱', upcoming: '곧 나와요', back: '모든 앱', others: '다른 앱', morePage: '소개 페이지 보기',
+        cats: { body: '몸과 마음', play: '놀이와 게임', music: '음악' } },
+  en: { appStore: 'App Store', playStore: 'Google Play', comingSoon: 'Coming soon', privacy: 'Privacy Policy', terms: 'Terms of Use', support: 'Support',
+        footer: '© 2026 MyStudio. Small apps you keep close every day.',
+        heroTitle: 'Small apps for <em>every day</em>', heroSub: 'Calm for body and mind, fun at your fingertips. All MyStudio apps in one place.',
+        all: 'All', released: 'Available now', upcoming: 'Coming soon', back: 'All apps', others: 'More apps', morePage: 'See the app page',
+        cats: { body: 'Body & mind', play: 'Play & games', music: 'Music' } },
+  ja: { appStore: 'App Store', playStore: 'Google Play', comingSoon: '近日公開', privacy: 'プライバシーポリシー', terms: '利用規約', support: 'お問い合わせ',
+        footer: '© 2026 MyStudio. 毎日そばに置ける小さなアプリをつくっています。',
+        heroTitle: '毎日そばに置ける<em>小さなアプリ</em>', heroSub: '体と心はやわらかく、指先は楽しく。すべてのアプリをひと目で。',
+        all: 'すべて', released: '配信中', upcoming: '近日公開', back: 'すべてのアプリ', others: 'ほかのアプリ', morePage: 'アプリページを見る',
+        cats: { body: '体と心', play: 'あそび・ゲーム', music: '音楽' } },
+  zh: { appStore: 'App Store', playStore: 'Google Play', comingSoon: '即将上线', privacy: '隐私政策', terms: '使用条款', support: '联系我们',
+        footer: '© 2026 MyStudio。我们制作每天陪伴你的小应用。',
+        heroTitle: '每天陪伴你的<em>小应用</em>', heroSub: '让身心放松，让指尖快乐。一眼看全 MyStudio 的应用。',
+        all: '全部', released: '已上线', upcoming: '即将上线', back: '全部应用', others: '更多应用', morePage: '查看应用页面',
+        cats: { body: '身心', play: '游戏', music: '音乐' } },
 };
 
-// ── 앱 목록 — 새 앱은 여기에 하나 더 넣으면 오른쪽 아이콘과 소개가 생긴다. ──
+// ── 앱 목록(지금 index.html 의 APPS 그대로) ──
 const APPS = [
   {
     id: 'myslowbody',
@@ -465,17 +516,41 @@ const APPS = [
   },
 ];
 
-// 고르지 않은 언어의 문구가 없는 앱(MyFidget·MySlowSleep·MyScore 는 한·영·일)은 영어로.
-const textOf = a => a.text[lang] || a.text.en;
-function iconOf(a, cls = '') {
-  return a.icon
-    ? `<img${cls ? ` class="${cls}"` : ''} src="${a.icon}" alt="${esc(a.name)}">`
-    : `<span class="soon-icon${cls ? ` ${cls}` : ''}" aria-hidden="true">${esc(a.iconText || '+')}</span>`;
-}
+// ── 곧 나올 앱(10/11 사용자: '곧 나와요'도 보이게). 스토어 주소가 생기면 그 칸만 채우면 '출시된 앱'으로 옮겨 간다. ──
+APPS.push(
+  {
+    id: 'mypartygames', name: 'MyPartyGames', icon: 'assets/mypartygame/icon.png', page: 'mypartygames/',
+    appStore: '', playStore: '', support: 'mailto:support@mystudioapps.com',
+    privacy: 'mypartygames/privacy.html', terms: 'mypartygames/terms.html', shots: [],
+    text: {
+      ko: { sub: '우리들의 파티게임', tagline: '폰 하나로 다같이, 우리들의 파티게임.', desc: '모여서, 내기할 때, 혼자서도. 휴대폰 하나로 다같이 즐기는 파티게임 모음이에요.', features: [] },
+      en: { sub: 'Group Party Fun', tagline: 'One phone, everyone plays.', desc: 'Get-togethers, friendly bets, or just you: party games for everyone on one phone.', features: [] },
+      ja: { sub: 'みんなのパーティー', tagline: 'スマホ1台で、みんなのパーティーゲーム。', desc: '集まった時も、賭けをする時も、ひとりでも。スマホ1台でみんなで遊べるパーティーゲーム集。', features: [] },
+    },
+  },
+  {
+    id: 'myminigame', name: 'MyPocketGames', icon: 'assets/myminigame/icon.png', page: 'myminigame/',
+    appStore: '', playStore: '', support: 'mailto:support@mystudioapps.com',
+    privacy: 'myminigame/privacy.html', terms: 'myminigame/terms.html', shots: [],
+    text: {
+      ko: { sub: '나만의 미니게임', tagline: '심심할 때 한 판, 나만의 미니게임.', desc: '아케이드 · 퍼즐 · 두뇌 게임을 주머니 속에. 잠깐 쉴 때 한 판씩 즐겨요.', features: [] },
+      en: { sub: 'Solo Mini Games', tagline: 'One more round: your pocket mini games.', desc: 'Arcade, puzzles and brain games in your pocket, for a quick round whenever you have a moment.', features: [] },
+      ja: { sub: 'わたしのミニゲーム', tagline: 'ひまな時に1回、わたしのミニゲーム。', desc: 'アーケード・パズル・脳トレをポケットに。ちょっとした休憩に1回ずつ。', features: [] },
+    },
+  },
+);
 
-// ── 언어 ── 한·영·일 셋(2026-10-02 사용자: 중국어는 뺀다 — 문구는 남아 있어도 고르지 않는다).
+// 분류(칩은 앱에 실제로 있는 분류만, 이 순서로).
+const CAT_ORDER = ['body', 'play', 'music'];
+const CAT = { myslowbody: 'body', myslowsleep: 'body', myfidget: 'play', mypartygames: 'play', myminigame: 'play', myscore: 'music', myvocal: 'music' };
+APPS.forEach(a => { a.cat = a.cat || CAT[a.id] || 'play'; a.page = a.page || `${a.id}/`; });
+const isReleased = a => !!(a.appStore || a.playStore);
+
+const textOf = a => a.text[lang] || a.text.en;
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+
+// ── 언어 ── 한·영·일 셋(2026-10-02 사용자: 중국어는 뺀다, 문구는 남겨 둔다).
 const LANGS = ['en', 'ko', 'ja'];
-// 언어마다 그 나라 계정(2026-10-02 사용자) — 인스타그램 · 유튜브.
 const SNS = {
   ko: { ig: 'mystudio_kr', yt: 'mystudioapps' },
   ja: { ig: 'mystudio_jp', yt: 'mystudio_japan' },
@@ -485,43 +560,24 @@ function pickLang() {
   const q = new URLSearchParams(location.search).get('lang');
   if (LANGS.includes(q)) return q;
   try { const s = localStorage.getItem('lang'); if (LANGS.includes(s)) return s; } catch (e) {}
-  // 기기 언어 목록에서 처음 맞는 것(ko-KR → ko). 셋 다 아니면 영어.
   const prefs = navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || 'en'];
   for (const l of prefs) { const n = String(l).slice(0, 2).toLowerCase(); if (LANGS.includes(n)) return n; }
   return 'en';
 }
 let lang = pickLang();
+let filter = 'all';
+try { const f = sessionStorage.getItem('cat'); if (f) filter = f; } catch (e) {}
 
+// #앱 → 그 앱 소개, 해시 없음(또는 모르는 해시) → 모든 앱.
 function currentAppId() {
   const h = location.hash.slice(1);
-  return APPS.some(a => a.id === h) ? h : APPS[0].id;
+  return APPS.some(a => a.id === h) ? h : null;
 }
 
-const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 const APPLE = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.4 12.6c0-2.6 2.1-3.8 2.2-3.9-1.2-1.8-3.1-2-3.8-2-1.6-.2-3.1.9-3.9.9-.8 0-2-.9-3.4-.9-1.7 0-3.3 1-4.2 2.6-1.8 3.1-.5 7.8 1.3 10.3.9 1.2 1.9 2.6 3.2 2.6 1.3-.1 1.8-.8 3.3-.8 1.6 0 2 .8 3.4.8 1.4 0 2.3-1.3 3.1-2.5 1-1.4 1.4-2.8 1.4-2.9 0 0-2.6-1-2.6-4.2zM13.9 4.9c.7-.9 1.2-2 1.1-3.2-1 0-2.3.7-3 1.6-.7.8-1.2 2-1.1 3.1 1.1.1 2.3-.6 3-1.5z"/></svg>';
 const PLAY = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.6 1.8 13.8 12 3.6 22.2c-.4-.2-.6-.6-.6-1.1V2.9c0-.5.2-.9.6-1.1zm11.3 11.3 2.6 2.6-11.9 6.8 9.3-9.4zm3.8-3.8 2.8 1.6c.8.5.8 1.7 0 2.2l-2.8 1.6-2.9-2.8 2.9-2.6zM5.6 1.5l11.9 6.8-2.6 2.6-9.3-9.4z"/></svg>';
 
-function renderList() {
-  const t = UI[lang];
-  const cur = currentAppId();
-  const items = APPS.map(a => `
-    <button class="app-btn" data-app="${a.id}" aria-current="${a.id === cur}">
-      ${iconOf(a)}
-      <span><strong>${esc(a.name)}</strong><small>${esc(textOf(a).sub)}</small></span>
-    </button>`).join('');
-  // '다음 앱 +' 칸은 늘 맨 끝에 (2026-10-06 사용자, 2026-10-08 앱 넷 뒤로).
-  const soon = `
-    <button class="app-btn" disabled>
-      <span class="soon-icon">+</span>
-      <span><strong>${esc(t.soonApp)}</strong><small>${esc(t.soonAppSub)}</small></span>
-    </button>`;
-  document.getElementById('app-list').innerHTML = items + soon;
-  document.querySelectorAll('.app-btn[data-app]').forEach(b =>
-    b.addEventListener('click', () => { location.hash = b.dataset.app; }));
-}
-
-// 짧은 링크(ig-kr·tt-jp·yt-en …)로 온 사람(?c=꼬리표, 2026-10-08 사용자: 프로필 링크는 홈페이지로) — 스토어 단추에 꼬리표를 붙여
-// 어디서 와서 설치했는지 보이게(App Store pt·ct, Play referrer utm), GA4 app_link(link=꼬리표) 는 들어올 때 한 번.
+// 짧은 링크(?c=꼬리표)로 온 사람: 스토어 단추에 꼬리표를 붙이고(App Store pt·ct, Play referrer utm), GA4 app_link 는 들어올 때 한 번.
 const CAMPAIGN = (/[?&]c=([A-Za-z0-9_\-]{1,40})/.exec(location.search) || [])[1] || '';
 if (CAMPAIGN) {
   const g = document.createElement('script');
@@ -542,36 +598,93 @@ function tagged(url) {
   if (url.includes('play.google.com')) return url + '&referrer=' + encodeURIComponent('utm_source=' + CAMPAIGN.split('_')[0] + '&utm_medium=social&utm_campaign=' + CAMPAIGN);
   return url;
 }
+// 꼬리표로 온 사람이 스토어 단추를 누르면 store_click(앱·스토어·꼬리표) — 10/11 사용자. 꼬리표 없는 방문은 GA 를 안 불러 기록 없음.
+document.addEventListener('click', e => {
+  const s = e.target.closest('a.store[data-app]');
+  if (s && CAMPAIGN && window.gtag) gtag('event', 'store_click', { app: s.dataset.app, store: s.dataset.store, link: CAMPAIGN });
+});
 
-function storeButton(url, icon, label, t) {
-  url = tagged(url);
+function storeButton(a, which, t) {
+  const url = tagged(which === 'ios' ? a.appStore : a.playStore);
+  const icon = which === 'ios' ? APPLE : PLAY;
+  const label = which === 'ios' ? t.appStore : t.playStore;
   return url
-    ? `<a class="store" href="${url}" target="_blank" rel="noopener">${icon}${esc(label)}</a>`
-    : `<span class="store soon">${icon}${esc(label)} · ${esc(t.comingSoon)}</span>`;
+    ? `<a class="store" href="${url}" target="_blank" rel="noopener" data-app="${a.id}" data-store="${which}">${icon}${esc(label)}</a>`
+    : `<span class="store soon" title="${esc(label)}">${icon}${esc(t.comingSoon)}</span>`;
 }
 
-function renderApp() {
+// ── 모든 앱(첫 화면) ──
+function card(a, t) {
+  const x = textOf(a);
+  const dl = isReleased(a)
+    ? `${storeButton(a, 'ios', t)}${storeButton(a, 'android', t)}`
+    : `<span class="pill">${esc(t.comingSoon)}</span>`;
+  return `
+    <article class="card${isReleased(a) ? '' : ' soon'}" data-cat="${a.cat}">
+      <div class="top">
+        <img class="ic" src="${a.icon}" alt="" loading="lazy" width="60" height="60">
+        <div class="txt">
+          <h3><a href="#${a.id}">${esc(a.name)}</a></h3>
+          <p class="sub">${esc(x.sub)}</p>
+          <span class="cat">${esc(t.cats[a.cat] || '')}</span>
+        </div>
+        ${isReleased(a) ? '' : `<span class="pill mini">${esc(t.comingSoon)}</span>`}
+        <span class="go" aria-hidden="true">›</span>
+      </div>
+      <div class="dl">${dl}</div>
+    </article>`;
+}
+
+function renderHome() {
   const t = UI[lang];
-  const a = APPS.find(x => x.id === currentAppId());
+  document.title = 'MyStudio';
+  const cats = CAT_ORDER.filter(c => APPS.some(a => a.cat === c));
+  if (filter !== 'all' && !cats.includes(filter)) filter = 'all';
+  const shown = APPS.filter(a => filter === 'all' || a.cat === filter);
+  const rel = shown.filter(isReleased), up = shown.filter(a => !isReleased(a));
+  const group = (title, list) => list.length ? `
+    <section class="group"><h2>${esc(title)}</h2><div class="grid">${list.map(a => card(a, t)).join('')}</div></section>` : '';
+  document.getElementById('view').innerHTML = `
+    <section class="intro">
+      <h1>${t.heroTitle}</h1>
+      <p>${esc(t.heroSub)}</p>
+    </section>
+    <div class="chips" role="group" aria-label="Category">
+      ${['all', ...cats].map(c => `<button class="chip" data-cat="${c}" aria-pressed="${c === filter}">${esc(c === 'all' ? t.all : t.cats[c])}</button>`).join('')}
+    </div>
+    ${group(t.released, rel)}
+    ${group(t.upcoming, up)}`;
+  document.querySelectorAll('.chip').forEach(b => b.addEventListener('click', () => {
+    filter = b.dataset.cat;
+    try { sessionStorage.setItem('cat', filter); } catch (e) {}
+    renderHome();
+  }));
+}
+
+// ── 앱 소개(#앱) ──
+function renderApp(a) {
+  const t = UI[lang];
   const x = textOf(a);
   document.title = `${a.name}: MyStudio`;
-  document.getElementById('app-panel').innerHTML = `
+  const others = APPS.filter(o => o.id !== a.id);
+  document.getElementById('view').innerHTML = `
+    <a class="back" href="#">‹ ${esc(t.back)}</a>
     <section class="hero">
-      ${iconOf(a, 'icon')}
+      <img class="icon" src="${a.icon}" alt="${esc(a.name)}">
       <div>
         <h1>${esc(a.name)}</h1>
         <p class="tagline">${esc(x.tagline)}</p>
         <p class="desc">${esc(x.desc)}</p>
         <div class="stores">
-          ${storeButton(a.appStore, APPLE, t.appStore, t)}
-          ${storeButton(a.playStore, PLAY, t.playStore, t)}
+          ${isReleased(a) ? storeButton(a, 'ios', t) + storeButton(a, 'android', t) : `<span class="pill">${esc(t.comingSoon)}</span>`}
         </div>
+        ${!x.features.length ? `<a class="more-link" href="${a.page}">${esc(t.morePage)} ›</a>` : ''}
       </div>
     </section>
-    <section class="features">
+    ${x.features.length ? `<section class="features">
       ${x.features.map(([e, h, p]) => `
         <div class="feature"><div class="emoji">${e}</div><h3>${esc(h)}</h3><p>${esc(p)}</p></div>`).join('')}
-    </section>
+    </section>` : ''}
     ${a.shots.length ? `<div class="shots-wrap">
       <button class="shot-nav prev" type="button" aria-label="Previous">‹</button>
       <section class="shots" aria-label="Screenshots">
@@ -579,10 +692,14 @@ function renderApp() {
       </section>
       <button class="shot-nav next" type="button" aria-label="Next">›</button>
     </div>` : ''}
-`;
+    <section class="others">
+      <h2>${esc(t.others)}</h2>
+      <div class="row">${others.map(o => `<a href="#${o.id}"><img src="${o.icon}" alt="">${esc(o.name)}</a>`).join('')}</div>
+    </section>`;
+  wireShots();
 }
 
-// ── 스크린샷 넘기기 — PC 는 화살표와 마우스 끌기, 휴대폰은 손가락으로. ──
+// ── 스크린샷 넘기기(지금 사이트와 같음) ──
 function wireShots() {
   const box = document.querySelector('.shots');
   if (!box) return;
@@ -597,25 +714,17 @@ function wireShots() {
   next.onclick = () => box.scrollBy({ left: step() * 2, behavior: 'smooth' });
   box.addEventListener('scroll', update, { passive: true });
   box.querySelectorAll('img').forEach(i => i.addEventListener('load', update));
-  window.addEventListener('resize', update);
   update();
-  // 마우스로 끌어서 넘기기(터치는 브라우저 기본 스크롤이 한다).
-  let down = false, sx = 0, sl = 0, moved = false;
+  let down = false, sx = 0, sl = 0;
   box.addEventListener('pointerdown', e => {
     if (e.pointerType !== 'mouse') return;
-    down = true; moved = false; sx = e.clientX; sl = box.scrollLeft;
+    down = true; sx = e.clientX; sl = box.scrollLeft;
     box.setPointerCapture(e.pointerId); box.classList.add('dragging');
   });
-  box.addEventListener('pointermove', e => {
-    if (!down) return;
-    const dx = e.clientX - sx;
-    if (Math.abs(dx) > 3) moved = true;
-    box.scrollLeft = sl - dx;
-  });
+  box.addEventListener('pointermove', e => { if (down) box.scrollLeft = sl - (e.clientX - sx); });
   const end = () => {
     if (!down) return;
     down = false; box.classList.remove('dragging');
-    // 끈 방향으로 가장 가까운 장에 맞춘다.
     const w = step();
     box.scrollTo({ left: Math.round(box.scrollLeft / w) * w, behavior: 'smooth' });
   };
@@ -623,19 +732,24 @@ function wireShots() {
   box.addEventListener('pointercancel', end);
 }
 
-// 바닥글의 방침·약관·문의 — 앱 칸 아래에 있던 것을 내렸다(2026-09-30 사용자). 지금 보는 앱의 것을
-// 지금 언어로 연다 (앱이 둘이 되며 2026-10-06: 전에는 늘 첫 앱의 것이었다).
+// 바닥글 방침·약관: 앱 소개에선 그 앱 것, 첫 화면에선 첫 앱 것(지금과 같음).
 function renderFooter() {
-  const a = APPS.find(x => x.id === currentAppId());
+  const a = APPS.find(x => x.id === currentAppId()) || APPS[0];
   document.getElementById('foot-privacy').href = `${a.privacy}?lang=${lang}`;
   document.getElementById('foot-terms').href = `${a.terms}?lang=${lang}`;
   document.getElementById('foot-support').href = a.support;
 }
 
+let homeScroll = 0;
+function renderView() {
+  const id = currentAppId();
+  if (id) renderApp(APPS.find(a => a.id === id)); else renderHome();
+  renderFooter();
+}
+
 function render() {
   document.documentElement.lang = lang;
   document.querySelectorAll('[data-i18n]').forEach(el => { el.textContent = UI[lang][el.dataset.i18n]; });
-  renderFooter();
   const sns = SNS[lang] || SNS.en;
   const ig = document.getElementById('sns-ig'), yt = document.getElementById('sns-yt');
   ig.href = `https://www.instagram.com/${sns.ig}`; ig.setAttribute('aria-label', `Instagram @${sns.ig}`);
@@ -643,9 +757,7 @@ function render() {
   yt.href = `https://www.youtube.com/@${sns.yt}`; yt.setAttribute('aria-label', `YouTube @${sns.yt}`);
   document.getElementById('sns-yt-name').textContent = `@${sns.yt}`;
   document.querySelectorAll('.langs button').forEach(b => b.setAttribute('aria-pressed', b.dataset.lang === lang));
-  renderList();
-  renderApp();
-  wireShots();
+  renderView();
 }
 
 document.querySelectorAll('.langs button').forEach(b => b.addEventListener('click', () => {
@@ -653,7 +765,23 @@ document.querySelectorAll('.langs button').forEach(b => b.addEventListener('clic
   try { localStorage.setItem('lang', lang); } catch (e) {}
   render();
 }));
-window.addEventListener('hashchange', () => { renderList(); renderApp(); renderFooter(); wireShots(); window.scrollTo({ top: 0, behavior: 'smooth' }); });
+// 앱 소개로 갈 때 첫 화면 스크롤 위치를 기억했다가 '모든 앱'으로 돌아오면 그 자리로.
+let wasHome = !currentAppId();
+window.addEventListener('hashchange', () => {
+  const toHome = !currentAppId();
+  if (wasHome && !toHome) homeScroll = window.scrollY;
+  renderView();
+  window.scrollTo({ top: toHome ? homeScroll : 0 });
+  wasHome = toHome;
+});
+// '#' 만 남는 주소는 깨끗하게.
+document.addEventListener('click', e => {
+  const l = e.target.closest('a[href="#"]');
+  if (!l) return;
+  e.preventDefault();
+  if (location.hash) location.hash = '';
+  history.replaceState(null, '', location.pathname + location.search);
+});
 render();
 </script>
 </body>

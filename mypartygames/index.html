@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MyPartyGames: MyStudio</title>
+<meta name="description" content="모여서, 내기할 때, 혼자서도: Party Games on One Phone">
+<link rel="canonical" href="https://mystudioapps.com/mypartygames/">
+<link rel="icon" href="/assets/mypartygame/icon.png">
+<link rel="apple-touch-icon" href="/assets/mypartygame/icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="MyStudio">
+<meta property="og:title" content="MyPartyGames">
+<meta property="og:description" content="모여서, 내기할 때, 혼자서도: Party Games on One Phone">
+<meta property="og:url" content="https://mystudioapps.com/mypartygames/">
+<meta property="og:image" content="https://mystudioapps.com/assets/mypartygame/icon.png">
+<meta property="og:image:width" content="512">
+<meta property="og:image:height" content="512">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<!-- MyPartyGames 소개(2026-10-11 초안, My_Studio 세션). 아직 출시 전이라 스토어 단추 대신 'App Store · 곧 출시', 'Google Play · 곧 출시'(MyVocal 출시 전과 같은 점 알약).
+     출시되면 myfidget/index.html 처럼 a.soon.store 링크로 바꾼다(캠페인 제안 ct=site_party, Play referrer utm_campaign=site_party).
+     App Store 마케팅 URL 로 쓰면 AdMob 이 이 도메인의 app-ads.txt 로 앱을 인증한다.
+     색은 아이콘 색종이의 보라(#A368FF)에서 온 파티 보라: 연보라 바탕(#F6F1FF → #E9DDFF), 짙은 보랏빛 회색 글, 강조 #7A3FE0(큰 글씨 · 점),
+     작은 글씨(단추 · 링크)는 대비를 맞추려 한 톤 짙은 #6530C4. MyFidget 의 분홍 · MyVocal 의 초록 · MySlowSleep 의 크림은 쓰지 않는다.
+     카드 네 장은 앱 홈의 네 묶음(모여서 즐기는 · 내기가 필요할 때 · 둘이서 대결 · 혼자서도), 마케팅 세 축(모여서 3인 이상 · 내기 2인부터 · 혼자서도).
+     문구 규칙: 게임 개수, 가격 이야기, NEW 표시 쓰지 않기. 줄표 대신 쌍점. -->
+<style>
+  :root {
+    color-scheme: light;
+    --bg: #F6F1FF; --bg2: #E9DDFF; --surface: #FFFFFF; --line: #E0D3F8; --ink: #2A1F3D; --ink-soft: #645879;
+    --accent: #7A3FE0; --accent-ink: #6530C4; --wash: rgba(122, 63, 224, .09);
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0; color: var(--ink); line-height: 1.65; min-height: 100vh;
+    background: linear-gradient(180deg, var(--bg) 0%, var(--bg2) 100%) fixed;
+    font-family: "Pretendard", -apple-system, "Apple SD Gothic Neo", "Hiragino Sans", "Noto Sans JP", sans-serif;
+  }
+  a { color: var(--accent-ink); }
+  header { max-width: 860px; margin: 0 auto; padding: 18px 20px; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+  .brand { font-weight: 800; font-size: 17px; color: var(--ink); text-decoration: none; white-space: nowrap; }
+  .brand span { color: var(--accent); }
+  .langs { display: flex; gap: 2px; background: rgba(255,255,255,.7); border: 1px solid var(--line); border-radius: 999px; padding: 3px; }
+  .langs button { border: 0; background: transparent; color: var(--ink-soft); font: inherit; font-size: 13px; font-weight: 600; padding: 6px 11px; border-radius: 999px; cursor: pointer; }
+  .langs button[aria-pressed="true"] { background: var(--wash); color: var(--accent-ink); }
+  main { max-width: 860px; margin: 0 auto; padding: 24px 20px 72px; }
+  .hero { text-align: center; padding: 40px 0 28px; }
+  .icon { width: 112px; height: 112px; border-radius: 26px; display: block; margin: 0 auto; box-shadow: 0 14px 36px rgba(80, 40, 150, .22); }
+  h1 { margin: 22px 0 6px; font-size: 34px; font-weight: 800; letter-spacing: -.01em; }
+  .sub { margin: 0; color: var(--ink-soft); font-size: 15px; font-weight: 600; }
+  .tagline { margin: 22px 0 10px; font-size: 22px; font-weight: 800; color: var(--accent); }
+  .desc { margin: 0 auto; max-width: 560px; font-size: 16px; }
+  .soon { display: inline-flex; align-items: center; gap: 8px; margin-top: 24px; padding: 10px 18px; border-radius: 999px;
+    background: rgba(255,255,255,.7); border: 1px solid var(--line); color: var(--accent-ink); font-weight: 700; font-size: 14px; }
+  .stores { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+  a.store { text-decoration: none; background: var(--ink); color: #fff; border-color: var(--ink); }
+  .soon i { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 4px var(--wash); }
+  .features { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-top: 18px; }
+  .feature { background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 20px; box-shadow: 0 6px 18px rgba(80, 40, 150, .06); }
+  .feature .emoji { font-size: 24px; }
+  .feature h3 { margin: 8px 0 4px; font-size: 16px; }
+  .feature p { margin: 0; color: var(--ink-soft); font-size: 14.5px; }
+  .devices { margin: 22px 0 0; text-align: center; color: var(--ink-soft); font-size: 14px; }
+  footer { max-width: 860px; margin: 0 auto; padding: 24px 20px 48px; border-top: 1px solid var(--line);
+    display: flex; flex-wrap: wrap; gap: 8px 18px; justify-content: center; font-size: 14px; color: var(--ink-soft); }
+  footer a { color: var(--ink-soft); text-decoration: none; }
+  footer a:hover, footer a:focus-visible { color: var(--accent-ink); }
+  @media (max-width: 600px) {
+    .features { grid-template-columns: 1fr; }
+    h1 { font-size: 30px; }
+    .langs button { padding: 6px 8px; font-size: 12px; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <a class="brand" href="../#mypartygame">My<span>Studio</span></a>
+  <div class="langs" role="group" aria-label="Language">
+    <button data-lang="en">English</button>
+    <button data-lang="ko">한국어</button>
+    <button data-lang="ja">日本語</button>
+  </div>
+</header>
+<main>
+  <section class="hero">
+    <img class="icon" src="/assets/mypartygame/icon.png" alt="MyPartyGames" width="112" height="112">
+    <h1>MyPartyGames</h1>
+    <p class="sub" id="sub"></p>
+    <p class="tagline" id="tagline"></p>
+    <p class="desc" id="desc"></p>
+    <div class="stores"><span class="soon"><i aria-hidden="true"></i><span id="soon"></span></span><span class="soon"><i aria-hidden="true"></i><span id="play"></span></span></div>
+  </section>
+  <section class="features" id="features"></section>
+  <p class="devices" id="devices"></p>
+</main>
+<footer>
+  <a id="f-home" href="../#mypartygame">MyStudio</a>
+  <a id="f-terms" href="terms.html"></a>
+  <a id="f-privacy" href="privacy.html"></a>
+  <a id="f-support" href="mailto:support@mystudioapps.com"></a>
+</footer>
+<script>
+const LANGS = ['en', 'ko', 'ja'];
+const T = {
+  ko: {
+    sub: '모여서, 내기할 때, 혼자서도',
+    tagline: '폰 하나로 다같이, 우리들의 파티게임.',
+    desc: '라이어 게임 · 마피아 · 사다리 타기 · 돌림판부터 에어하키 · 오목 · 스도쿠 · 2048까지. 혼자서도, 여럿이 모여서도 폰 하나면 충분해요.',
+    soon: 'App Store · 곧 출시',
+    play: 'Google Play · 곧 출시',
+    features: [
+      ['🎉', '모여서 즐기는 우리들의 파티게임', '3인 이상 모였을 때: 라이어 게임 · 마피아 · 이마 퀴즈 · 몸으로 말해요. 진행은 앱이 맡고, 진실 혹은 도전 · 왕 게임도 술 · 선정적인 내용 없이 누구나 함께해요.'],
+      ['🎯', '내기가 필요할 때', '2인 이상: 커피는 누가 살지, 설거지는 누가 할지. 손가락 뽑기 · 사다리 타기 · 돌림판 · 폭탄 돌리기로 한 번에 정해요.'],
+      ['🏒', '둘이서 마주 보고', '폰 하나를 사이에 두고 에어하키 · 오목 · 연타 줄다리기로 한 판 붙어요.'],
+      ['🧩', '혼자서도', '스도쿠 · 2048 · 사과 게임 · 블록 퍼즐로 혼자 있을 때도 심심할 틈이 없어요.'],
+    ],
+    devices: '휴대폰에서도 태블릿에서도: 계정 없이 바로 시작하고, 플레이어 이름은 기기에만 저장해요. 판마다 모은 별사탕으로 새 게임을 열어요. 언어는 기기 설정을 따르고 앱 안에서도 바꿀 수 있어요.',
+    terms: '이용약관', privacy: '개인정보처리방침', support: '문의',
+  },
+  en: {
+    sub: 'Group games, bets & solo fun',
+    tagline: 'One phone, everyone plays.',
+    desc: 'From Liar Game, Mafia, Ladder Lottery and Spin Wheel to Air Hockey, Gomoku, Sudoku and 2048. On your own or with a whole group, one phone is all you need.',
+    soon: 'App Store · Coming soon',
+    play: 'Google Play · Coming soon',
+    features: [
+      ['🎉', 'Party games for all of us', 'When three or more get together: Liar Game, Mafia, Forehead Quiz and Charades, with the app as your host. Truth or Dare and King Game are family friendly too: no alcohol, nothing sexual.'],
+      ['🎯', 'Need a bet?', 'Two or more players: who buys the coffee, who does the dishes? Settle it in one go with Finger Picker, Ladder Lottery, Spin Wheel or Hot Bomb.'],
+      ['🏒', 'Head to head', 'Put one phone between you and face off in Air Hockey, Gomoku or Tap Tug of War.'],
+      ['🧩', 'Solo play', 'Sudoku, 2048, Apple 10 and Block Puzzle: never bored on your own.'],
+    ],
+    devices: 'On phones and tablets: no account, just start playing, and player names are saved on your device only. Collect Star Candy every round to open new games. The language follows your device and can be changed in the app.',
+    terms: 'Terms of Use', privacy: 'Privacy Policy', support: 'Support',
+  },
+  ja: {
+    sub: '集まって、賭けて、ひとりでも',
+    tagline: 'スマホ1台で、みんなのパーティーゲーム。',
+    desc: 'ライアーゲーム・マフィア・あみだくじ・ルーレットから、エアホッケー・五目並べ・ナンプレ・2048まで。ひとりでも、みんなで集まっても、スマホ1台で遊べます。',
+    soon: 'App Store・近日公開',
+    play: 'Google Play・近日公開',
+    features: [
+      ['🎉', 'みんなで遊ぶパーティーゲーム', '3人以上集まったら：ライアーゲーム・マフィア・おでこクイズ・ジェスチャーゲーム。進行はアプリにおまかせ。真実か挑戦か・王様ゲームも、お酒や性的な内容なしで誰でも一緒に楽しめます。'],
+      ['🎯', '賭けが必要なとき', '2人以上：コーヒーは誰がおごる？お皿洗いは誰？指ルーレット・あみだくじ・ルーレット・爆弾リレーで一発で決めましょう。'],
+      ['🏒', 'ふたりで対決', 'スマホ1台をはさんで向かい合い、エアホッケー・五目並べ・連打つなひきで勝負。'],
+      ['🧩', 'ひとりでも', 'ナンプレ・2048・りんご10・ブロックパズルで、ひとりの時間も退屈しません。'],
+    ],
+    devices: 'スマホでもタブレットでも：アカウントなしですぐに始められ、プレイヤーの名前は端末だけに保存します。毎回集めた金平糖で新しいゲームを開けます。言語は端末の設定に合わせ、アプリ内でも変えられます。',
+    terms: '利用規約', privacy: 'プライバシーポリシー', support: 'お問い合わせ',
+  },
+};
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+function pick() {
+  const q = new URLSearchParams(location.search).get('lang');
+  if (LANGS.includes(q)) return q;
+  try { const s = localStorage.getItem('lang'); if (LANGS.includes(s)) return s; } catch (e) {}
+  for (const l of (navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || 'en'])) {
+    const n = String(l).slice(0, 2).toLowerCase(); if (LANGS.includes(n)) return n;
+  }
+  return 'en';
+}
+function show(lang) {
+  const t = T[lang];
+  document.documentElement.lang = lang;
+  for (const k of ['sub', 'tagline', 'desc', 'soon', 'play', 'devices']) document.getElementById(k).textContent = t[k];
+  document.getElementById('features').innerHTML = t.features.map(([e, h, p]) =>
+    `<div class="feature"><div class="emoji">${e}</div><h3>${esc(h)}</h3><p>${esc(p)}</p></div>`).join('');
+  const terms = document.getElementById('f-terms'), privacy = document.getElementById('f-privacy');
+  terms.textContent = t.terms; terms.href = `terms.html?lang=${lang}`;
+  privacy.textContent = t.privacy; privacy.href = `privacy.html?lang=${lang}`;
+  document.getElementById('f-support').textContent = t.support;
+  document.querySelectorAll('.langs button').forEach(b => b.setAttribute('aria-pressed', b.dataset.lang === lang));
+}
+document.querySelectorAll('.langs button').forEach(b => b.addEventListener('click', () => {
+  try { localStorage.setItem('lang', b.dataset.lang); } catch (e) {}
+  show(b.dataset.lang);
+}));
+show(pick());
+</script>
+</body>
+</html>

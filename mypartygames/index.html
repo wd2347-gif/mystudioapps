@@ -23,7 +23,7 @@
      App Store 마케팅 URL 로 쓰면 AdMob 이 이 도메인의 app-ads.txt 로 앱을 인증한다.
      색은 아이콘 색종이의 보라(#A368FF)에서 온 파티 보라: 연보라 바탕(#F6F1FF → #E9DDFF), 짙은 보랏빛 회색 글, 강조 #7A3FE0(큰 글씨 · 점),
      작은 글씨(단추 · 링크)는 대비를 맞추려 한 톤 짙은 #6530C4. MyFidget 의 분홍 · MyVocal 의 초록 · MySlowSleep 의 크림은 쓰지 않는다.
-     카드 네 장은 앱 홈의 네 묶음(모여서 즐기는 · 내기가 필요할 때 · 둘이서 대결 · 혼자서도), 마케팅 세 축(모여서 3인 이상 · 내기 2인부터 · 혼자서도).
+     카드 네 장은 앱 홈의 네 묶음(10/11 홈 순서: 내기가 필요할 때 · 모여서 즐기는 · 둘이서 대결 · 혼자서도, 게임 이름은 my_party tool/store/listing.py 그대로), 마케팅 세 축(모여서 3인 이상 · 내기 2인부터 · 혼자서도).
      문구 규칙: 게임 개수, 가격 이야기, NEW 표시 쓰지 않기. 줄표 대신 쌍점. -->
 <style>
   :root {
@@ -111,10 +111,10 @@ const T = {
     soon: 'App Store · 곧 출시',
     play: 'Google Play · 곧 출시',
     features: [
-      ['🎉', '모여서 즐기는 우리들의 파티게임', '3인 이상 모였을 때: 라이어 게임 · 마피아 · 이마 퀴즈 · 몸으로 말해요. 진행은 앱이 맡고, 진실 혹은 도전 · 왕 게임도 술 · 선정적인 내용 없이 누구나 함께해요.'],
       ['🎯', '내기가 필요할 때', '2인 이상: 커피는 누가 살지, 설거지는 누가 할지. 손가락 뽑기 · 사다리 타기 · 돌림판 · 폭탄 돌리기로 한 번에 정해요.'],
+      ['🎉', '모여서 즐기는 우리들의 파티게임', '3인 이상 모였을 때: 라이어 게임 · 마피아 · 스무고개 · 진진가 · 말없이 순서대로. 진행은 앱이 맡고, 왕 게임도 술 · 선정적인 내용 없이 누구나 함께해요.'],
       ['🏒', '둘이서 마주 보고', '폰 하나를 사이에 두고 에어하키 · 오목 · 연타 줄다리기로 한 판 붙어요.'],
-      ['🧩', '혼자서도', '스도쿠 · 2048 · 사과 게임 · 블록 퍼즐로 혼자 있을 때도 심심할 틈이 없어요.'],
+      ['🧩', '혼자서도', '스도쿠 · 2048 · 사과 게임 · 블록 퍼즐 · 슬라이드 퍼즐로 혼자 있을 때도 심심할 틈이 없어요.'],
     ],
     devices: '휴대폰에서도 태블릿에서도: 계정 없이 바로 시작하고, 플레이어 이름은 기기에만 저장해요. 판마다 모은 별사탕으로 새 게임을 열어요. 언어는 기기 설정을 따르고 앱 안에서도 바꿀 수 있어요.',
     terms: '이용약관', privacy: '개인정보처리방침', support: '문의',
@@ -126,10 +126,10 @@ const T = {
     soon: 'App Store · Coming soon',
     play: 'Google Play · Coming soon',
     features: [
-      ['🎉', 'Party games for all of us', 'When three or more get together: Liar Game, Mafia, Forehead Quiz and Charades, with the app as your host. Truth or Dare and King Game are family friendly too: no alcohol, nothing sexual.'],
       ['🎯', 'Need a bet?', 'Two or more players: who buys the coffee, who does the dishes? Settle it in one go with Finger Picker, Ladder Lottery, Spin Wheel or Hot Bomb.'],
+      ['🎉', 'Party games for all of us', 'When three or more get together: Liar Game, Mafia, Twenty Questions, Speed Quiz and In Silent Order, with the app as your host. King Game is family friendly too: no alcohol, nothing sexual.'],
       ['🏒', 'Head to head', 'Put one phone between you and face off in Air Hockey, Gomoku or Tap Tug of War.'],
-      ['🧩', 'Solo play', 'Sudoku, 2048, Apple 10 and Block Puzzle: never bored on your own.'],
+      ['🧩', 'Solo play', 'Sudoku, 2048, Block Puzzle and Slide Puzzle: never bored on your own.'],
     ],
     devices: 'On phones and tablets: no account, just start playing, and player names are saved on your device only. Collect Star Candy every round to open new games. The language follows your device and can be changed in the app.',
     terms: 'Terms of Use', privacy: 'Privacy Policy', support: 'Support',
@@ -137,14 +137,14 @@ const T = {
   ja: {
     sub: '集まって、賭けて、ひとりでも',
     tagline: 'スマホ1台で、みんなのパーティーゲーム。',
-    desc: 'ライアーゲーム・マフィア・あみだくじ・ルーレットから、エアホッケー・五目並べ・ナンプレ・2048まで。ひとりでも、みんなで集まっても、スマホ1台で遊べます。',
+    desc: 'うそつき探し・マフィア・あみだくじ・ルーレットから、エアホッケー・五目並べ・ナンプレ・2048まで。ひとりでも、みんなで集まっても、スマホ1台で遊べます。',
     soon: 'App Store・近日公開',
     play: 'Google Play・近日公開',
     features: [
-      ['🎉', 'みんなで遊ぶパーティーゲーム', '3人以上集まったら：ライアーゲーム・マフィア・おでこクイズ・ジェスチャーゲーム。進行はアプリにおまかせ。真実か挑戦か・王様ゲームも、お酒や性的な内容なしで誰でも一緒に楽しめます。'],
       ['🎯', '賭けが必要なとき', '2人以上：コーヒーは誰がおごる？お皿洗いは誰？指ルーレット・あみだくじ・ルーレット・爆弾リレーで一発で決めましょう。'],
+      ['🎉', 'みんなで遊ぶパーティーゲーム', '3人以上集まったら：うそつき探し・マフィア・20の質問・2つの本当と1つのうそ・無言で順番に。進行はアプリにおまかせ。王様ゲームも、お酒や性的な内容なしで誰でも一緒に楽しめます。'],
       ['🏒', 'ふたりで対決', 'スマホ1台をはさんで向かい合い、エアホッケー・五目並べ・連打つなひきで勝負。'],
-      ['🧩', 'ひとりでも', 'ナンプレ・2048・りんご10・ブロックパズルで、ひとりの時間も退屈しません。'],
+      ['🧩', 'ひとりでも', 'ナンプレ・2048・りんご10・ブロックパズル・スライドパズルで、ひとりの時間も退屈しません。'],
     ],
     devices: 'スマホでもタブレットでも：アカウントなしですぐに始められ、プレイヤーの名前は端末だけに保存します。毎回集めた金平糖で新しいゲームを開けます。言語は端末の設定に合わせ、アプリ内でも変えられます。',
     terms: '利用規約', privacy: 'プライバシーポリシー', support: 'お問い合わせ',

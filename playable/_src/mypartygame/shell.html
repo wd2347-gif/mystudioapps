@@ -308,9 +308,12 @@ var GAMES = {};
   /* 2026-10-12 (사용자: 체험판에도 배경음악): the advertised app's own track loops quietly under the effects.
      Apps that preload this page off screen send window events: 'xpromo-shown' when it appears (sound starts then, or on the
      first tap) and 'xpromo-hidden' when it closes (sound stops). Nothing plays before either, so a preloaded page stays silent. */
-  var BGM = { url: '../../assets/mypartygame/ad_music.mp3', on: false };
+  /* mix: other music (Spotify …) is already playing on the phone. The app says so with ?mix=1 or xpromoShown({mix: true}):
+   then the page mixes with it ('ambient', follows the silent switch) and skips its own background music, so the user's music is not cut. */
+var XP = { mix: Q.get('mix') === '1' };
+var BGM = { url: '../../assets/mypartygame/ad_music.mp3', on: false };
   function bgmStart(ac) {
-    if (!ac || BGM.on || Q.get('sound') === '0' || Q.get('music') === '0') return;  // music=0: 앱 배경음악을 끈 사용자(효과음은 그대로)
+    if (!ac || BGM.on || Q.get('sound') === '0' || Q.get('music') === '0' || XP.mix) return;  // music=0: 앱 배경음악을 끈 사용자(효과음은 그대로)
     BGM.on = true;
     fetch(BGM.url).then(function (r) { if (!r.ok) throw new Error('bgm'); return r.arrayBuffer(); })
       .then(function (b) { return new Promise(function (ok, no) { ac.decodeAudioData(b, ok, no); }); })
@@ -336,7 +339,7 @@ var GAMES = {};
       var AC = window.AudioContext || window.webkitAudioContext;
       if (!AC) { dead = true; return; }
       try {
-        try { if (navigator.audioSession && Q.get('host') === 'app') navigator.audioSession.type = 'playback'; } catch (e) {}
+        try { if (navigator.audioSession && Q.get('host') === 'app') navigator.audioSession.type = XP.mix ? 'ambient' : 'playback'; } catch (e) {}
         ac = new AC();
         master = ac.createGain(); master.gain.value = 0.55; master.connect(ac.destination);
         var b = ac.createBuffer(1, 1, 22050), s = ac.createBufferSource(); s.buffer = b; s.connect(ac.destination); s.start(0);
@@ -798,7 +801,7 @@ var GAMES = {};
   // first tap unlocks audio; no scrolling, pinch zoom, double-tap zoom or long-press menu
   window.addEventListener('xpromo-shown', function () { S.unlock(); S.resume(); });
   window.addEventListener('xpromo-hidden', function () { var c = S.ctx(); if (c && c.suspend) c.suspend()['catch'](function () {}); });
-  window.xpromoShown = function () { window.dispatchEvent(new Event('xpromo-shown')); };  // apps may call these instead of dispatching the events
+  window.xpromoShown = function (o) { if (o && o.mix) XP.mix = true; window.dispatchEvent(new Event('xpromo-shown')); };  // apps may call these instead of dispatching the events
   window.xpromoHidden = function () { window.dispatchEvent(new Event('xpromo-hidden')); };
   document.addEventListener('pointerdown', S.unlock, true);
   document.addEventListener('touchend', S.unlock, true);

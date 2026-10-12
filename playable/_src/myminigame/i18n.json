@@ -1,0 +1,858 @@
+{
+ "Solo Mini Games": {
+  "zh-Hant": "單人迷你遊戲",
+  "de": "Solo-Minispiele",
+  "es": "Minijuegos en solitario",
+  "fr": "Mini-jeux en solo",
+  "pt": "Minijogos solo",
+  "ar": "ألعاب مصغّرة فردية"
+ },
+ "Mini games for any break": {
+  "zh-Hant": "隨時都能玩的迷你遊戲",
+  "de": "Minispiele für jede Pause",
+  "es": "Minijuegos para cada descanso",
+  "fr": "Des mini-jeux pour chaque pause",
+  "pt": "Minijogos para qualquer pausa",
+  "ar": "ألعاب مصغّرة لكل استراحة"
+ },
+ "Another game": {
+  "zh-Hant": "換一個",
+  "de": "Anderes Spiel",
+  "es": "Otro juego",
+  "fr": "Un autre jeu",
+  "pt": "Outro jogo",
+  "ar": "لعبة أخرى"
+ },
+ "Install": {
+  "zh-Hant": "安裝",
+  "de": "Installieren",
+  "es": "Instalar",
+  "fr": "Installer",
+  "pt": "Instalar",
+  "ar": "تثبيت"
+ },
+ "Arcade": {
+  "zh-Hant": "街機",
+  "de": "Arcade",
+  "es": "Arcade",
+  "fr": "Arcade",
+  "pt": "Arcade",
+  "ar": "ألعاب الأركيد"
+ },
+ "Puzzles": {
+  "zh-Hant": "益智解謎",
+  "de": "Rätsel",
+  "es": "Puzles",
+  "fr": "Puzzles",
+  "pt": "Quebra-cabeças",
+  "ar": "ألغاز"
+ },
+ "Brain & Memory": {
+  "zh-Hant": "腦力・記憶",
+  "de": "Kopf & Gedächtnis",
+  "es": "Mente y memoria",
+  "fr": "Cerveau et mémoire",
+  "pt": "Mente e memória",
+  "ar": "الذكاء والذاكرة"
+ },
+ "Tap to launch!": {
+  "zh-Hant": "點一下發射！",
+  "de": "Tippen zum Abschießen!",
+  "es": "¡Toca para lanzar!",
+  "fr": "Touche pour lancer !",
+  "pt": "Toque para lançar!",
+  "ar": "اضغط للإطلاق!"
+ },
+ "Cleared!": {
+  "zh-Hant": "過關！",
+  "de": "Geschafft!",
+  "es": "¡Superado!",
+  "fr": "Réussi !",
+  "pt": "Concluído!",
+  "ar": "أحسنت!"
+ },
+ "Game over": {
+  "zh-Hant": "遊戲結束",
+  "de": "Spiel vorbei",
+  "es": "Fin del juego",
+  "fr": "Partie terminée",
+  "pt": "Fim de jogo",
+  "ar": "انتهت اللعبة"
+ },
+ "New record!": {
+  "zh-Hant": "新紀錄！",
+  "de": "Neuer Rekord!",
+  "es": "¡Nuevo récord!",
+  "fr": "Nouveau record !",
+  "pt": "Novo recorde!",
+  "ar": "رقم قياسي جديد!"
+ },
+ "Score {0} · Best combo {1}": {
+  "zh-Hant": "分數 {0}・最高連擊 {1}",
+  "de": "Punkte {0} · Beste Kombo {1}",
+  "es": "Puntos {0} · Mejor combo {1}",
+  "fr": "Score {0} · Meilleur combo {1}",
+  "pt": "Pontos {0} · Melhor combo {1}",
+  "ar": "النقاط {0} · أفضل سلسلة {1}"
+ },
+ "Score": {
+  "zh-Hant": "分數",
+  "de": "Punkte",
+  "es": "Puntos",
+  "fr": "Score",
+  "pt": "Pontos",
+  "ar": "النقاط"
+ },
+ "Best": {
+  "zh-Hant": "最佳紀錄",
+  "de": "Rekord",
+  "es": "Récord",
+  "fr": "Record",
+  "pt": "Recorde",
+  "ar": "الأفضل"
+ },
+ "Play again": {
+  "zh-Hant": "再玩一次",
+  "de": "Nochmal",
+  "es": "Otra vez",
+  "fr": "Rejouer",
+  "pt": "Jogar de novo",
+  "ar": "العب مرة أخرى"
+ },
+ "Multi-ball!": {
+  "zh-Hant": "多顆球！",
+  "de": "Multiball!",
+  "es": "¡Multibola!",
+  "fr": "Multi-balles !",
+  "pt": "Multibola!",
+  "ar": "كرات متعددة!"
+ },
+ "Wide paddle!": {
+  "zh-Hant": "加寬球拍！",
+  "de": "Breiter Schläger!",
+  "es": "¡Paleta ancha!",
+  "fr": "Raquette large !",
+  "pt": "Raquete larga!",
+  "ar": "مضرب عريض!"
+ },
+ "Slow ball!": {
+  "zh-Hant": "慢速球！",
+  "de": "Langsamer Ball!",
+  "es": "¡Bola lenta!",
+  "fr": "Balle lente !",
+  "pt": "Bola lenta!",
+  "ar": "كرة بطيئة!"
+ },
+ "Brick Breaker": {
+  "zh-Hant": "打磚塊",
+  "de": "Blockbrecher",
+  "es": "Rompeladrillos",
+  "fr": "Casse-briques",
+  "pt": "Quebra-tijolos",
+  "ar": "كسر الطوب"
+ },
+ "Bounce the ball and smash every brick": {
+  "zh-Hant": "反彈球，打掉所有磚塊",
+  "de": "Lass den Ball abprallen und knacke alle Steine",
+  "es": "Rebota la bola y rompe todos los ladrillos",
+  "fr": "Fais rebondir la balle et casse toutes les briques",
+  "pt": "Rebata a bola e quebre todos os tijolos",
+  "ar": "ارتدّ بالكرة وحطّم كل الطوب"
+ },
+ "Bonus +{0}": {
+  "zh-Hant": "額外加分 +{0}",
+  "de": "Bonus +{0}",
+  "es": "Bonus +{0}",
+  "fr": "Bonus +{0}",
+  "pt": "Bônus +{0}",
+  "ar": "مكافأة +{0}"
+ },
+ "Ceiling drops!": {
+  "zh-Hant": "天花板下降！",
+  "de": "Die Decke sinkt!",
+  "es": "¡Baja el techo!",
+  "fr": "Le plafond descend !",
+  "pt": "O teto desce!",
+  "ar": "السقف ينزل!"
+ },
+ "Next level": {
+  "zh-Hant": "下一關",
+  "de": "Nächstes Level",
+  "es": "Siguiente nivel",
+  "fr": "Niveau suivant",
+  "pt": "Próximo nível",
+  "ar": "المستوى التالي"
+ },
+ "New best!": {
+  "zh-Hant": "新紀錄！",
+  "de": "Neuer Rekord!",
+  "es": "¡Nuevo récord!",
+  "fr": "Nouveau record !",
+  "pt": "Novo recorde!",
+  "ar": "رقم قياسي جديد!"
+ },
+ "{0} points": {
+  "zh-Hant": "{0} 分",
+  "de": "{0} Punkte",
+  "es": "{0} puntos",
+  "fr": "{0} points",
+  "pt": "{0} pontos",
+  "ar": "النقاط: {0}"
+ },
+ "Bubble Burst": {
+  "zh-Hant": "射泡泡",
+  "de": "Blasenplatzer",
+  "es": "Burbujas",
+  "fr": "Bulles",
+  "pt": "Estoura-bolhas",
+  "ar": "تفجير الفقاعات"
+ },
+ "Drag to aim, release to shoot!": {
+  "zh-Hant": "拖曳瞄準，放開發射！",
+  "de": "Ziehen zum Zielen, loslassen zum Schießen!",
+  "es": "¡Arrastra para apuntar y suelta para disparar!",
+  "fr": "Glisse pour viser, relâche pour tirer !",
+  "pt": "Arraste para mirar e solte para atirar!",
+  "ar": "اسحب للتصويب وارفع إصبعك للإطلاق!"
+ },
+ "Stage {0}": {
+  "zh-Hant": "第{0}關",
+  "de": "Stufe {0}",
+  "es": "Nivel {0}",
+  "fr": "Niveau {0}",
+  "pt": "Fase {0}",
+  "ar": "المرحلة {0}"
+ },
+ "Boss!": {
+  "zh-Hant": "魔王！",
+  "de": "Boss!",
+  "es": "¡Jefe!",
+  "fr": "Boss !",
+  "pt": "Chefe!",
+  "ar": "الزعيم!"
+ },
+ "Bounced off!": {
+  "zh-Hant": "被彈開了！",
+  "de": "Abgeprallt!",
+  "es": "¡Rebotó!",
+  "fr": "Ça a rebondi !",
+  "pt": "Quicou!",
+  "ar": "ارتدّ السهم!"
+ },
+ "Stage {0} · Darts: {1} · Apples: {2}": {
+  "zh-Hant": "第{0}關・飛鏢{1}支・蘋果{2}顆",
+  "de": "Stufe {0} · Pfeile: {1} · Äpfel: {2}",
+  "es": "Nivel {0} · Dardos: {1} · Manzanas: {2}",
+  "fr": "Niveau {0} · Fléchettes : {1} · Pommes : {2}",
+  "pt": "Fase {0} · Dardos: {1} · Maçãs: {2}",
+  "ar": "المرحلة {0} · السهام: {1} · التفاح: {2}"
+ },
+ "Dart Spin": {
+  "zh-Hant": "旋轉飛鏢",
+  "de": "Dart-Dreher",
+  "es": "Dardos giratorios",
+  "fr": "Fléchettes tournantes",
+  "pt": "Dardos giratórios",
+  "ar": "السهام الدوّارة"
+ },
+ "Tap to throw: miss the stuck darts!": {
+  "zh-Hant": "點一下投出去：避開插著的飛鏢！",
+  "de": "Tippen zum Werfen: steckende Pfeile meiden!",
+  "es": "Toca para lanzar: ¡evita los dardos clavados!",
+  "fr": "Touche pour lancer : évite les fléchettes plantées !",
+  "pt": "Toque para lançar: desvie dos dardos cravados!",
+  "ar": "اضغط للرمي: تجنّب السهام المغروسة!"
+ },
+ "Tap to flap!": {
+  "zh-Hant": "點一下拍翅膀！",
+  "de": "Tippen zum Flattern!",
+  "es": "¡Toca para aletear!",
+  "fr": "Touche pour voler !",
+  "pt": "Toque para voar!",
+  "ar": "اضغط لترفرف!"
+ },
+ "You flew through {0} gaps": {
+  "zh-Hant": "穿過了{0}個柱子",
+  "de": "Du bist durch {0} Lücken geflogen",
+  "es": "Cruzaste {0} huecos",
+  "fr": "Tu as franchi {0} passages",
+  "pt": "Você passou por {0} vãos",
+  "ar": "عبرت {0} من الفجوات"
+ },
+ "You flew through 1 gap": {
+  "zh-Hant": "穿過了1個柱子",
+  "de": "Du bist durch 1 Lücke geflogen",
+  "es": "Cruzaste 1 hueco",
+  "fr": "Tu as franchi 1 passage",
+  "pt": "Você passou por 1 vão",
+  "ar": "عبرت فجوة واحدة"
+ },
+ "So close! Try to clear the first gap": {
+  "zh-Hant": "好可惜！試著穿過第一個柱子",
+  "de": "Knapp! Schaff die erste Lücke",
+  "es": "¡Casi! Intenta cruzar el primer hueco",
+  "fr": "Presque ! Essaie de passer le premier pilier",
+  "pt": "Quase! Tente passar o primeiro vão",
+  "ar": "كدت تنجح! حاول عبور الفجوة الأولى"
+ },
+ "Flap Flap": {
+  "zh-Hant": "飛飛鳥",
+  "de": "Flatter-Vogel",
+  "es": "Pájaro saltarín",
+  "fr": "Oiseau volant",
+  "pt": "Pássaro voador",
+  "ar": "طائر الرفرفة"
+ },
+ "Tap to flap through the gaps": {
+  "zh-Hant": "點一下拍翅膀，穿過縫隙",
+  "de": "Tippe zum Flattern durch die Lücken",
+  "es": "Toca para aletear entre los huecos",
+  "fr": "Touche pour battre des ailes entre les piliers",
+  "pt": "Toque para bater asas entre as colunas",
+  "ar": "اضغط لترفرف عبر الفجوات"
+ },
+ "Flows": {
+  "zh-Hant": "已連線",
+  "de": "Verbunden",
+  "es": "Unidas",
+  "fr": "Reliées",
+  "pt": "Ligadas",
+  "ar": "الخطوط"
+ },
+ "Filled": {
+  "zh-Hant": "填滿",
+  "de": "Gefüllt",
+  "es": "Lleno",
+  "fr": "Rempli",
+  "pt": "Preenchido",
+  "ar": "الامتلاء"
+ },
+ "Empty squares left: fill them all with lines": {
+  "zh-Hant": "還有空格：用線全部填滿",
+  "de": "Noch leere Felder: fülle alle mit Linien",
+  "es": "Quedan casillas vacías: llénalas con líneas",
+  "fr": "Il reste des cases vides : remplis-les",
+  "pt": "Ainda há casas vazias: preencha todas",
+  "ar": "بقيت مربعات فارغة: املأها كلها بالخطوط"
+ },
+ "Color Link": {
+  "zh-Hant": "連連線",
+  "de": "Farben verbinden",
+  "es": "Une colores",
+  "fr": "Relie les couleurs",
+  "pt": "Ligue as cores",
+  "ar": "وصل الألوان"
+ },
+ "Link matching colors and fill the board": {
+  "zh-Hant": "把相同顏色連起來，填滿格子",
+  "de": "Verbinde gleiche Farben und fülle das Feld",
+  "es": "Une colores iguales y llena el tablero",
+  "fr": "Relie les mêmes couleurs et remplis la grille",
+  "pt": "Ligue as cores iguais e preencha tudo",
+  "ar": "صِل الألوان المتشابهة واملأ اللوحة"
+ },
+ "Moves left": {
+  "zh-Hant": "剩餘步數",
+  "de": "Züge übrig",
+  "es": "Movimientos",
+  "fr": "Coups restants",
+  "pt": "Jogadas",
+  "ar": "الحركات المتبقية"
+ },
+ "Combo x{0}!": {
+  "zh-Hant": "連擊 x{0}!",
+  "de": "Kombo x{0}!",
+  "es": "¡Combo x{0}!",
+  "fr": "Combo x{0} !",
+  "pt": "Combo x{0}!",
+  "ar": "كومبو x{0}!"
+ },
+ "Shuffle!": {
+  "zh-Hant": "重新洗牌！",
+  "de": "Mischen!",
+  "es": "¡A mezclar!",
+  "fr": "On mélange !",
+  "pt": "Embaralhando!",
+  "ar": "خلط!"
+ },
+ "Finish!": {
+  "zh-Hant": "結束！",
+  "de": "Ende!",
+  "es": "¡Fin!",
+  "fr": "Terminé !",
+  "pt": "Fim!",
+  "ar": "انتهى!"
+ },
+ "Gem Match": {
+  "zh-Hant": "寶石消消樂",
+  "de": "Juwelen-Match",
+  "es": "Joyas en raya",
+  "fr": "Gemmes alignées",
+  "pt": "Joias em linha",
+  "ar": "مطابقة الجواهر"
+ },
+ "Swap gems to make three in a row": {
+  "zh-Hant": "交換寶石三個連成一線就消除！",
+  "de": "Tausche Juwelen für drei in einer Reihe",
+  "es": "Intercambia joyas y haz tres en raya",
+  "fr": "Échange les gemmes pour en aligner trois",
+  "pt": "Troque joias e forme três em linha",
+  "ar": "بدّل الجواهر لتصنع ثلاثًا متتالية"
+ },
+ "Level": {
+  "zh-Hant": "關卡",
+  "de": "Stufe",
+  "es": "Nivel",
+  "fr": "Niveau",
+  "pt": "Nível",
+  "ar": "المستوى"
+ },
+ "Level {0}!": {
+  "zh-Hant": "第{0}關！",
+  "de": "Stufe {0}!",
+  "es": "¡Nivel {0}!",
+  "fr": "Niveau {0} !",
+  "pt": "Nível {0}!",
+  "ar": "المستوى {0}!"
+ },
+ "Difference {0}%": {
+  "zh-Hant": "色差 {0}%",
+  "de": "Unterschied {0} %",
+  "es": "Diferencia {0} %",
+  "fr": "Écart {0} %",
+  "pt": "Diferença {0}%",
+  "ar": "الفرق {0}%"
+ },
+ "{0}s": {
+  "zh-Hant": "{0}秒",
+  "de": "{0} s",
+  "es": "{0} s",
+  "fr": "{0} s",
+  "pt": "{0} s",
+  "ar": "{0} ث"
+ },
+ "Time’s up!": {
+  "zh-Hant": "時間到！",
+  "de": "Zeit um!",
+  "es": "¡Se acabó el tiempo!",
+  "fr": "Temps écoulé !",
+  "pt": "Acabou o tempo!",
+  "ar": "انتهى الوقت!"
+ },
+ "Levels cleared: {0}": {
+  "zh-Hant": "過了{0}關",
+  "de": "Geschaffte Stufen: {0}",
+  "es": "Niveles superados: {0}",
+  "fr": "Niveaux réussis : {0}",
+  "pt": "Níveis concluídos: {0}",
+  "ar": "المستويات المجتازة: {0}"
+ },
+ "Misses: {0}": {
+  "zh-Hant": "失誤{0}次",
+  "de": "Fehler: {0}",
+  "es": "Fallos: {0}",
+  "fr": "Erreurs : {0}",
+  "pt": "Erros: {0}",
+  "ar": "الأخطاء: {0}"
+ },
+ "Finest difference {0}%": {
+  "zh-Hant": "分辨出的最小色差 {0}%",
+  "de": "Kleinster Unterschied {0} %",
+  "es": "Diferencia más fina {0} %",
+  "fr": "Plus petit écart {0} %",
+  "pt": "Menor diferença {0}%",
+  "ar": "أدق فرق {0}%"
+ },
+ "Odd Color": {
+  "zh-Hant": "找不同顏色",
+  "de": "Andere Farbe",
+  "es": "El color distinto",
+  "fr": "Couleur intruse",
+  "pt": "Cor diferente",
+  "ar": "اللون المختلف"
+ },
+ "Find the one tile that’s slightly off": {
+  "zh-Hant": "找出顏色稍微不同的那格",
+  "de": "Finde das Feld mit der anderen Farbe",
+  "es": "Encuentra la casilla de color distinto",
+  "fr": "Trouve la case d’une couleur différente",
+  "pt": "Ache o quadrado de cor diferente",
+  "ar": "اعثر على المربع ذي اللون المختلف"
+ },
+ "Wait…": {
+  "zh-Hant": "等一下…",
+  "de": "Warte…",
+  "es": "Espera…",
+  "fr": "Attends…",
+  "pt": "Espere…",
+  "ar": "انتظر…"
+ },
+ "Tap as soon as it turns green!": {
+  "zh-Hant": "變綠就馬上點！",
+  "de": "Tippe, sobald es grün wird!",
+  "es": "¡Toca en cuanto se ponga verde!",
+  "fr": "Touche dès que ça devient vert !",
+  "pt": "Toque assim que ficar verde!",
+  "ar": "اضغط فور تحوّله إلى الأخضر!"
+ },
+ "Tap!": {
+  "zh-Hant": "就是現在！",
+  "de": "Jetzt!",
+  "es": "¡Ya!",
+  "fr": "Maintenant !",
+  "pt": "Agora!",
+  "ar": "الآن!"
+ },
+ "Too soon!": {
+  "zh-Hant": "太快了！",
+  "de": "Zu früh!",
+  "es": "¡Demasiado pronto!",
+  "fr": "Trop tôt !",
+  "pt": "Cedo demais!",
+  "ar": "مبكر جدًا!"
+ },
+ "Wait for green. Tap to retry": {
+  "zh-Hant": "要等變綠喔。點一下重來",
+  "de": "Warte auf Grün. Tippen zum Wiederholen",
+  "es": "Espera al verde. Toca para repetir",
+  "fr": "Attends le vert. Touche pour réessayer",
+  "pt": "Espere o verde. Toque para repetir",
+  "ar": "انتظر الأخضر. اضغط لإعادة المحاولة"
+ },
+ "Tap for next": {
+  "zh-Hant": "點一下繼續",
+  "de": "Tippen für weiter",
+  "es": "Toca para seguir",
+  "fr": "Touche pour continuer",
+  "pt": "Toque para continuar",
+  "ar": "اضغط للتالي"
+ },
+ "Tap to see results": {
+  "zh-Hant": "點一下看結果",
+  "de": "Tippen für das Ergebnis",
+  "es": "Toca para ver el resultado",
+  "fr": "Touche pour voir le résultat",
+  "pt": "Toque para ver o resultado",
+  "ar": "اضغط لرؤية النتيجة"
+ },
+ "Average {0} · Fastest {1}": {
+  "zh-Hant": "平均 {0}・最快 {1}",
+  "de": "Schnitt {0} · Schnellste {1}",
+  "es": "Media {0} · Mejor {1}",
+  "fr": "Moyenne {0} · Meilleur {1}",
+  "pt": "Média {0} · Mais rápido {1}",
+  "ar": "المتوسط {0} · الأسرع {1}"
+ },
+ "Too soon: {0}": {
+  "zh-Hant": "太快 {0} 次",
+  "de": "Zu früh: {0}",
+  "es": "Antes de tiempo: {0}",
+  "fr": "Trop tôt : {0}",
+  "pt": "Antes da hora: {0}",
+  "ar": "مبكر: {0}"
+ },
+ "Lightning": {
+  "zh-Hant": "閃電",
+  "de": "Blitz",
+  "es": "Rayo",
+  "fr": "Éclair",
+  "pt": "Relâmpago",
+  "ar": "برق"
+ },
+ "Lightning-fast hands!": {
+  "zh-Hant": "快如閃電的手！",
+  "de": "Blitzschnelle Hände!",
+  "es": "¡Manos rápidas como un rayo!",
+  "fr": "Des mains rapides comme l’éclair !",
+  "pt": "Mãos rápidas como um raio!",
+  "ar": "يدان سريعتان كالبرق!"
+ },
+ "Cheetah": {
+  "zh-Hant": "獵豹",
+  "de": "Gepard",
+  "es": "Guepardo",
+  "fr": "Guépard",
+  "pt": "Guepardo",
+  "ar": "فهد"
+ },
+ "Fast as a cheetah!": {
+  "zh-Hant": "跟獵豹一樣快！",
+  "de": "Schnell wie ein Gepard!",
+  "es": "¡Rápido como un guepardo!",
+  "fr": "Rapide comme un guépard !",
+  "pt": "Rápido como um guepardo!",
+  "ar": "سريع كالفهد!"
+ },
+ "Cat": {
+  "zh-Hant": "貓咪",
+  "de": "Katze",
+  "es": "Gato",
+  "fr": "Chat",
+  "pt": "Gato",
+  "ar": "قطّ"
+ },
+ "Quick as a cat!": {
+  "zh-Hant": "像貓咪一樣敏捷！",
+  "de": "Flink wie eine Katze!",
+  "es": "¡Ágil como un gato!",
+  "fr": "Vif comme un chat !",
+  "pt": "Ágil como um gato!",
+  "ar": "سريع كالقطّ!"
+ },
+ "Bunny": {
+  "zh-Hant": "兔子",
+  "de": "Hase",
+  "es": "Conejo",
+  "fr": "Lapin",
+  "pt": "Coelho",
+  "ar": "أرنب"
+ },
+ "Speedy like a bunny": {
+  "zh-Hant": "像兔子一樣靈活",
+  "de": "Fix wie ein Hase",
+  "es": "Veloz como un conejo",
+  "fr": "Rapide comme un lapin",
+  "pt": "Veloz como um coelho",
+  "ar": "سريع كالأرنب"
+ },
+ "Penguin": {
+  "zh-Hant": "企鵝",
+  "de": "Pinguin",
+  "es": "Pingüino",
+  "fr": "Pingouin",
+  "pt": "Pinguim",
+  "ar": "بطريق"
+ },
+ "Waddling penguin, a bit faster!": {
+  "zh-Hant": "像企鵝搖搖擺擺，再快一點！",
+  "de": "Watschelnder Pinguin, etwas schneller!",
+  "es": "Pingüino torpe, ¡un poco más rápido!",
+  "fr": "Pingouin qui se dandine, encore un effort !",
+  "pt": "Pinguim desajeitado, mais rápido!",
+  "ar": "بطريق يتمايل، أسرع قليلًا!"
+ },
+ "Turtle": {
+  "zh-Hant": "烏龜",
+  "de": "Schildkröte",
+  "es": "Tortuga",
+  "fr": "Tortue",
+  "pt": "Tartaruga",
+  "ar": "سلحفاة"
+ },
+ "Easygoing turtle": {
+  "zh-Hant": "像烏龜一樣悠哉",
+  "de": "Gemütliche Schildkröte",
+  "es": "Tortuga tranquila",
+  "fr": "Tortue tranquille",
+  "pt": "Tartaruga tranquila",
+  "ar": "سلحفاة هادئة"
+ },
+ "Sloth": {
+  "zh-Hant": "樹懶",
+  "de": "Faultier",
+  "es": "Perezoso",
+  "fr": "Paresseux",
+  "pt": "Bicho-preguiça",
+  "ar": "كسلان"
+ },
+ "Sloth mode… sleepy?": {
+  "zh-Hant": "樹懶模式…想睡了嗎？",
+  "de": "Faultier-Modus… müde?",
+  "es": "Modo perezoso… ¿tienes sueño?",
+  "fr": "Mode paresseux… fatigué ?",
+  "pt": "Modo preguiça… com sono?",
+  "ar": "وضع الكسلان… هل تشعر بالنعاس؟"
+ },
+ "Reaction Time": {
+  "zh-Hant": "反應速度",
+  "de": "Reaktionszeit",
+  "es": "Tiempo de reacción",
+  "fr": "Temps de réaction",
+  "pt": "Tempo de reação",
+  "ar": "سرعة رد الفعل"
+ },
+ "Tap the moment it turns green": {
+  "zh-Hant": "變綠的瞬間點下去！",
+  "de": "Tippe, sobald es grün wird",
+  "es": "Toca en cuanto se ponga verde",
+  "fr": "Touche dès que ça devient vert",
+  "pt": "Toque assim que ficar verde",
+  "ar": "اضغط لحظة تحوّله إلى الأخضر"
+ },
+ "{0} combo! +{0}": {
+  "zh-Hant": "{0}連切！+{0}",
+  "de": "{0}er-Combo! +{0}",
+  "es": "¡Combo {0}! +{0}",
+  "fr": "Combo {0} ! +{0}",
+  "pt": "Combo {0}! +{0}",
+  "ar": "سلسلة {0}! +{0}"
+ },
+ "Boom!": {
+  "zh-Hant": "砰！",
+  "de": "Bumm!",
+  "es": "¡Bum!",
+  "fr": "Boum !",
+  "pt": "Bum!",
+  "ar": "بوم!"
+ },
+ "Missed 3 fruits": {
+  "zh-Hant": "漏掉了3個",
+  "de": "3 Früchte verpasst",
+  "es": "Se escaparon 3 frutas",
+  "fr": "3 fruits ratés",
+  "pt": "Deixou cair 3 frutas",
+  "ar": "فاتتك 3 فواكه"
+ },
+ "Fruits: {0} · Best combo: {1}": {
+  "zh-Hant": "水果{0}個・最高連切{1}",
+  "de": "Früchte: {0} · Beste Combo: {1}",
+  "es": "Frutas: {0} · Mejor combo: {1}",
+  "fr": "Fruits : {0} · Meilleur combo : {1}",
+  "pt": "Frutas: {0} · Melhor combo: {1}",
+  "ar": "الفواكه: {0} · أفضل سلسلة: {1}"
+ },
+ "Fruit Slice": {
+  "zh-Hant": "切水果",
+  "de": "Obst schneiden",
+  "es": "Corta frutas",
+  "fr": "Coupe-fruits",
+  "pt": "Corte de frutas",
+  "ar": "تقطيع الفواكه"
+ },
+ "Swipe to slice, dodge the bombs!": {
+  "zh-Hant": "一劃切開，避開炸彈！",
+  "de": "Wischen zum Schneiden, Bomben meiden!",
+  "es": "¡Desliza para cortar y esquiva las bombas!",
+  "fr": "Glisse pour couper, évite les bombes !",
+  "pt": "Deslize para cortar e fuja das bombas!",
+  "ar": "اسحب لتقطع وتجنّب القنابل!"
+ },
+ "Start": {
+  "zh-Hant": "開始",
+  "de": "Start",
+  "es": "Empezar",
+  "fr": "Commencer",
+  "pt": "Começar",
+  "ar": "ابدأ"
+ },
+ "Missed one!": {
+  "zh-Hant": "漏掉了！",
+  "de": "Verpasst!",
+  "es": "¡Se te escapó!",
+  "fr": "Ratée !",
+  "pt": "Deixou passar!",
+  "ar": "فاتك واحد!"
+ },
+ "Oops, white tile!": {
+  "zh-Hant": "哎呀，點到白色！",
+  "de": "Hoppla, weißes Feld!",
+  "es": "¡Uy, espacio blanco!",
+  "fr": "Oups, case blanche !",
+  "pt": "Ops, espaço branco!",
+  "ar": "أوه، مساحة بيضاء!"
+ },
+ "Tiles: {0}": {
+  "zh-Hant": "{0}格",
+  "de": "{0} Tasten",
+  "es": "{0} teclas",
+  "fr": "{0} touches",
+  "pt": "{0} teclas",
+  "ar": "{0} مفتاحًا"
+ },
+ "Tap Tiles": {
+  "zh-Hant": "點點黑鍵",
+  "de": "Klaviertasten",
+  "es": "Teclas de piano",
+  "fr": "Touches de piano",
+  "pt": "Teclas de piano",
+  "ar": "مفاتيح البيانو"
+ },
+ "Tap only the black tiles, from the bottom up": {
+  "zh-Hant": "只點黑色方塊，從下往上",
+  "de": "Nur die schwarzen, von unten nach oben",
+  "es": "Solo las negras, de abajo arriba",
+  "fr": "Seulement les noires, du bas vers le haut",
+  "pt": "Só as pretas, de baixo para cima",
+  "ar": "المفاتيح السوداء فقط، من الأسفل للأعلى"
+ },
+ "Tap a bottle, then tap where to pour": {
+  "zh-Hant": "先選瓶子，再點要倒進的瓶子",
+  "de": "Flasche antippen, dann das Ziel",
+  "es": "Toca una botella y luego dónde verter",
+  "fr": "Touche une fiole, puis où verser",
+  "pt": "Toque um frasco e depois onde despejar",
+  "ar": "اضغط زجاجة ثم مكان السكب"
+ },
+ "{0} colors": {
+  "zh-Hant": "{0} 色",
+  "de": "{0} Farben",
+  "es": "{0} colores",
+  "fr": "{0} couleurs",
+  "pt": "{0} cores",
+  "ar": "الألوان: {0}"
+ },
+ "Restart": {
+  "zh-Hant": "重新開始",
+  "de": "Neu starten",
+  "es": "Reiniciar",
+  "fr": "Recommencer",
+  "pt": "Recomeçar",
+  "ar": "من البداية"
+ },
+ "Water Sort": {
+  "zh-Hant": "倒水排序",
+  "de": "Wasser sortieren",
+  "es": "Ordena el agua",
+  "fr": "Tri de l’eau",
+  "pt": "Ordene a água",
+  "ar": "ترتيب الماء"
+ },
+ "Pour until each bottle holds one color": {
+  "zh-Hant": "倒水讓每個瓶子只剩一種顏色",
+  "de": "Gieße, bis jede Flasche eine Farbe hat",
+  "es": "Vierte hasta que cada botella tenga un color",
+  "fr": "Verse jusqu’à une couleur par fiole",
+  "pt": "Despeje até cada frasco ter uma cor",
+  "ar": "اسكب حتى تحمل كل زجاجة لونًا واحدًا"
+ },
+ "Go!": {
+  "zh-Hant": "開始！",
+  "de": "Los!",
+  "es": "¡Ya!",
+  "fr": "Partez !",
+  "pt": "Já!",
+  "ar": "انطلق!"
+ },
+ "{0} combo!": {
+  "zh-Hant": "{0}連擊！",
+  "de": "{0}er-Combo!",
+  "es": "¡Combo {0}!",
+  "fr": "Combo {0} !",
+  "pt": "Combo {0}!",
+  "ar": "سلسلة {0}!"
+ },
+ "{0} moles · Best combo {1}": {
+  "zh-Hant": "打中{0}隻地鼠・最高連擊{1}",
+  "de": "{0} Maulwürfe · Beste Combo {1}",
+  "es": "{0} topos · Mejor combo {1}",
+  "fr": "{0} taupes · Meilleur combo {1}",
+  "pt": "{0} toupeiras · Melhor combo {1}",
+  "ar": "{0} خلد · أفضل سلسلة {1}"
+ },
+ "Mole Bop": {
+  "zh-Hant": "打地鼠",
+  "de": "Maulwurf hauen",
+  "es": "Golpea al topo",
+  "fr": "Tape-taupe",
+  "pt": "Acerte a toupeira",
+  "ar": "اضرب الخلد"
+ },
+ "Bonk the moles, spare the bunny": {
+  "zh-Hant": "打地鼠，放過兔子",
+  "de": "Hau die Maulwürfe, verschone den Hasen",
+  "es": "Golpea topos, perdona al conejo",
+  "fr": "Tape les taupes, épargne le lapin",
+  "pt": "Acerte as toupeiras, poupe o coelho",
+  "ar": "اضرب الخلد واترك الأرنب"
+ }
+}

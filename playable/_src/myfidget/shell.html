@@ -82,13 +82,19 @@ var TXT = {
   ja: { tag: '指先でぷちぷち、ストレス解消', slogan: 'ぷちぷちの手ざわりでストレス解消', next: '別のあそび', get: 'インストール' },
   en: { tag: 'Tap away the stress', slogan: 'Satisfying stress relief', next: 'Another toy', get: 'Install' }
 };
+var LANGS = ['ko', 'ja', 'en', 'zh-Hant', 'de', 'es', 'fr', 'pt', 'ar'];
+/* 2026-10-12: 9 languages. 'zh-Hant' · 'zh_TW' · 'zh' -> 'zh-Hant', 'pt-BR' -> 'pt', others by first two letters */
+function normLang(s) {
+  s = String(s || '').toLowerCase();
+  if (s.indexOf('zh') === 0) return 'zh-Hant';
+  s = s.slice(0, 2);
+  return LANGS.indexOf(s) >= 0 ? s : '';
+}
 function pickLang() {
-  var l = String(Q.get('lang') || '').toLowerCase();
-  if (TXT[l]) return l;
-  var n = String((navigator.languages && navigator.languages[0]) || navigator.language || 'en').toLowerCase();
-  if (n.indexOf('ko') === 0) return 'ko';
-  if (n.indexOf('ja') === 0) return 'ja';
-  return 'en';
+  var l = normLang(Q.get('lang'));
+  if (l && TXT[l]) return l;
+  var n = normLang((navigator.languages && navigator.languages[0]) || navigator.language || 'en');
+  return n && TXT[n] ? n : 'en';
 }
 var LANG = pickLang();
 var L = TXT[LANG];
@@ -99,6 +105,8 @@ function T(o) {
   return o[LANG] != null ? o[LANG] : (o.en != null ? o.en : '');
 }
 document.documentElement.lang = LANG;
+/* Arabic: text follows its own direction, the layout stays LTR (top-right 64px is the app's close button) */
+if (LANG === 'ar') { var bidi = document.createElement('style'); bidi.textContent = 'body *{unicode-bidi:plaintext}'; document.head.appendChild(bidi); }
 if (Q.get('host')) document.documentElement.setAttribute('data-host', String(Q.get('host')));
 
 /* ===== Store links and host bridge ===== */

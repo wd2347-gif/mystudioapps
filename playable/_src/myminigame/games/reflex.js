@@ -190,7 +190,7 @@
       function wrap(g, str, maxW, px, wt) {
         g.font = ctx.font(px, wt);
         if (g.measureText(str).width <= maxW) return [str];
-        var ja = ctx.lang === 'ja', parts = ja ? (str.match(/[^、。…！？]+[、。…！？]*/g) || [str]) : str.split(' '), sep = ja ? '' : ' ', best = null;
+        var ja = ctx.lang === 'ja' || ctx.lang === 'zh-Hant', parts = ja ? (str.match(/[^、。…！？，]+[、。…！？，]*/g) || [str]) : str.split(' '), sep = ja ? '' : ' ', best = null;
         if (parts.length < 2) { parts = Array.from(str); sep = ''; }
         for (var i = 1; i < parts.length; i++) {
           var a = parts.slice(0, i).join(sep), b = parts.slice(i).join(sep), w = Math.max(g.measureText(a).width, g.measureText(b).width);

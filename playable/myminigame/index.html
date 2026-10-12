@@ -139,28 +139,37 @@ button { font: inherit; color: inherit; cursor: pointer; touch-action: none; -we
   'use strict';
 
   /* ---------- store links ---------- */
-  // App Store: no app record yet (my_mini/CLAUDE.md, 10/11). When it exists put the numeric id here:
+  // App Store: app record 6821543762 (ASC, bundle com.ymc.myminigame, 10/11). Empty id falls back to the home page.
   // the link becomes https://apps.apple.com/app/id<ID>?pt=129467809&ct=xp_play_mini&mt=8
-  var IOS_ID = '';
+  var IOS_ID = '6821543762';
   var IOS_URL = IOS_ID ? 'https://apps.apple.com/app/id' + IOS_ID + '?pt=129467809&ct=xp_play_mini&mt=8' : '';
   var AND_URL = 'https://play.google.com/store/apps/details?id=com.ymc.myminigame&referrer=utm_source%3Dxpromo%26utm_medium%3Dplayable%26utm_campaign%3Dxp_play_mini';
   var HOME_URL = 'https://mystudioapps.com/myminigame/';
 
   /* ---------- language ---------- */
   var Q = new URLSearchParams(location.search);
-  var LANGS = ['ko', 'ja', 'en'];
+  var LANGS = ['ko', 'ja', 'en', 'zh-Hant', 'de', 'es', 'fr', 'pt', 'ar'];
+  /* 2026-10-12: 9 languages. 'zh-Hant' · 'zh_TW' · 'zh' -> 'zh-Hant', 'pt-BR' -> 'pt', others by first two letters */
+  function normLang(s) {
+    s = String(s || '').toLowerCase();
+    if (s.indexOf('zh') === 0) return 'zh-Hant';
+    s = s.slice(0, 2);
+    return LANGS.indexOf(s) >= 0 ? s : '';
+  }
   function pickLang() {
-    var q = String(Q.get('lang') || '').toLowerCase();
-    if (LANGS.indexOf(q) >= 0) return q;
+    var q = normLang(Q.get('lang'));
+    if (q) return q;
     var list = navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || 'en'];
     for (var i = 0; i < list.length; i++) {
-      var n = String(list[i] || '').slice(0, 2).toLowerCase();
-      if (LANGS.indexOf(n) >= 0) return n;
+      var n = normLang(list[i]);
+      if (n) return n;
     }
     return 'en';
   }
   var lang = pickLang();
   document.documentElement.lang = lang;
+  /* Arabic: text follows its own direction, the layout stays LTR (top-right 64px is the app's close button) */
+  if (lang === 'ar') { var bidi = document.createElement('style'); bidi.textContent = 'body *{unicode-bidi:plaintext}'; document.head.appendChild(bidi); }
   if (Q.get('host') === 'app') document.documentElement.setAttribute('data-host', 'app');
 
   // app strings: home tagline (l10n/ui.dart), store name, marketing line, category names (games/texts.dart)
@@ -170,7 +179,13 @@ button { font: inherit; color: inherit; cursor: pointer; touch-action: none; -we
     ja: { name: 'わたしのミニゲーム', sub: 'ひまな時に1回', other: '別のゲーム', install: 'インストール',
       kinds: { arcade: 'アーケード', puzzle: 'パズル', brain: '脳トレ・記憶' } },
     en: { name: 'Solo Mini Games', sub: 'Mini games for any break', other: 'Another game', install: 'Install',
-      kinds: { arcade: 'Arcade', puzzle: 'Puzzles', brain: 'Brain & Memory' } }
+      kinds: { arcade: 'Arcade', puzzle: 'Puzzles', brain: 'Brain & Memory' } }, 'zh-Hant': { name: '單人迷你遊戲', sub: '隨時都能玩的迷你遊戲', other: '換一個', install: '安裝',
+      kinds: { arcade: '街機', puzzle: '益智解謎', brain: '腦力・記憶' } }, 'de': { name: 'Solo-Minispiele', sub: 'Minispiele für jede Pause', other: 'Anderes Spiel', install: 'Installieren',
+      kinds: { arcade: 'Arcade', puzzle: 'Rätsel', brain: 'Kopf & Gedächtnis' } }, 'es': { name: 'Minijuegos en solitario', sub: 'Minijuegos para cada descanso', other: 'Otro juego', install: 'Instalar',
+      kinds: { arcade: 'Arcade', puzzle: 'Puzles', brain: 'Mente y memoria' } }, 'fr': { name: 'Mini-jeux en solo', sub: 'Des mini-jeux pour chaque pause', other: 'Un autre jeu', install: 'Installer',
+      kinds: { arcade: 'Arcade', puzzle: 'Puzzles', brain: 'Cerveau et mémoire' } }, 'pt': { name: 'Minijogos solo', sub: 'Minijogos para qualquer pausa', other: 'Outro jogo', install: 'Instalar',
+      kinds: { arcade: 'Arcade', puzzle: 'Quebra-cabeças', brain: 'Mente e memória' } }, 'ar': { name: 'ألعاب مصغّرة فردية', sub: 'ألعاب مصغّرة لكل استراحة', other: 'لعبة أخرى', install: 'تثبيت',
+      kinds: { arcade: 'ألعاب الأركيد', puzzle: 'ألغاز', brain: 'الذكاء والذاكرة' } }
   };
   var L = T[lang];
 
@@ -579,17 +594,17 @@ button { font: inherit; color: inherit; cursor: pointer; touch-action: none; -we
   'use strict';
 
   var TX = {
-    tapLaunch: { ko: '톡 눌러 발사!', ja: 'タップで発射！', en: 'Tap to launch!' },
-    clear: { ko: '클리어!', ja: 'クリア！', en: 'Cleared!' },
-    over: { ko: '게임 끝', ja: 'ゲームオーバー', en: 'Game over' },
-    newBest: { ko: '새 기록!', ja: '新記録！', en: 'New record!' },
-    summary: { ko: '점수 {0} · 최고 콤보 {1}', ja: 'スコア {0}・最大コンボ {1}', en: 'Score {0} · Best combo {1}' },
-    score: { ko: '점수', ja: 'スコア', en: 'Score' },
-    best: { ko: '최고 기록', ja: 'ベスト', en: 'Best' },
-    again: { ko: '다시 하기', ja: 'もう一回', en: 'Play again' },
-    multi: { ko: '공 여러 개!', ja: 'マルチボール！', en: 'Multi-ball!' },
-    wide: { ko: '넓은 받침!', ja: 'ワイドパドル！', en: 'Wide paddle!' },
-    slow: { ko: '느린 공!', ja: 'スローボール！', en: 'Slow ball!' }
+    tapLaunch: { ko: '톡 눌러 발사!', ja: 'タップで発射！', en: 'Tap to launch!', 'zh-Hant': '點一下發射！', 'de': 'Tippen zum Abschießen!', 'es': '¡Toca para lanzar!', 'fr': 'Touche pour lancer !', 'pt': 'Toque para lançar!', 'ar': 'اضغط للإطلاق!' },
+    clear: { ko: '클리어!', ja: 'クリア！', en: 'Cleared!', 'zh-Hant': '過關！', 'de': 'Geschafft!', 'es': '¡Superado!', 'fr': 'Réussi !', 'pt': 'Concluído!', 'ar': 'أحسنت!' },
+    over: { ko: '게임 끝', ja: 'ゲームオーバー', en: 'Game over', 'zh-Hant': '遊戲結束', 'de': 'Spiel vorbei', 'es': 'Fin del juego', 'fr': 'Partie terminée', 'pt': 'Fim de jogo', 'ar': 'انتهت اللعبة' },
+    newBest: { ko: '새 기록!', ja: '新記録！', en: 'New record!', 'zh-Hant': '新紀錄！', 'de': 'Neuer Rekord!', 'es': '¡Nuevo récord!', 'fr': 'Nouveau record !', 'pt': 'Novo recorde!', 'ar': 'رقم قياسي جديد!' },
+    summary: { ko: '점수 {0} · 최고 콤보 {1}', ja: 'スコア {0}・最大コンボ {1}', en: 'Score {0} · Best combo {1}', 'zh-Hant': '分數 {0}・最高連擊 {1}', 'de': 'Punkte {0} · Beste Kombo {1}', 'es': 'Puntos {0} · Mejor combo {1}', 'fr': 'Score {0} · Meilleur combo {1}', 'pt': 'Pontos {0} · Melhor combo {1}', 'ar': 'النقاط {0} · أفضل سلسلة {1}' },
+    score: { ko: '점수', ja: 'スコア', en: 'Score', 'zh-Hant': '分數', 'de': 'Punkte', 'es': 'Puntos', 'fr': 'Score', 'pt': 'Pontos', 'ar': 'النقاط' },
+    best: { ko: '최고 기록', ja: 'ベスト', en: 'Best', 'zh-Hant': '最佳紀錄', 'de': 'Rekord', 'es': 'Récord', 'fr': 'Record', 'pt': 'Recorde', 'ar': 'الأفضل' },
+    again: { ko: '다시 하기', ja: 'もう一回', en: 'Play again', 'zh-Hant': '再玩一次', 'de': 'Nochmal', 'es': 'Otra vez', 'fr': 'Rejouer', 'pt': 'Jogar de novo', 'ar': 'العب مرة أخرى' },
+    multi: { ko: '공 여러 개!', ja: 'マルチボール！', en: 'Multi-ball!', 'zh-Hant': '多顆球！', 'de': 'Multiball!', 'es': '¡Multibola!', 'fr': 'Multi-balles !', 'pt': 'Multibola!', 'ar': 'كرات متعددة!' },
+    wide: { ko: '넓은 받침!', ja: 'ワイドパドル！', en: 'Wide paddle!', 'zh-Hant': '加寬球拍！', 'de': 'Breiter Schläger!', 'es': '¡Paleta ancha!', 'fr': 'Raquette large !', 'pt': 'Raquete larga!', 'ar': 'مضرب عريض!' },
+    slow: { ko: '느린 공!', ja: 'スローボール！', en: 'Slow ball!', 'zh-Hant': '慢速球！', 'de': 'Langsamer Ball!', 'es': '¡Bola lenta!', 'fr': 'Balle lente !', 'pt': 'Bola lenta!', 'ar': 'كرة بطيئة!' }
   };
 
   var TAU = Math.PI * 2;
@@ -768,8 +783,8 @@ button { font: inherit; color: inherit; cursor: pointer; touch-action: none; -we
   }
 
   GAMES['breakout'] = {
-    name: { ko: '벽돌 깨기', ja: 'ブロック崩し', en: 'Brick Breaker' },
-    tip: { ko: '공을 튕겨 벽돌을 모두 깨요', ja: 'ボールを打ち返してブロックを全部崩そう', en: 'Bounce the ball and smash every brick' },
+    name: { ko: '벽돌 깨기', ja: 'ブロック崩し', en: 'Brick Breaker', 'zh-Hant': '打磚塊', 'de': 'Blockbrecher', 'es': 'Rompeladrillos', 'fr': 'Casse-briques', 'pt': 'Quebra-tijolos', 'ar': 'كسر الطوب' },
+    tip: { ko: '공을 튕겨 벽돌을 모두 깨요', ja: 'ボールを打ち返してブロックを全部崩そう', en: 'Bounce the ball and smash every brick', 'zh-Hant': '反彈球，打掉所有磚塊', 'de': 'Lass den Ball abprallen und knacke alle Steine', 'es': 'Rebota la bola y rompe todos los ladrillos', 'fr': 'Fais rebondir la balle et casse toutes les briques', 'pt': 'Rebata a bola e quebre todos os tijolos', 'ar': 'ارتدّ بالكرة وحطّم كل الطوب' },
     color: '#FF7A3D',
     kind: 'arcade',
     make: function (ctx) {
@@ -1135,16 +1150,16 @@ button { font: inherit; color: inherit; cursor: pointer; touch-action: none; -we
   'use strict';
 
   var TX = {
-    score: { ko: '점수', ja: 'スコア', en: 'Score' },
-    best: { ko: '최고 기록', ja: 'ベスト', en: 'Best' },
-    bonus: { ko: '보너스 +{0}', ja: 'ボーナス +{0}', en: 'Bonus +{0}' },
-    ceiling: { ko: '천장이 내려와요!', ja: '天井が下がる！', en: 'Ceiling drops!' },
-    clear: { ko: '클리어!', ja: 'クリア！', en: 'Cleared!' },
-    next: { ko: '다음 단계', ja: '次のレベル', en: 'Next level' },
-    newBest: { ko: '새 최고 기록!', ja: 'ベスト更新！', en: 'New best!' },
-    over: { ko: '게임 끝', ja: 'ゲームオーバー', en: 'Game over' },
-    points: { ko: '{0}점', ja: '{0}点', en: '{0} points' },
-    again: { ko: '다시 하기', ja: 'もう一回', en: 'Play again' }
+    score: { ko: '점수', ja: 'スコア', en: 'Score', 'zh-Hant': '分數', 'de': 'Punkte', 'es': 'Puntos', 'fr': 'Score', 'pt': 'Pontos', 'ar': 'النقاط' },
+    best: { ko: '최고 기록', ja: 'ベスト', en: 'Best', 'zh-Hant': '最佳紀錄', 'de': 'Rekord', 'es': 'Récord', 'fr': 'Record', 'pt': 'Recorde', 'ar': 'الأفضل' },
+    bonus: { ko: '보너스 +{0}', ja: 'ボーナス +{0}', en: 'Bonus +{0}', 'zh-Hant': '額外加分 +{0}', 'de': 'Bonus +{0}', 'es': 'Bonus +{0}', 'fr': 'Bonus +{0}', 'pt': 'Bônus +{0}', 'ar': 'مكافأة +{0}' },
+    ceiling: { ko: '천장이 내려와요!', ja: '天井が下がる！', en: 'Ceiling drops!', 'zh-Hant': '天花板下降！', 'de': 'Die Decke sinkt!', 'es': '¡Baja el techo!', 'fr': 'Le plafond descend !', 'pt': 'O teto desce!', 'ar': 'السقف ينزل!' },
+    clear: { ko: '클리어!', ja: 'クリア！', en: 'Cleared!', 'zh-Hant': '過關！', 'de': 'Geschafft!', 'es': '¡Superado!', 'fr': 'Réussi !', 'pt': 'Concluído!', 'ar': 'أحسنت!' },
+    next: { ko: '다음 단계', ja: '次のレベル', en: 'Next level', 'zh-Hant': '下一關', 'de': 'Nächstes Level', 'es': 'Siguiente nivel', 'fr': 'Niveau suivant', 'pt': 'Próximo nível', 'ar': 'المستوى التالي' },
+    newBest: { ko: '새 최고 기록!', ja: 'ベスト更新！', en: 'New best!', 'zh-Hant': '新紀錄！', 'de': 'Neuer Rekord!', 'es': '¡Nuevo récord!', 'fr': 'Nouveau record !', 'pt': 'Novo recorde!', 'ar': 'رقم قياسي جديد!' },
+    over: { ko: '게임 끝', ja: 'ゲームオーバー', en: 'Game over', 'zh-Hant': '遊戲結束', 'de': 'Spiel vorbei', 'es': 'Fin del juego', 'fr': 'Partie terminée', 'pt': 'Fim de jogo', 'ar': 'انتهت اللعبة' },
+    points: { ko: '{0}점', ja: '{0}点', en: '{0} points', 'zh-Hant': '{0} 分', 'de': '{0} Punkte', 'es': '{0} puntos', 'fr': '{0} points', 'pt': '{0} pontos', 'ar': 'النقاط: {0}' },
+    again: { ko: '다시 하기', ja: 'もう一回', en: 'Play again', 'zh-Hant': '再玩一次', 'de': 'Nochmal', 'es': 'Otra vez', 'fr': 'Rejouer', 'pt': 'Jogar de novo', 'ar': 'العب مرة أخرى' }
   };
 
   var TAU = Math.PI * 2, COLS = 8, ROWS = 14, RH = 0.8660254037844386, UW = 8, UH = 13;
@@ -1276,8 +1291,8 @@ button { font: inherit; color: inherit; cursor: pointer; touch-action: none; -we
   }
 
   GAMES['bubble'] = {
-    name: { ko: '방울 쏘기', ja: 'バブル割り', en: 'Bubble Burst' },
-    tip: { ko: '끌어서 조준하고 놓으면 발사!', ja: 'ドラッグでねらって、はなすと発射！', en: 'Drag to aim, release to shoot!' },
+    name: { ko: '방울 쏘기', ja: 'バブル割り', en: 'Bubble Burst', 'zh-Hant': '射泡泡', 'de': 'Blasenplatzer', 'es': 'Burbujas', 'fr': 'Bulles', 'pt': 'Estoura-bolhas', 'ar': 'تفجير الفقاعات' },
+    tip: { ko: '끌어서 조준하고 놓으면 발사!', ja: 'ドラッグでねらって、はなすと発射！', en: 'Drag to aim, release to shoot!', 'zh-Hant': '拖曳瞄準，放開發射！', 'de': 'Ziehen zum Zielen, loslassen zum Schießen!', 'es': '¡Arrastra para apuntar y suelta para disparar!', 'fr': 'Glisse pour viser, relâche pour tirer !', 'pt': 'Arraste para mirar e solte para atirar!', 'ar': 'اسحب للتصويب وارفع إصبعك للإطلاق!' },
     color: '#4FA8FF',
     kind: 'puzzle',
     make: function (ctx) {
@@ -1640,15 +1655,15 @@ button { font: inherit; color: inherit; cursor: pointer; touch-action: none; -we
   'use strict';
 
   var TX = {
-    stage: { ko: '{0}단계', ja: 'ステージ{0}', en: 'Stage {0}' },
-    boss: { ko: '보스!', ja: 'ボス！', en: 'Boss!' },
-    clear: { ko: '클리어!', ja: 'クリア！', en: 'Cleared!' },
-    bounced: { ko: '튕겨 나갔어요!', ja: 'はじかれた！', en: 'Bounced off!' },
-    summary: { ko: '{0}단계 · 다트 {1}개 · 사과 {2}개', ja: 'ステージ{0}・ダーツ{1}本・リンゴ{2}個', en: 'Stage {0} · Darts: {1} · Apples: {2}' },
-    newBest: { ko: '새 기록!', ja: '新記録！', en: 'New best!' },
-    score: { ko: '점수', ja: 'スコア', en: 'Score' },
-    best: { ko: '최고 기록', ja: 'ベスト', en: 'Best' },
-    again: { ko: '다시 하기', ja: 'もう一回', en: 'Play again' }
+    stage: { ko: '{0}단계', ja: 'ステージ{0}', en: 'Stage {0}', 'zh-Hant': '第{0}關', 'de': 'Stufe {0}', 'es': 'Nivel {0}', 'fr': 'Niveau {0}', 'pt': 'Fase {0}', 'ar': 'المرحلة {0}' },
+    boss: { ko: '보스!', ja: 'ボス！', en: 'Boss!', 'zh-Hant': '魔王！', 'de': 'Boss!', 'es': '¡Jefe!', 'fr': 'Boss !', 'pt': 'Chefe!', 'ar': 'الزعيم!' },
+    clear: { ko: '클리어!', ja: 'クリア！', en: 'Cleared!', 'zh-Hant': '過關！', 'de': 'Geschafft!', 'es': '¡Superado!', 'fr': 'Réussi !', 'pt': 'Concluído!', 'ar': 'أحسنت!' },
+    bounced: { ko: '튕겨 나갔어요!', ja: 'はじかれた！', en: 'Bounced off!', 'zh-Hant': '被彈開了！', 'de': 'Abgeprallt!', 'es': '¡Rebotó!', 'fr': 'Ça a rebondi !', 'pt': 'Quicou!', 'ar': 'ارتدّ السهم!' },
+    summary: { ko: '{0}단계 · 다트 {1}개 · 사과 {2}개', ja: 'ステージ{0}・ダーツ{1}本・リンゴ{2}個', en: 'Stage {0} · Darts: {1} · Apples: {2}', 'zh-Hant': '第{0}關・飛鏢{1}支・蘋果{2}顆', 'de': 'Stufe {0} · Pfeile: {1} · Äpfel: {2}', 'es': 'Nivel {0} · Dardos: {1} · Manzanas: {2}', 'fr': 'Niveau {0} · Fléchettes : {1} · Pommes : {2}', 'pt': 'Fase {0} · Dardos: {1} · Maçãs: {2}', 'ar': 'المرحلة {0} · السهام: {1} · التفاح: {2}' },
+    newBest: { ko: '새 기록!', ja: '新記録！', en: 'New best!', 'zh-Hant': '新紀錄！', 'de': 'Neuer Rekord!', 'es': '¡Nuevo récord!', 'fr': 'Nouveau record !', 'pt': 'Novo recorde!', 'ar': 'رقم قياسي جديد!' },
+    score: { ko: '점수', ja: 'スコア', en: 'Score', 'zh-Hant': '分數', 'de': 'Punkte', 'es': 'Puntos', 'fr': 'Score', 'pt': 'Pontos', 'ar': 'النقاط' },
+    best: { ko: '최고 기록', ja: 'ベスト', en: 'Best', 'zh-Hant': '最佳紀錄', 'de': 'Rekord', 'es': 'Récord', 'fr': 'Record', 'pt': 'Recorde', 'ar': 'الأفضل' },
+    again: { ko: '다시 하기', ja: 'もう一回', en: 'Play again', 'zh-Hant': '再玩一次', 'de': 'Nochmal', 'es': 'Otra vez', 'fr': 'Rejouer', 'pt': 'Jogar de novo', 'ar': 'العب مرة أخرى' }
   };
 
   var TAU = Math.PI * 2, PI = Math.PI;
@@ -1750,8 +1765,8 @@ button { font: inherit; color: inherit; cursor: pointer; touch-action: none; -we
   }
 
   GAMES['darts'] = {
-    name: { ko: '다트 꽂기', ja: 'ダーツスピン', en: 'Dart Spin' },
-    tip: { ko: '톡 눌러 던져요: 꽂힌 다트는 피해요!', ja: 'タップで投げよう：刺さったダーツをよけて！', en: 'Tap to throw: miss the stuck darts!' },
+    name: { ko: '다트 꽂기', ja: 'ダーツスピン', en: 'Dart Spin', 'zh-Hant': '旋轉飛鏢', 'de': 'Dart-Dreher', 'es': 'Dardos giratorios', 'fr': 'Fléchettes tournantes', 'pt': 'Dardos giratórios', 'ar': 'السهام الدوّارة' },
+    tip: { ko: '톡 눌러 던져요: 꽂힌 다트는 피해요!', ja: 'タップで投げよう：刺さったダーツをよけて！', en: 'Tap to throw: miss the stuck darts!', 'zh-Hant': '點一下投出去：避開插著的飛鏢！', 'de': 'Tippen zum Werfen: steckende Pfeile meiden!', 'es': 'Toca para lanzar: ¡evita los dardos clavados!', 'fr': 'Touche pour lancer : évite les fléchettes plantées !', 'pt': 'Toque para lançar: desvie dos dardos cravados!', 'ar': 'اضغط للرمي: تجنّب السهام المغروسة!' },
     color: '#8C9BAB',
     kind: 'arcade',
     make: function (ctx) {
@@ -2075,15 +2090,15 @@ button { font: inherit; color: inherit; cursor: pointer; touch-action: none; -we
   'use strict';
 
   var TX = {
-    tap: { ko: '톡 눌러 날갯짓!', ja: 'タップで羽ばたこう！', en: 'Tap to flap!' },
-    newBest: { ko: '새 기록!', ja: 'ベスト更新！', en: 'New best!' },
-    over: { ko: '게임 끝', ja: 'ゲームオーバー', en: 'Game over' },
-    passed: { ko: '기둥 {0}개를 지났어요', ja: '{0}本の柱をくぐりました', en: 'You flew through {0} gaps' },
-    passedOne: { ko: '기둥 1개를 지났어요', ja: '1本の柱をくぐりました', en: 'You flew through 1 gap' },
-    zero: { ko: '아까워요! 첫 기둥을 넘어 봐요', ja: '惜しい！最初の柱をこえてみよう', en: 'So close! Try to clear the first gap' },
-    score: { ko: '점수', ja: 'スコア', en: 'Score' },
-    best: { ko: '최고 기록', ja: 'ベスト', en: 'Best' },
-    again: { ko: '다시 하기', ja: 'もう一回', en: 'Play again' }
+    tap: { ko: '톡 눌러 날갯짓!', ja: 'タップで羽ばたこう！', en: 'Tap to flap!', 'zh-Hant': '點一下拍翅膀！', 'de': 'Tippen zum Flattern!', 'es': '¡Toca para aletear!', 'fr': 'Touche pour voler !', 'pt': 'Toque para voar!', 'ar': 'اضغط لترفرف!' },
+    newBest: { ko: '새 기록!', ja: 'ベスト更新！', en: 'New best!', 'zh-Hant': '新紀錄！', 'de': 'Neuer Rekord!', 'es': '¡Nuevo récord!', 'fr': 'Nouveau record !', 'pt': 'Novo recorde!', 'ar': 'رقم قياسي جديد!' },
+    over: { ko: '게임 끝', ja: 'ゲームオーバー', en: 'Game over', 'zh-Hant': '遊戲結束', 'de': 'Spiel vorbei', 'es': 'Fin del juego', 'fr': 'Partie terminée', 'pt': 'Fim de jogo', 'ar': 'انتهت اللعبة' },
+    passed: { ko: '기둥 {0}개를 지났어요', ja: '{0}本の柱をくぐりました', en: 'You flew through {0} gaps', 'zh-Hant': '穿過了{0}個柱子', 'de': 'Du bist durch {0} Lücken geflogen', 'es': 'Cruzaste {0} huecos', 'fr': 'Tu as franchi {0} passages', 'pt': 'Você passou por {0} vãos', 'ar': 'عبرت {0} من الفجوات' },
+    passedOne: { ko: '기둥 1개를 지났어요', ja: '1本の柱をくぐりました', en: 'You flew through 1 gap', 'zh-Hant': '穿過了1個柱子', 'de': 'Du bist durch 1 Lücke geflogen', 'es': 'Cruzaste 1 hueco', 'fr': 'Tu as franchi 1 passage', 'pt': 'Você passou por 1 vão', 'ar': 'عبرت فجوة واحدة' },
+    zero: { ko: '아까워요! 첫 기둥을 넘어 봐요', ja: '惜しい！最初の柱をこえてみよう', en: 'So close! Try to clear the first gap', 'zh-Hant': '好可惜！試著穿過第一個柱子', 'de': 'Knapp! Schaff die erste Lücke', 'es': '¡Casi! Intenta cruzar el primer hueco', 'fr': 'Presque ! Essaie de passer le premier pilier', 'pt': 'Quase! Tente passar o primeiro vão', 'ar': 'كدت تنجح! حاول عبور الفجوة الأولى' },
+    score: { ko: '점수', ja: 'スコア', en: 'Score', 'zh-Hant': '分數', 'de': 'Punkte', 'es': 'Puntos', 'fr': 'Score', 'pt': 'Pontos', 'ar': 'النقاط' },
+    best: { ko: '최고 기록', ja: 'ベスト', en: 'Best', 'zh-Hant': '最佳紀錄', 'de': 'Rekord', 'es': 'Récord', 'fr': 'Record', 'pt': 'Recorde', 'ar': 'الأفضل' },
+    again: { ko: '다시 하기', ja: 'もう一回', en: 'Play again', 'zh-Hant': '再玩一次', 'de': 'Nochmal', 'es': 'Otra vez', 'fr': 'Rejouer', 'pt': 'Jogar de novo', 'ar': 'العب مرة أخرى' }
   };
 
   var TAU = Math.PI * 2;
@@ -2194,8 +2209,8 @@ button { font: inherit; color: inherit; cursor: pointer; touch-action: none; -we
   }
 
   GAMES['flappy'] = {
-    name: { ko: '날아라 새', ja: 'パタパタバード', en: 'Flap Flap' },
-    tip: { ko: '톡톡 눌러 날갯짓, 기둥 사이를 지나가요', ja: 'タップで羽ばたいて、すき間を抜けよう', en: 'Tap to flap through the gaps' },
+    name: { ko: '날아라 새', ja: 'パタパタバード', en: 'Flap Flap', 'zh-Hant': '飛飛鳥', 'de': 'Flatter-Vogel', 'es': 'Pájaro saltarín', 'fr': 'Oiseau volant', 'pt': 'Pássaro voador', 'ar': 'طائر الرفرفة' },
+    tip: { ko: '톡톡 눌러 날갯짓, 기둥 사이를 지나가요', ja: 'タップで羽ばたいて、すき間を抜けよう', en: 'Tap to flap through the gaps', 'zh-Hant': '點一下拍翅膀，穿過縫隙', 'de': 'Tippe zum Flattern durch die Lücken', 'es': 'Toca para aletear entre los huecos', 'fr': 'Touche pour battre des ailes entre les piliers', 'pt': 'Toque para bater asas entre as colunas', 'ar': 'اضغط لترفرف عبر الفجوات' },
     color: '#3E9BFF',
     kind: 'arcade',
     make: function (ctx) {
@@ -2598,10 +2613,10 @@ button { font: inherit; color: inherit; cursor: pointer; touch-action: none; -we
   'use strict';
 
   var TX = {
-    lines: { ko: '이은 선', ja: 'つないだ線', en: 'Flows' },
-    fill: { ko: '채움', ja: '埋めた', en: 'Filled' },
-    clear: { ko: '클리어!', ja: 'クリア！', en: 'Cleared!' },
-    fillAll: { ko: '빈칸이 남았어요: 선으로 모두 채워요', ja: '空きマスがあります：線で全部埋めよう', en: 'Empty squares left: fill them all with lines' }
+    lines: { ko: '이은 선', ja: 'つないだ線', en: 'Flows', 'zh-Hant': '已連線', 'de': 'Verbunden', 'es': 'Unidas', 'fr': 'Reliées', 'pt': 'Ligadas', 'ar': 'الخطوط' },
+    fill: { ko: '채움', ja: '埋めた', en: 'Filled', 'zh-Hant': '填滿', 'de': 'Gefüllt', 'es': 'Lleno', 'fr': 'Rempli', 'pt': 'Preenchido', 'ar': 'الامتلاء' },
+    clear: { ko: '클리어!', ja: 'クリア！', en: 'Cleared!', 'zh-Hant': '過關！', 'de': 'Geschafft!', 'es': '¡Superado!', 'fr': 'Réussi !', 'pt': 'Concluído!', 'ar': 'أحسنت!' },
+    fillAll: { ko: '빈칸이 남았어요: 선으로 모두 채워요', ja: '空きマスがあります：線で全部埋めよう', en: 'Empty squares left: fill them all with lines', 'zh-Hant': '還有空格：用線全部填滿', 'de': 'Noch leere Felder: fülle alle mit Linien', 'es': 'Quedan casillas vacías: llénalas con líneas', 'fr': 'Il reste des cases vides : remplis-les', 'pt': 'Ainda há casas vazias: preencha todas', 'ar': 'بقيت مربعات فارغة: املأها كلها بالخطوط' }
   };
 
   var TAU = Math.PI * 2;
@@ -2734,8 +2749,8 @@ button { font: inherit; color: inherit; cursor: pointer; touch-action: none; -we
   }
 
   GAMES['flow'] = {
-    name: { ko: '선 잇기', ja: '線つなぎ', en: 'Color Link' },
-    tip: { ko: '같은 색끼리 선으로 잇고 칸을 다 채워요', ja: '同じ色を線でつないで、全部うめよう', en: 'Link matching colors and fill the board' },
+    name: { ko: '선 잇기', ja: '線つなぎ', en: 'Color Link', 'zh-Hant': '連連線', 'de': 'Farben verbinden', 'es': 'Une colores', 'fr': 'Relie les couleurs', 'pt': 'Ligue as cores', 'ar': 'وصل الألوان' },
+    tip: { ko: '같은 색끼리 선으로 잇고 칸을 다 채워요', ja: '同じ色を線でつないで、全部うめよう', en: 'Link matching colors and fill the board', 'zh-Hant': '把相同顏色連起來，填滿格子', 'de': 'Verbinde gleiche Farben und fülle das Feld', 'es': 'Une colores iguales y llena el tablero', 'fr': 'Relie les mêmes couleurs et remplis la grille', 'pt': 'Ligue as cores iguais e preencha tudo', 'ar': 'صِل الألوان المتشابهة واملأ اللوحة' },
     color: '#A368FF',
     kind: 'puzzle',
     make: function (ctx) {
@@ -2979,16 +2994,16 @@ button { font: inherit; color: inherit; cursor: pointer; touch-action: none; -we
   'use strict';
 
   var TX = {
-    score: { ko: '점수', ja: 'スコア', en: 'Score' },
-    moves: { ko: '남은 움직임', ja: '残り手数', en: 'Moves left' },
-    best: { ko: '최고 기록', ja: 'ベスト', en: 'Best' },
-    combo: { ko: '콤보 x{0}!', ja: 'コンボ x{0}!', en: 'Combo x{0}!' },
-    shuffle: { ko: '섞어요!', ja: 'シャッフル！', en: 'Shuffle!' },
-    finish: { ko: '끝!', ja: 'しゅうりょう！', en: 'Finish!' },
-    newBest: { ko: '새 최고 기록!', ja: 'ベスト更新！', en: 'New best!' },
-    over: { ko: '게임 끝', ja: 'ゲームオーバー', en: 'Game over' },
-    points: { ko: '{0}점', ja: '{0}点', en: '{0} points' },
-    again: { ko: '다시 하기', ja: 'もう一回', en: 'Play again' }
+    score: { ko: '점수', ja: 'スコア', en: 'Score', 'zh-Hant': '分數', 'de': 'Punkte', 'es': 'Puntos', 'fr': 'Score', 'pt': 'Pontos', 'ar': 'النقاط' },
+    moves: { ko: '남은 움직임', ja: '残り手数', en: 'Moves left', 'zh-Hant': '剩餘步數', 'de': 'Züge übrig', 'es': 'Movimientos', 'fr': 'Coups restants', 'pt': 'Jogadas', 'ar': 'الحركات المتبقية' },
+    best: { ko: '최고 기록', ja: 'ベスト', en: 'Best', 'zh-Hant': '最佳紀錄', 'de': 'Rekord', 'es': 'Récord', 'fr': 'Record', 'pt': 'Recorde', 'ar': 'الأفضل' },
+    combo: { ko: '콤보 x{0}!', ja: 'コンボ x{0}!', en: 'Combo x{0}!', 'zh-Hant': '連擊 x{0}!', 'de': 'Kombo x{0}!', 'es': '¡Combo x{0}!', 'fr': 'Combo x{0} !', 'pt': 'Combo x{0}!', 'ar': 'كومبو x{0}!' },
+    shuffle: { ko: '섞어요!', ja: 'シャッフル！', en: 'Shuffle!', 'zh-Hant': '重新洗牌！', 'de': 'Mischen!', 'es': '¡A mezclar!', 'fr': 'On mélange !', 'pt': 'Embaralhando!', 'ar': 'خلط!' },
+    finish: { ko: '끝!', ja: 'しゅうりょう！', en: 'Finish!', 'zh-Hant': '結束！', 'de': 'Ende!', 'es': '¡Fin!', 'fr': 'Terminé !', 'pt': 'Fim!', 'ar': 'انتهى!' },
+    newBest: { ko: '새 최고 기록!', ja: 'ベスト更新！', en: 'New best!', 'zh-Hant': '新紀錄！', 'de': 'Neuer Rekord!', 'es': '¡Nuevo récord!', 'fr': 'Nouveau record !', 'pt': 'Novo recorde!', 'ar': 'رقم قياسي جديد!' },
+    over: { ko: '게임 끝', ja: 'ゲームオーバー', en: 'Game over', 'zh-Hant': '遊戲結束', 'de': 'Spiel vorbei', 'es': 'Fin del juego', 'fr': 'Partie terminée', 'pt': 'Fim de jogo', 'ar': 'انتهت اللعبة' },
+    points: { ko: '{0}점', ja: '{0}点', en: '{0} points', 'zh-Hant': '{0} 分', 'de': '{0} Punkte', 'es': '{0} puntos', 'fr': '{0} points', 'pt': '{0} pontos', 'ar': 'النقاط: {0}' },
+    again: { ko: '다시 하기', ja: 'もう一回', en: 'Play again', 'zh-Hant': '再玩一次', 'de': 'Nochmal', 'es': 'Otra vez', 'fr': 'Rejouer', 'pt': 'Jogar de novo', 'ar': 'العب مرة أخرى' }
   };
 
   var TAU = Math.PI * 2, N = 8, COLORS = 6, MOVES = 30;
@@ -3256,8 +3271,8 @@ button { font: inherit; color: inherit; cursor: pointer; touch-action: none; -we
   }
 
   GAMES['match3'] = {
-    name: { ko: '보석 맞추기', ja: 'ジェムマッチ', en: 'Gem Match' },
-    tip: { ko: '바꿔서 셋을 맞추면 펑!', ja: '入れ替えて3つそろえるとポン！', en: 'Swap gems to make three in a row' },
+    name: { ko: '보석 맞추기', ja: 'ジェムマッチ', en: 'Gem Match', 'zh-Hant': '寶石消消樂', 'de': 'Juwelen-Match', 'es': 'Joyas en raya', 'fr': 'Gemmes alignées', 'pt': 'Joias em linha', 'ar': 'مطابقة الجواهر' },
+    tip: { ko: '바꿔서 셋을 맞추면 펑!', ja: '入れ替えて3つそろえるとポン！', en: 'Swap gems to make three in a row', 'zh-Hant': '交換寶石三個連成一線就消除！', 'de': 'Tausche Juwelen für drei in einer Reihe', 'es': 'Intercambia joyas y haz tres en raya', 'fr': 'Échange les gemmes pour en aligner trois', 'pt': 'Troque joias e forme três em linha', 'ar': 'بدّل الجواهر لتصنع ثلاثًا متتالية' },
     color: '#FF4F8B',
     kind: 'puzzle',
     make: function (ctx) {
@@ -3602,17 +3617,17 @@ button { font: inherit; color: inherit; cursor: pointer; touch-action: none; -we
   'use strict';
 
   var TX = {
-    level: { ko: '단계', ja: 'レベル', en: 'Level' },
-    levelN: { ko: '{0}단계!', ja: 'レベル{0}！', en: 'Level {0}!' },
-    diff: { ko: '색 차이 {0}%', ja: '色の差 {0}%', en: 'Difference {0}%' },
-    sec: { ko: '{0}초', ja: '{0}秒', en: '{0}s' },
-    timeUp: { ko: '시간 끝!', ja: 'タイムアップ！', en: 'Time’s up!' },
-    newBest: { ko: '새 기록!', ja: '新記録！', en: 'New best!' },
-    cleared: { ko: '{0}단계까지 깼어요', ja: '{0}レベルまでクリア', en: 'Levels cleared: {0}' },
-    misses: { ko: '실수 {0}번', ja: 'ミス{0}回', en: 'Misses: {0}' },
-    finest: { ko: '가장 작은 색 차이 {0}%', ja: '見分けた最小の差 {0}%', en: 'Finest difference {0}%' },
-    best: { ko: '최고 기록', ja: 'ベスト', en: 'Best' },
-    again: { ko: '다시 하기', ja: 'もう一回', en: 'Play again' }
+    level: { ko: '단계', ja: 'レベル', en: 'Level', 'zh-Hant': '關卡', 'de': 'Stufe', 'es': 'Nivel', 'fr': 'Niveau', 'pt': 'Nível', 'ar': 'المستوى' },
+    levelN: { ko: '{0}단계!', ja: 'レベル{0}！', en: 'Level {0}!', 'zh-Hant': '第{0}關！', 'de': 'Stufe {0}!', 'es': '¡Nivel {0}!', 'fr': 'Niveau {0} !', 'pt': 'Nível {0}!', 'ar': 'المستوى {0}!' },
+    diff: { ko: '색 차이 {0}%', ja: '色の差 {0}%', en: 'Difference {0}%', 'zh-Hant': '色差 {0}%', 'de': 'Unterschied {0} %', 'es': 'Diferencia {0} %', 'fr': 'Écart {0} %', 'pt': 'Diferença {0}%', 'ar': 'الفرق {0}%' },
+    sec: { ko: '{0}초', ja: '{0}秒', en: '{0}s', 'zh-Hant': '{0}秒', 'de': '{0} s', 'es': '{0} s', 'fr': '{0} s', 'pt': '{0} s', 'ar': '{0} ث' },
+    timeUp: { ko: '시간 끝!', ja: 'タイムアップ！', en: 'Time’s up!', 'zh-Hant': '時間到！', 'de': 'Zeit um!', 'es': '¡Se acabó el tiempo!', 'fr': 'Temps écoulé !', 'pt': 'Acabou o tempo!', 'ar': 'انتهى الوقت!' },
+    newBest: { ko: '새 기록!', ja: '新記録！', en: 'New best!', 'zh-Hant': '新紀錄！', 'de': 'Neuer Rekord!', 'es': '¡Nuevo récord!', 'fr': 'Nouveau record !', 'pt': 'Novo recorde!', 'ar': 'رقم قياسي جديد!' },
+    cleared: { ko: '{0}단계까지 깼어요', ja: '{0}レベルまでクリア', en: 'Levels cleared: {0}', 'zh-Hant': '過了{0}關', 'de': 'Geschaffte Stufen: {0}', 'es': 'Niveles superados: {0}', 'fr': 'Niveaux réussis : {0}', 'pt': 'Níveis concluídos: {0}', 'ar': 'المستويات المجتازة: {0}' },
+    misses: { ko: '실수 {0}번', ja: 'ミス{0}回', en: 'Misses: {0}', 'zh-Hant': '失誤{0}次', 'de': 'Fehler: {0}', 'es': 'Fallos: {0}', 'fr': 'Erreurs : {0}', 'pt': 'Erros: {0}', 'ar': 'الأخطاء: {0}' },
+    finest: { ko: '가장 작은 색 차이 {0}%', ja: '見分けた最小の差 {0}%', en: 'Finest difference {0}%', 'zh-Hant': '分辨出的最小色差 {0}%', 'de': 'Kleinster Unterschied {0} %', 'es': 'Diferencia más fina {0} %', 'fr': 'Plus petit écart {0} %', 'pt': 'Menor diferença {0}%', 'ar': 'أدق فرق {0}%' },
+    best: { ko: '최고 기록', ja: 'ベスト', en: 'Best', 'zh-Hant': '最佳紀錄', 'de': 'Rekord', 'es': 'Récord', 'fr': 'Record', 'pt': 'Recorde', 'ar': 'الأفضل' },
+    again: { ko: '다시 하기', ja: 'もう一回', en: 'Play again', 'zh-Hant': '再玩一次', 'de': 'Nochmal', 'es': 'Otra vez', 'fr': 'Rejouer', 'pt': 'Jogar de novo', 'ar': 'العب مرة أخرى' }
   };
 
   var TAU = Math.PI * 2, START = 30, RED = '#E5484D', GOOD = '#2FC85E', AMBER = '#FFB020';
@@ -3681,8 +3696,8 @@ button { font: inherit; color: inherit; cursor: pointer; touch-action: none; -we
   }
 
   GAMES['oddcolor'] = {
-    name: { ko: '다른 색 찾기', ja: '違う色さがし', en: 'Odd Color' },
-    tip: { ko: '살짝 다른 색 한 칸을 찾아요', ja: '少しだけ違う色のマスを見つけよう', en: 'Find the one tile that’s slightly off' },
+    name: { ko: '다른 색 찾기', ja: '違う色さがし', en: 'Odd Color', 'zh-Hant': '找不同顏色', 'de': 'Andere Farbe', 'es': 'El color distinto', 'fr': 'Couleur intruse', 'pt': 'Cor diferente', 'ar': 'اللون المختلف' },
+    tip: { ko: '살짝 다른 색 한 칸을 찾아요', ja: '少しだけ違う色のマスを見つけよう', en: 'Find the one tile that’s slightly off', 'zh-Hant': '找出顏色稍微不同的那格', 'de': 'Finde das Feld mit der anderen Farbe', 'es': 'Encuentra la casilla de color distinto', 'fr': 'Trouve la case d’une couleur différente', 'pt': 'Ache o quadrado de cor diferente', 'ar': 'اعثر على المربع ذي اللون المختلف' },
     color: '#00C2C7',
     kind: 'brain',
     make: function (ctx) {
@@ -3964,27 +3979,27 @@ button { font: inherit; color: inherit; cursor: pointer; touch-action: none; -we
   'use strict';
 
   var TX = {
-    wait: { ko: '기다려요…', ja: '待って…', en: 'Wait…' },
-    waitSub: { ko: '초록이 되면 바로 톡!', ja: '緑になったらすぐタップ！', en: 'Tap as soon as it turns green!' },
-    now: { ko: '지금!', ja: '今！', en: 'Tap!' },
-    early: { ko: '너무 빨라요!', ja: '早すぎ！', en: 'Too soon!' },
-    earlySub: { ko: '초록을 기다려요. 눌러서 다시', ja: '緑を待ってね。タップでやり直し', en: 'Wait for green. Tap to retry' },
-    tapNext: { ko: '눌러서 다음', ja: 'タップで次へ', en: 'Tap for next' },
-    tapResult: { ko: '눌러서 결과 보기', ja: 'タップで結果へ', en: 'Tap to see results' },
-    summary: { ko: '평균 {0} · 가장 빠름 {1}', ja: '平均 {0}・最速 {1}', en: 'Average {0} · Fastest {1}' },
-    newBest: { ko: '새 기록!', ja: '新記録！', en: 'New best!' },
-    earlyCount: { ko: '너무 빨랐던 번 {0}', ja: 'フライング {0}回', en: 'Too soon: {0}' },
-    best: { ko: '최고 기록', ja: 'ベスト', en: 'Best' },
-    again: { ko: '다시 하기', ja: 'もう一回', en: 'Play again' }
+    wait: { ko: '기다려요…', ja: '待って…', en: 'Wait…', 'zh-Hant': '等一下…', 'de': 'Warte…', 'es': 'Espera…', 'fr': 'Attends…', 'pt': 'Espere…', 'ar': 'انتظر…' },
+    waitSub: { ko: '초록이 되면 바로 톡!', ja: '緑になったらすぐタップ！', en: 'Tap as soon as it turns green!', 'zh-Hant': '變綠就馬上點！', 'de': 'Tippe, sobald es grün wird!', 'es': '¡Toca en cuanto se ponga verde!', 'fr': 'Touche dès que ça devient vert !', 'pt': 'Toque assim que ficar verde!', 'ar': 'اضغط فور تحوّله إلى الأخضر!' },
+    now: { ko: '지금!', ja: '今！', en: 'Tap!', 'zh-Hant': '就是現在！', 'de': 'Jetzt!', 'es': '¡Ya!', 'fr': 'Maintenant !', 'pt': 'Agora!', 'ar': 'الآن!' },
+    early: { ko: '너무 빨라요!', ja: '早すぎ！', en: 'Too soon!', 'zh-Hant': '太快了！', 'de': 'Zu früh!', 'es': '¡Demasiado pronto!', 'fr': 'Trop tôt !', 'pt': 'Cedo demais!', 'ar': 'مبكر جدًا!' },
+    earlySub: { ko: '초록을 기다려요. 눌러서 다시', ja: '緑を待ってね。タップでやり直し', en: 'Wait for green. Tap to retry', 'zh-Hant': '要等變綠喔。點一下重來', 'de': 'Warte auf Grün. Tippen zum Wiederholen', 'es': 'Espera al verde. Toca para repetir', 'fr': 'Attends le vert. Touche pour réessayer', 'pt': 'Espere o verde. Toque para repetir', 'ar': 'انتظر الأخضر. اضغط لإعادة المحاولة' },
+    tapNext: { ko: '눌러서 다음', ja: 'タップで次へ', en: 'Tap for next', 'zh-Hant': '點一下繼續', 'de': 'Tippen für weiter', 'es': 'Toca para seguir', 'fr': 'Touche pour continuer', 'pt': 'Toque para continuar', 'ar': 'اضغط للتالي' },
+    tapResult: { ko: '눌러서 결과 보기', ja: 'タップで結果へ', en: 'Tap to see results', 'zh-Hant': '點一下看結果', 'de': 'Tippen für das Ergebnis', 'es': 'Toca para ver el resultado', 'fr': 'Touche pour voir le résultat', 'pt': 'Toque para ver o resultado', 'ar': 'اضغط لرؤية النتيجة' },
+    summary: { ko: '평균 {0} · 가장 빠름 {1}', ja: '平均 {0}・最速 {1}', en: 'Average {0} · Fastest {1}', 'zh-Hant': '平均 {0}・最快 {1}', 'de': 'Schnitt {0} · Schnellste {1}', 'es': 'Media {0} · Mejor {1}', 'fr': 'Moyenne {0} · Meilleur {1}', 'pt': 'Média {0} · Mais rápido {1}', 'ar': 'المتوسط {0} · الأسرع {1}' },
+    newBest: { ko: '새 기록!', ja: '新記録！', en: 'New best!', 'zh-Hant': '新紀錄！', 'de': 'Neuer Rekord!', 'es': '¡Nuevo récord!', 'fr': 'Nouveau record !', 'pt': 'Novo recorde!', 'ar': 'رقم قياسي جديد!' },
+    earlyCount: { ko: '너무 빨랐던 번 {0}', ja: 'フライング {0}回', en: 'Too soon: {0}', 'zh-Hant': '太快 {0} 次', 'de': 'Zu früh: {0}', 'es': 'Antes de tiempo: {0}', 'fr': 'Trop tôt : {0}', 'pt': 'Antes da hora: {0}', 'ar': 'مبكر: {0}' },
+    best: { ko: '최고 기록', ja: 'ベスト', en: 'Best', 'zh-Hant': '最佳紀錄', 'de': 'Rekord', 'es': 'Récord', 'fr': 'Record', 'pt': 'Recorde', 'ar': 'الأفضل' },
+    again: { ko: '다시 하기', ja: 'もう一回', en: 'Play again', 'zh-Hant': '再玩一次', 'de': 'Nochmal', 'es': 'Otra vez', 'fr': 'Rejouer', 'pt': 'Jogar de novo', 'ar': 'العب مرة أخرى' }
   };
   var GRADE = [
-    [{ ko: '번개', ja: '稲妻', en: 'Lightning' }, { ko: '번개 같은 손이에요!', ja: '稲妻みたいな速さ！', en: 'Lightning-fast hands!' }],
-    [{ ko: '치타', ja: 'チーター', en: 'Cheetah' }, { ko: '치타만큼 빨라요!', ja: 'チーター並みの速さ！', en: 'Fast as a cheetah!' }],
-    [{ ko: '고양이', ja: 'ネコ', en: 'Cat' }, { ko: '고양이처럼 날쌔요!', ja: 'ネコみたいにすばしこい！', en: 'Quick as a cat!' }],
-    [{ ko: '토끼', ja: 'ウサギ', en: 'Bunny' }, { ko: '토끼처럼 재빨라요', ja: 'ウサギみたいに素早い', en: 'Speedy like a bunny' }],
-    [{ ko: '펭귄', ja: 'ペンギン', en: 'Penguin' }, { ko: '펭귄처럼 뒤뚱, 조금 더!', ja: 'ペンギンみたいによちよち、もう少し！', en: 'Waddling penguin, a bit faster!' }],
-    [{ ko: '거북이', ja: 'カメ', en: 'Turtle' }, { ko: '거북이처럼 느긋해요', ja: 'カメみたいにのんびり', en: 'Easygoing turtle' }],
-    [{ ko: '나무늘보', ja: 'ナマケモノ', en: 'Sloth' }, { ko: '나무늘보… 졸려요?', ja: 'ナマケモノ…眠いの？', en: 'Sloth mode… sleepy?' }]
+    [{ ko: '번개', ja: '稲妻', en: 'Lightning', 'zh-Hant': '閃電', 'de': 'Blitz', 'es': 'Rayo', 'fr': 'Éclair', 'pt': 'Relâmpago', 'ar': 'برق' }, { ko: '번개 같은 손이에요!', ja: '稲妻みたいな速さ！', en: 'Lightning-fast hands!', 'zh-Hant': '快如閃電的手！', 'de': 'Blitzschnelle Hände!', 'es': '¡Manos rápidas como un rayo!', 'fr': 'Des mains rapides comme l’éclair !', 'pt': 'Mãos rápidas como um raio!', 'ar': 'يدان سريعتان كالبرق!' }],
+    [{ ko: '치타', ja: 'チーター', en: 'Cheetah', 'zh-Hant': '獵豹', 'de': 'Gepard', 'es': 'Guepardo', 'fr': 'Guépard', 'pt': 'Guepardo', 'ar': 'فهد' }, { ko: '치타만큼 빨라요!', ja: 'チーター並みの速さ！', en: 'Fast as a cheetah!', 'zh-Hant': '跟獵豹一樣快！', 'de': 'Schnell wie ein Gepard!', 'es': '¡Rápido como un guepardo!', 'fr': 'Rapide comme un guépard !', 'pt': 'Rápido como um guepardo!', 'ar': 'سريع كالفهد!' }],
+    [{ ko: '고양이', ja: 'ネコ', en: 'Cat', 'zh-Hant': '貓咪', 'de': 'Katze', 'es': 'Gato', 'fr': 'Chat', 'pt': 'Gato', 'ar': 'قطّ' }, { ko: '고양이처럼 날쌔요!', ja: 'ネコみたいにすばしこい！', en: 'Quick as a cat!', 'zh-Hant': '像貓咪一樣敏捷！', 'de': 'Flink wie eine Katze!', 'es': '¡Ágil como un gato!', 'fr': 'Vif comme un chat !', 'pt': 'Ágil como um gato!', 'ar': 'سريع كالقطّ!' }],
+    [{ ko: '토끼', ja: 'ウサギ', en: 'Bunny', 'zh-Hant': '兔子', 'de': 'Hase', 'es': 'Conejo', 'fr': 'Lapin', 'pt': 'Coelho', 'ar': 'أرنب' }, { ko: '토끼처럼 재빨라요', ja: 'ウサギみたいに素早い', en: 'Speedy like a bunny', 'zh-Hant': '像兔子一樣靈活', 'de': 'Fix wie ein Hase', 'es': 'Veloz como un conejo', 'fr': 'Rapide comme un lapin', 'pt': 'Veloz como um coelho', 'ar': 'سريع كالأرنب' }],
+    [{ ko: '펭귄', ja: 'ペンギン', en: 'Penguin', 'zh-Hant': '企鵝', 'de': 'Pinguin', 'es': 'Pingüino', 'fr': 'Pingouin', 'pt': 'Pinguim', 'ar': 'بطريق' }, { ko: '펭귄처럼 뒤뚱, 조금 더!', ja: 'ペンギンみたいによちよち、もう少し！', en: 'Waddling penguin, a bit faster!', 'zh-Hant': '像企鵝搖搖擺擺，再快一點！', 'de': 'Watschelnder Pinguin, etwas schneller!', 'es': 'Pingüino torpe, ¡un poco más rápido!', 'fr': 'Pingouin qui se dandine, encore un effort !', 'pt': 'Pinguim desajeitado, mais rápido!', 'ar': 'بطريق يتمايل، أسرع قليلًا!' }],
+    [{ ko: '거북이', ja: 'カメ', en: 'Turtle', 'zh-Hant': '烏龜', 'de': 'Schildkröte', 'es': 'Tortuga', 'fr': 'Tortue', 'pt': 'Tartaruga', 'ar': 'سلحفاة' }, { ko: '거북이처럼 느긋해요', ja: 'カメみたいにのんびり', en: 'Easygoing turtle', 'zh-Hant': '像烏龜一樣悠哉', 'de': 'Gemütliche Schildkröte', 'es': 'Tortuga tranquila', 'fr': 'Tortue tranquille', 'pt': 'Tartaruga tranquila', 'ar': 'سلحفاة هادئة' }],
+    [{ ko: '나무늘보', ja: 'ナマケモノ', en: 'Sloth', 'zh-Hant': '樹懶', 'de': 'Faultier', 'es': 'Perezoso', 'fr': 'Paresseux', 'pt': 'Bicho-preguiça', 'ar': 'كسلان' }, { ko: '나무늘보… 졸려요?', ja: 'ナマケモノ…眠いの？', en: 'Sloth mode… sleepy?', 'zh-Hant': '樹懶模式…想睡了嗎？', 'de': 'Faultier-Modus… müde?', 'es': 'Modo perezoso… ¿tienes sueño?', 'fr': 'Mode paresseux… fatigué ?', 'pt': 'Modo preguiça… com sono?', 'ar': 'وضع الكسلان… هل تشعر بالنعاس؟' }]
   ];
   var GRADE_COLOR = ['#FFB020', '#FF7A3D', '#2FC85E', '#00C2C7', '#3E9BFF', '#8C9BAB', '#A368FF'];
   var CUTS = [180, 220, 260, 310, 380, 500], TRIES = 5;
@@ -4113,8 +4128,8 @@ button { font: inherit; color: inherit; cursor: pointer; touch-action: none; -we
   }
 
   GAMES['reflex'] = {
-    name: { ko: '반응속도', ja: '反応速度', en: 'Reaction Time' },
-    tip: { ko: '초록으로 바뀌는 순간 톡!', ja: '緑に変わった瞬間にタップ！', en: 'Tap the moment it turns green' },
+    name: { ko: '반응속도', ja: '反応速度', en: 'Reaction Time', 'zh-Hant': '反應速度', 'de': 'Reaktionszeit', 'es': 'Tiempo de reacción', 'fr': 'Temps de réaction', 'pt': 'Tempo de reação', 'ar': 'سرعة رد الفعل' },
+    tip: { ko: '초록으로 바뀌는 순간 톡!', ja: '緑に変わった瞬間にタップ！', en: 'Tap the moment it turns green', 'zh-Hant': '變綠的瞬間點下去！', 'de': 'Tippe, sobald es grün wird', 'es': 'Toca en cuanto se ponga verde', 'fr': 'Touche dès que ça devient vert', 'pt': 'Toque assim que ficar verde', 'ar': 'اضغط لحظة تحوّله إلى الأخضر' },
     color: '#E5484D',
     kind: 'brain',
     make: function (ctx) {
@@ -4146,7 +4161,7 @@ button { font: inherit; color: inherit; cursor: pointer; touch-action: none; -we
       function wrap(g, str, maxW, px, wt) {
         g.font = ctx.font(px, wt);
         if (g.measureText(str).width <= maxW) return [str];
-        var ja = ctx.lang === 'ja', parts = ja ? (str.match(/[^、。…！？]+[、。…！？]*/g) || [str]) : str.split(' '), sep = ja ? '' : ' ', best = null;
+        var ja = ctx.lang === 'ja' || ctx.lang === 'zh-Hant', parts = ja ? (str.match(/[^、。…！？，]+[、。…！？，]*/g) || [str]) : str.split(' '), sep = ja ? '' : ' ', best = null;
         if (parts.length < 2) { parts = Array.from(str); sep = ''; }
         for (var i = 1; i < parts.length; i++) {
           var a = parts.slice(0, i).join(sep), b = parts.slice(i).join(sep), w = Math.max(g.measureText(a).width, g.measureText(b).width);
@@ -4404,15 +4419,15 @@ button { font: inherit; color: inherit; cursor: pointer; touch-action: none; -we
   'use strict';
 
   var TX = {
-    combo: { ko: '{0} 콤보! +{0}', ja: '{0}コンボ！+{0}', en: '{0} combo! +{0}' },
-    boom: { ko: '펑!', ja: 'ドカン！', en: 'Boom!' },
-    over: { ko: '게임 끝', ja: 'ゲームオーバー', en: 'Game over' },
-    missed: { ko: '3개를 놓쳤어요', ja: '3個逃しました', en: 'Missed 3 fruits' },
-    summary: { ko: '과일 {0}개 · 최고 콤보 {1}', ja: '果物{0}個・最大コンボ{1}', en: 'Fruits: {0} · Best combo: {1}' },
-    newBest: { ko: '새 기록!', ja: '新記録！', en: 'New best!' },
-    score: { ko: '점수', ja: 'スコア', en: 'Score' },
-    best: { ko: '최고 기록', ja: 'ベスト', en: 'Best' },
-    again: { ko: '다시 하기', ja: 'もう一回', en: 'Play again' }
+    combo: { ko: '{0} 콤보! +{0}', ja: '{0}コンボ！+{0}', en: '{0} combo! +{0}', 'zh-Hant': '{0}連切！+{0}', 'de': '{0}er-Combo! +{0}', 'es': '¡Combo {0}! +{0}', 'fr': 'Combo {0} ! +{0}', 'pt': 'Combo {0}! +{0}', 'ar': 'سلسلة {0}! +{0}' },
+    boom: { ko: '펑!', ja: 'ドカン！', en: 'Boom!', 'zh-Hant': '砰！', 'de': 'Bumm!', 'es': '¡Bum!', 'fr': 'Boum !', 'pt': 'Bum!', 'ar': 'بوم!' },
+    over: { ko: '게임 끝', ja: 'ゲームオーバー', en: 'Game over', 'zh-Hant': '遊戲結束', 'de': 'Spiel vorbei', 'es': 'Fin del juego', 'fr': 'Partie terminée', 'pt': 'Fim de jogo', 'ar': 'انتهت اللعبة' },
+    missed: { ko: '3개를 놓쳤어요', ja: '3個逃しました', en: 'Missed 3 fruits', 'zh-Hant': '漏掉了3個', 'de': '3 Früchte verpasst', 'es': 'Se escaparon 3 frutas', 'fr': '3 fruits ratés', 'pt': 'Deixou cair 3 frutas', 'ar': 'فاتتك 3 فواكه' },
+    summary: { ko: '과일 {0}개 · 최고 콤보 {1}', ja: '果物{0}個・最大コンボ{1}', en: 'Fruits: {0} · Best combo: {1}', 'zh-Hant': '水果{0}個・最高連切{1}', 'de': 'Früchte: {0} · Beste Combo: {1}', 'es': 'Frutas: {0} · Mejor combo: {1}', 'fr': 'Fruits : {0} · Meilleur combo : {1}', 'pt': 'Frutas: {0} · Melhor combo: {1}', 'ar': 'الفواكه: {0} · أفضل سلسلة: {1}' },
+    newBest: { ko: '새 기록!', ja: '新記録！', en: 'New best!', 'zh-Hant': '新紀錄！', 'de': 'Neuer Rekord!', 'es': '¡Nuevo récord!', 'fr': 'Nouveau record !', 'pt': 'Novo recorde!', 'ar': 'رقم قياسي جديد!' },
+    score: { ko: '점수', ja: 'スコア', en: 'Score', 'zh-Hant': '分數', 'de': 'Punkte', 'es': 'Puntos', 'fr': 'Score', 'pt': 'Pontos', 'ar': 'النقاط' },
+    best: { ko: '최고 기록', ja: 'ベスト', en: 'Best', 'zh-Hant': '最佳紀錄', 'de': 'Rekord', 'es': 'Récord', 'fr': 'Record', 'pt': 'Recorde', 'ar': 'الأفضل' },
+    again: { ko: '다시 하기', ja: 'もう一回', en: 'Play again', 'zh-Hant': '再玩一次', 'de': 'Nochmal', 'es': 'Otra vez', 'fr': 'Rejouer', 'pt': 'Jogar de novo', 'ar': 'العب مرة أخرى' }
   };
 
   var TAU = Math.PI * 2, PI = Math.PI;
@@ -4559,8 +4574,8 @@ button { font: inherit; color: inherit; cursor: pointer; touch-action: none; -we
   }
 
   GAMES['slice'] = {
-    name: { ko: '과일 자르기', ja: 'フルーツカット', en: 'Fruit Slice' },
-    tip: { ko: '쓱 그어 자르고, 폭탄은 피해요!', ja: 'スッと切って、爆弾はよけて！', en: 'Swipe to slice, dodge the bombs!' },
+    name: { ko: '과일 자르기', ja: 'フルーツカット', en: 'Fruit Slice', 'zh-Hant': '切水果', 'de': 'Obst schneiden', 'es': 'Corta frutas', 'fr': 'Coupe-fruits', 'pt': 'Corte de frutas', 'ar': 'تقطيع الفواكه' },
+    tip: { ko: '쓱 그어 자르고, 폭탄은 피해요!', ja: 'スッと切って、爆弾はよけて！', en: 'Swipe to slice, dodge the bombs!', 'zh-Hant': '一劃切開，避開炸彈！', 'de': 'Wischen zum Schneiden, Bomben meiden!', 'es': '¡Desliza para cortar y esquiva las bombas!', 'fr': 'Glisse pour couper, évite les bombes !', 'pt': 'Deslize para cortar e fuja das bombas!', 'ar': 'اسحب لتقطع وتجنّب القنابل!' },
     color: '#E5484D',
     kind: 'arcade',
     make: function (ctx) {
@@ -4941,14 +4956,14 @@ button { font: inherit; color: inherit; cursor: pointer; touch-action: none; -we
   'use strict';
 
   var TX = {
-    start: { ko: '시작', ja: 'スタート', en: 'Start' },
-    missed: { ko: '놓쳤어요!', ja: '逃した！', en: 'Missed one!' },
-    wrong: { ko: '앗, 흰 칸!', ja: 'あっ、白いところ！', en: 'Oops, white tile!' },
-    tilesN: { ko: '건반 {0}개', ja: '{0}枚', en: 'Tiles: {0}' },
-    newBest: { ko: '새 기록!', ja: '新記録！', en: 'New best!' },
-    score: { ko: '점수', ja: 'スコア', en: 'Score' },
-    best: { ko: '최고 기록', ja: 'ベスト', en: 'Best' },
-    again: { ko: '다시 하기', ja: 'もう一回', en: 'Play again' }
+    start: { ko: '시작', ja: 'スタート', en: 'Start', 'zh-Hant': '開始', 'de': 'Start', 'es': 'Empezar', 'fr': 'Commencer', 'pt': 'Começar', 'ar': 'ابدأ' },
+    missed: { ko: '놓쳤어요!', ja: '逃した！', en: 'Missed one!', 'zh-Hant': '漏掉了！', 'de': 'Verpasst!', 'es': '¡Se te escapó!', 'fr': 'Ratée !', 'pt': 'Deixou passar!', 'ar': 'فاتك واحد!' },
+    wrong: { ko: '앗, 흰 칸!', ja: 'あっ、白いところ！', en: 'Oops, white tile!', 'zh-Hant': '哎呀，點到白色！', 'de': 'Hoppla, weißes Feld!', 'es': '¡Uy, espacio blanco!', 'fr': 'Oups, case blanche !', 'pt': 'Ops, espaço branco!', 'ar': 'أوه، مساحة بيضاء!' },
+    tilesN: { ko: '건반 {0}개', ja: '{0}枚', en: 'Tiles: {0}', 'zh-Hant': '{0}格', 'de': '{0} Tasten', 'es': '{0} teclas', 'fr': '{0} touches', 'pt': '{0} teclas', 'ar': '{0} مفتاحًا' },
+    newBest: { ko: '새 기록!', ja: '新記録！', en: 'New best!', 'zh-Hant': '新紀錄！', 'de': 'Neuer Rekord!', 'es': '¡Nuevo récord!', 'fr': 'Nouveau record !', 'pt': 'Novo recorde!', 'ar': 'رقم قياسي جديد!' },
+    score: { ko: '점수', ja: 'スコア', en: 'Score', 'zh-Hant': '分數', 'de': 'Punkte', 'es': 'Puntos', 'fr': 'Score', 'pt': 'Pontos', 'ar': 'النقاط' },
+    best: { ko: '최고 기록', ja: 'ベスト', en: 'Best', 'zh-Hant': '最佳紀錄', 'de': 'Rekord', 'es': 'Récord', 'fr': 'Record', 'pt': 'Recorde', 'ar': 'الأفضل' },
+    again: { ko: '다시 하기', ja: 'もう一回', en: 'Play again', 'zh-Hant': '再玩一次', 'de': 'Nochmal', 'es': 'Otra vez', 'fr': 'Rejouer', 'pt': 'Jogar de novo', 'ar': 'العب مرة أخرى' }
   };
 
   var TAU = Math.PI * 2, ASPECT = 0.56, LANES = 4, ROWS = 4;
@@ -4997,8 +5012,8 @@ button { font: inherit; color: inherit; cursor: pointer; touch-action: none; -we
   }
 
   GAMES['tiles'] = {
-    name: { ko: '피아노 건반', ja: 'タップタイル', en: 'Tap Tiles' },
-    tip: { ko: '검은 건반만 아래부터 톡톡', ja: '黒い鍵盤だけ下から順にタップ', en: 'Tap only the black tiles, from the bottom up' },
+    name: { ko: '피아노 건반', ja: 'タップタイル', en: 'Tap Tiles', 'zh-Hant': '點點黑鍵', 'de': 'Klaviertasten', 'es': 'Teclas de piano', 'fr': 'Touches de piano', 'pt': 'Teclas de piano', 'ar': 'مفاتيح البيانو' },
+    tip: { ko: '검은 건반만 아래부터 톡톡', ja: '黒い鍵盤だけ下から順にタップ', en: 'Tap only the black tiles, from the bottom up', 'zh-Hant': '只點黑色方塊，從下往上', 'de': 'Nur die schwarzen, von unten nach oben', 'es': 'Solo las negras, de abajo arriba', 'fr': 'Seulement les noires, du bas vers le haut', 'pt': 'Só as pretas, de baixo para cima', 'ar': 'المفاتيح السوداء فقط، من الأسفل للأعلى' },
     color: '#2B3140',
     kind: 'arcade',
     make: function (ctx) {
@@ -5212,10 +5227,10 @@ button { font: inherit; color: inherit; cursor: pointer; touch-action: none; -we
   'use strict';
 
   var TX = {
-    hint: { ko: '병을 눌러 고르고, 부을 병을 눌러요', ja: 'びんを選んで、注ぐ先をタップ', en: 'Tap a bottle, then tap where to pour' },
-    colors: { ko: '{0}색', ja: '{0}色', en: '{0} colors' },
-    clear: { ko: '클리어!', ja: 'クリア！', en: 'Cleared!' },
-    reset: { ko: '처음부터', ja: '最初から', en: 'Restart' }
+    hint: { ko: '병을 눌러 고르고, 부을 병을 눌러요', ja: 'びんを選んで、注ぐ先をタップ', en: 'Tap a bottle, then tap where to pour', 'zh-Hant': '先選瓶子，再點要倒進的瓶子', 'de': 'Flasche antippen, dann das Ziel', 'es': 'Toca una botella y luego dónde verter', 'fr': 'Touche une fiole, puis où verser', 'pt': 'Toque um frasco e depois onde despejar', 'ar': 'اضغط زجاجة ثم مكان السكب' },
+    colors: { ko: '{0}색', ja: '{0}色', en: '{0} colors', 'zh-Hant': '{0} 色', 'de': '{0} Farben', 'es': '{0} colores', 'fr': '{0} couleurs', 'pt': '{0} cores', 'ar': 'الألوان: {0}' },
+    clear: { ko: '클리어!', ja: 'クリア！', en: 'Cleared!', 'zh-Hant': '過關！', 'de': 'Geschafft!', 'es': '¡Superado!', 'fr': 'Réussi !', 'pt': 'Concluído!', 'ar': 'أحسنت!' },
+    reset: { ko: '처음부터', ja: '最初から', en: 'Restart', 'zh-Hant': '重新開始', 'de': 'Neu starten', 'es': 'Reiniciar', 'fr': 'Recommencer', 'pt': 'Recomeçar', 'ar': 'من البداية' }
   };
 
   var TAU = Math.PI * 2, CAP = 4, RATIO = 3.3, POUR = 0.86;
@@ -5348,8 +5363,8 @@ button { font: inherit; color: inherit; cursor: pointer; touch-action: none; -we
   }
 
   GAMES['watersort'] = {
-    name: { ko: '물 정렬', ja: 'ウォーターソート', en: 'Water Sort' },
-    tip: { ko: '물을 부어 병마다 한 색으로', ja: '水を注いで、びんごとに1色に', en: 'Pour until each bottle holds one color' },
+    name: { ko: '물 정렬', ja: 'ウォーターソート', en: 'Water Sort', 'zh-Hant': '倒水排序', 'de': 'Wasser sortieren', 'es': 'Ordena el agua', 'fr': 'Tri de l’eau', 'pt': 'Ordene a água', 'ar': 'ترتيب الماء' },
+    tip: { ko: '물을 부어 병마다 한 색으로', ja: '水を注いで、びんごとに1色に', en: 'Pour until each bottle holds one color', 'zh-Hant': '倒水讓每個瓶子只剩一種顏色', 'de': 'Gieße, bis jede Flasche eine Farbe hat', 'es': 'Vierte hasta que cada botella tenga un color', 'fr': 'Verse jusqu’à une couleur par fiole', 'pt': 'Despeje até cada frasco ter uma cor', 'ar': 'اسكب حتى تحمل كل زجاجة لونًا واحدًا' },
     color: '#00A6FB',
     kind: 'puzzle',
     make: function (ctx) {
@@ -5710,14 +5725,14 @@ button { font: inherit; color: inherit; cursor: pointer; touch-action: none; -we
   'use strict';
 
   var TX = {
-    go: { ko: '시작!', ja: 'スタート！', en: 'Go!' },
-    combo: { ko: '{0} 콤보!', ja: '{0}コンボ！', en: '{0} combo!' },
-    timeUp: { ko: '시간 끝!', ja: 'タイムアップ！', en: 'Time’s up!' },
-    newBest: { ko: '새 기록!', ja: '新記録！', en: 'New best!' },
-    summary: { ko: '두더지 {0}마리 · 최고 콤보 {1}', ja: 'もぐら{0}匹・最大コンボ{1}', en: '{0} moles · Best combo {1}' },
-    score: { ko: '점수', ja: 'スコア', en: 'Score' },
-    best: { ko: '최고 기록', ja: 'ベスト', en: 'Best' },
-    again: { ko: '다시 하기', ja: 'もう一回', en: 'Play again' }
+    go: { ko: '시작!', ja: 'スタート！', en: 'Go!', 'zh-Hant': '開始！', 'de': 'Los!', 'es': '¡Ya!', 'fr': 'Partez !', 'pt': 'Já!', 'ar': 'انطلق!' },
+    combo: { ko: '{0} 콤보!', ja: '{0}コンボ！', en: '{0} combo!', 'zh-Hant': '{0}連擊！', 'de': '{0}er-Combo!', 'es': '¡Combo {0}!', 'fr': 'Combo {0} !', 'pt': 'Combo {0}!', 'ar': 'سلسلة {0}!' },
+    timeUp: { ko: '시간 끝!', ja: 'タイムアップ！', en: 'Time’s up!', 'zh-Hant': '時間到！', 'de': 'Zeit um!', 'es': '¡Se acabó el tiempo!', 'fr': 'Temps écoulé !', 'pt': 'Acabou o tempo!', 'ar': 'انتهى الوقت!' },
+    newBest: { ko: '새 기록!', ja: '新記録！', en: 'New best!', 'zh-Hant': '新紀錄！', 'de': 'Neuer Rekord!', 'es': '¡Nuevo récord!', 'fr': 'Nouveau record !', 'pt': 'Novo recorde!', 'ar': 'رقم قياسي جديد!' },
+    summary: { ko: '두더지 {0}마리 · 최고 콤보 {1}', ja: 'もぐら{0}匹・最大コンボ{1}', en: '{0} moles · Best combo {1}', 'zh-Hant': '打中{0}隻地鼠・最高連擊{1}', 'de': '{0} Maulwürfe · Beste Combo {1}', 'es': '{0} topos · Mejor combo {1}', 'fr': '{0} taupes · Meilleur combo {1}', 'pt': '{0} toupeiras · Melhor combo {1}', 'ar': '{0} خلد · أفضل سلسلة {1}' },
+    score: { ko: '점수', ja: 'スコア', en: 'Score', 'zh-Hant': '分數', 'de': 'Punkte', 'es': 'Puntos', 'fr': 'Score', 'pt': 'Pontos', 'ar': 'النقاط' },
+    best: { ko: '최고 기록', ja: 'ベスト', en: 'Best', 'zh-Hant': '最佳紀錄', 'de': 'Rekord', 'es': 'Récord', 'fr': 'Record', 'pt': 'Recorde', 'ar': 'الأفضل' },
+    again: { ko: '다시 하기', ja: 'もう一回', en: 'Play again', 'zh-Hant': '再玩一次', 'de': 'Nochmal', 'es': 'Otra vez', 'fr': 'Rejouer', 'pt': 'Jogar de novo', 'ar': 'العب مرة أخرى' }
   };
 
   var TAU = Math.PI * 2;
@@ -5977,8 +5992,8 @@ button { font: inherit; color: inherit; cursor: pointer; touch-action: none; -we
   }
 
   GAMES['whack'] = {
-    name: { ko: '두더지 잡기', ja: 'もぐらたたき', en: 'Mole Bop' },
-    tip: { ko: '두더지는 콩, 토끼는 꾹 참아요', ja: 'もぐらはポカッ、うさぎはガマン', en: 'Bonk the moles, spare the bunny' },
+    name: { ko: '두더지 잡기', ja: 'もぐらたたき', en: 'Mole Bop', 'zh-Hant': '打地鼠', 'de': 'Maulwurf hauen', 'es': 'Golpea al topo', 'fr': 'Tape-taupe', 'pt': 'Acerte a toupeira', 'ar': 'اضرب الخلد' },
+    tip: { ko: '두더지는 콩, 토끼는 꾹 참아요', ja: 'もぐらはポカッ、うさぎはガマン', en: 'Bonk the moles, spare the bunny', 'zh-Hant': '打地鼠，放過兔子', 'de': 'Hau die Maulwürfe, verschone den Hasen', 'es': 'Golpea topos, perdona al conejo', 'fr': 'Tape les taupes, épargne le lapin', 'pt': 'Acerte as toupeiras, poupe o coelho', 'ar': 'اضرب الخلد واترك الأرنب' },
     color: '#8D6E4A',
     kind: 'arcade',
     make: function (ctx) {

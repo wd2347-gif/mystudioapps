@@ -12,7 +12,7 @@
      One self-contained file: no network at all (icon, fonts and art are drawn). Games live in _src/mypartygame/games/<id>.js(+css), sets in sets.js.
      Each load picks one set of 3 games at random (never the same set twice in a row), ?set=N forces one, ?game=K starts at position K.
      Nothing on screen shows how many games are left (owner rule 10/11). Bridge: window.XPromo.postMessage 'ready' | 'switch:2' | 'switch:3' | 'install'.
-     The top-right 64x64 stays empty for the app's close button. Query: lang=ko|ja|en, from=<app>, host=app, set=N, game=K, test=1. -->
+     The top-right 64x64 stays empty for the app's close button. Query: lang=ko|ja|en|zh-Hant|de|es|fr|pt|ar, from=<app>, host=app, set=N, game=K, test=1. -->
 <style>
 :root {
   color-scheme: light dark;
@@ -200,19 +200,28 @@ var GAMES = {};
 
   /* ---------- language ---------- */
   var Q = new URLSearchParams(location.search);
-  var LANGS = ['ko', 'ja', 'en'];
+  var LANGS = ['ko', 'ja', 'en', 'zh-Hant', 'de', 'es', 'fr', 'pt', 'ar'];
+  /* 2026-10-12: 9 languages. 'zh-Hant' · 'zh_TW' · 'zh' -> 'zh-Hant', 'pt-BR' -> 'pt', others by first two letters */
+  function normLang(s) {
+    s = String(s || '').toLowerCase();
+    if (s.indexOf('zh') === 0) return 'zh-Hant';
+    s = s.slice(0, 2);
+    return LANGS.indexOf(s) >= 0 ? s : '';
+  }
   function pickLang() {
-    var q = String(Q.get('lang') || '').toLowerCase();
-    if (LANGS.indexOf(q) >= 0) return q;
+    var q = normLang(Q.get('lang'));
+    if (q) return q;
     var list = navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || 'en'];
     for (var i = 0; i < list.length; i++) {
-      var n = String(list[i] || '').slice(0, 2).toLowerCase();
-      if (LANGS.indexOf(n) >= 0) return n;
+      var n = normLang(list[i]);
+      if (n) return n;
     }
     return 'en';
   }
   var lang = pickLang();
   document.documentElement.lang = lang;
+  /* Arabic: text follows its own direction, the layout stays LTR (top-right 64px is the app's close button) */
+  if (lang === 'ar') { var bidi = document.createElement('style'); bidi.textContent = 'body *{unicode-bidi:plaintext}'; document.head.appendChild(bidi); }
   if (Q.get('host') === 'app') document.documentElement.setAttribute('data-host', 'app');
   var TEST = Q.get('test') === '1';
 

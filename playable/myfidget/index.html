@@ -80,15 +80,21 @@ try { Q = new URLSearchParams(location.search); } catch (e) { Q = { get: functio
 var TXT = {
   ko: { tag: '손끝으로 톡, 스트레스 해소', slogan: '톡톡 손맛으로 스트레스 해소', next: '다른 놀이', get: '설치' },
   ja: { tag: '指先でぷちぷち、ストレス解消', slogan: 'ぷちぷちの手ざわりでストレス解消', next: '別のあそび', get: 'インストール' },
-  en: { tag: 'Tap away the stress', slogan: 'Satisfying stress relief', next: 'Another toy', get: 'Install' }
+  en: { tag: 'Tap away the stress', slogan: 'Satisfying stress relief', next: 'Another toy', get: 'Install' }, 'zh-Hant': { tag: '指尖輕點，壓力全消', slogan: '超療癒的紓壓手感', next: '換個玩法', get: '安裝' }, 'de': { tag: 'Tipp den Stress einfach weg', slogan: 'Stressabbau, der richtig guttut', next: 'Anderes Spiel', get: 'Installieren' }, 'es': { tag: 'Toca y suelta el estrés', slogan: 'Alivio del estrés muy satisfactorio', next: 'Otro juego', get: 'Instalar' }, 'fr': { tag: 'Chasse le stress du bout du doigt', slogan: 'Un anti-stress ultra satisfaisant', next: 'Un autre jeu', get: 'Installer' }, 'pt': { tag: 'Toque e espante o estresse', slogan: 'Alívio do estresse bem satisfatório', next: 'Outro brinquedo', get: 'Instalar' }, 'ar': { tag: 'اطرد التوتر بلمسة', slogan: 'تخفيف توتر بإحساس ممتع', next: 'لعبة أخرى', get: 'تثبيت' }
 };
+var LANGS = ['ko', 'ja', 'en', 'zh-Hant', 'de', 'es', 'fr', 'pt', 'ar'];
+/* 2026-10-12: 9 languages. 'zh-Hant' · 'zh_TW' · 'zh' -> 'zh-Hant', 'pt-BR' -> 'pt', others by first two letters */
+function normLang(s) {
+  s = String(s || '').toLowerCase();
+  if (s.indexOf('zh') === 0) return 'zh-Hant';
+  s = s.slice(0, 2);
+  return LANGS.indexOf(s) >= 0 ? s : '';
+}
 function pickLang() {
-  var l = String(Q.get('lang') || '').toLowerCase();
-  if (TXT[l]) return l;
-  var n = String((navigator.languages && navigator.languages[0]) || navigator.language || 'en').toLowerCase();
-  if (n.indexOf('ko') === 0) return 'ko';
-  if (n.indexOf('ja') === 0) return 'ja';
-  return 'en';
+  var l = normLang(Q.get('lang'));
+  if (l && TXT[l]) return l;
+  var n = normLang((navigator.languages && navigator.languages[0]) || navigator.language || 'en');
+  return n && TXT[n] ? n : 'en';
 }
 var LANG = pickLang();
 var L = TXT[LANG];
@@ -99,6 +105,8 @@ function T(o) {
   return o[LANG] != null ? o[LANG] : (o.en != null ? o.en : '');
 }
 document.documentElement.lang = LANG;
+/* Arabic: text follows its own direction, the layout stays LTR (top-right 64px is the app's close button) */
+if (LANG === 'ar') { var bidi = document.createElement('style'); bidi.textContent = 'body *{unicode-bidi:plaintext}'; document.head.appendChild(bidi); }
 if (Q.get('host')) document.documentElement.setAttribute('data-host', String(Q.get('host')));
 
 /* ===== Store links and host bridge ===== */
@@ -814,8 +822,8 @@ var SETS;
   }
 
   GAMES['bubble_wrap'] = {
-    name: { ko: '뽁뽁이', ja: 'プチプチ', en: 'Bubble Wrap' },
-    tip: { ko: '눌러서 뽁, 문지르면 뽁뽁뽁', ja: '押してプチッ、こすってプチプチ', en: 'Tap to pop, rub for more' },
+    name: { ko: '뽁뽁이', ja: 'プチプチ', en: 'Bubble Wrap', 'zh-Hant': '泡泡紙', 'de': 'Luftpolsterfolie', 'es': 'Plástico de burbujas', 'fr': 'Papier bulle', 'pt': 'Plástico bolha', 'ar': 'غلاف الفقاعات' },
+    tip: { ko: '눌러서 뽁, 문지르면 뽁뽁뽁', ja: '押してプチッ、こすってプチプチ', en: 'Tap to pop, rub for more', 'zh-Hant': '點一下噗，劃過去噗噗噗', 'de': 'Tippe zum Ploppen, reibe für mehr', 'es': 'Toca para reventar, frota para más', 'fr': 'Touche pour éclater, frotte pour plus', 'pt': 'Toque para estourar, esfregue para mais', 'ar': 'المس لتفرقع، وافرك للمزيد' },
     bg: bgCss(SHEETS[0]),
     tone: 'light',
     top: SHEETS[0][0],
@@ -1209,8 +1217,8 @@ var SETS;
   }
 
   GAMES['fireworks'] = {
-    name: { ko: '불꽃놀이', ja: '花火', en: 'Fireworks' },
-    tip: { ko: '톡 치면 펑, 꾹 누르면 크게', ja: 'タップで打ち上げ、長押しで大きく', en: 'Tap to launch, hold for more' },
+    name: { ko: '불꽃놀이', ja: '花火', en: 'Fireworks', 'zh-Hant': '煙火', 'de': 'Feuerwerk', 'es': 'Fuegos artificiales', 'fr': 'Feux d’artifice', 'pt': 'Fogos de artifício', 'ar': 'ألعاب نارية' },
+    tip: { ko: '톡 치면 펑, 꾹 누르면 크게', ja: 'タップで打ち上げ、長押しで大きく', en: 'Tap to launch, hold for more', 'zh-Hant': '輕點發射，長按更盛大', 'de': 'Tippe zum Abschießen, halte für mehr', 'es': 'Toca para lanzar, mantén para más', 'fr': 'Touche pour lancer, maintiens pour plus', 'pt': 'Toque para lançar, segure para mais', 'ar': 'المس لتطلق، واضغط مطولًا للمزيد' },
     bg: HILLS.concat(bgStars).join(',') + ',linear-gradient(180deg,#04060F 0%,#0A0F2A 60%,#1D1336 100%) #04060F',
     tone: 'dark',
     top: '#04060F',
@@ -1795,8 +1803,8 @@ var SETS;
   }
 
   GAMES['ice'] = {
-    name: { ko: '살얼음 깨기', ja: '薄氷わり', en: 'Thin Ice' },
-    tip: { ko: '얼음을 톡 쳐서 깨 보세요', ja: '氷をタップして割ってみて', en: 'Tap the ice to crack it' },
+    name: { ko: '살얼음 깨기', ja: '薄氷わり', en: 'Thin Ice', 'zh-Hant': '敲薄冰', 'de': 'Dünnes Eis', 'es': 'Hielo fino', 'fr': 'Glace fine', 'pt': 'Gelo fino', 'ar': 'الجليد الرقيق' },
+    tip: { ko: '얼음을 톡 쳐서 깨 보세요', ja: '氷をタップして割ってみて', en: 'Tap the ice to crack it', 'zh-Hant': '輕點冰面，敲出裂紋', 'de': 'Tippe aufs Eis, damit es knackt', 'es': 'Toca el hielo para agrietarlo', 'fr': 'Touche la glace pour la fissurer', 'pt': 'Toque no gelo para rachá-lo', 'ar': 'المس الجليد ليتشقق' },
     bg: 'linear-gradient(180deg,#EEF6FC 0%,#D5E6F2 100%) #EEF6FC',
     tone: 'light',
     top: '#EEF6FC',
@@ -2185,8 +2193,8 @@ var SETS;
   }
 
   GAMES['jelly'] = {
-    name: { ko: '말랑 젤리', ja: 'ぷるぷるゼリー', en: 'Squishy Jelly' },
-    tip: { ko: '휙 던져서 별을 맞혀 보세요', ja: '上に投げて星に当ててみて', en: 'Toss it up to hit the star' },
+    name: { ko: '말랑 젤리', ja: 'ぷるぷるゼリー', en: 'Squishy Jelly', 'zh-Hant': '軟軟果凍', 'de': 'Wackelpudding', 'es': 'Gelatina blandita', 'fr': 'Gelée moelleuse', 'pt': 'Gelatina molinha', 'ar': 'جيلي طري' },
+    tip: { ko: '휙 던져서 별을 맞혀 보세요', ja: '上に投げて星に当ててみて', en: 'Toss it up to hit the star', 'zh-Hant': '往上丟，打中星星', 'de': 'Wirf ihn hoch und triff den Stern', 'es': 'Lánzala arriba y da a la estrella', 'fr': 'Lance-la en l’air pour toucher l’étoile', 'pt': 'Jogue para cima e acerte a estrela', 'ar': 'ارمِه للأعلى لتصيب النجمة' },
     bg: 'linear-gradient(180deg,#FFF1E8 0%,#FDDCCB 100%) #FFF1E8',
     tone: 'light',
     top: '#FFF1E8',
@@ -2460,8 +2468,8 @@ var SETS;
   }
 
   GAMES['kalimba'] = {
-    name: { ko: '칼림바', ja: 'カリンバ', en: 'Kalimba' },
-    tip: { ko: '빛나는 건반을 따라 톡톡', ja: '光る鍵盤をはじいてみて', en: 'Pluck the glowing keys' },
+    name: { ko: '칼림바', ja: 'カリンバ', en: 'Kalimba', 'zh-Hant': '卡林巴', 'de': 'Kalimba', 'es': 'Kalimba', 'fr': 'Kalimba', 'pt': 'Kalimba', 'ar': 'كاليمبا' },
+    tip: { ko: '빛나는 건반을 따라 톡톡', ja: '光る鍵盤をはじいてみて', en: 'Pluck the glowing keys', 'zh-Hant': '撥動發光的琴鍵', 'de': 'Zupf die leuchtenden Zungen', 'es': 'Pulsa las teclas que brillan', 'fr': 'Pince les lames qui brillent', 'pt': 'Toque as teclas que brilham', 'ar': 'انقر المفاتيح المضيئة' },
     bg: 'linear-gradient(180deg,#F4EBDD 0%,#E6D6BE 100%) #F4EBDD',
     tone: 'light',
     top: '#F4EBDD',
@@ -2713,8 +2721,8 @@ var SETS;
   }
 
   GAMES['keycaps'] = {
-    name: { ko: '키캡 클리커', ja: 'キーキャップ', en: 'Keycap Clicker' },
-    tip: { ko: '키를 눌러 딸깍딸깍', ja: 'キーを押してカチカチ', en: 'Tap the keys: clack clack' },
+    name: { ko: '키캡 클리커', ja: 'キーキャップ', en: 'Keycap Clicker', 'zh-Hant': '鍵帽按按樂', 'de': 'Tastenklicker', 'es': 'Teclas clic', 'fr': 'Touches clic', 'pt': 'Teclas clique', 'ar': 'نقر المفاتيح' },
+    tip: { ko: '키를 눌러 딸깍딸깍', ja: 'キーを押してカチカチ', en: 'Tap the keys: clack clack', 'zh-Hant': '按按鍵帽：喀噠喀噠', 'de': 'Tippe die Tasten: klack klack', 'es': 'Toca las teclas: clac clac', 'fr': 'Appuie sur les touches : clac clac', 'pt': 'Aperte as teclas: clec clec', 'ar': 'اضغط المفاتيح: طق طق' },
     bg: bgCss(KITS[0]),
     tone: 'light',
     top: KITS[0].bg[0],
@@ -3051,8 +3059,8 @@ var SETS;
   }
 
   GAMES['plinko'] = {
-    name: { ko: '구슬 떨어뜨리기', ja: 'ビー玉おとし', en: 'Marble Drop' },
-    tip: { ko: '꾹 누르면 구슬이 줄줄이', ja: '長押しでビー玉が次々と', en: 'Tap to drop, hold for more' },
+    name: { ko: '구슬 떨어뜨리기', ja: 'ビー玉おとし', en: 'Marble Drop', 'zh-Hant': '彈珠落下', 'de': 'Murmelregen', 'es': 'Lluvia de canicas', 'fr': 'Pluie de billes', 'pt': 'Chuva de bolinhas', 'ar': 'مطر الكرات' },
+    tip: { ko: '꾹 누르면 구슬이 줄줄이', ja: '長押しでビー玉が次々と', en: 'Tap to drop, hold for more', 'zh-Hant': '輕點落下，長按連續落下', 'de': 'Tippe zum Fallenlassen, halte für mehr', 'es': 'Toca para soltar, mantén para más', 'fr': 'Touche pour lâcher, maintiens pour plus', 'pt': 'Toque para soltar, segure para mais', 'ar': 'المس لتسقط، واضغط مطولًا للمزيد' },
     bg: 'radial-gradient(130% 85% at 50% 45%,rgba(0,0,0,0) 50%,rgba(0,0,0,.32) 100%),linear-gradient(180deg,#0B1028 0%,#1C1447 100%) #0B1028',
     tone: 'dark',
     top: '#0B1028',
@@ -3410,8 +3418,8 @@ var SETS;
   }
 
   GAMES['popit'] = {
-    name: { ko: '팝잇', ja: 'プッシュポップ', en: 'Pop It' },
-    tip: { ko: '다 누르면 휙 뒤집혀요', ja: '全部押すとくるっと裏返るよ', en: 'Press them all to flip it' },
+    name: { ko: '팝잇', ja: 'プッシュポップ', en: 'Pop It', 'zh-Hant': '紓壓泡泡板', 'de': 'Pop It', 'es': 'Pop It', 'fr': 'Pop It', 'pt': 'Pop It', 'ar': 'بوب إت' },
+    tip: { ko: '다 누르면 휙 뒤집혀요', ja: '全部押すとくるっと裏返るよ', en: 'Press them all to flip it', 'zh-Hant': '全部按完，就會翻面', 'de': 'Drück alle, dann dreht es sich um', 'es': 'Presiónalas todas para darle la vuelta', 'fr': 'Enfonce-les toutes pour le retourner', 'pt': 'Aperte todas para virar', 'ar': 'اضغطها كلها لينقلب' },
     bg: 'linear-gradient(180deg,#FFF6EC 0%,#F6E7F2 100%) #FFF6EC',
     tone: 'light',
     top: '#FFF6EC',
@@ -4030,8 +4038,8 @@ var SETS;
   }
 
   GAMES['powerwash'] = {
-    name: { ko: '고압 세척', ja: '高圧洗浄', en: 'Power Wash' },
-    tip: { ko: '물줄기로 때를 벗겨 보세요', ja: '水をかけて汚れを落としてみて', en: 'Spray the grime away' },
+    name: { ko: '고압 세척', ja: '高圧洗浄', en: 'Power Wash', 'zh-Hant': '高壓清洗', 'de': 'Hochdruckreiniger', 'es': 'Hidrolavado', 'fr': 'Haute pression', 'pt': 'Lavadora de pressão', 'ar': 'الغسيل بالضغط' },
+    tip: { ko: '물줄기로 때를 벗겨 보세요', ja: '水をかけて汚れを落としてみて', en: 'Spray the grime away', 'zh-Hant': '用水柱沖掉污垢', 'de': 'Spritz den Dreck weg', 'es': 'Quita la suciedad con el chorro', 'fr': 'Fais partir la saleté au jet', 'pt': 'Jogue água e tire a sujeira', 'ar': 'رُشّ الماء لإزالة الأوساخ' },
     bg: 'linear-gradient(180deg,#34261B 0%,#1D150E 100%) #34261B',
     tone: 'dark',
     top: '#34261B',
@@ -4407,8 +4415,8 @@ var SETS;
   }
 
   GAMES['scratch'] = {
-    name: { ko: '스크래치', ja: 'スクラッチ', en: 'Scratch Art' },
-    tip: { ko: '긁으면 숨은 그림이 나와요', ja: 'けずるとかくれた絵が出るよ', en: 'Scratch to find the picture' },
+    name: { ko: '스크래치', ja: 'スクラッチ', en: 'Scratch Art', 'zh-Hant': '刮畫', 'de': 'Kratzbild', 'es': 'Rasca y pinta', 'fr': 'Carte à gratter', 'pt': 'Raspadinha', 'ar': 'لوحة الكشط' },
+    tip: { ko: '긁으면 숨은 그림이 나와요', ja: 'けずるとかくれた絵が出るよ', en: 'Scratch to find the picture', 'zh-Hant': '刮一刮，找出隱藏的圖案', 'de': 'Kratz, um das Bild zu finden', 'es': 'Rasca para descubrir el dibujo', 'fr': 'Gratte pour trouver l’image', 'pt': 'Raspe para achar o desenho', 'ar': 'اكشط لتجد الصورة' },
     bg: 'radial-gradient(130% 80% at 50% 30%,#2A2A30 0%,#1B1B20 55%,#111114 100%) #1B1B20',
     tone: 'dark',
     top: '#1B1B20',
@@ -4854,8 +4862,8 @@ var SETS;
   }
 
   GAMES['soapcut'] = {
-    name: { ko: '비누 썰기', ja: '石けんカット', en: 'Soap Cutting' },
-    tip: { ko: '칼을 쓱 내려 썰어 보세요', ja: 'ナイフを下ろして切ってみて', en: 'Slide the knife down to cut' },
+    name: { ko: '비누 썰기', ja: '石けんカット', en: 'Soap Cutting', 'zh-Hant': '切肥皂', 'de': 'Seife schneiden', 'es': 'Cortar jabón', 'fr': 'Savon à découper', 'pt': 'Cortar sabão', 'ar': 'تقطيع الصابون' },
+    tip: { ko: '칼을 쓱 내려 썰어 보세요', ja: 'ナイフを下ろして切ってみて', en: 'Slide the knife down to cut', 'zh-Hant': '把刀往下滑，切下一片', 'de': 'Zieh das Messer nach unten und schneide', 'es': 'Baja el cuchillo para cortar', 'fr': 'Descends le couteau pour couper', 'pt': 'Desça a faca para cortar', 'ar': 'أنزل السكين لتقطع' },
     bg: 'linear-gradient(180deg,#F4EEFB 0%,#E6DDF5 100%) #F4EEFB',
     tone: 'light',
     top: '#F4EEFB',
@@ -5070,8 +5078,8 @@ var SETS;
   }
 
   GAMES['spinner'] = {
-    name: { ko: '피젯 스피너', ja: 'ハンドスピナー', en: 'Fidget Spinner' },
-    tip: { ko: '휙 튕겨서 돌려 보세요', ja: 'はじいて回してみて', en: 'Flick it to spin' },
+    name: { ko: '피젯 스피너', ja: 'ハンドスピナー', en: 'Fidget Spinner', 'zh-Hant': '指尖陀螺', 'de': 'Fidget Spinner', 'es': 'Fidget spinner', 'fr': 'Hand spinner', 'pt': 'Fidget spinner', 'ar': 'سبينر' },
+    tip: { ko: '휙 튕겨서 돌려 보세요', ja: 'はじいて回してみて', en: 'Flick it to spin', 'zh-Hant': '用力一撥，轉起來', 'de': 'Schnipp ihn an, damit er sich dreht', 'es': 'Dale un toque para girarlo', 'fr': 'Donne une pichenette pour le faire tourner', 'pt': 'Dê um peteleco para girar', 'ar': 'انقره ليدور' },
     bg: 'linear-gradient(180deg,' + TOP + ' 0%,' + BOT + ' 100%) ' + TOP,
     tone: 'light',
     top: TOP,

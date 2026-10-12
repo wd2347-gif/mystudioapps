@@ -42,7 +42,7 @@ python3 /Users/ymc/Desktop/claude/mystudioapps/playable/_src/build.py myfidget -
 | field | meaning |
 |---|---|
 | `env.layer` | `<div>` above the canvas, same box as the play area, `pointer-events:none`, emptied on every switch. Only for DOM extras; prefer drawing on the canvas. |
-| `env.lang` | `'ko'`, `'ja'` or `'en'` (same as `LANG`) |
+| `env.lang` | `'ko'`, `'ja'`, `'en'`, `'zh-Hant'`, `'de'`, `'es'`, `'fr'`, `'pt'` or `'ar'` (same as `LANG`). Write text as `{ko, ja, en}` only: build.py adds the other six from `i18n.json` (keyed by the English text) |
 | `env.T(obj)` | picks `obj[lang]` from `{ko,ja,en}` (falls back to `en`) |
 | `env.idle()` | seconds since the viewer last touched the play area (or since this game appeared) |
 | `env.touched()` | `true` once the viewer has touched this game |

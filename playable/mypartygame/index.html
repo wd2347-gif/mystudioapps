@@ -12,7 +12,7 @@
      One self-contained file: no network at all (icon, fonts and art are drawn). Games live in _src/mypartygame/games/<id>.js(+css), sets in sets.js.
      Each load picks one set of 3 games at random (never the same set twice in a row), ?set=N forces one, ?game=K starts at position K.
      Nothing on screen shows how many games are left (owner rule 10/11). Bridge: window.XPromo.postMessage 'ready' | 'switch:2' | 'switch:3' | 'install'.
-     The top-right 64x64 stays empty for the app's close button. Query: lang=ko|ja|en, from=<app>, host=app, set=N, game=K, test=1. -->
+     The top-right 64x64 stays empty for the app's close button. Query: lang=ko|ja|en|zh-Hant|de|es|fr|pt|ar, from=<app>, host=app, set=N, game=K, test=1. -->
 <style>
 :root {
   color-scheme: light dark;
@@ -502,7 +502,7 @@ var GAMES = {};
   var T = {
     ko: { goal: '골!', mp: '매치 포인트!', go: '시작!', win: '이겼어요!', lose: '졌어요', again: '다시 하기', you: '나', cpu: '컴퓨터' },
     ja: { goal: 'ゴール！', mp: 'マッチポイント！', go: 'スタート！', win: '勝ち！', lose: '負け…', again: 'もう一回', you: 'あなた', cpu: 'コンピューター' },
-    en: { goal: 'Goal!', mp: 'Match point!', go: 'Go!', win: 'You win!', lose: 'You lose', again: 'Play again', you: 'You', cpu: 'Computer' }
+    en: { goal: 'Goal!', mp: 'Match point!', go: 'Go!', win: 'You win!', lose: 'You lose', again: 'Play again', you: 'You', cpu: 'Computer' }, 'zh-Hant': { goal: '進球！', mp: '賽末點！', go: '開始！', win: '你贏了！', lose: '你輸了', again: '再玩一次', you: '你', cpu: '電腦' }, 'de': { goal: 'Tor!', mp: 'Matchball!', go: 'Los!', win: 'Gewonnen!', lose: 'Verloren', again: 'Nochmal', you: 'Du', cpu: 'Computer' }, 'es': { goal: '¡Gol!', mp: '¡Punto de partido!', go: '¡Ya!', win: '¡Ganaste!', lose: 'Perdiste', again: 'Otra vez', you: 'Tú', cpu: 'Máquina' }, 'fr': { goal: 'But !', mp: 'Balle de match !', go: 'Partez !', win: 'Gagné !', lose: 'Perdu', again: 'Rejouer', you: 'Toi', cpu: 'Ordi' }, 'pt': { goal: 'Gol!', mp: 'Match point!', go: 'Já!', win: 'Você venceu!', lose: 'Você perdeu', again: 'Jogar de novo', you: 'Você', cpu: 'Computador' }, 'ar': { goal: 'هدف!', mp: 'نقطة الحسم!', go: 'انطلق!', win: 'لقد فزت!', lose: 'لقد خسرت', again: 'العب مرة أخرى', you: 'أنت', cpu: 'الحاسوب' }
   };
   // AirHockeyPhysics constants (lengths in table widths, time in seconds)
   var PR = 0.05, MR = 0.08, GHW = 0.18, RC = 0.14, MAXP = 6.5, MAXM = 12, REST = 0.9, WREST = 0.85, MASS = 12, FRIC = 0.3;
@@ -540,8 +540,8 @@ var GAMES = {};
     '<circle cx="12" cy="12" r="9"/><path d="M8.2 16.4c2.1-2 5.5-2 7.6 0"/><circle cx="9" cy="10" r=".9" fill="currentColor"/><circle cx="15" cy="10" r=".9" fill="currentColor"/></svg>';
 
   GAMES['airhockey'] = {
-    name: { ko: '에어하키', ja: 'エアホッケー', en: 'Air Hockey' },
-    tip: { ko: '채를 끌어서 퍽을 골문에 넣어요', ja: 'マレットを動かしてゴールを狙おう', en: 'Drag your mallet and score a goal' },
+    name: { ko: '에어하키', ja: 'エアホッケー', en: 'Air Hockey', 'zh-Hant': '空氣曲棍球', 'de': 'Airhockey', 'es': 'Hockey de aire', 'fr': 'Air hockey', 'pt': 'Air hockey', 'ar': 'هوكي الهواء' },
+    tip: { ko: '채를 끌어서 퍽을 골문에 넣어요', ja: 'マレットを動かしてゴールを狙おう', en: 'Drag your mallet and score a goal', 'zh-Hant': '拖動推桿，把球打進球門', 'de': 'Zieh den Schläger und schieß ein Tor', 'es': 'Arrastra el mazo y mete un gol', 'fr': 'Fais glisser ton poussoir et marque un but', 'pt': 'Arraste o rebatedor e faça um gol', 'ar': 'اسحب مضربك وسجّل هدفًا' },
     cat: 'duel', accent: '#00C2C7',
     make: function (ctx) {
       var t = ctx.pick(T), S = ctx.sfx, TAU = ctx.TAU, rgba = ctx.rgba, FONT = ctx.FONT;
@@ -1142,7 +1142,7 @@ var GAMES = {};
   var T = {
     ko: { a1: '사과 {0}개', an: '사과 {0}개', timeUp: '시간 끝!', allPicked: '더 딸 사과가 없어요!' },
     ja: { a1: 'りんご{0}個', an: 'りんご{0}個', timeUp: 'タイムアップ！', allPicked: 'もう取れるりんごがない！' },
-    en: { a1: '{0} apple', an: '{0} apples', timeUp: 'Time’s up!', allPicked: 'No more apples to pick!' }
+    en: { a1: '{0} apple', an: '{0} apples', timeUp: 'Time’s up!', allPicked: 'No more apples to pick!' }, 'zh-Hant': { a1: '{0}顆蘋果', an: '{0}顆蘋果', timeUp: '時間到！', allPicked: '沒有能摘的蘋果了！' }, 'de': { a1: '{0} Apfel', an: '{0} Äpfel', timeUp: 'Zeit um!', allPicked: 'Keine Äpfel mehr zu pflücken!' }, 'es': { a1: '{0} manzana', an: '{0} manzanas', timeUp: '¡Se acabó el tiempo!', allPicked: '¡No quedan manzanas por recoger!' }, 'fr': { a1: '{0} pomme', an: '{0} pommes', timeUp: 'Temps écoulé !', allPicked: 'Plus de pommes à cueillir !' }, 'pt': { a1: '{0} maçã', an: '{0} maçãs', timeUp: 'Acabou o tempo!', allPicked: 'Não há mais maçãs para colher!' }, 'ar': { a1: 'تفاح: {0}', an: 'تفاح: {0}', timeUp: 'انتهى الوقت!', allPicked: 'لم يبقَ تفاح للقطف!' }
   };
   var ROUND = 60, RED = '#F0484E', DEEP = '#C92F3A', BLUE = '#3E9BFF', GREEN = '#2FC85E', OVER = '#E5484D';
   var TAU = Math.PI * 2;
@@ -1227,8 +1227,8 @@ var GAMES = {};
   }
 
   GAMES['apple'] = {
-    name: { ko: '사과 게임', ja: 'りんご10', en: 'Apple 10' },
-    tip: { ko: '합이 10이 되게 묶어서 사과를 따요', ja: '合計10になるりんごを囲もう', en: 'Box apples that add up to 10' },
+    name: { ko: '사과 게임', ja: 'りんご10', en: 'Apple 10', 'zh-Hant': '蘋果湊10', 'de': 'Äpfel 10', 'es': 'Manzanas 10', 'fr': 'Pommes 10', 'pt': 'Maçãs 10', 'ar': 'تفاح 10' },
+    tip: { ko: '합이 10이 되게 묶어서 사과를 따요', ja: '合計10になるりんごを囲もう', en: 'Box apples that add up to 10', 'zh-Hant': '框選總和為10的蘋果', 'de': 'Umrahme Äpfel mit der Summe 10', 'es': 'Encierra manzanas que sumen 10', 'fr': 'Encadre des pommes qui font 10', 'pt': 'Selecione maçãs que somem 10', 'ar': 'حدّد تفاحًا مجموعه 10' },
     cat: 'solo', who: '1', accent: '#E5484D',
     make: function (ctx) {
       var t = ctx.pick(T), S = ctx.sfx, root = ctx.el, FONT = ctx.FONT, dpr = ctx.dpr;
@@ -1504,7 +1504,7 @@ var GAMES = {};
   var T = {
     ko: { turn: '{0} 차례', hint: '펌프를 눌러요', soFar: '모두 {0}번 불었어요', popped: '{0} 펑!', forfeit: '벌칙 당첨!' },
     ja: { turn: '{0}の番', hint: 'ポンプを押してね', soFar: '全部で{0}回ふくらませたよ', popped: '{0}がパーン！', forfeit: '罰ゲーム決定！' },
-    en: { turn: '{0}’s turn', hint: 'Tap the pump', soFar: '{0} pumps in total', popped: '{0} popped it!', forfeit: 'Forfeit time!' }
+    en: { turn: '{0}’s turn', hint: 'Tap the pump', soFar: '{0} pumps in total', popped: '{0} popped it!', forfeit: 'Forfeit time!' }, 'zh-Hant': { turn: '輪到{0}', hint: '按打氣筒', soFar: '總共打了{0}下', popped: '{0}打爆了！', forfeit: '要受罰囉！' }, 'de': { turn: '{0} ist dran', hint: 'Tippe auf die Pumpe', soFar: 'Insgesamt {0}-mal gepumpt', popped: '{0} hat ihn platzen lassen!', forfeit: 'Strafe fällig!' }, 'es': { turn: 'Turno de {0}', hint: 'Pulsa la bomba', soFar: '{0} bombeos en total', popped: '¡{0} lo reventó!', forfeit: '¡Le toca castigo!' }, 'fr': { turn: 'Au tour de {0}', hint: 'Appuie sur la pompe', soFar: '{0} coups de pompe en tout', popped: '{0} l’a fait éclater !', forfeit: 'C’est le gage !' }, 'pt': { turn: 'Vez de {0}', hint: 'Toque na bomba', soFar: '{0} bombadas no total', popped: '{0} estourou!', forfeit: 'Hora da prenda!' }, 'ar': { turn: 'دور {0}', hint: 'اضغط المضخة', soFar: 'مجموع النفخات: {0}', popped: '{0} فجّر البالون!', forfeit: 'حان وقت العقوبة!' }
   };
   var PINK = '#FF5C7A', PINK_L = '#FF9AAE', KNOT = '#E8455F', GREY = '#5B6670', ROD = '#B8C2CC', MAXP = 14;
 
@@ -1605,8 +1605,8 @@ var GAMES = {};
   }
 
   GAMES['balloon'] = {
-    name: { ko: '풍선 펌프', ja: '風船ポンプ', en: 'Balloon Pump' },
-    tip: { ko: '한 번, 두 번… 펑 터뜨리면 벌칙', ja: '1回、2回…割ったら罰ゲーム', en: 'Pump once, twice… pop it and you lose' },
+    name: { ko: '풍선 펌프', ja: '風船ポンプ', en: 'Balloon Pump', 'zh-Hant': '打氣球', 'de': 'Ballon-Pumpe', 'es': 'Infla el globo', 'fr': 'Gonfle le ballon', 'pt': 'Encha o balão', 'ar': 'نفخ البالون' },
+    tip: { ko: '한 번, 두 번… 펑 터뜨리면 벌칙', ja: '1回、2回…割ったら罰ゲーム', en: 'Pump once, twice… pop it and you lose', 'zh-Hant': '打一下、兩下…爆了就受罰', 'de': 'Ein-, zweimal… wer ihn platzen lässt, verliert', 'es': 'Una, dos… si explota, pierdes', 'fr': 'Une, deux… s’il éclate, tu perds', 'pt': 'Uma, duas… estourou, perdeu', 'ar': 'مرة، مرتين… إن انفجر خسرت' },
     cat: 'bet', who: '2+', accent: '#FF5C7A',
     make: function (ctx) {
       var t = ctx.pick(T), S = ctx.sfx, names = ctx.names, N = names.length, SLOTS = ctx.SLOTS, dpr = ctx.dpr;
@@ -1812,6 +1812,24 @@ var GAMES = {};
     en: {
       idle: 'Once it starts, keep passing the phone', run: 'Tap the bomb as you pass it!', count: 'Passes {n}',
       boom: 'BOOM!', holder: 'Whoever is holding it gets the forfeit!', passed: 'Passes: {n}', start: 'Start', again: 'Play again'
+    }, 'zh-Hant': {
+      idle: '開始後把手機一直傳下去', run: '傳的時候點一下炸彈！', count: '傳了 {n} 次',
+      boom: '砰！', holder: '拿著的人受罰！', passed: '傳了{n}次', start: '開始', again: '再玩一次'
+    }, 'de': {
+      idle: 'Nach dem Start das Handy weitergeben', run: 'Beim Weitergeben auf die Bombe tippen!', count: 'Pässe {n}',
+      boom: 'BUMM!', holder: 'Wer sie hält, bekommt die Strafe!', passed: '{n}-mal weitergegeben', start: 'Start', again: 'Nochmal'
+    }, 'es': {
+      idle: 'Al empezar, pasen el móvil sin parar', run: '¡Toca la bomba al pasarla!', count: 'Pases {n}',
+      boom: '¡BUM!', holder: '¡Castigo para quien la tenga!', passed: 'Pases: {n}', start: 'Empezar', again: 'Otra vez'
+    }, 'fr': {
+      idle: 'Une fois lancé, faites tourner le téléphone', run: 'Touche la bombe en la passant !', count: 'Passes {n}',
+      boom: 'BOUM !', holder: 'Celui qui la tient a un gage !', passed: 'Passée {n} fois', start: 'Commencer', again: 'Rejouer'
+    }, 'pt': {
+      idle: 'Depois de começar, passem o celular', run: 'Toque na bomba ao passar!', count: 'Passes {n}',
+      boom: 'BUM!', holder: 'Quem estiver segurando paga a prenda!', passed: 'Passes: {n}', start: 'Começar', again: 'Jogar de novo'
+    }, 'ar': {
+      idle: 'بعد البدء، واصلوا تمرير الهاتف', run: 'اضغط القنبلة عند تمريرها!', count: 'التمريرات {n}',
+      boom: 'بوم!', holder: 'من يحملها عليه العقوبة!', passed: 'عدد التمريرات: {n}', start: 'ابدأ', again: 'العب مرة أخرى'
     }
   };
 
@@ -1834,8 +1852,8 @@ var GAMES = {};
   }
 
   GAMES['bomb'] = {
-    name: { ko: '폭탄 돌리기', ja: '爆弾リレー', en: 'Hot Bomb' },
-    tip: { ko: '언제 터질지 몰라요, 얼른 넘겨요!', ja: 'いつ爆発するか分からない、早く渡して！', en: 'It could blow any second, pass it on!' },
+    name: { ko: '폭탄 돌리기', ja: '爆弾リレー', en: 'Hot Bomb', 'zh-Hant': '傳炸彈', 'de': 'Heiße Bombe', 'es': 'Bomba caliente', 'fr': 'Bombe à passer', 'pt': 'Bomba-relógio', 'ar': 'القنبلة الساخنة' },
+    tip: { ko: '언제 터질지 몰라요, 얼른 넘겨요!', ja: 'いつ爆発するか分からない、早く渡して！', en: 'It could blow any second, pass it on!', 'zh-Hant': '隨時會爆炸，快傳下去！', 'de': 'Sie kann jederzeit platzen, schnell weiter!', 'es': 'Puede explotar en cualquier momento, ¡pásala!', 'fr': 'Elle peut exploser à tout moment, passe-la !', 'pt': 'Pode explodir a qualquer momento, passe logo!', 'ar': 'قد تنفجر في أي لحظة، مرّرها!' },
     cat: 'bet', who: '2+', accent: '#FF7A3D',
     make: function (ctx) {
       var t = ctx.pick(T), S = ctx.sfx, rgba = ctx.rgba;
@@ -2111,7 +2129,7 @@ var GAMES = {};
   var T = {
     ko: { turn: '{0} 차례', hint: '이빨을 하나 눌러요', left: '남은 이빨 {0}개', bit: '{0} 물렸어요!', forfeit: '벌칙 당첨!' },
     ja: { turn: '{0}の番', hint: '歯を1本押してね', left: '残りの歯 {0}本', bit: '{0}がかまれた！', forfeit: '罰ゲーム決定！' },
-    en: { turn: '{0}’s turn', hint: 'Press a tooth', left: 'Teeth left: {0}', bit: '{0} got bitten!', forfeit: 'Forfeit time!' }
+    en: { turn: '{0}’s turn', hint: 'Press a tooth', left: 'Teeth left: {0}', bit: '{0} got bitten!', forfeit: 'Forfeit time!' }, 'zh-Hant': { turn: '輪到{0}', hint: '按一顆牙齒', left: '剩下 {0} 顆牙', bit: '{0}被咬了！', forfeit: '要受罰囉！' }, 'de': { turn: '{0} ist dran', hint: 'Drück einen Zahn', left: 'Übrige Zähne: {0}', bit: '{0} wurde gebissen!', forfeit: 'Strafe fällig!' }, 'es': { turn: 'Turno de {0}', hint: 'Pulsa un diente', left: 'Dientes restantes: {0}', bit: '¡{0} se llevó un mordisco!', forfeit: '¡Le toca castigo!' }, 'fr': { turn: 'Au tour de {0}', hint: 'Appuie sur une dent', left: 'Dents restantes : {0}', bit: '{0} s’est fait mordre !', forfeit: 'C’est le gage !' }, 'pt': { turn: 'Vez de {0}', hint: 'Aperte um dente', left: 'Dentes restantes: {0}', bit: '{0} levou uma mordida!', forfeit: 'Hora da prenda!' }, 'ar': { turn: 'دور {0}', hint: 'اضغط سنًّا', left: 'الأسنان المتبقية: {0}', bit: 'عضّ التمساحُ {0}!', forfeit: 'حان وقت العقوبة!' }
   };
   var NT = 13, A0 = 166 * PI / 180, A1 = 14 * PI / 180;
   var SKIN = '#45C46F', SKIN_D = '#2F9A55', SKIN_U = '#38A962', BELLY = '#CDEFC0', PALATE = '#F58BA0', FLOOR = '#F07892',
@@ -2256,8 +2274,8 @@ var GAMES = {};
   }
 
   GAMES['croc'] = {
-    name: { ko: '악어 이빨', ja: 'ワニの歯', en: 'Crocodile Teeth' },
-    tip: { ko: '이빨을 누르다 콱 물리면 당첨', ja: '歯を押して噛まれたら当たり', en: 'Press a tooth, get chomped, you’re it' },
+    name: { ko: '악어 이빨', ja: 'ワニの歯', en: 'Crocodile Teeth', 'zh-Hant': '鱷魚拔牙', 'de': 'Krokodilzähne', 'es': 'Dientes de cocodrilo', 'fr': 'Dents du crocodile', 'pt': 'Dentes do jacaré', 'ar': 'أسنان التمساح' },
+    tip: { ko: '이빨을 누르다 콱 물리면 당첨', ja: '歯を押して噛まれたら当たり', en: 'Press a tooth, get chomped, you’re it', 'zh-Hant': '按牙齒被咬就中獎', 'de': 'Zahn drücken, wer gebissen wird, ist dran', 'es': 'Pulsa un diente y si muerde, te toca', 'fr': 'Appuie sur une dent, s’il mord c’est toi', 'pt': 'Aperte o dente: se morder, é você', 'ar': 'اضغط سنًا، إن عضّك فأنت الخاسر' },
     cat: 'bet', who: '2+', accent: '#2FB36B',
     make: function (ctx) {
       var t = ctx.pick(T), S = ctx.sfx, names = ctx.names, N = names.length, SLOTS = ctx.SLOTS, dpr = ctx.dpr;
@@ -2437,7 +2455,13 @@ var GAMES = {};
     ja: { hint: 'みんな指を置いてね', more: 'もう1人！', hold: 'そのまま動かないで…', picked: '当たり！',
       lift: '指を全部離すともう一回', again: 'もう一回なら指を置いてね', you: 'あなた' },
     en: { hint: 'Everyone, put a finger on the screen', more: 'One more finger!', hold: 'Hold still…', picked: 'Picked!',
-      lift: 'Lift all fingers to play again', again: 'Put fingers down to play again', you: 'You' }
+      lift: 'Lift all fingers to play again', again: 'Put fingers down to play again', you: 'You' }, 'zh-Hant': { hint: '大家把手指放上來', more: '再來一個人！', hold: '保持不動…', picked: '就是你！',
+      lift: '手指全部離開就能再玩', again: '再玩一次就放上手指', you: '你' }, 'de': { hint: 'Alle einen Finger aufs Display', more: 'Noch ein Finger!', hold: 'Stillhalten…', picked: 'Gewählt!',
+      lift: 'Alle Finger heben für eine neue Runde', again: 'Finger auflegen für eine neue Runde', you: 'Du' }, 'es': { hint: 'Todos, pongan un dedo en la pantalla', more: '¡Falta uno más!', hold: 'Quietos…', picked: '¡Elegido!',
+      lift: 'Levanten todos los dedos para repetir', again: 'Pongan los dedos para jugar otra vez', you: 'Tú' }, 'fr': { hint: 'Posez tous un doigt sur l’écran', more: 'Encore un doigt !', hold: 'Ne bougez plus…', picked: 'Choisi !',
+      lift: 'Levez tous les doigts pour rejouer', again: 'Posez vos doigts pour rejouer', you: 'Toi' }, 'pt': { hint: 'Todos, coloquem um dedo na tela', more: 'Falta mais um!', hold: 'Fiquem parados…', picked: 'Escolhido!',
+      lift: 'Tirem os dedos para jogar de novo', again: 'Coloquem os dedos para jogar de novo', you: 'Você' }, 'ar': { hint: 'ضعوا جميعًا إصبعًا على الشاشة', more: 'إصبع آخر!', hold: 'اثبتوا…', picked: 'تم الاختيار!',
+      lift: 'ارفعوا كل الأصابع للعب مجددًا', again: 'ضعوا أصابعكم للعب مجددًا', you: 'أنت' }
   };
   var STAR = '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#FFC233" d="M12 2.6l2.75 5.86 6.4.78-4.72 4.4 1.22 6.33L12 16.83l-5.65 3.14 1.22-6.33-4.72-4.4 6.4-.78z"/></svg>';
   var TOUCH = '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#FFFFFF" d="M9 11.2V5.5a2 2 0 0 1 4 0v4.3l4.2.9c1.1.24 1.86 1.27 1.75 2.4l-.5 5.3A3 3 0 0 1 15.47 21h-4.2a3 3 0 0 1-2.3-1.08l-3.6-4.3a1.6 1.6 0 0 1 2.3-2.2L9 14.6z"/></svg>';
@@ -2450,8 +2474,8 @@ var GAMES = {};
   function darker(hex, k) { var c = rgb(hex); return 'rgb(' + Math.round(c[0] * (1 - k)) + ',' + Math.round(c[1] * (1 - k)) + ',' + Math.round(c[2] * (1 - k)) + ')'; }
 
   GAMES['finger'] = {
-    name: { ko: '손가락 뽑기', ja: '指ルーレット', en: 'Finger Picker' },
-    tip: { ko: '손가락을 올리고 기다리면 한 명이 뽑혀요', ja: '指を置いて待つと、ひとりが選ばれる', en: 'Hold a finger down and one gets picked' },
+    name: { ko: '손가락 뽑기', ja: '指ルーレット', en: 'Finger Picker', 'zh-Hant': '手指抽籤', 'de': 'Finger-Wahl', 'es': 'Elige dedo', 'fr': 'Choix du doigt', 'pt': 'Escolha do dedo', 'ar': 'اختيار الإصبع' },
+    tip: { ko: '손가락을 올리고 기다리면 한 명이 뽑혀요', ja: '指を置いて待つと、ひとりが選ばれる', en: 'Hold a finger down and one gets picked', 'zh-Hant': '把手指按住，就會選出一個人', 'de': 'Finger draufhalten, einer wird gewählt', 'es': 'Mantén un dedo y se elige a uno', 'fr': 'Garde un doigt posé et un seul est choisi', 'pt': 'Segure o dedo e um será escolhido', 'ar': 'ضع إصبعك واثبت ليُختار واحد منكم' },
     cat: 'bet', who: '2+', accent: '#FF5C7A', full: true,
     make: function (ctx) {
       var t = ctx.pick(T), S = ctx.sfx, SLOTS = ctx.SLOTS, FONT = ctx.FONT, rgba = ctx.rgba;
@@ -2793,7 +2817,7 @@ var GAMES = {};
   var T = {
     ko: { score: '점수', again: '다시', over: '더 움직일 수 없어요', win: '2048 달성!' },
     ja: { score: 'スコア', again: 'もう一回', over: 'もう動かせません', win: '2048達成！' },
-    en: { score: 'Score', again: 'Again', over: 'No more moves', win: 'You made 2048!' }
+    en: { score: 'Score', again: 'Again', over: 'No more moves', win: 'You made 2048!' }, 'zh-Hant': { score: '分數', again: '再來一次', over: '無法再移動了', win: '做出2048了！' }, 'de': { score: 'Punkte', again: 'Nochmal', over: 'Keine Züge mehr', win: 'Du hast 2048 geschafft!' }, 'es': { score: 'Puntos', again: 'Otra vez', over: 'No quedan movimientos', win: '¡Lograste 2048!' }, 'fr': { score: 'Score', again: 'Encore', over: 'Plus de coups possibles', win: 'Tu as fait 2048 !' }, 'pt': { score: 'Pontos', again: 'De novo', over: 'Sem mais movimentos', win: 'Você fez 2048!' }, 'ar': { score: 'النقاط', again: 'مجددًا', over: 'لا توجد حركات متبقية', win: 'صنعت 2048!' }
   };
   var D = '#1B1F1A', W = '#FFFFFF';
   var TILE = {
@@ -2804,8 +2828,8 @@ var GAMES = {};
   var TILE_DARK = { 2: ['#3A4A3E', W], 4: ['#2F5C3E', W], 8: ['#337A4C', W] };
 
   GAMES['g2048'] = {
-    name: { ko: '2048', ja: '2048', en: '2048' },
-    tip: { ko: '밀어서 같은 숫자를 합쳐요', ja: 'スワイプで同じ数字を合わせよう', en: 'Swipe to merge matching numbers' },
+    name: { ko: '2048', ja: '2048', en: '2048', 'zh-Hant': '2048', 'de': '2048', 'es': '2048', 'fr': '2048', 'pt': '2048', 'ar': '2048' },
+    tip: { ko: '밀어서 같은 숫자를 합쳐요', ja: 'スワイプで同じ数字を合わせよう', en: 'Swipe to merge matching numbers', 'zh-Hant': '滑動合併相同數字', 'de': 'Wischen, um gleiche Zahlen zu verbinden', 'es': 'Desliza para unir números iguales', 'fr': 'Glisse pour fusionner les mêmes chiffres', 'pt': 'Deslize para juntar números iguais', 'ar': 'اسحب لدمج الأرقام المتشابهة' },
     cat: 'solo', who: '1', accent: '#FFB020',
     make: function (ctx) {
       var t = ctx.pick(T), S = ctx.sfx, mk = ctx.mk, rnd = ctx.rnd;
@@ -3011,7 +3035,7 @@ var GAMES = {};
   var T = {
     ko: { turn: '{0} 차례', hint: '빈 구멍을 눌러 칼을 꽂아요', left: '남은 구멍 {0}', res: '{0}!', lose: '해적을 날렸어요! 벌칙 당첨' },
     ja: { turn: '{0}の番', hint: '空いた穴をタップして剣を刺そう', left: '残りの穴 {0}', res: '{0}！', lose: '海賊を飛ばした！罰ゲーム' },
-    en: { turn: '{0}’s turn', hint: 'Tap an empty slot to stab', left: 'Slots left: {0}', res: '{0}!', lose: 'Launched the pirate! Forfeit time' }
+    en: { turn: '{0}’s turn', hint: 'Tap an empty slot to stab', left: 'Slots left: {0}', res: '{0}!', lose: 'Launched the pirate! Forfeit time' }, 'zh-Hant': { turn: '輪到{0}', hint: '點空的孔把劍插進去', left: '剩下 {0} 個孔', res: '{0}！', lose: '海盜飛出來了！要受罰' }, 'de': { turn: '{0} ist dran', hint: 'Tippe auf einen freien Schlitz', left: 'Freie Schlitze: {0}', res: '{0}!', lose: 'Der Pirat ist rausgeflogen! Strafe fällig' }, 'es': { turn: 'Turno de {0}', hint: 'Toca una ranura vacía', left: 'Ranuras libres: {0}', res: '¡{0}!', lose: '¡Hizo saltar al pirata! Le toca castigo' }, 'fr': { turn: 'Au tour de {0}', hint: 'Touche une fente vide', left: 'Fentes libres : {0}', res: '{0} !', lose: 'Le pirate a sauté ! Place au gage' }, 'pt': { turn: 'Vez de {0}', hint: 'Toque num buraco vazio', left: 'Buracos livres: {0}', res: '{0}!', lose: 'Fez o pirata pular! Hora da prenda' }, 'ar': { turn: 'دور {0}', hint: 'المس فتحة فارغة', left: 'الفتحات المتبقية: {0}', res: '{0}!', lose: 'أطلق القرصان! عليه العقوبة' }
   };
   var RING = 8, NS = RING * 2, TILT = 0.26, SKY = 0.30, SPAN = 1.02 + SKY, FLY = 1.9;
   var GOLD = '#FFC94A', RED = '#E5484D', SKIN = '#FFD6B3', INK = '#1E1A18';
@@ -3174,8 +3198,8 @@ var GAMES = {};
   }
 
   GAMES['pirate'] = {
-    name: { ko: '해적 룰렛', ja: '海賊ルーレット', en: 'Pirate Barrel' },
-    tip: { ko: '칼을 꽂다가 해적이 튀어나오면 꽝', ja: '剣を刺して海賊が飛んだら負け', en: 'Stab the barrel, don’t launch the pirate' },
+    name: { ko: '해적 룰렛', ja: '海賊ルーレット', en: 'Pirate Barrel', 'zh-Hant': '海盜桶', 'de': 'Piratenfass', 'es': 'Barril pirata', 'fr': 'Tonneau pirate', 'pt': 'Barril do pirata', 'ar': 'برميل القرصان' },
+    tip: { ko: '칼을 꽂다가 해적이 튀어나오면 꽝', ja: '剣を刺して海賊が飛んだら負け', en: 'Stab the barrel, don’t launch the pirate', 'zh-Hant': '插劍讓海盜飛出來就輸了', 'de': 'Schwerter rein, bloß nicht den Piraten', 'es': 'Clava espadas, que no salte el pirata', 'fr': 'Plante les épées sans faire sauter le pirate', 'pt': 'Espete o barril sem fazer o pirata pular', 'ar': 'اطعن البرميل ولا تُطلق القرصان' },
     cat: 'bet', who: '2+', accent: '#D9363E',
     make: function (ctx) {
       var t = ctx.pick(T), S = ctx.sfx, names = ctx.names, N = names.length, SLOTS = ctx.SLOTS, dpr = ctx.dpr;
@@ -3441,7 +3465,13 @@ var GAMES = {};
     ja: { ready: '準備…', now: '今！', soon: 'フライング！', ms: '{0}ms', best: 'ベスト {0}ms', missed: '惜しい！', others: '相手がフライング！',
       champ: '優勝！', next: '次こそ！', again: 'もう一回', cpu: 'コンピューター', you: 'あなた' },
     en: { ready: 'Ready…', now: 'Now!', soon: 'Too soon!', ms: '{0} ms', best: 'Best {0} ms', missed: 'Too slow', others: 'They jumped the gun!',
-      champ: 'Champion!', next: 'Next time!', again: 'Play again', cpu: 'Computer', you: 'You' }
+      champ: 'Champion!', next: 'Next time!', again: 'Play again', cpu: 'Computer', you: 'You' }, 'zh-Hant': { ready: '準備…', now: '就是現在！', soon: '太急了！', ms: '{0}毫秒', best: '最快 {0}毫秒', missed: '慢了一步', others: '對手太急了！',
+      champ: '冠軍！', next: '下次加油！', again: '再玩一次', cpu: '電腦', you: '你' }, 'de': { ready: 'Bereit…', now: 'Jetzt!', soon: 'Zu früh!', ms: '{0} ms', best: 'Bestzeit: {0} ms', missed: 'Zu langsam', others: 'Gegner zu früh!',
+      champ: 'Sieger!', next: 'Nächstes Mal!', again: 'Nochmal', cpu: 'Computer', you: 'Du' }, 'es': { ready: 'Preparados…', now: '¡Ya!', soon: '¡Demasiado pronto!', ms: '{0} ms', best: 'Mejor: {0} ms', missed: '¡Por poco!', others: '¡Se adelantaron!',
+      champ: '¡Campeón!', next: '¡La próxima!', again: 'Otra vez', cpu: 'Máquina', you: 'Tú' }, 'fr': { ready: 'Prêts…', now: 'Maintenant !', soon: 'Trop tôt !', ms: '{0} ms', best: 'Record : {0} ms', missed: 'Trop lent', others: 'Faux départ adverse !',
+      champ: 'Champion !', next: 'La prochaine fois !', again: 'Rejouer', cpu: 'Ordi', you: 'Toi' }, 'pt': { ready: 'Preparar…', now: 'Agora!', soon: 'Cedo demais!', ms: '{0} ms', best: 'Melhor: {0} ms', missed: 'Por pouco!', others: 'Queimaram a largada!',
+      champ: 'Campeão!', next: 'Na próxima!', again: 'Jogar de novo', cpu: 'Computador', you: 'Você' }, 'ar': { ready: 'استعدّ…', now: 'الآن!', soon: 'مبكّر جدًا!', ms: '{0} ملّي ثانية', best: 'الأفضل: {0} ملّي ثانية', missed: 'تأخرت قليلًا', others: 'استعجل الآخرون!',
+      champ: 'البطل!', next: 'في المرة القادمة!', again: 'العب مرة أخرى', cpu: 'الحاسوب', you: 'أنت' }
   };
   var BOLT = '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round" d="M14.4 2.4 6.7 13.4H12l-2.4 8.2 7.7-11.5H12z"/></svg>';
   function rgb(hex) { var n = parseInt(hex.slice(1), 16); return [n >> 16 & 255, n >> 8 & 255, n & 255]; }
@@ -3449,8 +3479,8 @@ var GAMES = {};
   function clamp(v, a, b) { return v < a ? a : v > b ? b : v; }
 
   GAMES['reaction'] = {
-    name: { ko: '반응속도 대결', ja: '反射神経バトル', en: 'Reaction Duel' },
-    tip: { ko: '초록이 되는 순간 탭! 성급하면 실격', ja: '緑になった瞬間タップ！早すぎたら失格', en: 'Tap when it turns green, too early is out' },
+    name: { ko: '반응속도 대결', ja: '反射神経バトル', en: 'Reaction Duel', 'zh-Hant': '反應力對決', 'de': 'Reaktionsduell', 'es': 'Duelo de reflejos', 'fr': 'Duel de réflexes', 'pt': 'Duelo de reflexos', 'ar': 'مبارزة ردّ الفعل' },
+    tip: { ko: '초록이 되는 순간 탭! 성급하면 실격', ja: '緑になった瞬間タップ！早すぎたら失格', en: 'Tap when it turns green, too early is out', 'zh-Hant': '變綠瞬間點！太早就出局', 'de': 'Tippe bei Grün! Zu früh fliegt raus', 'es': '¡Toca al ponerse verde! Antes, eliminado', 'fr': 'Touche au vert ! Trop tôt, éliminé', 'pt': 'Toque no verde! Antes, eliminado', 'ar': 'انقر عند الأخضر! المبكّر يُستبعد' },
     cat: 'duel', accent: '#3E9BFF', full: true,
     make: function (ctx) {
       var t = ctx.pick(T), S = ctx.sfx;
@@ -3641,14 +3671,14 @@ var GAMES = {};
   var T = {
     ko: { q: '커피 누가 살까? ☕', spin: '돌리기', res: '{n}!' },
     ja: { q: 'コーヒー、誰がおごる？☕', spin: '回す', res: '{n}！' },
-    en: { q: 'Who buys the coffee? ☕', spin: 'Spin', res: '{n}!' }
+    en: { q: 'Who buys the coffee? ☕', spin: 'Spin', res: '{n}!' }, 'zh-Hant': { q: '誰請喝咖啡？☕', spin: '轉動', res: '{n}！' }, 'de': { q: 'Wer gibt den Kaffee aus? ☕', spin: 'Drehen', res: '{n}!' }, 'es': { q: '¿Quién invita al café? ☕', spin: 'Girar', res: '¡{n}!' }, 'fr': { q: 'Qui paie le café ? ☕', spin: 'Tourner', res: '{n} !' }, 'pt': { q: 'Quem paga o café? ☕', spin: 'Girar', res: '{n}!' }, 'ar': { q: 'من يشتري القهوة؟ ☕', spin: 'أدِر', res: '{n}!' }
   };
   function elasticOut(x) { if (x <= 0) return 0; if (x >= 1) return 1; return Math.pow(2, -10 * x) * Math.sin((x - 0.1) * TAU / 0.4) + 1; }
   function mod(a, m) { return ((a % m) + m) % m; }
 
   GAMES['roulette'] = {
-    name: { ko: '돌림판', ja: 'ルーレット', en: 'Spin Wheel' },
-    tip: { ko: '돌리기를 눌러 한 명을 뽑아요', ja: '「回す」を押して、ひとりを決めよう', en: 'Tap Spin to pick one person' },
+    name: { ko: '돌림판', ja: 'ルーレット', en: 'Spin Wheel', 'zh-Hant': '轉盤', 'de': 'Glücksrad', 'es': 'Ruleta', 'fr': 'Roue', 'pt': 'Roleta', 'ar': 'عجلة الحظ' },
+    tip: { ko: '돌리기를 눌러 한 명을 뽑아요', ja: '「回す」を押して、ひとりを決めよう', en: 'Tap Spin to pick one person', 'zh-Hant': '按「轉動」，抽出一個人', 'de': 'Tippe auf Drehen, um eine Person zu wählen', 'es': 'Toca Girar para elegir a una persona', 'fr': 'Touche Tourner pour choisir une personne', 'pt': 'Toque em Girar para escolher uma pessoa', 'ar': 'اضغط «أدِر» لاختيار شخص واحد' },
     cat: 'bet', who: '2+', accent: '#FFB020',
     make: function (ctx) {
       var t = ctx.pick(T), S = ctx.sfx, SLOTS = ctx.SLOTS, FONT = ctx.FONT;
@@ -3848,7 +3878,19 @@ var GAMES = {};
       win: '勝ち！', lose: '負け…', again: 'もう一回', cpu: 'コンピューター', you: 'あなた' },
     en: { tap: 'TAP!', pull: 'PULL!', almost: 'Almost!', hold: 'Hold on!', tie: 'Tie!', retry: 'Tap to replay',
       mwin: 'You win the match!', mlose: 'So close! Next time', next: 'Tap for next round', start: 'Tap to start', round: 'Round {0}',
-      win: 'You win!', lose: 'You lose', again: 'Play again', cpu: 'Computer', you: 'You' }
+      win: 'You win!', lose: 'You lose', again: 'Play again', cpu: 'Computer', you: 'You' }, 'zh-Hant': { tap: '狂點！', pull: '拉！', almost: '再一點！', hold: '撐住！', tie: '平手！', retry: '點擊再來一次',
+      mwin: '最終勝利！', mlose: '可惜！下次加油', next: '點擊進入下一回合', start: '點擊開始', round: '第{0}回合',
+      win: '你贏了！', lose: '你輸了', again: '再玩一次', cpu: '電腦', you: '你' }, 'de': { tap: 'TIPPEN!', pull: 'ZIEH!', almost: 'Fast da!', hold: 'Halt durch!', tie: 'Unentschieden!', retry: 'Tippen zum Wiederholen',
+      mwin: 'Match gewonnen!', mlose: 'Knapp! Nächstes Mal', next: 'Tippen für nächste Runde', start: 'Zum Starten tippen', round: 'Runde {0}',
+      win: 'Gewonnen!', lose: 'Verloren', again: 'Nochmal', cpu: 'Computer', you: 'Du' }, 'es': { tap: '¡TOCA!', pull: '¡TIRA!', almost: '¡Ya casi!', hold: '¡Aguanta!', tie: '¡Empate!', retry: 'Toca para repetir',
+      mwin: '¡Ganas la partida!', mlose: '¡Casi! La próxima', next: 'Toca para la siguiente', start: 'Toca para empezar', round: 'Ronda {0}',
+      win: '¡Ganaste!', lose: 'Perdiste', again: 'Otra vez', cpu: 'Máquina', you: 'Tú' }, 'fr': { tap: 'TAPE !', pull: 'TIRE !', almost: 'Presque !', hold: 'Tiens bon !', tie: 'Égalité !', retry: 'Touche pour rejouer',
+      mwin: 'Tu gagnes le match !', mlose: 'Presque ! La prochaine fois', next: 'Touche pour la suite', start: 'Touche pour commencer', round: 'Manche {0}',
+      win: 'Gagné !', lose: 'Perdu', again: 'Rejouer', cpu: 'Ordi', you: 'Toi' }, 'pt': { tap: 'TOQUE!', pull: 'PUXA!', almost: 'Quase lá!', hold: 'Aguenta!', tie: 'Empate!', retry: 'Toque para repetir',
+      mwin: 'Você venceu a partida!', mlose: 'Quase! Na próxima', next: 'Toque para a próxima', start: 'Toque para começar', round: 'Rodada {0}',
+      win: 'Você venceu!', lose: 'Você perdeu', again: 'Jogar de novo', cpu: 'Computador', you: 'Você' }, 'ar': { tap: 'انقر!', pull: 'اسحب!', almost: 'اقتربت!', hold: 'اصمد!', tie: 'تعادل!', retry: 'اضغط للإعادة',
+      mwin: 'فزت بالمباراة!', mlose: 'كدت! في المرة القادمة', next: 'اضغط للجولة التالية', start: 'اضغط للبدء', round: 'الجولة {0}',
+      win: 'لقد فزت!', lose: 'لقد خسرت', again: 'العب مرة أخرى', cpu: 'الحاسوب', you: 'أنت' }
   };
   var TIMER = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="13.5" r="7.5"/><path d="M12 13.5V9.6M9.5 2.8h5M18.6 6.4l1.4-1.4"/></svg>';
   var HEART = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">' +
@@ -3865,8 +3907,8 @@ var GAMES = {};
   function elasticOut(x) { if (x <= 0) return 0; if (x >= 1) return 1; return Math.pow(2, -10 * x) * Math.sin((x - 0.075) * TAU / 0.3) + 1; }
 
   GAMES['tapwar'] = {
-    name: { ko: '연타 줄다리기', ja: '連打つなひき', en: 'Tap Tug of War' },
-    tip: { ko: '내 쪽을 마구 두드려 줄을 당겨요', ja: '自分の側を連打してロープを引こう', en: 'Tap your half fast to pull the rope' },
+    name: { ko: '연타 줄다리기', ja: '連打つなひき', en: 'Tap Tug of War', 'zh-Hant': '狂點拔河', 'de': 'Tipp-Tauziehen', 'es': 'Tira y afloja', 'fr': 'Tir à la corde', 'pt': 'Cabo de guerra', 'ar': 'شدّ الحبل بالنقر' },
+    tip: { ko: '내 쪽을 마구 두드려 줄을 당겨요', ja: '自分の側を連打してロープを引こう', en: 'Tap your half fast to pull the rope', 'zh-Hant': '狂點自己這半邊，把繩子拉過來', 'de': 'Tippe schnell auf deine Hälfte und zieh das Seil', 'es': 'Toca tu mitad rápido para tirar de la cuerda', 'fr': 'Tape vite sur ta moitié pour tirer la corde', 'pt': 'Toque rápido na sua metade para puxar a corda', 'ar': 'انقر نصفك بسرعة لتشدّ الحبل' },
     cat: 'duel', accent: '#D9363E', full: true,
     make: function (ctx) {
       var t = ctx.pick(T), S = ctx.sfx;
@@ -4277,7 +4319,7 @@ var GAMES = {};
   var T = {
     ko: { tap: '아무 데나 눌러서 블록을 떨어뜨려요', perfect: '완벽!', f1: '{0}층', fn: '{0}층', crash: '와르르!', best: '최고 기록 {0}', newBest: '새 최고 기록!', sky: '하늘까지 닿았어요!' },
     ja: { tap: 'どこでもタップしてブロックを落とそう', perfect: 'パーフェクト！', f1: '{0}段', fn: '{0}段', crash: 'ガラガラ！', best: 'ベスト {0}', newBest: 'ベスト更新！', sky: '空まで届いた！' },
-    en: { tap: 'Tap anywhere to drop the block', perfect: 'Perfect!', f1: '{0} floor', fn: '{0} floors', crash: 'Crash!', best: 'Best: {0}', newBest: 'New best!', sky: 'Sky high!' }
+    en: { tap: 'Tap anywhere to drop the block', perfect: 'Perfect!', f1: '{0} floor', fn: '{0} floors', crash: 'Crash!', best: 'Best: {0}', newBest: 'New best!', sky: 'Sky high!' }, 'zh-Hant': { tap: '點任何地方讓方塊落下', perfect: '完美！', f1: '{0}層', fn: '{0}層', crash: '嘩啦！', best: '最佳 {0}', newBest: '新紀錄！', sky: '直達天際！' }, 'de': { tap: 'Tippe irgendwo, um den Block fallen zu lassen', perfect: 'Perfekt!', f1: '{0} Stockwerk', fn: '{0} Stockwerke', crash: 'Krach!', best: 'Rekord: {0}', newBest: 'Neuer Rekord!', sky: 'Bis in den Himmel!' }, 'es': { tap: 'Toca donde sea para soltar el bloque', perfect: '¡Perfecto!', f1: '{0} piso', fn: '{0} pisos', crash: '¡Se cayó!', best: 'Récord: {0}', newBest: '¡Nuevo récord!', sky: '¡Hasta el cielo!' }, 'fr': { tap: 'Touche n’importe où pour lâcher le bloc', perfect: 'Parfait !', f1: '{0} étage', fn: '{0} étages', crash: 'Patatras !', best: 'Record : {0}', newBest: 'Nouveau record !', sky: 'Jusqu’au ciel !' }, 'pt': { tap: 'Toque em qualquer lugar para soltar o bloco', perfect: 'Perfeito!', f1: '{0} andar', fn: '{0} andares', crash: 'Desabou!', best: 'Recorde: {0}', newBest: 'Novo recorde!', sky: 'Até o céu!' }, 'ar': { tap: 'اضغط في أي مكان لإسقاط القطعة', perfect: 'مثالي!', f1: 'الطوابق: {0}', fn: 'الطوابق: {0}', crash: 'انهار!', best: 'الأفضل: {0}', newBest: 'رقم قياسي جديد!', sky: 'وصلت إلى السماء!' }
   };
   // TowerLogic: world width 100, slab height 9, first slab 56 wide
   var WW = 100, BH = 9, BASEW = 56, TOL = 1.8;
@@ -4310,8 +4352,8 @@ var GAMES = {};
   var best = 0;
 
   GAMES['tower'] = {
-    name: { ko: '탑 쌓기', ja: 'タワー積み', en: 'Stack Tower' },
-    tip: { ko: '타이밍 맞춰 톡! 얼마나 높이 쌓을까', ja: 'タイミングよくタップ、どこまで積める？', en: 'Tap on time, how high can you go?' },
+    name: { ko: '탑 쌓기', ja: 'タワー積み', en: 'Stack Tower', 'zh-Hant': '疊高塔', 'de': 'Stapelturm', 'es': 'Torre apilada', 'fr': 'Tour empilée', 'pt': 'Torre empilhada', 'ar': 'برج التكديس' },
+    tip: { ko: '타이밍 맞춰 톡! 얼마나 높이 쌓을까', ja: 'タイミングよくタップ、どこまで積める？', en: 'Tap on time, how high can you go?', 'zh-Hant': '抓準時機點，能疊多高？', 'de': 'Im richtigen Moment tippen: Wie hoch kommst du?', 'es': 'Toca a tiempo, ¿hasta dónde llegas?', 'fr': 'Touche au bon moment, jusqu’où iras-tu ?', 'pt': 'Toque na hora certa, até onde você chega?', 'ar': 'انقر في الوقت المناسب، إلى أي ارتفاع تصل؟' },
     cat: 'solo', who: '1', accent: '#FF7A3D',
     make: function (ctx) {
       var t = ctx.pick(T), S = ctx.sfx, root = ctx.el;
@@ -4550,19 +4592,28 @@ var SETS = [
 
   /* ---------- language ---------- */
   var Q = new URLSearchParams(location.search);
-  var LANGS = ['ko', 'ja', 'en'];
+  var LANGS = ['ko', 'ja', 'en', 'zh-Hant', 'de', 'es', 'fr', 'pt', 'ar'];
+  /* 2026-10-12: 9 languages. 'zh-Hant' · 'zh_TW' · 'zh' -> 'zh-Hant', 'pt-BR' -> 'pt', others by first two letters */
+  function normLang(s) {
+    s = String(s || '').toLowerCase();
+    if (s.indexOf('zh') === 0) return 'zh-Hant';
+    s = s.slice(0, 2);
+    return LANGS.indexOf(s) >= 0 ? s : '';
+  }
   function pickLang() {
-    var q = String(Q.get('lang') || '').toLowerCase();
-    if (LANGS.indexOf(q) >= 0) return q;
+    var q = normLang(Q.get('lang'));
+    if (q) return q;
     var list = navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || 'en'];
     for (var i = 0; i < list.length; i++) {
-      var n = String(list[i] || '').slice(0, 2).toLowerCase();
-      if (LANGS.indexOf(n) >= 0) return n;
+      var n = normLang(list[i]);
+      if (n) return n;
     }
     return 'en';
   }
   var lang = pickLang();
   document.documentElement.lang = lang;
+  /* Arabic: text follows its own direction, the layout stays LTR (top-right 64px is the app's close button) */
+  if (lang === 'ar') { var bidi = document.createElement('style'); bidi.textContent = 'body *{unicode-bidi:plaintext}'; document.head.appendChild(bidi); }
   if (Q.get('host') === 'app') document.documentElement.setAttribute('data-host', 'app');
   var TEST = Q.get('test') === '1';
 
@@ -4584,6 +4635,36 @@ var SETS = [
       names: ['Mia', 'Leo', 'Ava', 'Noah', 'Zoe', 'Max'],
       cat: { bet: 'For bets', party: 'Get together', duel: 'Head to head', solo: 'Solo' },
       who: { '1': '1 player', '2': '2 players', '1+': '1 or more', '2+': '2 or more' }
+    }, 'zh-Hant': {
+      name: '派對遊戲', sub: '聚會同樂、打賭、單人也好玩', other: '換一個', install: '安裝', sep: ' · ',
+      names: ['怡君', '家豪', '雅婷', '承恩', '欣怡', '俊宇'],
+      cat: { bet: '打賭用', party: '大家一起玩', duel: '兩人對決', solo: '單人' },
+      who: { '1': '1人', '2': '2人', '1+': '1人以上', '2+': '2人以上' }
+    }, 'de': {
+      name: 'Partyspiele', sub: 'Gruppenspiele, Wetten & Solo-Spaß', other: 'Anderes Spiel', install: 'Installieren', sep: ' · ',
+      names: ['Lena', 'Jonas', 'Hannah', 'Finn', 'Emma', 'Luca'],
+      cat: { bet: 'Für Wetten', party: 'Gemeinsam', duel: 'Zu zweit', solo: 'Allein' },
+      who: { '1': '1 Spieler', '2': '2 Spieler', '1+': '1 oder mehr', '2+': '2 oder mehr' }
+    }, 'es': {
+      name: 'Juegos de fiesta', sub: 'Para grupos, apuestas y jugar solo', other: 'Otro juego', install: 'Instalar', sep: ' · ',
+      names: ['Lucía', 'Mateo', 'Sofía', 'Diego', 'Valeria', 'Pablo'],
+      cat: { bet: 'Para apuestas', party: 'Todos juntos', duel: 'Cara a cara', solo: 'Solo' },
+      who: { '1': '1 jugador', '2': '2 jugadores', '1+': '1 o más', '2+': '2 o más' }
+    }, 'fr': {
+      name: 'Jeux de soirée', sub: 'Jeux de groupe, paris et solo', other: 'Un autre jeu', install: 'Installer', sep: ' · ',
+      names: ['Léa', 'Hugo', 'Chloé', 'Jules', 'Inès', 'Louis'],
+      cat: { bet: 'Pour parier', party: 'Tous ensemble', duel: 'Face à face', solo: 'Solo' },
+      who: { '1': '1 joueur', '2': '2 joueurs', '1+': '1 ou plus', '2+': '2 ou plus' }
+    }, 'pt': {
+      name: 'Jogos de festa', sub: 'Jogos em grupo, apostas e solo', other: 'Outro jogo', install: 'Instalar', sep: ' · ',
+      names: ['Ana', 'Lucas', 'Bia', 'Pedro', 'Júlia', 'Davi'],
+      cat: { bet: 'Para apostas', party: 'Todos juntos', duel: 'Frente a frente', solo: 'Sozinho' },
+      who: { '1': '1 jogador', '2': '2 jogadores', '1+': '1 ou mais', '2+': '2 ou mais' }
+    }, 'ar': {
+      name: 'ألعاب الحفلات', sub: 'ألعاب جماعية، رهانات، ومتعة فردية', other: 'لعبة أخرى', install: 'تثبيت', sep: ' · ',
+      names: ['ليلى', 'عمر', 'سارة', 'يوسف', 'مريم', 'خالد'],
+      cat: { bet: 'للرهانات', party: 'معًا', duel: 'وجهًا لوجه', solo: 'فردي' },
+      who: { '1': 'لاعب واحد', '2': 'لاعبان', '1+': '1 أو أكثر', '2+': '2 أو أكثر' }
     }
   };
   var t = T[lang];

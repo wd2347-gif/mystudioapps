@@ -53,6 +53,8 @@ def main():
         if miss:
             sys.exit(f'sets.js 에 있는데 games/ 에 없는 게임: {miss}')
     out = shell.replace('/*@@CSS@@*/', '\n'.join(css)).replace('/*@@GAMES@@*/', '\n\n'.join(js) + '\n\n' + sets)
+    import i18n_tool  # ko · ja · en 글 뒤에 zh-Hant · de · es · fr · pt · ar 를 끼운다(2026-10-12)
+    out = i18n_tool.apply(out, i18n_tool.load_table(a.app))
     if '—' in out:
         sys.exit('긴 줄표(—)가 있어요: 쌍점(:)으로 바꿔 주세요')
     dst = a.out or os.path.join(ROOT, a.app, 'index.html')

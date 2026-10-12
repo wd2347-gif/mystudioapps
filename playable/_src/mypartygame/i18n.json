@@ -1,0 +1,954 @@
+{
+ "Party Games": {
+  "zh-Hant": "派對遊戲",
+  "de": "Partyspiele",
+  "es": "Juegos de fiesta",
+  "fr": "Jeux de soirée",
+  "pt": "Jogos de festa",
+  "ar": "ألعاب الحفلات"
+ },
+ "Group games, bets & solo fun": {
+  "zh-Hant": "聚會同樂、打賭、單人也好玩",
+  "de": "Gruppenspiele, Wetten & Solo-Spaß",
+  "es": "Para grupos, apuestas y jugar solo",
+  "fr": "Jeux de groupe, paris et solo",
+  "pt": "Jogos em grupo, apostas e solo",
+  "ar": "ألعاب جماعية، رهانات، ومتعة فردية"
+ },
+ "Another game": {
+  "zh-Hant": "換一個",
+  "de": "Anderes Spiel",
+  "es": "Otro juego",
+  "fr": "Un autre jeu",
+  "pt": "Outro jogo",
+  "ar": "لعبة أخرى"
+ },
+ "Install": {
+  "zh-Hant": "安裝",
+  "de": "Installieren",
+  "es": "Instalar",
+  "fr": "Installer",
+  "pt": "Instalar",
+  "ar": "تثبيت"
+ },
+ " · ": {
+  "zh-Hant": " · ",
+  "de": " · ",
+  "es": " · ",
+  "fr": " · ",
+  "pt": " · ",
+  "ar": " · "
+ },
+ "Mia": {
+  "zh-Hant": "怡君",
+  "de": "Lena",
+  "es": "Lucía",
+  "fr": "Léa",
+  "pt": "Ana",
+  "ar": "ليلى"
+ },
+ "Leo": {
+  "zh-Hant": "家豪",
+  "de": "Jonas",
+  "es": "Mateo",
+  "fr": "Hugo",
+  "pt": "Lucas",
+  "ar": "عمر"
+ },
+ "Ava": {
+  "zh-Hant": "雅婷",
+  "de": "Hannah",
+  "es": "Sofía",
+  "fr": "Chloé",
+  "pt": "Bia",
+  "ar": "سارة"
+ },
+ "Noah": {
+  "zh-Hant": "承恩",
+  "de": "Finn",
+  "es": "Diego",
+  "fr": "Jules",
+  "pt": "Pedro",
+  "ar": "يوسف"
+ },
+ "Zoe": {
+  "zh-Hant": "欣怡",
+  "de": "Emma",
+  "es": "Valeria",
+  "fr": "Inès",
+  "pt": "Júlia",
+  "ar": "مريم"
+ },
+ "Max": {
+  "zh-Hant": "俊宇",
+  "de": "Luca",
+  "es": "Pablo",
+  "fr": "Louis",
+  "pt": "Davi",
+  "ar": "خالد"
+ },
+ "For bets": {
+  "zh-Hant": "打賭用",
+  "de": "Für Wetten",
+  "es": "Para apuestas",
+  "fr": "Pour parier",
+  "pt": "Para apostas",
+  "ar": "للرهانات"
+ },
+ "Get together": {
+  "zh-Hant": "大家一起玩",
+  "de": "Gemeinsam",
+  "es": "Todos juntos",
+  "fr": "Tous ensemble",
+  "pt": "Todos juntos",
+  "ar": "معًا"
+ },
+ "Head to head": {
+  "zh-Hant": "兩人對決",
+  "de": "Zu zweit",
+  "es": "Cara a cara",
+  "fr": "Face à face",
+  "pt": "Frente a frente",
+  "ar": "وجهًا لوجه"
+ },
+ "Solo": {
+  "zh-Hant": "單人",
+  "de": "Allein",
+  "es": "Solo",
+  "fr": "Solo",
+  "pt": "Sozinho",
+  "ar": "فردي"
+ },
+ "1": {
+  "zh-Hant": "1",
+  "de": "1",
+  "es": "1",
+  "fr": "1",
+  "pt": "1",
+  "ar": "1"
+ },
+ "1 player": {
+  "zh-Hant": "1人",
+  "de": "1 Spieler",
+  "es": "1 jugador",
+  "fr": "1 joueur",
+  "pt": "1 jogador",
+  "ar": "لاعب واحد"
+ },
+ "2": {
+  "zh-Hant": "2",
+  "de": "2",
+  "es": "2",
+  "fr": "2",
+  "pt": "2",
+  "ar": "2"
+ },
+ "2 players": {
+  "zh-Hant": "2人",
+  "de": "2 Spieler",
+  "es": "2 jugadores",
+  "fr": "2 joueurs",
+  "pt": "2 jogadores",
+  "ar": "لاعبان"
+ },
+ "1+": {
+  "zh-Hant": "1+",
+  "de": "1+",
+  "es": "1+",
+  "fr": "1+",
+  "pt": "1+",
+  "ar": "1+"
+ },
+ "1 or more": {
+  "zh-Hant": "1人以上",
+  "de": "1 oder mehr",
+  "es": "1 o más",
+  "fr": "1 ou plus",
+  "pt": "1 ou mais",
+  "ar": "1 أو أكثر"
+ },
+ "2+": {
+  "zh-Hant": "2+",
+  "de": "2+",
+  "es": "2+",
+  "fr": "2+",
+  "pt": "2+",
+  "ar": "2+"
+ },
+ "2 or more": {
+  "zh-Hant": "2人以上",
+  "de": "2 oder mehr",
+  "es": "2 o más",
+  "fr": "2 ou plus",
+  "pt": "2 ou mais",
+  "ar": "2 أو أكثر"
+ },
+ "Goal!": {
+  "zh-Hant": "進球！",
+  "de": "Tor!",
+  "es": "¡Gol!",
+  "fr": "But !",
+  "pt": "Gol!",
+  "ar": "هدف!"
+ },
+ "Match point!": {
+  "zh-Hant": "賽末點！",
+  "de": "Matchball!",
+  "es": "¡Punto de partido!",
+  "fr": "Balle de match !",
+  "pt": "Match point!",
+  "ar": "نقطة الحسم!"
+ },
+ "Go!": {
+  "zh-Hant": "開始！",
+  "de": "Los!",
+  "es": "¡Ya!",
+  "fr": "Partez !",
+  "pt": "Já!",
+  "ar": "انطلق!"
+ },
+ "You win!": {
+  "zh-Hant": "你贏了！",
+  "de": "Gewonnen!",
+  "es": "¡Ganaste!",
+  "fr": "Gagné !",
+  "pt": "Você venceu!",
+  "ar": "لقد فزت!"
+ },
+ "You lose": {
+  "zh-Hant": "你輸了",
+  "de": "Verloren",
+  "es": "Perdiste",
+  "fr": "Perdu",
+  "pt": "Você perdeu",
+  "ar": "لقد خسرت"
+ },
+ "Play again": {
+  "zh-Hant": "再玩一次",
+  "de": "Nochmal",
+  "es": "Otra vez",
+  "fr": "Rejouer",
+  "pt": "Jogar de novo",
+  "ar": "العب مرة أخرى"
+ },
+ "You": {
+  "zh-Hant": "你",
+  "de": "Du",
+  "es": "Tú",
+  "fr": "Toi",
+  "pt": "Você",
+  "ar": "أنت"
+ },
+ "Computer": {
+  "zh-Hant": "電腦",
+  "de": "Computer",
+  "es": "Máquina",
+  "fr": "Ordi",
+  "pt": "Computador",
+  "ar": "الحاسوب"
+ },
+ "Air Hockey": {
+  "zh-Hant": "空氣曲棍球",
+  "de": "Airhockey",
+  "es": "Hockey de aire",
+  "fr": "Air hockey",
+  "pt": "Air hockey",
+  "ar": "هوكي الهواء"
+ },
+ "Drag your mallet and score a goal": {
+  "zh-Hant": "拖動推桿，把球打進球門",
+  "de": "Zieh den Schläger und schieß ein Tor",
+  "es": "Arrastra el mazo y mete un gol",
+  "fr": "Fais glisser ton poussoir et marque un but",
+  "pt": "Arraste o rebatedor e faça um gol",
+  "ar": "اسحب مضربك وسجّل هدفًا"
+ },
+ "{0} apple": {
+  "zh-Hant": "{0}顆蘋果",
+  "de": "{0} Apfel",
+  "es": "{0} manzana",
+  "fr": "{0} pomme",
+  "pt": "{0} maçã",
+  "ar": "تفاح: {0}"
+ },
+ "{0} apples": {
+  "zh-Hant": "{0}顆蘋果",
+  "de": "{0} Äpfel",
+  "es": "{0} manzanas",
+  "fr": "{0} pommes",
+  "pt": "{0} maçãs",
+  "ar": "تفاح: {0}"
+ },
+ "Time’s up!": {
+  "zh-Hant": "時間到！",
+  "de": "Zeit um!",
+  "es": "¡Se acabó el tiempo!",
+  "fr": "Temps écoulé !",
+  "pt": "Acabou o tempo!",
+  "ar": "انتهى الوقت!"
+ },
+ "No more apples to pick!": {
+  "zh-Hant": "沒有能摘的蘋果了！",
+  "de": "Keine Äpfel mehr zu pflücken!",
+  "es": "¡No quedan manzanas por recoger!",
+  "fr": "Plus de pommes à cueillir !",
+  "pt": "Não há mais maçãs para colher!",
+  "ar": "لم يبقَ تفاح للقطف!"
+ },
+ "Apple 10": {
+  "zh-Hant": "蘋果湊10",
+  "de": "Äpfel 10",
+  "es": "Manzanas 10",
+  "fr": "Pommes 10",
+  "pt": "Maçãs 10",
+  "ar": "تفاح 10"
+ },
+ "Box apples that add up to 10": {
+  "zh-Hant": "框選總和為10的蘋果",
+  "de": "Umrahme Äpfel mit der Summe 10",
+  "es": "Encierra manzanas que sumen 10",
+  "fr": "Encadre des pommes qui font 10",
+  "pt": "Selecione maçãs que somem 10",
+  "ar": "حدّد تفاحًا مجموعه 10"
+ },
+ "{0}’s turn": {
+  "zh-Hant": "輪到{0}",
+  "de": "{0} ist dran",
+  "es": "Turno de {0}",
+  "fr": "Au tour de {0}",
+  "pt": "Vez de {0}",
+  "ar": "دور {0}"
+ },
+ "Tap the pump": {
+  "zh-Hant": "按打氣筒",
+  "de": "Tippe auf die Pumpe",
+  "es": "Pulsa la bomba",
+  "fr": "Appuie sur la pompe",
+  "pt": "Toque na bomba",
+  "ar": "اضغط المضخة"
+ },
+ "{0} pumps in total": {
+  "zh-Hant": "總共打了{0}下",
+  "de": "Insgesamt {0}-mal gepumpt",
+  "es": "{0} bombeos en total",
+  "fr": "{0} coups de pompe en tout",
+  "pt": "{0} bombadas no total",
+  "ar": "مجموع النفخات: {0}"
+ },
+ "{0} popped it!": {
+  "zh-Hant": "{0}打爆了！",
+  "de": "{0} hat ihn platzen lassen!",
+  "es": "¡{0} lo reventó!",
+  "fr": "{0} l’a fait éclater !",
+  "pt": "{0} estourou!",
+  "ar": "{0} فجّر البالون!"
+ },
+ "Forfeit time!": {
+  "zh-Hant": "要受罰囉！",
+  "de": "Strafe fällig!",
+  "es": "¡Le toca castigo!",
+  "fr": "C’est le gage !",
+  "pt": "Hora da prenda!",
+  "ar": "حان وقت العقوبة!"
+ },
+ "Balloon Pump": {
+  "zh-Hant": "打氣球",
+  "de": "Ballon-Pumpe",
+  "es": "Infla el globo",
+  "fr": "Gonfle le ballon",
+  "pt": "Encha o balão",
+  "ar": "نفخ البالون"
+ },
+ "Pump once, twice… pop it and you lose": {
+  "zh-Hant": "打一下、兩下…爆了就受罰",
+  "de": "Ein-, zweimal… wer ihn platzen lässt, verliert",
+  "es": "Una, dos… si explota, pierdes",
+  "fr": "Une, deux… s’il éclate, tu perds",
+  "pt": "Uma, duas… estourou, perdeu",
+  "ar": "مرة، مرتين… إن انفجر خسرت"
+ },
+ "Once it starts, keep passing the phone": {
+  "zh-Hant": "開始後把手機一直傳下去",
+  "de": "Nach dem Start das Handy weitergeben",
+  "es": "Al empezar, pasen el móvil sin parar",
+  "fr": "Une fois lancé, faites tourner le téléphone",
+  "pt": "Depois de começar, passem o celular",
+  "ar": "بعد البدء، واصلوا تمرير الهاتف"
+ },
+ "Tap the bomb as you pass it!": {
+  "zh-Hant": "傳的時候點一下炸彈！",
+  "de": "Beim Weitergeben auf die Bombe tippen!",
+  "es": "¡Toca la bomba al pasarla!",
+  "fr": "Touche la bombe en la passant !",
+  "pt": "Toque na bomba ao passar!",
+  "ar": "اضغط القنبلة عند تمريرها!"
+ },
+ "Passes {n}": {
+  "zh-Hant": "傳了 {n} 次",
+  "de": "Pässe {n}",
+  "es": "Pases {n}",
+  "fr": "Passes {n}",
+  "pt": "Passes {n}",
+  "ar": "التمريرات {n}"
+ },
+ "BOOM!": {
+  "zh-Hant": "砰！",
+  "de": "BUMM!",
+  "es": "¡BUM!",
+  "fr": "BOUM !",
+  "pt": "BUM!",
+  "ar": "بوم!"
+ },
+ "Whoever is holding it gets the forfeit!": {
+  "zh-Hant": "拿著的人受罰！",
+  "de": "Wer sie hält, bekommt die Strafe!",
+  "es": "¡Castigo para quien la tenga!",
+  "fr": "Celui qui la tient a un gage !",
+  "pt": "Quem estiver segurando paga a prenda!",
+  "ar": "من يحملها عليه العقوبة!"
+ },
+ "Passes: {n}": {
+  "zh-Hant": "傳了{n}次",
+  "de": "{n}-mal weitergegeben",
+  "es": "Pases: {n}",
+  "fr": "Passée {n} fois",
+  "pt": "Passes: {n}",
+  "ar": "عدد التمريرات: {n}"
+ },
+ "Start": {
+  "zh-Hant": "開始",
+  "de": "Start",
+  "es": "Empezar",
+  "fr": "Commencer",
+  "pt": "Começar",
+  "ar": "ابدأ"
+ },
+ "Hot Bomb": {
+  "zh-Hant": "傳炸彈",
+  "de": "Heiße Bombe",
+  "es": "Bomba caliente",
+  "fr": "Bombe à passer",
+  "pt": "Bomba-relógio",
+  "ar": "القنبلة الساخنة"
+ },
+ "It could blow any second, pass it on!": {
+  "zh-Hant": "隨時會爆炸，快傳下去！",
+  "de": "Sie kann jederzeit platzen, schnell weiter!",
+  "es": "Puede explotar en cualquier momento, ¡pásala!",
+  "fr": "Elle peut exploser à tout moment, passe-la !",
+  "pt": "Pode explodir a qualquer momento, passe logo!",
+  "ar": "قد تنفجر في أي لحظة، مرّرها!"
+ },
+ "Press a tooth": {
+  "zh-Hant": "按一顆牙齒",
+  "de": "Drück einen Zahn",
+  "es": "Pulsa un diente",
+  "fr": "Appuie sur une dent",
+  "pt": "Aperte um dente",
+  "ar": "اضغط سنًّا"
+ },
+ "Teeth left: {0}": {
+  "zh-Hant": "剩下 {0} 顆牙",
+  "de": "Übrige Zähne: {0}",
+  "es": "Dientes restantes: {0}",
+  "fr": "Dents restantes : {0}",
+  "pt": "Dentes restantes: {0}",
+  "ar": "الأسنان المتبقية: {0}"
+ },
+ "{0} got bitten!": {
+  "zh-Hant": "{0}被咬了！",
+  "de": "{0} wurde gebissen!",
+  "es": "¡{0} se llevó un mordisco!",
+  "fr": "{0} s’est fait mordre !",
+  "pt": "{0} levou uma mordida!",
+  "ar": "عضّ التمساحُ {0}!"
+ },
+ "Crocodile Teeth": {
+  "zh-Hant": "鱷魚拔牙",
+  "de": "Krokodilzähne",
+  "es": "Dientes de cocodrilo",
+  "fr": "Dents du crocodile",
+  "pt": "Dentes do jacaré",
+  "ar": "أسنان التمساح"
+ },
+ "Press a tooth, get chomped, you’re it": {
+  "zh-Hant": "按牙齒被咬就中獎",
+  "de": "Zahn drücken, wer gebissen wird, ist dran",
+  "es": "Pulsa un diente y si muerde, te toca",
+  "fr": "Appuie sur une dent, s’il mord c’est toi",
+  "pt": "Aperte o dente: se morder, é você",
+  "ar": "اضغط سنًا، إن عضّك فأنت الخاسر"
+ },
+ "Everyone, put a finger on the screen": {
+  "zh-Hant": "大家把手指放上來",
+  "de": "Alle einen Finger aufs Display",
+  "es": "Todos, pongan un dedo en la pantalla",
+  "fr": "Posez tous un doigt sur l’écran",
+  "pt": "Todos, coloquem um dedo na tela",
+  "ar": "ضعوا جميعًا إصبعًا على الشاشة"
+ },
+ "One more finger!": {
+  "zh-Hant": "再來一個人！",
+  "de": "Noch ein Finger!",
+  "es": "¡Falta uno más!",
+  "fr": "Encore un doigt !",
+  "pt": "Falta mais um!",
+  "ar": "إصبع آخر!"
+ },
+ "Hold still…": {
+  "zh-Hant": "保持不動…",
+  "de": "Stillhalten…",
+  "es": "Quietos…",
+  "fr": "Ne bougez plus…",
+  "pt": "Fiquem parados…",
+  "ar": "اثبتوا…"
+ },
+ "Picked!": {
+  "zh-Hant": "就是你！",
+  "de": "Gewählt!",
+  "es": "¡Elegido!",
+  "fr": "Choisi !",
+  "pt": "Escolhido!",
+  "ar": "تم الاختيار!"
+ },
+ "Lift all fingers to play again": {
+  "zh-Hant": "手指全部離開就能再玩",
+  "de": "Alle Finger heben für eine neue Runde",
+  "es": "Levanten todos los dedos para repetir",
+  "fr": "Levez tous les doigts pour rejouer",
+  "pt": "Tirem os dedos para jogar de novo",
+  "ar": "ارفعوا كل الأصابع للعب مجددًا"
+ },
+ "Put fingers down to play again": {
+  "zh-Hant": "再玩一次就放上手指",
+  "de": "Finger auflegen für eine neue Runde",
+  "es": "Pongan los dedos para jugar otra vez",
+  "fr": "Posez vos doigts pour rejouer",
+  "pt": "Coloquem os dedos para jogar de novo",
+  "ar": "ضعوا أصابعكم للعب مجددًا"
+ },
+ "Finger Picker": {
+  "zh-Hant": "手指抽籤",
+  "de": "Finger-Wahl",
+  "es": "Elige dedo",
+  "fr": "Choix du doigt",
+  "pt": "Escolha do dedo",
+  "ar": "اختيار الإصبع"
+ },
+ "Hold a finger down and one gets picked": {
+  "zh-Hant": "把手指按住，就會選出一個人",
+  "de": "Finger draufhalten, einer wird gewählt",
+  "es": "Mantén un dedo y se elige a uno",
+  "fr": "Garde un doigt posé et un seul est choisi",
+  "pt": "Segure o dedo e um será escolhido",
+  "ar": "ضع إصبعك واثبت ليُختار واحد منكم"
+ },
+ "Score": {
+  "zh-Hant": "分數",
+  "de": "Punkte",
+  "es": "Puntos",
+  "fr": "Score",
+  "pt": "Pontos",
+  "ar": "النقاط"
+ },
+ "Again": {
+  "zh-Hant": "再來一次",
+  "de": "Nochmal",
+  "es": "Otra vez",
+  "fr": "Encore",
+  "pt": "De novo",
+  "ar": "مجددًا"
+ },
+ "No more moves": {
+  "zh-Hant": "無法再移動了",
+  "de": "Keine Züge mehr",
+  "es": "No quedan movimientos",
+  "fr": "Plus de coups possibles",
+  "pt": "Sem mais movimentos",
+  "ar": "لا توجد حركات متبقية"
+ },
+ "You made 2048!": {
+  "zh-Hant": "做出2048了！",
+  "de": "Du hast 2048 geschafft!",
+  "es": "¡Lograste 2048!",
+  "fr": "Tu as fait 2048 !",
+  "pt": "Você fez 2048!",
+  "ar": "صنعت 2048!"
+ },
+ "2048": {
+  "zh-Hant": "2048",
+  "de": "2048",
+  "es": "2048",
+  "fr": "2048",
+  "pt": "2048",
+  "ar": "2048"
+ },
+ "Swipe to merge matching numbers": {
+  "zh-Hant": "滑動合併相同數字",
+  "de": "Wischen, um gleiche Zahlen zu verbinden",
+  "es": "Desliza para unir números iguales",
+  "fr": "Glisse pour fusionner les mêmes chiffres",
+  "pt": "Deslize para juntar números iguais",
+  "ar": "اسحب لدمج الأرقام المتشابهة"
+ },
+ "Tap an empty slot to stab": {
+  "zh-Hant": "點空的孔把劍插進去",
+  "de": "Tippe auf einen freien Schlitz",
+  "es": "Toca una ranura vacía",
+  "fr": "Touche une fente vide",
+  "pt": "Toque num buraco vazio",
+  "ar": "المس فتحة فارغة"
+ },
+ "Slots left: {0}": {
+  "zh-Hant": "剩下 {0} 個孔",
+  "de": "Freie Schlitze: {0}",
+  "es": "Ranuras libres: {0}",
+  "fr": "Fentes libres : {0}",
+  "pt": "Buracos livres: {0}",
+  "ar": "الفتحات المتبقية: {0}"
+ },
+ "{0}!": {
+  "zh-Hant": "{0}！",
+  "de": "{0}!",
+  "es": "¡{0}!",
+  "fr": "{0} !",
+  "pt": "{0}!",
+  "ar": "{0}!"
+ },
+ "Launched the pirate! Forfeit time": {
+  "zh-Hant": "海盜飛出來了！要受罰",
+  "de": "Der Pirat ist rausgeflogen! Strafe fällig",
+  "es": "¡Hizo saltar al pirata! Le toca castigo",
+  "fr": "Le pirate a sauté ! Place au gage",
+  "pt": "Fez o pirata pular! Hora da prenda",
+  "ar": "أطلق القرصان! عليه العقوبة"
+ },
+ "Pirate Barrel": {
+  "zh-Hant": "海盜桶",
+  "de": "Piratenfass",
+  "es": "Barril pirata",
+  "fr": "Tonneau pirate",
+  "pt": "Barril do pirata",
+  "ar": "برميل القرصان"
+ },
+ "Stab the barrel, don’t launch the pirate": {
+  "zh-Hant": "插劍讓海盜飛出來就輸了",
+  "de": "Schwerter rein, bloß nicht den Piraten",
+  "es": "Clava espadas, que no salte el pirata",
+  "fr": "Plante les épées sans faire sauter le pirate",
+  "pt": "Espete o barril sem fazer o pirata pular",
+  "ar": "اطعن البرميل ولا تُطلق القرصان"
+ },
+ "Ready…": {
+  "zh-Hant": "準備…",
+  "de": "Bereit…",
+  "es": "Preparados…",
+  "fr": "Prêts…",
+  "pt": "Preparar…",
+  "ar": "استعدّ…"
+ },
+ "Now!": {
+  "zh-Hant": "就是現在！",
+  "de": "Jetzt!",
+  "es": "¡Ya!",
+  "fr": "Maintenant !",
+  "pt": "Agora!",
+  "ar": "الآن!"
+ },
+ "Too soon!": {
+  "zh-Hant": "太急了！",
+  "de": "Zu früh!",
+  "es": "¡Demasiado pronto!",
+  "fr": "Trop tôt !",
+  "pt": "Cedo demais!",
+  "ar": "مبكّر جدًا!"
+ },
+ "{0} ms": {
+  "zh-Hant": "{0}毫秒",
+  "de": "{0} ms",
+  "es": "{0} ms",
+  "fr": "{0} ms",
+  "pt": "{0} ms",
+  "ar": "{0} ملّي ثانية"
+ },
+ "Best {0} ms": {
+  "zh-Hant": "最快 {0}毫秒",
+  "de": "Bestzeit: {0} ms",
+  "es": "Mejor: {0} ms",
+  "fr": "Record : {0} ms",
+  "pt": "Melhor: {0} ms",
+  "ar": "الأفضل: {0} ملّي ثانية"
+ },
+ "Too slow": {
+  "zh-Hant": "慢了一步",
+  "de": "Zu langsam",
+  "es": "¡Por poco!",
+  "fr": "Trop lent",
+  "pt": "Por pouco!",
+  "ar": "تأخرت قليلًا"
+ },
+ "They jumped the gun!": {
+  "zh-Hant": "對手太急了！",
+  "de": "Gegner zu früh!",
+  "es": "¡Se adelantaron!",
+  "fr": "Faux départ adverse !",
+  "pt": "Queimaram a largada!",
+  "ar": "استعجل الآخرون!"
+ },
+ "Champion!": {
+  "zh-Hant": "冠軍！",
+  "de": "Sieger!",
+  "es": "¡Campeón!",
+  "fr": "Champion !",
+  "pt": "Campeão!",
+  "ar": "البطل!"
+ },
+ "Next time!": {
+  "zh-Hant": "下次加油！",
+  "de": "Nächstes Mal!",
+  "es": "¡La próxima!",
+  "fr": "La prochaine fois !",
+  "pt": "Na próxima!",
+  "ar": "في المرة القادمة!"
+ },
+ "Reaction Duel": {
+  "zh-Hant": "反應力對決",
+  "de": "Reaktionsduell",
+  "es": "Duelo de reflejos",
+  "fr": "Duel de réflexes",
+  "pt": "Duelo de reflexos",
+  "ar": "مبارزة ردّ الفعل"
+ },
+ "Tap when it turns green, too early is out": {
+  "zh-Hant": "變綠瞬間點！太早就出局",
+  "de": "Tippe bei Grün! Zu früh fliegt raus",
+  "es": "¡Toca al ponerse verde! Antes, eliminado",
+  "fr": "Touche au vert ! Trop tôt, éliminé",
+  "pt": "Toque no verde! Antes, eliminado",
+  "ar": "انقر عند الأخضر! المبكّر يُستبعد"
+ },
+ "Who buys the coffee? ☕": {
+  "zh-Hant": "誰請喝咖啡？☕",
+  "de": "Wer gibt den Kaffee aus? ☕",
+  "es": "¿Quién invita al café? ☕",
+  "fr": "Qui paie le café ? ☕",
+  "pt": "Quem paga o café? ☕",
+  "ar": "من يشتري القهوة؟ ☕"
+ },
+ "Spin": {
+  "zh-Hant": "轉動",
+  "de": "Drehen",
+  "es": "Girar",
+  "fr": "Tourner",
+  "pt": "Girar",
+  "ar": "أدِر"
+ },
+ "{n}!": {
+  "zh-Hant": "{n}！",
+  "de": "{n}!",
+  "es": "¡{n}!",
+  "fr": "{n} !",
+  "pt": "{n}!",
+  "ar": "{n}!"
+ },
+ "Spin Wheel": {
+  "zh-Hant": "轉盤",
+  "de": "Glücksrad",
+  "es": "Ruleta",
+  "fr": "Roue",
+  "pt": "Roleta",
+  "ar": "عجلة الحظ"
+ },
+ "Tap Spin to pick one person": {
+  "zh-Hant": "按「轉動」，抽出一個人",
+  "de": "Tippe auf Drehen, um eine Person zu wählen",
+  "es": "Toca Girar para elegir a una persona",
+  "fr": "Touche Tourner pour choisir une personne",
+  "pt": "Toque em Girar para escolher uma pessoa",
+  "ar": "اضغط «أدِر» لاختيار شخص واحد"
+ },
+ "TAP!": {
+  "zh-Hant": "狂點！",
+  "de": "TIPPEN!",
+  "es": "¡TOCA!",
+  "fr": "TAPE !",
+  "pt": "TOQUE!",
+  "ar": "انقر!"
+ },
+ "PULL!": {
+  "zh-Hant": "拉！",
+  "de": "ZIEH!",
+  "es": "¡TIRA!",
+  "fr": "TIRE !",
+  "pt": "PUXA!",
+  "ar": "اسحب!"
+ },
+ "Almost!": {
+  "zh-Hant": "再一點！",
+  "de": "Fast da!",
+  "es": "¡Ya casi!",
+  "fr": "Presque !",
+  "pt": "Quase lá!",
+  "ar": "اقتربت!"
+ },
+ "Hold on!": {
+  "zh-Hant": "撐住！",
+  "de": "Halt durch!",
+  "es": "¡Aguanta!",
+  "fr": "Tiens bon !",
+  "pt": "Aguenta!",
+  "ar": "اصمد!"
+ },
+ "Tie!": {
+  "zh-Hant": "平手！",
+  "de": "Unentschieden!",
+  "es": "¡Empate!",
+  "fr": "Égalité !",
+  "pt": "Empate!",
+  "ar": "تعادل!"
+ },
+ "Tap to replay": {
+  "zh-Hant": "點擊再來一次",
+  "de": "Tippen zum Wiederholen",
+  "es": "Toca para repetir",
+  "fr": "Touche pour rejouer",
+  "pt": "Toque para repetir",
+  "ar": "اضغط للإعادة"
+ },
+ "You win the match!": {
+  "zh-Hant": "最終勝利！",
+  "de": "Match gewonnen!",
+  "es": "¡Ganas la partida!",
+  "fr": "Tu gagnes le match !",
+  "pt": "Você venceu a partida!",
+  "ar": "فزت بالمباراة!"
+ },
+ "So close! Next time": {
+  "zh-Hant": "可惜！下次加油",
+  "de": "Knapp! Nächstes Mal",
+  "es": "¡Casi! La próxima",
+  "fr": "Presque ! La prochaine fois",
+  "pt": "Quase! Na próxima",
+  "ar": "كدت! في المرة القادمة"
+ },
+ "Tap for next round": {
+  "zh-Hant": "點擊進入下一回合",
+  "de": "Tippen für nächste Runde",
+  "es": "Toca para la siguiente",
+  "fr": "Touche pour la suite",
+  "pt": "Toque para a próxima",
+  "ar": "اضغط للجولة التالية"
+ },
+ "Tap to start": {
+  "zh-Hant": "點擊開始",
+  "de": "Zum Starten tippen",
+  "es": "Toca para empezar",
+  "fr": "Touche pour commencer",
+  "pt": "Toque para começar",
+  "ar": "اضغط للبدء"
+ },
+ "Round {0}": {
+  "zh-Hant": "第{0}回合",
+  "de": "Runde {0}",
+  "es": "Ronda {0}",
+  "fr": "Manche {0}",
+  "pt": "Rodada {0}",
+  "ar": "الجولة {0}"
+ },
+ "Tap Tug of War": {
+  "zh-Hant": "狂點拔河",
+  "de": "Tipp-Tauziehen",
+  "es": "Tira y afloja",
+  "fr": "Tir à la corde",
+  "pt": "Cabo de guerra",
+  "ar": "شدّ الحبل بالنقر"
+ },
+ "Tap your half fast to pull the rope": {
+  "zh-Hant": "狂點自己這半邊，把繩子拉過來",
+  "de": "Tippe schnell auf deine Hälfte und zieh das Seil",
+  "es": "Toca tu mitad rápido para tirar de la cuerda",
+  "fr": "Tape vite sur ta moitié pour tirer la corde",
+  "pt": "Toque rápido na sua metade para puxar a corda",
+  "ar": "انقر نصفك بسرعة لتشدّ الحبل"
+ },
+ "Tap anywhere to drop the block": {
+  "zh-Hant": "點任何地方讓方塊落下",
+  "de": "Tippe irgendwo, um den Block fallen zu lassen",
+  "es": "Toca donde sea para soltar el bloque",
+  "fr": "Touche n’importe où pour lâcher le bloc",
+  "pt": "Toque em qualquer lugar para soltar o bloco",
+  "ar": "اضغط في أي مكان لإسقاط القطعة"
+ },
+ "Perfect!": {
+  "zh-Hant": "完美！",
+  "de": "Perfekt!",
+  "es": "¡Perfecto!",
+  "fr": "Parfait !",
+  "pt": "Perfeito!",
+  "ar": "مثالي!"
+ },
+ "{0} floor": {
+  "zh-Hant": "{0}層",
+  "de": "{0} Stockwerk",
+  "es": "{0} piso",
+  "fr": "{0} étage",
+  "pt": "{0} andar",
+  "ar": "الطوابق: {0}"
+ },
+ "{0} floors": {
+  "zh-Hant": "{0}層",
+  "de": "{0} Stockwerke",
+  "es": "{0} pisos",
+  "fr": "{0} étages",
+  "pt": "{0} andares",
+  "ar": "الطوابق: {0}"
+ },
+ "Crash!": {
+  "zh-Hant": "嘩啦！",
+  "de": "Krach!",
+  "es": "¡Se cayó!",
+  "fr": "Patatras !",
+  "pt": "Desabou!",
+  "ar": "انهار!"
+ },
+ "Best: {0}": {
+  "zh-Hant": "最佳 {0}",
+  "de": "Rekord: {0}",
+  "es": "Récord: {0}",
+  "fr": "Record : {0}",
+  "pt": "Recorde: {0}",
+  "ar": "الأفضل: {0}"
+ },
+ "New best!": {
+  "zh-Hant": "新紀錄！",
+  "de": "Neuer Rekord!",
+  "es": "¡Nuevo récord!",
+  "fr": "Nouveau record !",
+  "pt": "Novo recorde!",
+  "ar": "رقم قياسي جديد!"
+ },
+ "Sky high!": {
+  "zh-Hant": "直達天際！",
+  "de": "Bis in den Himmel!",
+  "es": "¡Hasta el cielo!",
+  "fr": "Jusqu’au ciel !",
+  "pt": "Até o céu!",
+  "ar": "وصلت إلى السماء!"
+ },
+ "Stack Tower": {
+  "zh-Hant": "疊高塔",
+  "de": "Stapelturm",
+  "es": "Torre apilada",
+  "fr": "Tour empilée",
+  "pt": "Torre empilhada",
+  "ar": "برج التكديس"
+ },
+ "Tap on time, how high can you go?": {
+  "zh-Hant": "抓準時機點，能疊多高？",
+  "de": "Im richtigen Moment tippen: Wie hoch kommst du?",
+  "es": "Toca a tiempo, ¿hasta dónde llegas?",
+  "fr": "Touche au bon moment, jusqu’où iras-tu ?",
+  "pt": "Toque na hora certa, até onde você chega?",
+  "ar": "انقر في الوقت المناسب، إلى أي ارتفاع تصل؟"
+ }
+}

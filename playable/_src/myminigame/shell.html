@@ -294,15 +294,18 @@ button { font: inherit; color: inherit; cursor: pointer; touch-action: none; -we
 
   /* ---------- sound (WebAudio synth, no files) ---------- */
   var S = (function () {
-    var ac = null, master = null, dead = false, noiseBuf = null, gate = {};
-    function unlock() {
+    /* 2026-10-12 sound: in our apps (host=app) the page plays through the iPhone silent switch like the apps do (audio session 'playback'),
+       tries to start right away (works when the app's WebView allows media without a tap, else on the first tap), and sound=0 (app muted) keeps it silent */
+    var ac = null, master = null, dead = Q.get('sound') === '0', noiseBuf = null, gate = {};
+    function unlock(force) {
       if (ac || dead) return;
       // only once the browser counts a real tap (touch activation lands on pointerup / touchend, not on down):
       // creating it earlier only gives a suspended context and a console warning
-      if (!activated()) return;
+      if (force !== true && !activated()) return;
       var AC = window.AudioContext || window.webkitAudioContext;
       if (!AC) { dead = true; return; }
       try {
+        try { if (navigator.audioSession && Q.get('host') === 'app') navigator.audioSession.type = 'playback'; } catch (e) {}
         ac = new AC();
         master = ac.createGain(); master.gain.value = 0.55; master.connect(ac.destination);
         var b = ac.createBuffer(1, 1, 22050), s = ac.createBufferSource(); s.buffer = b; s.connect(ac.destination); s.start(0);
@@ -809,6 +812,7 @@ button { font: inherit; color: inherit; cursor: pointer; touch-action: none; -we
   $('bInstall').addEventListener('click', function () { S.unlock(); haptic('light'); install(); });
 
   // first tap unlocks audio; no scrolling, pinch zoom, double-tap zoom or long-press menu
+  if (Q.get('host') === 'app') S.unlock(true);
   document.addEventListener('pointerdown', S.unlock, true);
   document.addEventListener('pointerup', S.unlock, true);
   document.addEventListener('touchend', S.unlock, true);

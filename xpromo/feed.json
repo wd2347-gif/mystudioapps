@@ -1,6 +1,6 @@
 {
  "_doc": "MyStudio 자체 광고(교차 홍보): 2026-10-10 사용자: \"AdMob 승인 전까지 MyStudio 앱끼리 서로 광고, 승인되고 내가 요청하면 AdMob 으로\". mode admob + house_fallback: AdMob 을 계속 요청(계정 검토에 요청 기록이 필요할 수 있어)하고, 실패하면(지금은 늘 code 3) 자체 광고. house = AdMob 요청 없이 자체 광고만, off = 광고 칸 없음. 바꾸는 사람: My_Studio 세션.",
- "version": 10,
+ "version": 11,
  "mode": "admob",
  "house_fallback": true,
  "house_share": 0.3,
@@ -197,7 +197,8 @@
      "tagline": "تمدد · تنفس بطيء · نوم",
      "cta": "احصل عليه مجانًا"
     }
-   }
+   },
+   "music": "https://mystudioapps.com/assets/myslowbody/ad_music.m4a"
   },
   {
    "id": "myfidget",
@@ -376,7 +377,8 @@
      "cta": "احصل عليه مجانًا"
     }
    },
-   "playable": "https://mystudioapps.com/playable/myfidget/"
+   "playable": "https://mystudioapps.com/playable/myfidget/",
+   "music": "https://mystudioapps.com/assets/myfidget/ad_music.m4a"
   },
   {
    "id": "myvocal",
@@ -555,7 +557,8 @@
      "tagline": "إحماء الصوت · ضبط النغمة",
      "cta": "احصل عليه مجانًا"
     }
-   }
+   },
+   "music": "https://mystudioapps.com/assets/myvocal/ad_music.m4a"
   },
   {
    "id": "myslowsleep",
@@ -697,12 +700,14 @@
      "tagline": "أصوات النوم · المطر · التنفس",
      "cta": "اعرف المزيد"
     }
-   }
+   },
+   "music": "https://mystudioapps.com/assets/myslowsleep/ad_music.m4a"
   }
  ],
  "interstitial_close_after_sec": 15,
  "_doc_close": "자체 전면 광고의 닫기 단추가 나오는 시각(초). 2026-10-11 사용자: 7초 → 15초.",
  "_doc_playable": "2026-10-11 사용자: 우리 앱끼리 전면 광고에 직접 해 보는 체험판(다른 게임 두 번 바뀌고 세 번째는 설치). apps[].playable 이 있으면 자체 전면 차례에 WebView, JS 채널 XPromo(ready · switch:n · install).",
  "_doc_shots": "2026-10-11 사용자: 스크린샷 자체 광고는 한 장만 말고 넘겨 보며 보게. apps[].shots[lang] = 스토어 스크린샷 순서 목록(첫 장 = shot). 옛 앱은 shot 한 장 그대로 씀.",
- "_doc_langs": "2026-10-12 사용자: 자체 광고 9개 언어(ko · ja · en · zh-Hant · de · es · fr · pt · ar). 앱은 zh → zh-Hant, 나머지는 언어 코드 그대로, 피드에 없으면 en."
+ "_doc_langs": "2026-10-12 사용자: 자체 광고 9개 언어(ko · ja · en · zh-Hant · de · es · fr · pt · ar). 앱은 zh → zh-Hant, 나머지는 언어 코드 그대로, 피드에 없으면 en.",
+ "_doc_music": "2026-10-12 사용자: 스크린샷 자체 광고에도 음악. apps[].music = 그 앱 배경 음악 20초(m4a, 끝 1.5초 페이드). 스크린샷 전면이 떠 있는 동안 반복, 닫으면 멈춤, 앱 소리 · 음악을 끈 사용자에겐 틀지 않음. 체험판은 효과음(host=app 이면 바로 시작, sound=0 이면 무음)."
 }

@@ -307,12 +307,15 @@ var GAMES = {};
 
   /* ---------- sound (WebAudio synth, unlocked on the first touch) ---------- */
   var S = (function () {
-    var ac = null, master = null, dead = false, noiseBuf = null;
+    /* 2026-10-12 sound: in our apps (host=app) the page plays through the iPhone silent switch like the apps do (audio session 'playback'),
+       tries to start right away (works when the app's WebView allows media without a tap, else on the first tap), and sound=0 (app muted) keeps it silent */
+    var ac = null, master = null, dead = Q.get('sound') === '0', noiseBuf = null;
     function unlock() {
       if (ac || dead) return;
       var AC = window.AudioContext || window.webkitAudioContext;
       if (!AC) { dead = true; return; }
       try {
+        try { if (navigator.audioSession && Q.get('host') === 'app') navigator.audioSession.type = 'playback'; } catch (e) {}
         ac = new AC();
         master = ac.createGain(); master.gain.value = 0.55; master.connect(ac.destination);
         var b = ac.createBuffer(1, 1, 22050), s = ac.createBufferSource(); s.buffer = b; s.connect(ac.destination); s.start(0);
@@ -771,6 +774,7 @@ var GAMES = {};
   $('bInstall').addEventListener('click', function () { buzz(); install(); });
 
   // first tap unlocks audio; no scrolling, pinch zoom, double-tap zoom or long-press menu
+  if (Q.get('host') === 'app') S.unlock();
   document.addEventListener('pointerdown', S.unlock, true);
   document.addEventListener('touchend', S.unlock, true);
   ['gesturestart', 'gesturechange', 'gestureend'].forEach(function (ev) { document.addEventListener(ev, function (e) { e.preventDefault(); }, { passive: false }); });

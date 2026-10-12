@@ -292,6 +292,27 @@ button { font: inherit; color: inherit; cursor: pointer; touch-action: none; -we
   // Browsers without navigator.userActivation (older WebKit) just get true.
   function activated() { var u = navigator.userActivation; return !u || u.hasBeenActive; }
 
+  /* 2026-10-12 (사용자: 체험판에도 배경음악): the advertised app's own track loops quietly under the effects.
+     Apps that preload this page off screen send window events: 'xpromo-shown' when it appears (sound starts then, or on the
+     first tap) and 'xpromo-hidden' when it closes (sound stops). Nothing plays before either, so a preloaded page stays silent. */
+  var BGM = { url: '../../assets/myminigame/ad_music.mp3', on: false };
+  function bgmStart(ac) {
+    if (!ac || BGM.on || Q.get('sound') === '0') return;
+    BGM.on = true;
+    fetch(BGM.url).then(function (r) { if (!r.ok) throw new Error('bgm'); return r.arrayBuffer(); })
+      .then(function (b) { return new Promise(function (ok, no) { ac.decodeAudioData(b, ok, no); }); })
+      .then(function (buf) {
+        var g = ac.createGain(); g.gain.value = 0.28; g.connect(ac.destination);
+        var step = Math.max(2, buf.duration - 1.5);  // the clip fades in/out, so overlapping 1.5 s makes a smooth loop
+        (function at(t) {
+          if (ac.state !== 'running') { setTimeout(function () { at(0); }, 500); return; }
+          t = Math.max(t, ac.currentTime + 0.05);
+          var s = ac.createBufferSource(); s.buffer = buf; s.connect(g); s.start(t);
+          setTimeout(function () { at(t + step); }, Math.max(0, (t + step - ac.currentTime - 1) * 1000));
+        })(0);
+      })['catch'](function () { BGM.on = false; });
+  }
+
   /* ---------- sound (WebAudio synth, no files) ---------- */
   var S = (function () {
     /* 2026-10-12 sound: in our apps (host=app) the page plays through the iPhone silent switch like the apps do (audio session 'playback'),
@@ -310,6 +331,7 @@ button { font: inherit; color: inherit; cursor: pointer; touch-action: none; -we
         master = ac.createGain(); master.gain.value = 0.55; master.connect(ac.destination);
         var b = ac.createBuffer(1, 1, 22050), s = ac.createBufferSource(); s.buffer = b; s.connect(ac.destination); s.start(0);
         if (ac.state === 'suspended') ac.resume().catch(function () {});
+        bgmStart(ac);
       } catch (e) { dead = true; ac = null; }
     }
     function ok() {
@@ -352,7 +374,7 @@ button { font: inherit; color: inherit; cursor: pointer; touch-action: none; -we
     // do mi sol do' mi' sol' do'' (marimba melody notes, as the app's tiles / combo)
     var NOTES = [523.25, 659.25, 783.99, 1046.5, 1318.51, 1567.98, 2093.0];
     return {
-      unlock: unlock, tone: tone, noise: noise,
+      unlock: unlock, ctx: function () { return ac; }, tone: tone, noise: noise,
       suspend: function () { if (ac && ac.state === 'running') ac.suspend().catch(function () {}); },
       resume: function () { if (ac && ac.state === 'suspended') ac.resume().catch(function () {}); },
       click: function () { if (once('click')) tone(1100, 0.045, 'triangle', 0.16, 700); },
@@ -812,7 +834,10 @@ button { font: inherit; color: inherit; cursor: pointer; touch-action: none; -we
   $('bInstall').addEventListener('click', function () { S.unlock(); haptic('light'); install(); });
 
   // first tap unlocks audio; no scrolling, pinch zoom, double-tap zoom or long-press menu
-  if (Q.get('host') === 'app') S.unlock(true);
+  window.addEventListener('xpromo-shown', function () { S.unlock(true); S.resume(); });
+  window.addEventListener('xpromo-hidden', function () { var c = S.ctx(); if (c && c.suspend) c.suspend()['catch'](function () {}); });
+  window.xpromoShown = function () { window.dispatchEvent(new Event('xpromo-shown')); };  // apps may call these instead of dispatching the events
+  window.xpromoHidden = function () { window.dispatchEvent(new Event('xpromo-hidden')); };
   document.addEventListener('pointerdown', S.unlock, true);
   document.addEventListener('pointerup', S.unlock, true);
   document.addEventListener('touchend', S.unlock, true);

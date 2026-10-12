@@ -303,7 +303,7 @@ button { font: inherit; color: inherit; cursor: pointer; touch-action: none; -we
      first tap) and 'xpromo-hidden' when it closes (sound stops). Nothing plays before either, so a preloaded page stays silent. */
   var BGM = { url: '../../assets/myminigame/ad_music.mp3', on: false };
   function bgmStart(ac) {
-    if (!ac || BGM.on || Q.get('sound') === '0') return;
+    if (!ac || BGM.on || Q.get('sound') === '0' || Q.get('music') === '0') return;  // music=0: 앱 배경음악을 끈 사용자(효과음은 그대로)
     BGM.on = true;
     fetch(BGM.url).then(function (r) { if (!r.ok) throw new Error('bgm'); return r.arrayBuffer(); })
       .then(function (b) { return new Promise(function (ok, no) { ac.decodeAudioData(b, ok, no); }); })

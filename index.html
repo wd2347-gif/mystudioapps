@@ -429,12 +429,12 @@ const APPS = [
     name: 'MyScore',
     icon: 'assets/myscore/icon.png',
     iconText: '⊓',
-    appStore: '',
-    playStore: '',
+    appStore: 'https://apps.apple.com/app/id6819550025',
+    playStore: 'https://play.google.com/store/apps/details?id=com.ymc.myscore',
     support: 'mailto:support@mystudioapps.com',
     privacy: 'myscore/privacy.html',
     terms: 'myscore/terms.html',
-    shots: [],
+    shots: ['s1', 's2', 's3', 's4', 's5', 's6', 's7', 's8', 's9'],
     text: {
       // 이점 위주 — 얼굴은 "악보를 올리면 활 표시가 자동으로"(2026-10-06 사용자: "이게 메인이야").
       ko: {
@@ -523,11 +523,12 @@ const APPS = [
 ];
 
 // ── 곧 나올 앱(10/11 사용자: '곧 나와요'도 보이게). 스토어 주소가 생기면 그 칸만 채우면 '출시된 앱'으로 옮겨 간다. ──
+// 스크린샷은 python3 xpromo/make_shots.py <피드 id> <스토어 스크린샷 폴더> 가 assets/<assetDir 또는 id>/ 에 만들고 shots 도 채운다.
 APPS.push(
   {
-    id: 'mypartygames', name: 'MyPartyGames', icon: 'assets/mypartygame/icon.png', page: 'mypartygames/',
-    appStore: '', playStore: '', support: 'mailto:support@mystudioapps.com',
-    privacy: 'mypartygames/privacy.html', terms: 'mypartygames/terms.html', shots: [],
+    id: 'mypartygames', name: 'MyPartyGames', icon: 'assets/mypartygame/icon.png', page: 'mypartygames/', assetDir: 'mypartygame',
+    appStore: 'https://apps.apple.com/app/id6821380529', playStore: 'https://play.google.com/store/apps/details?id=com.ymc.mypartygame', support: 'mailto:support@mystudioapps.com',
+    privacy: 'mypartygames/privacy.html', terms: 'mypartygames/terms.html', shots: ['s1', 's2', 's3', 's4', 's5', 's6', 's7', 's8', 's9', 's10'],
     text: {
       ko: { sub: '우리들의 파티게임', tagline: '폰 하나로 다같이, 우리들의 파티게임.', desc: '모여서, 내기할 때, 혼자서도. 휴대폰 하나로 다같이 즐기는 파티게임 모음이에요.', features: [] },
       en: { sub: 'Group Party Fun', tagline: 'One phone, everyone plays.', desc: 'Get-togethers, friendly bets, or just you: party games for everyone on one phone.', features: [] },
@@ -536,8 +537,8 @@ APPS.push(
   },
   {
     id: 'myminigame', name: 'MyPocketGames', icon: 'assets/myminigame/icon.png', page: 'myminigame/',
-    appStore: '', playStore: '', support: 'mailto:support@mystudioapps.com',
-    privacy: 'myminigame/privacy.html', terms: 'myminigame/terms.html', shots: [],
+    appStore: '', playStore: 'https://play.google.com/store/apps/details?id=com.ymc.myminigame', support: 'mailto:support@mystudioapps.com',
+    privacy: 'myminigame/privacy.html', terms: 'myminigame/terms.html', shots: ['s1', 's2', 's3', 's4', 's5', 's6', 's7', 's8', 's9', 's10'],
     text: {
       ko: { sub: '나만의 미니게임', tagline: '심심할 때 한 판, 나만의 미니게임.', desc: '아케이드 · 퍼즐 · 두뇌 게임을 주머니 속에. 잠깐 쉴 때 한 판씩 즐겨요.', features: [] },
       en: { sub: 'Solo Mini Games', tagline: 'One more round: your pocket mini games.', desc: 'Arcade, puzzles and brain games in your pocket, for a quick round whenever you have a moment.', features: [] },
@@ -694,7 +695,7 @@ function renderApp(a) {
     ${a.shots.length ? `<div class="shots-wrap">
       <button class="shot-nav prev" type="button" aria-label="Previous">‹</button>
       <section class="shots" aria-label="Screenshots">
-        ${a.shots.map(s => `<img loading="lazy" draggable="false" src="assets/${a.id}/${lang}_${s}.jpg" alt="">`).join('')}
+        ${a.shots.map(s => `<img loading="lazy" draggable="false" src="assets/${a.assetDir || a.id}/${lang}_${s}.jpg" alt="">`).join('')}
       </section>
       <button class="shot-nav next" type="button" aria-label="Next">›</button>
     </div>` : ''}

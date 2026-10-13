@@ -18,7 +18,7 @@
 <meta property="og:image:height" content="512">
 <meta name="twitter:card" content="summary">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
-<!-- MyPartyGames 소개(2026-10-11 초안, My_Studio 세션). 아직 출시 전이라 스토어 단추 대신 'App Store · 곧 출시', 'Google Play · 곧 출시'(MyVocal 출시 전과 같은 점 알약).
+<!-- MyPartyGames 소개(2026-10-11 초안, My_Studio 세션). 10/13 App Store · Google Play 공개: 두 스토어 단추(ct=site_party, Play referrer site_party). 옛: 출시 전이라 스토어 단추 대신 'App Store · 곧 출시', 'Google Play · 곧 출시'(MyVocal 출시 전과 같은 점 알약).
      출시되면 myfidget/index.html 처럼 a.soon.store 링크로 바꾼다(캠페인 제안 ct=site_party, Play referrer utm_campaign=site_party).
      App Store 마케팅 URL 로 쓰면 AdMob 이 이 도메인의 app-ads.txt 로 앱을 인증한다.
      색은 아이콘 색종이의 보라(#A368FF)에서 온 파티 보라: 연보라 바탕(#F6F1FF → #E9DDFF), 짙은 보랏빛 회색 글, 강조 #7A3FE0(큰 글씨 · 점),
@@ -90,7 +90,7 @@
     <p class="sub" id="sub"></p>
     <p class="tagline" id="tagline"></p>
     <p class="desc" id="desc"></p>
-    <div class="stores"><span class="soon"><i aria-hidden="true"></i><span id="soon"></span></span><span class="soon"><i aria-hidden="true"></i><span id="play"></span></span></div>
+    <div class="stores"><a class="soon store" id="store" href="https://apps.apple.com/app/apple-store/id6821380529?pt=129467809&ct=site_party&mt=8" rel="noopener"><svg aria-hidden="true" width="16" height="18" viewBox="0 0 384 512" fill="currentColor"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg><span id="soon"></span></a><a class="soon store" id="playstore" href="https://play.google.com/store/apps/details?id=com.ymc.mypartygame&amp;referrer=utm_source%3Dsite%26utm_medium%3Dweb%26utm_campaign%3Dsite_party" rel="noopener"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M3.6 1.8 13.8 12 3.6 22.2c-.4-.2-.6-.6-.6-1.1V2.9c0-.5.2-.9.6-1.1zm11.3 11.3 2.6 2.6-11.9 6.8 9.3-9.4zm3.8-3.8 2.8 1.6c.8.5.8 1.7 0 2.2l-2.8 1.6-2.9-2.8 2.9-2.6zM5.6 1.5l11.9 6.8-2.6 2.6-9.3-9.4z"/></svg><span id="play"></span></a></div>
   </section>
   <section class="features" id="features"></section>
   <p class="devices" id="devices"></p>
@@ -108,8 +108,8 @@ const T = {
     sub: '모여서, 내기할 때, 혼자서도',
     tagline: '폰 하나로 다같이, 우리들의 파티게임.',
     desc: '라이어 게임 · 마피아 · 사다리 타기 · 돌림판부터 에어하키 · 오목 · 스도쿠 · 2048까지. 혼자서도, 여럿이 모여서도 폰 하나면 충분해요.',
-    soon: 'App Store · 곧 출시',
-    play: 'Google Play · 곧 출시',
+    soon: 'App Store에서 받기',
+    play: 'Google Play에서 받기',
     features: [
       ['🎯', '내기가 필요할 때', '2인 이상: 커피는 누가 살지, 설거지는 누가 할지. 손가락 뽑기 · 사다리 타기 · 돌림판 · 폭탄 돌리기로 한 번에 정해요.'],
       ['🎉', '모여서 즐기는 우리들의 파티게임', '3인 이상 모였을 때: 라이어 게임 · 마피아 · 스무고개 · 진진가 · 말없이 순서대로. 진행은 앱이 맡고, 왕 게임도 술 · 선정적인 내용 없이 누구나 함께해요.'],
@@ -123,8 +123,8 @@ const T = {
     sub: 'Group games, bets & solo fun',
     tagline: 'One phone, everyone plays.',
     desc: 'From Liar Game, Mafia, Ladder Lottery and Spin Wheel to Air Hockey, Gomoku, Sudoku and 2048. On your own or with a whole group, one phone is all you need.',
-    soon: 'App Store · Coming soon',
-    play: 'Google Play · Coming soon',
+    soon: 'Download on the App Store',
+    play: 'Get it on Google Play',
     features: [
       ['🎯', 'Need a bet?', 'Two or more players: who buys the coffee, who does the dishes? Settle it in one go with Finger Picker, Ladder Lottery, Spin Wheel or Hot Bomb.'],
       ['🎉', 'Party games for all of us', 'When three or more get together: Liar Game, Mafia, Twenty Questions, Speed Quiz and In Silent Order, with the app as your host. King Game is family friendly too: no alcohol, nothing sexual.'],
@@ -138,8 +138,8 @@ const T = {
     sub: '集まって、賭けて、ひとりでも',
     tagline: 'スマホ1台で、みんなのパーティーゲーム。',
     desc: 'うそつき探し・マフィア・あみだくじ・ルーレットから、エアホッケー・五目並べ・ナンプレ・2048まで。ひとりでも、みんなで集まっても、スマホ1台で遊べます。',
-    soon: 'App Store・近日公開',
-    play: 'Google Play・近日公開',
+    soon: 'App Storeでダウンロード',
+    play: 'Google Playで手に入れよう',
     features: [
       ['🎯', '賭けが必要なとき', '2人以上：コーヒーは誰がおごる？お皿洗いは誰？指ルーレット・あみだくじ・ルーレット・爆弾リレーで一発で決めましょう。'],
       ['🎉', 'みんなで遊ぶパーティーゲーム', '3人以上集まったら：うそつき探し・マフィア・20の質問・2つの本当と1つのうそ・無言で順番に。進行はアプリにおまかせ。王様ゲームも、お酒や性的な内容なしで誰でも一緒に楽しめます。'],

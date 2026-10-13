@@ -19,7 +19,7 @@
 <meta name="twitter:card" content="summary">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
 <!-- MyPocketGames 소개(2026-10-11 초안, My_Studio 세션). 틀은 mypartygames/index.html 과 같다.
-     아직 출시 전이라 스토어 단추 대신 'App Store · 곧 출시', 'Google Play · 곧 출시' 점 알약.
+     10/13 Google Play 공개: Play 단추(referrer site_pocket), App Store 는 아직 '곧 출시'(공개되면 ct=site_pocket 단추로). 옛: 출시 전이라 스토어 단추 대신 'App Store · 곧 출시', 'Google Play · 곧 출시' 점 알약.
      출시되면 myfidget/index.html 처럼 a.soon.store 링크로 바꾼다(캠페인 제안 ct=site_mini, Play referrer utm_campaign=site_mini).
      App Store 마케팅 URL 로 쓰면 AdMob 이 이 도메인의 app-ads.txt 로 앱을 인증한다.
      색은 아이콘 게임패드 단추의 파랑(#3E9BFF)에서 온 아케이드 파랑: 연하늘 바탕(#EEF5FF 에서 #DCEAFF), 짙은 남색 글,
@@ -92,7 +92,7 @@
     <p class="sub" id="sub"></p>
     <p class="tagline" id="tagline"></p>
     <p class="desc" id="desc"></p>
-    <div class="stores"><span class="soon"><i aria-hidden="true"></i><span id="soon"></span></span><span class="soon"><i aria-hidden="true"></i><span id="play"></span></span></div>
+    <div class="stores"><span class="soon"><i aria-hidden="true"></i><span id="soon"></span></span><a class="soon store" id="playstore" href="https://play.google.com/store/apps/details?id=com.ymc.myminigame&amp;referrer=utm_source%3Dsite%26utm_medium%3Dweb%26utm_campaign%3Dsite_pocket" rel="noopener"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M3.6 1.8 13.8 12 3.6 22.2c-.4-.2-.6-.6-.6-1.1V2.9c0-.5.2-.9.6-1.1zm11.3 11.3 2.6 2.6-11.9 6.8 9.3-9.4zm3.8-3.8 2.8 1.6c.8.5.8 1.7 0 2.2l-2.8 1.6-2.9-2.8 2.9-2.6zM5.6 1.5l11.9 6.8-2.6 2.6-9.3-9.4z"/></svg><span id="play"></span></a></div>
   </section>
   <section class="features" id="features"></section>
   <p class="devices" id="devices"></p>
@@ -111,7 +111,7 @@ const T = {
     tagline: '심심할 때 한 판, 나만의 미니게임.',
     desc: '벽돌 깨기 · 과일 자르기 · 탑 쌓기부터 물 정렬 · 블록 퍼즐 · 스도쿠 · 솔리테어까지. 쉬는 시간에도, 기다리는 동안에도 혼자서 가볍게 한 판, 심심할 틈이 없어요.',
     soon: 'App Store · 곧 출시',
-    play: 'Google Play · 곧 출시',
+    play: 'Google Play에서 받기',
     features: [
       ['🕹️', '짧게 한 판, 기록 깨기', '순발력 아케이드: 벽돌 깨기 · 과일 자르기 · 탑 쌓기 · 다트 꽂기 · 피아노 건반. 손끝이 닿는 순간 소리와 진동이 함께 와요.'],
       ['🧩', '차분히 하나씩 풀어요', '퍼즐: 물 정렬 · 블록 퍼즐 · 보석 맞추기 · 방울 쏘기 · 스도쿠 · 2048.'],
@@ -126,7 +126,7 @@ const T = {
     tagline: 'One more round: your pocket mini games.',
     desc: 'From Brick Breaker, Fruit Slice and Stack Tower to Water Sort, Block Puzzle, Sudoku and Solitaire. On a break or while you wait, play a quick round on your own and never be bored.',
     soon: 'App Store · Coming soon',
-    play: 'Google Play · Coming soon',
+    play: 'Get it on Google Play',
     features: [
       ['🕹️', 'Quick runs, new records', 'Arcade: Brick Breaker, Fruit Slice, Stack Tower, Dart Spin and Tap Tiles. Sound and vibration land the moment your finger does.'],
       ['🧩', 'Take your time and solve', 'Puzzles: Water Sort, Block Puzzle, Gem Match, Bubble Burst, Sudoku and 2048.'],
@@ -141,7 +141,7 @@ const T = {
     tagline: 'ひまな時に1回、わたしのミニゲーム。',
     desc: 'ブロック崩し・フルーツカット・タワー積みから、ウォーターソート・ブロックパズル・ナンプレ・ソリティアまで。休み時間にも待ち時間にも、ひとりでサクッと1回。退屈する暇はありません。',
     soon: 'App Store・近日公開',
-    play: 'Google Play・近日公開',
+    play: 'Google Playで手に入れよう',
     features: [
       ['🕹️', 'サクッと1回、記録更新', 'アーケード：ブロック崩し・フルーツカット・タワー積み・ダーツスピン・タップタイル。指がふれた瞬間に、音と振動が同時に届きます。'],
       ['🧩', 'じっくり解こう', 'パズル：ウォーターソート・ブロックパズル・ジェムマッチ・バブル割り・ナンプレ・2048。'],

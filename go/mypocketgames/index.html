@@ -82,7 +82,7 @@
     var android = /Android/.test(ua);
     var m = /[?&]c=([A-Za-z0-9_\-]{1,40})/.exec(location.search);
     var c = m ? m[1] : '';
-    var IOS_LIVE = false; // App Store 공개되면 true(10/13: Play 만 공개)
+    var IOS_LIVE = true; // 10/14 App Store 공개
     var appStore = IOS_LIVE ? 'https://apps.apple.com/app/id6821543762' + (c ? '?pt=129467809&ct=' + c + '&mt=8' : '') : '';
     var playStore = 'https://play.google.com/store/apps/details?id=com.ymc.myminigame';
     if (playStore && c) {

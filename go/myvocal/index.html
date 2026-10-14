@@ -82,7 +82,7 @@
     var m = /[?&]c=([A-Za-z0-9_\-]{1,40})/.exec(location.search);
     var c = m ? m[1] : '';
     var appStore = 'https://apps.apple.com/app/id6820647919' + (c ? '?pt=129467809&ct=' + c + '&mt=8' : '');
-    var playStore = ''; // Play 공개되면 'https://play.google.com/store/apps/details?id=com.ymc.myvocal'
+    var playStore = 'https://play.google.com/store/apps/details?id=com.ymc.myvocal';
     if (playStore && c) {
       playStore += '&referrer=' + encodeURIComponent('utm_source=' + c.split('_')[0] + '&utm_medium=social&utm_campaign=' + c);
     }

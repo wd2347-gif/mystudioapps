@@ -1,6 +1,6 @@
 {
  "_doc": "MyStudio 자체 광고(교차 홍보): 2026-10-10 사용자: \"AdMob 승인 전까지 MyStudio 앱끼리 서로 광고, 승인되고 내가 요청하면 AdMob 으로\". mode admob + house_fallback: AdMob 을 계속 요청(계정 검토에 요청 기록이 필요할 수 있어)하고, 실패하면(지금은 늘 code 3) 자체 광고. house = AdMob 요청 없이 자체 광고만, off = 광고 칸 없음. 바꾸는 사람: My_Studio 세션.",
- "version": 13,
+ "version": 15,
  "mode": "admob",
  "house_fallback": true,
  "house_share": 0.3,
@@ -510,7 +510,7 @@
     "ios": "https://apps.apple.com/app/id6820647919",
     "android": "https://play.google.com/store/apps/details?id=com.ymc.myvocal"
    },
-   "android_live": false,
+   "android_live": true,
    "text": {
     "ko": {
      "headline": "매일 하는 보컬 기본기 훈련",
@@ -883,6 +883,187 @@
    },
    "playable": "https://mystudioapps.com/playable/mypartygame/",
    "music": "https://mystudioapps.com/assets/mypartygame/ad_music.mp3"
+  },
+  {
+   "id": "myminigame",
+   "name": "MyPocketGames",
+   "icon": "https://mystudioapps.com/assets/myminigame/icon.png",
+   "color": "#1D5FD6",
+   "shot": {
+    "ko": "https://mystudioapps.com/assets/myminigame/ko_s1.jpg",
+    "ja": "https://mystudioapps.com/assets/myminigame/ja_s1.jpg",
+    "en": "https://mystudioapps.com/assets/myminigame/en_s1.jpg",
+    "zh-Hant": "https://mystudioapps.com/assets/myminigame/zh-Hant_s1.jpg",
+    "de": "https://mystudioapps.com/assets/myminigame/de_s1.jpg",
+    "es": "https://mystudioapps.com/assets/myminigame/es_s1.jpg",
+    "fr": "https://mystudioapps.com/assets/myminigame/fr_s1.jpg",
+    "pt": "https://mystudioapps.com/assets/myminigame/pt_s1.jpg",
+    "ar": "https://mystudioapps.com/assets/myminigame/ar_s1.jpg"
+   },
+   "shots": {
+    "ko": [
+     "https://mystudioapps.com/assets/myminigame/ko_s1.jpg",
+     "https://mystudioapps.com/assets/myminigame/ko_s2.jpg",
+     "https://mystudioapps.com/assets/myminigame/ko_s3.jpg",
+     "https://mystudioapps.com/assets/myminigame/ko_s4.jpg",
+     "https://mystudioapps.com/assets/myminigame/ko_s5.jpg",
+     "https://mystudioapps.com/assets/myminigame/ko_s6.jpg",
+     "https://mystudioapps.com/assets/myminigame/ko_s7.jpg",
+     "https://mystudioapps.com/assets/myminigame/ko_s8.jpg",
+     "https://mystudioapps.com/assets/myminigame/ko_s9.jpg",
+     "https://mystudioapps.com/assets/myminigame/ko_s10.jpg"
+    ],
+    "ja": [
+     "https://mystudioapps.com/assets/myminigame/ja_s1.jpg",
+     "https://mystudioapps.com/assets/myminigame/ja_s2.jpg",
+     "https://mystudioapps.com/assets/myminigame/ja_s3.jpg",
+     "https://mystudioapps.com/assets/myminigame/ja_s4.jpg",
+     "https://mystudioapps.com/assets/myminigame/ja_s5.jpg",
+     "https://mystudioapps.com/assets/myminigame/ja_s6.jpg",
+     "https://mystudioapps.com/assets/myminigame/ja_s7.jpg",
+     "https://mystudioapps.com/assets/myminigame/ja_s8.jpg",
+     "https://mystudioapps.com/assets/myminigame/ja_s9.jpg",
+     "https://mystudioapps.com/assets/myminigame/ja_s10.jpg"
+    ],
+    "en": [
+     "https://mystudioapps.com/assets/myminigame/en_s1.jpg",
+     "https://mystudioapps.com/assets/myminigame/en_s2.jpg",
+     "https://mystudioapps.com/assets/myminigame/en_s3.jpg",
+     "https://mystudioapps.com/assets/myminigame/en_s4.jpg",
+     "https://mystudioapps.com/assets/myminigame/en_s5.jpg",
+     "https://mystudioapps.com/assets/myminigame/en_s6.jpg",
+     "https://mystudioapps.com/assets/myminigame/en_s7.jpg",
+     "https://mystudioapps.com/assets/myminigame/en_s8.jpg",
+     "https://mystudioapps.com/assets/myminigame/en_s9.jpg",
+     "https://mystudioapps.com/assets/myminigame/en_s10.jpg"
+    ],
+    "zh-Hant": [
+     "https://mystudioapps.com/assets/myminigame/zh-Hant_s1.jpg",
+     "https://mystudioapps.com/assets/myminigame/zh-Hant_s2.jpg",
+     "https://mystudioapps.com/assets/myminigame/zh-Hant_s3.jpg",
+     "https://mystudioapps.com/assets/myminigame/zh-Hant_s4.jpg",
+     "https://mystudioapps.com/assets/myminigame/zh-Hant_s5.jpg",
+     "https://mystudioapps.com/assets/myminigame/zh-Hant_s6.jpg",
+     "https://mystudioapps.com/assets/myminigame/zh-Hant_s7.jpg",
+     "https://mystudioapps.com/assets/myminigame/zh-Hant_s8.jpg",
+     "https://mystudioapps.com/assets/myminigame/zh-Hant_s9.jpg",
+     "https://mystudioapps.com/assets/myminigame/zh-Hant_s10.jpg"
+    ],
+    "de": [
+     "https://mystudioapps.com/assets/myminigame/de_s1.jpg",
+     "https://mystudioapps.com/assets/myminigame/de_s2.jpg",
+     "https://mystudioapps.com/assets/myminigame/de_s3.jpg",
+     "https://mystudioapps.com/assets/myminigame/de_s4.jpg",
+     "https://mystudioapps.com/assets/myminigame/de_s5.jpg",
+     "https://mystudioapps.com/assets/myminigame/de_s6.jpg",
+     "https://mystudioapps.com/assets/myminigame/de_s7.jpg",
+     "https://mystudioapps.com/assets/myminigame/de_s8.jpg",
+     "https://mystudioapps.com/assets/myminigame/de_s9.jpg",
+     "https://mystudioapps.com/assets/myminigame/de_s10.jpg"
+    ],
+    "es": [
+     "https://mystudioapps.com/assets/myminigame/es_s1.jpg",
+     "https://mystudioapps.com/assets/myminigame/es_s2.jpg",
+     "https://mystudioapps.com/assets/myminigame/es_s3.jpg",
+     "https://mystudioapps.com/assets/myminigame/es_s4.jpg",
+     "https://mystudioapps.com/assets/myminigame/es_s5.jpg",
+     "https://mystudioapps.com/assets/myminigame/es_s6.jpg",
+     "https://mystudioapps.com/assets/myminigame/es_s7.jpg",
+     "https://mystudioapps.com/assets/myminigame/es_s8.jpg",
+     "https://mystudioapps.com/assets/myminigame/es_s9.jpg",
+     "https://mystudioapps.com/assets/myminigame/es_s10.jpg"
+    ],
+    "fr": [
+     "https://mystudioapps.com/assets/myminigame/fr_s1.jpg",
+     "https://mystudioapps.com/assets/myminigame/fr_s2.jpg",
+     "https://mystudioapps.com/assets/myminigame/fr_s3.jpg",
+     "https://mystudioapps.com/assets/myminigame/fr_s4.jpg",
+     "https://mystudioapps.com/assets/myminigame/fr_s5.jpg",
+     "https://mystudioapps.com/assets/myminigame/fr_s6.jpg",
+     "https://mystudioapps.com/assets/myminigame/fr_s7.jpg",
+     "https://mystudioapps.com/assets/myminigame/fr_s8.jpg",
+     "https://mystudioapps.com/assets/myminigame/fr_s9.jpg",
+     "https://mystudioapps.com/assets/myminigame/fr_s10.jpg"
+    ],
+    "pt": [
+     "https://mystudioapps.com/assets/myminigame/pt_s1.jpg",
+     "https://mystudioapps.com/assets/myminigame/pt_s2.jpg",
+     "https://mystudioapps.com/assets/myminigame/pt_s3.jpg",
+     "https://mystudioapps.com/assets/myminigame/pt_s4.jpg",
+     "https://mystudioapps.com/assets/myminigame/pt_s5.jpg",
+     "https://mystudioapps.com/assets/myminigame/pt_s6.jpg",
+     "https://mystudioapps.com/assets/myminigame/pt_s7.jpg",
+     "https://mystudioapps.com/assets/myminigame/pt_s8.jpg",
+     "https://mystudioapps.com/assets/myminigame/pt_s9.jpg",
+     "https://mystudioapps.com/assets/myminigame/pt_s10.jpg"
+    ],
+    "ar": [
+     "https://mystudioapps.com/assets/myminigame/ar_s1.jpg",
+     "https://mystudioapps.com/assets/myminigame/ar_s2.jpg",
+     "https://mystudioapps.com/assets/myminigame/ar_s3.jpg",
+     "https://mystudioapps.com/assets/myminigame/ar_s4.jpg",
+     "https://mystudioapps.com/assets/myminigame/ar_s5.jpg",
+     "https://mystudioapps.com/assets/myminigame/ar_s6.jpg",
+     "https://mystudioapps.com/assets/myminigame/ar_s7.jpg",
+     "https://mystudioapps.com/assets/myminigame/ar_s8.jpg",
+     "https://mystudioapps.com/assets/myminigame/ar_s9.jpg",
+     "https://mystudioapps.com/assets/myminigame/ar_s10.jpg"
+    ]
+   },
+   "store": {
+    "ios": "https://apps.apple.com/app/id6821543762",
+    "android": "https://play.google.com/store/apps/details?id=com.ymc.myminigame"
+   },
+   "android_live": true,
+   "text": {
+    "ko": {
+     "headline": "심심할 때 한 판",
+     "tagline": "아케이드 · 퍼즐 · 두뇌 게임",
+     "cta": "무료로 받기"
+    },
+    "ja": {
+     "headline": "ひまな時に1回",
+     "tagline": "アーケード・パズル・脳トレ",
+     "cta": "無料で入手"
+    },
+    "en": {
+     "headline": "Mini games for any break",
+     "tagline": "Arcade · Puzzles · Brain games",
+     "cta": "Get it free"
+    },
+    "zh-Hant": {
+     "headline": "無聊時來一局",
+     "tagline": "街機 · 益智 · 腦力遊戲",
+     "cta": "免費下載"
+    },
+    "de": {
+     "headline": "Minispiele für jede Pause",
+     "tagline": "Arcade · Rätsel · Denkspiele",
+     "cta": "Kostenlos laden"
+    },
+    "es": {
+     "headline": "Minijuegos para cualquier pausa",
+     "tagline": "Arcade · Puzles · Ingenio",
+     "cta": "Consíguela gratis"
+    },
+    "fr": {
+     "headline": "Des mini-jeux pour chaque pause",
+     "tagline": "Arcade · Puzzles · Réflexion",
+     "cta": "Obtenir gratuitement"
+    },
+    "pt": {
+     "headline": "Minijogos para qualquer pausa",
+     "tagline": "Arcade · Quebra-cabeças · Lógica",
+     "cta": "Baixar grátis"
+    },
+    "ar": {
+     "headline": "ألعاب صغيرة لكل استراحة",
+     "tagline": "أركيد · ألغاز · ألعاب ذكاء",
+     "cta": "احصل عليه مجانًا"
+    }
+   },
+   "playable": "https://mystudioapps.com/playable/myminigame/",
+   "music": "https://mystudioapps.com/assets/myminigame/ad_music.mp3"
   }
  ],
  "interstitial_close_after_sec": 15,

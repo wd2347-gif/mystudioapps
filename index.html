@@ -93,13 +93,24 @@
   .card.soon img.ic { opacity: .8; }
   .pill.mini { display: none; }
 
+  /* 스토어 단추(10/14 사용자: 알약 단추를 더 보기 좋게): 검은 배지 + 얇은 테두리, 위 작은 글 · 아래 스토어 이름, Play 는 네 색 로고. */
   .store {
-    display: inline-flex; align-items: center; justify-content: center; gap: 7px; min-height: 40px; padding: 8px 12px; border-radius: 12px;
-    background: var(--ink); color: var(--bg); text-decoration: none; font-weight: 700; font-size: 14px; white-space: nowrap;
+    display: inline-flex; align-items: center; justify-content: center; gap: 9px; min-height: 48px; padding: 6px 14px 6px 12px; border-radius: 13px;
+    background: #050605; color: #fff; border: 1px solid rgba(241, 243, 238, .24); text-decoration: none; white-space: nowrap;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, .06) inset, 0 6px 16px rgba(0, 0, 0, .28);
+    transition: border-color .15s ease, transform .15s ease, box-shadow .15s ease;
   }
-  .store:hover { background: #fff; }
-  .store svg { width: 17px; height: 17px; fill: currentColor; flex: none; }
-  .store.soon { background: transparent; color: var(--ink-faint); border: 1px dashed var(--line); font-weight: 600; font-size: 13px; cursor: default; }
+  .store:hover { border-color: rgba(241, 243, 238, .6); transform: translateY(-1px); box-shadow: 0 1px 0 rgba(255, 255, 255, .08) inset, 0 10px 22px rgba(0, 0, 0, .36); }
+  .store:active { transform: translateY(0); }
+  .store:focus-visible { outline: 2px solid var(--green); outline-offset: 2px; }
+  .store svg { width: 22px; height: 22px; fill: currentColor; flex: none; }
+  .store .t { display: flex; flex-direction: column; align-items: flex-start; line-height: 1.1; min-width: 0; }
+  .store .t small { font-size: 10.5px; font-weight: 600; color: rgba(255, 255, 255, .72); letter-spacing: .01em; }
+  .store .t b { font-size: 16px; font-weight: 700; letter-spacing: -.01em; }
+  .store.soon { background: transparent; color: var(--ink-faint); border: 1px dashed var(--line); box-shadow: none; cursor: default; transform: none; }
+  .store.soon svg { filter: grayscale(1); opacity: .45; }
+  .store.soon .t small { color: var(--ink-faint); }
+  .store.soon .t b { font-weight: 600; color: var(--ink-faint); }
   .pill {
     grid-column: 1 / -1; justify-self: start; display: inline-flex; align-items: center; gap: 6px;
     min-height: 32px; padding: 5px 12px; border-radius: 999px; background: var(--wash); color: var(--green); font-size: 13px; font-weight: 700;
@@ -186,7 +197,9 @@
     .card h3 { font-size: 16px; }
     .card .sub { font-size: 13px; -webkit-line-clamp: 1; }
     .card .cat { display: none; }
-    .store { min-height: 38px; font-size: 13.5px; }
+    .store { min-height: 46px; gap: 8px; padding: 6px 10px; }
+    .store svg { width: 20px; height: 20px; }
+    .store .t b { font-size: 15px; }
     .pill { min-height: 28px; }
     .card.soon .dl { display: none; }
     .pill.mini { display: inline-flex; flex: none; font-size: 12px; padding: 4px 10px; min-height: 26px; }
@@ -241,22 +254,22 @@
 <script>
 // ── 문구 ──────────────────────────────────────────────────────────────
 const UI = {
-  ko: { appStore: 'App Store', playStore: 'Google Play', comingSoon: '출시 준비 중', privacy: '개인정보처리방침', terms: '이용약관', support: '문의',
+  ko: { appStore: 'App Store', playStore: 'Google Play', getIos: '다운로드', getPlay: '다운로드', comingSoon: '출시 준비 중', privacy: '개인정보처리방침', terms: '이용약관', support: '문의',
         footer: '© 2026 MyStudio · 마이스튜디오. 매일 곁에 두는 작은 앱을 만듭니다.',
         heroTitle: '매일 곁에 두는 <em>작은 앱</em>들', heroSub: '몸과 마음은 편하게, 손끝은 즐겁게. 모든 앱을 한눈에.',
         all: '전체', released: '출시된 앱', upcoming: '곧 나와요', back: '모든 앱', others: '다른 앱', morePage: '소개 페이지 보기',
         cats: { body: '몸과 마음', play: '놀이와 게임', music: '음악' } },
-  en: { appStore: 'App Store', playStore: 'Google Play', comingSoon: 'Coming soon', privacy: 'Privacy Policy', terms: 'Terms of Use', support: 'Support',
+  en: { appStore: 'App Store', playStore: 'Google Play', getIos: 'Download on the', getPlay: 'Get it on', comingSoon: 'Coming soon', privacy: 'Privacy Policy', terms: 'Terms of Use', support: 'Support',
         footer: '© 2026 MyStudio. Small apps you keep close every day.',
         heroTitle: 'Small apps for <em>every day</em>', heroSub: 'Calm for body and mind, fun at your fingertips. All MyStudio apps in one place.',
         all: 'All', released: 'Available now', upcoming: 'Coming soon', back: 'All apps', others: 'More apps', morePage: 'See the app page',
         cats: { body: 'Body & mind', play: 'Play & games', music: 'Music' } },
-  ja: { appStore: 'App Store', playStore: 'Google Play', comingSoon: '近日公開', privacy: 'プライバシーポリシー', terms: '利用規約', support: 'お問い合わせ',
+  ja: { appStore: 'App Store', playStore: 'Google Play', getIos: 'ダウンロード', getPlay: 'ダウンロード', comingSoon: '近日公開', privacy: 'プライバシーポリシー', terms: '利用規約', support: 'お問い合わせ',
         footer: '© 2026 MyStudio. 毎日そばに置ける小さなアプリをつくっています。',
         heroTitle: '毎日そばに置ける<em>小さなアプリ</em>', heroSub: '体と心はやわらかく、指先は楽しく。すべてのアプリをひと目で。',
         all: 'すべて', released: '配信中', upcoming: '近日公開', back: 'すべてのアプリ', others: 'ほかのアプリ', morePage: 'アプリページを見る',
         cats: { body: '体と心', play: 'あそび・ゲーム', music: '音楽' } },
-  zh: { appStore: 'App Store', playStore: 'Google Play', comingSoon: '即将上线', privacy: '隐私政策', terms: '使用条款', support: '联系我们',
+  zh: { appStore: 'App Store', playStore: 'Google Play', getIos: '下载', getPlay: '下载', comingSoon: '即将上线', privacy: '隐私政策', terms: '使用条款', support: '联系我们',
         footer: '© 2026 MyStudio。我们制作每天陪伴你的小应用。',
         heroTitle: '每天陪伴你的<em>小应用</em>', heroSub: '让身心放松，让指尖快乐。一眼看全 MyStudio 的应用。',
         all: '全部', released: '已上线', upcoming: '即将上线', back: '全部应用', others: '更多应用', morePage: '查看应用页面',
@@ -582,7 +595,7 @@ function currentAppId() {
 }
 
 const APPLE = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.4 12.6c0-2.6 2.1-3.8 2.2-3.9-1.2-1.8-3.1-2-3.8-2-1.6-.2-3.1.9-3.9.9-.8 0-2-.9-3.4-.9-1.7 0-3.3 1-4.2 2.6-1.8 3.1-.5 7.8 1.3 10.3.9 1.2 1.9 2.6 3.2 2.6 1.3-.1 1.8-.8 3.3-.8 1.6 0 2 .8 3.4.8 1.4 0 2.3-1.3 3.1-2.5 1-1.4 1.4-2.8 1.4-2.9 0 0-2.6-1-2.6-4.2zM13.9 4.9c.7-.9 1.2-2 1.1-3.2-1 0-2.3.7-3 1.6-.7.8-1.2 2-1.1 3.1 1.1.1 2.3-.6 3-1.5z"/></svg>';
-const PLAY = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.6 1.8 13.8 12 3.6 22.2c-.4-.2-.6-.6-.6-1.1V2.9c0-.5.2-.9.6-1.1zm11.3 11.3 2.6 2.6-11.9 6.8 9.3-9.4zm3.8-3.8 2.8 1.6c.8.5.8 1.7 0 2.2l-2.8 1.6-2.9-2.8 2.9-2.6zM5.6 1.5l11.9 6.8-2.6 2.6-9.3-9.4z"/></svg>';
+const PLAY = '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#00A0FF" d="M3.6 1.8 13.8 12 3.6 22.2c-.4-.2-.6-.6-.6-1.1V2.9c0-.5.2-.9.6-1.1z"/><path fill="#FF3A44" d="M14.9 13.1l2.6 2.6-11.9 6.8 9.3-9.4z"/><path fill="#FFD400" d="M18.7 9.3l2.8 1.6c.8.5.8 1.7 0 2.2l-2.8 1.6-2.9-2.8 2.9-2.6z"/><path fill="#00D770" d="M5.6 1.5l11.9 6.8-2.6 2.6-9.3-9.4z"/></svg>';
 
 // 짧은 링크(?c=꼬리표)로 온 사람: 스토어 단추에 꼬리표를 붙이고(App Store pt·ct, Play referrer utm), GA4 app_link 는 들어올 때 한 번.
 const CAMPAIGN = (/[?&]c=([A-Za-z0-9_\-]{1,40})/.exec(location.search) || [])[1] || '';
@@ -615,9 +628,10 @@ function storeButton(a, which, t) {
   const url = tagged(which === 'ios' ? a.appStore : a.playStore);
   const icon = which === 'ios' ? APPLE : PLAY;
   const label = which === 'ios' ? t.appStore : t.playStore;
+  const get = which === 'ios' ? t.getIos : t.getPlay;
   return url
-    ? `<a class="store" href="${url}" target="_blank" rel="noopener" data-app="${a.id}" data-store="${which}">${icon}${esc(label)}</a>`
-    : `<span class="store soon" title="${esc(label)}">${icon}${esc(t.comingSoon)}</span>`;
+    ? `<a class="store" href="${url}" target="_blank" rel="noopener" data-app="${a.id}" data-store="${which}" aria-label="${esc(label)}">${icon}<span class="t"><small>${esc(get)}</small><b>${esc(label)}</b></span></a>`
+    : `<span class="store soon" title="${esc(label)}">${icon}<span class="t"><small>${esc(t.comingSoon)}</small><b>${esc(label)}</b></span></span>`;
 }
 
 // ── 모든 앱(첫 화면) ──

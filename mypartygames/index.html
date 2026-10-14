@@ -21,15 +21,15 @@
 <!-- MyPartyGames 소개(2026-10-11 초안, My_Studio 세션). 10/13 App Store · Google Play 공개: 두 스토어 단추(ct=site_party, Play referrer site_party). 옛: 출시 전이라 스토어 단추 대신 'App Store · 곧 출시', 'Google Play · 곧 출시'(MyVocal 출시 전과 같은 점 알약).
      출시되면 myfidget/index.html 처럼 a.soon.store 링크로 바꾼다(캠페인 제안 ct=site_party, Play referrer utm_campaign=site_party).
      App Store 마케팅 URL 로 쓰면 AdMob 이 이 도메인의 app-ads.txt 로 앱을 인증한다.
-     색은 아이콘 색종이의 보라(#A368FF)에서 온 파티 보라: 연보라 바탕(#F6F1FF → #E9DDFF), 짙은 보랏빛 회색 글, 강조 #7A3FE0(큰 글씨 · 점),
-     작은 글씨(단추 · 링크)는 대비를 맞추려 한 톤 짙은 #6530C4. MyFidget 의 분홍 · MyVocal 의 초록 · MySlowSleep 의 크림은 쓰지 않는다.
+     색은 2026-10-15 사용자 결정으로 앱 테마 초록 하나(다른 MyStudio 앱과 통일, 파티 보라 · 둘째 강조색은 쓰지 않음): 채움 #2FC85E,
+     밝은 바탕 위 글씨 · 아이콘 #1C9A46, 어두운 바탕 포인트 #43D873, 채움 위 글씨는 짙은 #06120A(흰 글씨 아님). 연초록 바탕(#F1FBF4 → #E1F6E8).
      카드 네 장은 앱 홈의 네 묶음(10/11 홈 순서: 내기가 필요할 때 · 모여서 즐기는 · 둘이서 대결 · 혼자서도, 게임 이름은 my_party tool/store/listing.py 그대로), 마케팅 세 축(모여서 3인 이상 · 내기 2인부터 · 혼자서도).
      문구 규칙: 게임 개수, 가격 이야기, NEW 표시 쓰지 않기. 줄표 대신 쌍점. -->
 <style>
   :root {
     color-scheme: light;
-    --bg: #F6F1FF; --bg2: #E9DDFF; --surface: #FFFFFF; --line: #E0D3F8; --ink: #2A1F3D; --ink-soft: #645879;
-    --accent: #7A3FE0; --accent-ink: #6530C4; --wash: rgba(122, 63, 224, .09);
+    --bg: #F1FBF4; --bg2: #E1F6E8; --surface: #FFFFFF; --line: #CDEFD8; --ink: #12241A; --ink-soft: #546A5C;
+    --accent: #1C9A46; --accent-ink: #1C9A46; --wash: rgba(47, 200, 94, .12);
   }
   * { box-sizing: border-box; }
   html { -webkit-text-size-adjust: 100%; }
@@ -47,7 +47,7 @@
   .langs button[aria-pressed="true"] { background: var(--wash); color: var(--accent-ink); }
   main { max-width: 860px; margin: 0 auto; padding: 24px 20px 72px; }
   .hero { text-align: center; padding: 40px 0 28px; }
-  .icon { width: 112px; height: 112px; border-radius: 26px; display: block; margin: 0 auto; box-shadow: 0 14px 36px rgba(80, 40, 150, .22); }
+  .icon { width: 112px; height: 112px; border-radius: 26px; display: block; margin: 0 auto; box-shadow: 0 14px 36px rgba(20, 110, 50, .20); }
   h1 { margin: 22px 0 6px; font-size: 34px; font-weight: 800; letter-spacing: -.01em; }
   .sub { margin: 0; color: var(--ink-soft); font-size: 15px; font-weight: 600; }
   .tagline { margin: 22px 0 10px; font-size: 22px; font-weight: 800; color: var(--accent); }
@@ -58,7 +58,7 @@
   a.store { text-decoration: none; background: var(--ink); color: #fff; border-color: var(--ink); }
   .soon i { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 4px var(--wash); }
   .features { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-top: 18px; }
-  .feature { background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 20px; box-shadow: 0 6px 18px rgba(80, 40, 150, .06); }
+  .feature { background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 20px; box-shadow: 0 6px 18px rgba(20, 110, 50, .06); }
   .feature .emoji { font-size: 24px; }
   .feature h3 { margin: 8px 0 4px; font-size: 16px; }
   .feature p { margin: 0; color: var(--ink-soft); font-size: 14.5px; }

@@ -1,12 +1,10 @@
 {
  "_doc": "MyStudio 자체 광고(교차 홍보): 2026-10-10 사용자: \"AdMob 승인 전까지 MyStudio 앱끼리 서로 광고, 승인되고 내가 요청하면 AdMob 으로\". mode admob + house_fallback: AdMob 을 계속 요청(계정 검토에 요청 기록이 필요할 수 있어)하고, 실패하면(지금은 늘 code 3) 자체 광고. house = AdMob 요청 없이 자체 광고만, off = 광고 칸 없음. 바꾸는 사람: My_Studio 세션.",
- "version": 17,
+ "version": 18,
  "mode": "admob",
  "house_fallback": true,
  "house_share": 0.2,
  "_doc_house_share": "2026-10-14 사용자: 우리 앱 광고는 8:2 로 통일(광고망 8 : 자체 2, 앞으로 모든 앱). 차례마다 무작위로 정함(순번 아님), 광고망 실패 시 자체. 0~1. (10/11 은 0.3 이었음)",
- "interstitial_gap_sec": 90,
- "_doc_gap": "2026-10-14 사용자: 전면 광고 간격 60초 → 90초(모든 앱). 앞 전면이 닫힌 뒤 이 초가 지나야 다음 전면. 앱은 이 값을 읽고 없거나 이상하면(30~600 밖) 기본 90. 세션 첫 판 · 보상형 직후 건너뜀 규칙은 그대로.",
  "label": {
   "ko": "MyStudio의 다른 앱",
   "ja": "MyStudioのほかのアプリ",

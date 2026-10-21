@@ -1,0 +1,10 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.ymc.myminigame",
+      "sha256_cert_fingerprints": ["7E:91:14:2D:0E:10:55:B3:B0:30:A0:3F:8A:53:B8:F6:CD:F7:8F:31:20:71:6B:26:81:19:F0:EF:5A:15:17:10"]
+    }
+  }
+]

@@ -1,10 +1,10 @@
 {
  "_doc": "MyStudio 자체 광고(교차 홍보): 2026-10-10 사용자: \"AdMob 승인 전까지 MyStudio 앱끼리 서로 광고, 승인되고 내가 요청하면 AdMob 으로\". mode admob + house_fallback: AdMob 을 계속 요청(계정 검토에 요청 기록이 필요할 수 있어)하고, 실패하면(지금은 늘 code 3) 자체 광고. house = AdMob 요청 없이 자체 광고만, off = 광고 칸 없음. 바꾸는 사람: My_Studio 세션.",
- "version": 33,
+ "version": 34,
  "mode": "admob",
  "house_fallback": true,
- "house_share": 0.4,
- "_doc_house_share": "2026-10-14 밤 사용자(최신): 전면 · 배너는 광고망 6 : 자체 4 → house_share 0.4. 보상형은 이 값과 상관없이 늘 광고망(LevelPlay). 1.0 이면 앱은 광고망 전면 · 배너를 미리 받지 않고, 1.0 보다 작으면 받는다. 0~1, 차례마다 무작위. (10/11 0.3 → 10/14 0.2 → 10/14 밤 1.0 → 10/14 밤 0.4)",
+ "house_share": 1.0,
+ "_doc_house_share": "2026-10-23 사용자(최신, My_Fidget 거쳐 확인): 배너 · 전면은 자체 광고 100%(모든 앱) → house_share 1.0. (그 전 10/14 밤: 광고망 6 : 자체 4 → 0.4.) 보상형은 이 값과 상관없이 늘 광고망(LevelPlay). 1.0 이면 앱은 광고망 전면 · 배너를 미리 받지 않고, 1.0 보다 작으면 받는다. 0~1, 차례마다 무작위. (10/11 0.3 → 10/14 0.2 → 10/14 밤 1.0 → 10/14 밤 0.4 → 10/23 1.0)",
  "interstitial_gap_sec": 180,
  "_doc_gap": "2026-10-14 밤 사용자: 전면 광고 간격 180초(모든 앱, 광고망 · 자체 광고 모두). '광고만 해도 60초쯤이라 바로 다시 나온다' → 앞 전면을 닫은 때부터 센다. 앱은 이 값을 읽고 없거나 30~600 밖이면 기본 180. 세션 첫 판 · 보상형 직후 건너뛰기는 그대로.",
  "first_run_quiet_sec": 180,
@@ -1070,8 +1070,8 @@
    "music": "https://mystudioapps.com/assets/myminigame/ad_music.mp3"
   }
  ],
- "interstitial_close_after_sec": 15,
- "_doc_close": "자체 전면 광고의 닫기 단추가 나오는 시각(초). 2026-10-11 사용자: 7초 → 15초.",
+ "interstitial_close_after_sec": 20,
+ "_doc_close": "자체 전면 광고의 닫기 단추가 나오는 시각(초). 2026-10-11 사용자: 7초 → 15초. 2026-10-23 사용자: 15초 → 20초(지금 앱들은 2~15초로 묶어 읽어 다음 버전에서 상한을 올려야 20초가 됨).",
  "_doc_playable": "2026-10-11 사용자: 우리 앱끼리 전면 광고에 직접 해 보는 체험판(다른 게임 두 번 바뀌고 세 번째는 설치). apps[].playable 이 있으면 자체 전면 차례에 WebView, JS 채널 XPromo(ready · switch:n · install).",
  "_doc_shots": "2026-10-11 사용자: 스크린샷 자체 광고는 한 장만 말고 넘겨 보며 보게. apps[].shots[lang] = 스토어 스크린샷 순서 목록(첫 장 = shot). 옛 앱은 shot 한 장 그대로 씀.",
  "_doc_langs": "2026-10-12 사용자: 자체 광고 9개 언어(ko · ja · en · zh-Hant · de · es · fr · pt · ar). 앱은 zh → zh-Hant, 나머지는 언어 코드 그대로, 피드에 없으면 en.",

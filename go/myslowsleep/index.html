@@ -91,8 +91,17 @@
       : '/myslowsleep/';
     // 이동 중 화면이 쓸 값(본문 끝 스크립트가 글·버튼을 채운다).
     window.__ml = { ios: ios, android: android, appStore: appStore, playStore: playStore };
-    var gone = false;
+    // 2026-10-23 사용자 "설치로 바로 가야지": 휴대폰은 스토어 앱 주소(itms-apps · market)로 곧바로 연다.
+    // 1.5초 뒤에도 이 화면이 그대로 보이면(스토어 앱이 안 열림) 예전처럼 웹 주소로. 꼬리표(ct · referrer)는 그대로 붙는다.
+    var app = appStore && dest === appStore ? appStore.replace(/^https:/, 'itms-apps:')
+      : playStore && dest === playStore ? playStore.replace('https://play.google.com/store/apps/', 'market://') : '';
+    var gone = false, left = false;
     function go() { if (!gone) { gone = true; location.replace(dest); } }
+    function away() { left = true; }
+    document.addEventListener('visibilitychange', function () { if (document.hidden) away(); });
+    window.addEventListener('pagehide', away);
+    window.addEventListener('blur', away);
+    if (app) location.href = app;
     window.dataLayer = window.dataLayer || [];
     function gtag() { window.dataLayer.push(arguments); }
     gtag('consent', 'default', { ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied' });
@@ -101,10 +110,11 @@
     gtag('event', 'app_link', {
       link: c || 'none',
       store: ios ? 'ios' : android ? 'android' : 'web',
-      event_callback: go,
+      transport_type: 'beacon',
+      event_callback: app ? function () {} : go,
       event_timeout: 800
     });
-    setTimeout(go, 900);
+    setTimeout(function () { if (!app || !left) go(); }, app ? 1500 : 900);
   })();
 </script>
 </head>

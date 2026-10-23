@@ -105,6 +105,18 @@ button { font: inherit; color: inherit; cursor: pointer; touch-action: none; -we
   #gh { padding-top: 4px; } #gtile { width: 36px; height: 36px; } #gtip { font-size: 13.5px; }
   #area { margin: 6px 0 4px; } .btn { height: 48px; } #bar { padding-bottom: calc(var(--sab) + 10px); }
 }
+/* 2026-10-23 demo lock (owner: games could be played to the end): 30 s of play per game after the first touch, then the
+   game freezes under a blur and the card sends to the store. The bottom bar stays ("another game" gets a fresh 30 s). */
+#lock { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; padding: 0 20px; opacity: 0; pointer-events: none;
+  background: color-mix(in srgb, var(--bg) 55%, transparent); -webkit-backdrop-filter: blur(7px); backdrop-filter: blur(7px); transition: opacity .35s ease; }
+#lock.on { opacity: 1; pointer-events: auto; }
+#lock .card { width: 100%; max-width: 330px; padding: 22px 20px 20px; border-radius: 24px; background: var(--surface); border: 1px solid var(--line);
+  box-shadow: 0 18px 48px var(--shadow); text-align: center; display: flex; flex-direction: column; align-items: center; gap: 8px; transform: translateY(10px) scale(.96); transition: transform .4s cubic-bezier(.2,1.4,.4,1); }
+#lock.on .card { transform: none; }
+#lock .lk { width: 54px; height: 54px; border-radius: 23%; overflow: hidden; box-shadow: 0 5px 14px rgba(28,154,70,.28); }
+#lock .lt { font-size: 20px; font-weight: 900; letter-spacing: -.01em; line-height: 1.25; }
+#lock .ls { font-size: 14.5px; font-weight: 600; color: var(--soft); line-height: 1.35; }
+#lock .btn { width: 100%; margin-top: 8px; background: var(--green); color: var(--on-green); box-shadow: 0 8px 22px rgba(47,200,94,.32), inset 0 1px 0 rgba(255,255,255,.3); }
 
 </style>
 </head>
@@ -124,7 +136,7 @@ button { font: inherit; color: inherit; cursor: pointer; touch-action: none; -we
         <div id="gtip"></div>
       </div>
     </section>
-    <main id="area"><canvas id="cv"></canvas><div id="ov"></div><div id="flash"></div><div id="toast"></div></main>
+    <main id="area"><canvas id="cv"></canvas><div id="ov"></div><div id="flash"></div><div id="toast"></div><div id="lock"><div class="card"><div class="lk" id="lockIcon"></div><div class="lt" id="lockT"></div><div class="ls" id="lockS"></div><button class="btn" id="bLock" type="button"><span id="tLock"></span></button></div></div></main>
     <nav id="bar">
       <div class="btns">
         <button class="btn" id="bOther" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 3h5v5"/><path d="M4 20 21 3"/><path d="M21 16v5h-5"/><path d="M15 15l6 6"/><path d="M4 4l5 5"/></svg><span id="tOther"></span></button>
@@ -174,17 +186,17 @@ button { font: inherit; color: inherit; cursor: pointer; touch-action: none; -we
 
   // app strings: home tagline (l10n/ui.dart), store name, marketing line, category names (games/texts.dart)
   var T = {
-    ko: { name: '나만의 미니게임', sub: '심심할 때 한 판', other: '다른 게임', install: '설치',
+    ko: { name: '나만의 미니게임', sub: '심심할 때 한 판', other: '다른 게임', install: '설치', lockT: '여기까지 체험판이에요', lockS: '앱에서 이어서 끝까지 깨 보세요', lockB: '앱에서 이어하기',
       kinds: { arcade: '순발력 아케이드', puzzle: '퍼즐', brain: '두뇌 · 기억' } },
-    ja: { name: 'わたしのミニゲーム', sub: 'ひまな時に1回', other: '別のゲーム', install: 'インストール',
+    ja: { name: 'わたしのミニゲーム', sub: 'ひまな時に1回', other: '別のゲーム', install: 'インストール', lockT: '体験版はここまで', lockS: 'アプリで続きを最後まで遊べます', lockB: 'アプリで続ける',
       kinds: { arcade: 'アーケード', puzzle: 'パズル', brain: '脳トレ・記憶' } },
-    en: { name: 'Solo Mini Games', sub: 'Mini games for any break', other: 'Another game', install: 'Install',
-      kinds: { arcade: 'Arcade', puzzle: 'Puzzles', brain: 'Brain & Memory' } }, 'zh-Hant': { name: '單人迷你遊戲', sub: '隨時都能玩的迷你遊戲', other: '換一個', install: '安裝',
-      kinds: { arcade: '街機', puzzle: '益智解謎', brain: '腦力・記憶' } }, 'de': { name: 'Solo-Minispiele', sub: 'Minispiele für jede Pause', other: 'Anderes Spiel', install: 'Installieren',
-      kinds: { arcade: 'Arcade', puzzle: 'Rätsel', brain: 'Kopf & Gedächtnis' } }, 'es': { name: 'Minijuegos en solitario', sub: 'Minijuegos para cada descanso', other: 'Otro juego', install: 'Instalar',
-      kinds: { arcade: 'Arcade', puzzle: 'Puzles', brain: 'Mente y memoria' } }, 'fr': { name: 'Mini-jeux en solo', sub: 'Des mini-jeux pour chaque pause', other: 'Un autre jeu', install: 'Installer',
-      kinds: { arcade: 'Arcade', puzzle: 'Puzzles', brain: 'Cerveau et mémoire' } }, 'pt': { name: 'Minijogos solo', sub: 'Minijogos para qualquer pausa', other: 'Outro jogo', install: 'Instalar',
-      kinds: { arcade: 'Arcade', puzzle: 'Quebra-cabeças', brain: 'Mente e memória' } }, 'ar': { name: 'ألعاب مصغّرة فردية', sub: 'ألعاب مصغّرة لكل استراحة', other: 'لعبة أخرى', install: 'تثبيت',
+    en: { name: 'Solo Mini Games', sub: 'Mini games for any break', other: 'Another game', install: 'Install', lockT: 'That’s the end of the demo', lockS: 'Keep playing to the finish in the app', lockB: 'Continue in the app',
+      kinds: { arcade: 'Arcade', puzzle: 'Puzzles', brain: 'Brain & Memory' } }, 'zh-Hant': { name: '單人迷你遊戲', sub: '隨時都能玩的迷你遊戲', other: '換一個', install: '安裝', lockT: '試玩到此結束', lockS: '在 App 裡繼續玩到最後', lockB: '在 App 繼續',
+      kinds: { arcade: '街機', puzzle: '益智解謎', brain: '腦力・記憶' } }, 'de': { name: 'Solo-Minispiele', sub: 'Minispiele für jede Pause', other: 'Anderes Spiel', install: 'Installieren', lockT: 'Das war die Demo', lockS: 'Spiel in der App bis zum Ende weiter', lockB: 'In der App weiterspielen',
+      kinds: { arcade: 'Arcade', puzzle: 'Rätsel', brain: 'Kopf & Gedächtnis' } }, 'es': { name: 'Minijuegos en solitario', sub: 'Minijuegos para cada descanso', other: 'Otro juego', install: 'Instalar', lockT: 'Aquí termina la demo', lockS: 'Sigue jugando hasta el final en la app', lockB: 'Seguir en la app',
+      kinds: { arcade: 'Arcade', puzzle: 'Puzles', brain: 'Mente y memoria' } }, 'fr': { name: 'Mini-jeux en solo', sub: 'Des mini-jeux pour chaque pause', other: 'Un autre jeu', install: 'Installer', lockT: 'Fin de la démo', lockS: 'Continuez jusqu’au bout dans l’app', lockB: 'Continuer dans l’app',
+      kinds: { arcade: 'Arcade', puzzle: 'Puzzles', brain: 'Cerveau et mémoire' } }, 'pt': { name: 'Minijogos solo', sub: 'Minijogos para qualquer pausa', other: 'Outro jogo', install: 'Instalar', lockT: 'Fim da demonstração', lockS: 'Continue jogando até o fim no app', lockB: 'Continuar no app',
+      kinds: { arcade: 'Arcade', puzzle: 'Quebra-cabeças', brain: 'Mente e memória' } }, 'ar': { name: 'ألعاب مصغّرة فردية', sub: 'ألعاب مصغّرة لكل استراحة', other: 'لعبة أخرى', install: 'تثبيت', lockT: 'انتهت النسخة التجريبية', lockS: 'تابع اللعب حتى النهاية في التطبيق', lockB: 'تابع في التطبيق',
       kinds: { arcade: 'ألعاب الأركيد', puzzle: 'ألغاز', brain: 'الذكاء والذاكرة' } }
   };
   var L = T[lang];
@@ -6327,6 +6339,9 @@ var SETS = [
 
   /* ---------- the current game ---------- */
   var setIdx = 0, ids = [], pos = 1, cur = null, clock = 0, touched = false, lastTouch = 0, intro = 1, readySent = false, fxDirty = false;
+  // demo lock: seconds of play after the first touch (?lock=0 turns it off, ?lock=N for tests)
+  var LOCK_S = (function () { var q = Q.get('lock'); if (q === null) return 30; q = parseFloat(q); return isFinite(q) && q > 0 ? q : 0; })();
+  var playT = 0, locked = false;
 
   function tr(o) { return o == null ? '' : typeof o === 'string' ? o : (o[lang] !== undefined ? o[lang] : o.en !== undefined ? o.en : ''); }
 
@@ -6419,6 +6434,7 @@ var SETS = [
       pos = n; cur = { id: id, def: def, ctx: ctx, api: api };
       area.className = 'g-' + id; ov.className = 'g-' + id;
       touched = false; lastTouch = clock; intro = animate ? 0 : 1;
+      playT = 0; setLock(false);
       paintHeader(def, animate);
       relayout(true);
       render(0);
@@ -6475,7 +6491,8 @@ var SETS = [
       var k = shakeT / shakeDur, m = shakeMag * k;
       area.style.transform = shakeT > 0 ? 'translate(' + (Math.sin(clock * 90) * m).toFixed(1) + 'px,' + (Math.cos(clock * 71) * m * 0.6).toFixed(1) + 'px)' : '';
     }
-    if (cur && dt > 0) call('update', dt);
+    if (cur && touched && !locked && LOCK_S) { playT += dt; if (playT >= LOCK_S) setLock(true); }
+    if (cur && dt > 0 && !locked) call('update', dt);
     intro = Math.min(1, intro + dt / 0.3);
     g.setTransform(DPR, 0, 0, DPR, 0, 0);
     g.globalAlpha = 1;
@@ -6492,7 +6509,7 @@ var SETS = [
     // effects + hint on the top layer (only repaint when something is there)
     fx.step(dt);
     var h = null;
-    if (cur && cur.api.hint && cur.ctx.hintOn() && (!touched || clock - lastTouch > 8)) h = call('hint');
+    if (cur && !locked && cur.api.hint && cur.ctx.hintOn() && (!touched || clock - lastTouch > 8)) h = call('hint');
     var busy = fx.busy() || !!h;
     if (busy || fxDirty) {
       fg.setTransform(DPR, 0, 0, DPR, 0, 0);
@@ -6523,6 +6540,7 @@ var SETS = [
   cv.addEventListener('pointerdown', function (e) {
     if (e.cancelable) e.preventDefault();
     S.unlock();
+    if (locked) return;
     var sr = stage.getBoundingClientRect();
     origin = { x: sr.left + AX, y: sr.top + AY };
     try { cv.setPointerCapture(e.pointerId); } catch (x) {}
@@ -6535,7 +6553,19 @@ var SETS = [
   cv.addEventListener('pointerup', upEv);
   cv.addEventListener('pointercancel', upEv);
   cv.addEventListener('lostpointercapture', upEv);
-  window.addEventListener('keydown', function (e) { if (cur && cur.api.key) { touched = true; lastTouch = clock; S.unlock(); call('key', e); } });
+  window.addEventListener('keydown', function (e) { if (cur && cur.api.key && !locked) { touched = true; lastTouch = clock; S.unlock(); call('key', e); } });
+
+  function setLock(on) {
+    if (on === locked) return;
+    locked = on;
+    var el = $('lock');
+    if (on) {
+      for (var k in live) { delete live[k]; call('up', { id: +k, x: -1, y: -1 }); }
+      haptic('light');
+    }
+    el.classList.toggle('on', on);
+  }
+  $('bLock').addEventListener('click', function () { S.unlock(); haptic('light'); install(); });
 
   // "Another game": position 1 → 2 ('switch:2'), 2 → 3 ('switch:3'), on the last one it installs.
   // The label never changes, so nothing tells how many games are left (owner rule 10/11).
@@ -6583,6 +6613,10 @@ var SETS = [
   $('sb').textContent = L.sub;
   $('tOther').textContent = L.other;
   $('tInstall').textContent = L.install;
+  $('lockT').textContent = L.lockT;
+  $('lockS').textContent = L.lockS;
+  $('tLock').textContent = L.lockB;
+  (function () { var ic = $('icon').cloneNode(true); ic.removeAttribute('id'); ic.setAttribute('class', ''); ic.style.cssText = 'width:100%;height:100%;display:block'; $('lockIcon').appendChild(ic); })();
 
   /* ---------- pick a set: random, never the one shown last time; ?set=N and ?game=K for tests ---------- */
   var LAST_KEY = 'mmg.pf.lastSet';
@@ -6609,6 +6643,7 @@ var SETS = [
       set: function () { return setIdx + 1; },
       ids: function () { return ids.slice(); },
       game: function () { return pos; },
+      locked: function () { return locked; },
       state: function () { return cur && cur.api.debug ? guard(function () { return cur.api.debug(); }) || null : null; },
       // play-area rect in viewport px, and the current hint point in viewport px (handy for headless taps)
       area: function () { var r = cv.getBoundingClientRect(); return { x: r.left, y: r.top, w: r.width, h: r.height }; },

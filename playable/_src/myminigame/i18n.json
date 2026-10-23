@@ -854,5 +854,29 @@
   "fr": "Tape les taupes, épargne le lapin",
   "pt": "Acerte as toupeiras, poupe o coelho",
   "ar": "اضرب الخلد واترك الأرنب"
+ },
+ "That’s the end of the demo": {
+  "zh-Hant": "試玩到此結束",
+  "de": "Das war die Demo",
+  "es": "Aquí termina la demo",
+  "fr": "Fin de la démo",
+  "pt": "Fim da demonstração",
+  "ar": "انتهت النسخة التجريبية"
+ },
+ "Keep playing to the finish in the app": {
+  "zh-Hant": "在 App 裡繼續玩到最後",
+  "de": "Spiel in der App bis zum Ende weiter",
+  "es": "Sigue jugando hasta el final en la app",
+  "fr": "Continuez jusqu’au bout dans l’app",
+  "pt": "Continue jogando até o fim no app",
+  "ar": "تابع اللعب حتى النهاية في التطبيق"
+ },
+ "Continue in the app": {
+  "zh-Hant": "在 App 繼續",
+  "de": "In der App weiterspielen",
+  "es": "Seguir en la app",
+  "fr": "Continuer dans l’app",
+  "pt": "Continuar no app",
+  "ar": "تابع في التطبيق"
  }
 }

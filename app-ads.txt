@@ -164,3 +164,6 @@ zetaglobal.net, 525, RESELLER
 zmaticoo.com, 5135195, RESELLER
 # Liftoff Monetize (Vungle)
 vungle.com, 6adcbbc9432de742530a312a, DIRECT, c107d686becd2d77
+
+# Meta Audience Network (business 1037802372621087)
+facebook.com, 1037802372621087, RESELLER, c3e20eee3f780d68

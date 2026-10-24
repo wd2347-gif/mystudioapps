@@ -604,9 +604,16 @@ APPS.push(
   },
 );
 
-// 분류(칩은 앱에 실제로 있는 분류만, 이 순서로).
-const CAT_ORDER = ['body', 'play', 'music'];
+// 보이는 순서(2026-10-24 사용자: 인기 · 수익 · 다운로드당 수익 순위로, MySlowBody 는 뒤로).
+// 28일(9/27~10/24) 순위 합: 새 사용자(GA4) · 수익(인앱 · 유료 판매 · 광고) · 새 사용자당 수익, 낮을수록 앞.
+// MyFidget 1+1+3 · MyVocal 2+2+2 · MySlowSleep 6+3+1 · MyPocketGames 4+4+4 · MyPartyGames 5+6+6 · MyScore 7+7+7, MySlowBody(3+5+5)는 맨 뒤.
+const RANK = ['myfidget', 'myvocal', 'myslowsleep', 'myminigame', 'mypartygames', 'myscore', 'myslowbody'];
+const rankOf = a => { const i = RANK.indexOf(a.id); return i < 0 ? RANK.length - 1 : i; };  // 새 앱은 MySlowBody 바로 앞
+APPS.sort((a, b) => rankOf(a) - rankOf(b) || (a.id === 'myslowbody') - (b.id === 'myslowbody'));
+
+// 분류(칩은 앱에 실제로 있는 분류만, 맨 앞 앱이 든 분류부터).
 const CAT = { myslowbody: 'body', myslowsleep: 'body', myfidget: 'play', mypartygames: 'play', myminigame: 'play', myscore: 'music', myvocal: 'music' };
+const CAT_ORDER = [...new Set(APPS.map(a => a.cat || CAT[a.id] || 'play'))];
 APPS.forEach(a => { a.cat = a.cat || CAT[a.id] || 'play'; a.page = a.page || `${a.id}/`; });
 const isReleased = a => !!(a.appStore || a.playStore);
 

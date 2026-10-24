@@ -1,1103 +1,1103 @@
 {
-  "_doc": "MyStudio 자체 광고(교차 홍보): 2026-10-10 사용자: \"AdMob 승인 전까지 MyStudio 앱끼리 서로 광고, 승인되고 내가 요청하면 AdMob 으로\". mode admob + house_fallback: AdMob 을 계속 요청(계정 검토에 요청 기록이 필요할 수 있어)하고, 실패하면(지금은 늘 code 3) 자체 광고. house = AdMob 요청 없이 자체 광고만, off = 광고 칸 없음. 바꾸는 사람: My_Studio 세션. 10/24 한·일 이름 text.<lang>.name(ko · ja 만, 최상위 name 은 영어 그대로: 앱은 다음 버전부터 text[lang].name 을 먼저 읽음).",
-  "version": 38,
-  "mode": "admob",
-  "house_fallback": true,
-  "house_share": 1.0,
-  "banner_house_share": 0.0,
-  "interstitial_house_share": 1.0,
-  "_doc_house_share_split": "2026-10-24 사용자: 배너는 광고망(외부 광고), 전면은 자체 광고(우리 앱) 100%. 앱은 banner_house_share · interstitial_house_share 를 먼저 읽고, 없으면 house_share 를 쓴다(그래서 이 키를 읽기 전 옛 판은 house_share 1.0 그대로 배너 · 전면 모두 자체). banner_house_share 0 이면 배너는 늘 광고망으로 미리 받고, 광고망 배너가 비거나 실패하면 house_fallback 으로 자체 배너. interstitial_house_share 1.0 이면 광고망 전면은 미리 받지 않는다. 0~1, 차례마다 무작위. 보상형은 이 값들과 상관없이 늘 광고망.",
-  "ad_mix": {
-    "default": {
-      "banner": 0.0,
-      "interstitial": 1.0
-    },
-    "overrides": []
+ "_doc": "MyStudio 자체 광고(교차 홍보): 2026-10-10 사용자: \"AdMob 승인 전까지 MyStudio 앱끼리 서로 광고, 승인되고 내가 요청하면 AdMob 으로\". mode admob + house_fallback: AdMob 을 계속 요청(계정 검토에 요청 기록이 필요할 수 있어)하고, 실패하면(지금은 늘 code 3) 자체 광고. house = AdMob 요청 없이 자체 광고만, off = 광고 칸 없음. 바꾸는 사람: My_Studio 세션. 10/24 한·일 이름 text.<lang>.name(ko · ja 만, 최상위 name 은 영어 그대로: 앱은 다음 버전부터 text[lang].name 을 먼저 읽음).",
+ "version": 38,
+ "mode": "admob",
+ "house_fallback": true,
+ "house_share": 1.0,
+ "banner_house_share": 0.0,
+ "interstitial_house_share": 1.0,
+ "_doc_house_share_split": "2026-10-24 사용자: 배너는 광고망(외부 광고), 전면은 자체 광고(우리 앱) 100%. 앱은 banner_house_share · interstitial_house_share 를 먼저 읽고, 없으면 house_share 를 쓴다(그래서 이 키를 읽기 전 옛 판은 house_share 1.0 그대로 배너 · 전면 모두 자체). banner_house_share 0 이면 배너는 늘 광고망으로 미리 받고, 광고망 배너가 비거나 실패하면 house_fallback 으로 자체 배너. interstitial_house_share 1.0 이면 광고망 전면은 미리 받지 않는다. 0~1, 차례마다 무작위. 보상형은 이 값들과 상관없이 늘 광고망.",
+ "ad_mix": {
+  "default": {
+   "banner": 0.0,
+   "interstitial": 1.0
   },
-  "_doc_ad_mix": "2026-10-24 저녁 사용자: '광고 비율은 업데이트 없이'. 앱은 ad_mix 를 먼저 읽고, 없으면 banner_house_share · interstitial_house_share, 그것도 없으면 house_share. 값은 형식별 자체 광고 몫(0~1, 0 = 광고망 100%, 1 = 자체 100%, 차례마다 무작위). default 위에 overrides 를 위에서부터 차례로 덮어씀(뒤에 오는 것이 이김). override 조건 칸: app(피드 앱 id 하나 또는 목록) · platform('ios' | 'android') · country(기기 지역 ISO 두 글자 목록, 대문자) · min_version · max_version(앱 버전 '1.2.0' 꼴, 그 버전 포함). 조건 칸이 없으면 모두에 맞음. 덮어쓸 수 있는 값: banner · interstitial(자체 몫) · banner_on · interstitial_on(false 면 그 형식 안 띄움) · interstitial_gap_sec · first_run_quiet_sec · interstitial_close_after_sec(범위 밖이면 무시하고 위 기본값). 모르는 키 · 모르는 형식 · 0~1 밖 값은 무시(앱이 죽거나 기본으로 돌아가지 않게, 그 칸만 건너뜀). 보상형은 늘 광고망(이 값과 상관없음). 예: {\"app\":\"myfidget\",\"platform\":\"android\",\"country\":[\"JP\"],\"banner\":0.5}.",
-  "_doc_house_share": "2026-10-23 사용자(최신, My_Fidget 거쳐 확인): 배너 · 전면은 자체 광고 100%(모든 앱) → house_share 1.0. (그 전 10/14 밤: 광고망 6 : 자체 4 → 0.4.) 보상형은 이 값과 상관없이 늘 광고망(LevelPlay). 1.0 이면 앱은 광고망 전면 · 배너를 미리 받지 않고, 1.0 보다 작으면 받는다. 0~1, 차례마다 무작위. (10/11 0.3 → 10/14 0.2 → 10/14 밤 1.0 → 10/14 밤 0.4 → 10/23 1.0)",
-  "interstitial_gap_sec": 180,
-  "_doc_gap": "2026-10-14 밤 사용자: 전면 광고 간격 180초(모든 앱, 광고망 · 자체 광고 모두). '광고만 해도 60초쯤이라 바로 다시 나온다' → 앞 전면을 닫은 때부터 센다. 앱은 이 값을 읽고 없거나 30~600 밖이면 기본 180. 세션 첫 판 · 보상형 직후 건너뛰기는 그대로.",
-  "first_run_quiet_sec": 180,
-  "_doc_first_run": "2026-10-14 밤 사용자: 처음 설치하고 첫 실행부터 3분(180초) 동안은 전면 광고를 띄우지 않는다(모든 앱, 광고망 · 자체 광고 모두). 배너 · 사용자가 고른 보상형은 그대로. 앱은 이 값을 읽고 없거나 0~900 밖이면 기본 180.",
-  "label": {
-    "ko": "MyStudio의 다른 앱",
-    "ja": "MyStudioのほかのアプリ",
-    "en": "More from MyStudio",
-    "zh-Hant": "MyStudio 的其他 App",
-    "de": "Mehr von MyStudio",
-    "es": "Más de MyStudio",
-    "fr": "Plus de MyStudio",
-    "pt": "Mais da MyStudio",
-    "ar": "المزيد من MyStudio"
-  },
-  "link_tags": {
-    "ios": "pt=129467809&ct=xp_{from}_{to}&mt=8",
-    "android_referrer": "utm_source=xpromo&utm_medium=app&utm_campaign=xp_{from}_{to}"
-  },
-  "apps": [
-    {
-      "id": "myslowbody",
-      "name": "MySlowBody",
-      "icon": "https://mystudioapps.com/assets/myslowbody/icon.png",
-      "color": "#1C9A46",
-      "shot": {
-        "ko": "https://mystudioapps.com/assets/myslowbody/ko_s1.jpg",
-        "ja": "https://mystudioapps.com/assets/myslowbody/ja_s1.jpg",
-        "en": "https://mystudioapps.com/assets/myslowbody/en_s1.jpg",
-        "zh-Hant": "https://mystudioapps.com/assets/myslowbody/zh-Hant_s1.jpg",
-        "de": "https://mystudioapps.com/assets/myslowbody/de_s1.jpg",
-        "es": "https://mystudioapps.com/assets/myslowbody/es_s1.jpg",
-        "fr": "https://mystudioapps.com/assets/myslowbody/fr_s1.jpg",
-        "pt": "https://mystudioapps.com/assets/myslowbody/pt_s1.jpg",
-        "ar": "https://mystudioapps.com/assets/myslowbody/ar_s1.jpg"
-      },
-      "shots": {
-        "ko": [
-          "https://mystudioapps.com/assets/myslowbody/ko_s1.jpg",
-          "https://mystudioapps.com/assets/myslowbody/ko_s2.jpg",
-          "https://mystudioapps.com/assets/myslowbody/ko_s3.jpg",
-          "https://mystudioapps.com/assets/myslowbody/ko_s4.jpg",
-          "https://mystudioapps.com/assets/myslowbody/ko_s5.jpg",
-          "https://mystudioapps.com/assets/myslowbody/ko_s6.jpg",
-          "https://mystudioapps.com/assets/myslowbody/ko_s7.jpg",
-          "https://mystudioapps.com/assets/myslowbody/ko_s8.jpg",
-          "https://mystudioapps.com/assets/myslowbody/ko_s9.jpg",
-          "https://mystudioapps.com/assets/myslowbody/ko_s10.jpg"
-        ],
-        "ja": [
-          "https://mystudioapps.com/assets/myslowbody/ja_s1.jpg",
-          "https://mystudioapps.com/assets/myslowbody/ja_s2.jpg",
-          "https://mystudioapps.com/assets/myslowbody/ja_s3.jpg",
-          "https://mystudioapps.com/assets/myslowbody/ja_s4.jpg",
-          "https://mystudioapps.com/assets/myslowbody/ja_s5.jpg",
-          "https://mystudioapps.com/assets/myslowbody/ja_s6.jpg",
-          "https://mystudioapps.com/assets/myslowbody/ja_s7.jpg",
-          "https://mystudioapps.com/assets/myslowbody/ja_s8.jpg",
-          "https://mystudioapps.com/assets/myslowbody/ja_s9.jpg",
-          "https://mystudioapps.com/assets/myslowbody/ja_s10.jpg"
-        ],
-        "en": [
-          "https://mystudioapps.com/assets/myslowbody/en_s1.jpg",
-          "https://mystudioapps.com/assets/myslowbody/en_s2.jpg",
-          "https://mystudioapps.com/assets/myslowbody/en_s3.jpg",
-          "https://mystudioapps.com/assets/myslowbody/en_s4.jpg",
-          "https://mystudioapps.com/assets/myslowbody/en_s5.jpg",
-          "https://mystudioapps.com/assets/myslowbody/en_s6.jpg",
-          "https://mystudioapps.com/assets/myslowbody/en_s7.jpg",
-          "https://mystudioapps.com/assets/myslowbody/en_s8.jpg",
-          "https://mystudioapps.com/assets/myslowbody/en_s9.jpg",
-          "https://mystudioapps.com/assets/myslowbody/en_s10.jpg"
-        ],
-        "zh-Hant": [
-          "https://mystudioapps.com/assets/myslowbody/zh-Hant_s1.jpg",
-          "https://mystudioapps.com/assets/myslowbody/zh-Hant_s2.jpg",
-          "https://mystudioapps.com/assets/myslowbody/zh-Hant_s3.jpg",
-          "https://mystudioapps.com/assets/myslowbody/zh-Hant_s4.jpg",
-          "https://mystudioapps.com/assets/myslowbody/zh-Hant_s5.jpg",
-          "https://mystudioapps.com/assets/myslowbody/zh-Hant_s6.jpg",
-          "https://mystudioapps.com/assets/myslowbody/zh-Hant_s7.jpg",
-          "https://mystudioapps.com/assets/myslowbody/zh-Hant_s8.jpg",
-          "https://mystudioapps.com/assets/myslowbody/zh-Hant_s9.jpg",
-          "https://mystudioapps.com/assets/myslowbody/zh-Hant_s10.jpg"
-        ],
-        "de": [
-          "https://mystudioapps.com/assets/myslowbody/de_s1.jpg",
-          "https://mystudioapps.com/assets/myslowbody/de_s2.jpg",
-          "https://mystudioapps.com/assets/myslowbody/de_s3.jpg",
-          "https://mystudioapps.com/assets/myslowbody/de_s4.jpg",
-          "https://mystudioapps.com/assets/myslowbody/de_s5.jpg",
-          "https://mystudioapps.com/assets/myslowbody/de_s6.jpg",
-          "https://mystudioapps.com/assets/myslowbody/de_s7.jpg",
-          "https://mystudioapps.com/assets/myslowbody/de_s8.jpg",
-          "https://mystudioapps.com/assets/myslowbody/de_s9.jpg",
-          "https://mystudioapps.com/assets/myslowbody/de_s10.jpg"
-        ],
-        "es": [
-          "https://mystudioapps.com/assets/myslowbody/es_s1.jpg",
-          "https://mystudioapps.com/assets/myslowbody/es_s2.jpg",
-          "https://mystudioapps.com/assets/myslowbody/es_s3.jpg",
-          "https://mystudioapps.com/assets/myslowbody/es_s4.jpg",
-          "https://mystudioapps.com/assets/myslowbody/es_s5.jpg",
-          "https://mystudioapps.com/assets/myslowbody/es_s6.jpg",
-          "https://mystudioapps.com/assets/myslowbody/es_s7.jpg",
-          "https://mystudioapps.com/assets/myslowbody/es_s8.jpg",
-          "https://mystudioapps.com/assets/myslowbody/es_s9.jpg",
-          "https://mystudioapps.com/assets/myslowbody/es_s10.jpg"
-        ],
-        "fr": [
-          "https://mystudioapps.com/assets/myslowbody/fr_s1.jpg",
-          "https://mystudioapps.com/assets/myslowbody/fr_s2.jpg",
-          "https://mystudioapps.com/assets/myslowbody/fr_s3.jpg",
-          "https://mystudioapps.com/assets/myslowbody/fr_s4.jpg",
-          "https://mystudioapps.com/assets/myslowbody/fr_s5.jpg",
-          "https://mystudioapps.com/assets/myslowbody/fr_s6.jpg",
-          "https://mystudioapps.com/assets/myslowbody/fr_s7.jpg",
-          "https://mystudioapps.com/assets/myslowbody/fr_s8.jpg",
-          "https://mystudioapps.com/assets/myslowbody/fr_s9.jpg",
-          "https://mystudioapps.com/assets/myslowbody/fr_s10.jpg"
-        ],
-        "pt": [
-          "https://mystudioapps.com/assets/myslowbody/pt_s1.jpg",
-          "https://mystudioapps.com/assets/myslowbody/pt_s2.jpg",
-          "https://mystudioapps.com/assets/myslowbody/pt_s3.jpg",
-          "https://mystudioapps.com/assets/myslowbody/pt_s4.jpg",
-          "https://mystudioapps.com/assets/myslowbody/pt_s5.jpg",
-          "https://mystudioapps.com/assets/myslowbody/pt_s6.jpg",
-          "https://mystudioapps.com/assets/myslowbody/pt_s7.jpg",
-          "https://mystudioapps.com/assets/myslowbody/pt_s8.jpg",
-          "https://mystudioapps.com/assets/myslowbody/pt_s9.jpg",
-          "https://mystudioapps.com/assets/myslowbody/pt_s10.jpg"
-        ],
-        "ar": [
-          "https://mystudioapps.com/assets/myslowbody/ar_s1.jpg",
-          "https://mystudioapps.com/assets/myslowbody/ar_s2.jpg",
-          "https://mystudioapps.com/assets/myslowbody/ar_s3.jpg",
-          "https://mystudioapps.com/assets/myslowbody/ar_s4.jpg",
-          "https://mystudioapps.com/assets/myslowbody/ar_s5.jpg",
-          "https://mystudioapps.com/assets/myslowbody/ar_s6.jpg",
-          "https://mystudioapps.com/assets/myslowbody/ar_s7.jpg",
-          "https://mystudioapps.com/assets/myslowbody/ar_s8.jpg",
-          "https://mystudioapps.com/assets/myslowbody/ar_s9.jpg",
-          "https://mystudioapps.com/assets/myslowbody/ar_s10.jpg"
-        ]
-      },
-      "store": {
-        "ios": "https://apps.apple.com/app/id6812821519",
-        "android": "https://play.google.com/store/apps/details?id=com.ymc.myslowbody"
-      },
-      "text": {
-        "ko": {
-          "headline": "목·어깨·허리 뻐근할 때, 하루 3분",
-          "tagline": "스트레칭 · 느린 호흡 · 수면",
-          "cta": "무료로 받기"
-        },
-        "ja": {
-          "headline": "首・肩・腰のこりに、1日3分",
-          "tagline": "ストレッチ・ゆっくり呼吸・睡眠",
-          "cta": "無料で入手"
-        },
-        "en": {
-          "headline": "3 minutes a day for a stiff neck & back",
-          "tagline": "Stretch · Slow breathing · Sleep",
-          "cta": "Get it free"
-        },
-        "zh-Hant": {
-          "headline": "肩頸腰背緊繃時，每天3分鐘",
-          "tagline": "伸展 · 慢呼吸 · 睡眠",
-          "cta": "免費下載"
-        },
-        "de": {
-          "headline": "3 Minuten am Tag für Nacken & Rücken",
-          "tagline": "Dehnen · Langsam atmen · Schlaf",
-          "cta": "Kostenlos laden"
-        },
-        "es": {
-          "headline": "3 minutos al día para cuello y espalda",
-          "tagline": "Estiramientos · Respiración lenta · Sueño",
-          "cta": "Consíguela gratis"
-        },
-        "fr": {
-          "headline": "3 minutes par jour pour nuque et dos",
-          "tagline": "Étirements · Respiration lente · Sommeil",
-          "cta": "Obtenir gratuitement"
-        },
-        "pt": {
-          "headline": "3 minutos por dia para pescoço e costas",
-          "tagline": "Alongamento · Respiração lenta · Sono",
-          "cta": "Baixar grátis"
-        },
-        "ar": {
-          "headline": "3 دقائق يوميًا لراحة الرقبة والظهر",
-          "tagline": "تمدد · تنفس بطيء · نوم",
-          "cta": "احصل عليه مجانًا"
-        }
-      },
-      "music": "https://mystudioapps.com/assets/myslowbody/ad_music.mp3"
+  "overrides": []
+ },
+ "_doc_ad_mix": "2026-10-24 저녁 사용자: '광고 비율은 업데이트 없이'. 앱은 ad_mix 를 먼저 읽고, 없으면 banner_house_share · interstitial_house_share, 그것도 없으면 house_share. 값은 형식별 자체 광고 몫(0~1, 0 = 광고망 100%, 1 = 자체 100%, 차례마다 무작위). default 위에 overrides 를 위에서부터 차례로 덮어씀(뒤에 오는 것이 이김). override 조건 칸: app(피드 앱 id 하나 또는 목록) · platform('ios' | 'android') · country(기기 지역 ISO 두 글자 목록, 대문자) · min_version · max_version(앱 버전 '1.2.0' 꼴, 그 버전 포함). 조건 칸이 없으면 모두에 맞음. 덮어쓸 수 있는 값: banner · interstitial(자체 몫) · banner_on · interstitial_on(false 면 그 형식 안 띄움) · interstitial_gap_sec · first_run_quiet_sec · interstitial_close_after_sec(범위 밖이면 무시하고 위 기본값). 모르는 키 · 모르는 형식 · 0~1 밖 값은 무시(앱이 죽거나 기본으로 돌아가지 않게, 그 칸만 건너뜀). 보상형은 늘 광고망(이 값과 상관없음). 예: {\"app\":\"myfidget\",\"platform\":\"android\",\"country\":[\"JP\"],\"banner\":0.5}.",
+ "_doc_house_share": "2026-10-23 사용자(최신, My_Fidget 거쳐 확인): 배너 · 전면은 자체 광고 100%(모든 앱) → house_share 1.0. (그 전 10/14 밤: 광고망 6 : 자체 4 → 0.4.) 보상형은 이 값과 상관없이 늘 광고망(LevelPlay). 1.0 이면 앱은 광고망 전면 · 배너를 미리 받지 않고, 1.0 보다 작으면 받는다. 0~1, 차례마다 무작위. (10/11 0.3 → 10/14 0.2 → 10/14 밤 1.0 → 10/14 밤 0.4 → 10/23 1.0)",
+ "interstitial_gap_sec": 180,
+ "_doc_gap": "2026-10-14 밤 사용자: 전면 광고 간격 180초(모든 앱, 광고망 · 자체 광고 모두). '광고만 해도 60초쯤이라 바로 다시 나온다' → 앞 전면을 닫은 때부터 센다. 앱은 이 값을 읽고 없거나 30~600 밖이면 기본 180. 세션 첫 판 · 보상형 직후 건너뛰기는 그대로.",
+ "first_run_quiet_sec": 180,
+ "_doc_first_run": "2026-10-14 밤 사용자: 처음 설치하고 첫 실행부터 3분(180초) 동안은 전면 광고를 띄우지 않는다(모든 앱, 광고망 · 자체 광고 모두). 배너 · 사용자가 고른 보상형은 그대로. 앱은 이 값을 읽고 없거나 0~900 밖이면 기본 180.",
+ "label": {
+  "ko": "MyStudio의 다른 앱",
+  "ja": "MyStudioのほかのアプリ",
+  "en": "More from MyStudio",
+  "zh-Hant": "MyStudio 的其他 App",
+  "de": "Mehr von MyStudio",
+  "es": "Más de MyStudio",
+  "fr": "Plus de MyStudio",
+  "pt": "Mais da MyStudio",
+  "ar": "المزيد من MyStudio"
+ },
+ "link_tags": {
+  "ios": "pt=129467809&ct=xp_{from}_{to}&mt=8",
+  "android_referrer": "utm_source=xpromo&utm_medium=app&utm_campaign=xp_{from}_{to}"
+ },
+ "apps": [
+  {
+   "id": "myslowbody",
+   "name": "MySlowBody",
+   "icon": "https://mystudioapps.com/assets/myslowbody/icon.png",
+   "color": "#1C9A46",
+   "shot": {
+    "ko": "https://mystudioapps.com/assets/myslowbody/ko_s1.jpg",
+    "ja": "https://mystudioapps.com/assets/myslowbody/ja_s1.jpg",
+    "en": "https://mystudioapps.com/assets/myslowbody/en_s1.jpg",
+    "zh-Hant": "https://mystudioapps.com/assets/myslowbody/zh-Hant_s1.jpg",
+    "de": "https://mystudioapps.com/assets/myslowbody/de_s1.jpg",
+    "es": "https://mystudioapps.com/assets/myslowbody/es_s1.jpg",
+    "fr": "https://mystudioapps.com/assets/myslowbody/fr_s1.jpg",
+    "pt": "https://mystudioapps.com/assets/myslowbody/pt_s1.jpg",
+    "ar": "https://mystudioapps.com/assets/myslowbody/ar_s1.jpg"
+   },
+   "shots": {
+    "ko": [
+     "https://mystudioapps.com/assets/myslowbody/ko_s1.jpg",
+     "https://mystudioapps.com/assets/myslowbody/ko_s2.jpg",
+     "https://mystudioapps.com/assets/myslowbody/ko_s3.jpg",
+     "https://mystudioapps.com/assets/myslowbody/ko_s4.jpg",
+     "https://mystudioapps.com/assets/myslowbody/ko_s5.jpg",
+     "https://mystudioapps.com/assets/myslowbody/ko_s6.jpg",
+     "https://mystudioapps.com/assets/myslowbody/ko_s7.jpg",
+     "https://mystudioapps.com/assets/myslowbody/ko_s8.jpg",
+     "https://mystudioapps.com/assets/myslowbody/ko_s9.jpg",
+     "https://mystudioapps.com/assets/myslowbody/ko_s10.jpg"
+    ],
+    "ja": [
+     "https://mystudioapps.com/assets/myslowbody/ja_s1.jpg",
+     "https://mystudioapps.com/assets/myslowbody/ja_s2.jpg",
+     "https://mystudioapps.com/assets/myslowbody/ja_s3.jpg",
+     "https://mystudioapps.com/assets/myslowbody/ja_s4.jpg",
+     "https://mystudioapps.com/assets/myslowbody/ja_s5.jpg",
+     "https://mystudioapps.com/assets/myslowbody/ja_s6.jpg",
+     "https://mystudioapps.com/assets/myslowbody/ja_s7.jpg",
+     "https://mystudioapps.com/assets/myslowbody/ja_s8.jpg",
+     "https://mystudioapps.com/assets/myslowbody/ja_s9.jpg",
+     "https://mystudioapps.com/assets/myslowbody/ja_s10.jpg"
+    ],
+    "en": [
+     "https://mystudioapps.com/assets/myslowbody/en_s1.jpg",
+     "https://mystudioapps.com/assets/myslowbody/en_s2.jpg",
+     "https://mystudioapps.com/assets/myslowbody/en_s3.jpg",
+     "https://mystudioapps.com/assets/myslowbody/en_s4.jpg",
+     "https://mystudioapps.com/assets/myslowbody/en_s5.jpg",
+     "https://mystudioapps.com/assets/myslowbody/en_s6.jpg",
+     "https://mystudioapps.com/assets/myslowbody/en_s7.jpg",
+     "https://mystudioapps.com/assets/myslowbody/en_s8.jpg",
+     "https://mystudioapps.com/assets/myslowbody/en_s9.jpg",
+     "https://mystudioapps.com/assets/myslowbody/en_s10.jpg"
+    ],
+    "zh-Hant": [
+     "https://mystudioapps.com/assets/myslowbody/zh-Hant_s1.jpg",
+     "https://mystudioapps.com/assets/myslowbody/zh-Hant_s2.jpg",
+     "https://mystudioapps.com/assets/myslowbody/zh-Hant_s3.jpg",
+     "https://mystudioapps.com/assets/myslowbody/zh-Hant_s4.jpg",
+     "https://mystudioapps.com/assets/myslowbody/zh-Hant_s5.jpg",
+     "https://mystudioapps.com/assets/myslowbody/zh-Hant_s6.jpg",
+     "https://mystudioapps.com/assets/myslowbody/zh-Hant_s7.jpg",
+     "https://mystudioapps.com/assets/myslowbody/zh-Hant_s8.jpg",
+     "https://mystudioapps.com/assets/myslowbody/zh-Hant_s9.jpg",
+     "https://mystudioapps.com/assets/myslowbody/zh-Hant_s10.jpg"
+    ],
+    "de": [
+     "https://mystudioapps.com/assets/myslowbody/de_s1.jpg",
+     "https://mystudioapps.com/assets/myslowbody/de_s2.jpg",
+     "https://mystudioapps.com/assets/myslowbody/de_s3.jpg",
+     "https://mystudioapps.com/assets/myslowbody/de_s4.jpg",
+     "https://mystudioapps.com/assets/myslowbody/de_s5.jpg",
+     "https://mystudioapps.com/assets/myslowbody/de_s6.jpg",
+     "https://mystudioapps.com/assets/myslowbody/de_s7.jpg",
+     "https://mystudioapps.com/assets/myslowbody/de_s8.jpg",
+     "https://mystudioapps.com/assets/myslowbody/de_s9.jpg",
+     "https://mystudioapps.com/assets/myslowbody/de_s10.jpg"
+    ],
+    "es": [
+     "https://mystudioapps.com/assets/myslowbody/es_s1.jpg",
+     "https://mystudioapps.com/assets/myslowbody/es_s2.jpg",
+     "https://mystudioapps.com/assets/myslowbody/es_s3.jpg",
+     "https://mystudioapps.com/assets/myslowbody/es_s4.jpg",
+     "https://mystudioapps.com/assets/myslowbody/es_s5.jpg",
+     "https://mystudioapps.com/assets/myslowbody/es_s6.jpg",
+     "https://mystudioapps.com/assets/myslowbody/es_s7.jpg",
+     "https://mystudioapps.com/assets/myslowbody/es_s8.jpg",
+     "https://mystudioapps.com/assets/myslowbody/es_s9.jpg",
+     "https://mystudioapps.com/assets/myslowbody/es_s10.jpg"
+    ],
+    "fr": [
+     "https://mystudioapps.com/assets/myslowbody/fr_s1.jpg",
+     "https://mystudioapps.com/assets/myslowbody/fr_s2.jpg",
+     "https://mystudioapps.com/assets/myslowbody/fr_s3.jpg",
+     "https://mystudioapps.com/assets/myslowbody/fr_s4.jpg",
+     "https://mystudioapps.com/assets/myslowbody/fr_s5.jpg",
+     "https://mystudioapps.com/assets/myslowbody/fr_s6.jpg",
+     "https://mystudioapps.com/assets/myslowbody/fr_s7.jpg",
+     "https://mystudioapps.com/assets/myslowbody/fr_s8.jpg",
+     "https://mystudioapps.com/assets/myslowbody/fr_s9.jpg",
+     "https://mystudioapps.com/assets/myslowbody/fr_s10.jpg"
+    ],
+    "pt": [
+     "https://mystudioapps.com/assets/myslowbody/pt_s1.jpg",
+     "https://mystudioapps.com/assets/myslowbody/pt_s2.jpg",
+     "https://mystudioapps.com/assets/myslowbody/pt_s3.jpg",
+     "https://mystudioapps.com/assets/myslowbody/pt_s4.jpg",
+     "https://mystudioapps.com/assets/myslowbody/pt_s5.jpg",
+     "https://mystudioapps.com/assets/myslowbody/pt_s6.jpg",
+     "https://mystudioapps.com/assets/myslowbody/pt_s7.jpg",
+     "https://mystudioapps.com/assets/myslowbody/pt_s8.jpg",
+     "https://mystudioapps.com/assets/myslowbody/pt_s9.jpg",
+     "https://mystudioapps.com/assets/myslowbody/pt_s10.jpg"
+    ],
+    "ar": [
+     "https://mystudioapps.com/assets/myslowbody/ar_s1.jpg",
+     "https://mystudioapps.com/assets/myslowbody/ar_s2.jpg",
+     "https://mystudioapps.com/assets/myslowbody/ar_s3.jpg",
+     "https://mystudioapps.com/assets/myslowbody/ar_s4.jpg",
+     "https://mystudioapps.com/assets/myslowbody/ar_s5.jpg",
+     "https://mystudioapps.com/assets/myslowbody/ar_s6.jpg",
+     "https://mystudioapps.com/assets/myslowbody/ar_s7.jpg",
+     "https://mystudioapps.com/assets/myslowbody/ar_s8.jpg",
+     "https://mystudioapps.com/assets/myslowbody/ar_s9.jpg",
+     "https://mystudioapps.com/assets/myslowbody/ar_s10.jpg"
+    ]
+   },
+   "store": {
+    "ios": "https://apps.apple.com/app/id6812821519",
+    "android": "https://play.google.com/store/apps/details?id=com.ymc.myslowbody"
+   },
+   "text": {
+    "ko": {
+     "headline": "목·어깨·허리 뻐근할 때, 하루 3분",
+     "tagline": "스트레칭 · 느린 호흡 · 수면",
+     "cta": "무료로 받기"
     },
-    {
-      "id": "myfidget",
-      "name": "MyFidget",
-      "icon": "https://mystudioapps.com/assets/myfidget/icon.png",
-      "color": "#D9363E",
-      "shot": {
-        "ko": "https://mystudioapps.com/assets/myfidget/ko_s1.jpg",
-        "ja": "https://mystudioapps.com/assets/myfidget/ja_s1.jpg",
-        "en": "https://mystudioapps.com/assets/myfidget/en_s1.jpg",
-        "zh-Hant": "https://mystudioapps.com/assets/myfidget/zh-Hant_s1.jpg",
-        "de": "https://mystudioapps.com/assets/myfidget/de_s1.jpg",
-        "es": "https://mystudioapps.com/assets/myfidget/es_s1.jpg",
-        "fr": "https://mystudioapps.com/assets/myfidget/fr_s1.jpg",
-        "pt": "https://mystudioapps.com/assets/myfidget/pt_s1.jpg",
-        "ar": "https://mystudioapps.com/assets/myfidget/ar_s1.jpg"
-      },
-      "shots": {
-        "ko": [
-          "https://mystudioapps.com/assets/myfidget/ko_s1.jpg",
-          "https://mystudioapps.com/assets/myfidget/ko_s2.jpg",
-          "https://mystudioapps.com/assets/myfidget/ko_s3.jpg",
-          "https://mystudioapps.com/assets/myfidget/ko_s4.jpg",
-          "https://mystudioapps.com/assets/myfidget/ko_s5.jpg",
-          "https://mystudioapps.com/assets/myfidget/ko_s6.jpg",
-          "https://mystudioapps.com/assets/myfidget/ko_s7.jpg",
-          "https://mystudioapps.com/assets/myfidget/ko_s8.jpg",
-          "https://mystudioapps.com/assets/myfidget/ko_s9.jpg",
-          "https://mystudioapps.com/assets/myfidget/ko_s10.jpg"
-        ],
-        "ja": [
-          "https://mystudioapps.com/assets/myfidget/ja_s1.jpg",
-          "https://mystudioapps.com/assets/myfidget/ja_s2.jpg",
-          "https://mystudioapps.com/assets/myfidget/ja_s3.jpg",
-          "https://mystudioapps.com/assets/myfidget/ja_s4.jpg",
-          "https://mystudioapps.com/assets/myfidget/ja_s5.jpg",
-          "https://mystudioapps.com/assets/myfidget/ja_s6.jpg",
-          "https://mystudioapps.com/assets/myfidget/ja_s7.jpg",
-          "https://mystudioapps.com/assets/myfidget/ja_s8.jpg",
-          "https://mystudioapps.com/assets/myfidget/ja_s9.jpg",
-          "https://mystudioapps.com/assets/myfidget/ja_s10.jpg"
-        ],
-        "en": [
-          "https://mystudioapps.com/assets/myfidget/en_s1.jpg",
-          "https://mystudioapps.com/assets/myfidget/en_s2.jpg",
-          "https://mystudioapps.com/assets/myfidget/en_s3.jpg",
-          "https://mystudioapps.com/assets/myfidget/en_s4.jpg",
-          "https://mystudioapps.com/assets/myfidget/en_s5.jpg",
-          "https://mystudioapps.com/assets/myfidget/en_s6.jpg",
-          "https://mystudioapps.com/assets/myfidget/en_s7.jpg",
-          "https://mystudioapps.com/assets/myfidget/en_s8.jpg",
-          "https://mystudioapps.com/assets/myfidget/en_s9.jpg",
-          "https://mystudioapps.com/assets/myfidget/en_s10.jpg"
-        ],
-        "zh-Hant": [
-          "https://mystudioapps.com/assets/myfidget/zh-Hant_s1.jpg",
-          "https://mystudioapps.com/assets/myfidget/zh-Hant_s2.jpg",
-          "https://mystudioapps.com/assets/myfidget/zh-Hant_s3.jpg",
-          "https://mystudioapps.com/assets/myfidget/zh-Hant_s4.jpg",
-          "https://mystudioapps.com/assets/myfidget/zh-Hant_s5.jpg",
-          "https://mystudioapps.com/assets/myfidget/zh-Hant_s6.jpg",
-          "https://mystudioapps.com/assets/myfidget/zh-Hant_s7.jpg",
-          "https://mystudioapps.com/assets/myfidget/zh-Hant_s8.jpg",
-          "https://mystudioapps.com/assets/myfidget/zh-Hant_s9.jpg",
-          "https://mystudioapps.com/assets/myfidget/zh-Hant_s10.jpg"
-        ],
-        "de": [
-          "https://mystudioapps.com/assets/myfidget/de_s1.jpg",
-          "https://mystudioapps.com/assets/myfidget/de_s2.jpg",
-          "https://mystudioapps.com/assets/myfidget/de_s3.jpg",
-          "https://mystudioapps.com/assets/myfidget/de_s4.jpg",
-          "https://mystudioapps.com/assets/myfidget/de_s5.jpg",
-          "https://mystudioapps.com/assets/myfidget/de_s6.jpg",
-          "https://mystudioapps.com/assets/myfidget/de_s7.jpg",
-          "https://mystudioapps.com/assets/myfidget/de_s8.jpg",
-          "https://mystudioapps.com/assets/myfidget/de_s9.jpg",
-          "https://mystudioapps.com/assets/myfidget/de_s10.jpg"
-        ],
-        "es": [
-          "https://mystudioapps.com/assets/myfidget/es_s1.jpg",
-          "https://mystudioapps.com/assets/myfidget/es_s2.jpg",
-          "https://mystudioapps.com/assets/myfidget/es_s3.jpg",
-          "https://mystudioapps.com/assets/myfidget/es_s4.jpg",
-          "https://mystudioapps.com/assets/myfidget/es_s5.jpg",
-          "https://mystudioapps.com/assets/myfidget/es_s6.jpg",
-          "https://mystudioapps.com/assets/myfidget/es_s7.jpg",
-          "https://mystudioapps.com/assets/myfidget/es_s8.jpg",
-          "https://mystudioapps.com/assets/myfidget/es_s9.jpg",
-          "https://mystudioapps.com/assets/myfidget/es_s10.jpg"
-        ],
-        "fr": [
-          "https://mystudioapps.com/assets/myfidget/fr_s1.jpg",
-          "https://mystudioapps.com/assets/myfidget/fr_s2.jpg",
-          "https://mystudioapps.com/assets/myfidget/fr_s3.jpg",
-          "https://mystudioapps.com/assets/myfidget/fr_s4.jpg",
-          "https://mystudioapps.com/assets/myfidget/fr_s5.jpg",
-          "https://mystudioapps.com/assets/myfidget/fr_s6.jpg",
-          "https://mystudioapps.com/assets/myfidget/fr_s7.jpg",
-          "https://mystudioapps.com/assets/myfidget/fr_s8.jpg",
-          "https://mystudioapps.com/assets/myfidget/fr_s9.jpg",
-          "https://mystudioapps.com/assets/myfidget/fr_s10.jpg"
-        ],
-        "pt": [
-          "https://mystudioapps.com/assets/myfidget/pt_s1.jpg",
-          "https://mystudioapps.com/assets/myfidget/pt_s2.jpg",
-          "https://mystudioapps.com/assets/myfidget/pt_s3.jpg",
-          "https://mystudioapps.com/assets/myfidget/pt_s4.jpg",
-          "https://mystudioapps.com/assets/myfidget/pt_s5.jpg",
-          "https://mystudioapps.com/assets/myfidget/pt_s6.jpg",
-          "https://mystudioapps.com/assets/myfidget/pt_s7.jpg",
-          "https://mystudioapps.com/assets/myfidget/pt_s8.jpg",
-          "https://mystudioapps.com/assets/myfidget/pt_s9.jpg",
-          "https://mystudioapps.com/assets/myfidget/pt_s10.jpg"
-        ],
-        "ar": [
-          "https://mystudioapps.com/assets/myfidget/ar_s1.jpg",
-          "https://mystudioapps.com/assets/myfidget/ar_s2.jpg",
-          "https://mystudioapps.com/assets/myfidget/ar_s3.jpg",
-          "https://mystudioapps.com/assets/myfidget/ar_s4.jpg",
-          "https://mystudioapps.com/assets/myfidget/ar_s5.jpg",
-          "https://mystudioapps.com/assets/myfidget/ar_s6.jpg",
-          "https://mystudioapps.com/assets/myfidget/ar_s7.jpg",
-          "https://mystudioapps.com/assets/myfidget/ar_s8.jpg",
-          "https://mystudioapps.com/assets/myfidget/ar_s9.jpg",
-          "https://mystudioapps.com/assets/myfidget/ar_s10.jpg"
-        ]
-      },
-      "store": {
-        "ios": "https://apps.apple.com/app/id6819669400",
-        "android": "https://play.google.com/store/apps/details?id=com.ymc.myfidget"
-      },
-      "text": {
-        "ko": {
-          "name": "마이피젯",
-          "headline": "내 손안의 장난감, 스트레스 해소",
-          "tagline": "피젯 토이 · 팝잇 · 뽁뽁이",
-          "cta": "무료로 받기"
-        },
-        "ja": {
-          "name": "マイフィジェット",
-          "headline": "手のひらのおもちゃでストレス解消",
-          "tagline": "フィジェット・プチプチ・プッシュポップ",
-          "cta": "無料で入手"
-        },
-        "en": {
-          "headline": "A little toy in your hand",
-          "tagline": "Stress relief fidget toys",
-          "cta": "Get it free"
-        },
-        "zh-Hant": {
-          "headline": "掌心裡的小玩具，釋放壓力",
-          "tagline": "指尖玩具 · 泡泡板 · 氣泡紙",
-          "cta": "免費下載"
-        },
-        "de": {
-          "headline": "Ein kleines Spielzeug für deine Hand",
-          "tagline": "Antistress-Spielzeug & Pop it",
-          "cta": "Kostenlos laden"
-        },
-        "es": {
-          "headline": "Un pequeño juguete en tu mano",
-          "tagline": "Juguetes antiestrés y pop it",
-          "cta": "Consíguela gratis"
-        },
-        "fr": {
-          "headline": "Un petit jouet dans ta main",
-          "tagline": "Jouets anti-stress et pop it",
-          "cta": "Obtenir gratuitement"
-        },
-        "pt": {
-          "headline": "Um brinquedinho na sua mão",
-          "tagline": "Pop it e fidget antiestresse",
-          "cta": "Baixar grátis"
-        },
-        "ar": {
-          "headline": "لعبة صغيرة في يدك",
-          "tagline": "ألعاب فيدجت لتخفيف التوتر",
-          "cta": "احصل عليه مجانًا"
-        }
-      },
-      "playable": "https://mystudioapps.com/playable/myfidget/",
-      "music": "https://mystudioapps.com/assets/myfidget/ad_music.mp3"
+    "ja": {
+     "headline": "首・肩・腰のこりに、1日3分",
+     "tagline": "ストレッチ・ゆっくり呼吸・睡眠",
+     "cta": "無料で入手"
     },
-    {
-      "id": "myvocal",
-      "name": "MyVocal",
-      "icon": "https://mystudioapps.com/assets/myvocal/icon.png",
-      "color": "#1F8F5F",
-      "shot": {
-        "ko": "https://mystudioapps.com/assets/myvocal/ko_s1.jpg",
-        "ja": "https://mystudioapps.com/assets/myvocal/ja_s1.jpg",
-        "en": "https://mystudioapps.com/assets/myvocal/en_s1.jpg",
-        "zh-Hant": "https://mystudioapps.com/assets/myvocal/zh-Hant_s1.jpg",
-        "de": "https://mystudioapps.com/assets/myvocal/de_s1.jpg",
-        "es": "https://mystudioapps.com/assets/myvocal/es_s1.jpg",
-        "fr": "https://mystudioapps.com/assets/myvocal/fr_s1.jpg",
-        "pt": "https://mystudioapps.com/assets/myvocal/pt_s1.jpg",
-        "ar": "https://mystudioapps.com/assets/myvocal/ar_s1.jpg"
-      },
-      "shots": {
-        "ko": [
-          "https://mystudioapps.com/assets/myvocal/ko_s1.jpg",
-          "https://mystudioapps.com/assets/myvocal/ko_s2.jpg",
-          "https://mystudioapps.com/assets/myvocal/ko_s3.jpg",
-          "https://mystudioapps.com/assets/myvocal/ko_s4.jpg",
-          "https://mystudioapps.com/assets/myvocal/ko_s5.jpg",
-          "https://mystudioapps.com/assets/myvocal/ko_s6.jpg",
-          "https://mystudioapps.com/assets/myvocal/ko_s7.jpg",
-          "https://mystudioapps.com/assets/myvocal/ko_s8.jpg",
-          "https://mystudioapps.com/assets/myvocal/ko_s9.jpg",
-          "https://mystudioapps.com/assets/myvocal/ko_s10.jpg"
-        ],
-        "ja": [
-          "https://mystudioapps.com/assets/myvocal/ja_s1.jpg",
-          "https://mystudioapps.com/assets/myvocal/ja_s2.jpg",
-          "https://mystudioapps.com/assets/myvocal/ja_s3.jpg",
-          "https://mystudioapps.com/assets/myvocal/ja_s4.jpg",
-          "https://mystudioapps.com/assets/myvocal/ja_s5.jpg",
-          "https://mystudioapps.com/assets/myvocal/ja_s6.jpg",
-          "https://mystudioapps.com/assets/myvocal/ja_s7.jpg",
-          "https://mystudioapps.com/assets/myvocal/ja_s8.jpg",
-          "https://mystudioapps.com/assets/myvocal/ja_s9.jpg",
-          "https://mystudioapps.com/assets/myvocal/ja_s10.jpg"
-        ],
-        "en": [
-          "https://mystudioapps.com/assets/myvocal/en_s1.jpg",
-          "https://mystudioapps.com/assets/myvocal/en_s2.jpg",
-          "https://mystudioapps.com/assets/myvocal/en_s3.jpg",
-          "https://mystudioapps.com/assets/myvocal/en_s4.jpg",
-          "https://mystudioapps.com/assets/myvocal/en_s5.jpg",
-          "https://mystudioapps.com/assets/myvocal/en_s6.jpg",
-          "https://mystudioapps.com/assets/myvocal/en_s7.jpg",
-          "https://mystudioapps.com/assets/myvocal/en_s8.jpg",
-          "https://mystudioapps.com/assets/myvocal/en_s9.jpg",
-          "https://mystudioapps.com/assets/myvocal/en_s10.jpg"
-        ],
-        "zh-Hant": [
-          "https://mystudioapps.com/assets/myvocal/zh-Hant_s1.jpg",
-          "https://mystudioapps.com/assets/myvocal/zh-Hant_s2.jpg",
-          "https://mystudioapps.com/assets/myvocal/zh-Hant_s3.jpg",
-          "https://mystudioapps.com/assets/myvocal/zh-Hant_s4.jpg",
-          "https://mystudioapps.com/assets/myvocal/zh-Hant_s5.jpg",
-          "https://mystudioapps.com/assets/myvocal/zh-Hant_s6.jpg",
-          "https://mystudioapps.com/assets/myvocal/zh-Hant_s7.jpg",
-          "https://mystudioapps.com/assets/myvocal/zh-Hant_s8.jpg",
-          "https://mystudioapps.com/assets/myvocal/zh-Hant_s9.jpg",
-          "https://mystudioapps.com/assets/myvocal/zh-Hant_s10.jpg"
-        ],
-        "de": [
-          "https://mystudioapps.com/assets/myvocal/de_s1.jpg",
-          "https://mystudioapps.com/assets/myvocal/de_s2.jpg",
-          "https://mystudioapps.com/assets/myvocal/de_s3.jpg",
-          "https://mystudioapps.com/assets/myvocal/de_s4.jpg",
-          "https://mystudioapps.com/assets/myvocal/de_s5.jpg",
-          "https://mystudioapps.com/assets/myvocal/de_s6.jpg",
-          "https://mystudioapps.com/assets/myvocal/de_s7.jpg",
-          "https://mystudioapps.com/assets/myvocal/de_s8.jpg",
-          "https://mystudioapps.com/assets/myvocal/de_s9.jpg",
-          "https://mystudioapps.com/assets/myvocal/de_s10.jpg"
-        ],
-        "es": [
-          "https://mystudioapps.com/assets/myvocal/es_s1.jpg",
-          "https://mystudioapps.com/assets/myvocal/es_s2.jpg",
-          "https://mystudioapps.com/assets/myvocal/es_s3.jpg",
-          "https://mystudioapps.com/assets/myvocal/es_s4.jpg",
-          "https://mystudioapps.com/assets/myvocal/es_s5.jpg",
-          "https://mystudioapps.com/assets/myvocal/es_s6.jpg",
-          "https://mystudioapps.com/assets/myvocal/es_s7.jpg",
-          "https://mystudioapps.com/assets/myvocal/es_s8.jpg",
-          "https://mystudioapps.com/assets/myvocal/es_s9.jpg",
-          "https://mystudioapps.com/assets/myvocal/es_s10.jpg"
-        ],
-        "fr": [
-          "https://mystudioapps.com/assets/myvocal/fr_s1.jpg",
-          "https://mystudioapps.com/assets/myvocal/fr_s2.jpg",
-          "https://mystudioapps.com/assets/myvocal/fr_s3.jpg",
-          "https://mystudioapps.com/assets/myvocal/fr_s4.jpg",
-          "https://mystudioapps.com/assets/myvocal/fr_s5.jpg",
-          "https://mystudioapps.com/assets/myvocal/fr_s6.jpg",
-          "https://mystudioapps.com/assets/myvocal/fr_s7.jpg",
-          "https://mystudioapps.com/assets/myvocal/fr_s8.jpg",
-          "https://mystudioapps.com/assets/myvocal/fr_s9.jpg",
-          "https://mystudioapps.com/assets/myvocal/fr_s10.jpg"
-        ],
-        "pt": [
-          "https://mystudioapps.com/assets/myvocal/pt_s1.jpg",
-          "https://mystudioapps.com/assets/myvocal/pt_s2.jpg",
-          "https://mystudioapps.com/assets/myvocal/pt_s3.jpg",
-          "https://mystudioapps.com/assets/myvocal/pt_s4.jpg",
-          "https://mystudioapps.com/assets/myvocal/pt_s5.jpg",
-          "https://mystudioapps.com/assets/myvocal/pt_s6.jpg",
-          "https://mystudioapps.com/assets/myvocal/pt_s7.jpg",
-          "https://mystudioapps.com/assets/myvocal/pt_s8.jpg",
-          "https://mystudioapps.com/assets/myvocal/pt_s9.jpg",
-          "https://mystudioapps.com/assets/myvocal/pt_s10.jpg"
-        ],
-        "ar": [
-          "https://mystudioapps.com/assets/myvocal/ar_s1.jpg",
-          "https://mystudioapps.com/assets/myvocal/ar_s2.jpg",
-          "https://mystudioapps.com/assets/myvocal/ar_s3.jpg",
-          "https://mystudioapps.com/assets/myvocal/ar_s4.jpg",
-          "https://mystudioapps.com/assets/myvocal/ar_s5.jpg",
-          "https://mystudioapps.com/assets/myvocal/ar_s6.jpg",
-          "https://mystudioapps.com/assets/myvocal/ar_s7.jpg",
-          "https://mystudioapps.com/assets/myvocal/ar_s8.jpg",
-          "https://mystudioapps.com/assets/myvocal/ar_s9.jpg",
-          "https://mystudioapps.com/assets/myvocal/ar_s10.jpg"
-        ]
-      },
-      "store": {
-        "ios": "https://apps.apple.com/app/id6820647919",
-        "android": "https://play.google.com/store/apps/details?id=com.ymc.myvocal"
-      },
-      "android_live": true,
-      "text": {
-        "ko": {
-          "name": "마이보컬",
-          "headline": "매일 하는 보컬 기본기 훈련",
-          "tagline": "발성 연습 · 음정 트레이닝 · 목풀기",
-          "cta": "무료로 받기"
-        },
-        "ja": {
-          "name": "マイボーカル",
-          "headline": "毎日のボーカル基礎トレーニング",
-          "tagline": "ボイトレ・発声練習・音程",
-          "cta": "無料で入手"
-        },
-        "en": {
-          "headline": "Train singing basics daily",
-          "tagline": "Vocal warm up · Pitch",
-          "cta": "Get it free"
-        },
-        "zh-Hant": {
-          "headline": "每天練習的歌唱基本功",
-          "tagline": "發聲練習 · 音準訓練 · 開嗓",
-          "cta": "免費下載"
-        },
-        "de": {
-          "headline": "Tägliches Gesangstraining für die Basics",
-          "tagline": "Einsingen · Intonation",
-          "cta": "Kostenlos laden"
-        },
-        "es": {
-          "headline": "Entrenamiento vocal básico cada día",
-          "tagline": "Calentamiento vocal · Afinación",
-          "cta": "Consíguela gratis"
-        },
-        "fr": {
-          "headline": "Les bases du chant, chaque jour",
-          "tagline": "Échauffement vocal · Justesse",
-          "cta": "Obtenir gratuitement"
-        },
-        "pt": {
-          "headline": "Treino diário do básico do canto",
-          "tagline": "Aquecimento vocal · Afinação",
-          "cta": "Baixar grátis"
-        },
-        "ar": {
-          "headline": "تدريب يومي على أساسيات الغناء",
-          "tagline": "إحماء الصوت · ضبط النغمة",
-          "cta": "احصل عليه مجانًا"
-        }
-      },
-      "music": "https://mystudioapps.com/assets/myvocal/ad_music.mp3"
+    "en": {
+     "headline": "3 minutes a day for a stiff neck & back",
+     "tagline": "Stretch · Slow breathing · Sleep",
+     "cta": "Get it free"
     },
-    {
-      "id": "myslowsleep",
-      "name": "MySlowSleep",
-      "icon": "https://mystudioapps.com/assets/myslowsleep/icon.png",
-      "color": "#1A1B3A",
-      "shot": {
-        "ko": "https://mystudioapps.com/assets/myslowsleep/ko_s1.jpg",
-        "ja": "https://mystudioapps.com/assets/myslowsleep/ja_s1.jpg",
-        "en": "https://mystudioapps.com/assets/myslowsleep/en_s1.jpg",
-        "zh-Hant": "https://mystudioapps.com/assets/myslowsleep/zh-Hant_s1.jpg",
-        "de": "https://mystudioapps.com/assets/myslowsleep/de_s1.jpg",
-        "es": "https://mystudioapps.com/assets/myslowsleep/es_s1.jpg",
-        "fr": "https://mystudioapps.com/assets/myslowsleep/fr_s1.jpg",
-        "pt": "https://mystudioapps.com/assets/myslowsleep/pt_s1.jpg",
-        "ar": "https://mystudioapps.com/assets/myslowsleep/ar_s1.jpg"
-      },
-      "shots": {
-        "ko": [
-          "https://mystudioapps.com/assets/myslowsleep/ko_s1.jpg",
-          "https://mystudioapps.com/assets/myslowsleep/ko_s2.jpg",
-          "https://mystudioapps.com/assets/myslowsleep/ko_s3.jpg",
-          "https://mystudioapps.com/assets/myslowsleep/ko_s4.jpg",
-          "https://mystudioapps.com/assets/myslowsleep/ko_s5.jpg",
-          "https://mystudioapps.com/assets/myslowsleep/ko_s6.jpg"
-        ],
-        "ja": [
-          "https://mystudioapps.com/assets/myslowsleep/ja_s1.jpg",
-          "https://mystudioapps.com/assets/myslowsleep/ja_s2.jpg",
-          "https://mystudioapps.com/assets/myslowsleep/ja_s3.jpg",
-          "https://mystudioapps.com/assets/myslowsleep/ja_s4.jpg",
-          "https://mystudioapps.com/assets/myslowsleep/ja_s5.jpg",
-          "https://mystudioapps.com/assets/myslowsleep/ja_s6.jpg"
-        ],
-        "en": [
-          "https://mystudioapps.com/assets/myslowsleep/en_s1.jpg",
-          "https://mystudioapps.com/assets/myslowsleep/en_s2.jpg",
-          "https://mystudioapps.com/assets/myslowsleep/en_s3.jpg",
-          "https://mystudioapps.com/assets/myslowsleep/en_s4.jpg",
-          "https://mystudioapps.com/assets/myslowsleep/en_s5.jpg",
-          "https://mystudioapps.com/assets/myslowsleep/en_s6.jpg"
-        ],
-        "zh-Hant": [
-          "https://mystudioapps.com/assets/myslowsleep/zh-Hant_s1.jpg",
-          "https://mystudioapps.com/assets/myslowsleep/zh-Hant_s2.jpg",
-          "https://mystudioapps.com/assets/myslowsleep/zh-Hant_s3.jpg",
-          "https://mystudioapps.com/assets/myslowsleep/zh-Hant_s4.jpg",
-          "https://mystudioapps.com/assets/myslowsleep/zh-Hant_s5.jpg",
-          "https://mystudioapps.com/assets/myslowsleep/zh-Hant_s6.jpg"
-        ],
-        "de": [
-          "https://mystudioapps.com/assets/myslowsleep/de_s1.jpg",
-          "https://mystudioapps.com/assets/myslowsleep/de_s2.jpg",
-          "https://mystudioapps.com/assets/myslowsleep/de_s3.jpg",
-          "https://mystudioapps.com/assets/myslowsleep/de_s4.jpg",
-          "https://mystudioapps.com/assets/myslowsleep/de_s5.jpg",
-          "https://mystudioapps.com/assets/myslowsleep/de_s6.jpg"
-        ],
-        "es": [
-          "https://mystudioapps.com/assets/myslowsleep/es_s1.jpg",
-          "https://mystudioapps.com/assets/myslowsleep/es_s2.jpg",
-          "https://mystudioapps.com/assets/myslowsleep/es_s3.jpg",
-          "https://mystudioapps.com/assets/myslowsleep/es_s4.jpg",
-          "https://mystudioapps.com/assets/myslowsleep/es_s5.jpg",
-          "https://mystudioapps.com/assets/myslowsleep/es_s6.jpg"
-        ],
-        "fr": [
-          "https://mystudioapps.com/assets/myslowsleep/fr_s1.jpg",
-          "https://mystudioapps.com/assets/myslowsleep/fr_s2.jpg",
-          "https://mystudioapps.com/assets/myslowsleep/fr_s3.jpg",
-          "https://mystudioapps.com/assets/myslowsleep/fr_s4.jpg",
-          "https://mystudioapps.com/assets/myslowsleep/fr_s5.jpg",
-          "https://mystudioapps.com/assets/myslowsleep/fr_s6.jpg"
-        ],
-        "pt": [
-          "https://mystudioapps.com/assets/myslowsleep/pt_s1.jpg",
-          "https://mystudioapps.com/assets/myslowsleep/pt_s2.jpg",
-          "https://mystudioapps.com/assets/myslowsleep/pt_s3.jpg",
-          "https://mystudioapps.com/assets/myslowsleep/pt_s4.jpg",
-          "https://mystudioapps.com/assets/myslowsleep/pt_s5.jpg",
-          "https://mystudioapps.com/assets/myslowsleep/pt_s6.jpg"
-        ],
-        "ar": [
-          "https://mystudioapps.com/assets/myslowsleep/ar_s1.jpg",
-          "https://mystudioapps.com/assets/myslowsleep/ar_s2.jpg",
-          "https://mystudioapps.com/assets/myslowsleep/ar_s3.jpg",
-          "https://mystudioapps.com/assets/myslowsleep/ar_s4.jpg",
-          "https://mystudioapps.com/assets/myslowsleep/ar_s5.jpg",
-          "https://mystudioapps.com/assets/myslowsleep/ar_s6.jpg"
-        ]
-      },
-      "store": {
-        "ios": "https://apps.apple.com/app/id6819059115",
-        "android": "https://play.google.com/store/apps/details?id=com.ymc.myslowsleep"
-      },
-      "text": {
-        "ko": {
-          "name": "마이슬로우슬립",
-          "headline": "불을 끄고, 달을 켜요",
-          "tagline": "수면 소리 · 빗소리 · 호흡",
-          "cta": "자세히 보기"
-        },
-        "ja": {
-          "name": "マイスロースリープ",
-          "headline": "灯りを消して、月をともす",
-          "tagline": "睡眠音・雨音・呼吸",
-          "cta": "詳しく見る"
-        },
-        "en": {
-          "headline": "Lights off. Moon on.",
-          "tagline": "Sleep sounds · Rain · Breathing",
-          "cta": "Learn more"
-        },
-        "zh-Hant": {
-          "headline": "關上燈，點亮月亮",
-          "tagline": "助眠聲音 · 雨聲 · 呼吸",
-          "cta": "了解更多"
-        },
-        "de": {
-          "headline": "Licht aus. Mond an.",
-          "tagline": "Schlafklänge · Regen · Atmen",
-          "cta": "Mehr erfahren"
-        },
-        "es": {
-          "headline": "Apaga la luz. Enciende la luna.",
-          "tagline": "Sonidos para dormir · Lluvia · Respiración",
-          "cta": "Más información"
-        },
-        "fr": {
-          "headline": "Éteins la lumière. Allume la lune.",
-          "tagline": "Sons pour dormir · Pluie · Respiration",
-          "cta": "En savoir plus"
-        },
-        "pt": {
-          "headline": "Apague a luz. Acenda a lua.",
-          "tagline": "Sons para dormir · Chuva · Respiração",
-          "cta": "Saiba mais"
-        },
-        "ar": {
-          "headline": "أطفئ الضوء، وأشعل القمر",
-          "tagline": "أصوات النوم · المطر · التنفس",
-          "cta": "اعرف المزيد"
-        }
-      },
-      "music": "https://mystudioapps.com/assets/myslowsleep/ad_music.mp3"
+    "zh-Hant": {
+     "headline": "肩頸腰背緊繃時，每天3分鐘",
+     "tagline": "伸展 · 慢呼吸 · 睡眠",
+     "cta": "免費下載"
     },
-    {
-      "id": "mypartygame",
-      "name": "MyPartyGames",
-      "icon": "https://mystudioapps.com/assets/mypartygame/icon.png",
-      "color": "#2FC85E",
-      "shot": {
-        "ko": "https://mystudioapps.com/assets/mypartygame/ko_s1.jpg",
-        "ja": "https://mystudioapps.com/assets/mypartygame/ja_s1.jpg",
-        "en": "https://mystudioapps.com/assets/mypartygame/en_s1.jpg",
-        "zh-Hant": "https://mystudioapps.com/assets/mypartygame/zh-Hant_s1.jpg",
-        "de": "https://mystudioapps.com/assets/mypartygame/de_s1.jpg",
-        "es": "https://mystudioapps.com/assets/mypartygame/es_s1.jpg",
-        "fr": "https://mystudioapps.com/assets/mypartygame/fr_s1.jpg",
-        "pt": "https://mystudioapps.com/assets/mypartygame/pt_s1.jpg",
-        "ar": "https://mystudioapps.com/assets/mypartygame/ar_s1.jpg"
-      },
-      "shots": {
-        "ko": [
-          "https://mystudioapps.com/assets/mypartygame/ko_s1.jpg",
-          "https://mystudioapps.com/assets/mypartygame/ko_s2.jpg",
-          "https://mystudioapps.com/assets/mypartygame/ko_s3.jpg",
-          "https://mystudioapps.com/assets/mypartygame/ko_s4.jpg",
-          "https://mystudioapps.com/assets/mypartygame/ko_s5.jpg",
-          "https://mystudioapps.com/assets/mypartygame/ko_s6.jpg",
-          "https://mystudioapps.com/assets/mypartygame/ko_s7.jpg",
-          "https://mystudioapps.com/assets/mypartygame/ko_s8.jpg",
-          "https://mystudioapps.com/assets/mypartygame/ko_s9.jpg",
-          "https://mystudioapps.com/assets/mypartygame/ko_s10.jpg"
-        ],
-        "ja": [
-          "https://mystudioapps.com/assets/mypartygame/ja_s1.jpg",
-          "https://mystudioapps.com/assets/mypartygame/ja_s2.jpg",
-          "https://mystudioapps.com/assets/mypartygame/ja_s3.jpg",
-          "https://mystudioapps.com/assets/mypartygame/ja_s4.jpg",
-          "https://mystudioapps.com/assets/mypartygame/ja_s5.jpg",
-          "https://mystudioapps.com/assets/mypartygame/ja_s6.jpg",
-          "https://mystudioapps.com/assets/mypartygame/ja_s7.jpg",
-          "https://mystudioapps.com/assets/mypartygame/ja_s8.jpg",
-          "https://mystudioapps.com/assets/mypartygame/ja_s9.jpg",
-          "https://mystudioapps.com/assets/mypartygame/ja_s10.jpg"
-        ],
-        "en": [
-          "https://mystudioapps.com/assets/mypartygame/en_s1.jpg",
-          "https://mystudioapps.com/assets/mypartygame/en_s2.jpg",
-          "https://mystudioapps.com/assets/mypartygame/en_s3.jpg",
-          "https://mystudioapps.com/assets/mypartygame/en_s4.jpg",
-          "https://mystudioapps.com/assets/mypartygame/en_s5.jpg",
-          "https://mystudioapps.com/assets/mypartygame/en_s6.jpg",
-          "https://mystudioapps.com/assets/mypartygame/en_s7.jpg",
-          "https://mystudioapps.com/assets/mypartygame/en_s8.jpg",
-          "https://mystudioapps.com/assets/mypartygame/en_s9.jpg",
-          "https://mystudioapps.com/assets/mypartygame/en_s10.jpg"
-        ],
-        "zh-Hant": [
-          "https://mystudioapps.com/assets/mypartygame/zh-Hant_s1.jpg",
-          "https://mystudioapps.com/assets/mypartygame/zh-Hant_s2.jpg",
-          "https://mystudioapps.com/assets/mypartygame/zh-Hant_s3.jpg",
-          "https://mystudioapps.com/assets/mypartygame/zh-Hant_s4.jpg",
-          "https://mystudioapps.com/assets/mypartygame/zh-Hant_s5.jpg",
-          "https://mystudioapps.com/assets/mypartygame/zh-Hant_s6.jpg",
-          "https://mystudioapps.com/assets/mypartygame/zh-Hant_s7.jpg",
-          "https://mystudioapps.com/assets/mypartygame/zh-Hant_s8.jpg",
-          "https://mystudioapps.com/assets/mypartygame/zh-Hant_s9.jpg",
-          "https://mystudioapps.com/assets/mypartygame/zh-Hant_s10.jpg"
-        ],
-        "de": [
-          "https://mystudioapps.com/assets/mypartygame/de_s1.jpg",
-          "https://mystudioapps.com/assets/mypartygame/de_s2.jpg",
-          "https://mystudioapps.com/assets/mypartygame/de_s3.jpg",
-          "https://mystudioapps.com/assets/mypartygame/de_s4.jpg",
-          "https://mystudioapps.com/assets/mypartygame/de_s5.jpg",
-          "https://mystudioapps.com/assets/mypartygame/de_s6.jpg",
-          "https://mystudioapps.com/assets/mypartygame/de_s7.jpg",
-          "https://mystudioapps.com/assets/mypartygame/de_s8.jpg",
-          "https://mystudioapps.com/assets/mypartygame/de_s9.jpg",
-          "https://mystudioapps.com/assets/mypartygame/de_s10.jpg"
-        ],
-        "es": [
-          "https://mystudioapps.com/assets/mypartygame/es_s1.jpg",
-          "https://mystudioapps.com/assets/mypartygame/es_s2.jpg",
-          "https://mystudioapps.com/assets/mypartygame/es_s3.jpg",
-          "https://mystudioapps.com/assets/mypartygame/es_s4.jpg",
-          "https://mystudioapps.com/assets/mypartygame/es_s5.jpg",
-          "https://mystudioapps.com/assets/mypartygame/es_s6.jpg",
-          "https://mystudioapps.com/assets/mypartygame/es_s7.jpg",
-          "https://mystudioapps.com/assets/mypartygame/es_s8.jpg",
-          "https://mystudioapps.com/assets/mypartygame/es_s9.jpg",
-          "https://mystudioapps.com/assets/mypartygame/es_s10.jpg"
-        ],
-        "fr": [
-          "https://mystudioapps.com/assets/mypartygame/fr_s1.jpg",
-          "https://mystudioapps.com/assets/mypartygame/fr_s2.jpg",
-          "https://mystudioapps.com/assets/mypartygame/fr_s3.jpg",
-          "https://mystudioapps.com/assets/mypartygame/fr_s4.jpg",
-          "https://mystudioapps.com/assets/mypartygame/fr_s5.jpg",
-          "https://mystudioapps.com/assets/mypartygame/fr_s6.jpg",
-          "https://mystudioapps.com/assets/mypartygame/fr_s7.jpg",
-          "https://mystudioapps.com/assets/mypartygame/fr_s8.jpg",
-          "https://mystudioapps.com/assets/mypartygame/fr_s9.jpg",
-          "https://mystudioapps.com/assets/mypartygame/fr_s10.jpg"
-        ],
-        "pt": [
-          "https://mystudioapps.com/assets/mypartygame/pt_s1.jpg",
-          "https://mystudioapps.com/assets/mypartygame/pt_s2.jpg",
-          "https://mystudioapps.com/assets/mypartygame/pt_s3.jpg",
-          "https://mystudioapps.com/assets/mypartygame/pt_s4.jpg",
-          "https://mystudioapps.com/assets/mypartygame/pt_s5.jpg",
-          "https://mystudioapps.com/assets/mypartygame/pt_s6.jpg",
-          "https://mystudioapps.com/assets/mypartygame/pt_s7.jpg",
-          "https://mystudioapps.com/assets/mypartygame/pt_s8.jpg",
-          "https://mystudioapps.com/assets/mypartygame/pt_s9.jpg",
-          "https://mystudioapps.com/assets/mypartygame/pt_s10.jpg"
-        ],
-        "ar": [
-          "https://mystudioapps.com/assets/mypartygame/ar_s1.jpg",
-          "https://mystudioapps.com/assets/mypartygame/ar_s2.jpg",
-          "https://mystudioapps.com/assets/mypartygame/ar_s3.jpg",
-          "https://mystudioapps.com/assets/mypartygame/ar_s4.jpg",
-          "https://mystudioapps.com/assets/mypartygame/ar_s5.jpg",
-          "https://mystudioapps.com/assets/mypartygame/ar_s6.jpg",
-          "https://mystudioapps.com/assets/mypartygame/ar_s7.jpg",
-          "https://mystudioapps.com/assets/mypartygame/ar_s8.jpg",
-          "https://mystudioapps.com/assets/mypartygame/ar_s9.jpg",
-          "https://mystudioapps.com/assets/mypartygame/ar_s10.jpg"
-        ]
-      },
-      "store": {
-        "ios": "https://apps.apple.com/app/id6821380529",
-        "android": "https://play.google.com/store/apps/details?id=com.ymc.mypartygame"
-      },
-      "android_live": true,
-      "text": {
-        "ko": {
-          "name": "마이파티게임",
-          "headline": "모여서, 내기할 때, 혼자서도",
-          "tagline": "라이어 게임 · 마피아 · 사다리 타기",
-          "cta": "무료로 받기"
-        },
-        "ja": {
-          "name": "マイパーティーゲーム",
-          "headline": "集まって、賭けて、ひとりでも",
-          "tagline": "うそつき探し・マフィア・あみだくじ",
-          "cta": "無料で入手"
-        },
-        "en": {
-          "headline": "Party games on one phone",
-          "tagline": "Liar Game · Mafia · Spin Wheel",
-          "cta": "Get it free"
-        },
-        "zh-Hant": {
-          "headline": "朋友聚會、打賭、一個人也好玩",
-          "tagline": "派對遊戲 · 轉盤 · 懲罰遊戲",
-          "cta": "免費下載"
-        },
-        "de": {
-          "headline": "Partyspiele auf einem Handy",
-          "tagline": "Partyspiele · Glücksrad · Wetten",
-          "cta": "Kostenlos laden"
-        },
-        "es": {
-          "headline": "Juegos de fiesta en un solo móvil",
-          "tagline": "Juegos de fiesta · Ruleta · Retos",
-          "cta": "Consíguela gratis"
-        },
-        "fr": {
-          "headline": "Jeux de soirée sur un seul téléphone",
-          "tagline": "Jeux de soirée · Roue · Gages",
-          "cta": "Obtenir gratuitement"
-        },
-        "pt": {
-          "headline": "Jogos de festa em um só celular",
-          "tagline": "Jogos de festa · Roleta · Desafios",
-          "cta": "Baixar grátis"
-        },
-        "ar": {
-          "headline": "ألعاب الحفلات على هاتف واحد",
-          "tagline": "ألعاب جماعية · عجلة الحظ · تحديات",
-          "cta": "احصل عليه مجانًا"
-        }
-      },
-      "playable": "https://mystudioapps.com/playable/mypartygame/",
-      "music": "https://mystudioapps.com/assets/mypartygame/ad_music.mp3"
+    "de": {
+     "headline": "3 Minuten am Tag für Nacken & Rücken",
+     "tagline": "Dehnen · Langsam atmen · Schlaf",
+     "cta": "Kostenlos laden"
     },
-    {
-      "id": "myminigame",
-      "name": "MyPocketGames",
-      "icon": "https://mystudioapps.com/assets/myminigame/icon.png",
-      "color": "#1D5FD6",
-      "shot": {
-        "ko": "https://mystudioapps.com/assets/myminigame/ko_s1.jpg",
-        "ja": "https://mystudioapps.com/assets/myminigame/ja_s1.jpg",
-        "en": "https://mystudioapps.com/assets/myminigame/en_s1.jpg",
-        "zh-Hant": "https://mystudioapps.com/assets/myminigame/zh-Hant_s1.jpg",
-        "de": "https://mystudioapps.com/assets/myminigame/de_s1.jpg",
-        "es": "https://mystudioapps.com/assets/myminigame/es_s1.jpg",
-        "fr": "https://mystudioapps.com/assets/myminigame/fr_s1.jpg",
-        "pt": "https://mystudioapps.com/assets/myminigame/pt_s1.jpg",
-        "ar": "https://mystudioapps.com/assets/myminigame/ar_s1.jpg"
-      },
-      "shots": {
-        "ko": [
-          "https://mystudioapps.com/assets/myminigame/ko_s1.jpg",
-          "https://mystudioapps.com/assets/myminigame/ko_s2.jpg",
-          "https://mystudioapps.com/assets/myminigame/ko_s3.jpg",
-          "https://mystudioapps.com/assets/myminigame/ko_s4.jpg",
-          "https://mystudioapps.com/assets/myminigame/ko_s5.jpg",
-          "https://mystudioapps.com/assets/myminigame/ko_s6.jpg",
-          "https://mystudioapps.com/assets/myminigame/ko_s7.jpg",
-          "https://mystudioapps.com/assets/myminigame/ko_s8.jpg",
-          "https://mystudioapps.com/assets/myminigame/ko_s9.jpg",
-          "https://mystudioapps.com/assets/myminigame/ko_s10.jpg"
-        ],
-        "ja": [
-          "https://mystudioapps.com/assets/myminigame/ja_s1.jpg",
-          "https://mystudioapps.com/assets/myminigame/ja_s2.jpg",
-          "https://mystudioapps.com/assets/myminigame/ja_s3.jpg",
-          "https://mystudioapps.com/assets/myminigame/ja_s4.jpg",
-          "https://mystudioapps.com/assets/myminigame/ja_s5.jpg",
-          "https://mystudioapps.com/assets/myminigame/ja_s6.jpg",
-          "https://mystudioapps.com/assets/myminigame/ja_s7.jpg",
-          "https://mystudioapps.com/assets/myminigame/ja_s8.jpg",
-          "https://mystudioapps.com/assets/myminigame/ja_s9.jpg",
-          "https://mystudioapps.com/assets/myminigame/ja_s10.jpg"
-        ],
-        "en": [
-          "https://mystudioapps.com/assets/myminigame/en_s1.jpg",
-          "https://mystudioapps.com/assets/myminigame/en_s2.jpg",
-          "https://mystudioapps.com/assets/myminigame/en_s3.jpg",
-          "https://mystudioapps.com/assets/myminigame/en_s4.jpg",
-          "https://mystudioapps.com/assets/myminigame/en_s5.jpg",
-          "https://mystudioapps.com/assets/myminigame/en_s6.jpg",
-          "https://mystudioapps.com/assets/myminigame/en_s7.jpg",
-          "https://mystudioapps.com/assets/myminigame/en_s8.jpg",
-          "https://mystudioapps.com/assets/myminigame/en_s9.jpg",
-          "https://mystudioapps.com/assets/myminigame/en_s10.jpg"
-        ],
-        "zh-Hant": [
-          "https://mystudioapps.com/assets/myminigame/zh-Hant_s1.jpg",
-          "https://mystudioapps.com/assets/myminigame/zh-Hant_s2.jpg",
-          "https://mystudioapps.com/assets/myminigame/zh-Hant_s3.jpg",
-          "https://mystudioapps.com/assets/myminigame/zh-Hant_s4.jpg",
-          "https://mystudioapps.com/assets/myminigame/zh-Hant_s5.jpg",
-          "https://mystudioapps.com/assets/myminigame/zh-Hant_s6.jpg",
-          "https://mystudioapps.com/assets/myminigame/zh-Hant_s7.jpg",
-          "https://mystudioapps.com/assets/myminigame/zh-Hant_s8.jpg",
-          "https://mystudioapps.com/assets/myminigame/zh-Hant_s9.jpg",
-          "https://mystudioapps.com/assets/myminigame/zh-Hant_s10.jpg"
-        ],
-        "de": [
-          "https://mystudioapps.com/assets/myminigame/de_s1.jpg",
-          "https://mystudioapps.com/assets/myminigame/de_s2.jpg",
-          "https://mystudioapps.com/assets/myminigame/de_s3.jpg",
-          "https://mystudioapps.com/assets/myminigame/de_s4.jpg",
-          "https://mystudioapps.com/assets/myminigame/de_s5.jpg",
-          "https://mystudioapps.com/assets/myminigame/de_s6.jpg",
-          "https://mystudioapps.com/assets/myminigame/de_s7.jpg",
-          "https://mystudioapps.com/assets/myminigame/de_s8.jpg",
-          "https://mystudioapps.com/assets/myminigame/de_s9.jpg",
-          "https://mystudioapps.com/assets/myminigame/de_s10.jpg"
-        ],
-        "es": [
-          "https://mystudioapps.com/assets/myminigame/es_s1.jpg",
-          "https://mystudioapps.com/assets/myminigame/es_s2.jpg",
-          "https://mystudioapps.com/assets/myminigame/es_s3.jpg",
-          "https://mystudioapps.com/assets/myminigame/es_s4.jpg",
-          "https://mystudioapps.com/assets/myminigame/es_s5.jpg",
-          "https://mystudioapps.com/assets/myminigame/es_s6.jpg",
-          "https://mystudioapps.com/assets/myminigame/es_s7.jpg",
-          "https://mystudioapps.com/assets/myminigame/es_s8.jpg",
-          "https://mystudioapps.com/assets/myminigame/es_s9.jpg",
-          "https://mystudioapps.com/assets/myminigame/es_s10.jpg"
-        ],
-        "fr": [
-          "https://mystudioapps.com/assets/myminigame/fr_s1.jpg",
-          "https://mystudioapps.com/assets/myminigame/fr_s2.jpg",
-          "https://mystudioapps.com/assets/myminigame/fr_s3.jpg",
-          "https://mystudioapps.com/assets/myminigame/fr_s4.jpg",
-          "https://mystudioapps.com/assets/myminigame/fr_s5.jpg",
-          "https://mystudioapps.com/assets/myminigame/fr_s6.jpg",
-          "https://mystudioapps.com/assets/myminigame/fr_s7.jpg",
-          "https://mystudioapps.com/assets/myminigame/fr_s8.jpg",
-          "https://mystudioapps.com/assets/myminigame/fr_s9.jpg",
-          "https://mystudioapps.com/assets/myminigame/fr_s10.jpg"
-        ],
-        "pt": [
-          "https://mystudioapps.com/assets/myminigame/pt_s1.jpg",
-          "https://mystudioapps.com/assets/myminigame/pt_s2.jpg",
-          "https://mystudioapps.com/assets/myminigame/pt_s3.jpg",
-          "https://mystudioapps.com/assets/myminigame/pt_s4.jpg",
-          "https://mystudioapps.com/assets/myminigame/pt_s5.jpg",
-          "https://mystudioapps.com/assets/myminigame/pt_s6.jpg",
-          "https://mystudioapps.com/assets/myminigame/pt_s7.jpg",
-          "https://mystudioapps.com/assets/myminigame/pt_s8.jpg",
-          "https://mystudioapps.com/assets/myminigame/pt_s9.jpg",
-          "https://mystudioapps.com/assets/myminigame/pt_s10.jpg"
-        ],
-        "ar": [
-          "https://mystudioapps.com/assets/myminigame/ar_s1.jpg",
-          "https://mystudioapps.com/assets/myminigame/ar_s2.jpg",
-          "https://mystudioapps.com/assets/myminigame/ar_s3.jpg",
-          "https://mystudioapps.com/assets/myminigame/ar_s4.jpg",
-          "https://mystudioapps.com/assets/myminigame/ar_s5.jpg",
-          "https://mystudioapps.com/assets/myminigame/ar_s6.jpg",
-          "https://mystudioapps.com/assets/myminigame/ar_s7.jpg",
-          "https://mystudioapps.com/assets/myminigame/ar_s8.jpg",
-          "https://mystudioapps.com/assets/myminigame/ar_s9.jpg",
-          "https://mystudioapps.com/assets/myminigame/ar_s10.jpg"
-        ]
-      },
-      "store": {
-        "ios": "https://apps.apple.com/app/id6821543762",
-        "android": "https://play.google.com/store/apps/details?id=com.ymc.myminigame"
-      },
-      "android_live": true,
-      "text": {
-        "ko": {
-          "name": "마이포켓게임",
-          "headline": "심심할 때 한 판",
-          "tagline": "아케이드 · 퍼즐 · 두뇌 게임",
-          "cta": "무료로 받기"
-        },
-        "ja": {
-          "name": "マイポケットゲーム",
-          "headline": "ひまな時に1回",
-          "tagline": "アーケード・パズル・脳トレ",
-          "cta": "無料で入手"
-        },
-        "en": {
-          "headline": "Mini games for any break",
-          "tagline": "Arcade · Puzzles · Brain games",
-          "cta": "Get it free"
-        },
-        "zh-Hant": {
-          "headline": "無聊時來一局",
-          "tagline": "街機 · 益智 · 腦力遊戲",
-          "cta": "免費下載"
-        },
-        "de": {
-          "headline": "Minispiele für jede Pause",
-          "tagline": "Arcade · Rätsel · Denkspiele",
-          "cta": "Kostenlos laden"
-        },
-        "es": {
-          "headline": "Minijuegos para cualquier pausa",
-          "tagline": "Arcade · Puzles · Ingenio",
-          "cta": "Consíguela gratis"
-        },
-        "fr": {
-          "headline": "Des mini-jeux pour chaque pause",
-          "tagline": "Arcade · Puzzles · Réflexion",
-          "cta": "Obtenir gratuitement"
-        },
-        "pt": {
-          "headline": "Minijogos para qualquer pausa",
-          "tagline": "Arcade · Quebra-cabeças · Lógica",
-          "cta": "Baixar grátis"
-        },
-        "ar": {
-          "headline": "ألعاب صغيرة لكل استراحة",
-          "tagline": "أركيد · ألغاز · ألعاب ذكاء",
-          "cta": "احصل عليه مجانًا"
-        }
-      },
-      "playable": "https://mystudioapps.com/playable/myminigame/",
-      "music": "https://mystudioapps.com/assets/myminigame/ad_music.mp3"
+    "es": {
+     "headline": "3 minutos al día para cuello y espalda",
+     "tagline": "Estiramientos · Respiración lenta · Sueño",
+     "cta": "Consíguela gratis"
+    },
+    "fr": {
+     "headline": "3 minutes par jour pour nuque et dos",
+     "tagline": "Étirements · Respiration lente · Sommeil",
+     "cta": "Obtenir gratuitement"
+    },
+    "pt": {
+     "headline": "3 minutos por dia para pescoço e costas",
+     "tagline": "Alongamento · Respiração lenta · Sono",
+     "cta": "Baixar grátis"
+    },
+    "ar": {
+     "headline": "3 دقائق يوميًا لراحة الرقبة والظهر",
+     "tagline": "تمدد · تنفس بطيء · نوم",
+     "cta": "احصل عليه مجانًا"
     }
-  ],
-  "interstitial_close_after_sec": 20,
-  "_doc_close": "자체 전면 광고의 닫기 단추가 나오는 시각(초). 2026-10-11 사용자: 7초 → 15초. 2026-10-23 사용자: 15초 → 20초(지금 앱들은 2~15초로 묶어 읽어 다음 버전에서 상한을 올려야 20초가 됨).",
-  "_doc_playable": "2026-10-11 사용자: 우리 앱끼리 전면 광고에 직접 해 보는 체험판(다른 게임 두 번 바뀌고 세 번째는 설치). apps[].playable 이 있으면 자체 전면 차례에 WebView, JS 채널 XPromo(ready · switch:n · install).",
-  "_doc_shots": "2026-10-11 사용자: 스크린샷 자체 광고는 한 장만 말고 넘겨 보며 보게. apps[].shots[lang] = 스토어 스크린샷 순서 목록(첫 장 = shot). 옛 앱은 shot 한 장 그대로 씀.",
-  "_doc_langs": "2026-10-12 사용자: 자체 광고 9개 언어(ko · ja · en · zh-Hant · de · es · fr · pt · ar). 앱은 zh → zh-Hant, 나머지는 언어 코드 그대로, 피드에 없으면 en.",
-  "_doc_music": "2026-10-12 사용자: 스크린샷 자체 광고에도 음악. apps[].music = 그 앱 배경 음악 20초(mp3 128k(flutter_soloud 가 m4a 를 못 읽어 10/12 mp3 로), 끝 1.5초 페이드). 스크린샷 전면이 떠 있는 동안 반복, 닫으면 멈춤, 앱 소리 · 음악을 끈 사용자에겐 틀지 않음. 체험판은 효과음(host=app 이면 바로 시작, sound=0 이면 무음).",
-  "_doc_video": "2026-10-14 밤 사용자 작업 목록(MyPartyGames 6번): 여러 명이 하는 게임은 체험판 대신 시연 영상 광고. apps[].video = {언어: 세로 9:16 mp4 주소}(H.264, 20초 안, 3MB 안), 그 언어가 없으면 en(다른 글과 같은 규칙). 앱은 자체 전면 차례에 그 앱 칸에 video 가 있으면 체험판 · 스크린샷 대신 전체 화면 영상(반복, 설치 단추 늘 보임, 닫기는 interstitial_close_after_sec 뒤). 소리는 스크린샷 광고 음악 규칙과 같게(앱 소리 · 음악을 끈 사용자는 무음, 다른 앱 음악이 돌면 무음). 기록 xpromo_show(kind=video) · xpromo_click · xpromo_close. 영상이 3초 안에 안 뜨면 스크린샷 카드로 대신. 순서: 영상 > 체험판(playable) > 스크린샷. 한 앱 칸에 셋이 다 있어도 영상만 쓴다. 2026-10-15 사용자: MyPartyGames 는 영상 말고 예전처럼 체험판(playable)으로 → mypartygame.video 뺌(영상 파일 xpromo_<언어>_v2.mp4 는 사이트에 남겨 둠, 앱의 영상 기능도 그대로라 다시 넣으면 바로 씀).",
-  "rewarded_per_day": 10,
-  "_doc_rewarded_per_day": "2026-10-25 사용자: 보상형 광고 하루 횟수 3번 → 10번(모든 앱: 피젯 톡톡 · 포켓 구슬 · 파티 별사탕 · 보컬 잠긴 연습 1회). 앱은 이 값을 읽고 없거나 1~50 밖이면 기본 10. 기기 날짜로 세고, 날짜가 바뀌면 다시 센다. 놀이 · 게임마다 한 번인 '광고 보고 한 번 해 보기'는 이 값과 따로(그대로)."
+   },
+   "music": "https://mystudioapps.com/assets/myslowbody/ad_music.mp3"
+  },
+  {
+   "id": "myfidget",
+   "name": "MyFidget",
+   "icon": "https://mystudioapps.com/assets/myfidget/icon.png",
+   "color": "#D9363E",
+   "shot": {
+    "ko": "https://mystudioapps.com/assets/myfidget/ko_s1.jpg",
+    "ja": "https://mystudioapps.com/assets/myfidget/ja_s1.jpg",
+    "en": "https://mystudioapps.com/assets/myfidget/en_s1.jpg",
+    "zh-Hant": "https://mystudioapps.com/assets/myfidget/zh-Hant_s1.jpg",
+    "de": "https://mystudioapps.com/assets/myfidget/de_s1.jpg",
+    "es": "https://mystudioapps.com/assets/myfidget/es_s1.jpg",
+    "fr": "https://mystudioapps.com/assets/myfidget/fr_s1.jpg",
+    "pt": "https://mystudioapps.com/assets/myfidget/pt_s1.jpg",
+    "ar": "https://mystudioapps.com/assets/myfidget/ar_s1.jpg"
+   },
+   "shots": {
+    "ko": [
+     "https://mystudioapps.com/assets/myfidget/ko_s1.jpg",
+     "https://mystudioapps.com/assets/myfidget/ko_s2.jpg",
+     "https://mystudioapps.com/assets/myfidget/ko_s3.jpg",
+     "https://mystudioapps.com/assets/myfidget/ko_s4.jpg",
+     "https://mystudioapps.com/assets/myfidget/ko_s5.jpg",
+     "https://mystudioapps.com/assets/myfidget/ko_s6.jpg",
+     "https://mystudioapps.com/assets/myfidget/ko_s7.jpg",
+     "https://mystudioapps.com/assets/myfidget/ko_s8.jpg",
+     "https://mystudioapps.com/assets/myfidget/ko_s9.jpg",
+     "https://mystudioapps.com/assets/myfidget/ko_s10.jpg"
+    ],
+    "ja": [
+     "https://mystudioapps.com/assets/myfidget/ja_s1.jpg",
+     "https://mystudioapps.com/assets/myfidget/ja_s2.jpg",
+     "https://mystudioapps.com/assets/myfidget/ja_s3.jpg",
+     "https://mystudioapps.com/assets/myfidget/ja_s4.jpg",
+     "https://mystudioapps.com/assets/myfidget/ja_s5.jpg",
+     "https://mystudioapps.com/assets/myfidget/ja_s6.jpg",
+     "https://mystudioapps.com/assets/myfidget/ja_s7.jpg",
+     "https://mystudioapps.com/assets/myfidget/ja_s8.jpg",
+     "https://mystudioapps.com/assets/myfidget/ja_s9.jpg",
+     "https://mystudioapps.com/assets/myfidget/ja_s10.jpg"
+    ],
+    "en": [
+     "https://mystudioapps.com/assets/myfidget/en_s1.jpg",
+     "https://mystudioapps.com/assets/myfidget/en_s2.jpg",
+     "https://mystudioapps.com/assets/myfidget/en_s3.jpg",
+     "https://mystudioapps.com/assets/myfidget/en_s4.jpg",
+     "https://mystudioapps.com/assets/myfidget/en_s5.jpg",
+     "https://mystudioapps.com/assets/myfidget/en_s6.jpg",
+     "https://mystudioapps.com/assets/myfidget/en_s7.jpg",
+     "https://mystudioapps.com/assets/myfidget/en_s8.jpg",
+     "https://mystudioapps.com/assets/myfidget/en_s9.jpg",
+     "https://mystudioapps.com/assets/myfidget/en_s10.jpg"
+    ],
+    "zh-Hant": [
+     "https://mystudioapps.com/assets/myfidget/zh-Hant_s1.jpg",
+     "https://mystudioapps.com/assets/myfidget/zh-Hant_s2.jpg",
+     "https://mystudioapps.com/assets/myfidget/zh-Hant_s3.jpg",
+     "https://mystudioapps.com/assets/myfidget/zh-Hant_s4.jpg",
+     "https://mystudioapps.com/assets/myfidget/zh-Hant_s5.jpg",
+     "https://mystudioapps.com/assets/myfidget/zh-Hant_s6.jpg",
+     "https://mystudioapps.com/assets/myfidget/zh-Hant_s7.jpg",
+     "https://mystudioapps.com/assets/myfidget/zh-Hant_s8.jpg",
+     "https://mystudioapps.com/assets/myfidget/zh-Hant_s9.jpg",
+     "https://mystudioapps.com/assets/myfidget/zh-Hant_s10.jpg"
+    ],
+    "de": [
+     "https://mystudioapps.com/assets/myfidget/de_s1.jpg",
+     "https://mystudioapps.com/assets/myfidget/de_s2.jpg",
+     "https://mystudioapps.com/assets/myfidget/de_s3.jpg",
+     "https://mystudioapps.com/assets/myfidget/de_s4.jpg",
+     "https://mystudioapps.com/assets/myfidget/de_s5.jpg",
+     "https://mystudioapps.com/assets/myfidget/de_s6.jpg",
+     "https://mystudioapps.com/assets/myfidget/de_s7.jpg",
+     "https://mystudioapps.com/assets/myfidget/de_s8.jpg",
+     "https://mystudioapps.com/assets/myfidget/de_s9.jpg",
+     "https://mystudioapps.com/assets/myfidget/de_s10.jpg"
+    ],
+    "es": [
+     "https://mystudioapps.com/assets/myfidget/es_s1.jpg",
+     "https://mystudioapps.com/assets/myfidget/es_s2.jpg",
+     "https://mystudioapps.com/assets/myfidget/es_s3.jpg",
+     "https://mystudioapps.com/assets/myfidget/es_s4.jpg",
+     "https://mystudioapps.com/assets/myfidget/es_s5.jpg",
+     "https://mystudioapps.com/assets/myfidget/es_s6.jpg",
+     "https://mystudioapps.com/assets/myfidget/es_s7.jpg",
+     "https://mystudioapps.com/assets/myfidget/es_s8.jpg",
+     "https://mystudioapps.com/assets/myfidget/es_s9.jpg",
+     "https://mystudioapps.com/assets/myfidget/es_s10.jpg"
+    ],
+    "fr": [
+     "https://mystudioapps.com/assets/myfidget/fr_s1.jpg",
+     "https://mystudioapps.com/assets/myfidget/fr_s2.jpg",
+     "https://mystudioapps.com/assets/myfidget/fr_s3.jpg",
+     "https://mystudioapps.com/assets/myfidget/fr_s4.jpg",
+     "https://mystudioapps.com/assets/myfidget/fr_s5.jpg",
+     "https://mystudioapps.com/assets/myfidget/fr_s6.jpg",
+     "https://mystudioapps.com/assets/myfidget/fr_s7.jpg",
+     "https://mystudioapps.com/assets/myfidget/fr_s8.jpg",
+     "https://mystudioapps.com/assets/myfidget/fr_s9.jpg",
+     "https://mystudioapps.com/assets/myfidget/fr_s10.jpg"
+    ],
+    "pt": [
+     "https://mystudioapps.com/assets/myfidget/pt_s1.jpg",
+     "https://mystudioapps.com/assets/myfidget/pt_s2.jpg",
+     "https://mystudioapps.com/assets/myfidget/pt_s3.jpg",
+     "https://mystudioapps.com/assets/myfidget/pt_s4.jpg",
+     "https://mystudioapps.com/assets/myfidget/pt_s5.jpg",
+     "https://mystudioapps.com/assets/myfidget/pt_s6.jpg",
+     "https://mystudioapps.com/assets/myfidget/pt_s7.jpg",
+     "https://mystudioapps.com/assets/myfidget/pt_s8.jpg",
+     "https://mystudioapps.com/assets/myfidget/pt_s9.jpg",
+     "https://mystudioapps.com/assets/myfidget/pt_s10.jpg"
+    ],
+    "ar": [
+     "https://mystudioapps.com/assets/myfidget/ar_s1.jpg",
+     "https://mystudioapps.com/assets/myfidget/ar_s2.jpg",
+     "https://mystudioapps.com/assets/myfidget/ar_s3.jpg",
+     "https://mystudioapps.com/assets/myfidget/ar_s4.jpg",
+     "https://mystudioapps.com/assets/myfidget/ar_s5.jpg",
+     "https://mystudioapps.com/assets/myfidget/ar_s6.jpg",
+     "https://mystudioapps.com/assets/myfidget/ar_s7.jpg",
+     "https://mystudioapps.com/assets/myfidget/ar_s8.jpg",
+     "https://mystudioapps.com/assets/myfidget/ar_s9.jpg",
+     "https://mystudioapps.com/assets/myfidget/ar_s10.jpg"
+    ]
+   },
+   "store": {
+    "ios": "https://apps.apple.com/app/id6819669400",
+    "android": "https://play.google.com/store/apps/details?id=com.ymc.myfidget"
+   },
+   "text": {
+    "ko": {
+     "name": "마이피젯",
+     "headline": "내 손안의 장난감, 스트레스 해소",
+     "tagline": "피젯 토이 · 팝잇 · 뽁뽁이",
+     "cta": "무료로 받기"
+    },
+    "ja": {
+     "name": "マイフィジェット",
+     "headline": "手のひらのおもちゃでストレス解消",
+     "tagline": "フィジェット・プチプチ・プッシュポップ",
+     "cta": "無料で入手"
+    },
+    "en": {
+     "headline": "A little toy in your hand",
+     "tagline": "Stress relief fidget toys",
+     "cta": "Get it free"
+    },
+    "zh-Hant": {
+     "headline": "掌心裡的小玩具，釋放壓力",
+     "tagline": "指尖玩具 · 泡泡板 · 氣泡紙",
+     "cta": "免費下載"
+    },
+    "de": {
+     "headline": "Ein kleines Spielzeug für deine Hand",
+     "tagline": "Antistress-Spielzeug & Pop it",
+     "cta": "Kostenlos laden"
+    },
+    "es": {
+     "headline": "Un pequeño juguete en tu mano",
+     "tagline": "Juguetes antiestrés y pop it",
+     "cta": "Consíguela gratis"
+    },
+    "fr": {
+     "headline": "Un petit jouet dans ta main",
+     "tagline": "Jouets anti-stress et pop it",
+     "cta": "Obtenir gratuitement"
+    },
+    "pt": {
+     "headline": "Um brinquedinho na sua mão",
+     "tagline": "Pop it e fidget antiestresse",
+     "cta": "Baixar grátis"
+    },
+    "ar": {
+     "headline": "لعبة صغيرة في يدك",
+     "tagline": "ألعاب فيدجت لتخفيف التوتر",
+     "cta": "احصل عليه مجانًا"
+    }
+   },
+   "playable": "https://mystudioapps.com/playable/myfidget/",
+   "music": "https://mystudioapps.com/assets/myfidget/ad_music.mp3"
+  },
+  {
+   "id": "myvocal",
+   "name": "MyVocal",
+   "icon": "https://mystudioapps.com/assets/myvocal/icon.png",
+   "color": "#1F8F5F",
+   "shot": {
+    "ko": "https://mystudioapps.com/assets/myvocal/ko_s1.jpg",
+    "ja": "https://mystudioapps.com/assets/myvocal/ja_s1.jpg",
+    "en": "https://mystudioapps.com/assets/myvocal/en_s1.jpg",
+    "zh-Hant": "https://mystudioapps.com/assets/myvocal/zh-Hant_s1.jpg",
+    "de": "https://mystudioapps.com/assets/myvocal/de_s1.jpg",
+    "es": "https://mystudioapps.com/assets/myvocal/es_s1.jpg",
+    "fr": "https://mystudioapps.com/assets/myvocal/fr_s1.jpg",
+    "pt": "https://mystudioapps.com/assets/myvocal/pt_s1.jpg",
+    "ar": "https://mystudioapps.com/assets/myvocal/ar_s1.jpg"
+   },
+   "shots": {
+    "ko": [
+     "https://mystudioapps.com/assets/myvocal/ko_s1.jpg",
+     "https://mystudioapps.com/assets/myvocal/ko_s2.jpg",
+     "https://mystudioapps.com/assets/myvocal/ko_s3.jpg",
+     "https://mystudioapps.com/assets/myvocal/ko_s4.jpg",
+     "https://mystudioapps.com/assets/myvocal/ko_s5.jpg",
+     "https://mystudioapps.com/assets/myvocal/ko_s6.jpg",
+     "https://mystudioapps.com/assets/myvocal/ko_s7.jpg",
+     "https://mystudioapps.com/assets/myvocal/ko_s8.jpg",
+     "https://mystudioapps.com/assets/myvocal/ko_s9.jpg",
+     "https://mystudioapps.com/assets/myvocal/ko_s10.jpg"
+    ],
+    "ja": [
+     "https://mystudioapps.com/assets/myvocal/ja_s1.jpg",
+     "https://mystudioapps.com/assets/myvocal/ja_s2.jpg",
+     "https://mystudioapps.com/assets/myvocal/ja_s3.jpg",
+     "https://mystudioapps.com/assets/myvocal/ja_s4.jpg",
+     "https://mystudioapps.com/assets/myvocal/ja_s5.jpg",
+     "https://mystudioapps.com/assets/myvocal/ja_s6.jpg",
+     "https://mystudioapps.com/assets/myvocal/ja_s7.jpg",
+     "https://mystudioapps.com/assets/myvocal/ja_s8.jpg",
+     "https://mystudioapps.com/assets/myvocal/ja_s9.jpg",
+     "https://mystudioapps.com/assets/myvocal/ja_s10.jpg"
+    ],
+    "en": [
+     "https://mystudioapps.com/assets/myvocal/en_s1.jpg",
+     "https://mystudioapps.com/assets/myvocal/en_s2.jpg",
+     "https://mystudioapps.com/assets/myvocal/en_s3.jpg",
+     "https://mystudioapps.com/assets/myvocal/en_s4.jpg",
+     "https://mystudioapps.com/assets/myvocal/en_s5.jpg",
+     "https://mystudioapps.com/assets/myvocal/en_s6.jpg",
+     "https://mystudioapps.com/assets/myvocal/en_s7.jpg",
+     "https://mystudioapps.com/assets/myvocal/en_s8.jpg",
+     "https://mystudioapps.com/assets/myvocal/en_s9.jpg",
+     "https://mystudioapps.com/assets/myvocal/en_s10.jpg"
+    ],
+    "zh-Hant": [
+     "https://mystudioapps.com/assets/myvocal/zh-Hant_s1.jpg",
+     "https://mystudioapps.com/assets/myvocal/zh-Hant_s2.jpg",
+     "https://mystudioapps.com/assets/myvocal/zh-Hant_s3.jpg",
+     "https://mystudioapps.com/assets/myvocal/zh-Hant_s4.jpg",
+     "https://mystudioapps.com/assets/myvocal/zh-Hant_s5.jpg",
+     "https://mystudioapps.com/assets/myvocal/zh-Hant_s6.jpg",
+     "https://mystudioapps.com/assets/myvocal/zh-Hant_s7.jpg",
+     "https://mystudioapps.com/assets/myvocal/zh-Hant_s8.jpg",
+     "https://mystudioapps.com/assets/myvocal/zh-Hant_s9.jpg",
+     "https://mystudioapps.com/assets/myvocal/zh-Hant_s10.jpg"
+    ],
+    "de": [
+     "https://mystudioapps.com/assets/myvocal/de_s1.jpg",
+     "https://mystudioapps.com/assets/myvocal/de_s2.jpg",
+     "https://mystudioapps.com/assets/myvocal/de_s3.jpg",
+     "https://mystudioapps.com/assets/myvocal/de_s4.jpg",
+     "https://mystudioapps.com/assets/myvocal/de_s5.jpg",
+     "https://mystudioapps.com/assets/myvocal/de_s6.jpg",
+     "https://mystudioapps.com/assets/myvocal/de_s7.jpg",
+     "https://mystudioapps.com/assets/myvocal/de_s8.jpg",
+     "https://mystudioapps.com/assets/myvocal/de_s9.jpg",
+     "https://mystudioapps.com/assets/myvocal/de_s10.jpg"
+    ],
+    "es": [
+     "https://mystudioapps.com/assets/myvocal/es_s1.jpg",
+     "https://mystudioapps.com/assets/myvocal/es_s2.jpg",
+     "https://mystudioapps.com/assets/myvocal/es_s3.jpg",
+     "https://mystudioapps.com/assets/myvocal/es_s4.jpg",
+     "https://mystudioapps.com/assets/myvocal/es_s5.jpg",
+     "https://mystudioapps.com/assets/myvocal/es_s6.jpg",
+     "https://mystudioapps.com/assets/myvocal/es_s7.jpg",
+     "https://mystudioapps.com/assets/myvocal/es_s8.jpg",
+     "https://mystudioapps.com/assets/myvocal/es_s9.jpg",
+     "https://mystudioapps.com/assets/myvocal/es_s10.jpg"
+    ],
+    "fr": [
+     "https://mystudioapps.com/assets/myvocal/fr_s1.jpg",
+     "https://mystudioapps.com/assets/myvocal/fr_s2.jpg",
+     "https://mystudioapps.com/assets/myvocal/fr_s3.jpg",
+     "https://mystudioapps.com/assets/myvocal/fr_s4.jpg",
+     "https://mystudioapps.com/assets/myvocal/fr_s5.jpg",
+     "https://mystudioapps.com/assets/myvocal/fr_s6.jpg",
+     "https://mystudioapps.com/assets/myvocal/fr_s7.jpg",
+     "https://mystudioapps.com/assets/myvocal/fr_s8.jpg",
+     "https://mystudioapps.com/assets/myvocal/fr_s9.jpg",
+     "https://mystudioapps.com/assets/myvocal/fr_s10.jpg"
+    ],
+    "pt": [
+     "https://mystudioapps.com/assets/myvocal/pt_s1.jpg",
+     "https://mystudioapps.com/assets/myvocal/pt_s2.jpg",
+     "https://mystudioapps.com/assets/myvocal/pt_s3.jpg",
+     "https://mystudioapps.com/assets/myvocal/pt_s4.jpg",
+     "https://mystudioapps.com/assets/myvocal/pt_s5.jpg",
+     "https://mystudioapps.com/assets/myvocal/pt_s6.jpg",
+     "https://mystudioapps.com/assets/myvocal/pt_s7.jpg",
+     "https://mystudioapps.com/assets/myvocal/pt_s8.jpg",
+     "https://mystudioapps.com/assets/myvocal/pt_s9.jpg",
+     "https://mystudioapps.com/assets/myvocal/pt_s10.jpg"
+    ],
+    "ar": [
+     "https://mystudioapps.com/assets/myvocal/ar_s1.jpg",
+     "https://mystudioapps.com/assets/myvocal/ar_s2.jpg",
+     "https://mystudioapps.com/assets/myvocal/ar_s3.jpg",
+     "https://mystudioapps.com/assets/myvocal/ar_s4.jpg",
+     "https://mystudioapps.com/assets/myvocal/ar_s5.jpg",
+     "https://mystudioapps.com/assets/myvocal/ar_s6.jpg",
+     "https://mystudioapps.com/assets/myvocal/ar_s7.jpg",
+     "https://mystudioapps.com/assets/myvocal/ar_s8.jpg",
+     "https://mystudioapps.com/assets/myvocal/ar_s9.jpg",
+     "https://mystudioapps.com/assets/myvocal/ar_s10.jpg"
+    ]
+   },
+   "store": {
+    "ios": "https://apps.apple.com/app/id6820647919",
+    "android": "https://play.google.com/store/apps/details?id=com.ymc.myvocal"
+   },
+   "android_live": true,
+   "text": {
+    "ko": {
+     "name": "마이보컬",
+     "headline": "매일 하는 보컬 기본기 훈련",
+     "tagline": "발성 연습 · 음정 트레이닝 · 목풀기",
+     "cta": "무료로 받기"
+    },
+    "ja": {
+     "name": "マイボーカル",
+     "headline": "毎日のボーカル基礎トレーニング",
+     "tagline": "ボイトレ・発声練習・音程",
+     "cta": "無料で入手"
+    },
+    "en": {
+     "headline": "Train singing basics daily",
+     "tagline": "Vocal warm up · Pitch",
+     "cta": "Get it free"
+    },
+    "zh-Hant": {
+     "headline": "每天練習的歌唱基本功",
+     "tagline": "發聲練習 · 音準訓練 · 開嗓",
+     "cta": "免費下載"
+    },
+    "de": {
+     "headline": "Tägliches Gesangstraining für die Basics",
+     "tagline": "Einsingen · Intonation",
+     "cta": "Kostenlos laden"
+    },
+    "es": {
+     "headline": "Entrenamiento vocal básico cada día",
+     "tagline": "Calentamiento vocal · Afinación",
+     "cta": "Consíguela gratis"
+    },
+    "fr": {
+     "headline": "Les bases du chant, chaque jour",
+     "tagline": "Échauffement vocal · Justesse",
+     "cta": "Obtenir gratuitement"
+    },
+    "pt": {
+     "headline": "Treino diário do básico do canto",
+     "tagline": "Aquecimento vocal · Afinação",
+     "cta": "Baixar grátis"
+    },
+    "ar": {
+     "headline": "تدريب يومي على أساسيات الغناء",
+     "tagline": "إحماء الصوت · ضبط النغمة",
+     "cta": "احصل عليه مجانًا"
+    }
+   },
+   "music": "https://mystudioapps.com/assets/myvocal/ad_music.mp3"
+  },
+  {
+   "id": "myslowsleep",
+   "name": "MySlowSleep",
+   "icon": "https://mystudioapps.com/assets/myslowsleep/icon.png",
+   "color": "#1A1B3A",
+   "shot": {
+    "ko": "https://mystudioapps.com/assets/myslowsleep/ko_s1.jpg",
+    "ja": "https://mystudioapps.com/assets/myslowsleep/ja_s1.jpg",
+    "en": "https://mystudioapps.com/assets/myslowsleep/en_s1.jpg",
+    "zh-Hant": "https://mystudioapps.com/assets/myslowsleep/zh-Hant_s1.jpg",
+    "de": "https://mystudioapps.com/assets/myslowsleep/de_s1.jpg",
+    "es": "https://mystudioapps.com/assets/myslowsleep/es_s1.jpg",
+    "fr": "https://mystudioapps.com/assets/myslowsleep/fr_s1.jpg",
+    "pt": "https://mystudioapps.com/assets/myslowsleep/pt_s1.jpg",
+    "ar": "https://mystudioapps.com/assets/myslowsleep/ar_s1.jpg"
+   },
+   "shots": {
+    "ko": [
+     "https://mystudioapps.com/assets/myslowsleep/ko_s1.jpg",
+     "https://mystudioapps.com/assets/myslowsleep/ko_s2.jpg",
+     "https://mystudioapps.com/assets/myslowsleep/ko_s3.jpg",
+     "https://mystudioapps.com/assets/myslowsleep/ko_s4.jpg",
+     "https://mystudioapps.com/assets/myslowsleep/ko_s5.jpg",
+     "https://mystudioapps.com/assets/myslowsleep/ko_s6.jpg"
+    ],
+    "ja": [
+     "https://mystudioapps.com/assets/myslowsleep/ja_s1.jpg",
+     "https://mystudioapps.com/assets/myslowsleep/ja_s2.jpg",
+     "https://mystudioapps.com/assets/myslowsleep/ja_s3.jpg",
+     "https://mystudioapps.com/assets/myslowsleep/ja_s4.jpg",
+     "https://mystudioapps.com/assets/myslowsleep/ja_s5.jpg",
+     "https://mystudioapps.com/assets/myslowsleep/ja_s6.jpg"
+    ],
+    "en": [
+     "https://mystudioapps.com/assets/myslowsleep/en_s1.jpg",
+     "https://mystudioapps.com/assets/myslowsleep/en_s2.jpg",
+     "https://mystudioapps.com/assets/myslowsleep/en_s3.jpg",
+     "https://mystudioapps.com/assets/myslowsleep/en_s4.jpg",
+     "https://mystudioapps.com/assets/myslowsleep/en_s5.jpg",
+     "https://mystudioapps.com/assets/myslowsleep/en_s6.jpg"
+    ],
+    "zh-Hant": [
+     "https://mystudioapps.com/assets/myslowsleep/zh-Hant_s1.jpg",
+     "https://mystudioapps.com/assets/myslowsleep/zh-Hant_s2.jpg",
+     "https://mystudioapps.com/assets/myslowsleep/zh-Hant_s3.jpg",
+     "https://mystudioapps.com/assets/myslowsleep/zh-Hant_s4.jpg",
+     "https://mystudioapps.com/assets/myslowsleep/zh-Hant_s5.jpg",
+     "https://mystudioapps.com/assets/myslowsleep/zh-Hant_s6.jpg"
+    ],
+    "de": [
+     "https://mystudioapps.com/assets/myslowsleep/de_s1.jpg",
+     "https://mystudioapps.com/assets/myslowsleep/de_s2.jpg",
+     "https://mystudioapps.com/assets/myslowsleep/de_s3.jpg",
+     "https://mystudioapps.com/assets/myslowsleep/de_s4.jpg",
+     "https://mystudioapps.com/assets/myslowsleep/de_s5.jpg",
+     "https://mystudioapps.com/assets/myslowsleep/de_s6.jpg"
+    ],
+    "es": [
+     "https://mystudioapps.com/assets/myslowsleep/es_s1.jpg",
+     "https://mystudioapps.com/assets/myslowsleep/es_s2.jpg",
+     "https://mystudioapps.com/assets/myslowsleep/es_s3.jpg",
+     "https://mystudioapps.com/assets/myslowsleep/es_s4.jpg",
+     "https://mystudioapps.com/assets/myslowsleep/es_s5.jpg",
+     "https://mystudioapps.com/assets/myslowsleep/es_s6.jpg"
+    ],
+    "fr": [
+     "https://mystudioapps.com/assets/myslowsleep/fr_s1.jpg",
+     "https://mystudioapps.com/assets/myslowsleep/fr_s2.jpg",
+     "https://mystudioapps.com/assets/myslowsleep/fr_s3.jpg",
+     "https://mystudioapps.com/assets/myslowsleep/fr_s4.jpg",
+     "https://mystudioapps.com/assets/myslowsleep/fr_s5.jpg",
+     "https://mystudioapps.com/assets/myslowsleep/fr_s6.jpg"
+    ],
+    "pt": [
+     "https://mystudioapps.com/assets/myslowsleep/pt_s1.jpg",
+     "https://mystudioapps.com/assets/myslowsleep/pt_s2.jpg",
+     "https://mystudioapps.com/assets/myslowsleep/pt_s3.jpg",
+     "https://mystudioapps.com/assets/myslowsleep/pt_s4.jpg",
+     "https://mystudioapps.com/assets/myslowsleep/pt_s5.jpg",
+     "https://mystudioapps.com/assets/myslowsleep/pt_s6.jpg"
+    ],
+    "ar": [
+     "https://mystudioapps.com/assets/myslowsleep/ar_s1.jpg",
+     "https://mystudioapps.com/assets/myslowsleep/ar_s2.jpg",
+     "https://mystudioapps.com/assets/myslowsleep/ar_s3.jpg",
+     "https://mystudioapps.com/assets/myslowsleep/ar_s4.jpg",
+     "https://mystudioapps.com/assets/myslowsleep/ar_s5.jpg",
+     "https://mystudioapps.com/assets/myslowsleep/ar_s6.jpg"
+    ]
+   },
+   "store": {
+    "ios": "https://apps.apple.com/app/id6819059115",
+    "android": "https://play.google.com/store/apps/details?id=com.ymc.myslowsleep"
+   },
+   "text": {
+    "ko": {
+     "name": "마이슬로우슬립",
+     "headline": "불을 끄고, 달을 켜요",
+     "tagline": "수면 소리 · 빗소리 · 호흡",
+     "cta": "자세히 보기"
+    },
+    "ja": {
+     "name": "マイスロースリープ",
+     "headline": "灯りを消して、月をともす",
+     "tagline": "睡眠音・雨音・呼吸",
+     "cta": "詳しく見る"
+    },
+    "en": {
+     "headline": "Lights off. Moon on.",
+     "tagline": "Sleep sounds · Rain · Breathing",
+     "cta": "Learn more"
+    },
+    "zh-Hant": {
+     "headline": "關上燈，點亮月亮",
+     "tagline": "助眠聲音 · 雨聲 · 呼吸",
+     "cta": "了解更多"
+    },
+    "de": {
+     "headline": "Licht aus. Mond an.",
+     "tagline": "Schlafklänge · Regen · Atmen",
+     "cta": "Mehr erfahren"
+    },
+    "es": {
+     "headline": "Apaga la luz. Enciende la luna.",
+     "tagline": "Sonidos para dormir · Lluvia · Respiración",
+     "cta": "Más información"
+    },
+    "fr": {
+     "headline": "Éteins la lumière. Allume la lune.",
+     "tagline": "Sons pour dormir · Pluie · Respiration",
+     "cta": "En savoir plus"
+    },
+    "pt": {
+     "headline": "Apague a luz. Acenda a lua.",
+     "tagline": "Sons para dormir · Chuva · Respiração",
+     "cta": "Saiba mais"
+    },
+    "ar": {
+     "headline": "أطفئ الضوء، وأشعل القمر",
+     "tagline": "أصوات النوم · المطر · التنفس",
+     "cta": "اعرف المزيد"
+    }
+   },
+   "music": "https://mystudioapps.com/assets/myslowsleep/ad_music.mp3"
+  },
+  {
+   "id": "mypartygame",
+   "name": "MyPartyGames",
+   "icon": "https://mystudioapps.com/assets/mypartygame/icon.png",
+   "color": "#2FC85E",
+   "shot": {
+    "ko": "https://mystudioapps.com/assets/mypartygame/ko_s1.jpg",
+    "ja": "https://mystudioapps.com/assets/mypartygame/ja_s1.jpg",
+    "en": "https://mystudioapps.com/assets/mypartygame/en_s1.jpg",
+    "zh-Hant": "https://mystudioapps.com/assets/mypartygame/zh-Hant_s1.jpg",
+    "de": "https://mystudioapps.com/assets/mypartygame/de_s1.jpg",
+    "es": "https://mystudioapps.com/assets/mypartygame/es_s1.jpg",
+    "fr": "https://mystudioapps.com/assets/mypartygame/fr_s1.jpg",
+    "pt": "https://mystudioapps.com/assets/mypartygame/pt_s1.jpg",
+    "ar": "https://mystudioapps.com/assets/mypartygame/ar_s1.jpg"
+   },
+   "shots": {
+    "ko": [
+     "https://mystudioapps.com/assets/mypartygame/ko_s1.jpg",
+     "https://mystudioapps.com/assets/mypartygame/ko_s2.jpg",
+     "https://mystudioapps.com/assets/mypartygame/ko_s3.jpg",
+     "https://mystudioapps.com/assets/mypartygame/ko_s4.jpg",
+     "https://mystudioapps.com/assets/mypartygame/ko_s5.jpg",
+     "https://mystudioapps.com/assets/mypartygame/ko_s6.jpg",
+     "https://mystudioapps.com/assets/mypartygame/ko_s7.jpg",
+     "https://mystudioapps.com/assets/mypartygame/ko_s8.jpg",
+     "https://mystudioapps.com/assets/mypartygame/ko_s9.jpg",
+     "https://mystudioapps.com/assets/mypartygame/ko_s10.jpg"
+    ],
+    "ja": [
+     "https://mystudioapps.com/assets/mypartygame/ja_s1.jpg",
+     "https://mystudioapps.com/assets/mypartygame/ja_s2.jpg",
+     "https://mystudioapps.com/assets/mypartygame/ja_s3.jpg",
+     "https://mystudioapps.com/assets/mypartygame/ja_s4.jpg",
+     "https://mystudioapps.com/assets/mypartygame/ja_s5.jpg",
+     "https://mystudioapps.com/assets/mypartygame/ja_s6.jpg",
+     "https://mystudioapps.com/assets/mypartygame/ja_s7.jpg",
+     "https://mystudioapps.com/assets/mypartygame/ja_s8.jpg",
+     "https://mystudioapps.com/assets/mypartygame/ja_s9.jpg",
+     "https://mystudioapps.com/assets/mypartygame/ja_s10.jpg"
+    ],
+    "en": [
+     "https://mystudioapps.com/assets/mypartygame/en_s1.jpg",
+     "https://mystudioapps.com/assets/mypartygame/en_s2.jpg",
+     "https://mystudioapps.com/assets/mypartygame/en_s3.jpg",
+     "https://mystudioapps.com/assets/mypartygame/en_s4.jpg",
+     "https://mystudioapps.com/assets/mypartygame/en_s5.jpg",
+     "https://mystudioapps.com/assets/mypartygame/en_s6.jpg",
+     "https://mystudioapps.com/assets/mypartygame/en_s7.jpg",
+     "https://mystudioapps.com/assets/mypartygame/en_s8.jpg",
+     "https://mystudioapps.com/assets/mypartygame/en_s9.jpg",
+     "https://mystudioapps.com/assets/mypartygame/en_s10.jpg"
+    ],
+    "zh-Hant": [
+     "https://mystudioapps.com/assets/mypartygame/zh-Hant_s1.jpg",
+     "https://mystudioapps.com/assets/mypartygame/zh-Hant_s2.jpg",
+     "https://mystudioapps.com/assets/mypartygame/zh-Hant_s3.jpg",
+     "https://mystudioapps.com/assets/mypartygame/zh-Hant_s4.jpg",
+     "https://mystudioapps.com/assets/mypartygame/zh-Hant_s5.jpg",
+     "https://mystudioapps.com/assets/mypartygame/zh-Hant_s6.jpg",
+     "https://mystudioapps.com/assets/mypartygame/zh-Hant_s7.jpg",
+     "https://mystudioapps.com/assets/mypartygame/zh-Hant_s8.jpg",
+     "https://mystudioapps.com/assets/mypartygame/zh-Hant_s9.jpg",
+     "https://mystudioapps.com/assets/mypartygame/zh-Hant_s10.jpg"
+    ],
+    "de": [
+     "https://mystudioapps.com/assets/mypartygame/de_s1.jpg",
+     "https://mystudioapps.com/assets/mypartygame/de_s2.jpg",
+     "https://mystudioapps.com/assets/mypartygame/de_s3.jpg",
+     "https://mystudioapps.com/assets/mypartygame/de_s4.jpg",
+     "https://mystudioapps.com/assets/mypartygame/de_s5.jpg",
+     "https://mystudioapps.com/assets/mypartygame/de_s6.jpg",
+     "https://mystudioapps.com/assets/mypartygame/de_s7.jpg",
+     "https://mystudioapps.com/assets/mypartygame/de_s8.jpg",
+     "https://mystudioapps.com/assets/mypartygame/de_s9.jpg",
+     "https://mystudioapps.com/assets/mypartygame/de_s10.jpg"
+    ],
+    "es": [
+     "https://mystudioapps.com/assets/mypartygame/es_s1.jpg",
+     "https://mystudioapps.com/assets/mypartygame/es_s2.jpg",
+     "https://mystudioapps.com/assets/mypartygame/es_s3.jpg",
+     "https://mystudioapps.com/assets/mypartygame/es_s4.jpg",
+     "https://mystudioapps.com/assets/mypartygame/es_s5.jpg",
+     "https://mystudioapps.com/assets/mypartygame/es_s6.jpg",
+     "https://mystudioapps.com/assets/mypartygame/es_s7.jpg",
+     "https://mystudioapps.com/assets/mypartygame/es_s8.jpg",
+     "https://mystudioapps.com/assets/mypartygame/es_s9.jpg",
+     "https://mystudioapps.com/assets/mypartygame/es_s10.jpg"
+    ],
+    "fr": [
+     "https://mystudioapps.com/assets/mypartygame/fr_s1.jpg",
+     "https://mystudioapps.com/assets/mypartygame/fr_s2.jpg",
+     "https://mystudioapps.com/assets/mypartygame/fr_s3.jpg",
+     "https://mystudioapps.com/assets/mypartygame/fr_s4.jpg",
+     "https://mystudioapps.com/assets/mypartygame/fr_s5.jpg",
+     "https://mystudioapps.com/assets/mypartygame/fr_s6.jpg",
+     "https://mystudioapps.com/assets/mypartygame/fr_s7.jpg",
+     "https://mystudioapps.com/assets/mypartygame/fr_s8.jpg",
+     "https://mystudioapps.com/assets/mypartygame/fr_s9.jpg",
+     "https://mystudioapps.com/assets/mypartygame/fr_s10.jpg"
+    ],
+    "pt": [
+     "https://mystudioapps.com/assets/mypartygame/pt_s1.jpg",
+     "https://mystudioapps.com/assets/mypartygame/pt_s2.jpg",
+     "https://mystudioapps.com/assets/mypartygame/pt_s3.jpg",
+     "https://mystudioapps.com/assets/mypartygame/pt_s4.jpg",
+     "https://mystudioapps.com/assets/mypartygame/pt_s5.jpg",
+     "https://mystudioapps.com/assets/mypartygame/pt_s6.jpg",
+     "https://mystudioapps.com/assets/mypartygame/pt_s7.jpg",
+     "https://mystudioapps.com/assets/mypartygame/pt_s8.jpg",
+     "https://mystudioapps.com/assets/mypartygame/pt_s9.jpg",
+     "https://mystudioapps.com/assets/mypartygame/pt_s10.jpg"
+    ],
+    "ar": [
+     "https://mystudioapps.com/assets/mypartygame/ar_s1.jpg",
+     "https://mystudioapps.com/assets/mypartygame/ar_s2.jpg",
+     "https://mystudioapps.com/assets/mypartygame/ar_s3.jpg",
+     "https://mystudioapps.com/assets/mypartygame/ar_s4.jpg",
+     "https://mystudioapps.com/assets/mypartygame/ar_s5.jpg",
+     "https://mystudioapps.com/assets/mypartygame/ar_s6.jpg",
+     "https://mystudioapps.com/assets/mypartygame/ar_s7.jpg",
+     "https://mystudioapps.com/assets/mypartygame/ar_s8.jpg",
+     "https://mystudioapps.com/assets/mypartygame/ar_s9.jpg",
+     "https://mystudioapps.com/assets/mypartygame/ar_s10.jpg"
+    ]
+   },
+   "store": {
+    "ios": "https://apps.apple.com/app/id6821380529",
+    "android": "https://play.google.com/store/apps/details?id=com.ymc.mypartygame"
+   },
+   "android_live": true,
+   "text": {
+    "ko": {
+     "name": "마이파티게임",
+     "headline": "모여서, 내기할 때, 혼자서도",
+     "tagline": "라이어 게임 · 마피아 · 사다리 타기",
+     "cta": "무료로 받기"
+    },
+    "ja": {
+     "name": "マイパーティーゲーム",
+     "headline": "集まって、賭けて、ひとりでも",
+     "tagline": "うそつき探し・マフィア・あみだくじ",
+     "cta": "無料で入手"
+    },
+    "en": {
+     "headline": "Party games on one phone",
+     "tagline": "Liar Game · Mafia · Spin Wheel",
+     "cta": "Get it free"
+    },
+    "zh-Hant": {
+     "headline": "朋友聚會、打賭、一個人也好玩",
+     "tagline": "派對遊戲 · 轉盤 · 懲罰遊戲",
+     "cta": "免費下載"
+    },
+    "de": {
+     "headline": "Partyspiele auf einem Handy",
+     "tagline": "Partyspiele · Glücksrad · Wetten",
+     "cta": "Kostenlos laden"
+    },
+    "es": {
+     "headline": "Juegos de fiesta en un solo móvil",
+     "tagline": "Juegos de fiesta · Ruleta · Retos",
+     "cta": "Consíguela gratis"
+    },
+    "fr": {
+     "headline": "Jeux de soirée sur un seul téléphone",
+     "tagline": "Jeux de soirée · Roue · Gages",
+     "cta": "Obtenir gratuitement"
+    },
+    "pt": {
+     "headline": "Jogos de festa em um só celular",
+     "tagline": "Jogos de festa · Roleta · Desafios",
+     "cta": "Baixar grátis"
+    },
+    "ar": {
+     "headline": "ألعاب الحفلات على هاتف واحد",
+     "tagline": "ألعاب جماعية · عجلة الحظ · تحديات",
+     "cta": "احصل عليه مجانًا"
+    }
+   },
+   "playable": "https://mystudioapps.com/playable/mypartygame/",
+   "music": "https://mystudioapps.com/assets/mypartygame/ad_music.mp3"
+  },
+  {
+   "id": "myminigame",
+   "name": "MyPocketGames",
+   "icon": "https://mystudioapps.com/assets/myminigame/icon.png",
+   "color": "#1D5FD6",
+   "shot": {
+    "ko": "https://mystudioapps.com/assets/myminigame/ko_s1.jpg",
+    "ja": "https://mystudioapps.com/assets/myminigame/ja_s1.jpg",
+    "en": "https://mystudioapps.com/assets/myminigame/en_s1.jpg",
+    "zh-Hant": "https://mystudioapps.com/assets/myminigame/zh-Hant_s1.jpg",
+    "de": "https://mystudioapps.com/assets/myminigame/de_s1.jpg",
+    "es": "https://mystudioapps.com/assets/myminigame/es_s1.jpg",
+    "fr": "https://mystudioapps.com/assets/myminigame/fr_s1.jpg",
+    "pt": "https://mystudioapps.com/assets/myminigame/pt_s1.jpg",
+    "ar": "https://mystudioapps.com/assets/myminigame/ar_s1.jpg"
+   },
+   "shots": {
+    "ko": [
+     "https://mystudioapps.com/assets/myminigame/ko_s1.jpg",
+     "https://mystudioapps.com/assets/myminigame/ko_s2.jpg",
+     "https://mystudioapps.com/assets/myminigame/ko_s3.jpg",
+     "https://mystudioapps.com/assets/myminigame/ko_s4.jpg",
+     "https://mystudioapps.com/assets/myminigame/ko_s5.jpg",
+     "https://mystudioapps.com/assets/myminigame/ko_s6.jpg",
+     "https://mystudioapps.com/assets/myminigame/ko_s7.jpg",
+     "https://mystudioapps.com/assets/myminigame/ko_s8.jpg",
+     "https://mystudioapps.com/assets/myminigame/ko_s9.jpg",
+     "https://mystudioapps.com/assets/myminigame/ko_s10.jpg"
+    ],
+    "ja": [
+     "https://mystudioapps.com/assets/myminigame/ja_s1.jpg",
+     "https://mystudioapps.com/assets/myminigame/ja_s2.jpg",
+     "https://mystudioapps.com/assets/myminigame/ja_s3.jpg",
+     "https://mystudioapps.com/assets/myminigame/ja_s4.jpg",
+     "https://mystudioapps.com/assets/myminigame/ja_s5.jpg",
+     "https://mystudioapps.com/assets/myminigame/ja_s6.jpg",
+     "https://mystudioapps.com/assets/myminigame/ja_s7.jpg",
+     "https://mystudioapps.com/assets/myminigame/ja_s8.jpg",
+     "https://mystudioapps.com/assets/myminigame/ja_s9.jpg",
+     "https://mystudioapps.com/assets/myminigame/ja_s10.jpg"
+    ],
+    "en": [
+     "https://mystudioapps.com/assets/myminigame/en_s1.jpg",
+     "https://mystudioapps.com/assets/myminigame/en_s2.jpg",
+     "https://mystudioapps.com/assets/myminigame/en_s3.jpg",
+     "https://mystudioapps.com/assets/myminigame/en_s4.jpg",
+     "https://mystudioapps.com/assets/myminigame/en_s5.jpg",
+     "https://mystudioapps.com/assets/myminigame/en_s6.jpg",
+     "https://mystudioapps.com/assets/myminigame/en_s7.jpg",
+     "https://mystudioapps.com/assets/myminigame/en_s8.jpg",
+     "https://mystudioapps.com/assets/myminigame/en_s9.jpg",
+     "https://mystudioapps.com/assets/myminigame/en_s10.jpg"
+    ],
+    "zh-Hant": [
+     "https://mystudioapps.com/assets/myminigame/zh-Hant_s1.jpg",
+     "https://mystudioapps.com/assets/myminigame/zh-Hant_s2.jpg",
+     "https://mystudioapps.com/assets/myminigame/zh-Hant_s3.jpg",
+     "https://mystudioapps.com/assets/myminigame/zh-Hant_s4.jpg",
+     "https://mystudioapps.com/assets/myminigame/zh-Hant_s5.jpg",
+     "https://mystudioapps.com/assets/myminigame/zh-Hant_s6.jpg",
+     "https://mystudioapps.com/assets/myminigame/zh-Hant_s7.jpg",
+     "https://mystudioapps.com/assets/myminigame/zh-Hant_s8.jpg",
+     "https://mystudioapps.com/assets/myminigame/zh-Hant_s9.jpg",
+     "https://mystudioapps.com/assets/myminigame/zh-Hant_s10.jpg"
+    ],
+    "de": [
+     "https://mystudioapps.com/assets/myminigame/de_s1.jpg",
+     "https://mystudioapps.com/assets/myminigame/de_s2.jpg",
+     "https://mystudioapps.com/assets/myminigame/de_s3.jpg",
+     "https://mystudioapps.com/assets/myminigame/de_s4.jpg",
+     "https://mystudioapps.com/assets/myminigame/de_s5.jpg",
+     "https://mystudioapps.com/assets/myminigame/de_s6.jpg",
+     "https://mystudioapps.com/assets/myminigame/de_s7.jpg",
+     "https://mystudioapps.com/assets/myminigame/de_s8.jpg",
+     "https://mystudioapps.com/assets/myminigame/de_s9.jpg",
+     "https://mystudioapps.com/assets/myminigame/de_s10.jpg"
+    ],
+    "es": [
+     "https://mystudioapps.com/assets/myminigame/es_s1.jpg",
+     "https://mystudioapps.com/assets/myminigame/es_s2.jpg",
+     "https://mystudioapps.com/assets/myminigame/es_s3.jpg",
+     "https://mystudioapps.com/assets/myminigame/es_s4.jpg",
+     "https://mystudioapps.com/assets/myminigame/es_s5.jpg",
+     "https://mystudioapps.com/assets/myminigame/es_s6.jpg",
+     "https://mystudioapps.com/assets/myminigame/es_s7.jpg",
+     "https://mystudioapps.com/assets/myminigame/es_s8.jpg",
+     "https://mystudioapps.com/assets/myminigame/es_s9.jpg",
+     "https://mystudioapps.com/assets/myminigame/es_s10.jpg"
+    ],
+    "fr": [
+     "https://mystudioapps.com/assets/myminigame/fr_s1.jpg",
+     "https://mystudioapps.com/assets/myminigame/fr_s2.jpg",
+     "https://mystudioapps.com/assets/myminigame/fr_s3.jpg",
+     "https://mystudioapps.com/assets/myminigame/fr_s4.jpg",
+     "https://mystudioapps.com/assets/myminigame/fr_s5.jpg",
+     "https://mystudioapps.com/assets/myminigame/fr_s6.jpg",
+     "https://mystudioapps.com/assets/myminigame/fr_s7.jpg",
+     "https://mystudioapps.com/assets/myminigame/fr_s8.jpg",
+     "https://mystudioapps.com/assets/myminigame/fr_s9.jpg",
+     "https://mystudioapps.com/assets/myminigame/fr_s10.jpg"
+    ],
+    "pt": [
+     "https://mystudioapps.com/assets/myminigame/pt_s1.jpg",
+     "https://mystudioapps.com/assets/myminigame/pt_s2.jpg",
+     "https://mystudioapps.com/assets/myminigame/pt_s3.jpg",
+     "https://mystudioapps.com/assets/myminigame/pt_s4.jpg",
+     "https://mystudioapps.com/assets/myminigame/pt_s5.jpg",
+     "https://mystudioapps.com/assets/myminigame/pt_s6.jpg",
+     "https://mystudioapps.com/assets/myminigame/pt_s7.jpg",
+     "https://mystudioapps.com/assets/myminigame/pt_s8.jpg",
+     "https://mystudioapps.com/assets/myminigame/pt_s9.jpg",
+     "https://mystudioapps.com/assets/myminigame/pt_s10.jpg"
+    ],
+    "ar": [
+     "https://mystudioapps.com/assets/myminigame/ar_s1.jpg",
+     "https://mystudioapps.com/assets/myminigame/ar_s2.jpg",
+     "https://mystudioapps.com/assets/myminigame/ar_s3.jpg",
+     "https://mystudioapps.com/assets/myminigame/ar_s4.jpg",
+     "https://mystudioapps.com/assets/myminigame/ar_s5.jpg",
+     "https://mystudioapps.com/assets/myminigame/ar_s6.jpg",
+     "https://mystudioapps.com/assets/myminigame/ar_s7.jpg",
+     "https://mystudioapps.com/assets/myminigame/ar_s8.jpg",
+     "https://mystudioapps.com/assets/myminigame/ar_s9.jpg",
+     "https://mystudioapps.com/assets/myminigame/ar_s10.jpg"
+    ]
+   },
+   "store": {
+    "ios": "https://apps.apple.com/app/id6821543762",
+    "android": "https://play.google.com/store/apps/details?id=com.ymc.myminigame"
+   },
+   "android_live": true,
+   "text": {
+    "ko": {
+     "name": "마이포켓게임",
+     "headline": "심심할 때 한 판",
+     "tagline": "아케이드 · 퍼즐 · 두뇌 게임",
+     "cta": "무료로 받기"
+    },
+    "ja": {
+     "name": "マイポケットゲーム",
+     "headline": "ひまな時に1回",
+     "tagline": "アーケード・パズル・脳トレ",
+     "cta": "無料で入手"
+    },
+    "en": {
+     "headline": "Mini games for any break",
+     "tagline": "Arcade · Puzzles · Brain games",
+     "cta": "Get it free"
+    },
+    "zh-Hant": {
+     "headline": "無聊時來一局",
+     "tagline": "街機 · 益智 · 腦力遊戲",
+     "cta": "免費下載"
+    },
+    "de": {
+     "headline": "Minispiele für jede Pause",
+     "tagline": "Arcade · Rätsel · Denkspiele",
+     "cta": "Kostenlos laden"
+    },
+    "es": {
+     "headline": "Minijuegos para cualquier pausa",
+     "tagline": "Arcade · Puzles · Ingenio",
+     "cta": "Consíguela gratis"
+    },
+    "fr": {
+     "headline": "Des mini-jeux pour chaque pause",
+     "tagline": "Arcade · Puzzles · Réflexion",
+     "cta": "Obtenir gratuitement"
+    },
+    "pt": {
+     "headline": "Minijogos para qualquer pausa",
+     "tagline": "Arcade · Quebra-cabeças · Lógica",
+     "cta": "Baixar grátis"
+    },
+    "ar": {
+     "headline": "ألعاب صغيرة لكل استراحة",
+     "tagline": "أركيد · ألغاز · ألعاب ذكاء",
+     "cta": "احصل عليه مجانًا"
+    }
+   },
+   "playable": "https://mystudioapps.com/playable/myminigame/",
+   "music": "https://mystudioapps.com/assets/myminigame/ad_music.mp3"
+  }
+ ],
+ "interstitial_close_after_sec": 20,
+ "_doc_close": "자체 전면 광고의 닫기 단추가 나오는 시각(초). 2026-10-11 사용자: 7초 → 15초. 2026-10-23 사용자: 15초 → 20초(지금 앱들은 2~15초로 묶어 읽어 다음 버전에서 상한을 올려야 20초가 됨).",
+ "_doc_playable": "2026-10-11 사용자: 우리 앱끼리 전면 광고에 직접 해 보는 체험판(다른 게임 두 번 바뀌고 세 번째는 설치). apps[].playable 이 있으면 자체 전면 차례에 WebView, JS 채널 XPromo(ready · switch:n · install).",
+ "_doc_shots": "2026-10-11 사용자: 스크린샷 자체 광고는 한 장만 말고 넘겨 보며 보게. apps[].shots[lang] = 스토어 스크린샷 순서 목록(첫 장 = shot). 옛 앱은 shot 한 장 그대로 씀.",
+ "_doc_langs": "2026-10-12 사용자: 자체 광고 9개 언어(ko · ja · en · zh-Hant · de · es · fr · pt · ar). 앱은 zh → zh-Hant, 나머지는 언어 코드 그대로, 피드에 없으면 en.",
+ "_doc_music": "2026-10-12 사용자: 스크린샷 자체 광고에도 음악. apps[].music = 그 앱 배경 음악 20초(mp3 128k(flutter_soloud 가 m4a 를 못 읽어 10/12 mp3 로), 끝 1.5초 페이드). 스크린샷 전면이 떠 있는 동안 반복, 닫으면 멈춤, 앱 소리 · 음악을 끈 사용자에겐 틀지 않음. 체험판은 효과음(host=app 이면 바로 시작, sound=0 이면 무음).",
+ "_doc_video": "2026-10-14 밤 사용자 작업 목록(MyPartyGames 6번): 여러 명이 하는 게임은 체험판 대신 시연 영상 광고. apps[].video = {언어: 세로 9:16 mp4 주소}(H.264, 20초 안, 3MB 안), 그 언어가 없으면 en(다른 글과 같은 규칙). 앱은 자체 전면 차례에 그 앱 칸에 video 가 있으면 체험판 · 스크린샷 대신 전체 화면 영상(반복, 설치 단추 늘 보임, 닫기는 interstitial_close_after_sec 뒤). 소리는 스크린샷 광고 음악 규칙과 같게(앱 소리 · 음악을 끈 사용자는 무음, 다른 앱 음악이 돌면 무음). 기록 xpromo_show(kind=video) · xpromo_click · xpromo_close. 영상이 3초 안에 안 뜨면 스크린샷 카드로 대신. 순서: 영상 > 체험판(playable) > 스크린샷. 한 앱 칸에 셋이 다 있어도 영상만 쓴다. 2026-10-15 사용자: MyPartyGames 는 영상 말고 예전처럼 체험판(playable)으로 → mypartygame.video 뺌(영상 파일 xpromo_<언어>_v2.mp4 는 사이트에 남겨 둠, 앱의 영상 기능도 그대로라 다시 넣으면 바로 씀).",
+ "rewarded_per_day": 10,
+ "_doc_rewarded_per_day": "2026-10-25 사용자: 보상형 광고 하루 횟수 3번 → 10번(모든 앱: 피젯 톡톡 · 포켓 구슬 · 파티 별사탕 · 보컬 잠긴 연습 1회). 앱은 이 값을 읽고 없거나 1~50 밖이면 기본 10. 기기 날짜로 세고, 날짜가 바뀌면 다시 센다. 놀이 · 게임마다 한 번인 '광고 보고 한 번 해 보기'는 이 값과 따로(그대로)."
 }

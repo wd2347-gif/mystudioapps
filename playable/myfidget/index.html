@@ -57,7 +57,7 @@ button svg{width:18px;height:18px;flex:none}
 <div id="stage">
   <header id="top">
     <svg id="icon" viewBox="0 0 512 512" aria-hidden="true"><defs><linearGradient id="icg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#63DE90"/><stop offset="1" stop-color="#16743B"/></linearGradient><radialGradient id="ich" cx=".22" cy=".18" r=".75"><stop offset="0" stop-color="#fff" stop-opacity=".28"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient></defs><rect width="512" height="512" rx="115" fill="url(#icg)"/><rect width="512" height="512" rx="115" fill="url(#ich)"/><circle cx="256" cy="136" r="64" fill="#FF6B6B"/><circle cx="256" cy="136" r="39" fill="#FF9696"/><circle cx="363" cy="198" r="64" fill="#FFA24C"/><circle cx="363" cy="198" r="39" fill="#FFC086"/><circle cx="363" cy="322" r="64" fill="#FFD54A"/><circle cx="363" cy="322" r="39" fill="#FFE385"/><circle cx="256" cy="384" r="64" fill="#66D18A"/><circle cx="256" cy="384" r="39" fill="#98E2B0"/><circle cx="149" cy="322" r="64" fill="#55A8F2"/><circle cx="149" cy="322" r="39" fill="#8DC5F7"/><circle cx="149" cy="198" r="64" fill="#A67CF2"/><circle cx="149" cy="198" r="39" fill="#C4A7F7"/><circle cx="256" cy="260" r="57" fill="#FFFFFF"/><circle cx="256" cy="260" r="29" fill="#D5EEDD"/></svg>
-    <div class="brand"><b>MyFidget</b><span id="tag"></span></div>
+    <div class="brand"><b id="appName">MyFidget</b><span id="tag"></span></div>
   </header>
   <div id="hint"><span id="gname"></span><span id="gtip"></span></div>
   <div id="play"><canvas id="cv"></canvas><div id="layer"></div><div id="toast"></div></div>
@@ -78,9 +78,9 @@ try { Q = new URLSearchParams(location.search); } catch (e) { Q = { get: functio
 
 /* ===== Text: ko / ja / en only ===== */
 var TXT = {
-  ko: { tag: '손끝으로 톡, 스트레스 해소', slogan: '톡톡 손맛으로 스트레스 해소', next: '다른 놀이', get: '설치' },
-  ja: { tag: '指先でぷちぷち、ストレス解消', slogan: 'ぷちぷちの手ざわりでストレス解消', next: '別のあそび', get: 'インストール' },
-  en: { tag: 'Tap away the stress', slogan: 'Satisfying stress relief', next: 'Another toy', get: 'Install' }, 'zh-Hant': { tag: '指尖輕點，壓力全消', slogan: '超療癒的紓壓手感', next: '換個玩法', get: '安裝' }, 'de': { tag: 'Tipp den Stress einfach weg', slogan: 'Stressabbau, der richtig guttut', next: 'Anderes Spiel', get: 'Installieren' }, 'es': { tag: 'Toca y suelta el estrés', slogan: 'Alivio del estrés muy satisfactorio', next: 'Otro juego', get: 'Instalar' }, 'fr': { tag: 'Chasse le stress du bout du doigt', slogan: 'Un anti-stress ultra satisfaisant', next: 'Un autre jeu', get: 'Installer' }, 'pt': { tag: 'Toque e espante o estresse', slogan: 'Alívio do estresse bem satisfatório', next: 'Outro brinquedo', get: 'Instalar' }, 'ar': { tag: 'اطرد التوتر بلمسة', slogan: 'تخفيف توتر بإحساس ممتع', next: 'لعبة أخرى', get: 'تثبيت' }
+  ko: { name: '마이피젯', tag: '손끝으로 톡, 스트레스 해소', slogan: '톡톡 손맛으로 스트레스 해소', next: '다른 놀이', get: '설치' },
+  ja: { name: 'マイフィジェット', tag: '指先でぷちぷち、ストレス解消', slogan: 'ぷちぷちの手ざわりでストレス解消', next: '別のあそび', get: 'インストール' },
+  en: { name: 'MyFidget', tag: 'Tap away the stress', slogan: 'Satisfying stress relief', next: 'Another toy', get: 'Install' }, 'zh-Hant': { name: 'MyFidget', tag: '指尖輕點，壓力全消', slogan: '超療癒的紓壓手感', next: '換個玩法', get: '安裝' }, 'de': { name: 'MyFidget', tag: 'Tipp den Stress einfach weg', slogan: 'Stressabbau, der richtig guttut', next: 'Anderes Spiel', get: 'Installieren' }, 'es': { name: 'MyFidget', tag: 'Toca y suelta el estrés', slogan: 'Alivio del estrés muy satisfactorio', next: 'Otro juego', get: 'Instalar' }, 'fr': { name: 'MyFidget', tag: 'Chasse le stress du bout du doigt', slogan: 'Un anti-stress ultra satisfaisant', next: 'Un autre jeu', get: 'Installer' }, 'pt': { name: 'MyFidget', tag: 'Toque e espante o estresse', slogan: 'Alívio do estresse bem satisfatório', next: 'Outro brinquedo', get: 'Instalar' }, 'ar': { name: 'MyFidget', tag: 'اطرد التوتر بلمسة', slogan: 'تخفيف توتر بإحساس ممتع', next: 'لعبة أخرى', get: 'تثبيت' }
 };
 var LANGS = ['ko', 'ja', 'en', 'zh-Hant', 'de', 'es', 'fr', 'pt', 'ar'];
 /* 2026-10-12: 9 languages. 'zh-Hant' · 'zh_TW' · 'zh' -> 'zh-Hant', 'pt-BR' -> 'pt', others by first two letters */
@@ -5363,6 +5363,7 @@ document.addEventListener('contextmenu', stop);
 document.addEventListener('selectstart', stop);
 document.addEventListener('touchend', function () { unlockAudio(); }, { passive: true });
 
+$('appName').textContent = L.name;  /* 2026-10-24: ko · ja app names */
 $('tag').textContent = L.tag;
 $('nextL').textContent = L.next;
 $('getL').textContent = L.get;

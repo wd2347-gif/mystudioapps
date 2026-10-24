@@ -97,7 +97,7 @@
 <main>
   <section class="hero">
     <img class="icon" src="/assets/myslowsleep/icon.png" alt="MySlowSleep" width="112" height="112">
-    <h1>MySlowSleep</h1>
+    <h1 id="name">MySlowSleep</h1>
     <p class="sub" id="sub"></p>
     <p class="tagline" id="tagline"></p>
     <p class="desc" id="desc"></p>
@@ -116,6 +116,7 @@
 const LANGS = ['en', 'ko', 'ja'];
 const T = {
   ko: {
+    name: '마이슬로우슬립',
     sub: '잠들기 소리 · 호흡 · 수면 타이머',
     tagline: '불을 끄고, 달을 켜요.',
     desc: '빗소리 같은 자연 소리와 잔잔한 주파수, 음악을 내 귀에 맞게 섞고, 보름달을 따라 숨을 고르며 잠들어 보세요. 홈 화면 위젯으로 앱을 열지 않고도 켜고 끌 수 있어요.',
@@ -131,6 +132,7 @@ const T = {
     terms: '이용약관', privacy: '개인정보처리방침', support: '문의',
   },
   en: {
+    name: 'MySlowSleep',
     sub: 'Sleep sounds · Breathing · Sleep timer',
     tagline: 'Lights off. Moon on.',
     desc: 'Blend nature sounds like rain, a soft frequency and calm music to your liking, then breathe along with the full moon as you drift off. Turn it on or off from your home-screen widget without opening the app.',
@@ -146,6 +148,7 @@ const T = {
     terms: 'Terms of Use', privacy: 'Privacy Policy', support: 'Support',
   },
   ja: {
+    name: 'マイスロースリープ',
     sub: '眠りの音 · 呼吸 · スリープタイマー',
     tagline: '灯りを消して、月をともす。',
     desc: '雨音などの自然の音、やさしい周波数、音楽を好みに合わせて重ね、満月に合わせて呼吸しながら眠りへ。ホーム画面のウィジェットから、アプリを開かずにオン・オフできます。',
@@ -174,7 +177,8 @@ function pick() {
 function show(lang) {
   const t = T[lang];
   document.documentElement.lang = lang;
-  for (const k of ['sub', 'tagline', 'desc', 'soon', 'play', 'devices']) document.getElementById(k).textContent = t[k];
+  document.title = t.name + ': MyStudio';  // 2026-10-24 한·일 앱 이름
+  for (const k of ['name', 'sub', 'tagline', 'desc', 'soon', 'play', 'devices']) document.getElementById(k).textContent = t[k];
   document.getElementById('features').innerHTML = t.features.map(([e, h, p]) =>
     `<div class="feature"><div class="emoji">${e}</div><h3>${esc(h)}</h3><p>${esc(p)}</p></div>`).join('');
   const terms = document.getElementById('f-terms'), privacy = document.getElementById('f-privacy');

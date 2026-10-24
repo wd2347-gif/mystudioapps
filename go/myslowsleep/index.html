@@ -121,7 +121,7 @@
 <body>
 <main class="wrap">
   <img class="icon" src="/assets/myslowsleep/icon.png" alt="" width="88" height="88">
-  <h1>MySlowSleep</h1>
+  <h1 id="name">MySlowSleep</h1>
   <p class="tag" id="tag">잠들기 소리 · 호흡 · 수면 타이머</p>
   <p class="status"><span class="dot" aria-hidden="true"></span><span id="status">이동 중…</span></p>
   <div class="btns" id="btns">
@@ -136,11 +136,13 @@
     var lang = (navigator.language || 'en').toLowerCase();
     var L = lang.indexOf('ko') === 0 ? 'ko' : lang.indexOf('ja') === 0 ? 'ja' : 'en';
     var T = {
-      ko: { tag: '잠들기 소리 · 호흡 · 수면 타이머', ios: 'App Store로 이동 중…', android: 'Google Play로 이동 중…', web: '앱 소개로 이동 중…' },
-      ja: { tag: '眠りの音 · 呼吸 · スリープタイマー', ios: 'App Storeに移動中…', android: 'Google Playに移動中…', web: 'アプリ紹介に移動中…' },
-      en: { tag: 'Sleep sounds · Breathing · Sleep timer', ios: 'Opening the App Store…', android: 'Opening Google Play…', web: 'Opening the app page…' }
+      ko: { name: '마이슬로우슬립', tag: '잠들기 소리 · 호흡 · 수면 타이머', ios: 'App Store로 이동 중…', android: 'Google Play로 이동 중…', web: '앱 소개로 이동 중…' },
+      ja: { name: 'マイスロースリープ', tag: '眠りの音 · 呼吸 · スリープタイマー', ios: 'App Storeに移動中…', android: 'Google Playに移動中…', web: 'アプリ紹介に移動中…' },
+      en: { name: 'MySlowSleep', tag: 'Sleep sounds · Breathing · Sleep timer', ios: 'Opening the App Store…', android: 'Opening Google Play…', web: 'Opening the app page…' }
     }[L];
     document.documentElement.lang = L;
+    document.getElementById('name').textContent = T.name;  // 2026-10-24 한·일 앱 이름
+    document.title = T.name + ': MyStudio';
     document.getElementById('tag').textContent = T.tag;
     document.getElementById('status').textContent = m.ios ? T.ios : m.android ? T.android : T.web;
     var a = document.getElementById('btn-ios'), g = document.getElementById('btn-play');

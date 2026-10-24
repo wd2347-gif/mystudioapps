@@ -1,6 +1,6 @@
 {
- "_doc": "MyStudio 자체 광고(교차 홍보): 2026-10-10 사용자: \"AdMob 승인 전까지 MyStudio 앱끼리 서로 광고, 승인되고 내가 요청하면 AdMob 으로\". mode admob + house_fallback: AdMob 을 계속 요청(계정 검토에 요청 기록이 필요할 수 있어)하고, 실패하면(지금은 늘 code 3) 자체 광고. house = AdMob 요청 없이 자체 광고만, off = 광고 칸 없음. 바꾸는 사람: My_Studio 세션.",
- "version": 34,
+ "_doc": "MyStudio 자체 광고(교차 홍보): 2026-10-10 사용자: \"AdMob 승인 전까지 MyStudio 앱끼리 서로 광고, 승인되고 내가 요청하면 AdMob 으로\". mode admob + house_fallback: AdMob 을 계속 요청(계정 검토에 요청 기록이 필요할 수 있어)하고, 실패하면(지금은 늘 code 3) 자체 광고. house = AdMob 요청 없이 자체 광고만, off = 광고 칸 없음. 바꾸는 사람: My_Studio 세션. 10/24 한·일 이름 text.<lang>.name(ko · ja 만, 최상위 name 은 영어 그대로: 앱은 다음 버전부터 text[lang].name 을 먼저 읽음).",
+ "version": 35,
  "mode": "admob",
  "house_fallback": true,
  "house_share": 1.0,
@@ -336,11 +336,13 @@
    },
    "text": {
     "ko": {
+     "name": "마이피젯",
      "headline": "내 손안의 장난감, 스트레스 해소",
      "tagline": "피젯 토이 · 팝잇 · 뽁뽁이",
      "cta": "무료로 받기"
     },
     "ja": {
+     "name": "マイフィジェット",
      "headline": "手のひらのおもちゃでストレス解消",
      "tagline": "フィジェット・プチプチ・プッシュポップ",
      "cta": "無料で入手"
@@ -517,11 +519,13 @@
    "android_live": true,
    "text": {
     "ko": {
+     "name": "마이보컬",
      "headline": "매일 하는 보컬 기본기 훈련",
      "tagline": "발성 연습 · 음정 트레이닝 · 목풀기",
      "cta": "무료로 받기"
     },
     "ja": {
+     "name": "マイボーカル",
      "headline": "毎日のボーカル基礎トレーニング",
      "tagline": "ボイトレ・発声練習・音程",
      "cta": "無料で入手"
@@ -660,11 +664,13 @@
    },
    "text": {
     "ko": {
+     "name": "마이슬로우슬립",
      "headline": "불을 끄고, 달을 켜요",
      "tagline": "수면 소리 · 빗소리 · 호흡",
      "cta": "자세히 보기"
     },
     "ja": {
+     "name": "マイスロースリープ",
      "headline": "灯りを消して、月をともす",
      "tagline": "睡眠音・雨音・呼吸",
      "cta": "詳しく見る"
@@ -840,11 +846,13 @@
    "android_live": true,
    "text": {
     "ko": {
+     "name": "마이파티게임",
      "headline": "모여서, 내기할 때, 혼자서도",
      "tagline": "라이어 게임 · 마피아 · 사다리 타기",
      "cta": "무료로 받기"
     },
     "ja": {
+     "name": "マイパーティーゲーム",
      "headline": "集まって、賭けて、ひとりでも",
      "tagline": "うそつき探し・マフィア・あみだくじ",
      "cta": "無料で入手"
@@ -1021,11 +1029,13 @@
    "android_live": true,
    "text": {
     "ko": {
+     "name": "마이포켓게임",
      "headline": "심심할 때 한 판",
      "tagline": "아케이드 · 퍼즐 · 두뇌 게임",
      "cta": "무료로 받기"
     },
     "ja": {
+     "name": "マイポケットゲーム",
      "headline": "ひまな時に1回",
      "tagline": "アーケード・パズル・脳トレ",
      "cta": "無料で入手"

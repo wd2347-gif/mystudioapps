@@ -86,7 +86,7 @@
 <main>
   <section class="hero">
     <img class="icon" src="/assets/mypartygame/icon.png" alt="MyPartyGames" width="112" height="112">
-    <h1>MyPartyGames</h1>
+    <h1 id="name">MyPartyGames</h1>
     <p class="sub" id="sub"></p>
     <p class="tagline" id="tagline"></p>
     <p class="desc" id="desc"></p>
@@ -105,6 +105,7 @@
 const LANGS = ['en', 'ko', 'ja'];
 const T = {
   ko: {
+    name: '마이파티게임',
     sub: '모여서, 내기할 때, 혼자서도',
     tagline: '폰 하나로 다같이, 우리들의 파티게임.',
     desc: '라이어 게임 · 마피아 · 사다리 타기 · 돌림판부터 에어하키 · 오목 · 스도쿠 · 2048까지. 혼자서도, 여럿이 모여서도 폰 하나면 충분해요.',
@@ -120,6 +121,7 @@ const T = {
     terms: '이용약관', privacy: '개인정보처리방침', support: '문의',
   },
   en: {
+    name: 'MyPartyGames',
     sub: 'Group games, bets & solo fun',
     tagline: 'One phone, everyone plays.',
     desc: 'From Liar Game, Mafia, Ladder Lottery and Spin Wheel to Air Hockey, Gomoku, Sudoku and 2048. On your own or with a whole group, one phone is all you need.',
@@ -135,6 +137,7 @@ const T = {
     terms: 'Terms of Use', privacy: 'Privacy Policy', support: 'Support',
   },
   ja: {
+    name: 'マイパーティーゲーム',
     sub: '集まって、賭けて、ひとりでも',
     tagline: 'スマホ1台で、みんなのパーティーゲーム。',
     desc: 'うそつき探し・マフィア・あみだくじ・ルーレットから、エアホッケー・五目並べ・ナンプレ・2048まで。ひとりでも、みんなで集まっても、スマホ1台で遊べます。',
@@ -163,7 +166,8 @@ function pick() {
 function show(lang) {
   const t = T[lang];
   document.documentElement.lang = lang;
-  for (const k of ['sub', 'tagline', 'desc', 'soon', 'play', 'devices']) document.getElementById(k).textContent = t[k];
+  document.title = t.name + ': MyStudio';  // 2026-10-24 한·일 앱 이름
+  for (const k of ['name', 'sub', 'tagline', 'desc', 'soon', 'play', 'devices']) document.getElementById(k).textContent = t[k];
   document.getElementById('features').innerHTML = t.features.map(([e, h, p]) =>
     `<div class="feature"><div class="emoji">${e}</div><h3>${esc(h)}</h3><p>${esc(p)}</p></div>`).join('');
   const terms = document.getElementById('f-terms'), privacy = document.getElementById('f-privacy');

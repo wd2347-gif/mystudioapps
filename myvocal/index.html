@@ -86,7 +86,7 @@
 <main>
   <section class="hero">
     <img class="icon" src="/assets/myvocal/icon.png" alt="MyVocal" width="112" height="112">
-    <h1>MyVocal</h1>
+    <h1 id="name">MyVocal</h1>
     <p class="sub" id="sub"></p>
     <p class="tagline" id="tagline"></p>
     <p class="desc" id="desc"></p>
@@ -105,6 +105,7 @@
 const LANGS = ['en', 'ko', 'ja'];
 const T = {
   ko: {
+    name: '마이보컬',
     sub: '보컬 기본기 연습',
     tagline: '목 풀기부터 음감까지, 노래의 기본기.',
     desc: '피아노를 따라 부르면 내 음정이 실시간 선으로 그려져요. 목 풀기 · 호흡 · 발성 · 음감을 한곳에서 차근차근 연습해요.',
@@ -120,6 +121,7 @@ const T = {
     terms: '이용약관', privacy: '개인정보처리방침', support: '문의',
   },
   en: {
+    name: 'MyVocal',
     sub: 'Vocal Warm-up & Practice',
     tagline: 'Singing basics, from warm-up to ear training.',
     desc: 'Sing along with the piano and watch your pitch drawn as a live line. Warm-ups, breathing, vocal scales and ear training, step by step in one place.',
@@ -135,6 +137,7 @@ const T = {
     terms: 'Terms of Use', privacy: 'Privacy Policy', support: 'Support',
   },
   ja: {
+    name: 'マイボーカル',
     sub: 'ボーカルの基礎練習',
     tagline: 'ウォームアップから音感まで、歌の基礎を。',
     desc: 'ピアノに合わせて歌うと、自分の音程がリアルタイムの線で描かれます。ウォームアップ・呼吸・発声・音感を、ひとつのアプリで少しずつ。',
@@ -163,7 +166,8 @@ function pick() {
 function show(lang) {
   const t = T[lang];
   document.documentElement.lang = lang;
-  for (const k of ['sub', 'tagline', 'desc', 'soon', 'play', 'devices']) document.getElementById(k).textContent = t[k];
+  document.title = t.name + ': MyStudio';  // 2026-10-24 한·일 앱 이름
+  for (const k of ['name', 'sub', 'tagline', 'desc', 'soon', 'play', 'devices']) document.getElementById(k).textContent = t[k];
   document.getElementById('features').innerHTML = t.features.map(([e, h, p]) =>
     `<div class="feature"><div class="emoji">${e}</div><h3>${esc(h)}</h3><p>${esc(p)}</p></div>`).join('');
   const terms = document.getElementById('f-terms'), privacy = document.getElementById('f-privacy');

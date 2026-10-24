@@ -472,7 +472,7 @@ button { font: inherit; color: inherit; cursor: pointer; touch-action: none; -we
           <circle cx="63" cy="12" r="1.9" fill="#FF5C7A"/><circle cx="59" cy="16" r="1.7" fill="#A368FF"/><rect x="69" y="22" width="6" height="2" rx="1" fill="#FFE27A"/>
           <circle cx="74" cy="20" r="1.9" fill="#FF5C7A"/><rect x="79" y="15" width="2" height="6" rx="1" fill="#FFE27A" transform="rotate(30 80 18)"/><circle cx="73" cy="27" r="1.5" fill="#A368FF"/></g>
       </svg>
-      <div class="ht"><div class="kick">MyPartyGames</div><div class="nm" id="nm"></div><div class="sb" id="sb"></div></div>
+      <div class="ht"><div class="kick" id="kick">MyPartyGames</div><div class="nm" id="nm"></div><div class="sb" id="sb"></div></div>
     </header>
     <section id="gh">
       <div class="gt"><span id="gname"></span><span class="chip" id="gchip"></span></div>
@@ -4619,49 +4619,49 @@ var SETS = [
 
   var T = {
     ko: {
-      name: '우리들의 파티게임', sub: '모여서, 내기할 때, 혼자서도', other: '다른 게임', install: '설치', sep: ' · ',
+      app: '마이파티게임', name: '우리들의 파티게임', sub: '모여서, 내기할 때, 혼자서도', other: '다른 게임', install: '설치', sep: ' · ',
       names: ['민지', '서윤', '하린', '도윤', '지호', '준서'],
       cat: { bet: '내기할 때', party: '모여서', duel: '둘이서 대결', solo: '혼자서도' },
       who: { '1': '1인용', '2': '2인', '1+': '1인 이상', '2+': '2인 이상' }
     },
     ja: {
-      name: 'みんなのパーティーゲーム', sub: '集まって、賭けて、ひとりでも', other: '別のゲーム', install: 'インストール', sep: '・',
+      app: 'マイパーティーゲーム', name: 'みんなのパーティーゲーム', sub: '集まって、賭けて、ひとりでも', other: '別のゲーム', install: 'インストール', sep: '・',
       names: ['ハルト', 'ユイ', 'ソウタ', 'ミオ', 'レン', 'ヒナ'],
       cat: { bet: '賭けるとき', party: 'みんなで', duel: 'ふたりで対決', solo: 'ひとりでも' },
       who: { '1': '1人用', '2': '2人', '1+': '1人以上', '2+': '2人以上' }
     },
     en: {
-      name: 'Party Games', sub: 'Group games, bets & solo fun', other: 'Another game', install: 'Install', sep: ' · ',
+      app: 'MyPartyGames', name: 'Party Games', sub: 'Group games, bets & solo fun', other: 'Another game', install: 'Install', sep: ' · ',
       names: ['Mia', 'Leo', 'Ava', 'Noah', 'Zoe', 'Max'],
       cat: { bet: 'For bets', party: 'Get together', duel: 'Head to head', solo: 'Solo' },
       who: { '1': '1 player', '2': '2 players', '1+': '1 or more', '2+': '2 or more' }
     }, 'zh-Hant': {
-      name: '派對遊戲', sub: '聚會同樂、打賭、單人也好玩', other: '換一個', install: '安裝', sep: ' · ',
+      app: 'MyPartyGames', name: '派對遊戲', sub: '聚會同樂、打賭、單人也好玩', other: '換一個', install: '安裝', sep: ' · ',
       names: ['怡君', '家豪', '雅婷', '承恩', '欣怡', '俊宇'],
       cat: { bet: '打賭用', party: '大家一起玩', duel: '兩人對決', solo: '單人' },
       who: { '1': '1人', '2': '2人', '1+': '1人以上', '2+': '2人以上' }
     }, 'de': {
-      name: 'Partyspiele', sub: 'Gruppenspiele, Wetten & Solo-Spaß', other: 'Anderes Spiel', install: 'Installieren', sep: ' · ',
+      app: 'MyPartyGames', name: 'Partyspiele', sub: 'Gruppenspiele, Wetten & Solo-Spaß', other: 'Anderes Spiel', install: 'Installieren', sep: ' · ',
       names: ['Lena', 'Jonas', 'Hannah', 'Finn', 'Emma', 'Luca'],
       cat: { bet: 'Für Wetten', party: 'Gemeinsam', duel: 'Zu zweit', solo: 'Allein' },
       who: { '1': '1 Spieler', '2': '2 Spieler', '1+': '1 oder mehr', '2+': '2 oder mehr' }
     }, 'es': {
-      name: 'Juegos de fiesta', sub: 'Para grupos, apuestas y jugar solo', other: 'Otro juego', install: 'Instalar', sep: ' · ',
+      app: 'MyPartyGames', name: 'Juegos de fiesta', sub: 'Para grupos, apuestas y jugar solo', other: 'Otro juego', install: 'Instalar', sep: ' · ',
       names: ['Lucía', 'Mateo', 'Sofía', 'Diego', 'Valeria', 'Pablo'],
       cat: { bet: 'Para apuestas', party: 'Todos juntos', duel: 'Cara a cara', solo: 'Solo' },
       who: { '1': '1 jugador', '2': '2 jugadores', '1+': '1 o más', '2+': '2 o más' }
     }, 'fr': {
-      name: 'Jeux de soirée', sub: 'Jeux de groupe, paris et solo', other: 'Un autre jeu', install: 'Installer', sep: ' · ',
+      app: 'MyPartyGames', name: 'Jeux de soirée', sub: 'Jeux de groupe, paris et solo', other: 'Un autre jeu', install: 'Installer', sep: ' · ',
       names: ['Léa', 'Hugo', 'Chloé', 'Jules', 'Inès', 'Louis'],
       cat: { bet: 'Pour parier', party: 'Tous ensemble', duel: 'Face à face', solo: 'Solo' },
       who: { '1': '1 joueur', '2': '2 joueurs', '1+': '1 ou plus', '2+': '2 ou plus' }
     }, 'pt': {
-      name: 'Jogos de festa', sub: 'Jogos em grupo, apostas e solo', other: 'Outro jogo', install: 'Instalar', sep: ' · ',
+      app: 'MyPartyGames', name: 'Jogos de festa', sub: 'Jogos em grupo, apostas e solo', other: 'Outro jogo', install: 'Instalar', sep: ' · ',
       names: ['Ana', 'Lucas', 'Bia', 'Pedro', 'Júlia', 'Davi'],
       cat: { bet: 'Para apostas', party: 'Todos juntos', duel: 'Frente a frente', solo: 'Sozinho' },
       who: { '1': '1 jogador', '2': '2 jogadores', '1+': '1 ou mais', '2+': '2 ou mais' }
     }, 'ar': {
-      name: 'ألعاب الحفلات', sub: 'ألعاب جماعية، رهانات، ومتعة فردية', other: 'لعبة أخرى', install: 'تثبيت', sep: ' · ',
+      app: 'MyPartyGames', name: 'ألعاب الحفلات', sub: 'ألعاب جماعية، رهانات، ومتعة فردية', other: 'لعبة أخرى', install: 'تثبيت', sep: ' · ',
       names: ['ليلى', 'عمر', 'سارة', 'يوسف', 'مريم', 'خالد'],
       cat: { bet: 'للرهانات', party: 'معًا', duel: 'وجهًا لوجه', solo: 'فردي' },
       who: { '1': 'لاعب واحد', '2': 'لاعبان', '1+': '1 أو أكثر', '2+': '2 أو أكثر' }
@@ -5099,6 +5099,7 @@ var BGM = { url: '../../assets/mypartygame/ad_music.mp3', on: false };
   var qg = parseInt(Q.get('game'), 10);
   if (qg >= 1 && qg <= ids.length) pos = qg;
 
+  $('kick').textContent = t.app;  // 2026-10-24: ko · ja app names
   $('nm').textContent = t.name;
   $('sb').textContent = t.sub;
   $('tOther').textContent = t.other;

@@ -162,3 +162,5 @@ xandr.com, 17779, RESELLER
 xandr.com, 7353, RESELLER
 zetaglobal.net, 525, RESELLER
 zmaticoo.com, 5135195, RESELLER
+# Liftoff Monetize (Vungle)
+vungle.com, 6adcbbc9432de742530a312a, DIRECT, c107d686becd2d77

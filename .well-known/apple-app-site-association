@@ -7,6 +7,13 @@
           { "/": "/pg", "?": { "c": "share_*" }, "comment": "MyPocketGames 공유 링크: 앱이 있으면 그 게임 바로 열기" },
           { "/": "/pg/", "?": { "c": "share_*" }, "comment": "GitHub Pages 가 /pg 를 /pg/ 로 옮길 때" }
         ]
+      },
+      {
+        "appIDs": ["365A4NX7VG.com.ymc.myscore"],
+        "components": [
+          { "/": "/myscore/join", "comment": "MyScore 초대 링크: 앱이 있으면 조직 참여 창" },
+          { "/": "/myscore/join/", "comment": "GitHub Pages 가 /myscore/join 을 /myscore/join/ 으로 옮길 때" }
+        ]
       }
     ]
   }

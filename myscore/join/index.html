@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MyScore: 조직 초대</title>
+<meta name="description" content="MyScore 조직 초대 코드">
+<meta name="robots" content="noindex">
+<link rel="icon" href="/myscore/join/icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="MyStudio">
+<meta property="og:title" content="MyScore">
+<meta property="og:description" content="초대받은 조직에 참여해요 · Join the ensemble you were invited to">
+<meta property="og:image" content="https://mystudioapps.com/myscore/join/icon.png">
+<meta property="og:image:width" content="256">
+<meta property="og:image:height" content="256">
+<meta name="twitter:card" content="summary">
+<!-- MyScore 초대 링크 (2026-10-25, my_score 세션. 사용자: "초대코드 공유 하면 어플 설치 링크나 설치 되어있으면 바로 조직 참여 여부 물어보는 창").
+     앱의 초대 글이 mystudioapps.com/myscore/join/?c=<코드> 를 담는다. 앱이 있으면 유니버설 링크 · 앱 링크로 이 페이지 없이 앱이 열리고
+     참여할지 묻는다 (확인 파일: /.well-known/apple-app-site-association · assetlinks.json 의 com.ymc.myscore).
+     이 페이지가 보이면 앱이 없거나 앱 안 브라우저다 — 코드를 크게 보이고 [앱에서 열기] · [앱 설치하기].
+     설치 뒤 앱은 코드를 모른다 (넘겨 줄 길이 없다): 링크를 다시 누르거나 나의 조직 › 코드로 참여.
+     카카오톡은 kakaotalk://web/openExternal 로 바깥 브라우저에 넘기고, 다른 앱 안 브라우저는 앱 전용 주소를 한 번 불러 본다
+     (MyPocketGames /pg 와 같은 방식). 스토어로 저절로 보내지 않는다: 코드를 봐야 한다. 주소에는 코드만, 조직 이름은 없다. -->
+<style>
+  :root { --bg: #F8F7F3; --ink: #17181C; --soft: #5E5F66; --line: #E4E1D8; --surface: #FFFFFF; --accent: #6E2240; }
+  html, body { margin: 0; background: var(--bg); color: var(--ink); }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Hiragino Sans", "PingFang TC", sans-serif; }
+  .wrap { box-sizing: border-box; max-width: 440px; margin: 0 auto; min-height: 100vh; min-height: 100svh; display: flex; flex-direction: column; align-items: center; padding: 14vh 16px 40px; padding-top: 14svh; text-align: center; }
+  .icon { width: 88px; height: 88px; border-radius: 22px; display: block; box-shadow: 0 6px 20px rgba(0, 0, 0, .12); }
+  .app { margin-top: 14px; font-size: 15px; font-weight: 700; color: var(--soft); }
+  h1 { margin: 22px 0 0; font-size: 23px; line-height: 1.35; font-weight: 800; word-break: keep-all; }
+  #has-code { width: 100%; }
+  .label { margin-top: 26px; font-size: 13px; font-weight: 700; color: var(--soft); }
+  .code { margin-top: 8px; width: 100%; box-sizing: border-box; padding: 16px 8px; border-radius: 18px; background: var(--surface); border: 1px solid var(--line); font-size: 32px; font-weight: 800; letter-spacing: 7px; font-variant-numeric: tabular-nums; }
+  .copy { margin-top: 10px; font: inherit; font-size: 14px; font-weight: 700; color: var(--accent); background: none; border: 0; padding: 8px 12px; cursor: pointer; }
+  .btn { box-sizing: border-box; width: 100%; display: block; margin-top: 14px; padding: 16px 20px; border-radius: 16px; font-size: 17px; font-weight: 800; text-decoration: none; text-align: center; }
+  .open { margin-top: 24px; color: #FFFFFF; background: var(--accent); }
+  .install { color: var(--ink); background: var(--surface); border: 1px solid var(--line); }
+  .hint { margin-top: 22px; font-size: 14px; line-height: 1.55; color: var(--soft); word-break: keep-all; }
+  .stores { margin-top: 6px; font-size: 14px; }
+  .stores a { color: var(--accent); font-weight: 700; margin: 0 8px; }
+  [hidden] { display: none !important; }
+</style>
+<script>
+(function () {
+  var q = location.search;
+  var m = /[?&]c=([A-Za-z0-9\-]{1,16})/.exec(q);
+  var code = m ? m[1].replace(/-/g, '').toUpperCase() : '';
+  window.__code = code;
+  var ua = navigator.userAgent || '';
+  var android = /Android/i.test(ua);
+  var ios = /iPhone|iPad|iPod/i.test(ua) || (/Macintosh/.test(ua) && 'ontouchend' in document);
+  window.__platform = android ? 'android' : ios ? 'ios' : 'web';
+  var path = 'open/myscore/join' + (code ? '?c=' + code : '');
+  window.__app = android
+    ? 'intent://' + path + '#Intent;scheme=myscore;package=com.ymc.myscore;end'
+    : 'myscore://' + path;
+  // 앱 안 브라우저는 유니버설 링크 · 앱 링크를 무시한다.
+  var inApp = /KAKAOTALK|Instagram|FBAN|FBAV|FB_IAB|FBIOS|Line\/|NAVER\(inapp|DaumApps|everytimeApp|Barcelona|musical_ly|BytedanceWebview|Snapchat/i.test(ua);
+  if (!inApp || /[?&]t=1/.test(q)) return;
+  if (/KAKAOTALK/i.test(ua)) {
+    try { location.href = 'kakaotalk://web/openExternal?url=' + encodeURIComponent('https://mystudioapps.com/myscore/join/' + q); } catch (e) {}
+    return;
+  }
+  if (code) { try { location.href = window.__app; } catch (e) {} }
+})();
+</script>
+</head>
+<body><main class="wrap">
+<img class="icon" src="/myscore/join/icon.png" alt="MyScore" width="88" height="88">
+<div class="app" id="app">MyScore</div>
+<h1 id="title">초대받은 조직에 참여해요</h1>
+<div id="has-code">
+  <div class="label" id="label">초대 코드</div>
+  <div class="code" id="code"></div>
+  <button class="copy" id="copy" type="button">코드 복사</button>
+</div>
+<a class="btn open" id="open" href="#">앱에서 열기</a>
+<a class="btn install" id="install" href="#">앱 설치하기</a>
+<div class="stores" id="stores" hidden><a href="https://apps.apple.com/app/id6819550025">App Store</a><a href="https://play.google.com/store/apps/details?id=com.ymc.myscore">Google Play</a></div>
+<p class="hint" id="hint">앱을 설치한 뒤 이 링크를 다시 누르거나, 앱의 나의 조직 › 코드로 참여에 코드를 넣으세요.</p>
+</main>
+<script>
+(function () {
+  var T = {
+    ko: { app: '마이스코어', title: '초대받은 조직에 참여해요', label: '초대 코드', copy: '코드 복사', copied: '복사했어요', open: '앱에서 열기', install: '앱 설치하기',
+          hint: '앱을 설치한 뒤 이 링크를 다시 누르거나, 앱의 나의 조직 › 코드로 참여에 코드를 넣으세요.' },
+    en: { app: 'MyScore', title: 'Join the ensemble you were invited to', label: 'Invite code', copy: 'Copy code', copied: 'Copied', open: 'Open in app', install: 'Install the app',
+          hint: 'After installing, tap this link again, or enter the code in My ensembles › Join with code.' },
+    ja: { app: 'マイスコア', title: '招待された団体に参加しましょう', label: '招待コード', copy: 'コードをコピー', copied: 'コピーしました', open: 'アプリで開く', install: 'アプリをインストール',
+          hint: 'インストール後にこのリンクをもう一度タップするか、アプリの所属団体 › コードで参加 にコードを入力してください。' },
+    zh: { app: 'MyScore', title: '加入邀請你的樂團', label: '邀請碼', copy: '複製邀請碼', copied: '已複製', open: '在 App 中開啟', install: '安裝 App',
+          hint: '安裝後請再點一次這個連結，或在 App 的「我的樂團 › 用邀請碼加入」輸入邀請碼。' },
+    de: { app: 'MyScore', title: 'Tritt dem Ensemble bei, das dich eingeladen hat', label: 'Einladungscode', copy: 'Code kopieren', copied: 'Kopiert', open: 'In der App öffnen', install: 'App installieren',
+          hint: 'Tippe nach der Installation noch einmal auf diesen Link oder gib den Code unter Meine Ensembles › Mit Code beitreten ein.' },
+    fr: { app: 'MyScore', title: 'Rejoignez l’ensemble qui vous invite', label: 'Code d’invitation', copy: 'Copier le code', copied: 'Copié', open: 'Ouvrir dans l’app', install: 'Installer l’app',
+          hint: 'Après l’installation, touchez à nouveau ce lien, ou saisissez le code dans Mes ensembles › Rejoindre avec un code.' },
+    es: { app: 'MyScore', title: 'Únete a la agrupación que te invitó', label: 'Código de invitación', copy: 'Copiar código', copied: 'Copiado', open: 'Abrir en la app', install: 'Instalar la app',
+          hint: 'Después de instalarla, vuelve a tocar este enlace o escribe el código en Mis agrupaciones › Unirse con código.' }
+  };
+  var nav = (navigator.language || 'en').toLowerCase();
+  var l = nav.slice(0, 2);
+  // 간체는 영어 (앱과 같다): 번체는 zh-TW · HK · MO · Hant 만.
+  if (l === 'zh' && !/hant|tw|hk|mo/.test(nav)) l = 'en';
+  var t = T[l] || T.en;
+  document.documentElement.lang = T[l] ? l : 'en';
+  var $ = function (id) { return document.getElementById(id); };
+  $('app').textContent = t.app;
+  $('title').textContent = t.title;
+  document.title = 'MyScore: ' + t.title;
+  $('label').textContent = t.label;
+  $('copy').textContent = t.copy;
+  $('open').textContent = t.open;
+  $('install').textContent = t.install;
+  $('hint').textContent = t.hint;
+
+  var code = window.__code;
+  if (code) {
+    $('code').textContent = code.length === 6 ? code.slice(0, 3) + '-' + code.slice(3) : code;
+    $('copy').onclick = function () {
+      var done = function () { $('copy').textContent = t.copied; };
+      if (navigator.clipboard) navigator.clipboard.writeText(code).then(done, function () {});
+    };
+  } else {
+    $('has-code').hidden = true;
+  }
+
+  var p = window.__platform;
+  // 안드로이드 앱 안 브라우저에서 [앱에서 열기]: 앱이 없으면 이 페이지로 돌아오되 다시 부르지 않는다 (t=1).
+  $('open').href = p === 'android'
+    ? window.__app.replace(';end', ';S.browser_fallback_url=' + encodeURIComponent(location.origin + location.pathname + location.search + (location.search ? '&' : '?') + 't=1') + ';end')
+    : window.__app;
+  if (p === 'ios') $('install').href = 'https://apps.apple.com/app/id6819550025';
+  else if (p === 'android') $('install').href = 'https://play.google.com/store/apps/details?id=com.ymc.myscore';
+  else { $('open').hidden = true; $('install').hidden = true; $('stores').hidden = false; }
+})();
+</script>
+</body>
+</html>

@@ -1,6 +1,6 @@
 {
  "_doc": "MyStudio 자체 광고(교차 홍보): 2026-10-10 사용자: \"AdMob 승인 전까지 MyStudio 앱끼리 서로 광고, 승인되고 내가 요청하면 AdMob 으로\". mode admob + house_fallback: AdMob 을 계속 요청(계정 검토에 요청 기록이 필요할 수 있어)하고, 실패하면(지금은 늘 code 3) 자체 광고. house = AdMob 요청 없이 자체 광고만, off = 광고 칸 없음. 바꾸는 사람: My_Studio 세션. 10/24 한·일 이름 text.<lang>.name(ko · ja 만, 최상위 name 은 영어 그대로: 앱은 다음 버전부터 text[lang].name 을 먼저 읽음).",
- "version": 45,
+ "version": 46,
  "mode": "admob",
  "house_fallback": true,
  "house_share": 1.0,
@@ -1173,9 +1173,9 @@
    "video": 0.2
   },
   "default": {
-   "shot": 0.5,
-   "video": 0.5
+   "video": 0.8,
+   "shot": 0.2
   }
  },
- "_doc_house_kind_mix": "2026-10-28 사용자: 자체 전면을 스크린샷 · 인스타 광고 30초 영상 · 체험형 세 가지로 순환, 체험형이 있는 앱은 체험형 80% · 영상 20%. 자체 전면 차례마다 고른 앱 칸에 playable 이 있으면 house_kind_mix.playable, 없으면 .default 가중치로 종류(shot · video · playable)를 무작위로 고른다. 영상은 apps[].ad_video({언어: mp4}, 없는 언어 en, 720×1280 30~35초, 인스타 광고와 같은 영상). 고른 종류가 실패하면 스크린샷, 그것도 없으면 거름. 키가 없으면 옛 동작(영상 > 체험판 > 스크린샷). 옛 키 apps[].video 는 쓰지 않음(옛 앱은 ad_video 를 읽지 않아 지금 동작 그대로). 앱 반영은 다음 버전부터."
+ "_doc_house_kind_mix": "2026-10-28 사용자: 자체 전면을 스크린샷 · 인스타 광고 30초 영상 · 체험형 세 가지로 순환, 체험형이 있는 앱은 체험형 80% · 영상 20%. 자체 전면 차례마다 고른 앱 칸에 playable 이 있으면 house_kind_mix.playable, 없으면 .default 가중치로 종류(shot · video · playable)를 무작위로 고른다. 영상은 apps[].ad_video({언어: mp4}, 없는 언어 en, 720×1280 30~35초, 인스타 광고와 같은 영상). 고른 종류가 실패하면 스크린샷, 그것도 없으면 거름. 키가 없으면 옛 동작(영상 > 체험판 > 스크린샷). 옛 키 apps[].video 는 쓰지 않음(옛 앱은 ad_video 를 읽지 않아 지금 동작 그대로). 앱 반영은 다음 버전부터. 2026-10-28 사용자: 체험형 없는 앱은 영상 80 · 스크린샷 20(46판)."
 }

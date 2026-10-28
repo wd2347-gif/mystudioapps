@@ -1,0 +1,181 @@
+{
+ "id": "mypartygame",
+ "name": "MyPartyGames",
+ "icon": "https://mystudioapps.com/assets/mypartygame/icon.png",
+ "color": "#7A3FE0",
+ "shot": {
+  "ko": "https://mystudioapps.com/assets/mypartygame/ko_s1.jpg",
+  "ja": "https://mystudioapps.com/assets/mypartygame/ja_s1.jpg",
+  "en": "https://mystudioapps.com/assets/mypartygame/en_s1.jpg",
+  "zh-Hant": "https://mystudioapps.com/assets/mypartygame/zh-Hant_s1.jpg",
+  "de": "https://mystudioapps.com/assets/mypartygame/de_s1.jpg",
+  "es": "https://mystudioapps.com/assets/mypartygame/es_s1.jpg",
+  "fr": "https://mystudioapps.com/assets/mypartygame/fr_s1.jpg",
+  "pt": "https://mystudioapps.com/assets/mypartygame/pt_s1.jpg",
+  "ar": "https://mystudioapps.com/assets/mypartygame/ar_s1.jpg"
+ },
+ "shots": {
+  "ko": [
+   "https://mystudioapps.com/assets/mypartygame/ko_s1.jpg",
+   "https://mystudioapps.com/assets/mypartygame/ko_s2.jpg",
+   "https://mystudioapps.com/assets/mypartygame/ko_s3.jpg",
+   "https://mystudioapps.com/assets/mypartygame/ko_s4.jpg",
+   "https://mystudioapps.com/assets/mypartygame/ko_s5.jpg",
+   "https://mystudioapps.com/assets/mypartygame/ko_s6.jpg",
+   "https://mystudioapps.com/assets/mypartygame/ko_s7.jpg",
+   "https://mystudioapps.com/assets/mypartygame/ko_s8.jpg",
+   "https://mystudioapps.com/assets/mypartygame/ko_s9.jpg",
+   "https://mystudioapps.com/assets/mypartygame/ko_s10.jpg"
+  ],
+  "ja": [
+   "https://mystudioapps.com/assets/mypartygame/ja_s1.jpg",
+   "https://mystudioapps.com/assets/mypartygame/ja_s2.jpg",
+   "https://mystudioapps.com/assets/mypartygame/ja_s3.jpg",
+   "https://mystudioapps.com/assets/mypartygame/ja_s4.jpg",
+   "https://mystudioapps.com/assets/mypartygame/ja_s5.jpg",
+   "https://mystudioapps.com/assets/mypartygame/ja_s6.jpg",
+   "https://mystudioapps.com/assets/mypartygame/ja_s7.jpg",
+   "https://mystudioapps.com/assets/mypartygame/ja_s8.jpg",
+   "https://mystudioapps.com/assets/mypartygame/ja_s9.jpg",
+   "https://mystudioapps.com/assets/mypartygame/ja_s10.jpg"
+  ],
+  "en": [
+   "https://mystudioapps.com/assets/mypartygame/en_s1.jpg",
+   "https://mystudioapps.com/assets/mypartygame/en_s2.jpg",
+   "https://mystudioapps.com/assets/mypartygame/en_s3.jpg",
+   "https://mystudioapps.com/assets/mypartygame/en_s4.jpg",
+   "https://mystudioapps.com/assets/mypartygame/en_s5.jpg",
+   "https://mystudioapps.com/assets/mypartygame/en_s6.jpg",
+   "https://mystudioapps.com/assets/mypartygame/en_s7.jpg",
+   "https://mystudioapps.com/assets/mypartygame/en_s8.jpg",
+   "https://mystudioapps.com/assets/mypartygame/en_s9.jpg",
+   "https://mystudioapps.com/assets/mypartygame/en_s10.jpg"
+  ],
+  "zh-Hant": [
+   "https://mystudioapps.com/assets/mypartygame/zh-Hant_s1.jpg",
+   "https://mystudioapps.com/assets/mypartygame/zh-Hant_s2.jpg",
+   "https://mystudioapps.com/assets/mypartygame/zh-Hant_s3.jpg",
+   "https://mystudioapps.com/assets/mypartygame/zh-Hant_s4.jpg",
+   "https://mystudioapps.com/assets/mypartygame/zh-Hant_s5.jpg",
+   "https://mystudioapps.com/assets/mypartygame/zh-Hant_s6.jpg",
+   "https://mystudioapps.com/assets/mypartygame/zh-Hant_s7.jpg",
+   "https://mystudioapps.com/assets/mypartygame/zh-Hant_s8.jpg",
+   "https://mystudioapps.com/assets/mypartygame/zh-Hant_s9.jpg",
+   "https://mystudioapps.com/assets/mypartygame/zh-Hant_s10.jpg"
+  ],
+  "de": [
+   "https://mystudioapps.com/assets/mypartygame/de_s1.jpg",
+   "https://mystudioapps.com/assets/mypartygame/de_s2.jpg",
+   "https://mystudioapps.com/assets/mypartygame/de_s3.jpg",
+   "https://mystudioapps.com/assets/mypartygame/de_s4.jpg",
+   "https://mystudioapps.com/assets/mypartygame/de_s5.jpg",
+   "https://mystudioapps.com/assets/mypartygame/de_s6.jpg",
+   "https://mystudioapps.com/assets/mypartygame/de_s7.jpg",
+   "https://mystudioapps.com/assets/mypartygame/de_s8.jpg",
+   "https://mystudioapps.com/assets/mypartygame/de_s9.jpg",
+   "https://mystudioapps.com/assets/mypartygame/de_s10.jpg"
+  ],
+  "es": [
+   "https://mystudioapps.com/assets/mypartygame/es_s1.jpg",
+   "https://mystudioapps.com/assets/mypartygame/es_s2.jpg",
+   "https://mystudioapps.com/assets/mypartygame/es_s3.jpg",
+   "https://mystudioapps.com/assets/mypartygame/es_s4.jpg",
+   "https://mystudioapps.com/assets/mypartygame/es_s5.jpg",
+   "https://mystudioapps.com/assets/mypartygame/es_s6.jpg",
+   "https://mystudioapps.com/assets/mypartygame/es_s7.jpg",
+   "https://mystudioapps.com/assets/mypartygame/es_s8.jpg",
+   "https://mystudioapps.com/assets/mypartygame/es_s9.jpg",
+   "https://mystudioapps.com/assets/mypartygame/es_s10.jpg"
+  ],
+  "fr": [
+   "https://mystudioapps.com/assets/mypartygame/fr_s1.jpg",
+   "https://mystudioapps.com/assets/mypartygame/fr_s2.jpg",
+   "https://mystudioapps.com/assets/mypartygame/fr_s3.jpg",
+   "https://mystudioapps.com/assets/mypartygame/fr_s4.jpg",
+   "https://mystudioapps.com/assets/mypartygame/fr_s5.jpg",
+   "https://mystudioapps.com/assets/mypartygame/fr_s6.jpg",
+   "https://mystudioapps.com/assets/mypartygame/fr_s7.jpg",
+   "https://mystudioapps.com/assets/mypartygame/fr_s8.jpg",
+   "https://mystudioapps.com/assets/mypartygame/fr_s9.jpg",
+   "https://mystudioapps.com/assets/mypartygame/fr_s10.jpg"
+  ],
+  "pt": [
+   "https://mystudioapps.com/assets/mypartygame/pt_s1.jpg",
+   "https://mystudioapps.com/assets/mypartygame/pt_s2.jpg",
+   "https://mystudioapps.com/assets/mypartygame/pt_s3.jpg",
+   "https://mystudioapps.com/assets/mypartygame/pt_s4.jpg",
+   "https://mystudioapps.com/assets/mypartygame/pt_s5.jpg",
+   "https://mystudioapps.com/assets/mypartygame/pt_s6.jpg",
+   "https://mystudioapps.com/assets/mypartygame/pt_s7.jpg",
+   "https://mystudioapps.com/assets/mypartygame/pt_s8.jpg",
+   "https://mystudioapps.com/assets/mypartygame/pt_s9.jpg",
+   "https://mystudioapps.com/assets/mypartygame/pt_s10.jpg"
+  ],
+  "ar": [
+   "https://mystudioapps.com/assets/mypartygame/ar_s1.jpg",
+   "https://mystudioapps.com/assets/mypartygame/ar_s2.jpg",
+   "https://mystudioapps.com/assets/mypartygame/ar_s3.jpg",
+   "https://mystudioapps.com/assets/mypartygame/ar_s4.jpg",
+   "https://mystudioapps.com/assets/mypartygame/ar_s5.jpg",
+   "https://mystudioapps.com/assets/mypartygame/ar_s6.jpg",
+   "https://mystudioapps.com/assets/mypartygame/ar_s7.jpg",
+   "https://mystudioapps.com/assets/mypartygame/ar_s8.jpg",
+   "https://mystudioapps.com/assets/mypartygame/ar_s9.jpg",
+   "https://mystudioapps.com/assets/mypartygame/ar_s10.jpg"
+  ]
+ },
+ "store": {
+  "ios": "https://apps.apple.com/app/id6821380529",
+  "android": "https://play.google.com/store/apps/details?id=com.ymc.mypartygame"
+ },
+ "android_live": false,
+ "text": {
+  "ko": {
+   "headline": "모여서, 내기할 때, 혼자서도",
+   "tagline": "라이어 게임 · 마피아 · 사다리 타기",
+   "cta": "무료로 받기"
+  },
+  "ja": {
+   "headline": "集まって、賭けて、ひとりでも",
+   "tagline": "うそつき探し・マフィア・あみだくじ",
+   "cta": "無料で入手"
+  },
+  "en": {
+   "headline": "Party games on one phone",
+   "tagline": "Liar Game · Mafia · Spin Wheel",
+   "cta": "Get it free"
+  },
+  "zh-Hant": {
+   "headline": "朋友聚會、打賭、一個人也好玩",
+   "tagline": "派對遊戲 · 轉盤 · 懲罰遊戲",
+   "cta": "免費下載"
+  },
+  "de": {
+   "headline": "Partyspiele auf einem Handy",
+   "tagline": "Partyspiele · Glücksrad · Wetten",
+   "cta": "Kostenlos laden"
+  },
+  "es": {
+   "headline": "Juegos de fiesta en un solo móvil",
+   "tagline": "Juegos de fiesta · Ruleta · Retos",
+   "cta": "Consíguela gratis"
+  },
+  "fr": {
+   "headline": "Jeux de soirée sur un seul téléphone",
+   "tagline": "Jeux de soirée · Roue · Gages",
+   "cta": "Obtenir gratuitement"
+  },
+  "pt": {
+   "headline": "Jogos de festa em um só celular",
+   "tagline": "Jogos de festa · Roleta · Desafios",
+   "cta": "Baixar grátis"
+  },
+  "ar": {
+   "headline": "ألعاب الحفلات على هاتف واحد",
+   "tagline": "ألعاب جماعية · عجلة الحظ · تحديات",
+   "cta": "احصل عليه مجانًا"
+  }
+ },
+ "playable": "https://mystudioapps.com/playable/mypartygame/",
+ "music": "https://mystudioapps.com/assets/mypartygame/ad_music.mp3"
+}

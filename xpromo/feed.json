@@ -1,6 +1,6 @@
 {
  "_doc": "MyStudio 자체 광고(교차 홍보): 2026-10-10 사용자: \"AdMob 승인 전까지 MyStudio 앱끼리 서로 광고, 승인되고 내가 요청하면 AdMob 으로\". mode admob + house_fallback: AdMob 을 계속 요청(계정 검토에 요청 기록이 필요할 수 있어)하고, 실패하면(지금은 늘 code 3) 자체 광고. house = AdMob 요청 없이 자체 광고만, off = 광고 칸 없음. 바꾸는 사람: My_Studio 세션. 10/24 한·일 이름 text.<lang>.name(ko · ja 만, 최상위 name 은 영어 그대로: 앱은 다음 버전부터 text[lang].name 을 먼저 읽음).",
- "version": 44,
+ "version": 45,
  "mode": "admob",
  "house_fallback": true,
  "house_share": 1.0,
@@ -213,7 +213,18 @@
      "cta": "احصل عليه مجانًا"
     }
    },
-   "music": "https://mystudioapps.com/assets/myslowbody/ad_music.mp3"
+   "music": "https://mystudioapps.com/assets/myslowbody/ad_music.mp3",
+   "ad_video": {
+    "ko": "https://mystudioapps.com/xpromo/video/myslowbody_ko.mp4",
+    "en": "https://mystudioapps.com/xpromo/video/myslowbody_en.mp4",
+    "ja": "https://mystudioapps.com/xpromo/video/myslowbody_ja.mp4",
+    "zh-Hant": "https://mystudioapps.com/xpromo/video/myslowbody_zh-Hant.mp4",
+    "es": "https://mystudioapps.com/xpromo/video/myslowbody_es.mp4",
+    "fr": "https://mystudioapps.com/xpromo/video/myslowbody_fr.mp4",
+    "de": "https://mystudioapps.com/xpromo/video/myslowbody_de.mp4",
+    "pt": "https://mystudioapps.com/xpromo/video/myslowbody_pt.mp4",
+    "ar": "https://mystudioapps.com/xpromo/video/myslowbody_ar.mp4"
+   }
   },
   {
    "id": "myfidget",
@@ -395,7 +406,18 @@
     }
    },
    "playable": "https://mystudioapps.com/playable/myfidget/",
-   "music": "https://mystudioapps.com/assets/myfidget/ad_music.mp3"
+   "music": "https://mystudioapps.com/assets/myfidget/ad_music.mp3",
+   "ad_video": {
+    "ko": "https://mystudioapps.com/xpromo/video/myfidget_ko.mp4",
+    "en": "https://mystudioapps.com/xpromo/video/myfidget_en.mp4",
+    "ja": "https://mystudioapps.com/xpromo/video/myfidget_ja.mp4",
+    "zh-Hant": "https://mystudioapps.com/xpromo/video/myfidget_zh-Hant.mp4",
+    "es": "https://mystudioapps.com/xpromo/video/myfidget_es.mp4",
+    "fr": "https://mystudioapps.com/xpromo/video/myfidget_fr.mp4",
+    "de": "https://mystudioapps.com/xpromo/video/myfidget_de.mp4",
+    "pt": "https://mystudioapps.com/xpromo/video/myfidget_pt.mp4",
+    "ar": "https://mystudioapps.com/xpromo/video/myfidget_ar.mp4"
+   }
   },
   {
    "id": "myvocal",
@@ -577,7 +599,18 @@
      "cta": "احصل عليه مجانًا"
     }
    },
-   "music": "https://mystudioapps.com/assets/myvocal/ad_music.mp3"
+   "music": "https://mystudioapps.com/assets/myvocal/ad_music.mp3",
+   "ad_video": {
+    "ko": "https://mystudioapps.com/xpromo/video/myvocal_ko.mp4",
+    "en": "https://mystudioapps.com/xpromo/video/myvocal_en.mp4",
+    "ja": "https://mystudioapps.com/xpromo/video/myvocal_ja.mp4",
+    "zh-Hant": "https://mystudioapps.com/xpromo/video/myvocal_zh-Hant.mp4",
+    "es": "https://mystudioapps.com/xpromo/video/myvocal_es.mp4",
+    "fr": "https://mystudioapps.com/xpromo/video/myvocal_fr.mp4",
+    "de": "https://mystudioapps.com/xpromo/video/myvocal_de.mp4",
+    "pt": "https://mystudioapps.com/xpromo/video/myvocal_pt.mp4",
+    "ar": "https://mystudioapps.com/xpromo/video/myvocal_ar.mp4"
+   }
   },
   {
    "id": "myslowsleep",
@@ -722,7 +755,18 @@
      "cta": "اعرف المزيد"
     }
    },
-   "music": "https://mystudioapps.com/assets/myslowsleep/ad_music.mp3"
+   "music": "https://mystudioapps.com/assets/myslowsleep/ad_music.mp3",
+   "ad_video": {
+    "ko": "https://mystudioapps.com/xpromo/video/myslowsleep_ko.mp4",
+    "en": "https://mystudioapps.com/xpromo/video/myslowsleep_en.mp4",
+    "ja": "https://mystudioapps.com/xpromo/video/myslowsleep_ja.mp4",
+    "zh-Hant": "https://mystudioapps.com/xpromo/video/myslowsleep_zh-Hant.mp4",
+    "es": "https://mystudioapps.com/xpromo/video/myslowsleep_es.mp4",
+    "fr": "https://mystudioapps.com/xpromo/video/myslowsleep_fr.mp4",
+    "de": "https://mystudioapps.com/xpromo/video/myslowsleep_de.mp4",
+    "pt": "https://mystudioapps.com/xpromo/video/myslowsleep_pt.mp4",
+    "ar": "https://mystudioapps.com/xpromo/video/myslowsleep_ar.mp4"
+   }
   },
   {
    "id": "mypartygame",
@@ -905,7 +949,18 @@
     }
    },
    "playable": "https://mystudioapps.com/playable/mypartygame/",
-   "music": "https://mystudioapps.com/assets/mypartygame/ad_music.mp3"
+   "music": "https://mystudioapps.com/assets/mypartygame/ad_music.mp3",
+   "ad_video": {
+    "ko": "https://mystudioapps.com/xpromo/video/mypartygame_ko.mp4",
+    "en": "https://mystudioapps.com/xpromo/video/mypartygame_en.mp4",
+    "ja": "https://mystudioapps.com/xpromo/video/mypartygame_ja.mp4",
+    "zh-Hant": "https://mystudioapps.com/xpromo/video/mypartygame_zh-Hant.mp4",
+    "es": "https://mystudioapps.com/xpromo/video/mypartygame_es.mp4",
+    "fr": "https://mystudioapps.com/xpromo/video/mypartygame_fr.mp4",
+    "de": "https://mystudioapps.com/xpromo/video/mypartygame_de.mp4",
+    "pt": "https://mystudioapps.com/xpromo/video/mypartygame_pt.mp4",
+    "ar": "https://mystudioapps.com/xpromo/video/mypartygame_ar.mp4"
+   }
   },
   {
    "id": "myminigame",
@@ -1088,7 +1143,18 @@
     }
    },
    "playable": "https://mystudioapps.com/playable/myminigame/",
-   "music": "https://mystudioapps.com/assets/myminigame/ad_music.mp3"
+   "music": "https://mystudioapps.com/assets/myminigame/ad_music.mp3",
+   "ad_video": {
+    "ko": "https://mystudioapps.com/xpromo/video/myminigame_ko.mp4",
+    "en": "https://mystudioapps.com/xpromo/video/myminigame_en.mp4",
+    "ja": "https://mystudioapps.com/xpromo/video/myminigame_ja.mp4",
+    "zh-Hant": "https://mystudioapps.com/xpromo/video/myminigame_zh-Hant.mp4",
+    "es": "https://mystudioapps.com/xpromo/video/myminigame_es.mp4",
+    "fr": "https://mystudioapps.com/xpromo/video/myminigame_fr.mp4",
+    "de": "https://mystudioapps.com/xpromo/video/myminigame_de.mp4",
+    "pt": "https://mystudioapps.com/xpromo/video/myminigame_pt.mp4",
+    "ar": "https://mystudioapps.com/xpromo/video/myminigame_ar.mp4"
+   }
   }
  ],
  "interstitial_close_after_sec": 20,
@@ -1100,5 +1166,16 @@
  "_doc_video": "2026-10-14 밤 사용자 작업 목록(MyPartyGames 6번): 여러 명이 하는 게임은 체험판 대신 시연 영상 광고. apps[].video = {언어: 세로 9:16 mp4 주소}(H.264, 20초 안, 3MB 안), 그 언어가 없으면 en(다른 글과 같은 규칙). 앱은 자체 전면 차례에 그 앱 칸에 video 가 있으면 체험판 · 스크린샷 대신 전체 화면 영상(반복, 설치 단추 늘 보임, 닫기는 interstitial_close_after_sec 뒤). 소리는 스크린샷 광고 음악 규칙과 같게(앱 소리 · 음악을 끈 사용자는 무음, 다른 앱 음악이 돌면 무음). 기록 xpromo_show(kind=video) · xpromo_click · xpromo_close. 영상이 3초 안에 안 뜨면 스크린샷 카드로 대신. 순서: 영상 > 체험판(playable) > 스크린샷. 한 앱 칸에 셋이 다 있어도 영상만 쓴다. 2026-10-15 사용자: MyPartyGames 는 영상 말고 예전처럼 체험판(playable)으로 → mypartygame.video 뺌(영상 파일 xpromo_<언어>_v2.mp4 는 사이트에 남겨 둠, 앱의 영상 기능도 그대로라 다시 넣으면 바로 씀).",
  "trial_ad_limit": 0,
  "_doc_trial_ad_limit": "2026-10-25 사용자: 광고 보고 잠긴 유료 게임 · 놀이 · 연습 체험(피젯 '광고 보고 한 번 해 보기' · 포켓 · 파티 '광고 보고 한 판' · 보컬 잠긴 연습 1회)은 횟수 제한 없음: 광고를 볼 때마다 한 번 더 할 수 있다(같은 게임도). 0 = 제한 없음(기본), 1~50 이면 하루 그 횟수까지, 없거나 범위 밖이면 0. 광고 보고 재화 받기(톡톡 · 구슬 · 별사탕)는 이 값과 상관없이 하루 3번 그대로. (38 · 39판의 rewarded_per_day 는 잘못 알아들은 것이라 뺌.)",
- "_doc_slogan": "2026-10-28 밤 사용자: '우리 앱 배너들은 슬로건으로 깔끔하게' → apps[].text.<lang>.headline = 앱 슬로건(슬로우바디 여유있는 사람되기 · 피젯 언제든지 스트레스 해소 · 보컬 매일 하는 보컬 기본기 훈련 · 포켓 두뇌 · 기억력 · 순발력 미니게임(배너 한 줄에 맞게 줄임) · 파티 앱 하나로 인싸되기, 슬로우슬립은 그대로). 슬로건 번역이 없는 언어는 옛 headline."
+ "_doc_slogan": "2026-10-28 밤 사용자: '우리 앱 배너들은 슬로건으로 깔끔하게' → apps[].text.<lang>.headline = 앱 슬로건(슬로우바디 여유있는 사람되기 · 피젯 언제든지 스트레스 해소 · 보컬 매일 하는 보컬 기본기 훈련 · 포켓 두뇌 · 기억력 · 순발력 미니게임(배너 한 줄에 맞게 줄임) · 파티 앱 하나로 인싸되기, 슬로우슬립은 그대로). 슬로건 번역이 없는 언어는 옛 headline.",
+ "house_kind_mix": {
+  "playable": {
+   "playable": 0.8,
+   "video": 0.2
+  },
+  "default": {
+   "shot": 0.5,
+   "video": 0.5
+  }
+ },
+ "_doc_house_kind_mix": "2026-10-28 사용자: 자체 전면을 스크린샷 · 인스타 광고 30초 영상 · 체험형 세 가지로 순환, 체험형이 있는 앱은 체험형 80% · 영상 20%. 자체 전면 차례마다 고른 앱 칸에 playable 이 있으면 house_kind_mix.playable, 없으면 .default 가중치로 종류(shot · video · playable)를 무작위로 고른다. 영상은 apps[].ad_video({언어: mp4}, 없는 언어 en, 720×1280 30~35초, 인스타 광고와 같은 영상). 고른 종류가 실패하면 스크린샷, 그것도 없으면 거름. 키가 없으면 옛 동작(영상 > 체험판 > 스크린샷). 옛 키 apps[].video 는 쓰지 않음(옛 앱은 ad_video 를 읽지 않아 지금 동작 그대로). 앱 반영은 다음 버전부터."
 }

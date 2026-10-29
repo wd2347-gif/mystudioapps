@@ -1,6 +1,6 @@
 {
  "_doc": "MyStudio 자체 광고(교차 홍보): 2026-10-10 사용자: \"AdMob 승인 전까지 MyStudio 앱끼리 서로 광고, 승인되고 내가 요청하면 AdMob 으로\". mode admob + house_fallback: AdMob 을 계속 요청(계정 검토에 요청 기록이 필요할 수 있어)하고, 실패하면(지금은 늘 code 3) 자체 광고. house = AdMob 요청 없이 자체 광고만, off = 광고 칸 없음. 바꾸는 사람: My_Studio 세션. 10/24 한·일 이름 text.<lang>.name(ko · ja 만, 최상위 name 은 영어 그대로: 앱은 다음 버전부터 text[lang].name 을 먼저 읽음).",
- "version": 50,
+ "version": 51,
  "mode": "admob",
  "house_fallback": true,
  "house_share": 1.0,
@@ -14,7 +14,7 @@
   },
   "overrides": []
  },
- "_doc_ad_mix": "2026-10-24 저녁 사용자: '광고 비율은 업데이트 없이'. 앱은 ad_mix 를 먼저 읽고, 없으면 banner_house_share · interstitial_house_share, 그것도 없으면 house_share. 값은 형식별 자체 광고 몫(0~1, 0 = 광고망 100%, 1 = 자체 100%, 차례마다 무작위). default 위에 overrides 를 위에서부터 차례로 덮어씀(뒤에 오는 것이 이김). override 조건 칸: app(피드 앱 id 하나 또는 목록) · platform('ios' | 'android') · country(기기 지역 ISO 두 글자 목록, 대문자) · min_version · max_version(앱 버전 '1.2.0' 꼴, 그 버전 포함). 조건 칸이 없으면 모두에 맞음. 덮어쓸 수 있는 값: banner · interstitial(자체 몫) · banner_on · interstitial_on(false 면 그 형식 안 띄움) · interstitial_gap_sec · first_run_quiet_sec · interstitial_close_after_sec(범위 밖이면 무시하고 위 기본값). 모르는 키 · 모르는 형식 · 0~1 밖 값은 무시(앱이 죽거나 기본으로 돌아가지 않게, 그 칸만 건너뜀). 보상형은 늘 광고망(이 값과 상관없음). 예: {\"app\":\"myfidget\",\"platform\":\"android\",\"country\":[\"JP\"],\"banner\":0.5}. 2026-10-28 밤 사용자: '배너 앱을 우리 앱으로 100%' → default banner 1.0(모든 앱, banner_house_share 도 1.0). 전면은 0.2 그대로. 2026-10-28 밤 사용자: 전면도 우리 앱 100% → default interstitial 1.0(배너 · 전면 모두 자체, 보상형만 광고망). 2026-10-30 사용자: 배너는 광고망 100%로 되돌림(default banner 0.0, banner_house_share 0.0). 전면은 자체 100% 그대로(광고망 전면은 길어 이탈 · 나쁜 리뷰 걱정).",
+ "_doc_ad_mix": "2026-10-24 저녁 사용자: '광고 비율은 업데이트 없이'. 앱은 ad_mix 를 먼저 읽고, 없으면 banner_house_share · interstitial_house_share, 그것도 없으면 house_share. 값은 형식별 자체 광고 몫(0~1, 0 = 광고망 100%, 1 = 자체 100%, 차례마다 무작위). default 위에 overrides 를 위에서부터 차례로 덮어씀(뒤에 오는 것이 이김). override 조건 칸: app(피드 앱 id 하나 또는 목록) · platform('ios' | 'android') · country(기기 지역 ISO 두 글자 목록, 대문자) · min_version · max_version(앱 버전 '1.2.0' 꼴, 그 버전 포함). 조건 칸이 없으면 모두에 맞음. 덮어쓸 수 있는 값: banner · interstitial(자체 몫) · banner_on · interstitial_on(false 면 그 형식 안 띄움) · interstitial_gap_sec · first_run_quiet_sec · interstitial_close_after_sec(범위 밖이면 무시하고 위 기본값). 모르는 키 · 모르는 형식 · 0~1 밖 값은 무시(앱이 죽거나 기본으로 돌아가지 않게, 그 칸만 건너뜀). 보상형은 늘 광고망(이 값과 상관없음). 예: {\"app\":\"myfidget\",\"platform\":\"android\",\"country\":[\"JP\"],\"banner\":0.5}. 2026-10-28 밤 사용자: '배너 앱을 우리 앱으로 100%' → default banner 1.0(모든 앱, banner_house_share 도 1.0). 전면은 0.2 그대로. 2026-10-28 밤 사용자: 전면도 우리 앱 100% → default interstitial 1.0(배너 · 전면 모두 자체, 보상형만 광고망). 2026-10-30 사용자: 배너는 광고망 100%로 되돌림(default banner 0.0, banner_house_share 0.0). 전면은 자체 100% 그대로(광고망 전면은 길어 이탈 · 나쁜 리뷰 걱정). 2026-10-30 사용자: 자체 광고는 우리 앱 모두 다시 홍보(51판, 50판의 피젯 · 보컬만 홍보를 되돌림). 배너 광고망 100% · 전면 자체 100%는 그대로.",
  "_doc_house_share": "2026-10-23 사용자(최신, My_Fidget 거쳐 확인): 배너 · 전면은 자체 광고 100%(모든 앱) → house_share 1.0. (그 전 10/14 밤: 광고망 6 : 자체 4 → 0.4.) 보상형은 이 값과 상관없이 늘 광고망(LevelPlay). 1.0 이면 앱은 광고망 전면 · 배너를 미리 받지 않고, 1.0 보다 작으면 받는다. 0~1, 차례마다 무작위. (10/11 0.3 → 10/14 0.2 → 10/14 밤 1.0 → 10/14 밤 0.4 → 10/23 1.0)",
  "interstitial_gap_sec": 200,
  "_doc_gap": "2026-10-14 밤 사용자: 전면 광고 간격 180초(모든 앱, 광고망 · 자체 광고 모두). '광고만 해도 60초쯤이라 바로 다시 나온다' → 앞 전면을 닫은 때부터 센다. 앱은 이 값을 읽고 없거나 30~600 밖이면 기본 180. 세션 첫 판 · 보상형 직후 건너뛰기는 그대로. 2026-10-28 사용자: 180 → 300초(5분). 같은 밤 사용자: 다시 180초(3분). 2026-10-29 사용자: 180 → 200초(피젯 일본 리뷰 '광고가 길다' 뒤 빈도 줄이기).",
@@ -36,6 +36,196 @@
   "android_referrer": "utm_source=xpromo&utm_medium=app&utm_campaign=xp_{from}_{to}"
  },
  "apps": [
+  {
+   "id": "myslowbody",
+   "name": "MySlowBody",
+   "icon": "https://mystudioapps.com/assets/myslowbody/icon.png",
+   "color": "#1C9A46",
+   "shot": {
+    "ko": "https://mystudioapps.com/assets/myslowbody/ko_s1.jpg?v=1028",
+    "ja": "https://mystudioapps.com/assets/myslowbody/ja_s1.jpg?v=1028",
+    "en": "https://mystudioapps.com/assets/myslowbody/en_s1.jpg?v=1028",
+    "zh-Hant": "https://mystudioapps.com/assets/myslowbody/zh-Hant_s1.jpg?v=1028",
+    "de": "https://mystudioapps.com/assets/myslowbody/de_s1.jpg?v=1028",
+    "es": "https://mystudioapps.com/assets/myslowbody/es_s1.jpg?v=1028",
+    "fr": "https://mystudioapps.com/assets/myslowbody/fr_s1.jpg?v=1028",
+    "pt": "https://mystudioapps.com/assets/myslowbody/pt_s1.jpg?v=1028",
+    "ar": "https://mystudioapps.com/assets/myslowbody/ar_s1.jpg?v=1028"
+   },
+   "shots": {
+    "ko": [
+     "https://mystudioapps.com/assets/myslowbody/ko_s1.jpg?v=1028",
+     "https://mystudioapps.com/assets/myslowbody/ko_s2.jpg?v=1028",
+     "https://mystudioapps.com/assets/myslowbody/ko_s3.jpg?v=1028",
+     "https://mystudioapps.com/assets/myslowbody/ko_s4.jpg?v=1028",
+     "https://mystudioapps.com/assets/myslowbody/ko_s5.jpg?v=1028",
+     "https://mystudioapps.com/assets/myslowbody/ko_s6.jpg?v=1028",
+     "https://mystudioapps.com/assets/myslowbody/ko_s7.jpg?v=1028",
+     "https://mystudioapps.com/assets/myslowbody/ko_s8.jpg?v=1028",
+     "https://mystudioapps.com/assets/myslowbody/ko_s9.jpg?v=1028",
+     "https://mystudioapps.com/assets/myslowbody/ko_s10.jpg?v=1028"
+    ],
+    "ja": [
+     "https://mystudioapps.com/assets/myslowbody/ja_s1.jpg?v=1028",
+     "https://mystudioapps.com/assets/myslowbody/ja_s2.jpg?v=1028",
+     "https://mystudioapps.com/assets/myslowbody/ja_s3.jpg?v=1028",
+     "https://mystudioapps.com/assets/myslowbody/ja_s4.jpg?v=1028",
+     "https://mystudioapps.com/assets/myslowbody/ja_s5.jpg?v=1028",
+     "https://mystudioapps.com/assets/myslowbody/ja_s6.jpg?v=1028",
+     "https://mystudioapps.com/assets/myslowbody/ja_s7.jpg?v=1028",
+     "https://mystudioapps.com/assets/myslowbody/ja_s8.jpg?v=1028",
+     "https://mystudioapps.com/assets/myslowbody/ja_s9.jpg?v=1028",
+     "https://mystudioapps.com/assets/myslowbody/ja_s10.jpg?v=1028"
+    ],
+    "en": [
+     "https://mystudioapps.com/assets/myslowbody/en_s1.jpg?v=1028",
+     "https://mystudioapps.com/assets/myslowbody/en_s2.jpg?v=1028",
+     "https://mystudioapps.com/assets/myslowbody/en_s3.jpg?v=1028",
+     "https://mystudioapps.com/assets/myslowbody/en_s4.jpg?v=1028",
+     "https://mystudioapps.com/assets/myslowbody/en_s5.jpg?v=1028",
+     "https://mystudioapps.com/assets/myslowbody/en_s6.jpg?v=1028",
+     "https://mystudioapps.com/assets/myslowbody/en_s7.jpg?v=1028",
+     "https://mystudioapps.com/assets/myslowbody/en_s8.jpg?v=1028",
+     "https://mystudioapps.com/assets/myslowbody/en_s9.jpg?v=1028",
+     "https://mystudioapps.com/assets/myslowbody/en_s10.jpg?v=1028"
+    ],
+    "zh-Hant": [
+     "https://mystudioapps.com/assets/myslowbody/zh-Hant_s1.jpg?v=1028",
+     "https://mystudioapps.com/assets/myslowbody/zh-Hant_s2.jpg?v=1028",
+     "https://mystudioapps.com/assets/myslowbody/zh-Hant_s3.jpg?v=1028",
+     "https://mystudioapps.com/assets/myslowbody/zh-Hant_s4.jpg?v=1028",
+     "https://mystudioapps.com/assets/myslowbody/zh-Hant_s5.jpg?v=1028",
+     "https://mystudioapps.com/assets/myslowbody/zh-Hant_s6.jpg?v=1028",
+     "https://mystudioapps.com/assets/myslowbody/zh-Hant_s7.jpg?v=1028",
+     "https://mystudioapps.com/assets/myslowbody/zh-Hant_s8.jpg?v=1028",
+     "https://mystudioapps.com/assets/myslowbody/zh-Hant_s9.jpg?v=1028",
+     "https://mystudioapps.com/assets/myslowbody/zh-Hant_s10.jpg?v=1028"
+    ],
+    "de": [
+     "https://mystudioapps.com/assets/myslowbody/de_s1.jpg?v=1028",
+     "https://mystudioapps.com/assets/myslowbody/de_s2.jpg?v=1028",
+     "https://mystudioapps.com/assets/myslowbody/de_s3.jpg?v=1028",
+     "https://mystudioapps.com/assets/myslowbody/de_s4.jpg?v=1028",
+     "https://mystudioapps.com/assets/myslowbody/de_s5.jpg?v=1028",
+     "https://mystudioapps.com/assets/myslowbody/de_s6.jpg?v=1028",
+     "https://mystudioapps.com/assets/myslowbody/de_s7.jpg?v=1028",
+     "https://mystudioapps.com/assets/myslowbody/de_s8.jpg?v=1028",
+     "https://mystudioapps.com/assets/myslowbody/de_s9.jpg?v=1028",
+     "https://mystudioapps.com/assets/myslowbody/de_s10.jpg?v=1028"
+    ],
+    "es": [
+     "https://mystudioapps.com/assets/myslowbody/es_s1.jpg?v=1028",
+     "https://mystudioapps.com/assets/myslowbody/es_s2.jpg?v=1028",
+     "https://mystudioapps.com/assets/myslowbody/es_s3.jpg?v=1028",
+     "https://mystudioapps.com/assets/myslowbody/es_s4.jpg?v=1028",
+     "https://mystudioapps.com/assets/myslowbody/es_s5.jpg?v=1028",
+     "https://mystudioapps.com/assets/myslowbody/es_s6.jpg?v=1028",
+     "https://mystudioapps.com/assets/myslowbody/es_s7.jpg?v=1028",
+     "https://mystudioapps.com/assets/myslowbody/es_s8.jpg?v=1028",
+     "https://mystudioapps.com/assets/myslowbody/es_s9.jpg?v=1028",
+     "https://mystudioapps.com/assets/myslowbody/es_s10.jpg?v=1028"
+    ],
+    "fr": [
+     "https://mystudioapps.com/assets/myslowbody/fr_s1.jpg?v=1028",
+     "https://mystudioapps.com/assets/myslowbody/fr_s2.jpg?v=1028",
+     "https://mystudioapps.com/assets/myslowbody/fr_s3.jpg?v=1028",
+     "https://mystudioapps.com/assets/myslowbody/fr_s4.jpg?v=1028",
+     "https://mystudioapps.com/assets/myslowbody/fr_s5.jpg?v=1028",
+     "https://mystudioapps.com/assets/myslowbody/fr_s6.jpg?v=1028",
+     "https://mystudioapps.com/assets/myslowbody/fr_s7.jpg?v=1028",
+     "https://mystudioapps.com/assets/myslowbody/fr_s8.jpg?v=1028",
+     "https://mystudioapps.com/assets/myslowbody/fr_s9.jpg?v=1028",
+     "https://mystudioapps.com/assets/myslowbody/fr_s10.jpg?v=1028"
+    ],
+    "pt": [
+     "https://mystudioapps.com/assets/myslowbody/pt_s1.jpg?v=1028",
+     "https://mystudioapps.com/assets/myslowbody/pt_s2.jpg?v=1028",
+     "https://mystudioapps.com/assets/myslowbody/pt_s3.jpg?v=1028",
+     "https://mystudioapps.com/assets/myslowbody/pt_s4.jpg?v=1028",
+     "https://mystudioapps.com/assets/myslowbody/pt_s5.jpg?v=1028",
+     "https://mystudioapps.com/assets/myslowbody/pt_s6.jpg?v=1028",
+     "https://mystudioapps.com/assets/myslowbody/pt_s7.jpg?v=1028",
+     "https://mystudioapps.com/assets/myslowbody/pt_s8.jpg?v=1028",
+     "https://mystudioapps.com/assets/myslowbody/pt_s9.jpg?v=1028",
+     "https://mystudioapps.com/assets/myslowbody/pt_s10.jpg?v=1028"
+    ],
+    "ar": [
+     "https://mystudioapps.com/assets/myslowbody/ar_s1.jpg?v=1028",
+     "https://mystudioapps.com/assets/myslowbody/ar_s2.jpg?v=1028",
+     "https://mystudioapps.com/assets/myslowbody/ar_s3.jpg?v=1028",
+     "https://mystudioapps.com/assets/myslowbody/ar_s4.jpg?v=1028",
+     "https://mystudioapps.com/assets/myslowbody/ar_s5.jpg?v=1028",
+     "https://mystudioapps.com/assets/myslowbody/ar_s6.jpg?v=1028",
+     "https://mystudioapps.com/assets/myslowbody/ar_s7.jpg?v=1028",
+     "https://mystudioapps.com/assets/myslowbody/ar_s8.jpg?v=1028",
+     "https://mystudioapps.com/assets/myslowbody/ar_s9.jpg?v=1028",
+     "https://mystudioapps.com/assets/myslowbody/ar_s10.jpg?v=1028"
+    ]
+   },
+   "store": {
+    "ios": "https://apps.apple.com/app/id6812821519",
+    "android": "https://play.google.com/store/apps/details?id=com.ymc.myslowbody"
+   },
+   "text": {
+    "ko": {
+     "headline": "여유있는 사람되기",
+     "tagline": "스트레칭 · 느린 호흡 · 수면",
+     "cta": "무료로 받기"
+    },
+    "ja": {
+     "headline": "余裕のある大人へ",
+     "tagline": "ストレッチ・ゆっくり呼吸・睡眠",
+     "cta": "無料で入手"
+    },
+    "en": {
+     "headline": "Find your breathing room",
+     "tagline": "Stretch · Slow breathing · Sleep",
+     "cta": "Get it free"
+    },
+    "zh-Hant": {
+     "headline": "做個從容自在的人",
+     "tagline": "伸展 · 慢呼吸 · 睡眠",
+     "cta": "免費下載"
+    },
+    "de": {
+     "headline": "Werde die Ruhe selbst",
+     "tagline": "Dehnen · Langsam atmen · Schlaf",
+     "cta": "Kostenlos laden"
+    },
+    "es": {
+     "headline": "Vive sin prisa",
+     "tagline": "Estiramientos · Respiración lenta · Sueño",
+     "cta": "Consíguela gratis"
+    },
+    "fr": {
+     "headline": "Deviens quelqu'un de zen",
+     "tagline": "Étirements · Respiration lente · Sommeil",
+     "cta": "Obtenir gratuitement"
+    },
+    "pt": {
+     "headline": "Viva sem pressa",
+     "tagline": "Alongamento · Respiração lenta · Sono",
+     "cta": "Baixar grátis"
+    },
+    "ar": {
+     "headline": "كن رائق البال",
+     "tagline": "تمدد · تنفس بطيء · نوم",
+     "cta": "احصل عليه مجانًا"
+    }
+   },
+   "music": "https://mystudioapps.com/assets/myslowbody/ad_music.mp3",
+   "ad_video": {
+    "ko": "https://mystudioapps.com/xpromo/video/myslowbody_ko.mp4",
+    "en": "https://mystudioapps.com/xpromo/video/myslowbody_en.mp4",
+    "ja": "https://mystudioapps.com/xpromo/video/myslowbody_ja.mp4",
+    "zh-Hant": "https://mystudioapps.com/xpromo/video/myslowbody_zh-Hant.mp4",
+    "es": "https://mystudioapps.com/xpromo/video/myslowbody_es.mp4",
+    "fr": "https://mystudioapps.com/xpromo/video/myslowbody_fr.mp4",
+    "de": "https://mystudioapps.com/xpromo/video/myslowbody_de.mp4",
+    "pt": "https://mystudioapps.com/xpromo/video/myslowbody_pt.mp4",
+    "ar": "https://mystudioapps.com/xpromo/video/myslowbody_ar.mp4"
+   }
+  },
   {
    "id": "myfidget",
    "name": "MyFidget",
@@ -420,220 +610,6 @@
     "de": "https://mystudioapps.com/xpromo/video/myvocal_de.mp4",
     "pt": "https://mystudioapps.com/xpromo/video/myvocal_pt.mp4",
     "ar": "https://mystudioapps.com/xpromo/video/myvocal_ar.mp4"
-   }
-  }
- ],
- "interstitial_close_after_sec": 20,
- "_doc_close": "자체 전면 광고의 닫기 단추가 나오는 시각(초). 2026-10-11 사용자: 7초 → 15초. 2026-10-23 사용자: 15초 → 20초(지금 앱들은 2~15초로 묶어 읽어 다음 버전에서 상한을 올려야 20초가 됨).",
- "_doc_playable": "2026-10-11 사용자: 우리 앱끼리 전면 광고에 직접 해 보는 체험판(다른 게임 두 번 바뀌고 세 번째는 설치). apps[].playable 이 있으면 자체 전면 차례에 WebView, JS 채널 XPromo(ready · switch:n · install).",
- "_doc_shots": "2026-10-11 사용자: 스크린샷 자체 광고는 한 장만 말고 넘겨 보며 보게. apps[].shots[lang] = 스토어 스크린샷 순서 목록(첫 장 = shot). 옛 앱은 shot 한 장 그대로 씀.",
- "_doc_langs": "2026-10-12 사용자: 자체 광고 9개 언어(ko · ja · en · zh-Hant · de · es · fr · pt · ar). 앱은 zh → zh-Hant, 나머지는 언어 코드 그대로, 피드에 없으면 en.",
- "_doc_music": "2026-10-12 사용자: 스크린샷 자체 광고에도 음악. apps[].music = 그 앱 배경 음악 20초(mp3 128k(flutter_soloud 가 m4a 를 못 읽어 10/12 mp3 로), 끝 1.5초 페이드). 스크린샷 전면이 떠 있는 동안 반복, 닫으면 멈춤, 앱 소리 · 음악을 끈 사용자에겐 틀지 않음. 체험판은 효과음(host=app 이면 바로 시작, sound=0 이면 무음).",
- "_doc_video": "2026-10-14 밤 사용자 작업 목록(MyPartyGames 6번): 여러 명이 하는 게임은 체험판 대신 시연 영상 광고. apps[].video = {언어: 세로 9:16 mp4 주소}(H.264, 20초 안, 3MB 안), 그 언어가 없으면 en(다른 글과 같은 규칙). 앱은 자체 전면 차례에 그 앱 칸에 video 가 있으면 체험판 · 스크린샷 대신 전체 화면 영상(반복, 설치 단추 늘 보임, 닫기는 interstitial_close_after_sec 뒤). 소리는 스크린샷 광고 음악 규칙과 같게(앱 소리 · 음악을 끈 사용자는 무음, 다른 앱 음악이 돌면 무음). 기록 xpromo_show(kind=video) · xpromo_click · xpromo_close. 영상이 3초 안에 안 뜨면 스크린샷 카드로 대신. 순서: 영상 > 체험판(playable) > 스크린샷. 한 앱 칸에 셋이 다 있어도 영상만 쓴다. 2026-10-15 사용자: MyPartyGames 는 영상 말고 예전처럼 체험판(playable)으로 → mypartygame.video 뺌(영상 파일 xpromo_<언어>_v2.mp4 는 사이트에 남겨 둠, 앱의 영상 기능도 그대로라 다시 넣으면 바로 씀).",
- "trial_ad_limit": 0,
- "_doc_trial_ad_limit": "2026-10-25 사용자: 광고 보고 잠긴 유료 게임 · 놀이 · 연습 체험(피젯 '광고 보고 한 번 해 보기' · 포켓 · 파티 '광고 보고 한 판' · 보컬 잠긴 연습 1회)은 횟수 제한 없음: 광고를 볼 때마다 한 번 더 할 수 있다(같은 게임도). 0 = 제한 없음(기본), 1~50 이면 하루 그 횟수까지, 없거나 범위 밖이면 0. 광고 보고 재화 받기(톡톡 · 구슬 · 별사탕)는 이 값과 상관없이 하루 3번 그대로. (38 · 39판의 rewarded_per_day 는 잘못 알아들은 것이라 뺌.)",
- "_doc_slogan": "2026-10-28 밤 사용자: '우리 앱 배너들은 슬로건으로 깔끔하게' → apps[].text.<lang>.headline = 앱 슬로건(슬로우바디 여유있는 사람되기 · 피젯 언제든지 스트레스 해소 · 보컬 매일 하는 보컬 기본기 훈련 · 포켓 두뇌 · 기억력 · 순발력 미니게임(배너 한 줄에 맞게 줄임) · 파티 앱 하나로 인싸되기, 슬로우슬립은 그대로). 슬로건 번역이 없는 언어는 옛 headline.",
- "house_kind_mix": {
-  "playable": {
-   "playable": 0.8,
-   "video": 0.2
-  },
-  "default": {
-   "video": 0.8,
-   "shot": 0.2
-  }
- },
- "_doc_house_kind_mix": "2026-10-28 사용자: 자체 전면을 스크린샷 · 인스타 광고 30초 영상 · 체험형 세 가지로 순환, 체험형이 있는 앱은 체험형 80% · 영상 20%. 자체 전면 차례마다 고른 앱 칸에 playable 이 있으면 house_kind_mix.playable, 없으면 .default 가중치로 종류(shot · video · playable)를 무작위로 고른다. 영상은 apps[].ad_video({언어: mp4}, 없는 언어 en, 720×1280 30~35초, 인스타 광고와 같은 영상). 고른 종류가 실패하면 스크린샷, 그것도 없으면 거름. 키가 없으면 옛 동작(영상 > 체험판 > 스크린샷). 옛 키 apps[].video 는 쓰지 않음(옛 앱은 ad_video 를 읽지 않아 지금 동작 그대로). 앱 반영은 다음 버전부터. 2026-10-28 사용자: 체험형 없는 앱은 영상 80 · 스크린샷 20(46판). 2026-10-29 사용자: 파티게임즈는 체험형 말고 영상 · 스크린샷으로 → mypartygame 의 playable 을 빼서 default(영상 80 · 스크린샷 20)를 씀(49판). 체험판 페이지는 그대로 둠.",
- "_doc_paused_apps": "2026-10-30 사용자: 돈 버는 피젯 · 보컬에 집중 → 자체 광고에서 홍보하는 앱을 myfidget · myvocal 만 남김(50판). 나머지 앱 칸은 _paused_apps 에 그대로 보관, 되돌릴 땐 apps 로 옮김.",
- "_paused_apps": [
-  {
-   "id": "myslowbody",
-   "name": "MySlowBody",
-   "icon": "https://mystudioapps.com/assets/myslowbody/icon.png",
-   "color": "#1C9A46",
-   "shot": {
-    "ko": "https://mystudioapps.com/assets/myslowbody/ko_s1.jpg?v=1028",
-    "ja": "https://mystudioapps.com/assets/myslowbody/ja_s1.jpg?v=1028",
-    "en": "https://mystudioapps.com/assets/myslowbody/en_s1.jpg?v=1028",
-    "zh-Hant": "https://mystudioapps.com/assets/myslowbody/zh-Hant_s1.jpg?v=1028",
-    "de": "https://mystudioapps.com/assets/myslowbody/de_s1.jpg?v=1028",
-    "es": "https://mystudioapps.com/assets/myslowbody/es_s1.jpg?v=1028",
-    "fr": "https://mystudioapps.com/assets/myslowbody/fr_s1.jpg?v=1028",
-    "pt": "https://mystudioapps.com/assets/myslowbody/pt_s1.jpg?v=1028",
-    "ar": "https://mystudioapps.com/assets/myslowbody/ar_s1.jpg?v=1028"
-   },
-   "shots": {
-    "ko": [
-     "https://mystudioapps.com/assets/myslowbody/ko_s1.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowbody/ko_s2.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowbody/ko_s3.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowbody/ko_s4.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowbody/ko_s5.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowbody/ko_s6.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowbody/ko_s7.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowbody/ko_s8.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowbody/ko_s9.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowbody/ko_s10.jpg?v=1028"
-    ],
-    "ja": [
-     "https://mystudioapps.com/assets/myslowbody/ja_s1.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowbody/ja_s2.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowbody/ja_s3.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowbody/ja_s4.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowbody/ja_s5.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowbody/ja_s6.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowbody/ja_s7.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowbody/ja_s8.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowbody/ja_s9.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowbody/ja_s10.jpg?v=1028"
-    ],
-    "en": [
-     "https://mystudioapps.com/assets/myslowbody/en_s1.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowbody/en_s2.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowbody/en_s3.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowbody/en_s4.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowbody/en_s5.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowbody/en_s6.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowbody/en_s7.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowbody/en_s8.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowbody/en_s9.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowbody/en_s10.jpg?v=1028"
-    ],
-    "zh-Hant": [
-     "https://mystudioapps.com/assets/myslowbody/zh-Hant_s1.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowbody/zh-Hant_s2.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowbody/zh-Hant_s3.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowbody/zh-Hant_s4.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowbody/zh-Hant_s5.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowbody/zh-Hant_s6.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowbody/zh-Hant_s7.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowbody/zh-Hant_s8.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowbody/zh-Hant_s9.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowbody/zh-Hant_s10.jpg?v=1028"
-    ],
-    "de": [
-     "https://mystudioapps.com/assets/myslowbody/de_s1.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowbody/de_s2.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowbody/de_s3.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowbody/de_s4.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowbody/de_s5.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowbody/de_s6.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowbody/de_s7.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowbody/de_s8.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowbody/de_s9.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowbody/de_s10.jpg?v=1028"
-    ],
-    "es": [
-     "https://mystudioapps.com/assets/myslowbody/es_s1.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowbody/es_s2.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowbody/es_s3.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowbody/es_s4.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowbody/es_s5.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowbody/es_s6.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowbody/es_s7.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowbody/es_s8.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowbody/es_s9.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowbody/es_s10.jpg?v=1028"
-    ],
-    "fr": [
-     "https://mystudioapps.com/assets/myslowbody/fr_s1.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowbody/fr_s2.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowbody/fr_s3.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowbody/fr_s4.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowbody/fr_s5.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowbody/fr_s6.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowbody/fr_s7.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowbody/fr_s8.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowbody/fr_s9.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowbody/fr_s10.jpg?v=1028"
-    ],
-    "pt": [
-     "https://mystudioapps.com/assets/myslowbody/pt_s1.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowbody/pt_s2.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowbody/pt_s3.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowbody/pt_s4.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowbody/pt_s5.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowbody/pt_s6.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowbody/pt_s7.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowbody/pt_s8.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowbody/pt_s9.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowbody/pt_s10.jpg?v=1028"
-    ],
-    "ar": [
-     "https://mystudioapps.com/assets/myslowbody/ar_s1.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowbody/ar_s2.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowbody/ar_s3.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowbody/ar_s4.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowbody/ar_s5.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowbody/ar_s6.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowbody/ar_s7.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowbody/ar_s8.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowbody/ar_s9.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowbody/ar_s10.jpg?v=1028"
-    ]
-   },
-   "store": {
-    "ios": "https://apps.apple.com/app/id6812821519",
-    "android": "https://play.google.com/store/apps/details?id=com.ymc.myslowbody"
-   },
-   "text": {
-    "ko": {
-     "headline": "여유있는 사람되기",
-     "tagline": "스트레칭 · 느린 호흡 · 수면",
-     "cta": "무료로 받기"
-    },
-    "ja": {
-     "headline": "余裕のある大人へ",
-     "tagline": "ストレッチ・ゆっくり呼吸・睡眠",
-     "cta": "無料で入手"
-    },
-    "en": {
-     "headline": "Find your breathing room",
-     "tagline": "Stretch · Slow breathing · Sleep",
-     "cta": "Get it free"
-    },
-    "zh-Hant": {
-     "headline": "做個從容自在的人",
-     "tagline": "伸展 · 慢呼吸 · 睡眠",
-     "cta": "免費下載"
-    },
-    "de": {
-     "headline": "Werde die Ruhe selbst",
-     "tagline": "Dehnen · Langsam atmen · Schlaf",
-     "cta": "Kostenlos laden"
-    },
-    "es": {
-     "headline": "Vive sin prisa",
-     "tagline": "Estiramientos · Respiración lenta · Sueño",
-     "cta": "Consíguela gratis"
-    },
-    "fr": {
-     "headline": "Deviens quelqu'un de zen",
-     "tagline": "Étirements · Respiration lente · Sommeil",
-     "cta": "Obtenir gratuitement"
-    },
-    "pt": {
-     "headline": "Viva sem pressa",
-     "tagline": "Alongamento · Respiração lenta · Sono",
-     "cta": "Baixar grátis"
-    },
-    "ar": {
-     "headline": "كن رائق البال",
-     "tagline": "تمدد · تنفس بطيء · نوم",
-     "cta": "احصل عليه مجانًا"
-    }
-   },
-   "music": "https://mystudioapps.com/assets/myslowbody/ad_music.mp3",
-   "ad_video": {
-    "ko": "https://mystudioapps.com/xpromo/video/myslowbody_ko.mp4",
-    "en": "https://mystudioapps.com/xpromo/video/myslowbody_en.mp4",
-    "ja": "https://mystudioapps.com/xpromo/video/myslowbody_ja.mp4",
-    "zh-Hant": "https://mystudioapps.com/xpromo/video/myslowbody_zh-Hant.mp4",
-    "es": "https://mystudioapps.com/xpromo/video/myslowbody_es.mp4",
-    "fr": "https://mystudioapps.com/xpromo/video/myslowbody_fr.mp4",
-    "de": "https://mystudioapps.com/xpromo/video/myslowbody_de.mp4",
-    "pt": "https://mystudioapps.com/xpromo/video/myslowbody_pt.mp4",
-    "ar": "https://mystudioapps.com/xpromo/video/myslowbody_ar.mp4"
    }
   },
   {
@@ -1179,5 +1155,26 @@
     "ar": "https://mystudioapps.com/xpromo/video/myminigame_ar.mp4"
    }
   }
- ]
+ ],
+ "interstitial_close_after_sec": 20,
+ "_doc_close": "자체 전면 광고의 닫기 단추가 나오는 시각(초). 2026-10-11 사용자: 7초 → 15초. 2026-10-23 사용자: 15초 → 20초(지금 앱들은 2~15초로 묶어 읽어 다음 버전에서 상한을 올려야 20초가 됨).",
+ "_doc_playable": "2026-10-11 사용자: 우리 앱끼리 전면 광고에 직접 해 보는 체험판(다른 게임 두 번 바뀌고 세 번째는 설치). apps[].playable 이 있으면 자체 전면 차례에 WebView, JS 채널 XPromo(ready · switch:n · install).",
+ "_doc_shots": "2026-10-11 사용자: 스크린샷 자체 광고는 한 장만 말고 넘겨 보며 보게. apps[].shots[lang] = 스토어 스크린샷 순서 목록(첫 장 = shot). 옛 앱은 shot 한 장 그대로 씀.",
+ "_doc_langs": "2026-10-12 사용자: 자체 광고 9개 언어(ko · ja · en · zh-Hant · de · es · fr · pt · ar). 앱은 zh → zh-Hant, 나머지는 언어 코드 그대로, 피드에 없으면 en.",
+ "_doc_music": "2026-10-12 사용자: 스크린샷 자체 광고에도 음악. apps[].music = 그 앱 배경 음악 20초(mp3 128k(flutter_soloud 가 m4a 를 못 읽어 10/12 mp3 로), 끝 1.5초 페이드). 스크린샷 전면이 떠 있는 동안 반복, 닫으면 멈춤, 앱 소리 · 음악을 끈 사용자에겐 틀지 않음. 체험판은 효과음(host=app 이면 바로 시작, sound=0 이면 무음).",
+ "_doc_video": "2026-10-14 밤 사용자 작업 목록(MyPartyGames 6번): 여러 명이 하는 게임은 체험판 대신 시연 영상 광고. apps[].video = {언어: 세로 9:16 mp4 주소}(H.264, 20초 안, 3MB 안), 그 언어가 없으면 en(다른 글과 같은 규칙). 앱은 자체 전면 차례에 그 앱 칸에 video 가 있으면 체험판 · 스크린샷 대신 전체 화면 영상(반복, 설치 단추 늘 보임, 닫기는 interstitial_close_after_sec 뒤). 소리는 스크린샷 광고 음악 규칙과 같게(앱 소리 · 음악을 끈 사용자는 무음, 다른 앱 음악이 돌면 무음). 기록 xpromo_show(kind=video) · xpromo_click · xpromo_close. 영상이 3초 안에 안 뜨면 스크린샷 카드로 대신. 순서: 영상 > 체험판(playable) > 스크린샷. 한 앱 칸에 셋이 다 있어도 영상만 쓴다. 2026-10-15 사용자: MyPartyGames 는 영상 말고 예전처럼 체험판(playable)으로 → mypartygame.video 뺌(영상 파일 xpromo_<언어>_v2.mp4 는 사이트에 남겨 둠, 앱의 영상 기능도 그대로라 다시 넣으면 바로 씀).",
+ "trial_ad_limit": 0,
+ "_doc_trial_ad_limit": "2026-10-25 사용자: 광고 보고 잠긴 유료 게임 · 놀이 · 연습 체험(피젯 '광고 보고 한 번 해 보기' · 포켓 · 파티 '광고 보고 한 판' · 보컬 잠긴 연습 1회)은 횟수 제한 없음: 광고를 볼 때마다 한 번 더 할 수 있다(같은 게임도). 0 = 제한 없음(기본), 1~50 이면 하루 그 횟수까지, 없거나 범위 밖이면 0. 광고 보고 재화 받기(톡톡 · 구슬 · 별사탕)는 이 값과 상관없이 하루 3번 그대로. (38 · 39판의 rewarded_per_day 는 잘못 알아들은 것이라 뺌.)",
+ "_doc_slogan": "2026-10-28 밤 사용자: '우리 앱 배너들은 슬로건으로 깔끔하게' → apps[].text.<lang>.headline = 앱 슬로건(슬로우바디 여유있는 사람되기 · 피젯 언제든지 스트레스 해소 · 보컬 매일 하는 보컬 기본기 훈련 · 포켓 두뇌 · 기억력 · 순발력 미니게임(배너 한 줄에 맞게 줄임) · 파티 앱 하나로 인싸되기, 슬로우슬립은 그대로). 슬로건 번역이 없는 언어는 옛 headline.",
+ "house_kind_mix": {
+  "playable": {
+   "playable": 0.8,
+   "video": 0.2
+  },
+  "default": {
+   "video": 0.8,
+   "shot": 0.2
+  }
+ },
+ "_doc_house_kind_mix": "2026-10-28 사용자: 자체 전면을 스크린샷 · 인스타 광고 30초 영상 · 체험형 세 가지로 순환, 체험형이 있는 앱은 체험형 80% · 영상 20%. 자체 전면 차례마다 고른 앱 칸에 playable 이 있으면 house_kind_mix.playable, 없으면 .default 가중치로 종류(shot · video · playable)를 무작위로 고른다. 영상은 apps[].ad_video({언어: mp4}, 없는 언어 en, 720×1280 30~35초, 인스타 광고와 같은 영상). 고른 종류가 실패하면 스크린샷, 그것도 없으면 거름. 키가 없으면 옛 동작(영상 > 체험판 > 스크린샷). 옛 키 apps[].video 는 쓰지 않음(옛 앱은 ad_video 를 읽지 않아 지금 동작 그대로). 앱 반영은 다음 버전부터. 2026-10-28 사용자: 체험형 없는 앱은 영상 80 · 스크린샷 20(46판). 2026-10-29 사용자: 파티게임즈는 체험형 말고 영상 · 스크린샷으로 → mypartygame 의 playable 을 빼서 default(영상 80 · 스크린샷 20)를 씀(49판). 체험판 페이지는 그대로 둠."
 }

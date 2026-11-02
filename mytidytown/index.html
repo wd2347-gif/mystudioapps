@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>타이디타운: MyStudio</title>
+<meta name="description" content="마을을 정리하는 힐링 게임: 타이디타운(TidyTown)">
+<link rel="canonical" href="https://mystudioapps.com/mytidytown/">
+<link rel="icon" href="../assets/mytidytown/icon.png">
+<link rel="apple-touch-icon" href="../assets/mytidytown/icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="MyStudio">
+<meta property="og:title" content="타이디타운 · TidyTown">
+<meta property="og:description" content="마을을 정리하는 힐링 게임">
+<meta property="og:url" content="https://mystudioapps.com/mytidytown/">
+<meta property="og:image" content="https://mystudioapps.com/assets/mytidytown/icon.png">
+<meta property="og:image:width" content="512">
+<meta property="og:image:height" content="512">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<!-- 타이디타운(TidyTown) 소개(2026-11-03 My_Studio). 아직 TestFlight: 스토어 표시는 '곧 출시'(링크 없음). 공개되면 myfidget 처럼 스토어 링크로.
+     이름: ko 타이디타운 · ja タイディタウン · 나머지 7개 언어 TidyTown(11/02 사용자). 부제 en 은 App Store 이름 'TidyTown: Cozy Tidy-Up Game' 과 같게.
+     색은 아이콘처럼 MyStudio 초록(밝은 판 #2FC85E · 어두운 판 #43D873)과 노란 반짝, 바탕은 따뜻한 크림(기기가 어두운 모드면 어두운 판).
+     낱말은 앱 화면 문구(my_tidy lib/l10n/ui.dart: 내 방 · 앨범 · 분리수거 · 빨래 · 반짝)와 같게. 문구 규칙: 방 · 손님 개수, 가격, 광고 종류 이름 쓰지 않기.
+     스크린샷은 스토어 스크린샷이 생기면 assets/mytidytown/<이름>.jpg 로 두고 SHOTS · shots 에 넣는다(비어 있으면 칸이 숨음). -->
+<style>
+  :root {
+    color-scheme: light dark;
+    --bg: #FBF7EE; --bg2: #E6F5E8; --surface: #FFFFFF; --line: #E8E1D1; --ink: #1F2A22; --ink-soft: #5D6A60;
+    --accent: #2FC85E; --accent-ink: #16803A; --sun: #F2B92C; --wash: rgba(47, 200, 94, .12);
+    --glow: rgba(47, 200, 94, .30);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0E140F; --bg2: #16281B; --surface: #161F18; --line: #27342A; --ink: #EEF3EC; --ink-soft: #9DAA9F;
+      --accent: #43D873; --accent-ink: #43D873; --sun: #F6C453; --wash: rgba(67, 216, 115, .14);
+      --glow: rgba(67, 216, 115, .28);
+    }
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0; color: var(--ink); line-height: 1.65; min-height: 100vh;
+    background: radial-gradient(120% 55% at 50% 0%, var(--bg2) 0%, var(--bg) 70%) fixed, var(--bg);
+    font-family: "Pretendard", -apple-system, "Apple SD Gothic Neo", "Hiragino Sans", "PingFang TC", "Noto Sans JP", "Geeza Pro", sans-serif;
+  }
+  a { color: var(--accent-ink); }
+  :lang(ko) body, body:lang(ko) { word-break: keep-all; }
+  header { max-width: 860px; margin: 0 auto; padding: 18px 20px; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+  .brand { font-weight: 800; font-size: 17px; color: var(--ink); text-decoration: none; white-space: nowrap; }
+  .brand span { color: var(--accent); }
+  .lang { position: relative; }
+  .lang select { appearance: none; -webkit-appearance: none; font: inherit; font-size: 13px; font-weight: 600; color: var(--ink);
+    background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 7px 32px 7px 14px; cursor: pointer; }
+  .lang::after { content: ""; position: absolute; inset-inline-end: 13px; top: 50%; width: 7px; height: 7px; margin-top: -5px;
+    border-right: 2px solid var(--ink-soft); border-bottom: 2px solid var(--ink-soft); transform: rotate(45deg); pointer-events: none; }
+  main { max-width: 860px; margin: 0 auto; padding: 16px 20px 72px; }
+  .hero { text-align: center; padding: 36px 0 24px; }
+  .icon { width: 112px; height: 112px; border-radius: 26px; display: block; margin: 0 auto;
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, .5), 0 16px 44px var(--glow); }
+  h1 { margin: 22px 0 6px; font-size: 34px; font-weight: 800; letter-spacing: -.01em; text-wrap: balance; }
+  .sub { margin: 0; color: var(--ink-soft); font-size: 15px; font-weight: 600; }
+  .tagline { margin: 22px 0 10px; font-size: 22px; font-weight: 800; color: var(--accent-ink); text-wrap: balance; }
+  .desc { margin: 0 auto; max-width: 560px; font-size: 16px; text-wrap: pretty; }
+  .soon { display: inline-flex; align-items: center; gap: 8px; margin-top: 24px; padding: 10px 18px; border-radius: 999px;
+    background: var(--wash); border: 1px solid var(--accent); color: var(--accent-ink); font-weight: 700; font-size: 14px; }
+  .soon svg { color: var(--sun); flex: none; }
+  .shots { display: flex; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 8px 2px 14px; margin-top: 18px; }
+  .shots:empty { display: none; }
+  .shots figure { margin: 0; flex: 0 0 auto; width: min(46vw, 200px); scroll-snap-align: start; text-align: center; }
+  .shots img { width: 100%; height: auto; aspect-ratio: 460 / 937; object-fit: cover; object-position: top; border-radius: 18px;
+    border: 1px solid var(--line); background: var(--surface); display: block; }
+  .shots figcaption { margin-top: 8px; font-size: 13px; font-weight: 700; color: var(--ink-soft); }
+  .features { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-top: 18px; }
+  .feature { background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 20px; }
+  .feature .emoji { font-size: 24px; }
+  .feature h3 { margin: 8px 0 4px; font-size: 16px; }
+  .feature p { margin: 0; color: var(--ink-soft); font-size: 14.5px; }
+  .devices { margin: 22px 0 0; text-align: center; color: var(--ink-soft); font-size: 14px; }
+  footer { max-width: 860px; margin: 0 auto; padding: 24px 20px 48px; border-top: 1px solid var(--line);
+    display: flex; flex-wrap: wrap; gap: 8px 18px; justify-content: center; font-size: 14px; color: var(--ink-soft); }
+  footer a { color: var(--ink-soft); text-decoration: none; }
+  footer a:hover, footer a:focus-visible { color: var(--accent-ink); }
+  @media (min-width: 760px) { .shots { justify-content: center; overflow-x: visible; } }
+  @media (max-width: 600px) {
+    .features { grid-template-columns: 1fr; }
+    h1 { font-size: 30px; }
+    main { padding: 8px 16px 64px; }
+    header { padding: 16px; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <a class="brand" href="../">My<span>Studio</span></a>
+  <label class="lang"><select id="lang" aria-label="Language">
+    <option value="ko">한국어</option>
+    <option value="en">English</option>
+    <option value="ja">日本語</option>
+    <option value="zh-Hant">繁體中文</option>
+    <option value="es">Español</option>
+    <option value="fr">Français</option>
+    <option value="de">Deutsch</option>
+    <option value="pt">Português</option>
+    <option value="ar">العربية</option>
+  </select></label>
+</header>
+<main>
+  <section class="hero">
+    <img class="icon" src="../assets/mytidytown/icon.png" alt="" width="112" height="112">
+    <h1 id="name">타이디타운</h1>
+    <p class="sub" id="sub"></p>
+    <p class="tagline" id="tagline"></p>
+    <p class="desc" id="desc"></p>
+    <div class="soon"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c.9 6.6 4.8 10.6 12 12-7.2 1.4-11.1 5.4-12 12-.9-6.6-4.8-10.6-12-12 7.2-1.4 11.1-5.4 12-12z"/></svg><span id="soon"></span></div>
+  </section>
+  <section class="shots" id="shots"></section>
+  <section class="features" id="features"></section>
+  <p class="devices" id="devices"></p>
+</main>
+<footer>
+  <a id="f-home" href="../">MyStudio</a>
+  <a id="f-terms" href="terms.html"></a>
+  <a id="f-privacy" href="privacy.html"></a>
+  <a id="f-support" href="mailto:support@mystudioapps.com"></a>
+</footer>
+<script>
+const LANGS = ['ko', 'en', 'ja', 'zh-Hant', 'es', 'fr', 'de', 'pt', 'ar'];
+const HTML_LANG = { pt: 'pt-BR' };
+const SHOTS = [];
+const T = {
+  ko: {
+    name: '타이디타운',
+    sub: '마을을 정리하는 힐링 게임',
+    tagline: '어질러진 방이 말끔해지는 순간',
+    desc: '동네 손님들의 어질러진 방을 하나씩 정리해요. 물건을 제자리에 놓고, 쓰레기를 나누고, 빨래를 개다 보면 마음까지 개운해져요.',
+    soon: 'App Store · Google Play 곧 출시',
+    shots: [],
+    features: [
+      ['🧸', '손끝으로 정리', '물건을 끌어 책장 · 옷걸이 · 서랍 같은 제자리에 놓으면 착 맞아요.'],
+      ['♻️', '분리수거와 빨래', '쓰레기를 알맞은 통에 나눠 넣고, 옷과 수건을 쓸어 차곡차곡 개요.'],
+      ['📸', '전후 앨범', '막대를 밀어 정리 전과 후를 견줘 보고, 앨범에 남은 그림을 친구와 나눠요.'],
+      ['🏡', '손님과 내 방', '동네 지도에서 손님 집이 하나씩 열리고, 모은 반짝으로 내 방을 꾸며요.'],
+    ],
+    devices: '계정 없이 바로 시작하고, 언어는 기기 설정을 따라요.',
+    terms: '이용약관', privacy: '개인정보처리방침', support: '문의',
+  },
+  en: {
+    name: 'TidyTown',
+    sub: 'Cozy Tidy-Up Game',
+    tagline: 'From messy to tidy, one room at a time.',
+    desc: 'Tidy up messy guest rooms around town, one by one. Put things back where they belong, sort the recycling and fold the laundry, and feel your mind clear up too.',
+    soon: 'Coming soon: App Store · Google Play',
+    shots: [],
+    features: [
+      ['🧸', 'Tidy with a fingertip', 'Drag things to their spot on a shelf, a hanger or in a drawer, and they click into place.'],
+      ['♻️', 'Recycling and laundry', 'Sort waste into the right bins, then swipe to fold clothes and towels into neat stacks.'],
+      ['📸', 'Before and after album', 'Slide the bar to compare before and after, and share the pictures saved in your album.'],
+      ['🏡', 'Guests and your room', 'Guest homes open one by one on the town map, and the Sparkles you collect decorate your room.'],
+    ],
+    devices: 'No account needed, and the language follows your device.',
+    terms: 'Terms of Use', privacy: 'Privacy Policy', support: 'Support',
+  },
+  ja: {
+    name: 'タイディタウン',
+    sub: '町を片づける癒やしゲーム',
+    tagline: 'ちらかった部屋が、すっきり片づく瞬間。',
+    desc: '町のお客さんのちらかった部屋を、ひとつずつ片づけよう。物を元の場所に戻して、ごみを分別して、洗濯物をたためば、心まですっきり。',
+    soon: 'App Store・Google Play にまもなく登場',
+    shots: [],
+    features: [
+      ['🧸', '指先で片づけ', '物を本棚・ハンガー・引き出しなどの定位置へドラッグすると、ぴたっと収まります。'],
+      ['♻️', '分別と洗濯物', 'ごみを正しい箱に分けて入れ、服やタオルをスワイプしてきれいにたたみます。'],
+      ['📸', 'ビフォーアフターのアルバム', 'バーをスライドして片づけ前と後を見比べ、アルバムに残った絵をシェアできます。'],
+      ['🏡', 'お客さんとマイルーム', '町の地図でお客さんの家がひとつずつ開き、集めたキラキラでマイルームを飾ります。'],
+    ],
+    devices: 'アカウント不要ですぐに始められ、言語は端末の設定に合わせます。',
+    terms: '利用規約', privacy: 'プライバシーポリシー', support: 'お問い合わせ',
+  },
+  'zh-Hant': {
+    name: 'TidyTown',
+    sub: '整理小鎮的療癒遊戲',
+    tagline: '凌亂的房間，變得整整齊齊的那一刻。',
+    desc: '一間一間整理小鎮客人們凌亂的房間。把東西放回原位、分類垃圾、摺好衣物，心情也跟著清爽起來。',
+    soon: '即將登上 App Store 與 Google Play',
+    shots: [],
+    features: [
+      ['🧸', '指尖整理', '把物品拖到書架、衣架、抽屜等原本的位置，就會穩穩放好。'],
+      ['♻️', '分類回收與衣物', '把垃圾分進正確的回收桶，再滑動把衣服和毛巾摺得整整齊齊。'],
+      ['📸', '前後對比相簿', '拖動滑桿比較整理前後，還能分享留在相簿裡的圖片。'],
+      ['🏡', '客人與我的房間', '小鎮地圖上的客人家會一間間開啟，用收集到的閃閃佈置我的房間。'],
+    ],
+    devices: '免帳號即可開始，語言跟隨裝置設定。',
+    terms: '使用條款', privacy: '隱私權政策', support: '聯絡我們',
+  },
+  es: {
+    name: 'TidyTown',
+    sub: 'Juego relajante de ordenar',
+    tagline: 'De un cuarto desordenado a uno impecable.',
+    desc: 'Ordena una a una las habitaciones desordenadas de los vecinos del pueblo. Pon cada cosa en su sitio, separa la basura y dobla la ropa, y verás cómo tu mente también se despeja.',
+    soon: 'Próximamente: App Store · Google Play',
+    shots: [],
+    features: [
+      ['🧸', 'Ordena con un dedo', 'Arrastra las cosas a su lugar en la estantería, la percha o el cajón, y encajan al instante.'],
+      ['♻️', 'Reciclaje y ropa', 'Separa la basura en los contenedores correctos y desliza para doblar ropa y toallas en pilas ordenadas.'],
+      ['📸', 'Álbum de antes y después', 'Desliza la barra para comparar el antes y el después, y comparte las imágenes guardadas en tu álbum.'],
+      ['🏡', 'Vecinos y tu cuarto', 'Las casas de los vecinos se abren una a una en el mapa del pueblo, y con los Destellos que reúnes decoras tu cuarto.'],
+    ],
+    devices: 'Sin cuenta, y el idioma sigue el de tu dispositivo.',
+    terms: 'Términos de uso', privacy: 'Política de privacidad', support: 'Soporte',
+  },
+  fr: {
+    name: 'TidyTown',
+    sub: 'Jeu de rangement relaxant',
+    tagline: 'D’une pièce en désordre à une pièce impeccable.',
+    desc: 'Rangez une à une les pièces en désordre des habitants du village. Remettez chaque objet à sa place, triez les déchets et pliez le linge : votre esprit s’allège aussi.',
+    soon: 'Bientôt : App Store · Google Play',
+    shots: [],
+    features: [
+      ['🧸', 'Rangez du bout du doigt', 'Faites glisser les objets vers leur place, sur une étagère, un cintre ou dans un tiroir, et ils s’emboîtent d’un coup.'],
+      ['♻️', 'Tri et linge', 'Triez les déchets dans les bons bacs, puis balayez pour plier vêtements et serviettes en piles bien nettes.'],
+      ['📸', 'Album avant et après', 'Faites glisser la barre pour comparer l’avant et l’après, et partagez les images gardées dans votre album.'],
+      ['🏡', 'Les habitants et votre chambre', 'Les maisons des habitants s’ouvrent une à une sur la carte du village, et vos Étincelles servent à décorer votre chambre.'],
+    ],
+    devices: 'Sans compte, et la langue suit celle de l’appareil.',
+    terms: 'Conditions d’utilisation', privacy: 'Politique de confidentialité', support: 'Assistance',
+  },
+  de: {
+    name: 'TidyTown',
+    sub: 'Gemütliches Aufräumspiel',
+    tagline: 'Vom Chaos zum aufgeräumten Zimmer.',
+    desc: 'Räume nacheinander die unordentlichen Zimmer deiner Gäste im Ort auf. Bring alles an seinen Platz, trenne den Müll und falte die Wäsche, und auch dein Kopf wird frei.',
+    soon: 'Bald verfügbar: App Store · Google Play',
+    shots: [],
+    features: [
+      ['🧸', 'Aufräumen mit dem Finger', 'Zieh Dinge an ihren Platz im Regal, auf dem Bügel oder in der Schublade, und sie rasten ein.'],
+      ['♻️', 'Mülltrennung und Wäsche', 'Sortiere den Müll in die richtigen Tonnen und falte Kleidung und Handtücher mit einem Wisch zu ordentlichen Stapeln.'],
+      ['📸', 'Vorher und Nachher im Album', 'Schieb den Regler, um vorher und nachher zu vergleichen, und teile die Bilder aus deinem Album.'],
+      ['🏡', 'Gäste und dein Zimmer', 'Auf der Ortskarte öffnen sich die Häuser deiner Gäste eins nach dem anderen, und mit gesammeltem Funkeln dekorierst du dein Zimmer.'],
+    ],
+    devices: 'Ohne Konto, die Sprache folgt deinem Gerät.',
+    terms: 'Nutzungsbedingungen', privacy: 'Datenschutzerklärung', support: 'Support',
+  },
+  pt: {
+    name: 'TidyTown',
+    sub: 'Jogo relaxante de arrumação',
+    tagline: 'Do quarto bagunçado ao quarto impecável.',
+    desc: 'Arrume, um a um, os quartos bagunçados dos moradores da cidade. Coloque cada coisa no lugar, separe o lixo e dobre as roupas, e sinta a mente ficar leve também.',
+    soon: 'Em breve: App Store · Google Play',
+    shots: [],
+    features: [
+      ['🧸', 'Arrume com a ponta do dedo', 'Arraste os objetos até o lugar certo, como estante, cabide ou gaveta, e eles se encaixam na hora.'],
+      ['♻️', 'Reciclagem e roupas', 'Separe o lixo nas lixeiras certas e deslize para dobrar roupas e toalhas em pilhas arrumadas.'],
+      ['📸', 'Álbum de antes e depois', 'Deslize a barra para comparar o antes e o depois, e compartilhe as imagens guardadas no seu álbum.'],
+      ['🏡', 'Moradores e o seu quarto', 'As casas dos moradores abrem uma a uma no mapa da cidade, e com os Brilhos que você junta dá para decorar o seu quarto.'],
+    ],
+    devices: 'Sem conta, e o idioma segue o do seu aparelho.',
+    terms: 'Termos de Uso', privacy: 'Política de Privacidade', support: 'Suporte',
+  },
+  ar: {
+    name: 'TidyTown',
+    sub: 'لعبة ترتيب هادئة ومريحة',
+    tagline: 'من غرفة فوضوية إلى غرفة مرتّبة.',
+    desc: 'رتّب غرف ضيوف البلدة الفوضوية واحدةً تلو الأخرى. أعد كل شيء إلى مكانه، وافرز النفايات، واطوِ الغسيل، وستشعر بأن ذهنك صفا أيضًا.',
+    soon: 'قريبًا على App Store وGoogle Play',
+    shots: [],
+    features: [
+      ['🧸', 'رتّب بلمسة إصبع', 'اسحب الأشياء إلى أماكنها على الرف أو الشمّاعة أو في الدرج، فتستقر في مكانها فورًا.'],
+      ['♻️', 'إعادة التدوير والغسيل', 'افرز النفايات في الحاويات الصحيحة، ثم اسحب لتطوي الملابس والمناشف في أكوام مرتّبة.'],
+      ['📸', 'ألبوم قبل وبعد', 'حرّك الشريط لتقارن بين ما قبل الترتيب وما بعده، وشارك الصور المحفوظة في ألبومك.'],
+      ['🏡', 'الضيوف وغرفتي', 'تُفتح بيوت الضيوف واحدًا تلو الآخر على خريطة البلدة، وتزيّن غرفتك بالبريق الذي تجمعه.'],
+    ],
+    devices: 'بلا حساب، واللغة تتبع إعدادات جهازك.',
+    terms: 'شروط الاستخدام', privacy: 'سياسة الخصوصية', support: 'الدعم',
+  },
+};
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+function norm(l) {
+  l = String(l).toLowerCase();
+  if (l.startsWith('zh')) return /hant|tw|hk|mo/.test(l) ? 'zh-Hant' : null;
+  const n = l.slice(0, 2); return LANGS.includes(n) ? n : null;
+}
+function pick() {
+  const q = new URLSearchParams(location.search).get('lang');
+  if (LANGS.includes(q)) return q;
+  try { const s = localStorage.getItem('lang'); if (LANGS.includes(s)) return s; } catch (e) {}
+  for (const l of (navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || 'en'])) {
+    const n = norm(l); if (n) return n;
+  }
+  return 'en';
+}
+function show(lang) {
+  const t = T[lang];
+  document.documentElement.lang = HTML_LANG[lang] || lang;
+  document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+  document.title = t.name + ': MyStudio';
+  for (const k of ['name', 'sub', 'tagline', 'desc', 'soon', 'devices']) document.getElementById(k).textContent = t[k];
+  document.querySelector('.icon').alt = t.name;
+  document.getElementById('shots').innerHTML = SHOTS.map((s, i) =>
+    `<figure><img src="../assets/mytidytown/${s}.jpg" alt="${esc(t.shots[i])}" width="460" height="937" loading="lazy"><figcaption>${esc(t.shots[i])}</figcaption></figure>`).join('');
+  document.getElementById('features').innerHTML = t.features.map(([e, h, p]) =>
+    `<div class="feature"><div class="emoji">${e}</div><h3>${esc(h)}</h3><p>${esc(p)}</p></div>`).join('');
+  const terms = document.getElementById('f-terms'), privacy = document.getElementById('f-privacy');
+  terms.textContent = t.terms; terms.href = `terms.html?lang=${lang}`;
+  privacy.textContent = t.privacy; privacy.href = `privacy.html?lang=${lang}`;
+  document.getElementById('f-support').textContent = t.support;
+  document.getElementById('lang').value = lang;
+}
+document.getElementById('lang').addEventListener('change', e => {
+  try { localStorage.setItem('lang', e.target.value); } catch (err) {}
+  try { const u = new URL(location.href); u.searchParams.set('lang', e.target.value); history.replaceState(null, '', u); } catch (err) {}
+  show(e.target.value);
+});
+show(pick());
+</script>
+</body>
+</html>

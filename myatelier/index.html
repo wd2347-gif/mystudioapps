@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>마이아틀리에: MyStudio</title>
+<meta name="description" content="물건을 고치는 힐링 공방 게임: 마이아틀리에(MyAtelier)">
+<link rel="canonical" href="https://mystudioapps.com/myatelier/">
+<link rel="icon" href="../assets/myatelier/icon.png">
+<link rel="apple-touch-icon" href="../assets/myatelier/icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="MyStudio">
+<meta property="og:title" content="마이아틀리에 · MyAtelier">
+<meta property="og:description" content="물건을 고치는 힐링 공방 게임">
+<meta property="og:url" content="https://mystudioapps.com/myatelier/">
+<meta property="og:image" content="https://mystudioapps.com/assets/myatelier/icon.png">
+<meta property="og:image:width" content="512">
+<meta property="og:image:height" content="512">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<!-- 마이아틀리에(MyAtelier) 소개(2026-11-04 My_Studio 초안). 아직 스토어 공개 전: 스토어 표시는 '곧 출시'(링크 없음). 공개되면 myfidget 처럼 스토어 링크로.
+     이름: ko 마이아틀리에 · ja マイアトリエ · 나머지 7개 언어 MyAtelier(앱 appName 과 같음). 부제는 App Store 부제가 정해지면 그와 같게 맞춘다.
+     색은 앱(my_workshop lib/theme.dart)처럼 작업복 남색 #2F5D93 과 놋쇠 #E0A93B, 바탕은 크림 #F4F1EA. 기기가 어두운 모드면 밤 공방 판(#1B2533).
+     낱말은 앱 화면 문구(my_workshop lib/l10n/app_strings.dart: 작업대 · 진열장 · 공방 꾸미기 · 톱니 · 다섯 단계 이름 · 꾸미기 자리 넷)와 같게. 문구 규칙: 의뢰 · 손님 개수, 가격, 광고 종류 이름 쓰지 않기.
+     스크린샷은 스토어 스크린샷이 생기면 assets/myatelier/<이름>.jpg 로 두고 SHOTS · shots 에 넣는다(비어 있으면 칸이 숨음). -->
+<style>
+  :root {
+    color-scheme: light dark;
+    --bg: #F4F1EA; --bg2: #F8E7C4; --surface: #FFFCF6; --line: #E4DDD0; --ink: #1C2B3A; --ink-soft: #5E6B78;
+    --accent: #2F5D93; --accent-ink: #2F5D93; --sun: #E0A93B; --wash: rgba(47, 93, 147, .10);
+    --glow: rgba(224, 169, 59, .38);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1B2533; --bg2: #313A47; --surface: #243246; --line: #3A4B63; --ink: #F3EEE4; --ink-soft: #A7B3C3;
+      --accent: #9CC2EC; --accent-ink: #9CC2EC; --sun: #F2C14E; --wash: rgba(156, 194, 236, .12);
+      --glow: rgba(242, 193, 78, .26);
+    }
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0; color: var(--ink); line-height: 1.65; min-height: 100vh;
+    background: radial-gradient(120% 55% at 50% 0%, var(--bg2) 0%, var(--bg) 70%) fixed, var(--bg);
+    font-family: "Pretendard", -apple-system, "Apple SD Gothic Neo", "Hiragino Sans", "PingFang TC", "Noto Sans JP", "Geeza Pro", sans-serif;
+  }
+  a { color: var(--accent-ink); }
+  :lang(ko) body, body:lang(ko) { word-break: keep-all; }
+  header { max-width: 860px; margin: 0 auto; padding: 18px 20px; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+  .brand { font-weight: 800; font-size: 17px; color: var(--ink); text-decoration: none; white-space: nowrap; }
+  .brand span { color: var(--accent); }
+  .lang { position: relative; }
+  .lang select { appearance: none; -webkit-appearance: none; font: inherit; font-size: 13px; font-weight: 600; color: var(--ink);
+    background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 7px 32px 7px 14px; cursor: pointer; }
+  .lang::after { content: ""; position: absolute; inset-inline-end: 13px; top: 50%; width: 7px; height: 7px; margin-top: -5px;
+    border-right: 2px solid var(--ink-soft); border-bottom: 2px solid var(--ink-soft); transform: rotate(45deg); pointer-events: none; }
+  main { max-width: 860px; margin: 0 auto; padding: 16px 20px 72px; }
+  .hero { text-align: center; padding: 36px 0 24px; }
+  .icon { width: 112px; height: 112px; border-radius: 26px; display: block; margin: 0 auto;
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, .5), 0 16px 44px var(--glow); }
+  h1 { margin: 22px 0 6px; font-size: 34px; font-weight: 800; letter-spacing: -.01em; text-wrap: balance; }
+  .sub { margin: 0; color: var(--ink-soft); font-size: 15px; font-weight: 600; }
+  .tagline { margin: 22px 0 10px; font-size: 22px; font-weight: 800; color: var(--accent-ink); text-wrap: balance; }
+  .desc { margin: 0 auto; max-width: 560px; font-size: 16px; text-wrap: pretty; }
+  .soon { display: inline-flex; align-items: center; gap: 8px; margin-top: 24px; padding: 10px 18px; border-radius: 999px;
+    background: var(--wash); border: 1px solid var(--accent); color: var(--accent-ink); font-weight: 700; font-size: 14px; }
+  .soon svg { color: var(--sun); flex: none; }
+  .shots { display: flex; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 8px 2px 14px; margin-top: 18px; }
+  .shots:empty { display: none; }
+  .shots figure { margin: 0; flex: 0 0 auto; width: min(46vw, 200px); scroll-snap-align: start; text-align: center; }
+  .shots img { width: 100%; height: auto; aspect-ratio: 460 / 937; object-fit: cover; object-position: top; border-radius: 18px;
+    border: 1px solid var(--line); background: var(--surface); display: block; }
+  .shots figcaption { margin-top: 8px; font-size: 13px; font-weight: 700; color: var(--ink-soft); }
+  .features { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-top: 18px; }
+  .feature { background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 20px; }
+  .feature .emoji { font-size: 24px; }
+  .feature h3 { margin: 8px 0 4px; font-size: 16px; }
+  .feature p { margin: 0; color: var(--ink-soft); font-size: 14.5px; }
+  .devices { margin: 22px 0 0; text-align: center; color: var(--ink-soft); font-size: 14px; }
+  footer { max-width: 860px; margin: 0 auto; padding: 24px 20px 48px; border-top: 1px solid var(--line);
+    display: flex; flex-wrap: wrap; gap: 8px 18px; justify-content: center; font-size: 14px; color: var(--ink-soft); }
+  footer a { color: var(--ink-soft); text-decoration: none; }
+  footer a:hover, footer a:focus-visible { color: var(--accent-ink); }
+  @media (min-width: 760px) { .shots { justify-content: center; overflow-x: visible; } }
+  @media (max-width: 600px) {
+    .features { grid-template-columns: 1fr; }
+    h1 { font-size: 30px; }
+    main { padding: 8px 16px 64px; }
+    header { padding: 16px; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <a class="brand" href="../">My<span>Studio</span></a>
+  <label class="lang"><select id="lang" aria-label="Language">
+    <option value="ko">한국어</option>
+    <option value="en">English</option>
+    <option value="ja">日本語</option>
+    <option value="zh-Hant">繁體中文</option>
+    <option value="es">Español</option>
+    <option value="fr">Français</option>
+    <option value="de">Deutsch</option>
+    <option value="pt">Português</option>
+    <option value="ar">العربية</option>
+  </select></label>
+</header>
+<main>
+  <section class="hero">
+    <img class="icon" src="../assets/myatelier/icon.png" alt="" width="112" height="112">
+    <h1 id="name">마이아틀리에</h1>
+    <p class="sub" id="sub"></p>
+    <p class="tagline" id="tagline"></p>
+    <p class="desc" id="desc"></p>
+    <div class="soon"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M10.5 1h3l.6 2.9a8.6 8.6 0 0 1 2.2.9l2.5-1.6 2.1 2.1-1.6 2.5c.4.7.7 1.4.9 2.2L23 10.5v3l-2.9.6a8.6 8.6 0 0 1-.9 2.2l1.6 2.5-2.1 2.1-2.5-1.6c-.7.4-1.4.7-2.2.9L13.5 23h-3l-.6-2.9a8.6 8.6 0 0 1-2.2-.9l-2.5 1.6-2.1-2.1 1.6-2.5a8.6 8.6 0 0 1-.9-2.2L1 13.5v-3l2.9-.6c.2-.8.5-1.5.9-2.2L3.2 5.2l2.1-2.1 2.5 1.6c.7-.4 1.4-.7 2.2-.9L10.5 1zM12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"/></svg><span id="soon"></span></div>
+  </section>
+  <section class="shots" id="shots"></section>
+  <section class="features" id="features"></section>
+  <p class="devices" id="devices"></p>
+</main>
+<footer>
+  <a id="f-home" href="../">MyStudio</a>
+  <a id="f-terms" href="terms.html"></a>
+  <a id="f-privacy" href="privacy.html"></a>
+  <a id="f-support" href="mailto:support@mystudioapps.com"></a>
+</footer>
+<script>
+const LANGS = ['ko', 'en', 'ja', 'zh-Hant', 'es', 'fr', 'de', 'pt', 'ar'];
+const HTML_LANG = { pt: 'pt-BR' };
+const SHOTS = [];
+const T = {
+  ko: {
+    name: '마이아틀리에',
+    sub: '물건을 고치는 힐링 공방 게임',
+    tagline: '아끼던 물건이 되살아나는 순간',
+    desc: '동네 사람들이 아끼는 물건을 맡기러 와요. 작업대에서 하나씩 손질하고 고쳐서 새것처럼 돌려줘요.',
+    soon: 'App Store · Google Play 곧 출시',
+    shots: [],
+    features: [
+      ['📻', '손님과 사연', '손님마다 아끼던 물건과 사연을 들고 와요. 다 고치면 전과 후를 견줘 보고, 손님이 남긴 쪽지를 읽어요.'],
+      ['🔧', '작업대', '분해 · 손질 · 고치기 · 조립 · 포장을 차례로 해요. 물건마다 할 일과 쓰는 도구가 달라요.'],
+      ['⭐', '진열장', '고친 물건은 이름 · 별 · 손질한 날짜와 함께 진열장에 하나씩 놓여요.'],
+      ['🪴', '공방 꾸미기', '모은 톱니로 작업대 · 조명 · 벽 · 도구를 바꿔 나만의 공방을 꾸며요.'],
+    ],
+    devices: '계정 없이 바로 시작하고, 언어는 기기 설정을 따르며 설정에서 바꿀 수 있어요.',
+    terms: '이용약관', privacy: '개인정보처리방침', support: '문의',
+  },
+  en: {
+    name: 'MyAtelier',
+    sub: 'Cozy Repair Workshop Game',
+    tagline: 'Bring treasured things back to life.',
+    desc: 'Neighbors bring in the things they love. Clean and fix them one by one at your workbench, then send them home good as new.',
+    soon: 'Coming soon: App Store · Google Play',
+    shots: [],
+    features: [
+      ['📻', 'Neighbors and their stories', 'Each neighbor brings a treasured thing and the story behind it. When it is fixed, compare before and after and read their thank-you note.'],
+      ['🔧', 'At the workbench', 'Take apart, clean, fix, put back and wrap. Every item has its own steps and tools.'],
+      ['⭐', 'Your shelf', 'Everything you fix goes on the shelf with its name, its stars and the day you fixed it.'],
+      ['🪴', 'Decorate the workshop', 'Spend the gears you collect to change the bench, light, wall and tools, and make the workshop your own.'],
+    ],
+    devices: 'No account needed. The language follows your device, and you can change it in Settings.',
+    terms: 'Terms of Use', privacy: 'Privacy Policy', support: 'Support',
+  },
+  ja: {
+    name: 'マイアトリエ',
+    sub: '物を直す癒やしの工房ゲーム',
+    tagline: '大切な物が、よみがえる瞬間。',
+    desc: '町の人たちが、大切な物をあずけに来ます。作業台でひとつずつ手入れして直し、新品のようにしてお返ししましょう。',
+    soon: 'App Store・Google Play にまもなく登場',
+    shots: [],
+    features: [
+      ['📻', 'お客さんと思い出', 'お客さんが、大切な物とその思い出を持ってやって来ます。直し終えたらビフォーとアフターを見比べて、お客さんからのお手紙を読みましょう。'],
+      ['🔧', '作業台', '分解・掃除・修理・組立・包装を順番に進めます。物ごとに作業も道具も変わります。'],
+      ['⭐', '飾り棚', '直した物は、名前・星・修理した日といっしょに飾り棚に並びます。'],
+      ['🪴', '工房の模様替え', '集めた歯車で作業台・照明・壁・道具を替えて、自分だけの工房にしましょう。'],
+    ],
+    devices: 'アカウント不要ですぐに始められます。言語は端末の設定に合わせ、アプリの設定で変えることもできます。',
+    terms: '利用規約', privacy: 'プライバシーポリシー', support: 'お問い合わせ',
+  },
+  'zh-Hant': {
+    name: 'MyAtelier',
+    sub: '修理物品的療癒工坊遊戲',
+    tagline: '心愛的東西重獲新生的那一刻。',
+    desc: '街坊鄰居會帶著心愛的東西上門。在工作台上一件一件清潔、修好，再像新的一樣送回他們手上。',
+    soon: '即將登上 App Store 與 Google Play',
+    shots: [],
+    features: [
+      ['📻', '客人與故事', '每位客人都會帶著心愛的東西和它的故事上門。修好後比較之前與之後，再讀讀客人留下的小紙條。'],
+      ['🔧', '工作台', '依序拆解、清潔、修理、組裝、包裝。每件東西要做的事和用到的工具都不一樣。'],
+      ['⭐', '展示架', '修好的東西會連同名字、星星和修理日期，一件件擺上展示架。'],
+      ['🪴', '佈置工坊', '用收集到的齒輪更換工作台、燈具、牆面和工具，打造專屬於你的工坊。'],
+    ],
+    devices: '免帳號即可開始，語言跟隨裝置設定，也可以在 App 的設定中更改。',
+    terms: '使用條款', privacy: '隱私權政策', support: '聯絡我們',
+  },
+  es: {
+    name: 'MyAtelier',
+    sub: 'Juego relajante de taller de reparaciones',
+    tagline: 'Devuelve la vida a las cosas queridas.',
+    desc: 'Tus vecinos te traen sus cosas más queridas. Límpialas y arréglalas una a una en tu mesa de trabajo, y devuélveselas como nuevas.',
+    soon: 'Próximamente: App Store · Google Play',
+    shots: [],
+    features: [
+      ['📻', 'Vecinos y sus historias', 'Cada vecino llega con un objeto querido y la historia que lo acompaña. Al terminar, compara el antes y el después y lee su nota de agradecimiento.'],
+      ['🔧', 'En la mesa de trabajo', 'Abrir, limpiar, reparar, montar y envolver: cada objeto tiene sus propios pasos y herramientas.'],
+      ['⭐', 'Tu vitrina', 'Todo lo que arreglas queda en la vitrina con su nombre, sus estrellas y el día en que lo arreglaste.'],
+      ['🪴', 'Decora el taller', 'Con los engranajes que reúnes cambias la mesa, la luz, la pared y los utensilios, y haces tuyo el taller.'],
+    ],
+    devices: 'Sin cuenta. El idioma sigue el de tu dispositivo y puedes cambiarlo en Ajustes.',
+    terms: 'Términos de uso', privacy: 'Política de privacidad', support: 'Soporte',
+  },
+  fr: {
+    name: 'MyAtelier',
+    sub: 'Jeu relaxant d’atelier de réparation',
+    tagline: 'Redonnez vie aux objets chéris.',
+    desc: 'Les voisins vous apportent leurs objets chéris. Nettoyez-les et réparez-les un à un sur votre établi, puis rendez-les comme neufs.',
+    soon: 'Bientôt : App Store · Google Play',
+    shots: [],
+    features: [
+      ['📻', 'Les voisins et leurs histoires', 'Chaque voisin arrive avec un objet chéri et l’histoire qui va avec. Une fois l’objet réparé, comparez l’avant et l’après et lisez son mot de merci.'],
+      ['🔧', 'À l’établi', 'Retirer, nettoyer, réparer, replacer et emballer : chaque objet a ses propres étapes et ses propres outils.'],
+      ['⭐', 'La vitrine', 'Chaque objet réparé rejoint la vitrine avec son nom, ses étoiles et la date de sa réparation.'],
+      ['🪴', 'Décorer l’atelier', 'Avec les rouages récoltés, changez l’établi, la lumière, le mur et les outils pour un atelier à votre image.'],
+    ],
+    devices: 'Sans compte. La langue suit celle de l’appareil et se change dans les Réglages.',
+    terms: 'Conditions d’utilisation', privacy: 'Politique de confidentialité', support: 'Assistance',
+  },
+  de: {
+    name: 'MyAtelier',
+    sub: 'Gemütliches Werkstattspiel',
+    tagline: 'Lieblingsstücke, wieder wie neu.',
+    desc: 'Die Nachbarn bringen dir ihre Lieblingsstücke. Putze und repariere sie an der Werkbank eins nach dem anderen und gib sie wie neu zurück.',
+    soon: 'Bald verfügbar: App Store · Google Play',
+    shots: [],
+    features: [
+      ['📻', 'Gäste und ihre Geschichten', 'Jeder Gast bringt ein Lieblingsstück und seine Geschichte mit. Ist es repariert, vergleichst du vorher und nachher und liest den Dankeszettel.'],
+      ['🔧', 'An der Werkbank', 'Ausbau, Putzen, Flicken, Einbau und Packen: Jedes Stück braucht eigene Schritte und Werkzeuge.'],
+      ['⭐', 'Die Vitrine', 'Alles, was du reparierst, kommt mit Namen, Sternen und Datum in die Vitrine.'],
+      ['🪴', 'Werkstatt einrichten', 'Mit gesammelten Zahnrädern tauschst du Werkbank, Lampe, Wand und Werkzeug aus und machst die Werkstatt zu deiner.'],
+    ],
+    devices: 'Ohne Konto. Die Sprache folgt deinem Gerät und lässt sich in den Einstellungen ändern.',
+    terms: 'Nutzungsbedingungen', privacy: 'Datenschutzerklärung', support: 'Support',
+  },
+  pt: {
+    name: 'MyAtelier',
+    sub: 'Jogo relaxante de oficina de consertos',
+    tagline: 'Dê vida nova às coisas queridas.',
+    desc: 'Os vizinhos trazem as coisas que mais amam. Limpe e conserte uma por uma na sua bancada e devolva tudo como novo.',
+    soon: 'Em breve: App Store · Google Play',
+    shots: [],
+    features: [
+      ['📻', 'Vizinhos e suas histórias', 'Cada vizinho chega com um objeto querido e a história por trás dele. Depois do conserto, compare o antes e o depois e leia o bilhete de agradecimento.'],
+      ['🔧', 'Na bancada', 'Abrir, limpar, reparar, montar e embalar: cada objeto tem seus próprios passos e ferramentas.'],
+      ['⭐', 'A estante', 'Tudo o que você conserta vai para a estante com nome, estrelas e a data do conserto.'],
+      ['🪴', 'Decore a oficina', 'Com as engrenagens que você junta, troque a bancada, a luz, a parede e as ferramentas, e deixe a oficina com a sua cara.'],
+    ],
+    devices: 'Sem conta. O idioma segue o do seu aparelho, e dá para mudar em Configurações.',
+    terms: 'Termos de Uso', privacy: 'Política de Privacidade', support: 'Suporte',
+  },
+  ar: {
+    name: 'MyAtelier',
+    sub: 'لعبة ورشة هادئة لإصلاح الأشياء',
+    tagline: 'لحظة تعود فيها الأشياء العزيزة إلى الحياة.',
+    desc: 'يأتيك الجيران بأشيائهم العزيزة. نظّفها وأصلحها على طاولة العمل واحدة تلو الأخرى، ثم أعدها إليهم كأنها جديدة.',
+    soon: 'قريبًا على App Store وGoogle Play',
+    shots: [],
+    features: [
+      ['📻', 'الجيران وحكاياتهم', 'يأتي كل جار بشيء عزيز عليه ومعه حكايته. وبعد الإصلاح قارن بين ما قبل وما بعد، واقرأ رسالة الشكر.'],
+      ['🔧', 'طاولة العمل', 'تفكيك وتنظيف وإصلاح وتركيب وتغليف: لكل شيء خطواته وأدواته.'],
+      ['⭐', 'رف العرض', 'يُعرض كل ما تصلحه على رف العرض مع اسمه ونجومه وتاريخ إصلاحه.'],
+      ['🪴', 'تزيين الورشة', 'بالتروس التي تجمعها غيّر الطاولة والإضاءة والجدار والأدوات، واجعل الورشة على ذوقك.'],
+    ],
+    devices: 'بلا حساب، واللغة تتبع إعدادات جهازك ويمكنك تغييرها من الإعدادات.',
+    terms: 'شروط الاستخدام', privacy: 'سياسة الخصوصية', support: 'الدعم',
+  },
+};
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+function norm(l) {
+  l = String(l).toLowerCase();
+  if (l.startsWith('zh')) return /hant|tw|hk|mo/.test(l) ? 'zh-Hant' : null;
+  const n = l.slice(0, 2); return LANGS.includes(n) ? n : null;
+}
+function pick() {
+  const q = new URLSearchParams(location.search).get('lang');
+  if (LANGS.includes(q)) return q;
+  try { const s = localStorage.getItem('lang'); if (LANGS.includes(s)) return s; } catch (e) {}
+  for (const l of (navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || 'en'])) {
+    const n = norm(l); if (n) return n;
+  }
+  return 'en';
+}
+function show(lang) {
+  const t = T[lang];
+  document.documentElement.lang = HTML_LANG[lang] || lang;
+  document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+  document.title = t.name + ': MyStudio';
+  for (const k of ['name', 'sub', 'tagline', 'desc', 'soon', 'devices']) document.getElementById(k).textContent = t[k];
+  document.querySelector('.icon').alt = t.name;
+  document.getElementById('shots').innerHTML = SHOTS.map((s, i) =>
+    `<figure><img src="../assets/myatelier/${s}.jpg" alt="${esc(t.shots[i])}" width="460" height="937" loading="lazy"><figcaption>${esc(t.shots[i])}</figcaption></figure>`).join('');
+  document.getElementById('features').innerHTML = t.features.map(([e, h, p]) =>
+    `<div class="feature"><div class="emoji">${e}</div><h3>${esc(h)}</h3><p>${esc(p)}</p></div>`).join('');
+  const terms = document.getElementById('f-terms'), privacy = document.getElementById('f-privacy');
+  terms.textContent = t.terms; terms.href = `terms.html?lang=${lang}`;
+  privacy.textContent = t.privacy; privacy.href = `privacy.html?lang=${lang}`;
+  document.getElementById('f-support').textContent = t.support;
+  document.getElementById('lang').value = lang;
+}
+document.getElementById('lang').addEventListener('change', e => {
+  try { localStorage.setItem('lang', e.target.value); } catch (err) {}
+  try { const u = new URL(location.href); u.searchParams.set('lang', e.target.value); history.replaceState(null, '', u); } catch (err) {}
+  show(e.target.value);
+});
+show(pick());
+</script>
+</body>
+</html>

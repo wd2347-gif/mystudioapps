@@ -1,6 +1,6 @@
 {
  "_doc": "MyStudio 자체 광고(교차 홍보): 2026-10-10 사용자: \"AdMob 승인 전까지 MyStudio 앱끼리 서로 광고, 승인되고 내가 요청하면 AdMob 으로\". mode admob + house_fallback: AdMob 을 계속 요청(계정 검토에 요청 기록이 필요할 수 있어)하고, 실패하면(지금은 늘 code 3) 자체 광고. house = AdMob 요청 없이 자체 광고만, off = 광고 칸 없음. 바꾸는 사람: My_Studio 세션. 10/24 한·일 이름 text.<lang>.name(ko · ja 만, 최상위 name 은 영어 그대로: 앱은 다음 버전부터 text[lang].name 을 먼저 읽음).",
- "version": 56,
+ "version": 57,
  "mode": "admob",
  "house_fallback": true,
  "house_share": 1.0,
@@ -32,6 +32,29 @@
   "ar": "إعلان · MyStudio"
  },
  "_doc_label": "2026-11-07 사용자 '배너광고 광고인걸 알게끔 표시': label 을 '광고 · MyStudio'(9개 언어, 그 전 'MyStudio의 다른 앱')로. 앱 일곱(피젯 · 보컬 · 포켓 · 파티 · 슬로우슬립 · 타이디 · 아틀리에) 자체 배너 첫 줄('label · 앱 이름', 보컬은 '앱 이름 · label')과 자체 전면 위 알약에 그대로 나온다: 앱 업데이트 없이 다음에 피드를 받을 때부터(앱 안 기본 피드는 옛 글이라 첫 실행 첫 배너만 옛 글일 수 있음). 55판 banner_badge(새 칩)는 앱 수정이 필요해 빼고 이 글로 대신.",
+ "banner_badge": {
+  "ko": "광고",
+  "ja": "広告",
+  "en": "Ad",
+  "zh-Hant": "廣告",
+  "de": "Anzeige",
+  "es": "Anuncio",
+  "fr": "Annonce",
+  "pt": "Anúncio",
+  "ar": "إعلان"
+ },
+ "banner_badge_label": {
+  "ko": "MyStudio",
+  "ja": "MyStudio",
+  "en": "MyStudio",
+  "zh-Hant": "MyStudio",
+  "de": "MyStudio",
+  "es": "MyStudio",
+  "fr": "MyStudio",
+  "pt": "MyStudio",
+  "ar": "MyStudio"
+ },
+ "_doc_banner_badge": "2026-11-07 사용자 '2번도 앱 업데이트 필요하나? 1먼저 적용하고 2번으로 일단 진행해놓자'(자체 배너 [광고] 칩). 다음 앱 버전부터: 자체 배너 첫 줄 맨 앞(아랍어는 오른쪽 맨 앞)에 banner_badge[언어](없으면 en) 글을 테두리 칩으로 그리고, 칩 뒤에는 'banner_badge_label[언어] · 앱 이름'을 쓴다(label 은 안 씀: '광고'가 두 번 나오지 않게). 키가 없으면 앱 안 기본 값(이 9개 언어와 같은 글)으로 칩을 그리고, banner_badge 가 빈 글이면 칩 없이 예전처럼 'label · 앱 이름'(앱 업데이트 없이 끄기). 옛 버전은 이 키를 몰라 label('광고 · MyStudio')을 그대로 씀. 광고망 배너엔 안 붙임(SDK 가 따로 표시), 자체 전면 위 알약은 그대로 label.",
  "link_tags": {
   "ios": "pt=129467809&ct=xp_{from}_{to}&mt=8",
   "android_referrer": "utm_source=xpromo&utm_medium=app&utm_campaign=xp_{from}_{to}"
@@ -712,48 +735,48 @@
      "name": "마이슬로우슬립",
      "headline": "불을 끄고, 달을 켜요",
      "tagline": "수면 소리 · 빗소리 · 호흡",
-     "cta": "자세히 보기"
+     "cta": "무료로 받기"
     },
     "ja": {
      "name": "マイスロースリープ",
      "headline": "灯りを消して、月をともす",
      "tagline": "睡眠音・雨音・呼吸",
-     "cta": "詳しく見る"
+     "cta": "無料で入手"
     },
     "en": {
      "headline": "Lights off. Moon on.",
      "tagline": "Sleep sounds · Rain · Breathing",
-     "cta": "Learn more"
+     "cta": "Get it free"
     },
     "zh-Hant": {
      "headline": "關上燈，點亮月亮",
      "tagline": "助眠聲音 · 雨聲 · 呼吸",
-     "cta": "了解更多"
+     "cta": "免費下載"
     },
     "de": {
      "headline": "Licht aus. Mond an.",
      "tagline": "Schlafklänge · Regen · Atmen",
-     "cta": "Mehr erfahren"
+     "cta": "Kostenlos laden"
     },
     "es": {
      "headline": "Apaga la luz. Enciende la luna.",
      "tagline": "Sonidos para dormir · Lluvia · Respiración",
-     "cta": "Más información"
+     "cta": "Consíguela gratis"
     },
     "fr": {
      "headline": "Éteins la lumière. Allume la lune.",
      "tagline": "Sons pour dormir · Pluie · Respiration",
-     "cta": "En savoir plus"
+     "cta": "Obtenir gratuitement"
     },
     "pt": {
      "headline": "Apague a luz. Acenda a lua.",
      "tagline": "Sons para dormir · Chuva · Respiração",
-     "cta": "Saiba mais"
+     "cta": "Baixar grátis"
     },
     "ar": {
      "headline": "أطفئ الضوء، وأشعل القمر",
      "tagline": "أصوات النوم · المطر · التنفس",
-     "cta": "اعرف المزيد"
+     "cta": "احصل عليه مجانًا"
     }
    },
    "music": "https://mystudioapps.com/assets/myslowsleep/ad_music.mp3",

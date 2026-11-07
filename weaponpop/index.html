@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>웨폰팝: MyStudio</title>
-<meta name="description" content="무기를 모아 키우는 오리 액션: 웨폰팝">
+<title>최강의 오리: MyStudio</title>
+<meta name="description" content="무기를 모아 키우는 오리 액션: 최강의 오리">
 <link rel="canonical" href="https://mystudioapps.com/weaponpop/">
 <link rel="icon" href="/assets/weaponpop/icon.png">
 <link rel="apple-touch-icon" href="/assets/weaponpop/icon.png">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="MyStudio">
-<meta property="og:title" content="웨폰팝 · Weapon Pop">
+<meta property="og:title" content="최강의 오리 · Ultimate Duck">
 <meta property="og:description" content="무기를 모아 키우는 오리 액션">
 <meta property="og:url" content="https://mystudioapps.com/weaponpop/">
 <meta property="og:image" content="https://mystudioapps.com/assets/weaponpop/icon.png">
@@ -18,8 +18,9 @@
 <meta property="og:image:height" content="256">
 <meta name="twitter:card" content="summary">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
-<!-- 웨폰팝 소개(2026-10-31, 11/03 이름 되돌림). 아직 TestFlight: 스토어 단추는 '곧 출시'(링크 없음). 공개되면 myfidget 처럼 App Store · Google Play 링크로.
-     이름: 11/03 사용자 "이름은 그냥 웨폰팝으로 가자". 한국어 웨폰팝 · 일본어 ウェポンポップ · 중국어 武器砰 · 그 밖의 언어 Weapon Pop(앱 홈 화면 이름과 같게).
+<!-- 최강의 오리 소개(2026-10-31, 저장소 · 주소는 weaponpop 그대로). 아직 TestFlight: 스토어 단추는 '곧 출시'(링크 없음). 공개되면 myfidget 처럼 App Store · Google Play 링크로.
+     이름(11/03 저녁 사용자 "게임 이름 다시 최강의 오리로", 11/08 소개 페이지도): 최강의 오리 · Ultimate Duck · 最強アヒル伝説 · 最強鴨鴨 · Pato Supremo · Super Canard · Superente · Patão Supremo · البطة الخارقة.
+     결투 모드는 11/01 뺐다: 도전할 곳은 스테이지 · 무한의 탑 · 토벌.
      아이폰 · 안드로이드라 기기 줄엔 기기 이름을 쓰지 않는다(TidyTown 과 같은 문구).
      색은 게임 화면처럼 밤 남색 바탕, 금색 강조, 보라 무기 빛. 화면 그림은 모든 언어에 한국어 판(상단 재화 줄은 잘라 냄).
      문구 규칙: 무기 · 단계 개수, 가격 · 확률 이야기 쓰지 않기. -->
@@ -96,7 +97,7 @@
 <main>
   <section class="hero">
     <img class="icon" src="/assets/weaponpop/icon.png" alt="" width="112" height="112">
-    <h1 id="name">웨폰팝</h1>
+    <h1 id="name">최강의 오리</h1>
     <p class="sub" id="sub"></p>
     <p class="tagline" id="tagline"></p>
     <p class="desc" id="desc"></p>
@@ -117,7 +118,7 @@ const LANGS = ['ko', 'en', 'ja', 'zh-Hant', 'es', 'fr', 'de', 'pt', 'ar'];
 const SHOTS = ['lobby', 'weapons', 'gacha', 'battle'];
 const T = {
   ko: {
-    name: '웨폰팝',
+    name: '최강의 오리',
     sub: '무기를 모아 키우는 오리 액션',
     tagline: '무기를 모을수록, 오리는 강해진다.',
     desc: '무기를 소환해 장착하고 몰려오는 적을 쓸어 버려요. 싸우는 중에 열리는 보물 상자에서 능력을 골라 나만의 조합을 만들어요.',
@@ -126,14 +127,14 @@ const T = {
     features: [
       ['⚔️', '무기를 모아 장착', '단검 · 지팡이 · 활 같은 무기를 모아 장착 칸을 채워요. 같은 계열을 모으면 세트 효과가 붙어요.'],
       ['🎁', '판마다 다른 보물 상자', '싸우는 중에 열리는 보물 상자에서 능력 카드를 골라요. 판마다 다른 조합이 나와요.'],
-      ['🏰', '도전할 곳이 가득', '스테이지 · 무한의 탑 · 결투 · 토벌에서 오리의 힘을 시험해요.'],
+      ['🏰', '도전할 곳이 가득', '스테이지 · 무한의 탑 · 토벌에서 오리의 힘을 시험해요.'],
       ['🐾', '룬 · 펫으로 더 강하게', '룬과 펫으로 전투력을 키우고, 자동 장착으로 가장 센 조합을 바로 맞춰요.'],
     ],
     devices: '계정 없이 바로 시작하고, 언어는 기기 설정을 따라요.',
     terms: '이용약관', privacy: '개인정보처리방침', support: '문의',
   },
   en: {
-    name: 'Weapon Pop',
+    name: 'Ultimate Duck',
     sub: 'Collect weapons, power up your duck',
     tagline: 'More weapons, mightier duck.',
     desc: 'Summon and equip weapons to sweep away waves of enemies. Pick powers from treasure chests mid-battle and build your own combo.',
@@ -142,14 +143,14 @@ const T = {
     features: [
       ['⚔️', 'Collect and equip', 'Gather daggers, staffs, bows and more to fill your slots. Matching families unlock set bonuses.'],
       ['🎁', 'A new chest every run', 'Treasure chests open mid-battle so you can pick a power card. Every run builds a different combo.'],
-      ['🏰', 'Plenty to conquer', 'Test your duck in Stage, Endless Tower, Duel and Hunt.'],
+      ['🏰', 'Plenty to conquer', 'Test your duck in Stage, Endless Tower and Hunt.'],
       ['🐾', 'Runes and pets', 'Boost your power with runes and pets, and let auto-equip line up your strongest set.'],
     ],
     devices: 'No account needed, and the language follows your device.',
     terms: 'Terms of Use', privacy: 'Privacy Policy', support: 'Support',
   },
   ja: {
-    name: 'ウェポンポップ',
+    name: '最強アヒル伝説',
     sub: '武器を集めて育てるアヒルアクション',
     tagline: '武器を集めるほど、アヒルは強くなる。',
     desc: '武器を召喚して装備し、押し寄せる敵を一掃。戦闘中に開く宝箱から能力を選んで、自分だけの組み合わせを作ろう。',
@@ -158,14 +159,14 @@ const T = {
     features: [
       ['⚔️', '武器を集めて装備', '短剣・杖・弓などの武器を集めて装備枠を埋めよう。同じ系統をそろえるとセット効果が付きます。'],
       ['🎁', '毎回ちがう宝箱', '戦闘中に開く宝箱から能力カードを選択。プレイのたびに違う組み合わせが生まれます。'],
-      ['🏰', '挑戦の場がいっぱい', 'ステージ・無限の塔・デュエル・討伐でアヒルの力を試そう。'],
+      ['🏰', '挑戦の場がいっぱい', 'ステージ・無限の塔・討伐でアヒルの力を試そう。'],
       ['🐾', 'ルーン・ペットでさらに強く', 'ルーンとペットで戦闘力を上げ、自動装備で最強の組み合わせをすぐにそろえます。'],
     ],
     devices: 'アカウント不要ですぐに始められ、言語は端末の設定に合わせます。',
     terms: '利用規約', privacy: 'プライバシーポリシー', support: 'お問い合わせ',
   },
   'zh-Hant': {
-    name: '武器砰',
+    name: '最強鴨鴨',
     sub: '收集武器、培養鴨子的動作遊戲',
     tagline: '武器越多，鴨子越強。',
     desc: '召喚並裝備武器，一掃蜂擁而來的敵人。在戰鬥中開啟寶箱挑選能力，打造專屬於你的組合。',
@@ -174,14 +175,14 @@ const T = {
     features: [
       ['⚔️', '收集並裝備武器', '收集短劍、法杖、弓等武器填滿裝備欄。集齊同系列即可獲得套裝效果。'],
       ['🎁', '每局不同的寶箱', '戰鬥中開啟寶箱，挑選能力卡。每一局都有不同的組合。'],
-      ['🏰', '挑戰處處都是', '在關卡、無限之塔、決鬥與討伐中考驗鴨子的實力。'],
+      ['🏰', '挑戰處處都是', '在關卡、無限之塔與討伐中考驗鴨子的實力。'],
       ['🐾', '符文與寵物', '用符文和寵物提升戰力，自動裝備一鍵配出最強組合。'],
     ],
     devices: '免帳號即可開始，語言跟隨裝置設定。',
     terms: '使用條款', privacy: '隱私權政策', support: '聯絡我們',
   },
   es: {
-    name: 'Weapon Pop',
+    name: 'Pato Supremo',
     sub: 'Reúne armas y haz más fuerte a tu pato',
     tagline: 'Más armas, pato más poderoso.',
     desc: 'Invoca y equipa armas para barrer oleadas de enemigos. Elige poderes de los cofres del tesoro en plena batalla y crea tu propio combo.',
@@ -190,14 +191,14 @@ const T = {
     features: [
       ['⚔️', 'Reúne y equipa', 'Junta dagas, bastones, arcos y más para llenar tus ranuras. Las armas de la misma familia activan bonos de conjunto.'],
       ['🎁', 'Un cofre distinto cada partida', 'Los cofres se abren en plena batalla para que elijas una carta de poder. Cada partida forma un combo diferente.'],
-      ['🏰', 'Mucho por conquistar', 'Pon a prueba a tu pato en Fase, Torre infinita, Duelo y Caza.'],
+      ['🏰', 'Mucho por conquistar', 'Pon a prueba a tu pato en Fase, Torre infinita y Caza.'],
       ['🐾', 'Runas y mascotas', 'Aumenta tu poder con runas y mascotas, y deja que el equipo automático arme tu mejor combinación.'],
     ],
     devices: 'Sin cuenta, y el idioma sigue el de tu dispositivo.',
     terms: 'Términos de uso', privacy: 'Política de privacidad', support: 'Soporte',
   },
   fr: {
-    name: 'Weapon Pop',
+    name: 'Super Canard',
     sub: 'Collectionnez des armes, renforcez votre canard',
     tagline: 'Plus d’armes, canard plus puissant.',
     desc: 'Invoquez et équipez des armes pour balayer des vagues d’ennemis. Choisissez des pouvoirs dans les coffres au trésor en plein combat et créez votre propre combo.',
@@ -206,14 +207,14 @@ const T = {
     features: [
       ['⚔️', 'Collectionnez et équipez', 'Réunissez dagues, bâtons, arcs et plus pour remplir vos emplacements. Une même famille débloque des bonus d’ensemble.'],
       ['🎁', 'Un coffre différent à chaque partie', 'Les coffres s’ouvrent en plein combat pour choisir une carte de pouvoir. Chaque partie donne un combo différent.'],
-      ['🏰', 'De quoi relever des défis', 'Mettez votre canard à l’épreuve en Niveau, Tour infinie, Duel et Chasse.'],
+      ['🏰', 'De quoi relever des défis', 'Mettez votre canard à l’épreuve en Niveau, Tour infinie et Chasse.'],
       ['🐾', 'Runes et familiers', 'Augmentez votre puissance avec runes et familiers, et laissez l’équipement auto aligner votre meilleur ensemble.'],
     ],
     devices: 'Sans compte, et la langue suit celle de l’appareil.',
     terms: 'Conditions d’utilisation', privacy: 'Politique de confidentialité', support: 'Assistance',
   },
   de: {
-    name: 'Weapon Pop',
+    name: 'Superente',
     sub: 'Waffen sammeln, die Ente stärken',
     tagline: 'Mehr Waffen, stärkere Ente.',
     desc: 'Beschwöre und rüste Waffen aus, um Gegnerwellen wegzufegen. Wähle mitten im Kampf Kräfte aus Schatztruhen und baue deine eigene Kombo.',
@@ -222,14 +223,14 @@ const T = {
     features: [
       ['⚔️', 'Sammeln und ausrüsten', 'Sammle Dolche, Stäbe, Bögen und mehr für deine Plätze. Gleiche Familien schalten Set-Boni frei.'],
       ['🎁', 'Jede Runde eine neue Truhe', 'Schatztruhen öffnen sich im Kampf und du wählst eine Kraftkarte. Jede Runde ergibt eine andere Kombo.'],
-      ['🏰', 'Viel zu erobern', 'Teste deine Ente in Stufe, Endloser Turm, Duell und Jagd.'],
+      ['🏰', 'Viel zu erobern', 'Teste deine Ente in Stufe, Endloser Turm und Jagd.'],
       ['🐾', 'Runen und Haustiere', 'Steigere deine Stärke mit Runen und Haustieren und lass Auto-Ausrüsten dein stärkstes Set bilden.'],
     ],
     devices: 'Ohne Konto, die Sprache folgt deinem Gerät.',
     terms: 'Nutzungsbedingungen', privacy: 'Datenschutzerklärung', support: 'Support',
   },
   pt: {
-    name: 'Weapon Pop',
+    name: 'Patão Supremo',
     sub: 'Colete armas e fortaleça seu pato',
     tagline: 'Mais armas, pato mais poderoso.',
     desc: 'Invoque e equipe armas para varrer ondas de inimigos. Escolha poderes nos baús do tesouro no meio da batalha e monte seu próprio combo.',
@@ -238,14 +239,14 @@ const T = {
     features: [
       ['⚔️', 'Colete e equipe', 'Junte adagas, cajados, arcos e mais para preencher seus espaços. Armas da mesma família liberam bônus de conjunto.'],
       ['🎁', 'Um baú diferente a cada partida', 'Os baús abrem no meio da batalha para você escolher uma carta de poder. Cada partida forma um combo diferente.'],
-      ['🏰', 'Muito para conquistar', 'Teste seu pato em Fase, Torre infinita, Duelo e Caça.'],
+      ['🏰', 'Muito para conquistar', 'Teste seu pato em Fase, Torre infinita e Caça.'],
       ['🐾', 'Runas e mascotes', 'Aumente seu poder com runas e mascotes, e deixe o equipar automático montar seu melhor conjunto.'],
     ],
     devices: 'Sem conta, e o idioma segue o do seu aparelho.',
     terms: 'Termos de Uso', privacy: 'Política de Privacidade', support: 'Suporte',
   },
   ar: {
-    name: 'Weapon Pop',
+    name: 'البطة الخارقة',
     sub: 'اجمع الأسلحة وقوِّ بطّتك',
     tagline: 'أسلحة أكثر، بطّة أقوى.',
     desc: 'استدعِ الأسلحة وجهّزها لتكتسح موجات الأعداء. اختر القدرات من صناديق الكنز أثناء المعركة واصنع تركيبتك الخاصة.',
@@ -254,7 +255,7 @@ const T = {
     features: [
       ['⚔️', 'اجمع وجهّز', 'اجمع الخناجر والعصي والأقواس وغيرها لتملأ خاناتك. الأسلحة من العائلة نفسها تمنحك مكافآت المجموعة.'],
       ['🎁', 'صندوق مختلف في كل جولة', 'تُفتح صناديق الكنز أثناء المعركة لتختار بطاقة قدرة. كل جولة تصنع تركيبة مختلفة.'],
-      ['🏰', 'تحديات كثيرة', 'اختبر بطّتك في المرحلة والبرج اللانهائي والمبارزة والصيد.'],
+      ['🏰', 'تحديات كثيرة', 'اختبر بطّتك في المرحلة والبرج اللانهائي والصيد.'],
       ['🐾', 'الرونيات والرفاق', 'ارفع قوتك بالرونيات والرفاق، ودع التجهيز التلقائي يرتّب أقوى مجموعة لديك.'],
     ],
     devices: 'بلا حساب، واللغة تتبع إعدادات جهازك.',

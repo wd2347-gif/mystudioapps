@@ -1,0 +1,482 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>최강의 오리: 확률</title>
+<meta name="description" content="최강의 오리 등급별 확률">
+<link rel="canonical" href="https://mystudioapps.com/weaponpop/rates.html">
+<link rel="icon" href="/assets/weaponpop/icon.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<!-- 확률 공개 쪽. 손으로 고치지 않는다: 앱 저장소 tool/store/make_rates_page.py 로 게임 코드 값에서 만든다. -->
+<style>
+:root{color-scheme:dark;--bg:#0D1020;--bg2:#1B1636;--surface:#171A30;--line:#2C2F4E;--ink:#F2EEE4;--ink-soft:#A7A6C2;--accent:#F6C453}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;color:var(--ink);line-height:1.6;min-height:100vh;background:radial-gradient(120% 60% at 50% 0%,var(--bg2) 0%,var(--bg) 70%) fixed,var(--bg);font-family:"Pretendard",-apple-system,"Apple SD Gothic Neo","Hiragino Sans","PingFang TC","Noto Sans JP","Geeza Pro",sans-serif}
+a{color:var(--accent)}
+header{max-width:720px;margin:0 auto;padding:18px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{font-weight:800;font-size:17px;color:var(--ink);text-decoration:none;white-space:nowrap}.brand span{color:var(--accent)}
+.lang{position:relative}.lang select{appearance:none;-webkit-appearance:none;font:inherit;font-size:13px;font-weight:600;color:var(--ink);background:rgba(255,255,255,.06);border:1px solid var(--line);border-radius:999px;padding:7px 32px 7px 14px;cursor:pointer}
+.lang::after{content:"";position:absolute;inset-inline-end:13px;top:50%;width:7px;height:7px;margin-top:-5px;border-right:2px solid var(--ink-soft);border-bottom:2px solid var(--ink-soft);transform:rotate(45deg);pointer-events:none}.lang select option{color:#111}
+main{max-width:720px;margin:0 auto;padding:8px 20px 56px}
+article{display:none}article.on{display:block}
+h1{font-size:28px;margin:6px 0 4px;line-height:1.25}h1 small{display:block;font-size:17px;font-weight:600;color:var(--accent);margin-top:2px}
+.sub{margin:0 0 20px;color:var(--ink-soft);font-size:14px}
+section{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px;margin-top:14px}
+h2{font-size:19px;margin:0 0 10px}h3{font-size:15px;margin:18px 0 6px}
+table{width:100%;border-collapse:collapse;font-size:15px}th{font-size:13px;font-weight:600;color:var(--ink-soft);text-align:start;padding:6px 4px}
+td{padding:8px 4px;border-top:1px solid var(--line);vertical-align:top}th:not(:first-child),td:not(:first-child){text-align:end;white-space:nowrap}
+tr.s td{font-size:13px;color:var(--ink-soft)}tr.s b{font-size:14px}
+p{margin:6px 0;font-size:14px}ul{margin:6px 0;padding-inline-start:20px;font-size:14px}li{margin:6px 0}
+.note{color:var(--ink-soft);font-size:13px}p.note{margin-top:14px}ul.note{margin-top:14px}
+footer{max-width:720px;margin:0 auto;padding:24px 20px 48px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:8px 20px;font-size:13px}
+footer a{color:var(--ink-soft);text-decoration:none}footer a:hover,footer a:focus-visible{color:var(--accent)}
+</style>
+</head>
+<body>
+<header><a class="brand" href="../">My<span>Studio</span></a>
+<label class="lang"><select id="lang" aria-label="Language"><option value="ko">한국어</option><option value="en">English</option><option value="ja">日本語</option><option value="zh-Hant">繁體中文</option><option value="es">Español</option><option value="fr">Français</option><option value="de">Deutsch</option><option value="pt">Português</option><option value="ar">العربية</option></select></label></header>
+<main>
+<article data-l="ko">
+<h1>최강의 오리<small>등급별 확률</small></h1>
+<p class="sub">게임 안 확률 보기와 같은 값이에요. 기준일: <bdi>2026-11-10</bdi></p>
+<section><h2>무기 소환</h2><table class="t3"><thead><tr><th>등급</th><th>1회 확률</th><th>확정 포함</th></tr></thead><tbody>
+<tr><td><b style="color:#F2556B">신화</b></td><td><bdi>0.1%</bdi></td><td><b><bdi>0.18%</bdi></b></td></tr>
+<tr><td><b style="color:#F45F12">고대</b></td><td><bdi>0.4%</bdi></td><td><b><bdi>0.70%</bdi></b></td></tr>
+<tr><td><b style="color:#F2A33D">전설</b></td><td><bdi>0.9%</bdi></td><td><b><bdi>1.58%</bdi></b></td></tr>
+<tr><td><b style="color:#B46CF2">영웅</b></td><td><bdi>5%</bdi></td><td><b><bdi>11.3%</bdi></b></td></tr>
+<tr><td><b style="color:#4D9FF2">희귀</b></td><td><bdi>14%</bdi></td><td><b><bdi>12.9%</bdi></b></td></tr>
+<tr><td><b style="color:#63CF7F">고급</b></td><td><bdi>30%</bdi></td><td><b><bdi>27.6%</bdi></b></td></tr>
+<tr><td><b style="color:#A9ADC1">일반</b></td><td><bdi>49.6%</bdi></td><td><b><bdi>45.7%</bdi></b></td></tr>
+</tbody></table>
+<h3>확정</h3><ul>
+<li>10회째 영웅 이상: 평균 7.3회에 1번</li>
+<li>60회째 전설 이상: 평균 40.8회에 1번<br><b style="color:#F2A33D">전설</b> 64.3% · <b style="color:#F45F12">고대</b> 28.6% · <b style="color:#F2556B">신화</b> 7.1%</li></ul>
+<h3>확정권</h3><ul>
+<li>영웅 이상 확정권<br><b style="color:#B46CF2">영웅</b> 98.6% · <b style="color:#F2A33D">전설</b> 0.9% · <b style="color:#F45F12">고대</b> 0.4% · <b style="color:#F2556B">신화</b> 0.1%</li>
+<li>전설 이상 확정권<br><b style="color:#F2A33D">전설</b> 99.5% · <b style="color:#F45F12">고대</b> 0.4% · <b style="color:#F2556B">신화</b> 0.1%</li>
+<li>고대 이상 확정권<br><b style="color:#F45F12">고대</b> 99.9% · <b style="color:#F2556B">신화</b> 0.1%</li>
+<li>신화 확정권<br><b style="color:#F2556B">신화</b> 100%</li>
+</ul>
+<h3>토벌 상자</h3><p>거신 토벌 주간 보상<br><b style="color:#4D9FF2">희귀</b> 50% · <b style="color:#B46CF2">영웅</b> 45% · <b style="color:#F2A33D">전설</b> 5%</p>
+<p class="note">무기 종류는 모두 같은 확률이에요. 초월 무기는 초월의 제단에서 얻어요.</p></section>
+<section><h2>룬 소환</h2><table class="t2"><tbody>
+<tr><td><b>룬</b></td><td><b><bdi>10%</bdi></b></td></tr>
+<tr class="s"><td><b style="color:#4D9FF2">희귀</b><br>분노의 룬 · 수호의 룬 · 등반의 룬 · 신속의 룬 · 지혜의 룬</td><td><bdi>7.5%</bdi></td></tr>
+<tr class="s"><td><b style="color:#B46CF2">영웅</b><br>칼날의 룬 · 바람의 룬 · 마력의 룬 · 대지의 룬 · 사냥의 룬 · 철벽의 룬 · 확산의 룬 · 폭풍의 룬</td><td><bdi>2.4%</bdi></td></tr>
+<tr class="s"><td><b style="color:#F2A33D">전설</b><br>폭렬의 룬 · 흡혈의 룬 · 가호의 룬</td><td><bdi>0.09%</bdi></td></tr>
+<tr class="s"><td><b style="color:#F2556B">초월</b><br>왕의 오라</td><td><bdi>0.01%</bdi></td></tr>
+<tr><td>룬 가루 1개</td><td><bdi>30%</bdi></td></tr>
+<tr><td>룬 가루 3개</td><td><bdi>7%</bdi></td></tr>
+<tr><td>룬 가루 10개</td><td><bdi>0.5%</bdi></td></tr>
+<tr><td>골드 (소탕의 절반)</td><td><bdi>30.3%</bdi></td></tr>
+<tr><td>골드 (소탕 3회)</td><td><bdi>3.43%</bdi></td></tr>
+<tr><td>보석 5개</td><td><bdi>15.5%</bdi></td></tr>
+<tr><td>보석 50개</td><td><bdi>1%</bdi></td></tr>
+<tr><td>보석 100개</td><td><bdi>0.7%</bdi></td></tr>
+<tr><td>무기 변경권 1장</td><td><bdi>0.07%</bdi></td></tr>
+<tr><td>펫 부화권 1장</td><td><bdi>1.5%</bdi></td></tr>
+</tbody></table>
+<ul class="note"><li>꽝은 없어요. 룬이 아니면 룬 가루 · 골드 · 보석 · 변경권 · 펫 부화권이 나와요.</li><li>10회 소환에 룬이 하나도 없으면 마지막 1칸이 룬으로 바뀌어요(등급은 위 확률대로).</li><li>룬은 그 등급에서 아직 없는 룬이 먼저 나와요. 가진 룬이 또 나오면 단계가 1 올라요(Ⅴ까지). Ⅴ인 룬은 룬 가루(희귀 30 · 영웅 60 · 전설 200 · 초월 500)로 바뀌어요.</li><li>룬 확정권은 룬만 나와요: 영웅 93% · 전설 6% · 초월 1%.</li><li>광고 무료 1회도 같은 확률이에요.</li></ul></section>
+<section><h2>펫 부화</h2><table class="t2"><tbody>
+<tr class="s"><td><b style="color:#F2A33D">전설</b><br>꼬마 드래곤 · 번개 다람쥐 · 구름 고래</td><td><bdi>4%</bdi><br><small><bdi>1.33% × 3</bdi></small></td></tr>
+<tr class="s"><td><b style="color:#B46CF2">영웅</b><br>돌껍질 거북 · 눈꽃 여우 · 독 두꺼비 · 장난 유령 · 눈덩이 펭귄</td><td><bdi>21%</bdi><br><small><bdi>4.2% × 5</bdi></small></td></tr>
+<tr class="s"><td><b style="color:#4D9FF2">희귀</b><br>자석 슬라임 · 황금 햄스터 · 꼬마 부엉이 · 솜뭉치 토끼</td><td><bdi>75%</bdi><br><small><bdi>18.75% × 4</bdi></small></td></tr>
+</tbody></table>
+<ul class="note"><li>전설 없이 49번 부화하면 50번째는 전설이에요. 이 확정까지 포함하면 전설 확률은 실제로 약 4.6% (평균 21.8회에 1번)예요.</li><li>10회 부화에는 영웅 이상이 반드시 1마리 들어 있어요.</li><li>처음 하는 부화는 영웅이에요.</li><li>같은 펫이 또 나오면 ★이 1개 올라요(★5까지). ★5 펫이 또 나오면 보석으로 돌려받아요(희귀 10 · 영웅 30 · 전설 100).</li></ul></section>
+</article>
+<article data-l="en">
+<h1>Ultimate Duck<small>Rates by rarity</small></h1>
+<p class="sub">These are the same rates shown in the game. As of: <bdi>2026-11-10</bdi></p>
+<section><h2>Weapon summon</h2><table class="t3"><thead><tr><th>Rarity</th><th>Per pull</th><th>With pity</th></tr></thead><tbody>
+<tr><td><b style="color:#F2556B">Mythic</b></td><td><bdi>0.1%</bdi></td><td><b><bdi>0.18%</bdi></b></td></tr>
+<tr><td><b style="color:#F45F12">Ancient</b></td><td><bdi>0.4%</bdi></td><td><b><bdi>0.70%</bdi></b></td></tr>
+<tr><td><b style="color:#F2A33D">Legendary</b></td><td><bdi>0.9%</bdi></td><td><b><bdi>1.58%</bdi></b></td></tr>
+<tr><td><b style="color:#B46CF2">Epic</b></td><td><bdi>5%</bdi></td><td><b><bdi>11.3%</bdi></b></td></tr>
+<tr><td><b style="color:#4D9FF2">Rare</b></td><td><bdi>14%</bdi></td><td><b><bdi>12.9%</bdi></b></td></tr>
+<tr><td><b style="color:#63CF7F">Uncommon</b></td><td><bdi>30%</bdi></td><td><b><bdi>27.6%</bdi></b></td></tr>
+<tr><td><b style="color:#A9ADC1">Common</b></td><td><bdi>49.6%</bdi></td><td><b><bdi>45.7%</bdi></b></td></tr>
+</tbody></table>
+<h3>Guaranteed</h3><ul>
+<li>Epic or better by pull 10: Once per 7.3 pulls on average</li>
+<li>Legendary or better by pull 60: Once per 40.8 pulls on average<br><b style="color:#F2A33D">Legendary</b> 64.3% · <b style="color:#F45F12">Ancient</b> 28.6% · <b style="color:#F2556B">Mythic</b> 7.1%</li></ul>
+<h3>Guaranteed summon ticket</h3><ul>
+<li>Guaranteed Epic+ Ticket<br><b style="color:#B46CF2">Epic</b> 98.6% · <b style="color:#F2A33D">Legendary</b> 0.9% · <b style="color:#F45F12">Ancient</b> 0.4% · <b style="color:#F2556B">Mythic</b> 0.1%</li>
+<li>Guaranteed Legendary+ Ticket<br><b style="color:#F2A33D">Legendary</b> 99.5% · <b style="color:#F45F12">Ancient</b> 0.4% · <b style="color:#F2556B">Mythic</b> 0.1%</li>
+<li>Guaranteed Ancient+ Ticket<br><b style="color:#F45F12">Ancient</b> 99.9% · <b style="color:#F2556B">Mythic</b> 0.1%</li>
+<li>Guaranteed Mythic Ticket<br><b style="color:#F2556B">Mythic</b> 100%</li>
+</ul>
+<h3>Hunt chest</h3><p>Weekly hunt reward<br><b style="color:#4D9FF2">Rare</b> 50% · <b style="color:#B46CF2">Epic</b> 45% · <b style="color:#F2A33D">Legendary</b> 5%</p>
+<p class="note">All weapon types have equal odds. Transcendent weapons come from the altar.</p></section>
+<section><h2>Rune summon</h2><table class="t2"><tbody>
+<tr><td><b>Rune</b></td><td><b><bdi>10%</bdi></b></td></tr>
+<tr class="s"><td><b style="color:#4D9FF2">Rare</b><br>Rage Rune · Guard Rune · Climb Rune · Swift Rune · Sage Rune</td><td><bdi>7.5%</bdi></td></tr>
+<tr class="s"><td><b style="color:#B46CF2">Epic</b><br>Blade Rune · Wind Rune · Arcane Rune · Earth Rune · Hunter Rune · Bulwark Rune · Spread Rune · Storm Rune</td><td><bdi>2.4%</bdi></td></tr>
+<tr class="s"><td><b style="color:#F2A33D">Legendary</b><br>Burst Rune · Vampire Rune · Aegis Rune</td><td><bdi>0.09%</bdi></td></tr>
+<tr class="s"><td><b style="color:#F2556B">Transcendent</b><br>King’s Aura</td><td><bdi>0.01%</bdi></td></tr>
+<tr><td>Rune dust ×1</td><td><bdi>30%</bdi></td></tr>
+<tr><td>Rune dust ×3</td><td><bdi>7%</bdi></td></tr>
+<tr><td>Rune dust ×10</td><td><bdi>0.5%</bdi></td></tr>
+<tr><td>Gold (Half a sweep)</td><td><bdi>30.3%</bdi></td></tr>
+<tr><td>Gold (Sweep ×3)</td><td><bdi>3.43%</bdi></td></tr>
+<tr><td>5 gems</td><td><bdi>15.5%</bdi></td></tr>
+<tr><td>50 gems</td><td><bdi>1%</bdi></td></tr>
+<tr><td>100 gems</td><td><bdi>0.7%</bdi></td></tr>
+<tr><td>Weapon swap ticket ×1</td><td><bdi>0.07%</bdi></td></tr>
+<tr><td>1 Pet hatch ticket</td><td><bdi>1.5%</bdi></td></tr>
+</tbody></table>
+<ul class="note"><li>No blanks. If not a rune, you get rune dust, gold, gems, swap tickets, or pet hatch tickets.</li><li>If a 10x summon has no Rune, the last slot becomes a Rune (rarity by the rates above).</li><li>Runes you don’t own yet in that rarity come first. A Rune you own goes up 1 level (up to Ⅴ). A Rune at Ⅴ turns into rune dust (Rare 30 · Epic 60 · Legendary 200 · Transcendent 500).</li><li>Guaranteed rune summon tickets give Runes only: Epic 93% · Legendary 6% · Transcendent 1%.</li><li>The free ad summon uses the same rates.</li></ul></section>
+<section><h2>Pet hatch</h2><table class="t2"><tbody>
+<tr class="s"><td><b style="color:#F2A33D">Legendary</b><br>Baby Dragon · Thunder Squirrel · Cloud Whale</td><td><bdi>4%</bdi><br><small><bdi>1.33% × 3</bdi></small></td></tr>
+<tr class="s"><td><b style="color:#B46CF2">Epic</b><br>Stoneshell Turtle · Snowflake Fox · Venom Toad · Prankster Ghost · Snowball Penguin</td><td><bdi>21%</bdi><br><small><bdi>4.2% × 5</bdi></small></td></tr>
+<tr class="s"><td><b style="color:#4D9FF2">Rare</b><br>Magnet Slime · Golden Hamster · Little Owl · Fluffy Bunny</td><td><bdi>75%</bdi><br><small><bdi>18.75% × 4</bdi></small></td></tr>
+</tbody></table>
+<ul class="note"><li>After 49 hatches without a Legendary, hatch 50 is Legendary. Including this guarantee, the real Legendary rate is about 4.6% (1 in 21.8 on average).</li><li>Every 10x hatch includes at least 1 Epic or better.</li><li>Your first hatch is Epic.</li><li>A duplicate Pet gains 1 ★ (up to ★5). A duplicate of a ★5 Pet is refunded as gems (Rare 10 · Epic 30 · Legendary 100).</li></ul></section>
+</article>
+<article data-l="ja">
+<h1>最強アヒル伝説<small>等級別確率</small></h1>
+<p class="sub">ゲーム内の確率表示と同じ内容です。 基準日: <bdi>2026-11-10</bdi></p>
+<section><h2>武器召喚</h2><table class="t3"><thead><tr><th>等級</th><th>1回の確率</th><th>確定込み</th></tr></thead><tbody>
+<tr><td><b style="color:#F2556B">ミシック</b></td><td><bdi>0.1%</bdi></td><td><b><bdi>0.18%</bdi></b></td></tr>
+<tr><td><b style="color:#F45F12">エンシェント</b></td><td><bdi>0.4%</bdi></td><td><b><bdi>0.70%</bdi></b></td></tr>
+<tr><td><b style="color:#F2A33D">レジェンド</b></td><td><bdi>0.9%</bdi></td><td><b><bdi>1.58%</bdi></b></td></tr>
+<tr><td><b style="color:#B46CF2">エピック</b></td><td><bdi>5%</bdi></td><td><b><bdi>11.3%</bdi></b></td></tr>
+<tr><td><b style="color:#4D9FF2">レア</b></td><td><bdi>14%</bdi></td><td><b><bdi>12.9%</bdi></b></td></tr>
+<tr><td><b style="color:#63CF7F">アドバンス</b></td><td><bdi>30%</bdi></td><td><b><bdi>27.6%</bdi></b></td></tr>
+<tr><td><b style="color:#A9ADC1">ノーマル</b></td><td><bdi>49.6%</bdi></td><td><b><bdi>45.7%</bdi></b></td></tr>
+</tbody></table>
+<h3>確定</h3><ul>
+<li>10回目でエピック以上: 平均7.3回に1回</li>
+<li>60回目でレジェンド以上: 平均40.8回に1回<br><b style="color:#F2A33D">レジェンド</b> 64.3% · <b style="color:#F45F12">エンシェント</b> 28.6% · <b style="color:#F2556B">ミシック</b> 7.1%</li></ul>
+<h3>確定召喚券</h3><ul>
+<li>エピック以上確定召喚券<br><b style="color:#B46CF2">エピック</b> 98.6% · <b style="color:#F2A33D">レジェンド</b> 0.9% · <b style="color:#F45F12">エンシェント</b> 0.4% · <b style="color:#F2556B">ミシック</b> 0.1%</li>
+<li>レジェンド以上確定召喚券<br><b style="color:#F2A33D">レジェンド</b> 99.5% · <b style="color:#F45F12">エンシェント</b> 0.4% · <b style="color:#F2556B">ミシック</b> 0.1%</li>
+<li>エンシェント以上確定召喚券<br><b style="color:#F45F12">エンシェント</b> 99.9% · <b style="color:#F2556B">ミシック</b> 0.1%</li>
+<li>ミシック確定召喚券<br><b style="color:#F2556B">ミシック</b> 100%</li>
+</ul>
+<h3>討伐ボックス</h3><p>巨神討伐の週間報酬<br><b style="color:#4D9FF2">レア</b> 50% · <b style="color:#B46CF2">エピック</b> 45% · <b style="color:#F2A33D">レジェンド</b> 5%</p>
+<p class="note">武器の種類はすべて同じ確率です。超越武器は超越の祭壇で手に入ります。</p></section>
+<section><h2>ルーン召喚</h2><table class="t2"><tbody>
+<tr><td><b>ルーン</b></td><td><b><bdi>10%</bdi></b></td></tr>
+<tr class="s"><td><b style="color:#4D9FF2">レア</b><br>怒りのルーン · 守護のルーン · 登攀のルーン · 迅速のルーン · 知恵のルーン</td><td><bdi>7.5%</bdi></td></tr>
+<tr class="s"><td><b style="color:#B46CF2">エピック</b><br>刃のルーン · 風のルーン · 魔力のルーン · 大地のルーン · 狩りのルーン · 鉄壁のルーン · 拡散のルーン · 嵐のルーン</td><td><bdi>2.4%</bdi></td></tr>
+<tr class="s"><td><b style="color:#F2A33D">レジェンド</b><br>爆裂のルーン · 吸血のルーン · 加護のルーン</td><td><bdi>0.09%</bdi></td></tr>
+<tr class="s"><td><b style="color:#F2556B">超越</b><br>王のオーラ</td><td><bdi>0.01%</bdi></td></tr>
+<tr><td>ルーンの粉 1個</td><td><bdi>30%</bdi></td></tr>
+<tr><td>ルーンの粉 3個</td><td><bdi>7%</bdi></td></tr>
+<tr><td>ルーンの粉 10個</td><td><bdi>0.5%</bdi></td></tr>
+<tr><td>ゴールド (掃討の半分)</td><td><bdi>30.3%</bdi></td></tr>
+<tr><td>ゴールド (掃討3回)</td><td><bdi>3.43%</bdi></td></tr>
+<tr><td>ジェム5個</td><td><bdi>15.5%</bdi></td></tr>
+<tr><td>ジェム50個</td><td><bdi>1%</bdi></td></tr>
+<tr><td>ジェム100個</td><td><bdi>0.7%</bdi></td></tr>
+<tr><td>武器変更券 1枚</td><td><bdi>0.07%</bdi></td></tr>
+<tr><td>ペット孵化券1枚</td><td><bdi>1.5%</bdi></td></tr>
+</tbody></table>
+<ul class="note"><li>はずれなし。ルーン以外はルーンの粉・ゴールド・ジェム・変更券・ペット孵化券が出ます。</li><li>10回召喚でルーンが1つもなければ、最後の1枠がルーンに変わります(等級は上の確率どおり)。</li><li>その等級でまだ持っていないルーンが先に出ます。持っているルーンがまた出ると段階が1上がります（Ⅴまで）。Ⅴのルーンはルーンの粉（レア30 · エピック60 · レジェンド200 · 超越500）に変わります。</li><li>ルーン確定召喚券はルーンだけが出ます：エピック 93% · レジェンド 6% · 超越 1%。</li><li>広告の無料1回も同じ確率です。</li></ul></section>
+<section><h2>ペット孵化</h2><table class="t2"><tbody>
+<tr class="s"><td><b style="color:#F2A33D">レジェンド</b><br>ちびドラゴン · 雷リス · 雲クジラ</td><td><bdi>4%</bdi><br><small><bdi>1.33% × 3</bdi></small></td></tr>
+<tr class="s"><td><b style="color:#B46CF2">エピック</b><br>岩甲ガメ · 雪花ギツネ · 毒ガエル · いたずらオバケ · 雪だまペンギン</td><td><bdi>21%</bdi><br><small><bdi>4.2% × 5</bdi></small></td></tr>
+<tr class="s"><td><b style="color:#4D9FF2">レア</b><br>マグネットスライム · 黄金ハムスター · ちびフクロウ · ふわふわウサギ</td><td><bdi>75%</bdi><br><small><bdi>18.75% × 4</bdi></small></td></tr>
+</tbody></table>
+<ul class="note"><li>レジェンドなしで49回孵化すると、50回目はレジェンドです。この確定を含めると、実際のレジェンド確率は約4.6%（平均21.8回に1回）です。</li><li>10回孵化には必ずエピック以上が1匹入っています。</li><li>最初の孵化はエピックです。</li><li>同じペットがまた出ると★が1つ上がります（★5まで）。★5のペットがまた出るとジェムで返ってきます（レア10 · エピック30 · レジェンド100）。</li></ul></section>
+</article>
+<article data-l="zh-Hant">
+<h1>最強鴨鴨<small>各稀有度機率</small></h1>
+<p class="sub">與遊戲內顯示的機率相同。 基準日: <bdi>2026-11-10</bdi></p>
+<section><h2>武器召喚</h2><table class="t3"><thead><tr><th>稀有度</th><th>單抽機率</th><th>含保底</th></tr></thead><tbody>
+<tr><td><b style="color:#F2556B">神話</b></td><td><bdi>0.1%</bdi></td><td><b><bdi>0.18%</bdi></b></td></tr>
+<tr><td><b style="color:#F45F12">遠古</b></td><td><bdi>0.4%</bdi></td><td><b><bdi>0.70%</bdi></b></td></tr>
+<tr><td><b style="color:#F2A33D">傳說</b></td><td><bdi>0.9%</bdi></td><td><b><bdi>1.58%</bdi></b></td></tr>
+<tr><td><b style="color:#B46CF2">英雄</b></td><td><bdi>5%</bdi></td><td><b><bdi>11.3%</bdi></b></td></tr>
+<tr><td><b style="color:#4D9FF2">稀有</b></td><td><bdi>14%</bdi></td><td><b><bdi>12.9%</bdi></b></td></tr>
+<tr><td><b style="color:#63CF7F">高級</b></td><td><bdi>30%</bdi></td><td><b><bdi>27.6%</bdi></b></td></tr>
+<tr><td><b style="color:#A9ADC1">普通</b></td><td><bdi>49.6%</bdi></td><td><b><bdi>45.7%</bdi></b></td></tr>
+</tbody></table>
+<h3>保底</h3><ul>
+<li>第 10 抽必得英雄以上: 平均 7.3 抽 1 次</li>
+<li>第 60 抽必得傳說以上: 平均 40.8 抽 1 次<br><b style="color:#F2A33D">傳說</b> 64.3% · <b style="color:#F45F12">遠古</b> 28.6% · <b style="color:#F2556B">神話</b> 7.1%</li></ul>
+<h3>保底召喚券</h3><ul>
+<li>英雄以上保底召喚券<br><b style="color:#B46CF2">英雄</b> 98.6% · <b style="color:#F2A33D">傳說</b> 0.9% · <b style="color:#F45F12">遠古</b> 0.4% · <b style="color:#F2556B">神話</b> 0.1%</li>
+<li>傳說以上保底召喚券<br><b style="color:#F2A33D">傳說</b> 99.5% · <b style="color:#F45F12">遠古</b> 0.4% · <b style="color:#F2556B">神話</b> 0.1%</li>
+<li>遠古以上保底召喚券<br><b style="color:#F45F12">遠古</b> 99.9% · <b style="color:#F2556B">神話</b> 0.1%</li>
+<li>神話保底召喚券<br><b style="color:#F2556B">神話</b> 100%</li>
+</ul>
+<h3>討伐寶箱</h3><p>巨神討伐每週獎勵<br><b style="color:#4D9FF2">稀有</b> 50% · <b style="color:#B46CF2">英雄</b> 45% · <b style="color:#F2A33D">傳說</b> 5%</p>
+<p class="note">各武器種類機率相同。超越武器在超越祭壇取得。</p></section>
+<section><h2>符文召喚</h2><table class="t2"><tbody>
+<tr><td><b>符文</b></td><td><b><bdi>10%</bdi></b></td></tr>
+<tr class="s"><td><b style="color:#4D9FF2">稀有</b><br>憤怒符文 · 守護符文 · 攀登符文 · 迅捷符文 · 智慧符文</td><td><bdi>7.5%</bdi></td></tr>
+<tr class="s"><td><b style="color:#B46CF2">英雄</b><br>刀刃符文 · 風之符文 · 魔力符文 · 大地符文 · 狩獵符文 · 鐵壁符文 · 擴散符文 · 風暴符文</td><td><bdi>2.4%</bdi></td></tr>
+<tr class="s"><td><b style="color:#F2A33D">傳說</b><br>爆裂符文 · 吸血符文 · 庇護符文</td><td><bdi>0.09%</bdi></td></tr>
+<tr class="s"><td><b style="color:#F2556B">超越</b><br>王者氣場</td><td><bdi>0.01%</bdi></td></tr>
+<tr><td>符文粉 1個</td><td><bdi>30%</bdi></td></tr>
+<tr><td>符文粉 3個</td><td><bdi>7%</bdi></td></tr>
+<tr><td>符文粉 10個</td><td><bdi>0.5%</bdi></td></tr>
+<tr><td>金幣 (掃蕩的一半)</td><td><bdi>30.3%</bdi></td></tr>
+<tr><td>金幣 (掃蕩3次)</td><td><bdi>3.43%</bdi></td></tr>
+<tr><td>5 顆寶石</td><td><bdi>15.5%</bdi></td></tr>
+<tr><td>50 顆寶石</td><td><bdi>1%</bdi></td></tr>
+<tr><td>寶石 100 顆</td><td><bdi>0.7%</bdi></td></tr>
+<tr><td>武器變更券 1 張</td><td><bdi>0.07%</bdi></td></tr>
+<tr><td>寵物孵化券1張</td><td><bdi>1.5%</bdi></td></tr>
+</tbody></table>
+<ul class="note"><li>沒有銘謝惠顧。沒抽到符文時會得到符文粉、金幣、寶石、變更券或寵物孵化券。</li><li>10 次召喚中若一個符文都沒有，最後 1 個欄位會變成符文（等級依上方機率）。</li><li>會先出現該等級中尚未持有的符文。再次抽到已持有的符文會提升 1 階（最高 Ⅴ）。Ⅴ 階的符文會變成符文粉（稀有 30 · 英雄 60 · 傳說 200 · 超越 500）。</li><li>符文保底召喚券只會出現符文：英雄 93% · 傳說 6% · 超越 1%。</li><li>觀看廣告的免費 1 次也是相同機率。</li></ul></section>
+<section><h2>寵物孵化</h2><table class="t2"><tbody>
+<tr class="s"><td><b style="color:#F2A33D">傳說</b><br>小飛龍 · 閃電松鼠 · 雲朵鯨</td><td><bdi>4%</bdi><br><small><bdi>1.33% × 3</bdi></small></td></tr>
+<tr class="s"><td><b style="color:#B46CF2">英雄</b><br>石殼龜 · 雪花狐 · 毒蟾蜍 · 搗蛋幽靈 · 雪球企鵝</td><td><bdi>21%</bdi><br><small><bdi>4.2% × 5</bdi></small></td></tr>
+<tr class="s"><td><b style="color:#4D9FF2">稀有</b><br>磁鐵史萊姆 · 黃金倉鼠 · 小貓頭鷹 · 毛球兔</td><td><bdi>75%</bdi><br><small><bdi>18.75% × 4</bdi></small></td></tr>
+</tbody></table>
+<ul class="note"><li>連續 49 次孵化沒有傳說時，第 50 次必定是傳說。計入保底後，實際傳說機率約為 4.6%（平均 21.8 次 1 次）。</li><li>10 次孵化必定包含 1 隻英雄以上。</li><li>第一次孵化必定是英雄。</li><li>再次孵出相同寵物時 ★ 提升 1 顆（最高 ★5）。★5 寵物再次孵出時會返還寶石（稀有 10 · 英雄 30 · 傳說 100）。</li></ul></section>
+</article>
+<article data-l="es">
+<h1>Pato Supremo<small>Probabilidades por rareza</small></h1>
+<p class="sub">Son las mismas probabilidades que se muestran en el juego. Fecha: <bdi>2026-11-10</bdi></p>
+<section><h2>Invocar armas</h2><table class="t3"><thead><tr><th>Rareza</th><th>Por tirada</th><th>Con garantía</th></tr></thead><tbody>
+<tr><td><b style="color:#F2556B">Mítico</b></td><td><bdi>0.1%</bdi></td><td><b><bdi>0.18%</bdi></b></td></tr>
+<tr><td><b style="color:#F45F12">Antiguo</b></td><td><bdi>0.4%</bdi></td><td><b><bdi>0.70%</bdi></b></td></tr>
+<tr><td><b style="color:#F2A33D">Legendario</b></td><td><bdi>0.9%</bdi></td><td><b><bdi>1.58%</bdi></b></td></tr>
+<tr><td><b style="color:#B46CF2">Épico</b></td><td><bdi>5%</bdi></td><td><b><bdi>11.3%</bdi></b></td></tr>
+<tr><td><b style="color:#4D9FF2">Raro</b></td><td><bdi>14%</bdi></td><td><b><bdi>12.9%</bdi></b></td></tr>
+<tr><td><b style="color:#63CF7F">Poco común</b></td><td><bdi>30%</bdi></td><td><b><bdi>27.6%</bdi></b></td></tr>
+<tr><td><b style="color:#A9ADC1">Común</b></td><td><bdi>49.6%</bdi></td><td><b><bdi>45.7%</bdi></b></td></tr>
+</tbody></table>
+<h3>Garantía</h3><ul>
+<li>Épico o más en la tirada 10: 1 de cada 7.3 tiradas de media</li>
+<li>Legendario o más en la tirada 60: 1 de cada 40.8 tiradas de media<br><b style="color:#F2A33D">Legendario</b> 64.3% · <b style="color:#F45F12">Antiguo</b> 28.6% · <b style="color:#F2556B">Mítico</b> 7.1%</li></ul>
+<h3>Boleto garantizado</h3><ul>
+<li>Boleto garantizado Épico+<br><b style="color:#B46CF2">Épico</b> 98.6% · <b style="color:#F2A33D">Legendario</b> 0.9% · <b style="color:#F45F12">Antiguo</b> 0.4% · <b style="color:#F2556B">Mítico</b> 0.1%</li>
+<li>Boleto garantizado Legendario+<br><b style="color:#F2A33D">Legendario</b> 99.5% · <b style="color:#F45F12">Antiguo</b> 0.4% · <b style="color:#F2556B">Mítico</b> 0.1%</li>
+<li>Boleto garantizado Antiguo+<br><b style="color:#F45F12">Antiguo</b> 99.9% · <b style="color:#F2556B">Mítico</b> 0.1%</li>
+<li>Boleto garantizado Mítico<br><b style="color:#F2556B">Mítico</b> 100%</li>
+</ul>
+<h3>Cofre de caza</h3><p>Premio semanal de caza<br><b style="color:#4D9FF2">Raro</b> 50% · <b style="color:#B46CF2">Épico</b> 45% · <b style="color:#F2A33D">Legendario</b> 5%</p>
+<p class="note">Todos los tipos de arma tienen la misma probabilidad. Las armas trascendentes salen del altar.</p></section>
+<section><h2>Invocar runas</h2><table class="t2"><tbody>
+<tr><td><b>Runa</b></td><td><b><bdi>10%</bdi></b></td></tr>
+<tr class="s"><td><b style="color:#4D9FF2">Raro</b><br>Runa de furia · Runa guardiana · Runa de ascenso · Runa de presteza · Runa de sabiduría</td><td><bdi>7.5%</bdi></td></tr>
+<tr class="s"><td><b style="color:#B46CF2">Épico</b><br>Runa del filo · Runa del viento · Runa arcana · Runa de tierra · Runa de caza · Runa de muralla · Runa expansiva · Runa de tormenta</td><td><bdi>2.4%</bdi></td></tr>
+<tr class="s"><td><b style="color:#F2A33D">Legendario</b><br>Runa explosiva · Runa vampírica · Runa de égida</td><td><bdi>0.09%</bdi></td></tr>
+<tr class="s"><td><b style="color:#F2556B">Trascendente</b><br>Aura del rey</td><td><bdi>0.01%</bdi></td></tr>
+<tr><td>Polvo rúnico ×1</td><td><bdi>30%</bdi></td></tr>
+<tr><td>Polvo rúnico ×3</td><td><bdi>7%</bdi></td></tr>
+<tr><td>Polvo rúnico ×10</td><td><bdi>0.5%</bdi></td></tr>
+<tr><td>Oro (Medio barrido)</td><td><bdi>30.3%</bdi></td></tr>
+<tr><td>Oro (Barrido ×3)</td><td><bdi>3.43%</bdi></td></tr>
+<tr><td>5 gemas</td><td><bdi>15.5%</bdi></td></tr>
+<tr><td>50 gemas</td><td><bdi>1%</bdi></td></tr>
+<tr><td>100 gemas</td><td><bdi>0.7%</bdi></td></tr>
+<tr><td>Vale de cambio x1</td><td><bdi>0.07%</bdi></td></tr>
+<tr><td>1 boleto de eclosión</td><td><bdi>1.5%</bdi></td></tr>
+</tbody></table>
+<ul class="note"><li>Sin premios vacíos. Si no sale runa: polvo de runa, oro, gemas, vales de cambio o boletos de eclosión.</li><li>Si en 10 invocaciones no sale ninguna runa, la última ranura pasa a ser una runa (rango según las probabilidades de arriba).</li><li>Primero salen las runas de esa rareza que aún no tienes. Si sale una que ya tienes, sube 1 nivel (hasta Ⅴ). Una runa en Ⅴ se convierte en polvo rúnico (Raro 30 · Épico 60 · Legendario 200 · Trascendente 500).</li><li>Los boletos garantizados de runa solo dan runas: Épico 93% · Legendario 6% · Trascendente 1%.</li><li>La invocación gratis con anuncio usa las mismas probabilidades.</li></ul></section>
+<section><h2>Eclosión de mascota</h2><table class="t2"><tbody>
+<tr class="s"><td><b style="color:#F2A33D">Legendario</b><br>Dragoncito · Ardilla relámpago · Ballena nube</td><td><bdi>4%</bdi><br><small><bdi>1.33% × 3</bdi></small></td></tr>
+<tr class="s"><td><b style="color:#B46CF2">Épico</b><br>Tortuga pétrea · Zorro nevado · Sapo venenoso · Fantasma travieso · Pingüino bola de nieve</td><td><bdi>21%</bdi><br><small><bdi>4.2% × 5</bdi></small></td></tr>
+<tr class="s"><td><b style="color:#4D9FF2">Raro</b><br>Slime imán · Hámster dorado · Buhíto · Conejito algodón</td><td><bdi>75%</bdi><br><small><bdi>18.75% × 4</bdi></small></td></tr>
+</tbody></table>
+<ul class="note"><li>Tras 49 eclosiones sin Legendario, la número 50 es Legendaria. Con esta garantía, la probabilidad real de Legendario es de aprox. 4.6% (1 de cada 21.8 de media).</li><li>Cada eclosión ×10 incluye al menos 1 Épico o superior.</li><li>Tu primera eclosión es Épica.</li><li>Una mascota repetida gana 1 ★ (hasta ★5). Si se repite una mascota ★5, se devuelve en gemas (Raro 10 · Épico 30 · Legendario 100).</li></ul></section>
+</article>
+<article data-l="fr">
+<h1>Super Canard<small>Taux par rareté</small></h1>
+<p class="sub">Ce sont les mêmes taux que ceux affichés dans le jeu. Date: <bdi>2026-11-10</bdi></p>
+<section><h2>Invocation d’armes</h2><table class="t3"><thead><tr><th>Rareté</th><th>Par tirage</th><th>Avec garantie</th></tr></thead><tbody>
+<tr><td><b style="color:#F2556B">Mythique</b></td><td><bdi>0.1%</bdi></td><td><b><bdi>0.18%</bdi></b></td></tr>
+<tr><td><b style="color:#F45F12">Ancien</b></td><td><bdi>0.4%</bdi></td><td><b><bdi>0.70%</bdi></b></td></tr>
+<tr><td><b style="color:#F2A33D">Légendaire</b></td><td><bdi>0.9%</bdi></td><td><b><bdi>1.58%</bdi></b></td></tr>
+<tr><td><b style="color:#B46CF2">Épique</b></td><td><bdi>5%</bdi></td><td><b><bdi>11.3%</bdi></b></td></tr>
+<tr><td><b style="color:#4D9FF2">Rare</b></td><td><bdi>14%</bdi></td><td><b><bdi>12.9%</bdi></b></td></tr>
+<tr><td><b style="color:#63CF7F">Peu commun</b></td><td><bdi>30%</bdi></td><td><b><bdi>27.6%</bdi></b></td></tr>
+<tr><td><b style="color:#A9ADC1">Commun</b></td><td><bdi>49.6%</bdi></td><td><b><bdi>45.7%</bdi></b></td></tr>
+</tbody></table>
+<h3>Garantie</h3><ul>
+<li>Épique ou mieux au tirage 10: 1 fois sur 7.3 en moyenne</li>
+<li>Légendaire ou mieux au tirage 60: 1 fois sur 40.8 en moyenne<br><b style="color:#F2A33D">Légendaire</b> 64.3% · <b style="color:#F45F12">Ancien</b> 28.6% · <b style="color:#F2556B">Mythique</b> 7.1%</li></ul>
+<h3>Ticket garanti</h3><ul>
+<li>Ticket garanti Épique+<br><b style="color:#B46CF2">Épique</b> 98.6% · <b style="color:#F2A33D">Légendaire</b> 0.9% · <b style="color:#F45F12">Ancien</b> 0.4% · <b style="color:#F2556B">Mythique</b> 0.1%</li>
+<li>Ticket garanti Légendaire+<br><b style="color:#F2A33D">Légendaire</b> 99.5% · <b style="color:#F45F12">Ancien</b> 0.4% · <b style="color:#F2556B">Mythique</b> 0.1%</li>
+<li>Ticket garanti Ancien+<br><b style="color:#F45F12">Ancien</b> 99.9% · <b style="color:#F2556B">Mythique</b> 0.1%</li>
+<li>Ticket garanti Mythique<br><b style="color:#F2556B">Mythique</b> 100%</li>
+</ul>
+<h3>Coffre de chasse</h3><p>Récompense de chasse hebdo<br><b style="color:#4D9FF2">Rare</b> 50% · <b style="color:#B46CF2">Épique</b> 45% · <b style="color:#F2A33D">Légendaire</b> 5%</p>
+<p class="note">Tous les types d’armes ont la même chance. Les armes transcendantes viennent de l’autel.</p></section>
+<section><h2>Invocation de runes</h2><table class="t2"><tbody>
+<tr><td><b>Rune</b></td><td><b><bdi>10%</bdi></b></td></tr>
+<tr class="s"><td><b style="color:#4D9FF2">Rare</b><br>Rune de rage · Rune de garde · Rune d’ascension · Rune de célérité · Rune de sagesse</td><td><bdi>7.5%</bdi></td></tr>
+<tr class="s"><td><b style="color:#B46CF2">Épique</b><br>Rune de lame · Rune du vent · Rune arcanique · Rune de terre · Rune de chasse · Rune de rempart · Rune d’expansion · Rune de tempête</td><td><bdi>2.4%</bdi></td></tr>
+<tr class="s"><td><b style="color:#F2A33D">Légendaire</b><br>Rune explosive · Rune vampirique · Rune d’égide</td><td><bdi>0.09%</bdi></td></tr>
+<tr class="s"><td><b style="color:#F2556B">Transcendant</b><br>Aura du roi</td><td><bdi>0.01%</bdi></td></tr>
+<tr><td>Poussière de rune ×1</td><td><bdi>30%</bdi></td></tr>
+<tr><td>Poussière de rune ×3</td><td><bdi>7%</bdi></td></tr>
+<tr><td>Poussière de rune ×10</td><td><bdi>0.5%</bdi></td></tr>
+<tr><td>Or (Demi-balayage)</td><td><bdi>30.3%</bdi></td></tr>
+<tr><td>Or (Balayage ×3)</td><td><bdi>3.43%</bdi></td></tr>
+<tr><td>5 gemmes</td><td><bdi>15.5%</bdi></td></tr>
+<tr><td>50 gemmes</td><td><bdi>1%</bdi></td></tr>
+<tr><td>100 gemmes</td><td><bdi>0.7%</bdi></td></tr>
+<tr><td>Ticket d’échange x1</td><td><bdi>0.07%</bdi></td></tr>
+<tr><td>1 ticket d’éclosion</td><td><bdi>1.5%</bdi></td></tr>
+</tbody></table>
+<ul class="note"><li>Aucun tirage vide. Sinon : poussière de rune, or, gemmes, tickets d’échange ou tickets d’éclosion.</li><li>Si 10 invocations ne donnent aucune rune, le dernier emplacement devient une rune (rang selon les taux ci-dessus).</li><li>Les runes de cette rareté pas encore possédées sortent d’abord. Une rune possédée gagne 1 rang (jusqu’à Ⅴ). Une rune au rang Ⅴ devient de la poussière de rune (Rare 30 · Épique 60 · Légendaire 200 · Transcendant 500).</li><li>Les tickets garantis de rune ne donnent que des runes : Épique 93% · Légendaire 6% · Transcendant 1%.</li><li>L’invocation gratuite par publicité utilise les mêmes taux.</li></ul></section>
+<section><h2>Éclosion de familier</h2><table class="t2"><tbody>
+<tr class="s"><td><b style="color:#F2A33D">Légendaire</b><br>Bébé dragon · Écureuil foudre · Baleine nuage</td><td><bdi>4%</bdi><br><small><bdi>1.33% × 3</bdi></small></td></tr>
+<tr class="s"><td><b style="color:#B46CF2">Épique</b><br>Tortue carapierre · Renard flocon · Crapaud venimeux · Fantôme farceur · Pingouin boule de neige</td><td><bdi>21%</bdi><br><small><bdi>4.2% × 5</bdi></small></td></tr>
+<tr class="s"><td><b style="color:#4D9FF2">Rare</b><br>Slime aimanté · Hamster doré · Petit hibou · Lapin cotonneux</td><td><bdi>75%</bdi><br><small><bdi>18.75% × 4</bdi></small></td></tr>
+</tbody></table>
+<ul class="note"><li>Après 49 éclosions sans Légendaire, la 50e est Légendaire. Avec cette garantie, le taux réel de Légendaire est d’env. 4.6% (1 sur 21.8 en moyenne).</li><li>Chaque éclosion ×10 contient au moins 1 Épique ou mieux.</li><li>Votre première éclosion est Épique.</li><li>Un familier en double gagne 1 ★ (jusqu’à ★5). Un doublon d’un familier ★5 est remboursé en gemmes (Rare 10 · Épique 30 · Légendaire 100).</li></ul></section>
+</article>
+<article data-l="de">
+<h1>Superente<small>Raten nach Seltenheit</small></h1>
+<p class="sub">Das sind dieselben Chancen wie im Spiel. Stand: <bdi>2026-11-10</bdi></p>
+<section><h2>Waffenbeschwörung</h2><table class="t3"><thead><tr><th>Seltenheit</th><th>Pro Beschwörung</th><th>Mit Garantie</th></tr></thead><tbody>
+<tr><td><b style="color:#F2556B">Mythisch</b></td><td><bdi>0.1%</bdi></td><td><b><bdi>0.18%</bdi></b></td></tr>
+<tr><td><b style="color:#F45F12">Uralt</b></td><td><bdi>0.4%</bdi></td><td><b><bdi>0.70%</bdi></b></td></tr>
+<tr><td><b style="color:#F2A33D">Legendär</b></td><td><bdi>0.9%</bdi></td><td><b><bdi>1.58%</bdi></b></td></tr>
+<tr><td><b style="color:#B46CF2">Episch</b></td><td><bdi>5%</bdi></td><td><b><bdi>11.3%</bdi></b></td></tr>
+<tr><td><b style="color:#4D9FF2">Selten</b></td><td><bdi>14%</bdi></td><td><b><bdi>12.9%</bdi></b></td></tr>
+<tr><td><b style="color:#63CF7F">Ungewöhnlich</b></td><td><bdi>30%</bdi></td><td><b><bdi>27.6%</bdi></b></td></tr>
+<tr><td><b style="color:#A9ADC1">Gewöhnlich</b></td><td><bdi>49.6%</bdi></td><td><b><bdi>45.7%</bdi></b></td></tr>
+</tbody></table>
+<h3>Garantie</h3><ul>
+<li>Episch oder besser bei Zug 10: Im Schnitt 1 von 7.3 Zügen</li>
+<li>Legendär oder besser bei Zug 60: Im Schnitt 1 von 40.8 Zügen<br><b style="color:#F2A33D">Legendär</b> 64.3% · <b style="color:#F45F12">Uralt</b> 28.6% · <b style="color:#F2556B">Mythisch</b> 7.1%</li></ul>
+<h3>Garantie-Ticket</h3><ul>
+<li>Garantie-Ticket Episch+<br><b style="color:#B46CF2">Episch</b> 98.6% · <b style="color:#F2A33D">Legendär</b> 0.9% · <b style="color:#F45F12">Uralt</b> 0.4% · <b style="color:#F2556B">Mythisch</b> 0.1%</li>
+<li>Garantie-Ticket Legendär+<br><b style="color:#F2A33D">Legendär</b> 99.5% · <b style="color:#F45F12">Uralt</b> 0.4% · <b style="color:#F2556B">Mythisch</b> 0.1%</li>
+<li>Garantie-Ticket Uralt+<br><b style="color:#F45F12">Uralt</b> 99.9% · <b style="color:#F2556B">Mythisch</b> 0.1%</li>
+<li>Garantie-Ticket Mythisch<br><b style="color:#F2556B">Mythisch</b> 100%</li>
+</ul>
+<h3>Jagdtruhe</h3><p>Wöchentl. Jagdbelohnung<br><b style="color:#4D9FF2">Selten</b> 50% · <b style="color:#B46CF2">Episch</b> 45% · <b style="color:#F2A33D">Legendär</b> 5%</p>
+<p class="note">Alle Waffenarten sind gleich wahrscheinlich. Transzendente Waffen gibt es am Altar.</p></section>
+<section><h2>Runenbeschwörung</h2><table class="t2"><tbody>
+<tr><td><b>Rune</b></td><td><b><bdi>10%</bdi></b></td></tr>
+<tr class="s"><td><b style="color:#4D9FF2">Selten</b><br>Zornrune · Schutzrune · Kletterrune · Eilrune · Weisheitsrune</td><td><bdi>7.5%</bdi></td></tr>
+<tr class="s"><td><b style="color:#B46CF2">Episch</b><br>Klingenrune · Windrune · Magierune · Erdrune · Jagdrune · Bollwerkrune · Streurune · Sturmrune</td><td><bdi>2.4%</bdi></td></tr>
+<tr class="s"><td><b style="color:#F2A33D">Legendär</b><br>Sprengrune · Vampirrune · Ägisrune</td><td><bdi>0.09%</bdi></td></tr>
+<tr class="s"><td><b style="color:#F2556B">Transzendent</b><br>Königsaura</td><td><bdi>0.01%</bdi></td></tr>
+<tr><td>Runenstaub ×1</td><td><bdi>30%</bdi></td></tr>
+<tr><td>Runenstaub ×3</td><td><bdi>7%</bdi></td></tr>
+<tr><td>Runenstaub ×10</td><td><bdi>0.5%</bdi></td></tr>
+<tr><td>Gold (Halber Schnellkampf)</td><td><bdi>30.3%</bdi></td></tr>
+<tr><td>Gold (Schnellkampf ×3)</td><td><bdi>3.43%</bdi></td></tr>
+<tr><td>5 Edelsteine</td><td><bdi>15.5%</bdi></td></tr>
+<tr><td>50 Edelsteine</td><td><bdi>1%</bdi></td></tr>
+<tr><td>100 Edelsteine</td><td><bdi>0.7%</bdi></td></tr>
+<tr><td>Tausch-Ticket x1</td><td><bdi>0.07%</bdi></td></tr>
+<tr><td>1 Brutticket</td><td><bdi>1.5%</bdi></td></tr>
+</tbody></table>
+<ul class="note"><li>Keine Nieten. Sonst gibt es Runenstaub, Gold, Edelsteine, Tausch-Tickets oder Bruttickets.</li><li>Gibt eine 10er-Beschwörung keine Rune, wird der letzte Platz zu einer Rune (Rang nach den Raten oben).</li><li>Zuerst kommen Runen dieser Seltenheit, die du noch nicht hast. Eine vorhandene Rune steigt um 1 Stufe (bis Ⅴ). Eine Rune auf Ⅴ wird zu Runenstaub (Selten 30 · Episch 60 · Legendär 200 · Transzendent 500).</li><li>Runen-Garantie-Tickets geben nur Runen: Episch 93% · Legendär 6% · Transzendent 1%.</li><li>Die kostenlose Werbe-Beschwörung hat dieselben Chancen.</li></ul></section>
+<section><h2>Haustier ausbrüten</h2><table class="t2"><tbody>
+<tr class="s"><td><b style="color:#F2A33D">Legendär</b><br>Babydrache · Blitzhörnchen · Wolkenwal</td><td><bdi>4%</bdi><br><small><bdi>1.33% × 3</bdi></small></td></tr>
+<tr class="s"><td><b style="color:#B46CF2">Episch</b><br>Steinschildkröte · Schneeflockenfuchs · Giftkröte · Schelmengeist · Schneeballpinguin</td><td><bdi>21%</bdi><br><small><bdi>4.2% × 5</bdi></small></td></tr>
+<tr class="s"><td><b style="color:#4D9FF2">Selten</b><br>Magnetschleim · Goldhamster · Kleine Eule · Flauschhase</td><td><bdi>75%</bdi><br><small><bdi>18.75% × 4</bdi></small></td></tr>
+</tbody></table>
+<ul class="note"><li>Nach 49 Ausbrütungen ohne Legendär ist die 50. Legendär. Mit dieser Garantie liegt die echte Legendär-Rate bei ca. 4.6% (im Schnitt 1 von 21.8).</li><li>Jede 10er-Brut enthält mindestens 1 Episch oder besser.</li><li>Deine erste Brut ist episch.</li><li>Ein doppeltes Haustier erhält 1 ★ (bis ★5). Ein doppeltes ★5-Haustier wird in Edelsteinen erstattet (Selten 10 · Episch 30 · Legendär 100).</li></ul></section>
+</article>
+<article data-l="pt">
+<h1>Patão Supremo<small>Chances por raridade</small></h1>
+<p class="sub">São as mesmas chances mostradas no jogo. Data: <bdi>2026-11-10</bdi></p>
+<section><h2>Invocar armas</h2><table class="t3"><thead><tr><th>Raridade</th><th>Por invocação</th><th>Com garantia</th></tr></thead><tbody>
+<tr><td><b style="color:#F2556B">Mítico</b></td><td><bdi>0.1%</bdi></td><td><b><bdi>0.18%</bdi></b></td></tr>
+<tr><td><b style="color:#F45F12">Ancestral</b></td><td><bdi>0.4%</bdi></td><td><b><bdi>0.70%</bdi></b></td></tr>
+<tr><td><b style="color:#F2A33D">Lendário</b></td><td><bdi>0.9%</bdi></td><td><b><bdi>1.58%</bdi></b></td></tr>
+<tr><td><b style="color:#B46CF2">Épico</b></td><td><bdi>5%</bdi></td><td><b><bdi>11.3%</bdi></b></td></tr>
+<tr><td><b style="color:#4D9FF2">Raro</b></td><td><bdi>14%</bdi></td><td><b><bdi>12.9%</bdi></b></td></tr>
+<tr><td><b style="color:#63CF7F">Incomum</b></td><td><bdi>30%</bdi></td><td><b><bdi>27.6%</bdi></b></td></tr>
+<tr><td><b style="color:#A9ADC1">Comum</b></td><td><bdi>49.6%</bdi></td><td><b><bdi>45.7%</bdi></b></td></tr>
+</tbody></table>
+<h3>Garantia</h3><ul>
+<li>Épico ou melhor no giro 10: 1 a cada 7.3 giros em média</li>
+<li>Lendário ou melhor no giro 60: 1 a cada 40.8 giros em média<br><b style="color:#F2A33D">Lendário</b> 64.3% · <b style="color:#F45F12">Ancestral</b> 28.6% · <b style="color:#F2556B">Mítico</b> 7.1%</li></ul>
+<h3>Ticket garantido</h3><ul>
+<li>Ticket garantido Épico+<br><b style="color:#B46CF2">Épico</b> 98.6% · <b style="color:#F2A33D">Lendário</b> 0.9% · <b style="color:#F45F12">Ancestral</b> 0.4% · <b style="color:#F2556B">Mítico</b> 0.1%</li>
+<li>Ticket garantido Lendário+<br><b style="color:#F2A33D">Lendário</b> 99.5% · <b style="color:#F45F12">Ancestral</b> 0.4% · <b style="color:#F2556B">Mítico</b> 0.1%</li>
+<li>Ticket garantido Ancestral+<br><b style="color:#F45F12">Ancestral</b> 99.9% · <b style="color:#F2556B">Mítico</b> 0.1%</li>
+<li>Ticket garantido Mítico<br><b style="color:#F2556B">Mítico</b> 100%</li>
+</ul>
+<h3>Baú de caça</h3><p>Prêmio semanal de caça<br><b style="color:#4D9FF2">Raro</b> 50% · <b style="color:#B46CF2">Épico</b> 45% · <b style="color:#F2A33D">Lendário</b> 5%</p>
+<p class="note">Todos os tipos de arma têm a mesma chance. Armas transcendentes vêm do altar.</p></section>
+<section><h2>Invocar runas</h2><table class="t2"><tbody>
+<tr><td><b>Runa</b></td><td><b><bdi>10%</bdi></b></td></tr>
+<tr class="s"><td><b style="color:#4D9FF2">Raro</b><br>Runa da fúria · Runa guardiã · Runa da escalada · Runa da presteza · Runa da sabedoria</td><td><bdi>7.5%</bdi></td></tr>
+<tr class="s"><td><b style="color:#B46CF2">Épico</b><br>Runa da lâmina · Runa do vento · Runa arcana · Runa da terra · Runa da caça · Runa da muralha · Runa da expansão · Runa da tempestade</td><td><bdi>2.4%</bdi></td></tr>
+<tr class="s"><td><b style="color:#F2A33D">Lendário</b><br>Runa explosiva · Runa vampírica · Runa da égide</td><td><bdi>0.09%</bdi></td></tr>
+<tr class="s"><td><b style="color:#F2556B">Transcendente</b><br>Aura do rei</td><td><bdi>0.01%</bdi></td></tr>
+<tr><td>Pó rúnico ×1</td><td><bdi>30%</bdi></td></tr>
+<tr><td>Pó rúnico ×3</td><td><bdi>7%</bdi></td></tr>
+<tr><td>Pó rúnico ×10</td><td><bdi>0.5%</bdi></td></tr>
+<tr><td>Ouro (Meia varredura)</td><td><bdi>30.3%</bdi></td></tr>
+<tr><td>Ouro (Varredura ×3)</td><td><bdi>3.43%</bdi></td></tr>
+<tr><td>5 gemas</td><td><bdi>15.5%</bdi></td></tr>
+<tr><td>50 gemas</td><td><bdi>1%</bdi></td></tr>
+<tr><td>100 gemas</td><td><bdi>0.7%</bdi></td></tr>
+<tr><td>Vale de troca x1</td><td><bdi>0.07%</bdi></td></tr>
+<tr><td>1 ticket de eclosão</td><td><bdi>1.5%</bdi></td></tr>
+</tbody></table>
+<ul class="note"><li>Sem prêmio vazio. Se não vier runa: pó de runa, ouro, gemas, vales de troca ou tickets de eclosão.</li><li>Se 10 invocações não tiverem nenhuma runa, o último espaço vira uma runa (grau conforme as chances acima).</li><li>Primeiro vêm as runas dessa raridade que você ainda não tem. Uma runa repetida sobe 1 nível (até Ⅴ). Uma runa em Ⅴ vira pó rúnico (Raro 30 · Épico 60 · Lendário 200 · Transcendente 500).</li><li>Tickets garantidos de runa só dão runas: Épico 93% · Lendário 6% · Transcendente 1%.</li><li>A invocação grátis por anúncio usa as mesmas chances.</li></ul></section>
+<section><h2>Chocar mascote</h2><table class="t2"><tbody>
+<tr class="s"><td><b style="color:#F2A33D">Lendário</b><br>Dragãozinho · Esquilo relâmpago · Baleia-nuvem</td><td><bdi>4%</bdi><br><small><bdi>1.33% × 3</bdi></small></td></tr>
+<tr class="s"><td><b style="color:#B46CF2">Épico</b><br>Tartaruga pétrea · Raposa nevada · Sapo venenoso · Fantasma travesso · Pinguim bola de neve</td><td><bdi>21%</bdi><br><small><bdi>4.2% × 5</bdi></small></td></tr>
+<tr class="s"><td><b style="color:#4D9FF2">Raro</b><br>Slime ímã · Hamster dourado · Corujinha · Coelho algodão</td><td><bdi>75%</bdi><br><small><bdi>18.75% × 4</bdi></small></td></tr>
+</tbody></table>
+<ul class="note"><li>Após 49 chocos sem Lendário, o 50º é Lendário. Com essa garantia, a chance real de Lendário é cerca de 4.6% (1 a cada 21.8 em média).</li><li>Cada eclosão ×10 inclui pelo menos 1 Épico ou melhor.</li><li>Sua primeira eclosão é Épico.</li><li>Um mascote repetido ganha 1 ★ (até ★5). Um mascote ★5 repetido é devolvido em gemas (Raro 10 · Épico 30 · Lendário 100).</li></ul></section>
+</article>
+<article data-l="ar" dir="rtl">
+<h1>البطة الخارقة<small>الاحتمالات حسب الندرة</small></h1>
+<p class="sub">هذه هي النسب نفسها المعروضة داخل اللعبة. بتاريخ: <bdi>2026-11-10</bdi></p>
+<section><h2>استدعاء الأسلحة</h2><table class="t3"><thead><tr><th>الندرة</th><th>لكل سحبة</th><th>مع الضمان</th></tr></thead><tbody>
+<tr><td><b style="color:#F2556B">خرافي</b></td><td><bdi>0.1%</bdi></td><td><b><bdi>0.18%</bdi></b></td></tr>
+<tr><td><b style="color:#F45F12">قديم</b></td><td><bdi>0.4%</bdi></td><td><b><bdi>0.70%</bdi></b></td></tr>
+<tr><td><b style="color:#F2A33D">أسطوري</b></td><td><bdi>0.9%</bdi></td><td><b><bdi>1.58%</bdi></b></td></tr>
+<tr><td><b style="color:#B46CF2">ملحمي</b></td><td><bdi>5%</bdi></td><td><b><bdi>11.3%</bdi></b></td></tr>
+<tr><td><b style="color:#4D9FF2">نادر</b></td><td><bdi>14%</bdi></td><td><b><bdi>12.9%</bdi></b></td></tr>
+<tr><td><b style="color:#63CF7F">غير شائع</b></td><td><bdi>30%</bdi></td><td><b><bdi>27.6%</bdi></b></td></tr>
+<tr><td><b style="color:#A9ADC1">عادي</b></td><td><bdi>49.6%</bdi></td><td><b><bdi>45.7%</bdi></b></td></tr>
+</tbody></table>
+<h3>مضمون</h3><ul>
+<li>ملحمي أو أعلى عند السحبة 10: مرة كل 7.3 سحبة في المتوسط</li>
+<li>أسطوري أو أعلى عند السحبة 60: مرة كل 40.8 سحبة في المتوسط<br><b style="color:#F2A33D">أسطوري</b> 64.3% · <b style="color:#F45F12">قديم</b> 28.6% · <b style="color:#F2556B">خرافي</b> 7.1%</li></ul>
+<h3>تذكرة مضمونة</h3><ul>
+<li>تذكرة مضمونة ملحمي أو أعلى<br><b style="color:#B46CF2">ملحمي</b> 98.6% · <b style="color:#F2A33D">أسطوري</b> 0.9% · <b style="color:#F45F12">قديم</b> 0.4% · <b style="color:#F2556B">خرافي</b> 0.1%</li>
+<li>تذكرة مضمونة أسطوري أو أعلى<br><b style="color:#F2A33D">أسطوري</b> 99.5% · <b style="color:#F45F12">قديم</b> 0.4% · <b style="color:#F2556B">خرافي</b> 0.1%</li>
+<li>تذكرة مضمونة قديم أو أعلى<br><b style="color:#F45F12">قديم</b> 99.9% · <b style="color:#F2556B">خرافي</b> 0.1%</li>
+<li>تذكرة مضمونة خرافي<br><b style="color:#F2556B">خرافي</b> 100%</li>
+</ul>
+<h3>صندوق الإبادة</h3><p>جائزة الإبادة الأسبوعية<br><b style="color:#4D9FF2">نادر</b> 50% · <b style="color:#B46CF2">ملحمي</b> 45% · <b style="color:#F2A33D">أسطوري</b> 5%</p>
+<p class="note">كل أنواع الأسلحة لها الفرصة نفسها. الأسلحة المتسامية تأتي من المذبح.</p></section>
+<section><h2>استدعاء الرونية</h2><table class="t2"><tbody>
+<tr><td><b>رونية</b></td><td><b><bdi>10%</bdi></b></td></tr>
+<tr class="s"><td><b style="color:#4D9FF2">نادر</b><br>رونية الغضب · رونية الحماية · رونية التسلق · رونية السرعة · رونية الحكمة</td><td><bdi>7.5%</bdi></td></tr>
+<tr class="s"><td><b style="color:#B46CF2">ملحمي</b><br>رونية النصل · رونية الريح · رونية السحر · رونية الأرض · رونية الصيد · رونية الحصن · رونية الانتشار · رونية العاصفة</td><td><bdi>2.4%</bdi></td></tr>
+<tr class="s"><td><b style="color:#F2A33D">أسطوري</b><br>رونية الانفجار · رونية مصّ الدماء · رونية الرعاية</td><td><bdi>0.09%</bdi></td></tr>
+<tr class="s"><td><b style="color:#F2556B">متسامٍ</b><br>هالة الملك</td><td><bdi>0.01%</bdi></td></tr>
+<tr><td>غبار الرونية ×1</td><td><bdi>30%</bdi></td></tr>
+<tr><td>غبار الرونية ×3</td><td><bdi>7%</bdi></td></tr>
+<tr><td>غبار الرونية ×10</td><td><bdi>0.5%</bdi></td></tr>
+<tr><td>الذهب (نصف اكتساح)</td><td><bdi>30.3%</bdi></td></tr>
+<tr><td>الذهب (اكتساح ×3)</td><td><bdi>3.43%</bdi></td></tr>
+<tr><td>5 جواهر</td><td><bdi>15.5%</bdi></td></tr>
+<tr><td>50 جوهرة</td><td><bdi>1%</bdi></td></tr>
+<tr><td>100 جوهرة</td><td><bdi>0.7%</bdi></td></tr>
+<tr><td>تذكرة تبديل ×1</td><td><bdi>0.07%</bdi></td></tr>
+<tr><td>تذكرة فقس رفيق واحدة</td><td><bdi>1.5%</bdi></td></tr>
+</tbody></table>
+<ul class="note"><li>لا توجد سحبات فارغة. إن لم تحصل على رونية فستحصل على غبار الرونية أو ذهب أو جواهر أو تذاكر تبديل أو تذاكر فقس رفيق.</li><li>إذا لم يحتوِ استدعاء ×10 على أي رونية، تتحول الخانة الأخيرة إلى رونية (الرتبة حسب النسب أعلاه).</li><li>تظهر أولًا الرونيات التي لا تملكها بعد في تلك الندرة. إذا تكررت رونية تملكها يرتفع مستواها 1 (حتى Ⅴ). الرونية في Ⅴ تتحول إلى غبار رونية (نادر 30 · ملحمي 60 · أسطوري 200 · متسامٍ 500).</li><li>تذاكر الرونية المضمونة تمنح رونيات فقط: ملحمي 93% · أسطوري 6% · متسامٍ 1%.</li><li>الاستدعاء المجاني عبر الإعلان له النسب نفسها.</li></ul></section>
+<section><h2>فقس رفيق</h2><table class="t2"><tbody>
+<tr class="s"><td><b style="color:#F2A33D">أسطوري</b><br>التنين الصغير · سنجاب البرق · حوت السحاب</td><td><bdi>4%</bdi><br><small><bdi>1.33% × 3</bdi></small></td></tr>
+<tr class="s"><td><b style="color:#B46CF2">ملحمي</b><br>سلحفاة الصخر · ثعلب الثلج · الضفدع السام · الشبح المشاغب · بطريق كرة الثلج</td><td><bdi>21%</bdi><br><small><bdi>4.2% × 5</bdi></small></td></tr>
+<tr class="s"><td><b style="color:#4D9FF2">نادر</b><br>سلايم المغناطيس · الهامستر الذهبي · البومة الصغيرة · الأرنب القطني</td><td><bdi>75%</bdi><br><small><bdi>18.75% × 4</bdi></small></td></tr>
+</tbody></table>
+<ul class="note"><li>بعد 49 مرات فقس دون أسطوري يكون الفقس رقم 50 أسطوريًا. مع هذا الضمان تبلغ الاحتمالية الفعلية للأسطوري نحو 4.6% (مرة كل 21.8 في المتوسط).</li><li>يحتوي كل فقس ×10 على رفيق ملحمي أو أعلى واحد على الأقل.</li><li>أول فقس لك يكون ملحميًا.</li><li>الرفيق المكرر يكسب ★ واحدة (حتى ★5). الرفيق ★5 المكرر يُسترد جواهر (نادر 10 · ملحمي 30 · أسطوري 100).</li></ul></section>
+</article>
+</main>
+<footer><a id="back" href="index.html"></a><a href="mailto:support@mystudioapps.com">support@mystudioapps.com</a></footer>
+<script>
+const LANGS=["ko", "en", "ja", "zh-Hant", "es", "fr", "de", "pt", "ar"];
+function norm(l){l=(l||'').toLowerCase();if(l.startsWith('zh'))return /hant|tw|hk|mo/.test(l)?'zh-Hant':null;const n=l.slice(0,2);return LANGS.includes(n)?n:null}
+function pick(){const q=new URLSearchParams(location.search).get('lang');if(LANGS.includes(q))return q;try{const s=localStorage.getItem('lang');if(LANGS.includes(s))return s}catch(e){}for(const l of(navigator.languages&&navigator.languages.length?navigator.languages:[navigator.language||'en'])){const n=norm(l);if(n)return n}return 'en'}
+function show(lang){document.documentElement.lang=lang;document.documentElement.dir=lang==='ar'?'rtl':'ltr';document.querySelectorAll('article').forEach(a=>a.classList.toggle('on',a.dataset.l===lang));const a=document.querySelector('article.on');document.title=a.querySelector('h1').firstChild.textContent+': '+a.querySelector('h1 small').textContent;document.getElementById('lang').value=lang;document.getElementById('back').textContent=a.querySelector('h1').firstChild.textContent;document.getElementById('back').href='index.html?lang='+lang}
+document.getElementById('lang').addEventListener('change',e=>{try{localStorage.setItem('lang',e.target.value)}catch(err){}show(e.target.value)});show(pick());
+</script>
+</body>
+</html>

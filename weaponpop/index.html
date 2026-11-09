@@ -111,11 +111,13 @@
   <a id="f-home" href="../">MyStudio</a>
   <a id="f-terms" href="terms.html"></a>
   <a id="f-privacy" href="privacy.html"></a>
+  <a id="f-rates" href="rates.html"></a>
   <a id="f-support" href="mailto:support@mystudioapps.com"></a>
 </footer>
 <script>
 const LANGS = ['ko', 'en', 'ja', 'zh-Hant', 'es', 'fr', 'de', 'pt', 'ar'];
 const SHOTS = ['lobby', 'weapons', 'gacha', 'battle'];
+const RATES = {"ko": "등급별 확률", "en": "Rates by rarity", "ja": "等級別確率", "zh-Hant": "各稀有度機率", "es": "Probabilidades por rareza", "fr": "Taux par rareté", "de": "Raten nach Seltenheit", "pt": "Chances por raridade", "ar": "الاحتمالات حسب الندرة"}; // 확률표 쪽(rates.html) 링크 글자: 게임 번역 그대로
 const T = {
   ko: {
     name: '최강의 오리',
@@ -292,6 +294,7 @@ function show(lang) {
   terms.textContent = t.terms; terms.href = `terms.html?lang=${lang}`;
   privacy.textContent = t.privacy; privacy.href = `privacy.html?lang=${lang}`;
   document.getElementById('f-support').textContent = t.support;
+  const rates = document.getElementById('f-rates'); rates.textContent = RATES[lang]; rates.href = `rates.html?lang=${lang}`;
   document.getElementById('lang').value = lang;
 }
 document.getElementById('lang').addEventListener('change', e => {

@@ -8,9 +8,10 @@
 <title>Ultimate Duck</title>
 <link rel="icon" type="image/png" href="icon.png">
 <script>
-/* 그리는 해상도 상한(11/13 가볍게): 화면 점 비율을 1.5 까지만 알려 준다. 플루터는 이 값으로 캔버스 크기를 정한다. */
+/* 그리는 해상도 상한(11/13 가볍게): 화면 점 비율을 1.5 까지만 알려 준다. 플루터는 이 값으로 캔버스 크기를 정한다.
+   넓은 창(태블릿 · 컴퓨터)은 그리는 점이 150만 개를 넘지 않게 더 낮춘다(1 아래로는 안 내린다): 휴대폰은 그대로 1.5. */
 (function () {
-  var MAX = 1.5;
+  var MAX = 1.5, PX = 1.5e6;
   try {
     var d = Object.getOwnPropertyDescriptor(window, 'devicePixelRatio') ||
             Object.getOwnPropertyDescriptor(Window.prototype, 'devicePixelRatio');
@@ -18,7 +19,37 @@
     var real = function () { try { return get ? get.call(window) : 1; } catch (e) { return 1; } };
     Object.defineProperty(window, 'devicePixelRatio', {
       configurable: true,
-      get: function () { return Math.min(MAX, real() || 1); }
+      get: function () {
+        var m = MAX, w = window.innerWidth || 0, h = window.innerHeight || 0;
+        if (w > 0 && h > 0) m = Math.min(MAX, Math.max(1, Math.sqrt(PX / (w * h))));
+        return Math.min(m, real() || 1);
+      }
+    });
+  } catch (e) {}
+})();
+
+/* 화면 새로 고침 수 재기(발열): 플루터 웹은 화면이 늘 1초 60장이라고 알려 줘서, 120장 화면(안드로이드 WebView)에서는
+   매 장을 다 굽는다. 불러오는 동안 장 사이 간격을 재 두고 게임이 window.__duckHz 로 읽어 60장으로 쉬어 간다.
+   불러오느라 밀린 장은 간격이 두세 배로 나오므로 짧은 쪽(아래 10%)에 모인 값만 쓴다. 못 쟀으면 0(화면 값 그대로).
+   게임은 켜질 때 한 번, 놀이 1초 뒤에 한 번 더 읽는다(가까운 120장만 본다). 900장 뒤에는 재기를 그친다. */
+(function () {
+  var ds = [], last = 0, n = 0;
+  function f(t) {
+    if (last) { var d = t - last; if (d > 5 && d < 70) { ds.push(d); if (ds.length > 120) ds.shift(); } }
+    last = t;
+    if (++n < 900) requestAnimationFrame(f);
+  }
+  try {
+    requestAnimationFrame(f);
+    Object.defineProperty(window, '__duckHz', {
+      configurable: true,
+      get: function () {
+        if (ds.length < 8) return 0;
+        var s = ds.slice().sort(function (a, b) { return a - b; });
+        var m = s[Math.floor(s.length * .1)], sum = 0, k = 0;
+        for (var i = 0; i < s.length; i++) if (Math.abs(s[i] - m) <= m * .15) { sum += s[i]; k++; }
+        return k ? 1000 / (sum / k) : 0;
+      }
     });
   } catch (e) {}
 })();
@@ -40,7 +71,10 @@
   pre(ck + 'canvaskit.wasm', 'fetch', true);
   ['assets/assets/fonts/IBMPlexSansKR-400.ttf', 'assets/assets/fonts/IBMPlexSansKR-600.ttf',
    'assets/assets/fonts/IBMPlexSansKR-700.ttf', 'assets/assets/fonts/BlackHanSans-400.ttf',
-   'assets/fonts/fallback/Roboto-Regular.ttf', 'assets/assets/art/meta.json'].forEach(function (f) { pre(f, 'fetch', true); });
+   'assets/fonts/fallback/Roboto-Regular.ttf', 'assets/assets/art/meta.json',
+   // 엔진이 켜진 뒤에야 차례로 받던 것(글꼴 표 → 아이콘 글꼴): 왕복 두 번을 미리 끝낸다
+   'assets/FontManifest.json', 'assets/fonts/MaterialIcons-Regular.otf'].forEach(function (f) { pre(f, 'fetch', true); });
+  window.__duckPre = pre;
 })();
 </script>
 <style>
@@ -80,6 +114,8 @@
     return 'ko';
   }
   var lang = pick();
+  // 번역 표(한국어는 없다)도 미리 받는다
+  if (lang !== 'ko' && window.__duckPre) window.__duckPre('assets/assets/l10n/' + lang + '.json', 'fetch', true);
   document.documentElement.lang = lang;
   document.title = APP[LANGS.indexOf(lang)];
 
@@ -105,7 +141,7 @@
   }
   // 불러오기 막대: 받은 양(같은 출처 자원의 풀린 크기) ÷ 이 기기가 받을 양(빌드가 적는다) + 시간에 따라 조금씩.
   // 'ready' 때 끝까지 채우고 걷는다.
-  var SIZES = /*PL_SIZES*/{"jsChromium": 10771463, "jsFull": 12628020}/*PL_SIZES*/;
+  var SIZES = /*PL_SIZES*/{"jsChromium": 10819166, "jsFull": 12675723}/*PL_SIZES*/;
   var blink = navigator.vendor === 'Google Inc.' || (navigator.userAgent || '').indexOf('Edg/') >= 0;
   var expect = blink && Intl.v8BreakIterator && typeof ImageDecoder !== 'undefined' ? SIZES.jsChromium : SIZES.jsFull;
   var got = 0, t0 = Date.now(), shown = 0, bar = null;

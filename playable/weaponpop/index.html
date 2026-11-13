@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="color-scheme" content="dark">
+<title>Ultimate Duck</title>
+<link rel="icon" type="image/png" href="icon.png">
+<style>
+  html, body { margin: 0; height: 100%; background: #11121D; overflow: hidden; }
+  #ld { position: fixed; inset: 0; z-index: 99; display: flex; align-items: center; justify-content: center;
+        background: radial-gradient(circle at 50% 45%, #1B1D33, #0A0B12 70%); transition: opacity .35s ease; }
+  #ld img { width: 112px; height: 112px; border-radius: 26px; box-shadow: 0 6px 24px rgba(0,0,0,.6);
+            animation: ldp 1.1s ease-in-out infinite; }
+  #ld.off { opacity: 0; pointer-events: none; }
+  @keyframes ldp { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.06); } }
+</style>
+</head>
+<body>
+<div id="ld"><img alt="" src="icon.png"></div>
+<script>
+/* 최강의 오리 체험판 ↔ 앱(자체 전면 WebView, JS 채널 XPromo): 'ready' · 'install' 만 보낸다.
+   채널이 없는 브라우저면 설치 단추가 스토어로 간다(기기는 userAgent 로 가른다). 게임 쪽은 duckXP(말) 만 부른다. */
+(function () {
+  var IOS_URL = 'https://apps.apple.com/app/id6823883556?ct=xp_play_duck';
+  var AND_URL = 'https://play.google.com/store/apps/details?id=com.ymc.weaponpop&referrer=utm_campaign%3Dxp_play_duck';
+  var LANGS = ['ko', 'en', 'ja', 'zh', 'es', 'fr', 'de', 'pt', 'ar'];
+  var APP = ['최강의 오리', 'Ultimate Duck', '最強アヒル伝説', '最強鴨鴨', 'Pato Supremo', 'Super Canard', 'Superente', 'Patão Supremo', 'البطة الخارقة'];
+  function pick() {
+    var q = null;
+    try { q = new URLSearchParams(location.search).get('lang'); } catch (e) {}
+    var l = [q].concat(navigator.languages || [navigator.language || '']);
+    for (var i = 0; i < l.length; i++) {
+      if (!l[i]) continue;
+      var c = String(l[i]).toLowerCase().split(/[-_]/)[0];
+      if (LANGS.indexOf(c) >= 0) return c;
+      if (i === 0 && q) continue;
+      return 'en';
+    }
+    return 'ko';
+  }
+  var lang = pick();
+  document.documentElement.lang = lang;
+  document.title = APP[LANGS.indexOf(lang)];
+
+  function hasXP() { return !!(window.XPromo && typeof window.XPromo.postMessage === 'function'); }
+  function post(m) { if (!hasXP()) return; try { window.XPromo.postMessage(m); } catch (e) {} }
+  var lastInstall = 0;
+  function install() {
+    var now = Date.now();
+    if (now - lastInstall < 1200) return;
+    lastInstall = now;
+    if (hasXP()) { post('install'); return; }
+    var ua = navigator.userAgent || '';
+    var android = /Android/i.test(ua);
+    var url = android ? AND_URL : IOS_URL;
+    var framed = false;
+    try { framed = window.top !== window.self; } catch (e) { framed = true; }
+    if (framed) {
+      var w = null;
+      try { w = window.open(url, '_blank'); } catch (e) {}
+      if (w) { try { w.opener = null; } catch (e) {} return; }
+    }
+    location.href = url;
+  }
+  var ready = false;
+  addEventListener('flutter-first-frame', function () { window.__duckFirstFrame = performance.now(); });
+  window.duckXP = function (m) {
+    if (m === 'ready') {
+      if (ready) return;
+      ready = true;
+      window.__duckReadyAt = performance.now();
+      var ld = document.getElementById('ld');
+      if (ld) { ld.className = 'off'; setTimeout(function () { ld.remove(); }, 400); }
+      post('ready');
+    } else if (m === 'install') {
+      install();
+    } else if (m.indexOf('mark:') === 0) {
+      (window.__duckMarks = window.__duckMarks || {})[m.slice(5)] = Math.round(performance.now());
+    }
+  };
+})();
+</script>
+<script src="flutter_bootstrap.js" async></script>
+</body>
+</html>

@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>몽글 하늘섬: 확률 정보</title>
+<meta name="description" content="몽글 하늘섬 확률형 아이템(주민 초대) 확률 공개: 등급별 · 주민별 확률, 천장, 10회 보정, 확률표 버전 2">
+<link rel="icon" href="../assets/favicon.png">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<!-- 확률 공개 페이지(kr-04 · apple-01 · play-01 · gap-04-01). 이 파일은 tool/gen_probability_page.py 가 assets/economy/economy.json 에서 만든다: 손으로 고치지 말 것.
+     확률표 버전 2 · 지문 a67ba2186a2f9cf60ec05b3dc9a60eea4276054b57e9d3084a0911e5e326d353. 텍스트 표(이미지 금지). 앱 이름은 app_name.js 한 곳. 줄표 대신 쌍점. -->
+<style>
+  :root { color-scheme: dark; --bg: #0E110D; --surface: #191D18; --ink: #F1F3EE; --ink-soft: #9BA49A; --line: #2C332B; --green: #43D873; --wash: rgba(67, 216, 115, .12); --ph: #FFD27A; --ph-wash: rgba(255, 196, 0, .14); }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font-family: "Pretendard", -apple-system, "Apple SD Gothic Neo", "Hiragino Sans", "PingFang TC", "Noto Sans JP", "Noto Sans TC", sans-serif; }
+  a { color: var(--green); }
+  header { position: sticky; top: 0; background: rgba(14, 17, 13, .92); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); z-index: 1; }
+  .bar { max-width: 760px; margin: 0 auto; padding: 14px 20px; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+  .brand { font-weight: 800; font-size: 17px; color: var(--ink); text-decoration: none; white-space: nowrap; }
+  .brand span { color: var(--green); }
+  .brand small { color: var(--ink-soft); font-weight: 600; font-size: 14px; margin-left: 6px; }
+  .langs { display: flex; gap: 2px; background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 3px; }
+  .langs button { border: 0; background: transparent; color: var(--ink-soft); font: inherit; font-size: 13px; font-weight: 600; padding: 6px 11px; border-radius: 999px; cursor: pointer; white-space: nowrap; }
+  .langs button[aria-pressed="true"] { background: var(--wash); color: var(--green); }
+  main { max-width: 760px; margin: 0 auto; padding: 32px 20px 80px; line-height: 1.75; }
+  article { display: none; }
+  article.on { display: block; }
+  h1 { font-size: 28px; margin: 0 0 4px; letter-spacing: -.01em; }
+  h2 { font-size: 19px; margin: 32px 0 8px; }
+  [data-anchor] { scroll-margin-top: 72px; }
+  h3 { font-size: 16px; margin: 20px 0 4px; }
+  p.meta { color: var(--ink-soft); margin: 0 0 24px; font-size: 14px; }
+  p.note { color: var(--ink-soft); font-size: 14px; margin: 4px 0 12px; }
+  ul { padding-left: 20px; }
+  .scroll { overflow-x: auto; margin: 12px 0; }
+  table { border-collapse: collapse; width: 100%; min-width: 520px; font-size: 14px; line-height: 1.5; }
+  th, td { border: 1px solid var(--line); padding: 8px 10px; text-align: left; vertical-align: top; }
+  th { background: var(--surface); color: var(--ink-soft); font-weight: 700; }
+  td.num { white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .warn { border: 1px solid var(--green); background: var(--wash); border-radius: 12px; padding: 12px 14px; font-weight: 700; margin: 16px 0; }
+  nav.docs { margin-top: 48px; padding-top: 16px; border-top: 1px solid var(--line); display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: 14px; }
+  nav.docs a { color: var(--ink-soft); }
+  @media (max-width: 480px) { .langs button { padding: 6px 7px; font-size: 12px; } h1 { font-size: 24px; } .brand small { display: none; } .bar { padding: 12px 16px; } main { padding: 24px 16px 64px; } }
+</style>
+<noscript><style>article { display: block; margin-bottom: 48px; }</style></noscript>
+<script src="app_name.js"></script>
+</head>
+<body>
+<header>
+  <div class="bar">
+    <a class="brand" href="../#myreststop">My<span>Studio</span><small class="app-name">몽글 하늘섬</small></a>
+    <div class="langs" role="group" aria-label="Language">
+      <button data-lang="en">English</button>
+      <button data-lang="ko">한국어</button>
+      <button data-lang="ja">日本語</button>
+      <button data-lang="zh-Hant">繁體中文</button>
+    </div>
+  </div>
+</header>
+<main>
+<article data-lang="en" lang="en">
+<h1>Odds Disclosure</h1>
+<p class="meta">Game: <span class="app-name">Floaty Town</span> · Operator: MyStudio · Odds table version 2 (in effect from 2026-11-03) · Contact support@mystudioapps.com</p>
+<p>Resident invites and guarantee invitations in <span class="app-name">Floaty Town</span> are random items (loot boxes). The odds on this page are the same as &quot;Odds&quot; on the in-game invite screen, and are generated from the economy table the game server actually uses for draws (odds table version 2). Results are decided by the server, and every invite is recorded. Our ads also state that the game contains random items.</p>
+<p class="note">A Traditional Chinese notice for players in Taiwan is under &quot;繁體中文&quot; above.</p>
+<h2 data-anchor="std">1. Standard Invite: Sky Island Invite</h2>
+<ul>
+<li><b>Period</b>: Always available</li>
+<li><b>Cost</b>: 1x: 1 Sky Island invitation or 300 star candy · 10x: 10 Sky Island invitations or 2,700 star candy. If you do not have enough Sky Island invitations, you pay only with star candy: the two are never mixed. 1 star candy is about ₩10 in Korea (based on the smallest star candy pack), and prices in the game are shown in your store currency.</li>
+<li>Residents in this invite: 15</li>
+</ul>
+<h3>Odds by grade and by resident (normal invites)</h3>
+<div class="scroll"><table><thead><tr><th>Grade</th><th>Grade odds</th><th>Resident</th><th>Odds per resident</th></tr></thead><tbody><tr><td rowspan="4">N</td><td class="num" rowspan="4">55%</td><td>Pudding the Jelly Sprite</td><td class="num">13.75%</td></tr><tr><td>Fluff the Cloud Sheep</td><td class="num">13.75%</td></tr><tr><td>Acorn the Mushroom Fairy</td><td class="num">13.75%</td></tr><tr><td>Tori the Bunny Sprite</td><td class="num">13.75%</td></tr><tr><td rowspan="4">R</td><td class="num" rowspan="4">30%</td><td>Soso the Mochi Sprite</td><td class="num">7.5%</td></tr><tr><td>Pang the Flame Sprite</td><td class="num">7.5%</td></tr><tr><td>Harang the Wind Sprite</td><td class="num">7.5%</td></tr><tr><td>Mungge the Cloud Elder</td><td class="num">7.5%</td></tr><tr><td rowspan="4">SR</td><td class="num" rowspan="4">12%</td><td>Frost the Ice Fairy</td><td class="num">3%</td></tr><tr><td>Laven the Butterfly Fairy</td><td class="num">3%</td></tr><tr><td>Rocky the Moss Golem</td><td class="num">3%</td></tr><tr><td>Hoho the Bun Sprite</td><td class="num">3%</td></tr><tr><td rowspan="3">SSR</td><td class="num" rowspan="3">3%</td><td>Galaxy the Silver Sky Whale</td><td class="num">1%</td></tr><tr><td>Dodo the Golden Slime Chef</td><td class="num">1%</td></tr><tr><td>Tata the Little Dragon</td><td class="num">1%</td></tr><tr><td><b>Total</b></td><td class="num"><b>100%</b></td><td></td><td></td></tr></tbody></table></div>
+<p class="note">Within a grade, every resident has the same odds. Values that do not divide evenly are rounded to four decimal places.</p>
+<h3>Odds for guaranteed invites</h3>
+<div class="scroll"><table><thead><tr><th>Invite</th><th>When</th><th>Odds by grade</th><th>Odds per resident</th></tr></thead><tbody><tr><td>Invite 80</td><td>No SSR or higher in the previous 79 invites in a row</td><td class="num">SSR 100%</td><td>each SSR resident 33.3333%</td></tr><tr><td>10th resident of a 10x invite</td><td>None of the first 9 residents is SR or higher</td><td class="num">SR 97%, SSR 3%</td><td>each SR resident 24.25%, each SSR resident 1%</td></tr></tbody></table></div>
+<h3>Rules</h3>
+<ul><li>If no SSR or higher appears in 79 invites in a row, the 80th invite is a guaranteed SSR or higher (each SSR resident equally likely).</li><li>In a 10x invite, if none of the first 9 residents is SR or higher, the 10th is a guaranteed SR or higher (odds for that slot: SR 97%, SSR 3%). If it overlaps with the guaranteed 80th invite, that guarantee applies.</li><li>The pity count is kept separately for this banner and carries over to your next invites. The free tutorial 10x invite counts toward it; guarantee invitations do not.</li></ul>
+<h2 data-anchor="pick">2. Pickup Invite: Twinkle the Shooting Star</h2>
+<ul>
+<li><b>Period</b>: 7 days for each account, starting when Twinkle appears in the story (after Rush 5)</li>
+<li><b>Cost</b>: 1x: 1 Starlight invitation or 300 star candy · 10x: 10 Starlight invitations or 2,700 star candy. If you do not have enough Starlight invitations, you pay only with star candy: the two are never mixed. 1 star candy is about ₩10 in Korea (based on the smallest star candy pack), and prices in the game are shown in your store currency.</li>
+<li>Residents in this invite: 16</li>
+</ul>
+<h3>Odds by grade and by resident (normal invites)</h3>
+<div class="scroll"><table><thead><tr><th>Grade</th><th>Grade odds</th><th>Resident</th><th>Odds per resident</th></tr></thead><tbody><tr><td rowspan="4">N</td><td class="num" rowspan="4">54.5%</td><td>Pudding the Jelly Sprite</td><td class="num">13.625%</td></tr><tr><td>Fluff the Cloud Sheep</td><td class="num">13.625%</td></tr><tr><td>Acorn the Mushroom Fairy</td><td class="num">13.625%</td></tr><tr><td>Tori the Bunny Sprite</td><td class="num">13.625%</td></tr><tr><td rowspan="4">R</td><td class="num" rowspan="4">30%</td><td>Soso the Mochi Sprite</td><td class="num">7.5%</td></tr><tr><td>Pang the Flame Sprite</td><td class="num">7.5%</td></tr><tr><td>Harang the Wind Sprite</td><td class="num">7.5%</td></tr><tr><td>Mungge the Cloud Elder</td><td class="num">7.5%</td></tr><tr><td rowspan="4">SR</td><td class="num" rowspan="4">12%</td><td>Frost the Ice Fairy</td><td class="num">3%</td></tr><tr><td>Laven the Butterfly Fairy</td><td class="num">3%</td></tr><tr><td>Rocky the Moss Golem</td><td class="num">3%</td></tr><tr><td>Hoho the Bun Sprite</td><td class="num">3%</td></tr><tr><td rowspan="3">SSR</td><td class="num" rowspan="3">3%</td><td>Galaxy the Silver Sky Whale</td><td class="num">1%</td></tr><tr><td>Dodo the Golden Slime Chef</td><td class="num">1%</td></tr><tr><td>Tata the Little Dragon</td><td class="num">1%</td></tr><tr><td rowspan="1">UR</td><td class="num" rowspan="1">0.5%</td><td>Twinkle the Shooting Star</td><td class="num">0.5%</td></tr><tr><td><b>Total</b></td><td class="num"><b>100%</b></td><td></td><td></td></tr></tbody></table></div>
+<p class="note">Within a grade, every resident has the same odds. Values that do not divide evenly are rounded to four decimal places.</p>
+<h3>Odds for guaranteed invites</h3>
+<div class="scroll"><table><thead><tr><th>Invite</th><th>When</th><th>Odds by grade</th><th>Odds per resident</th></tr></thead><tbody><tr><td>Invite 150</td><td>No UR in the previous 149 invites in a row</td><td class="num">UR 100%</td><td>Twinkle 100%</td></tr><tr><td>Invite 80</td><td>No SSR or higher in the previous 79 invites in a row</td><td class="num">SSR 85.7143%, UR 14.2857%</td><td>each SSR resident 28.5714%, Twinkle 14.2857%</td></tr><tr><td>10th resident of a 10x invite</td><td>None of the first 9 residents is SR or higher</td><td class="num">SR 96.5%, SSR 3%, UR 0.5%</td><td>each SR resident 24.125%, each SSR resident 1%, Twinkle 0.5%</td></tr></tbody></table></div>
+<h3>Rules</h3>
+<ul><li>If no UR appears in 149 invites in a row, the 150th invite is a guaranteed UR (Twinkle). This count restarts from 0 whenever a UR appears.</li><li>If no SSR or higher appears in 79 invites in a row, the 80th invite is a guaranteed SSR or higher (odds for that invite: SSR 85.71%, UR 14.29%). If it overlaps with the guaranteed 150th invite, the 150th invite guarantee applies.</li><li>In a 10x invite, if none of the first 9 residents is SR or higher, the 10th is a guaranteed SR or higher (odds for that slot: SR 96.5%, SSR 3%, UR 0.5%). If it overlaps with the guaranteed 80th or 150th invite, that guarantee applies.</li><li>The pity counts (80 and 150) are kept separately for this banner and carry over to your next invites during the pickup period.</li><li>The Pickup Invite opens for each account for 7 days after Twinkle appears in the story. When it ends, its pity counts can no longer be used and do not move to the Standard Invite, and any remaining Starlight invitations turn into the same number of Sky Island invitations.</li></ul>
+<h2 data-anchor="tickets">3. Guarantee invitations</h2>
+<p>Guarantee invitations give a resident from the Standard Invite and do not count toward pity.</p>
+<div class="scroll"><table><thead><tr><th>Invitation</th><th>Odds by grade</th><th>Odds per resident</th></tr></thead><tbody><tr><td>Silver invitation</td><td class="num">SR 85%, SSR 15%</td><td>each SR resident 21.25%, each SSR resident 5%</td></tr><tr><td>Gold invitation</td><td class="num">SSR 100%</td><td>each SSR resident 33.3333%</td></tr></tbody></table></div>
+<h2 data-anchor="stars">4. When you get the same resident again</h2>
+<p>Getting the same resident again raises their ★ by one (up to ★5). After ★5, a duplicate turns into the star candy below (counted as reward star candy).</p>
+<div class="scroll"><table><thead><tr><th>Grade</th><th>Star candy received</th></tr></thead><tbody><tr><td>N</td><td class="num">10 star candy</td></tr><tr><td>R</td><td class="num">30 star candy</td></tr><tr><td>SR</td><td class="num">100 star candy</td></tr><tr><td>SSR</td><td class="num">400 star candy</td></tr><tr><td>UR</td><td class="num">1,000 star candy</td></tr></tbody></table></div>
+<h2 data-anchor="long-run">5. Long-run averages including pity (for reference)</h2>
+<p>Long-run averages when inviting one at a time, including pity (the 10x guarantee is not included). These are reference values, separate from the odds shown above.</p>
+<ul>
+<li>Standard Invite: SSR or higher about 3.29% (once every 30.4 invites on average)</li>
+<li>Pickup Invite: SSR or higher about 4.07% (once every 24.6 invites on average)</li>
+<li>Pickup Invite: UR (Twinkle) about 0.95% (once every 104.7 invites on average)</li>
+</ul>
+<h2 data-anchor="notes">6. General notes</h2>
+<ul><li>The free tutorial 10x invite follows the same odds, pity and 10x guarantee as the Standard Invite.</li><li>The Silver invitation gives SR 85%, SSR 15%, and the Gold invitation gives SSR 100% (every resident within a grade is equally likely). They do not count toward pity.</li><li>A resident goes up to ★5. Getting them again after that turns into star candy (N 10, R 30, SR 100, SSR 400, UR 1,000).</li><li>Your current pity count is shown on the in-game invite screen.</li></ul>
+<h2 data-anchor="history">7. Odds table version and change history</h2>
+<p>The odds table now in effect is version 2 (draw method version 1). Before we change any odds or pity rule, we announce it in advance in the game and on this page, and record it below. If the odds version your app showed differs from the server, the server does not run the invite and shows you the new odds first.</p>
+<div class="scroll"><table><thead><tr><th>Version</th><th>In effect from</th><th>What changed</th><th>Fingerprint (first 12)</th></tr></thead><tbody><tr><td class="num">2</td><td class="num">2026-11-03</td><td>Renamed residents, invitations and star candy (odds and pity unchanged)</td><td class="num"><code>a67ba2186a2f</code></td></tr><tr><td class="num">1</td><td class="num">2026-10-11</td><td>First odds table</td><td class="num"><code>24cd03716c77</code></td></tr></tbody></table></div>
+<nav class="docs"><a href="terms.html?lang=en">Terms of Use</a><a href="privacy.html?lang=en">Privacy Policy</a><a href="probability.html?lang=en">Odds</a><a href="mailto:support@mystudioapps.com">Contact</a></nav>
+</article>
+<article data-lang="ko" lang="ko">
+<h1>확률 정보</h1>
+<p class="meta">게임: <span class="app-name">몽글 하늘섬</span> · 운영자: MyStudio · 확률표 버전 2(2026-11-03부터 적용) · 문의 support@mystudioapps.com</p>
+<p>「<span class="app-name">몽글 하늘섬</span>」의 주민 초대과 확정 초대장은 확률형 아이템입니다. 이 페이지의 확률은 게임 안 초대 화면의 「확률 정보」와 같은 값이며, 게임 서버가 실제 추첨에 쓰는 경제 표(확률표 버전 2)에서 만들었습니다. 초대 결과는 서버가 정하고 모든 초대 기록을 보관합니다. 광고에는 확률형 아이템이 들어 있다는 사실을 함께 표시합니다.</p>
+<p class="note">대만 이용자를 위한 중국어(번체) 공지는 위의 「繁體中文」에 있습니다.</p>
+<h2 data-anchor="std">1. 상시 초대: 하늘섬 초대장</h2>
+<ul>
+<li><b>기간</b>: 상시</li>
+<li><b>비용</b>: 1회 하늘섬 초대장 1장 또는 별사탕 300 · 10회 하늘섬 초대장 10장 또는 별사탕 2,700. 하늘섬 초대장이 모자라면 별사탕으로만 치르며 둘을 섞지 않습니다. 별사탕 1개는 한국에서 약 ₩10(가장 작은 별사탕 상품 기준)이며, 게임 안 가격은 스토어 통화로 표시합니다.</li>
+<li>나오는 주민: 15명</li>
+</ul>
+<h3>등급별 · 주민별 확률(보통 칸)</h3>
+<div class="scroll"><table><thead><tr><th>등급</th><th>등급 확률</th><th>주민</th><th>주민별 확률</th></tr></thead><tbody><tr><td rowspan="4">N</td><td class="num" rowspan="4">55%</td><td>젤리 정령 푸딩</td><td class="num">13.75%</td></tr><tr><td>구름 양 뭉치</td><td class="num">13.75%</td></tr><tr><td>버섯 요정 도토리</td><td class="num">13.75%</td></tr><tr><td>토끼 정령 토리</td><td class="num">13.75%</td></tr><tr><td rowspan="4">R</td><td class="num" rowspan="4">30%</td><td>찹쌀떡 정령 소소</td><td class="num">7.5%</td></tr><tr><td>불꽃 요리사 팡</td><td class="num">7.5%</td></tr><tr><td>바람 정령 하랑</td><td class="num">7.5%</td></tr><tr><td>구름 할아범 뭉게</td><td class="num">7.5%</td></tr><tr><td rowspan="4">SR</td><td class="num" rowspan="4">12%</td><td>얼음 요정 서리</td><td class="num">3%</td></tr><tr><td>나비 요정 라벤</td><td class="num">3%</td></tr><tr><td>이끼 골렘 바위</td><td class="num">3%</td></tr><tr><td>찐빵 정령 호호</td><td class="num">3%</td></tr><tr><td rowspan="3">SSR</td><td class="num" rowspan="3">3%</td><td>하늘고래 은하</td><td class="num">1%</td></tr><tr><td>황금 슬라임 셰프 도도</td><td class="num">1%</td></tr><tr><td>꼬마 용 타타</td><td class="num">1%</td></tr><tr><td><b>합계</b></td><td class="num"><b>100%</b></td><td></td><td></td></tr></tbody></table></div>
+<p class="note">같은 등급 안에서는 주민마다 같은 확률입니다. 나누어 떨어지지 않는 값은 소수 다섯째 자리에서 반올림했습니다.</p>
+<h3>확정 칸의 확률</h3>
+<div class="scroll"><table><thead><tr><th>칸</th><th>조건</th><th>등급별 확률</th><th>주민별 확률</th></tr></thead><tbody><tr><td>80번째 초대</td><td>79회 연속으로 SSR 이상이 나오지 않았을 때</td><td class="num">SSR 100%</td><td>SSR 주민 각 33.3333%</td></tr><tr><td>10회 초대의 10번째</td><td>앞 9명 중 SR 이상이 없을 때</td><td class="num">SR 97% · SSR 3%</td><td>SR 주민 각 24.25% · SSR 주민 각 1%</td></tr></tbody></table></div>
+<h3>규칙</h3>
+<ul><li>79회 연속으로 SSR 이상이 나오지 않으면 80번째 초대는 SSR 확정입니다(SSR 주민 중 같은 확률).</li><li>10회 초대에서 앞 9명 중 SR 이상이 없으면 10번째는 SR 이상 확정입니다(그 칸의 확률 SR 97%, SSR 3%). 80번째 확정과 겹치면 80번째 확정을 따릅니다.</li><li>천장 카운트는 상시 초대에서만 따로 세며 다음 초대로 이어집니다. 튜토리얼 무료 10회는 카운트에 들어가고, 확정 초대장(은빛 · 금빛)은 들어가지 않습니다.</li></ul>
+<h2 data-anchor="pick">2. 픽업 초대: 별똥별 정령 반짝</h2>
+<ul>
+<li><b>기간</b>: 계정마다 이야기에서 반짝가 나온 뒤 7일(러시 5회차 이후)</li>
+<li><b>비용</b>: 1회 별빛 초대장 1장 또는 별사탕 300 · 10회 별빛 초대장 10장 또는 별사탕 2,700. 별빛 초대장이 모자라면 별사탕으로만 치르며 둘을 섞지 않습니다. 별사탕 1개는 한국에서 약 ₩10(가장 작은 별사탕 상품 기준)이며, 게임 안 가격은 스토어 통화로 표시합니다.</li>
+<li>나오는 주민: 16명</li>
+</ul>
+<h3>등급별 · 주민별 확률(보통 칸)</h3>
+<div class="scroll"><table><thead><tr><th>등급</th><th>등급 확률</th><th>주민</th><th>주민별 확률</th></tr></thead><tbody><tr><td rowspan="4">N</td><td class="num" rowspan="4">54.5%</td><td>젤리 정령 푸딩</td><td class="num">13.625%</td></tr><tr><td>구름 양 뭉치</td><td class="num">13.625%</td></tr><tr><td>버섯 요정 도토리</td><td class="num">13.625%</td></tr><tr><td>토끼 정령 토리</td><td class="num">13.625%</td></tr><tr><td rowspan="4">R</td><td class="num" rowspan="4">30%</td><td>찹쌀떡 정령 소소</td><td class="num">7.5%</td></tr><tr><td>불꽃 요리사 팡</td><td class="num">7.5%</td></tr><tr><td>바람 정령 하랑</td><td class="num">7.5%</td></tr><tr><td>구름 할아범 뭉게</td><td class="num">7.5%</td></tr><tr><td rowspan="4">SR</td><td class="num" rowspan="4">12%</td><td>얼음 요정 서리</td><td class="num">3%</td></tr><tr><td>나비 요정 라벤</td><td class="num">3%</td></tr><tr><td>이끼 골렘 바위</td><td class="num">3%</td></tr><tr><td>찐빵 정령 호호</td><td class="num">3%</td></tr><tr><td rowspan="3">SSR</td><td class="num" rowspan="3">3%</td><td>하늘고래 은하</td><td class="num">1%</td></tr><tr><td>황금 슬라임 셰프 도도</td><td class="num">1%</td></tr><tr><td>꼬마 용 타타</td><td class="num">1%</td></tr><tr><td rowspan="1">UR</td><td class="num" rowspan="1">0.5%</td><td>별똥별 정령 반짝</td><td class="num">0.5%</td></tr><tr><td><b>합계</b></td><td class="num"><b>100%</b></td><td></td><td></td></tr></tbody></table></div>
+<p class="note">같은 등급 안에서는 주민마다 같은 확률입니다. 나누어 떨어지지 않는 값은 소수 다섯째 자리에서 반올림했습니다.</p>
+<h3>확정 칸의 확률</h3>
+<div class="scroll"><table><thead><tr><th>칸</th><th>조건</th><th>등급별 확률</th><th>주민별 확률</th></tr></thead><tbody><tr><td>150번째 초대</td><td>149회 연속으로 UR 등급이 나오지 않았을 때</td><td class="num">UR 100%</td><td>반짝 100%</td></tr><tr><td>80번째 초대</td><td>79회 연속으로 SSR 이상이 나오지 않았을 때</td><td class="num">SSR 85.7143% · UR 14.2857%</td><td>SSR 주민 각 28.5714% · 반짝 14.2857%</td></tr><tr><td>10회 초대의 10번째</td><td>앞 9명 중 SR 이상이 없을 때</td><td class="num">SR 96.5% · SSR 3% · UR 0.5%</td><td>SR 주민 각 24.125% · SSR 주민 각 1% · 반짝 0.5%</td></tr></tbody></table></div>
+<h3>규칙</h3>
+<ul><li>149회 연속으로 UR 이 나오지 않으면 150번째 초대는 UR(반짝) 확정입니다. UR 이 나오면 이 카운트는 0부터 다시 셉니다.</li><li>79회 연속으로 SSR 이상이 나오지 않으면 80번째 초대는 SSR 이상 확정입니다(그 칸의 확률 SSR 85.71%, UR 14.29%). 150번째 확정과 겹치면 150번째 확정을 따릅니다.</li><li>10회 초대에서 앞 9명 중 SR 이상이 없으면 10번째는 SR 이상 확정입니다(그 칸의 확률 SR 96.5%, SSR 3%, UR 0.5%). 80번째 · 150번째 확정과 겹치면 그 확정을 따릅니다.</li><li>천장 카운트(80회 · 150회)는 픽업 초대에서만 따로 세며 기간 안에서는 다음 초대로 이어집니다.</li><li>픽업 초대는 계정마다 이야기에서 반짝이 나온 뒤 7일 동안 열립니다. 기간이 끝나면 픽업 초대의 천장 카운트는 더 쓸 수 없고 상시 초대로 넘어가지 않으며, 남은 별빛 초대장은 같은 수의 하늘섬 초대장으로 바뀝니다.</li></ul>
+<h2 data-anchor="tickets">3. 확정 초대장</h2>
+<p>확정 초대장은 상시 초대의 주민 가운데서 나오며 천장 카운트에 들어가지 않습니다.</p>
+<div class="scroll"><table><thead><tr><th>확정 초대장</th><th>등급별 확률</th><th>주민별 확률</th></tr></thead><tbody><tr><td>은빛 초대장</td><td class="num">SR 85% · SSR 15%</td><td>SR 주민 각 21.25% · SSR 주민 각 5%</td></tr><tr><td>금빛 초대장</td><td class="num">SSR 100%</td><td>SSR 주민 각 33.3333%</td></tr></tbody></table></div>
+<h2 data-anchor="stars">4. 같은 주민이 또 나올 때</h2>
+<p>같은 주민이 또 나오면 ★이 하나 오르고(최대 ★5), ★5 뒤에 또 나오면 아래 수의 별사탕(보상으로 받은 별사탕)으로 바뀝니다.</p>
+<div class="scroll"><table><thead><tr><th>등급</th><th>바뀌는 별사탕</th></tr></thead><tbody><tr><td>N</td><td class="num">별사탕 10</td></tr><tr><td>R</td><td class="num">별사탕 30</td></tr><tr><td>SR</td><td class="num">별사탕 100</td></tr><tr><td>SSR</td><td class="num">별사탕 400</td></tr><tr><td>UR</td><td class="num">별사탕 1,000</td></tr></tbody></table></div>
+<h2 data-anchor="long-run">5. 천장을 넣은 장기 평균(참고값)</h2>
+<p>1회씩 계속 초대할 때 천장까지 넣은 장기 평균입니다(10회 보정은 넣지 않음). 위의 표시 확률과 별개인 참고값입니다.</p>
+<ul>
+<li>상시 초대: SSR 이상 약 3.29%(평균 30.4회에 1명)</li>
+<li>픽업 초대: SSR 이상 약 4.07%(평균 24.6회에 1명)</li>
+<li>픽업 초대: UR(반짝) 약 0.95%(평균 104.7회에 1명)</li>
+</ul>
+<h2 data-anchor="notes">6. 공통 안내</h2>
+<ul><li>튜토리얼 무료 10회는 상시 초대와 같은 확률 · 천장 · 10회 보정을 따릅니다.</li><li>은빛 초대장(SR+ 확정)은 SR 85%, SSR 15%, 금빛 초대장(SSR 확정)은 SSR 100%(같은 등급 안에서는 주민마다 같은 확률)이며 천장 카운트에 들어가지 않습니다.</li><li>같은 주민은 ★5까지 오르고, 그 뒤에 또 나오면 별사탕으로 바뀝니다(N 10, R 30, SR 100, SSR 400, UR 1000).</li><li>지금까지의 천장 카운트는 게임 안 초대 화면에서 볼 수 있습니다.</li></ul>
+<h2 data-anchor="history">7. 확률표 버전과 바뀐 이력</h2>
+<p>지금 적용 중인 확률표는 버전 2입니다(추첨 방식 버전 1). 확률이나 천장을 바꿀 때는 적용 전에 게임 안 공지와 이 페이지로 미리 알리고 아래에 이력을 남깁니다. 앱이 보여 준 확률표 버전이 서버와 다르면 서버는 초대을 진행하지 않고 새 확률을 먼저 보여 줍니다.</p>
+<div class="scroll"><table><thead><tr><th>버전</th><th>적용일</th><th>바뀐 내용</th><th>지문(앞 12자리)</th></tr></thead><tbody><tr><td class="num">2</td><td class="num">2026-11-03</td><td>이름 · 문구 변경(주민 · 초대장 · 별사탕, 확률 · 천장 그대로)</td><td class="num"><code>a67ba2186a2f</code></td></tr><tr><td class="num">1</td><td class="num">2026-10-11</td><td>첫 확률표</td><td class="num"><code>24cd03716c77</code></td></tr></tbody></table></div>
+<nav class="docs"><a href="terms.html?lang=ko">이용약관</a><a href="privacy.html?lang=ko">개인정보처리방침</a><a href="probability.html?lang=ko">확률 정보</a><a href="mailto:support@mystudioapps.com">문의</a></nav>
+</article>
+<article data-lang="ja" lang="ja">
+<h1>提供割合（確率）</h1>
+<p class="meta">ゲーム：<span class="app-name">ふわふわ空島</span> · 運営者：MyStudio · 確率表バージョン 2（2026-11-03 から適用） · お問い合わせ support@mystudioapps.com</p>
+<p>「<span class="app-name">ふわふわ空島</span>」の住民招待と確定招待状は、ランダム型アイテム（ガチャ）です。このページの提供割合は、ゲーム内の招待画面の「確率情報」と同じ値で、ゲームサーバーが実際の抽選に使う経済表（確率表バージョン 2）から作成しています。結果はサーバーが決め、すべての招待の記録を保管します。広告にも、ランダム型アイテムを含むことを表示します。</p>
+<p class="note">台湾のお客様向けの中国語（繁体字）のお知らせは、上の「繁體中文」にあります。</p>
+<h2 data-anchor="std">1. 常設招待：空島の招待状</h2>
+<ul>
+<li><b>期間</b>：常設</li>
+<li><b>費用</b>：1回：空島の招待状1枚または金平糖300 · 10回：空島の招待状10枚または金平糖2,700。空島の招待状が足りないときは金平糖だけで支払い、両方を混ぜることはありません。金平糖1個は韓国で約₩10（いちばん小さい金平糖の商品が基準）で、ゲーム内の価格はストアの通貨で表示します。</li>
+<li>登場する住民：15人</li>
+</ul>
+<h3>レアリティ別・住民別の提供割合（通常の枠）</h3>
+<div class="scroll"><table><thead><tr><th>レアリティ</th><th>レアリティの確率</th><th>住民</th><th>住民ごとの確率</th></tr></thead><tbody><tr><td rowspan="4">N</td><td class="num" rowspan="4">55%</td><td>ゼリーの精霊プリン</td><td class="num">13.75%</td></tr><tr><td>雲ひつじのモコ</td><td class="num">13.75%</td></tr><tr><td>きのこ妖精ドングリ</td><td class="num">13.75%</td></tr><tr><td>うさぎ精霊トリ</td><td class="num">13.75%</td></tr><tr><td rowspan="4">R</td><td class="num" rowspan="4">30%</td><td>おもち精霊ソソ</td><td class="num">7.5%</td></tr><tr><td>炎の料理人パチ</td><td class="num">7.5%</td></tr><tr><td>風の精霊ハラン</td><td class="num">7.5%</td></tr><tr><td>雲じいさんモクモク</td><td class="num">7.5%</td></tr><tr><td rowspan="4">SR</td><td class="num" rowspan="4">12%</td><td>氷の妖精シモ</td><td class="num">3%</td></tr><tr><td>ちょうちょ妖精ラベン</td><td class="num">3%</td></tr><tr><td>こけゴーレムのイワ</td><td class="num">3%</td></tr><tr><td>まんじゅう精霊ホホ</td><td class="num">3%</td></tr><tr><td rowspan="3">SSR</td><td class="num" rowspan="3">3%</td><td>空くじらのギンガ</td><td class="num">1%</td></tr><tr><td>黄金スライムシェフのドド</td><td class="num">1%</td></tr><tr><td>ちびドラゴンのタタ</td><td class="num">1%</td></tr><tr><td><b>合計</b></td><td class="num"><b>100%</b></td><td></td><td></td></tr></tbody></table></div>
+<p class="note">同じレアリティの中では、どの住民も同じ確率です。割り切れない値は小数第5位を四捨五入しています。</p>
+<h3>確定枠の提供割合</h3>
+<div class="scroll"><table><thead><tr><th>枠</th><th>条件</th><th>レアリティ別の確率</th><th>住民ごとの確率</th></tr></thead><tbody><tr><td>80回目の招待</td><td>79回続けてSSR以上が出なかったとき</td><td class="num">SSR 100%</td><td>SSRの住民 各33.3333%</td></tr><tr><td>10連招待の10人目</td><td>最初の9人にSR以上がいないとき</td><td class="num">SR 97%、SSR 3%</td><td>SRの住民 各24.25%、SSRの住民 各1%</td></tr></tbody></table></div>
+<h3>ルール</h3>
+<ul><li>79回続けてSSR以上が出なかった場合、80回目の招待はSSR以上確定です（SSRの住民の中で同じ確率）。</li><li>10連招待で最初の9人にSR以上がいない場合、10人目はSR以上確定です（その枠の確率：SR 97%、SSR 3%）。80回目の確定と重なった場合は、その確定が優先されます。</li><li>天井のカウントはこの招待だけで別に数え、次の招待に引き継がれます。チュートリアルの無料10連はカウントに含まれ、確定招待状は含まれません。</li></ul>
+<h2 data-anchor="pick">2. ピックアップ招待：流れ星の精霊キララ</h2>
+<ul>
+<li><b>期間</b>：アカウントごとに、ストーリーでキララが登場してから7日間（ラッシュ5回目以降）</li>
+<li><b>費用</b>：1回：星の招待状1枚または金平糖300 · 10回：星の招待状10枚または金平糖2,700。星の招待状が足りないときは金平糖だけで支払い、両方を混ぜることはありません。金平糖1個は韓国で約₩10（いちばん小さい金平糖の商品が基準）で、ゲーム内の価格はストアの通貨で表示します。</li>
+<li>登場する住民：16人</li>
+</ul>
+<h3>レアリティ別・住民別の提供割合（通常の枠）</h3>
+<div class="scroll"><table><thead><tr><th>レアリティ</th><th>レアリティの確率</th><th>住民</th><th>住民ごとの確率</th></tr></thead><tbody><tr><td rowspan="4">N</td><td class="num" rowspan="4">54.5%</td><td>ゼリーの精霊プリン</td><td class="num">13.625%</td></tr><tr><td>雲ひつじのモコ</td><td class="num">13.625%</td></tr><tr><td>きのこ妖精ドングリ</td><td class="num">13.625%</td></tr><tr><td>うさぎ精霊トリ</td><td class="num">13.625%</td></tr><tr><td rowspan="4">R</td><td class="num" rowspan="4">30%</td><td>おもち精霊ソソ</td><td class="num">7.5%</td></tr><tr><td>炎の料理人パチ</td><td class="num">7.5%</td></tr><tr><td>風の精霊ハラン</td><td class="num">7.5%</td></tr><tr><td>雲じいさんモクモク</td><td class="num">7.5%</td></tr><tr><td rowspan="4">SR</td><td class="num" rowspan="4">12%</td><td>氷の妖精シモ</td><td class="num">3%</td></tr><tr><td>ちょうちょ妖精ラベン</td><td class="num">3%</td></tr><tr><td>こけゴーレムのイワ</td><td class="num">3%</td></tr><tr><td>まんじゅう精霊ホホ</td><td class="num">3%</td></tr><tr><td rowspan="3">SSR</td><td class="num" rowspan="3">3%</td><td>空くじらのギンガ</td><td class="num">1%</td></tr><tr><td>黄金スライムシェフのドド</td><td class="num">1%</td></tr><tr><td>ちびドラゴンのタタ</td><td class="num">1%</td></tr><tr><td rowspan="1">UR</td><td class="num" rowspan="1">0.5%</td><td>流れ星の精霊キララ</td><td class="num">0.5%</td></tr><tr><td><b>合計</b></td><td class="num"><b>100%</b></td><td></td><td></td></tr></tbody></table></div>
+<p class="note">同じレアリティの中では、どの住民も同じ確率です。割り切れない値は小数第5位を四捨五入しています。</p>
+<h3>確定枠の提供割合</h3>
+<div class="scroll"><table><thead><tr><th>枠</th><th>条件</th><th>レアリティ別の確率</th><th>住民ごとの確率</th></tr></thead><tbody><tr><td>150回目の招待</td><td>149回続けてURが出なかったとき</td><td class="num">UR 100%</td><td>キララ 100%</td></tr><tr><td>80回目の招待</td><td>79回続けてSSR以上が出なかったとき</td><td class="num">SSR 85.7143%、UR 14.2857%</td><td>SSRの住民 各28.5714%、キララ 14.2857%</td></tr><tr><td>10連招待の10人目</td><td>最初の9人にSR以上がいないとき</td><td class="num">SR 96.5%、SSR 3%、UR 0.5%</td><td>SRの住民 各24.125%、SSRの住民 各1%、キララ 0.5%</td></tr></tbody></table></div>
+<h3>ルール</h3>
+<ul><li>149回続けてURが出なかった場合、150回目の招待はUR（キララ）確定です。URが出るとこのカウントは0から数え直します。</li><li>79回続けてSSR以上が出なかった場合、80回目の招待はSSR以上確定です（その枠の確率：SSR 85.71%、UR 14.29%）。150回目の確定と重なった場合は、150回目の確定が優先されます。</li><li>10連招待で最初の9人にSR以上がいない場合、10人目はSR以上確定です（その枠の確率：SR 96.5%、SSR 3%、UR 0.5%）。80回目・150回目の確定と重なった場合は、その確定が優先されます。</li><li>天井のカウント（80回・150回）はこの招待だけで別に数え、期間中は次の招待に引き継がれます。</li><li>ピックアップ招待は、アカウントごとにストーリーでキララが登場してから7日間開きます。期間が終わると、ピックアップ招待の天井カウントは使えなくなり、常設招待には引き継がれません。残った星の招待状は同じ数の空島の招待状に変わります。</li></ul>
+<h2 data-anchor="tickets">3. 確定招待状</h2>
+<p>確定招待状は常設招待の住民から出ます。天井のカウントには入りません。</p>
+<div class="scroll"><table><thead><tr><th>確定招待状</th><th>レアリティ別の確率</th><th>住民ごとの確率</th></tr></thead><tbody><tr><td>銀の招待状</td><td class="num">SR 85%、SSR 15%</td><td>SRの住民 各21.25%、SSRの住民 各5%</td></tr><tr><td>金の招待状</td><td class="num">SSR 100%</td><td>SSRの住民 各33.3333%</td></tr></tbody></table></div>
+<h2 data-anchor="stars">4. 同じ住民がもう一度出たとき</h2>
+<p>同じ住民がもう一度出ると★が1つ上がり（最大★5）、★5の後にまた出ると下の数の金平糖（報酬で得た金平糖）に変わります。</p>
+<div class="scroll"><table><thead><tr><th>レアリティ</th><th>変わる金平糖</th></tr></thead><tbody><tr><td>N</td><td class="num">星星糖10</td></tr><tr><td>R</td><td class="num">星星糖30</td></tr><tr><td>SR</td><td class="num">星星糖100</td></tr><tr><td>SSR</td><td class="num">星星糖400</td></tr><tr><td>UR</td><td class="num">星星糖1,000</td></tr></tbody></table></div>
+<h2 data-anchor="long-run">5. 天井を含めた長期平均（参考値）</h2>
+<p>1回ずつ招待し続けたときの、天井を含めた長期平均です（10連の確定は含みません）。上に表示した確率とは別の参考値です。</p>
+<ul>
+<li>常設招待：SSR以上 約3.29%（平均30.4回に1人）</li>
+<li>ピックアップ招待：SSR以上 約4.07%（平均24.6回に1人）</li>
+<li>ピックアップ招待：UR（キララ） 約0.95%（平均104.7回に1人）</li>
+</ul>
+<h2 data-anchor="notes">6. 共通のご案内</h2>
+<ul><li>チュートリアルの無料10連は、常設招待と同じ確率・天井・10連の確定に従います。</li><li>銀の招待状はSR 85%、SSR 15%、金の招待状はSSR 100%です（同じレアリティの中では住民ごとに同じ確率）。天井のカウントには入りません。</li><li>同じ住民は★5まで上がり、その後にまた出ると金平糖に変わります（N 10、R 30、SR 100、SSR 400、UR 1,000）。</li><li>現在の天井カウントは、ゲーム内の招待画面で確認できます。</li></ul>
+<h2 data-anchor="history">7. 確率表のバージョンと変更履歴</h2>
+<p>現在適用中の確率表はバージョン 2 です（抽選方式バージョン 1）。確率や天井を変更するときは、適用前にゲーム内のお知らせとこのページで事前に告知し、下に履歴を残します。アプリが表示した確率表のバージョンがサーバーと異なる場合、サーバーは招待を行わず、新しい確率を先に表示します。</p>
+<div class="scroll"><table><thead><tr><th>バージョン</th><th>適用日</th><th>変更内容</th><th>フィンガープリント（先頭12桁）</th></tr></thead><tbody><tr><td class="num">2</td><td class="num">2026-11-03</td><td>名前と文言の変更（住民・招待状・金平糖、確率と天井は変更なし）</td><td class="num"><code>a67ba2186a2f</code></td></tr><tr><td class="num">1</td><td class="num">2026-10-11</td><td>最初の確率表</td><td class="num"><code>24cd03716c77</code></td></tr></tbody></table></div>
+<nav class="docs"><a href="terms.html?lang=ja">利用規約</a><a href="privacy.html?lang=ja">プライバシーポリシー</a><a href="probability.html?lang=ja">提供割合</a><a href="mailto:support@mystudioapps.com">お問い合わせ</a></nav>
+</article>
+<article data-lang="zh-Hant" lang="zh-Hant">
+<h1>機率公告</h1>
+<p class="meta">遊戲：<span class="app-name">棉花糖天空島</span> · 營運者：MyStudio · 機率表版本 2（自 2026-11-03 起適用） · 聯絡 support@mystudioapps.com</p>
+<p class="warn">此為機會中獎商品，消費者購買或參與活動不代表即可獲得特定商品</p>
+<p>「<span class="app-name">棉花糖天空島</span>」的「邀請居民」與確定邀請函屬於機率型商品。本頁的機率與遊戲內邀請畫面的「機率資訊」相同，並由遊戲伺服器實際抽選所使用的經濟表（機率表版本 2）產生。抽選結果由伺服器決定，所有邀請紀錄均會保存。廣告中亦會標示遊戲含有機率型商品。</p>
+<h2 data-anchor="std">1. 常駐邀請：天空島邀請函</h2>
+<ul>
+<li><b>活動期間</b>：常駐</li>
+<li><b>費用</b>：單抽：天空島邀請函1張或星星糖300 · 十連：天空島邀請函10張或星星糖2,700。天空島邀請函不足時只以星星糖支付，兩者不會混用。1個星星糖在韓國約為₩10（以最小的星星糖商品為準），遊戲內價格以商店的貨幣顯示。</li>
+<li>可獲得的居民：15名</li>
+</ul>
+<h3>各稀有度與各居民的機率（一般抽）</h3>
+<div class="scroll"><table><thead><tr><th>稀有度</th><th>稀有度機率</th><th>居民（獎項）</th><th>各居民機率</th></tr></thead><tbody><tr><td rowspan="4">N</td><td class="num" rowspan="4">55%</td><td>果凍精靈 布丁</td><td class="num">13.75%</td></tr><tr><td>雲朵綿羊 團團</td><td class="num">13.75%</td></tr><tr><td>蘑菇精靈 小橡果</td><td class="num">13.75%</td></tr><tr><td>兔子精靈 多利</td><td class="num">13.75%</td></tr><tr><td rowspan="4">R</td><td class="num" rowspan="4">30%</td><td>麻糬精靈 索索</td><td class="num">7.5%</td></tr><tr><td>火焰廚師 砰砰</td><td class="num">7.5%</td></tr><tr><td>風之精靈 哈朗</td><td class="num">7.5%</td></tr><tr><td>雲朵爺爺 朵朵</td><td class="num">7.5%</td></tr><tr><td rowspan="4">SR</td><td class="num" rowspan="4">12%</td><td>冰雪精靈 霜霜</td><td class="num">3%</td></tr><tr><td>蝴蝶精靈 薰薰</td><td class="num">3%</td></tr><tr><td>苔蘚石人 岩岩</td><td class="num">3%</td></tr><tr><td>包子精靈 呼呼</td><td class="num">3%</td></tr><tr><td rowspan="3">SSR</td><td class="num" rowspan="3">3%</td><td>天空鯨魚 銀河</td><td class="num">1%</td></tr><tr><td>黃金史萊姆主廚 嘟嘟</td><td class="num">1%</td></tr><tr><td>小小龍 塔塔</td><td class="num">1%</td></tr><tr><td><b>合計</b></td><td class="num"><b>100%</b></td><td></td><td></td></tr></tbody></table></div>
+<p class="note">同一稀有度內，每位居民的機率相同。無法整除的數值已四捨五入至小數點後第4位。</p>
+<h3>保底抽的機率</h3>
+<div class="scroll"><table><thead><tr><th>抽</th><th>條件</th><th>各稀有度機率</th><th>各居民機率</th></tr></thead><tbody><tr><td>第80抽</td><td>連續79抽未獲得SSR以上時</td><td class="num">SSR 100%</td><td>SSR居民 各33.3333%</td></tr><tr><td>十連的第10位</td><td>前9位中沒有SR以上時</td><td class="num">SR 97%、SSR 3%</td><td>SR居民 各24.25%、SSR居民 各1%</td></tr></tbody></table></div>
+<h3>規則（保底與確定條件）</h3>
+<ul><li>連續79抽未獲得SSR以上時，第80抽必定獲得SSR以上（SSR居民中機率相同）。</li><li>十連邀請中，前9位沒有SR以上時，第10位必定為SR以上（該位機率：SR 97%、SSR 3%）。與第80抽保底重疊時，以該保底為準。</li><li>保底次數僅在本邀請中另外計算，並延續至下次邀請。新手教學的免費10連計入次數，確定邀請函不計入。</li></ul>
+<h2 data-anchor="pick">2. 限定邀請：流星精靈 閃閃</h2>
+<ul>
+<li><b>活動期間</b>：每個帳號於劇情中閃閃登場後7天（第5次來客潮之後）</li>
+<li><b>費用</b>：單抽：星光邀請函1張或星星糖300 · 十連：星光邀請函10張或星星糖2,700。星光邀請函不足時只以星星糖支付，兩者不會混用。1個星星糖在韓國約為₩10（以最小的星星糖商品為準），遊戲內價格以商店的貨幣顯示。</li>
+<li>可獲得的居民：16名</li>
+</ul>
+<h3>各稀有度與各居民的機率（一般抽）</h3>
+<div class="scroll"><table><thead><tr><th>稀有度</th><th>稀有度機率</th><th>居民（獎項）</th><th>各居民機率</th></tr></thead><tbody><tr><td rowspan="4">N</td><td class="num" rowspan="4">54.5%</td><td>果凍精靈 布丁</td><td class="num">13.625%</td></tr><tr><td>雲朵綿羊 團團</td><td class="num">13.625%</td></tr><tr><td>蘑菇精靈 小橡果</td><td class="num">13.625%</td></tr><tr><td>兔子精靈 多利</td><td class="num">13.625%</td></tr><tr><td rowspan="4">R</td><td class="num" rowspan="4">30%</td><td>麻糬精靈 索索</td><td class="num">7.5%</td></tr><tr><td>火焰廚師 砰砰</td><td class="num">7.5%</td></tr><tr><td>風之精靈 哈朗</td><td class="num">7.5%</td></tr><tr><td>雲朵爺爺 朵朵</td><td class="num">7.5%</td></tr><tr><td rowspan="4">SR</td><td class="num" rowspan="4">12%</td><td>冰雪精靈 霜霜</td><td class="num">3%</td></tr><tr><td>蝴蝶精靈 薰薰</td><td class="num">3%</td></tr><tr><td>苔蘚石人 岩岩</td><td class="num">3%</td></tr><tr><td>包子精靈 呼呼</td><td class="num">3%</td></tr><tr><td rowspan="3">SSR</td><td class="num" rowspan="3">3%</td><td>天空鯨魚 銀河</td><td class="num">1%</td></tr><tr><td>黃金史萊姆主廚 嘟嘟</td><td class="num">1%</td></tr><tr><td>小小龍 塔塔</td><td class="num">1%</td></tr><tr><td rowspan="1">UR</td><td class="num" rowspan="1">0.5%</td><td>流星精靈 閃閃</td><td class="num">0.5%</td></tr><tr><td><b>合計</b></td><td class="num"><b>100%</b></td><td></td><td></td></tr></tbody></table></div>
+<p class="note">同一稀有度內，每位居民的機率相同。無法整除的數值已四捨五入至小數點後第4位。</p>
+<h3>保底抽的機率</h3>
+<div class="scroll"><table><thead><tr><th>抽</th><th>條件</th><th>各稀有度機率</th><th>各居民機率</th></tr></thead><tbody><tr><td>第150抽</td><td>連續149抽未獲得UR時</td><td class="num">UR 100%</td><td>閃閃 100%</td></tr><tr><td>第80抽</td><td>連續79抽未獲得SSR以上時</td><td class="num">SSR 85.7143%、UR 14.2857%</td><td>SSR居民 各28.5714%、閃閃 14.2857%</td></tr><tr><td>十連的第10位</td><td>前9位中沒有SR以上時</td><td class="num">SR 96.5%、SSR 3%、UR 0.5%</td><td>SR居民 各24.125%、SSR居民 各1%、閃閃 0.5%</td></tr></tbody></table></div>
+<h3>規則（保底與確定條件）</h3>
+<ul><li>連續149抽未獲得UR時，第150抽必定獲得UR（閃閃）。獲得UR後此次數從0重新計算。</li><li>連續79抽未獲得SSR以上時，第80抽必定獲得SSR以上（該抽機率：SSR 85.71%、UR 14.29%）。與第150抽保底重疊時，以第150抽保底為準。</li><li>十連邀請中，前9位沒有SR以上時，第10位必定為SR以上（該位機率：SR 96.5%、SSR 3%、UR 0.5%）。與第80抽、第150抽保底重疊時，以該保底為準。</li><li>保底次數（80抽、150抽）僅在本邀請中另外計算，活動期間內會延續至下次邀請。</li><li>限定邀請於每個帳號在劇情中閃閃登場後開放7天。期間結束後，限定邀請的保底次數將無法使用，也不會轉移至常駐邀請；剩餘的星光邀請函會轉換為相同數量的天空島邀請函。</li></ul>
+<h2 data-anchor="tickets">3. 確定邀請函</h2>
+<p>確定邀請函從常駐邀請的居民中抽出，不計入保底次數。</p>
+<div class="scroll"><table><thead><tr><th>確定邀請函</th><th>各稀有度機率</th><th>各居民機率</th></tr></thead><tbody><tr><td>銀色邀請函</td><td class="num">SR 85%、SSR 15%</td><td>SR居民 各21.25%、SSR居民 各5%</td></tr><tr><td>金色邀請函</td><td class="num">SSR 100%</td><td>SSR居民 各33.3333%</td></tr></tbody></table></div>
+<h2 data-anchor="stars">4. 再次獲得相同居民時</h2>
+<p>再次獲得相同居民時★提升1顆（最多★5），★5之後再獲得則轉換為下列數量的星星糖（視為獎勵獲得的星星糖）。</p>
+<div class="scroll"><table><thead><tr><th>稀有度</th><th>轉換的星星糖</th></tr></thead><tbody><tr><td>N</td><td class="num">星星糖10</td></tr><tr><td>R</td><td class="num">星星糖30</td></tr><tr><td>SR</td><td class="num">星星糖100</td></tr><tr><td>SSR</td><td class="num">星星糖400</td></tr><tr><td>UR</td><td class="num">星星糖1,000</td></tr></tbody></table></div>
+<h2 data-anchor="long-run">5. 含保底的長期平均（參考值）</h2>
+<p>持續單抽時含保底的長期平均（不含十連保底）。此為參考值，與上方標示的機率不同。</p>
+<ul>
+<li>常駐邀請：SSR以上 約3.29%（平均每30.4抽1名）</li>
+<li>限定邀請：SSR以上 約4.07%（平均每24.6抽1名）</li>
+<li>限定邀請：UR（閃閃） 約0.95%（平均每104.7抽1名）</li>
+</ul>
+<h2 data-anchor="notes">6. 共同說明</h2>
+<ul><li>新手教學的免費10連適用與常駐邀請相同的機率、保底與十連保底。</li><li>銀色邀請函為SR 85%、SSR 15%，金色邀請函為SSR 100%（同一稀有度內每位居民機率相同），不計入保底次數。</li><li>同一居民最多升至★5，之後再獲得會轉換為星星糖（N 10、R 30、SR 100、SSR 400、UR 1,000）。</li><li>目前的保底次數可於遊戲內邀請畫面查看。</li></ul>
+<h2 data-anchor="history">7. 機率表版本與變更紀錄</h2>
+<p>目前適用的機率表為版本 2（抽選方式版本 1）。變更機率或保底時，會於適用前透過遊戲內公告與本頁事先通知，並於下方留下紀錄。若應用程式顯示的機率表版本與伺服器不同，伺服器不會進行邀請，會先顯示新的機率。</p>
+<div class="scroll"><table><thead><tr><th>版本</th><th>適用日</th><th>變更內容</th><th>指紋（前12碼）</th></tr></thead><tbody><tr><td class="num">2</td><td class="num">2026-11-03</td><td>更名（居民、邀請函、星星糖，機率與保底不變）</td><td class="num"><code>a67ba2186a2f</code></td></tr><tr><td class="num">1</td><td class="num">2026-10-11</td><td>首版機率表</td><td class="num"><code>24cd03716c77</code></td></tr></tbody></table></div>
+<p class="warn">此為機會中獎商品，消費者購買或參與活動不代表即可獲得特定商品</p>
+<nav class="docs"><a href="terms.html?lang=en">使用條款（英文）</a><a href="privacy.html?lang=en">隱私權政策（英文）</a><a href="probability.html?lang=zh-Hant">機率公告</a><a href="mailto:support@mystudioapps.com">聯絡我們</a></nav>
+</article>
+</main>
+<script>
+const LANGS = ["en", "ko", "ja", "zh-Hant"];
+const TITLES = {"ko": "확률 정보", "en": "Odds Disclosure", "ja": "提供割合（確率）", "zh-Hant": "機率公告"};
+function pick() {
+  const q = new URLSearchParams(location.search).get('lang');
+  const norm = v => { if (!v) return null; const s = String(v); if (LANGS.includes(s)) return s; const l = s.toLowerCase(); if (l.startsWith('zh')) return 'zh-Hant'; const n = l.slice(0, 2); return LANGS.includes(n) ? n : null; };
+  if (norm(q)) return norm(q);
+  try { const s = localStorage.getItem('lang'); if (norm(s)) return norm(s); } catch (e) {}
+  for (const l of (navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || 'en'])) { if (norm(l)) return norm(l); }
+  return 'en';
+}
+function show(lang) {
+  const N = window.APP_NAME || {};
+  document.documentElement.lang = lang;
+  document.querySelectorAll('.app-name').forEach(el => { const a = el.closest('article'); const l = a ? a.lang : lang; if (N[l]) el.textContent = N[l]; });
+  document.title = (N[lang] || N.ko || '') + ': ' + TITLES[lang];
+  document.querySelectorAll('article').forEach(a => a.classList.toggle('on', a.dataset.lang === lang));
+  document.querySelectorAll('.langs button').forEach(b => b.setAttribute('aria-pressed', b.dataset.lang === lang));
+}
+function jump() {
+  const h = decodeURIComponent(location.hash.slice(1));
+  if (!h) return;
+  const el = document.querySelector('article.on [data-anchor="' + h.replace(/"/g, '') + '"]');
+  if (el) el.scrollIntoView();
+}
+document.querySelectorAll('.langs button').forEach(b => b.addEventListener('click', () => {
+  try { localStorage.setItem('lang', b.dataset.lang); } catch (e) {}
+  show(b.dataset.lang);
+}));
+show(pick());
+jump();
+window.addEventListener('hashchange', jump);
+</script>
+</body>
+</html>

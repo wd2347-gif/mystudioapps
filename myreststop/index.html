@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>몽글 하늘섬: MyStudio</title>
+<meta name="description" content="구름 위 정령 마을을 짓고 지키는 게임: 몽글 하늘섬(Floaty Town)">
+<link rel="canonical" href="https://mystudioapps.com/myreststop/">
+<link rel="icon" href="../assets/myreststop/icon.png">
+<link rel="apple-touch-icon" href="../assets/myreststop/icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="MyStudio">
+<meta property="og:title" content="몽글 하늘섬 · Floaty Town">
+<meta property="og:description" content="구름 위 정령 마을을 짓고 지키는 게임">
+<meta property="og:url" content="https://mystudioapps.com/myreststop/">
+<meta property="og:image" content="https://mystudioapps.com/assets/myreststop/icon.png">
+<meta property="og:image:width" content="512">
+<meta property="og:image:height" content="512">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<!-- 몽글 하늘섬(Floaty Town) 소개(2026-11-14 My_Studio). 아직 출시 전: 스토어 표시는 '곧 출시'(링크 없음). 공개되면 myfidget 처럼 스토어 링크로.
+     틀은 mytidytown/index.html 과 같다(HTML · CSS · 언어 전환 코드). 다른 곳: 색 테마(하늘빛 · 구름 흰색 · 분홍)와 바닥글 '확률 정보' 링크.
+     이름: ko 몽글 하늘섬 · ja ふわふわ空島 · zh-Hant 棉花糖天空島 · 나머지 여섯 언어 Floaty Town. 문구 근거는 my_reststop/docs/store_listing.md.
+     색은 아이콘처럼 하늘빛(밝은 판 #3EA3E0 · 어두운 판 #6FC3F5)과 분홍 정령, 바탕은 맑은 하늘(기기가 어두운 모드면 어두운 판).
+     MySlowBody 의 크림 달빛 + 초록 조합은 쓰지 않는다(App Store 4.3 때문에 앱마다 색을 다르게).
+     문구 규칙: 주민 · 건물 개수, 가격, 광고 종류 이름을 쓰지 않고, 줄표 대신 쌍점을 쓴다.
+     스크린샷은 스토어 스크린샷이 생기면 assets/myreststop/<이름>.jpg 로 두고 SHOTS · shots 에 넣는다(비어 있으면 칸이 숨음). -->
+<style>
+  :root {
+    color-scheme: light dark;
+    --bg: #F4FAFF; --bg2: #DCEEFB; --surface: #FFFFFF; --line: #DCE7F0; --ink: #1C2A38; --ink-soft: #5A6B7C;
+    --accent: #3EA3E0; --accent-ink: #15679F; --sun: #F48FB1; --wash: rgba(62, 163, 224, .12);
+    --glow: rgba(62, 163, 224, .30);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0C1520; --bg2: #16293C; --surface: #142130; --line: #25374A; --ink: #E9F2FA; --ink-soft: #9BAEC0;
+      --accent: #6FC3F5; --accent-ink: #6FC3F5; --sun: #F9A8C4; --wash: rgba(111, 195, 245, .14);
+      --glow: rgba(111, 195, 245, .28);
+    }
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0; color: var(--ink); line-height: 1.65; min-height: 100vh;
+    background: radial-gradient(120% 55% at 50% 0%, var(--bg2) 0%, var(--bg) 70%) fixed, var(--bg);
+    font-family: "Pretendard", -apple-system, "Apple SD Gothic Neo", "Hiragino Sans", "PingFang TC", "Noto Sans JP", "Geeza Pro", sans-serif;
+  }
+  a { color: var(--accent-ink); }
+  :lang(ko) body, body:lang(ko) { word-break: keep-all; }
+  header { max-width: 860px; margin: 0 auto; padding: 18px 20px; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+  .brand { font-weight: 800; font-size: 17px; color: var(--ink); text-decoration: none; white-space: nowrap; }
+  .brand span { color: var(--accent); }
+  .lang { position: relative; }
+  .lang select { appearance: none; -webkit-appearance: none; font: inherit; font-size: 13px; font-weight: 600; color: var(--ink);
+    background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 7px 32px 7px 14px; cursor: pointer; }
+  .lang::after { content: ""; position: absolute; inset-inline-end: 13px; top: 50%; width: 7px; height: 7px; margin-top: -5px;
+    border-right: 2px solid var(--ink-soft); border-bottom: 2px solid var(--ink-soft); transform: rotate(45deg); pointer-events: none; }
+  main { max-width: 860px; margin: 0 auto; padding: 16px 20px 72px; }
+  .hero { text-align: center; padding: 36px 0 24px; }
+  .icon { width: 112px; height: 112px; border-radius: 26px; display: block; margin: 0 auto;
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, .5), 0 16px 44px var(--glow); }
+  h1 { margin: 22px 0 6px; font-size: 34px; font-weight: 800; letter-spacing: -.01em; text-wrap: balance; }
+  .sub { margin: 0; color: var(--ink-soft); font-size: 15px; font-weight: 600; }
+  .tagline { margin: 22px 0 10px; font-size: 22px; font-weight: 800; color: var(--accent-ink); text-wrap: balance; }
+  .desc { margin: 0 auto; max-width: 560px; font-size: 16px; text-wrap: pretty; }
+  .soon { display: inline-flex; align-items: center; gap: 8px; margin-top: 24px; padding: 10px 18px; border-radius: 999px;
+    background: var(--wash); border: 1px solid var(--accent); color: var(--accent-ink); font-weight: 700; font-size: 14px; }
+  .soon svg { color: var(--sun); flex: none; }
+  .shots { display: flex; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 8px 2px 14px; margin-top: 18px; }
+  .shots:empty { display: none; }
+  .shots figure { margin: 0; flex: 0 0 auto; width: min(46vw, 200px); scroll-snap-align: start; text-align: center; }
+  .shots img { width: 100%; height: auto; aspect-ratio: 460 / 937; object-fit: cover; object-position: top; border-radius: 18px;
+    border: 1px solid var(--line); background: var(--surface); display: block; }
+  .shots figcaption { margin-top: 8px; font-size: 13px; font-weight: 700; color: var(--ink-soft); }
+  .features { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-top: 18px; }
+  .feature { background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 20px; }
+  .feature .emoji { font-size: 24px; }
+  .feature h3 { margin: 8px 0 4px; font-size: 16px; }
+  .feature p { margin: 0; color: var(--ink-soft); font-size: 14.5px; }
+  .devices { margin: 22px 0 0; text-align: center; color: var(--ink-soft); font-size: 14px; }
+  footer { max-width: 860px; margin: 0 auto; padding: 24px 20px 48px; border-top: 1px solid var(--line);
+    display: flex; flex-wrap: wrap; gap: 8px 18px; justify-content: center; font-size: 14px; color: var(--ink-soft); }
+  footer a { color: var(--ink-soft); text-decoration: none; }
+  footer a:hover, footer a:focus-visible { color: var(--accent-ink); }
+  @media (min-width: 760px) { .shots { justify-content: center; overflow-x: visible; } }
+  @media (max-width: 600px) {
+    .features { grid-template-columns: 1fr; }
+    h1 { font-size: 30px; }
+    main { padding: 8px 16px 64px; }
+    header { padding: 16px; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <a class="brand" href="../">My<span>Studio</span></a>
+  <label class="lang"><select id="lang" aria-label="Language">
+    <option value="ko">한국어</option>
+    <option value="en">English</option>
+    <option value="ja">日本語</option>
+    <option value="zh-Hant">繁體中文</option>
+    <option value="es">Español</option>
+    <option value="fr">Français</option>
+    <option value="de">Deutsch</option>
+    <option value="pt">Português</option>
+    <option value="ar">العربية</option>
+  </select></label>
+</header>
+<main>
+  <section class="hero">
+    <img class="icon" src="../assets/myreststop/icon.png" alt="" width="112" height="112">
+    <h1 id="name">몽글 하늘섬</h1>
+    <p class="sub" id="sub"></p>
+    <p class="tagline" id="tagline"></p>
+    <p class="desc" id="desc"></p>
+    <div class="soon"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c.9 6.6 4.8 10.6 12 12-7.2 1.4-11.1 5.4-12 12-.9-6.6-4.8-10.6-12-12 7.2-1.4 11.1-5.4 12-12z"/></svg><span id="soon"></span></div>
+  </section>
+  <section class="shots" id="shots"></section>
+  <section class="features" id="features"></section>
+  <p class="devices" id="devices"></p>
+</main>
+<footer>
+  <a id="f-home" href="../">MyStudio</a>
+  <a id="f-terms" href="terms.html"></a>
+  <a id="f-privacy" href="privacy.html"></a>
+  <a id="f-odds" href="probability.html"></a>
+  <a id="f-support" href="mailto:support@mystudioapps.com"></a>
+</footer>
+<script>
+const LANGS = ['ko', 'en', 'ja', 'zh-Hant', 'es', 'fr', 'de', 'pt', 'ar'];
+const HTML_LANG = { pt: 'pt-BR' };
+const SHOTS = [];
+const T = {
+  ko: {
+    name: '몽글 하늘섬',
+    sub: '구름 위 정령 마을: 짓고 모으고 폭풍 막기',
+    tagline: '폭풍을 막으면, 섬이 자라요',
+    desc: '구름 버스를 잘못 타고 내린 가장 작은 하늘섬. 우물 · 벌목장 · 과수원을 지어 코인 · 목재 · 식량을 모으고, 정령 주민을 초대해 하늘나무를 노리는 먹구름 폭풍을 막아요.',
+    soon: 'App Store · Google Play 곧 출시',
+    shots: [],
+    features: [
+      ['🏝️', '짓고 모으는 하늘섬', '반짝 우물에서 코인, 구름나무 벌목장에서 목재, 별열매 과수원에서 식량을 거둬요. 주민을 일꾼으로 세우면 자리를 비워도 자원이 쌓여요.'],
+      ['⛈️', '섬 지키기', '하늘 끝이 어두워지면 먹구름 폭풍이 몰려와요. 하늘문 앞에 선 주민들이 마법 구슬을 던져 먹구름을 걷어 내요.'],
+      ['🌸', '정령 주민 초대', '젤리 정령 푸딩, 구름 양 뭉치, 얼음 요정 서리까지 초대해요. 같은 주민을 다시 만나면 별이 올라 더 힘이 세져요.'],
+      ['☁️', '구름 너머', '목재로 건물을 짓고 식량으로 하늘나무를 키우면 빈 터가 넓어져요. 구름이 걷히면 벚꽃 섬 · 온천 섬 · 별빛 섬이 보여요.'],
+    ],
+    devices: '계정 없이 바로 시작해요. 인앱 결제와 확률형 아이템(주민 초대)이 있고, 확률은 아래 「확률 정보」에서 볼 수 있어요. 그림과 소리 일부는 AI 로 만들었어요.',
+    terms: '이용약관', privacy: '개인정보처리방침', odds: '확률 정보', support: '문의',
+  },
+  en: {
+    name: 'Floaty Town',
+    sub: 'Build, Gather, Defend the Sky',
+    tagline: 'Hold off the storm, and the island grows.',
+    desc: 'You took the wrong cloud bus and landed on the tiniest sky island. Build wells, lumber camps and orchards to gather coins, wood and food, then invite sprite villagers to hold off the storm clouds closing in on the Sky Tree.',
+    soon: 'Coming soon: App Store · Google Play',
+    shots: [],
+    features: [
+      ['🏝️', 'Build and gather', 'Coins from the Sparkle Well, wood from the Cloudtree Camp, food from the Starfruit Orchard. Put villagers to work and resources pile up while you are away.'],
+      ['⛈️', 'Defend the island', 'When the horizon darkens, the storm clouds roll in. Villagers standing at the Sky Gate throw magic orbs to clear them away.'],
+      ['🌸', 'Invite sprite villagers', 'Invite Pudding the jelly sprite, Fluff the cloud sheep, Frost the ice fairy and more. Meet the same villager again and their star rises, making them stronger.'],
+      ['☁️', 'Beyond the clouds', 'Build with wood, grow the Sky Tree with food, and the empty lots open up. As the clouds clear, neighbouring islands of blossoms, hot springs and starlight appear.'],
+    ],
+    devices: 'Start right away, no account needed. The game has in-app purchases and random items (villager invites); the odds are on the Odds page below. Some art and sounds were made with AI.',
+    terms: 'Terms of Use', privacy: 'Privacy Policy', odds: 'Odds', support: 'Support',
+  },
+  ja: {
+    name: 'ふわふわ空島',
+    sub: '雲の上の精霊村：建てて集めて嵐を防ぐ',
+    tagline: '嵐を防ぐほど、島が育ちます。',
+    desc: '雲バスを乗り間違えて降りたのは、いちばん小さな空島。井戸・伐採場・果樹園を建ててコイン・木材・食料を集め、精霊の住民を招いて、空の木をねらう黒雲の嵐を防ぎましょう。',
+    soon: 'App Store・Google Play にまもなく登場',
+    shots: [],
+    features: [
+      ['🏝️', '建てて集める空島', 'きらめきの井戸でコイン、雲の木の伐採場で木材、星の実の果樹園で食料を集めます。住民を働き手にすれば、離れている間も資源がたまります。'],
+      ['⛈️', '島を守る', '空のはてが暗くなると、黒雲の嵐が押し寄せます。空の門に立つ住民が魔法の玉を投げて、黒雲を払いのけます。'],
+      ['🌸', '精霊の住民を招く', 'ゼリー精霊のプリン、雲ひつじのもこ、氷の妖精のしもまで招きましょう。同じ住民と再会すると星が上がり、さらに強くなります。'],
+      ['☁️', '雲の向こうへ', '木材で建物を建て、食料で空の木を育てると空き地が広がります。雲が晴れると、桜の島・温泉の島・星あかりの島が見えてきます。'],
+    ],
+    devices: 'アカウント不要ですぐに始められます。アプリ内課金とランダム要素（住民の招待）があり、提供割合は下の「提供割合」で確認できます。絵と音の一部は AI で作りました。',
+    terms: '利用規約', privacy: 'プライバシーポリシー', odds: '提供割合', support: 'お問い合わせ',
+  },
+  'zh-Hant': {
+    name: '棉花糖天空島',
+    sub: '雲上精靈小村：蓋房、採集、抵擋風暴',
+    tagline: '擋下風暴，島就會長大。',
+    desc: '搭錯雲朵巴士，來到最小的天空島。蓋起水井、伐木場、果園收集金幣、木材、糧食，邀請精靈居民，一起抵擋覬覦天空樹的烏雲風暴。',
+    soon: '即將登上 App Store 與 Google Play',
+    shots: [],
+    features: [
+      ['🏝️', '邊蓋邊收集', '閃閃水井產金幣、雲樹伐木場產木材、星果果園產糧食。讓居民當工人，離開遊戲時資源也會繼續累積。'],
+      ['⛈️', '守住小島', '天邊一暗，烏雲風暴就會湧上來。站在天空門前的居民丟出魔法珠，把烏雲一一驅散。'],
+      ['🌸', '邀請精靈居民', '邀請果凍精靈布丁、雲朵綿羊蓬蓬、冰之妖精霜霜。再次遇到同一位居民，星級就會提升，變得更強。'],
+      ['☁️', '雲的另一邊', '用木材蓋房、用糧食養大天空樹，空地就會變多。雲散開後，還能看見櫻花島、溫泉島和星光島。'],
+    ],
+    devices: '免帳號即可開始。遊戲含應用程式內購買與隨機物品（邀請居民），機率可在下方「機率公告」查看。部分圖像與音效由 AI 製作。',
+    terms: '使用條款', privacy: '隱私權政策', odds: '機率公告', support: '聯絡我們',
+  },
+  es: {
+    name: 'Floaty Town',
+    sub: 'Construye, recoge y defiende el cielo',
+    tagline: 'Detén la tormenta y la isla crecerá.',
+    desc: 'Tomaste el autobús de nubes equivocado y bajaste en la isla flotante más pequeña. Construye pozos, aserraderos y huertos para reunir monedas, madera y comida, e invita a duendes aldeanos para frenar las tormentas que acechan al Árbol del Cielo.',
+    soon: 'Próximamente: App Store · Google Play',
+    shots: [],
+    features: [
+      ['🏝️', 'Construye y recoge', 'Monedas del Pozo Brillante, madera del Aserradero de Nubes y comida del Huerto de Estrellas. Pon a trabajar a los aldeanos y los recursos se acumulan aunque no estés.'],
+      ['⛈️', 'Defiende la isla', 'Cuando el horizonte se oscurece, llegan las nubes de tormenta. Los aldeanos frente a la Puerta del Cielo lanzan orbes mágicos para disiparlas.'],
+      ['🌸', 'Invita a los duendes', 'Invita a Pudín, el duende de gelatina, a Copo, la oveja de nube, y a Escarcha, el hada de hielo. Si vuelves a encontrar al mismo aldeano, sube de estrella y se hace más fuerte.'],
+      ['☁️', 'Más allá de las nubes', 'Construye con madera y haz crecer el Árbol del Cielo con comida para abrir nuevos terrenos. Al despejarse las nubes aparecen las islas de los cerezos, las aguas termales y la luz de las estrellas.'],
+    ],
+    devices: 'Empieza sin cuenta. El juego tiene compras dentro de la app y objetos aleatorios (invitar aldeanos); las probabilidades están abajo, en Probabilidades. Parte de las imágenes y los sonidos se crearon con IA.',
+    terms: 'Términos de uso', privacy: 'Política de privacidad', odds: 'Probabilidades', support: 'Soporte',
+  },
+  fr: {
+    name: 'Floaty Town',
+    sub: 'Construisez, récoltez, défendez le ciel',
+    tagline: 'Repoussez la tempête, et l’île grandit.',
+    desc: 'Vous avez pris le mauvais bus de nuages et débarqué sur la plus petite des îles célestes. Construisez puits, scieries et vergers pour récolter pièces, bois et nourriture, puis invitez des esprits villageois à repousser les nuages d’orage qui menacent l’Arbre du Ciel.',
+    soon: 'Bientôt : App Store · Google Play',
+    shots: [],
+    features: [
+      ['🏝️', 'Construire et récolter', 'Des pièces au Puits Scintillant, du bois à la Scierie des Nuages, de la nourriture au Verger des Étoiles. Mettez les villageois au travail et les ressources s’accumulent en votre absence.'],
+      ['⛈️', 'Défendre l’île', 'Quand l’horizon s’assombrit, les nuages d’orage arrivent. Devant la Porte du Ciel, les villageois lancent des orbes magiques pour les dissiper.'],
+      ['🌸', 'Inviter les esprits', 'Invitez Pudding l’esprit de gelée, Flocon le mouton de nuage et Givre la fée de glace. Retrouvez le même villageois et son étoile monte : il devient plus fort.'],
+      ['☁️', 'Au-delà des nuages', 'Bâtissez avec le bois, faites grandir l’Arbre du Ciel avec la nourriture, et les terrains s’ouvrent. Les nuages dissipés, les îles des cerisiers, des sources chaudes et des étoiles apparaissent.'],
+    ],
+    devices: 'Commencez sans compte. Le jeu propose des achats intégrés et des objets aléatoires (invitations de villageois) : les probabilités figurent ci-dessous, dans Probabilités. Une partie des images et des sons a été créée avec l’IA.',
+    terms: 'Conditions d’utilisation', privacy: 'Politique de confidentialité', odds: 'Probabilités', support: 'Assistance',
+  },
+  de: {
+    name: 'Floaty Town',
+    sub: 'Bauen, sammeln, den Himmel verteidigen',
+    tagline: 'Hältst du den Sturm auf, wächst die Insel.',
+    desc: 'Du bist in den falschen Wolkenbus gestiegen und auf der kleinsten Himmelsinsel gelandet. Baue Brunnen, Holzfällerlager und Obstgärten für Münzen, Holz und Nahrung und lade Geisterbewohner ein, die Gewitterwolken vom Himmelsbaum fernzuhalten.',
+    soon: 'Bald verfügbar: App Store · Google Play',
+    shots: [],
+    features: [
+      ['🏝️', 'Bauen und sammeln', 'Münzen aus dem Funkelbrunnen, Holz aus dem Wolkenbaum-Lager, Nahrung aus dem Sternfrucht-Garten. Setze Bewohner als Arbeiter ein, dann sammeln sich Rohstoffe auch in deiner Abwesenheit.'],
+      ['⛈️', 'Die Insel verteidigen', 'Wird der Horizont dunkel, ziehen die Gewitterwolken auf. Die Bewohner am Himmelstor werfen Zauberkugeln und vertreiben sie.'],
+      ['🌸', 'Geisterbewohner einladen', 'Lade Pudding, den Geleegeist, Flausch, das Wolkenschaf, und Frost, die Eisfee, ein. Triffst du denselben Bewohner erneut, steigt sein Stern und er wird stärker.'],
+      ['☁️', 'Hinter den Wolken', 'Baue mit Holz, lass den Himmelsbaum mit Nahrung wachsen, und neue Flächen öffnen sich. Klaren die Wolken auf, erscheinen die Kirschblüten-, Thermal- und Sternenlichtinsel.'],
+    ],
+    devices: 'Start ohne Konto. Das Spiel enthält In-App-Käufe und Zufallsgegenstände (Bewohner einladen); die Wahrscheinlichkeiten stehen unten unter Wahrscheinlichkeiten. Ein Teil der Bilder und Klänge entstand mit KI.',
+    terms: 'Nutzungsbedingungen', privacy: 'Datenschutzerklärung', odds: 'Wahrscheinlichkeiten', support: 'Support',
+  },
+  pt: {
+    name: 'Floaty Town',
+    sub: 'Construa, colete e defenda o céu',
+    tagline: 'Detenha a tempestade e a ilha cresce.',
+    desc: 'Você pegou o ônibus de nuvens errado e desceu na menor ilha do céu. Construa poços, serrarias e pomares para juntar moedas, madeira e comida, e convide moradores espíritos para conter as nuvens de tempestade que ameaçam a Árvore do Céu.',
+    soon: 'Em breve: App Store · Google Play',
+    shots: [],
+    features: [
+      ['🏝️', 'Construa e colete', 'Moedas no Poço Brilhante, madeira na Serraria das Nuvens, comida no Pomar de Estrelas. Coloque os moradores para trabalhar e os recursos se acumulam mesmo com o jogo fechado.'],
+      ['⛈️', 'Defenda a ilha', 'Quando o horizonte escurece, as nuvens de tempestade chegam. Os moradores diante do Portão do Céu lançam orbes mágicos e as dissipam.'],
+      ['🌸', 'Convide moradores espíritos', 'Convide Pudim, o espírito de gelatina, Floco, a ovelha de nuvem, e Geada, a fada de gelo. Ao reencontrar o mesmo morador, a estrela dele sobe e ele fica mais forte.'],
+      ['☁️', 'Além das nuvens', 'Construa com madeira e faça a Árvore do Céu crescer com comida para abrir novos terrenos. Quando as nuvens se abrem, surgem as ilhas das cerejeiras, das águas termais e da luz das estrelas.'],
+    ],
+    devices: 'Comece sem conta. O jogo tem compras no aplicativo e itens aleatórios (convites de moradores); as probabilidades estão abaixo, em Probabilidades. Parte das imagens e dos sons foi criada com IA.',
+    terms: 'Termos de Uso', privacy: 'Política de Privacidade', odds: 'Probabilidades', support: 'Suporte',
+  },
+  ar: {
+    name: 'Floaty Town',
+    sub: 'ابنِ واجمع ودافع عن السماء',
+    tagline: 'صُدَّ العاصفة، فتكبر الجزيرة.',
+    desc: 'ركبتَ حافلة السحاب الخطأ فنزلتَ في أصغر جزيرة سماوية. ابنِ الآبار ومخيمات الحطب والبساتين لجمع العملات والخشب والطعام، وادعُ سكان الأرواح لصدّ عواصف الغيوم الداكنة التي تهدّد شجرة السماء.',
+    soon: 'قريبًا على App Store وGoogle Play',
+    shots: [],
+    features: [
+      ['🏝️', 'ابنِ واجمع', 'عملات من بئر البريق، وخشب من مخيم شجرة السحاب، وطعام من بستان ثمار النجوم. كلّف السكان بالعمل فتتراكم الموارد حتى أثناء غيابك.'],
+      ['⛈️', 'دافع عن الجزيرة', 'حين تُظلم حافة السماء تهبّ عواصف الغيوم الداكنة، فيقف السكان أمام بوابة السماء ويرمون الكرات السحرية لتبديدها.'],
+      ['🌸', 'ادعُ سكان الأرواح', 'ادعُ بودينغ روح الهلام، وفلافة خروف السحاب، وفروست جنية الجليد. وحين تلتقي الساكن نفسه مرة أخرى ترتفع نجمته ويزداد قوة.'],
+      ['☁️', 'ما وراء الغيوم', 'ابنِ بالخشب وربِّ شجرة السماء بالطعام فتتسع الأراضي الفارغة. وعندما تنقشع الغيوم تظهر جزر أزهار الكرز والينابيع الساخنة وضوء النجوم.'],
+    ],
+    devices: 'ابدأ فورًا بلا حساب. تتضمن اللعبة عمليات شراء داخل التطبيق وعناصر عشوائية (دعوة السكان)، والاحتمالات متاحة في صفحة الاحتمالات أدناه. أُنشئ جزء من الرسوم والأصوات بالذكاء الاصطناعي.',
+    terms: 'شروط الاستخدام', privacy: 'سياسة الخصوصية', odds: 'الاحتمالات', support: 'الدعم',
+  },
+};
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+function norm(l) {
+  l = String(l).toLowerCase();
+  if (l.startsWith('zh')) return /hant|tw|hk|mo/.test(l) ? 'zh-Hant' : null;
+  const n = l.slice(0, 2); return LANGS.includes(n) ? n : null;
+}
+function pick() {
+  const q = new URLSearchParams(location.search).get('lang');
+  if (LANGS.includes(q)) return q;
+  try { const s = localStorage.getItem('lang'); if (LANGS.includes(s)) return s; } catch (e) {}
+  for (const l of (navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || 'en'])) {
+    const n = norm(l); if (n) return n;
+  }
+  return 'en';
+}
+function show(lang) {
+  const t = T[lang];
+  document.documentElement.lang = HTML_LANG[lang] || lang;
+  document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+  document.title = t.name + ': MyStudio';
+  for (const k of ['name', 'sub', 'tagline', 'desc', 'soon', 'devices']) document.getElementById(k).textContent = t[k];
+  document.querySelector('.icon').alt = t.name;
+  document.getElementById('shots').innerHTML = SHOTS.map((s, i) =>
+    `<figure><img src="../assets/myreststop/${s}.jpg" alt="${esc(t.shots[i])}" width="460" height="937" loading="lazy"><figcaption>${esc(t.shots[i])}</figcaption></figure>`).join('');
+  document.getElementById('features').innerHTML = t.features.map(([e, h, p]) =>
+    `<div class="feature"><div class="emoji">${e}</div><h3>${esc(h)}</h3><p>${esc(p)}</p></div>`).join('');
+  const terms = document.getElementById('f-terms'), privacy = document.getElementById('f-privacy'), odds = document.getElementById('f-odds');
+  terms.textContent = t.terms; terms.href = `terms.html?lang=${lang}`;
+  privacy.textContent = t.privacy; privacy.href = `privacy.html?lang=${lang}`;
+  odds.textContent = t.odds; odds.href = `probability.html?lang=${lang}`;
+  document.getElementById('f-support').textContent = t.support;
+  document.getElementById('lang').value = lang;
+}
+document.getElementById('lang').addEventListener('change', e => {
+  try { localStorage.setItem('lang', e.target.value); } catch (err) {}
+  try { const u = new URL(location.href); u.searchParams.set('lang', e.target.value); history.replaceState(null, '', u); } catch (err) {}
+  show(e.target.value);
+});
+show(pick());
+</script>
+</body>
+</html>

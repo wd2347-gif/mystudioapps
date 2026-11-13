@@ -7,18 +7,57 @@
 <meta name="color-scheme" content="dark">
 <title>Ultimate Duck</title>
 <link rel="icon" type="image/png" href="icon.png">
+<script>
+/* 그리는 해상도 상한(11/13 가볍게): 화면 점 비율을 1.5 까지만 알려 준다. 플루터는 이 값으로 캔버스 크기를 정한다. */
+(function () {
+  var MAX = 1.5;
+  try {
+    var d = Object.getOwnPropertyDescriptor(window, 'devicePixelRatio') ||
+            Object.getOwnPropertyDescriptor(Window.prototype, 'devicePixelRatio');
+    var get = d && d.get;
+    var real = function () { try { return get ? get.call(window) : 1; } catch (e) { return 1; } };
+    Object.defineProperty(window, 'devicePixelRatio', {
+      configurable: true,
+      get: function () { return Math.min(MAX, real() || 1); }
+    });
+  } catch (e) {}
+})();
+
+/* 미리 받기: 로더(flutter_bootstrap.js)가 돌기 전에 큰 것부터 같이 받기 시작한다(왕복 한 번 · 차례 기다림을 줄인다).
+   CanvasKit 은 로더와 같은 규칙으로 고른다(크롬 계열 = 크롬판, 나머지 = 전체판). 글꼴 · 그림 표는 엔진이 fetch 로 받는다. */
+(function () {
+  function pre(href, as, cors) {
+    var l = document.createElement('link');
+    l.rel = 'preload'; l.href = href; l.as = as;
+    if (cors) l.crossOrigin = 'anonymous';
+    document.head.appendChild(l);
+  }
+  var blink = navigator.vendor === 'Google Inc.' || (navigator.userAgent || '').indexOf('Edg/') >= 0;
+  var chromium = blink && typeof Intl.v8BreakIterator !== 'undefined' && typeof Intl.Segmenter !== 'undefined' &&
+                 typeof ImageDecoder !== 'undefined';
+  var ck = chromium ? 'canvaskit/chromium/' : 'canvaskit/';
+  pre('main.dart.js', 'script');
+  pre(ck + 'canvaskit.wasm', 'fetch', true);
+  ['assets/assets/fonts/IBMPlexSansKR-400.ttf', 'assets/assets/fonts/IBMPlexSansKR-600.ttf',
+   'assets/assets/fonts/IBMPlexSansKR-700.ttf', 'assets/assets/fonts/BlackHanSans-400.ttf',
+   'assets/fonts/fallback/Roboto-Regular.ttf', 'assets/assets/art/meta.json'].forEach(function (f) { pre(f, 'fetch', true); });
+})();
+</script>
 <style>
   html, body { margin: 0; height: 100%; background: #11121D; overflow: hidden; }
-  #ld { position: fixed; inset: 0; z-index: 99; display: flex; align-items: center; justify-content: center;
+  #ld { position: fixed; inset: 0; z-index: 99; display: flex; flex-direction: column; align-items: center; justify-content: center;
         background: radial-gradient(circle at 50% 45%, #1B1D33, #0A0B12 70%); transition: opacity .35s ease; }
   #ld img { width: 112px; height: 112px; border-radius: 26px; box-shadow: 0 6px 24px rgba(0,0,0,.6);
             animation: ldp 1.1s ease-in-out infinite; }
   #ld.off { opacity: 0; pointer-events: none; }
+  #bar { width: 168px; height: 8px; margin-top: 28px; border-radius: 4px; background: rgba(255,255,255,.12); overflow: hidden; }
+  #bar i { display: block; height: 100%; width: 0; border-radius: 4px;
+           background: linear-gradient(90deg, #FFD978, #F0A928); transition: width .25s ease-out; }
   @keyframes ldp { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.06); } }
 </style>
 </head>
 <body>
-<div id="ld"><img alt="" src="icon.png"></div>
+<div id="ld"><img alt="" src="icon.png"><div id="bar"><i></i></div></div>
 <script>
 /* 최강의 오리 체험판 ↔ 앱(자체 전면 WebView, JS 채널 XPromo): 'ready' · 'install' 만 보낸다.
    채널이 없는 브라우저면 설치 단추가 스토어로 간다(기기는 userAgent 로 가른다). 게임 쪽은 duckXP(말) 만 부른다. */
@@ -64,6 +103,28 @@
     }
     location.href = url;
   }
+  // 불러오기 막대: 받은 양(같은 출처 자원의 풀린 크기) ÷ 이 기기가 받을 양(빌드가 적는다) + 시간에 따라 조금씩.
+  // 'ready' 때 끝까지 채우고 걷는다.
+  var SIZES = /*PL_SIZES*/{"jsChromium": 10771463, "jsFull": 12628020}/*PL_SIZES*/;
+  var blink = navigator.vendor === 'Google Inc.' || (navigator.userAgent || '').indexOf('Edg/') >= 0;
+  var expect = blink && Intl.v8BreakIterator && typeof ImageDecoder !== 'undefined' ? SIZES.jsChromium : SIZES.jsFull;
+  var got = 0, t0 = Date.now(), shown = 0, bar = null;
+  function count(es) {
+    for (var i = 0; i < es.length; i++) got += es[i].decodedBodySize || es[i].encodedBodySize || 0;
+  }
+  try {
+    count(performance.getEntriesByType('resource'));
+    new PerformanceObserver(function (l) { count(l.getEntries()); }).observe({ type: 'resource', buffered: false });
+  } catch (e) {}
+  function step() {
+    if (!bar) bar = document.querySelector('#bar i');
+    if (!bar) return;
+    var s = (Date.now() - t0) / 1000;
+    var p = Math.max(got / expect * .95, 1 - Math.exp(-s / 3.2));
+    shown = Math.max(shown, Math.min(.96, p));
+    bar.style.width = (shown * 100).toFixed(1) + '%';
+  }
+  var tm = setInterval(step, 120);
   var ready = false;
   addEventListener('flutter-first-frame', function () { window.__duckFirstFrame = performance.now(); });
   window.duckXP = function (m) {
@@ -71,8 +132,10 @@
       if (ready) return;
       ready = true;
       window.__duckReadyAt = performance.now();
+      clearInterval(tm);
+      if (bar) bar.style.width = '100%';
       var ld = document.getElementById('ld');
-      if (ld) { ld.className = 'off'; setTimeout(function () { ld.remove(); }, 400); }
+      if (ld) { setTimeout(function () { ld.className = 'off'; }, 150); setTimeout(function () { ld.remove(); }, 550); }
       post('ready');
     } else if (m === 'install') {
       install();

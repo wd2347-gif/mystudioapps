@@ -18,7 +18,7 @@
 <meta property="og:image:height" content="256">
 <meta name="twitter:card" content="summary">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
-<!-- 최강의 오리 소개(2026-10-31, 저장소 · 주소는 weaponpop 그대로). 아직 TestFlight: 스토어 단추는 '곧 출시'(링크 없음). 공개되면 myfidget 처럼 App Store · Google Play 링크로.
+<!-- 최강의 오리 소개(2026-10-31, 저장소 · 주소는 weaponpop 그대로). 11/14 두 스토어 공개(사용자 '최강의오리 출시됐어 홈페이지 업데이트해'): 단추는 App Store · Google Play 링크(꼬리표 site_weaponpop).
      이름(11/03 저녁 사용자 "게임 이름 다시 최강의 오리로", 11/08 소개 페이지도): 최강의 오리 · Ultimate Duck · 最強アヒル伝説 · 最強鴨鴨 · Pato Supremo · Super Canard · Superente · Patão Supremo · البطة الخارقة.
      결투 모드는 11/01 뺐다: 도전할 곳은 스테이지 · 무한의 탑 · 토벌.
      아이폰 · 안드로이드라 기기 줄엔 기기 이름을 쓰지 않는다(TidyTown 과 같은 문구).
@@ -57,6 +57,8 @@
   .desc { margin: 0 auto; max-width: 560px; font-size: 16px; }
   .soon { display: inline-flex; align-items: center; gap: 8px; margin-top: 24px; padding: 10px 18px; border-radius: 999px;
     background: var(--wash); border: 1px solid rgba(246,196,83,.4); color: var(--accent); font-weight: 700; font-size: 14px; }
+  .stores { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+  a.store { text-decoration: none; }
   .shots { display: flex; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 8px 2px 14px; margin-top: 18px; }
   .shots figure { margin: 0; flex: 0 0 auto; width: min(46vw, 200px); scroll-snap-align: start; text-align: center; }
   .shots img { width: 100%; height: auto; aspect-ratio: 460 / 937; object-fit: cover; object-position: top; border-radius: 18px;
@@ -101,7 +103,7 @@
     <p class="sub" id="sub"></p>
     <p class="tagline" id="tagline"></p>
     <p class="desc" id="desc"></p>
-    <div class="soon"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c.9 6.6 4.8 10.6 12 12-7.2 1.4-11.1 5.4-12 12-.9-6.6-4.8-10.6-12-12 7.2-1.4 11.1-5.4 12-12z"/></svg><span id="soon"></span></div>
+    <div class="stores"><a class="soon store" id="store" href="https://apps.apple.com/app/apple-store/id6823883556?pt=129467809&ct=site_weaponpop&mt=8" rel="noopener"><svg aria-hidden="true" width="16" height="18" viewBox="0 0 384 512" fill="currentColor"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg><span id="soon"></span></a><a class="soon store" id="playstore" href="https://play.google.com/store/apps/details?id=com.ymc.weaponpop&amp;referrer=utm_source%3Dsite%26utm_medium%3Dweb%26utm_campaign%3Dsite_weaponpop" rel="noopener"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M3.6 1.8 13.8 12 3.6 22.2c-.4-.2-.6-.6-.6-1.1V2.9c0-.5.2-.9.6-1.1zm11.3 11.3 2.6 2.6-11.9 6.8 9.3-9.4zm3.8-3.8 2.8 1.6c.8.5.8 1.7 0 2.2l-2.8 1.6-2.9-2.8 2.9-2.6zM5.6 1.5l11.9 6.8-2.6 2.6-9.3-9.4z"/></svg><span id="play"></span></a></div>
   </section>
   <section class="shots" id="shots"></section>
   <section class="features" id="features"></section>
@@ -124,7 +126,8 @@ const T = {
     sub: '무기를 모아 키우는 오리 액션',
     tagline: '무기를 모을수록, 오리는 강해진다.',
     desc: '무기를 소환해 장착하고 몰려오는 적을 쓸어 버려요. 싸우는 중에 열리는 보물 상자에서 능력을 골라 나만의 조합을 만들어요.',
-    soon: 'App Store · Google Play 곧 출시',
+    soon: 'App Store에서 받기',
+    play: 'Google Play에서 받기',
     shots: ['로비', '무기', '무기 소환', '보물 상자'],
     features: [
       ['⚔️', '무기를 모아 장착', '단검 · 지팡이 · 활 같은 무기를 모아 장착 칸을 채워요. 같은 계열을 모으면 세트 효과가 붙어요.'],
@@ -140,7 +143,8 @@ const T = {
     sub: 'Collect weapons, power up your duck',
     tagline: 'More weapons, mightier duck.',
     desc: 'Summon and equip weapons to sweep away waves of enemies. Pick powers from treasure chests mid-battle and build your own combo.',
-    soon: 'Coming soon: App Store · Google Play',
+    soon: 'Download on the App Store',
+    play: 'Get it on Google Play',
     shots: ['Lobby', 'Weapons', 'Weapon summon', 'Treasure Chest'],
     features: [
       ['⚔️', 'Collect and equip', 'Gather daggers, staffs, bows and more to fill your slots. Matching families unlock set bonuses.'],
@@ -156,7 +160,8 @@ const T = {
     sub: '武器を集めて育てるアヒルアクション',
     tagline: '武器を集めるほど、アヒルは強くなる。',
     desc: '武器を召喚して装備し、押し寄せる敵を一掃。戦闘中に開く宝箱から能力を選んで、自分だけの組み合わせを作ろう。',
-    soon: 'App Store・Google Play にまもなく登場',
+    soon: 'App Storeでダウンロード',
+    play: 'Google Playで手に入れよう',
     shots: ['ロビー', '武器', '武器召喚', '宝箱'],
     features: [
       ['⚔️', '武器を集めて装備', '短剣・杖・弓などの武器を集めて装備枠を埋めよう。同じ系統をそろえるとセット効果が付きます。'],
@@ -172,7 +177,8 @@ const T = {
     sub: '收集武器、培養鴨子的動作遊戲',
     tagline: '武器越多，鴨子越強。',
     desc: '召喚並裝備武器，一掃蜂擁而來的敵人。在戰鬥中開啟寶箱挑選能力，打造專屬於你的組合。',
-    soon: '即將登上 App Store 與 Google Play',
+    soon: '在 App Store 下載',
+    play: '在 Google Play 下載',
     shots: ['大廳', '武器', '武器召喚', '寶箱'],
     features: [
       ['⚔️', '收集並裝備武器', '收集短劍、法杖、弓等武器填滿裝備欄。集齊同系列即可獲得套裝效果。'],
@@ -188,7 +194,8 @@ const T = {
     sub: 'Reúne armas y haz más fuerte a tu pato',
     tagline: 'Más armas, pato más poderoso.',
     desc: 'Invoca y equipa armas para barrer oleadas de enemigos. Elige poderes de los cofres del tesoro en plena batalla y crea tu propio combo.',
-    soon: 'Próximamente: App Store · Google Play',
+    soon: 'Descárgalo en App Store',
+    play: 'Disponible en Google Play',
     shots: ['Vestíbulo', 'Armas', 'Invocar armas', 'Cofre del tesoro'],
     features: [
       ['⚔️', 'Reúne y equipa', 'Junta dagas, bastones, arcos y más para llenar tus ranuras. Las armas de la misma familia activan bonos de conjunto.'],
@@ -204,7 +211,8 @@ const T = {
     sub: 'Collectionnez des armes, renforcez votre canard',
     tagline: 'Plus d’armes, canard plus puissant.',
     desc: 'Invoquez et équipez des armes pour balayer des vagues d’ennemis. Choisissez des pouvoirs dans les coffres au trésor en plein combat et créez votre propre combo.',
-    soon: 'Bientôt : App Store · Google Play',
+    soon: 'Télécharger dans l’App Store',
+    play: 'Disponible sur Google Play',
     shots: ['Accueil', 'Armes', 'Invocation d’armes', 'Coffre au trésor'],
     features: [
       ['⚔️', 'Collectionnez et équipez', 'Réunissez dagues, bâtons, arcs et plus pour remplir vos emplacements. Une même famille débloque des bonus d’ensemble.'],
@@ -220,7 +228,8 @@ const T = {
     sub: 'Waffen sammeln, die Ente stärken',
     tagline: 'Mehr Waffen, stärkere Ente.',
     desc: 'Beschwöre und rüste Waffen aus, um Gegnerwellen wegzufegen. Wähle mitten im Kampf Kräfte aus Schatztruhen und baue deine eigene Kombo.',
-    soon: 'Bald verfügbar: App Store · Google Play',
+    soon: 'Laden im App Store',
+    play: 'Jetzt bei Google Play',
     shots: ['Lobby', 'Waffen', 'Waffenbeschwörung', 'Schatztruhe'],
     features: [
       ['⚔️', 'Sammeln und ausrüsten', 'Sammle Dolche, Stäbe, Bögen und mehr für deine Plätze. Gleiche Familien schalten Set-Boni frei.'],
@@ -236,7 +245,8 @@ const T = {
     sub: 'Colete armas e fortaleça seu pato',
     tagline: 'Mais armas, pato mais poderoso.',
     desc: 'Invoque e equipe armas para varrer ondas de inimigos. Escolha poderes nos baús do tesouro no meio da batalha e monte seu próprio combo.',
-    soon: 'Em breve: App Store · Google Play',
+    soon: 'Baixar na App Store',
+    play: 'Disponível no Google Play',
     shots: ['Saguão', 'Armas', 'Invocar armas', 'Baú do tesouro'],
     features: [
       ['⚔️', 'Colete e equipe', 'Junte adagas, cajados, arcos e mais para preencher seus espaços. Armas da mesma família liberam bônus de conjunto.'],
@@ -252,7 +262,8 @@ const T = {
     sub: 'اجمع الأسلحة وقوِّ بطّتك',
     tagline: 'أسلحة أكثر، بطّة أقوى.',
     desc: 'استدعِ الأسلحة وجهّزها لتكتسح موجات الأعداء. اختر القدرات من صناديق الكنز أثناء المعركة واصنع تركيبتك الخاصة.',
-    soon: 'قريبًا على App Store وGoogle Play',
+    soon: 'حمّله من App Store',
+    play: 'احصل عليه من Google Play',
     shots: ['الردهة', 'الأسلحة', 'استدعاء الأسلحة', 'صندوق الكنز'],
     features: [
       ['⚔️', 'اجمع وجهّز', 'اجمع الخناجر والعصي والأقواس وغيرها لتملأ خاناتك. الأسلحة من العائلة نفسها تمنحك مكافآت المجموعة.'],
@@ -284,7 +295,7 @@ function show(lang) {
   document.documentElement.lang = lang;
   document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
   document.title = t.name + ': MyStudio';
-  for (const k of ['name', 'sub', 'tagline', 'desc', 'soon', 'devices']) document.getElementById(k).textContent = t[k];
+  for (const k of ['name', 'sub', 'tagline', 'desc', 'soon', 'play', 'devices']) document.getElementById(k).textContent = t[k];
   document.querySelector('.icon').alt = t.name;
   document.getElementById('shots').innerHTML = SHOTS.map((s, i) =>
     `<figure><img src="/assets/weaponpop/${s}.jpg" alt="${esc(t.shots[i])}" width="460" height="937" loading="lazy"><figcaption>${esc(t.shots[i])}</figcaption></figure>`).join('');

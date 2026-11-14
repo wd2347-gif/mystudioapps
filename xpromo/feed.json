@@ -1,6 +1,6 @@
 {
  "_doc": "MyStudio 자체 광고(교차 홍보): 2026-10-10 사용자: \"AdMob 승인 전까지 MyStudio 앱끼리 서로 광고, 승인되고 내가 요청하면 AdMob 으로\". mode admob + house_fallback: AdMob 을 계속 요청(계정 검토에 요청 기록이 필요할 수 있어)하고, 실패하면(지금은 늘 code 3) 자체 광고. house = AdMob 요청 없이 자체 광고만, off = 광고 칸 없음. 바꾸는 사람: My_Studio 세션. 10/24 한·일 이름 text.<lang>.name(ko · ja 만, 최상위 name 은 영어 그대로: 앱은 다음 버전부터 text[lang].name 을 먼저 읽음).",
- "version": 58,
+ "version": 60,
  "mode": "admob",
  "house_fallback": true,
  "house_share": 1.0,
@@ -637,162 +637,6 @@
    }
   },
   {
-   "id": "myslowsleep",
-   "name": "MySlowSleep",
-   "icon": "https://mystudioapps.com/assets/myslowsleep/icon.png",
-   "color": "#1A1B3A",
-   "shot": {
-    "ko": "https://mystudioapps.com/assets/myslowsleep/ko_s1.jpg?v=1028",
-    "ja": "https://mystudioapps.com/assets/myslowsleep/ja_s1.jpg?v=1028",
-    "en": "https://mystudioapps.com/assets/myslowsleep/en_s1.jpg?v=1028",
-    "zh-Hant": "https://mystudioapps.com/assets/myslowsleep/zh-Hant_s1.jpg?v=1028",
-    "de": "https://mystudioapps.com/assets/myslowsleep/de_s1.jpg?v=1028",
-    "es": "https://mystudioapps.com/assets/myslowsleep/es_s1.jpg?v=1028",
-    "fr": "https://mystudioapps.com/assets/myslowsleep/fr_s1.jpg?v=1028",
-    "pt": "https://mystudioapps.com/assets/myslowsleep/pt_s1.jpg?v=1028",
-    "ar": "https://mystudioapps.com/assets/myslowsleep/ar_s1.jpg?v=1028"
-   },
-   "shots": {
-    "ko": [
-     "https://mystudioapps.com/assets/myslowsleep/ko_s1.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowsleep/ko_s2.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowsleep/ko_s3.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowsleep/ko_s4.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowsleep/ko_s5.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowsleep/ko_s6.jpg?v=1028"
-    ],
-    "ja": [
-     "https://mystudioapps.com/assets/myslowsleep/ja_s1.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowsleep/ja_s2.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowsleep/ja_s3.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowsleep/ja_s4.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowsleep/ja_s5.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowsleep/ja_s6.jpg?v=1028"
-    ],
-    "en": [
-     "https://mystudioapps.com/assets/myslowsleep/en_s1.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowsleep/en_s2.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowsleep/en_s3.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowsleep/en_s4.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowsleep/en_s5.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowsleep/en_s6.jpg?v=1028"
-    ],
-    "zh-Hant": [
-     "https://mystudioapps.com/assets/myslowsleep/zh-Hant_s1.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowsleep/zh-Hant_s2.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowsleep/zh-Hant_s3.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowsleep/zh-Hant_s4.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowsleep/zh-Hant_s5.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowsleep/zh-Hant_s6.jpg?v=1028"
-    ],
-    "de": [
-     "https://mystudioapps.com/assets/myslowsleep/de_s1.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowsleep/de_s2.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowsleep/de_s3.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowsleep/de_s4.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowsleep/de_s5.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowsleep/de_s6.jpg?v=1028"
-    ],
-    "es": [
-     "https://mystudioapps.com/assets/myslowsleep/es_s1.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowsleep/es_s2.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowsleep/es_s3.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowsleep/es_s4.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowsleep/es_s5.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowsleep/es_s6.jpg?v=1028"
-    ],
-    "fr": [
-     "https://mystudioapps.com/assets/myslowsleep/fr_s1.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowsleep/fr_s2.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowsleep/fr_s3.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowsleep/fr_s4.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowsleep/fr_s5.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowsleep/fr_s6.jpg?v=1028"
-    ],
-    "pt": [
-     "https://mystudioapps.com/assets/myslowsleep/pt_s1.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowsleep/pt_s2.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowsleep/pt_s3.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowsleep/pt_s4.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowsleep/pt_s5.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowsleep/pt_s6.jpg?v=1028"
-    ],
-    "ar": [
-     "https://mystudioapps.com/assets/myslowsleep/ar_s1.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowsleep/ar_s2.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowsleep/ar_s3.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowsleep/ar_s4.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowsleep/ar_s5.jpg?v=1028",
-     "https://mystudioapps.com/assets/myslowsleep/ar_s6.jpg?v=1028"
-    ]
-   },
-   "store": {
-    "ios": "https://apps.apple.com/app/id6819059115",
-    "android": "https://play.google.com/store/apps/details?id=com.ymc.myslowsleep"
-   },
-   "text": {
-    "ko": {
-     "name": "마이슬로우슬립",
-     "headline": "불을 끄고, 달을 켜요",
-     "tagline": "수면 소리 · 빗소리 · 호흡",
-     "cta": "무료로 받기"
-    },
-    "ja": {
-     "name": "マイスロースリープ",
-     "headline": "灯りを消して、月をともす",
-     "tagline": "睡眠音・雨音・呼吸",
-     "cta": "無料で入手"
-    },
-    "en": {
-     "headline": "Lights off. Moon on.",
-     "tagline": "Sleep sounds · Rain · Breathing",
-     "cta": "Get it free"
-    },
-    "zh-Hant": {
-     "headline": "關上燈，點亮月亮",
-     "tagline": "助眠聲音 · 雨聲 · 呼吸",
-     "cta": "免費下載"
-    },
-    "de": {
-     "headline": "Licht aus. Mond an.",
-     "tagline": "Schlafklänge · Regen · Atmen",
-     "cta": "Kostenlos laden"
-    },
-    "es": {
-     "headline": "Apaga la luz. Enciende la luna.",
-     "tagline": "Sonidos para dormir · Lluvia · Respiración",
-     "cta": "Consíguela gratis"
-    },
-    "fr": {
-     "headline": "Éteins la lumière. Allume la lune.",
-     "tagline": "Sons pour dormir · Pluie · Respiration",
-     "cta": "Obtenir gratuitement"
-    },
-    "pt": {
-     "headline": "Apague a luz. Acenda a lua.",
-     "tagline": "Sons para dormir · Chuva · Respiração",
-     "cta": "Baixar grátis"
-    },
-    "ar": {
-     "headline": "أطفئ الضوء، وأشعل القمر",
-     "tagline": "أصوات النوم · المطر · التنفس",
-     "cta": "احصل عليه مجانًا"
-    }
-   },
-   "music": "https://mystudioapps.com/assets/myslowsleep/ad_music.mp3",
-   "ad_video": {
-    "ko": "https://mystudioapps.com/xpromo/video/myslowsleep_ko.mp4",
-    "en": "https://mystudioapps.com/xpromo/video/myslowsleep_en.mp4",
-    "ja": "https://mystudioapps.com/xpromo/video/myslowsleep_ja.mp4",
-    "zh-Hant": "https://mystudioapps.com/xpromo/video/myslowsleep_zh-Hant.mp4",
-    "es": "https://mystudioapps.com/xpromo/video/myslowsleep_es.mp4",
-    "fr": "https://mystudioapps.com/xpromo/video/myslowsleep_fr.mp4",
-    "de": "https://mystudioapps.com/xpromo/video/myslowsleep_de.mp4",
-    "pt": "https://mystudioapps.com/xpromo/video/myslowsleep_pt.mp4",
-    "ar": "https://mystudioapps.com/xpromo/video/myslowsleep_ar.mp4"
-   }
-  },
-  {
    "id": "mypartygame",
    "name": "MyPartyGames",
    "icon": "https://mystudioapps.com/assets/mypartygame/icon.png",
@@ -1178,6 +1022,161 @@
     "pt": "https://mystudioapps.com/xpromo/video/myminigame_pt.mp4",
     "ar": "https://mystudioapps.com/xpromo/video/myminigame_ar.mp4"
    }
+  },
+  {
+   "id": "weaponpop",
+   "name": "Ultimate Duck",
+   "icon": "https://mystudioapps.com/assets/weaponpop/icon.png",
+   "color": "#F6C453",
+   "store": {
+    "ios": "https://apps.apple.com/app/id6823883556",
+    "android": "https://play.google.com/store/apps/details?id=com.ymc.weaponpop"
+   },
+   "android_live": true,
+   "text": {
+    "ko": {
+     "name": "최강의 오리",
+     "headline": "무기를 모을수록, 오리는 강해진다",
+     "tagline": "무기 성장 액션 · 확률형 아이템 포함",
+     "cta": "무료로 받기"
+    },
+    "ja": {
+     "name": "最強アヒル伝説",
+     "headline": "武器を集めるほど、アヒルは強くなる",
+     "tagline": "武器を集めて育てるアヒルアクション",
+     "cta": "無料で入手"
+    },
+    "en": {
+     "headline": "More weapons, mightier duck",
+     "tagline": "Weapon-collecting duck action",
+     "cta": "Get it free"
+    },
+    "zh-Hant": {
+     "headline": "武器越多，鴨鴨越強",
+     "tagline": "收集武器養成鴨鴨的動作遊戲",
+     "cta": "免費下載"
+    },
+    "de": {
+     "headline": "Mehr Waffen, stärkere Ente",
+     "tagline": "Waffen sammeln · Ente stärken",
+     "cta": "Kostenlos laden"
+    },
+    "es": {
+     "headline": "Más armas, pato más fuerte",
+     "tagline": "Colecciona armas · Mejora tu pato",
+     "cta": "Consíguela gratis"
+    },
+    "fr": {
+     "headline": "Plus d'armes, canard plus fort",
+     "tagline": "Collectionne des armes · Renforce ton canard",
+     "cta": "Obtenir gratuitement"
+    },
+    "pt": {
+     "headline": "Mais armas, pato mais forte",
+     "tagline": "Colecione armas · Fortaleça seu pato",
+     "cta": "Baixar grátis"
+    },
+    "ar": {
+     "headline": "أسلحة أكثر، بطة أقوى",
+     "tagline": "اجمع الأسلحة وقوِّ بطتك",
+     "cta": "احصل عليه مجانًا"
+    }
+   },
+   "playable": "https://mystudioapps.com/playable/weaponpop/",
+   "shot": {
+    "ko": "https://mystudioapps.com/assets/weaponpop/ko_s1.jpg",
+    "ja": "https://mystudioapps.com/assets/weaponpop/ja_s1.jpg",
+    "en": "https://mystudioapps.com/assets/weaponpop/en_s1.jpg",
+    "zh-Hant": "https://mystudioapps.com/assets/weaponpop/zh-Hant_s1.jpg",
+    "de": "https://mystudioapps.com/assets/weaponpop/de_s1.jpg",
+    "es": "https://mystudioapps.com/assets/weaponpop/es_s1.jpg",
+    "fr": "https://mystudioapps.com/assets/weaponpop/fr_s1.jpg",
+    "pt": "https://mystudioapps.com/assets/weaponpop/pt_s1.jpg",
+    "ar": "https://mystudioapps.com/assets/weaponpop/ar_s1.jpg"
+   },
+   "shots": {
+    "ko": [
+     "https://mystudioapps.com/assets/weaponpop/ko_s1.jpg",
+     "https://mystudioapps.com/assets/weaponpop/ko_s2.jpg",
+     "https://mystudioapps.com/assets/weaponpop/ko_s3.jpg",
+     "https://mystudioapps.com/assets/weaponpop/ko_s4.jpg",
+     "https://mystudioapps.com/assets/weaponpop/ko_s5.jpg",
+     "https://mystudioapps.com/assets/weaponpop/ko_s6.jpg",
+     "https://mystudioapps.com/assets/weaponpop/ko_s7.jpg"
+    ],
+    "ja": [
+     "https://mystudioapps.com/assets/weaponpop/ja_s1.jpg",
+     "https://mystudioapps.com/assets/weaponpop/ja_s2.jpg",
+     "https://mystudioapps.com/assets/weaponpop/ja_s3.jpg",
+     "https://mystudioapps.com/assets/weaponpop/ja_s4.jpg",
+     "https://mystudioapps.com/assets/weaponpop/ja_s5.jpg",
+     "https://mystudioapps.com/assets/weaponpop/ja_s6.jpg",
+     "https://mystudioapps.com/assets/weaponpop/ja_s7.jpg"
+    ],
+    "en": [
+     "https://mystudioapps.com/assets/weaponpop/en_s1.jpg",
+     "https://mystudioapps.com/assets/weaponpop/en_s2.jpg",
+     "https://mystudioapps.com/assets/weaponpop/en_s3.jpg",
+     "https://mystudioapps.com/assets/weaponpop/en_s4.jpg",
+     "https://mystudioapps.com/assets/weaponpop/en_s5.jpg",
+     "https://mystudioapps.com/assets/weaponpop/en_s6.jpg",
+     "https://mystudioapps.com/assets/weaponpop/en_s7.jpg"
+    ],
+    "zh-Hant": [
+     "https://mystudioapps.com/assets/weaponpop/zh-Hant_s1.jpg",
+     "https://mystudioapps.com/assets/weaponpop/zh-Hant_s2.jpg",
+     "https://mystudioapps.com/assets/weaponpop/zh-Hant_s3.jpg",
+     "https://mystudioapps.com/assets/weaponpop/zh-Hant_s4.jpg",
+     "https://mystudioapps.com/assets/weaponpop/zh-Hant_s5.jpg",
+     "https://mystudioapps.com/assets/weaponpop/zh-Hant_s6.jpg",
+     "https://mystudioapps.com/assets/weaponpop/zh-Hant_s7.jpg"
+    ],
+    "de": [
+     "https://mystudioapps.com/assets/weaponpop/de_s1.jpg",
+     "https://mystudioapps.com/assets/weaponpop/de_s2.jpg",
+     "https://mystudioapps.com/assets/weaponpop/de_s3.jpg",
+     "https://mystudioapps.com/assets/weaponpop/de_s4.jpg",
+     "https://mystudioapps.com/assets/weaponpop/de_s5.jpg",
+     "https://mystudioapps.com/assets/weaponpop/de_s6.jpg",
+     "https://mystudioapps.com/assets/weaponpop/de_s7.jpg"
+    ],
+    "es": [
+     "https://mystudioapps.com/assets/weaponpop/es_s1.jpg",
+     "https://mystudioapps.com/assets/weaponpop/es_s2.jpg",
+     "https://mystudioapps.com/assets/weaponpop/es_s3.jpg",
+     "https://mystudioapps.com/assets/weaponpop/es_s4.jpg",
+     "https://mystudioapps.com/assets/weaponpop/es_s5.jpg",
+     "https://mystudioapps.com/assets/weaponpop/es_s6.jpg",
+     "https://mystudioapps.com/assets/weaponpop/es_s7.jpg"
+    ],
+    "fr": [
+     "https://mystudioapps.com/assets/weaponpop/fr_s1.jpg",
+     "https://mystudioapps.com/assets/weaponpop/fr_s2.jpg",
+     "https://mystudioapps.com/assets/weaponpop/fr_s3.jpg",
+     "https://mystudioapps.com/assets/weaponpop/fr_s4.jpg",
+     "https://mystudioapps.com/assets/weaponpop/fr_s5.jpg",
+     "https://mystudioapps.com/assets/weaponpop/fr_s6.jpg",
+     "https://mystudioapps.com/assets/weaponpop/fr_s7.jpg"
+    ],
+    "pt": [
+     "https://mystudioapps.com/assets/weaponpop/pt_s1.jpg",
+     "https://mystudioapps.com/assets/weaponpop/pt_s2.jpg",
+     "https://mystudioapps.com/assets/weaponpop/pt_s3.jpg",
+     "https://mystudioapps.com/assets/weaponpop/pt_s4.jpg",
+     "https://mystudioapps.com/assets/weaponpop/pt_s5.jpg",
+     "https://mystudioapps.com/assets/weaponpop/pt_s6.jpg",
+     "https://mystudioapps.com/assets/weaponpop/pt_s7.jpg"
+    ],
+    "ar": [
+     "https://mystudioapps.com/assets/weaponpop/ar_s1.jpg",
+     "https://mystudioapps.com/assets/weaponpop/ar_s2.jpg",
+     "https://mystudioapps.com/assets/weaponpop/ar_s3.jpg",
+     "https://mystudioapps.com/assets/weaponpop/ar_s4.jpg",
+     "https://mystudioapps.com/assets/weaponpop/ar_s5.jpg",
+     "https://mystudioapps.com/assets/weaponpop/ar_s6.jpg",
+     "https://mystudioapps.com/assets/weaponpop/ar_s7.jpg"
+    ]
+   }
   }
  ],
  "interstitial_close_after_sec": 20,
@@ -1200,5 +1199,6 @@
    "shot": 0.2
   }
  },
- "_doc_house_kind_mix": "2026-10-28 사용자: 자체 전면을 스크린샷 · 인스타 광고 30초 영상 · 체험형 세 가지로 순환, 체험형이 있는 앱은 체험형 80% · 영상 20%. 자체 전면 차례마다 고른 앱 칸에 playable 이 있으면 house_kind_mix.playable, 없으면 .default 가중치로 종류(shot · video · playable)를 무작위로 고른다. 영상은 apps[].ad_video({언어: mp4}, 없는 언어 en, 720×1280 30~35초, 인스타 광고와 같은 영상). 고른 종류가 실패하면 스크린샷, 그것도 없으면 거름. 키가 없으면 옛 동작(영상 > 체험판 > 스크린샷). 옛 키 apps[].video 는 쓰지 않음(옛 앱은 ad_video 를 읽지 않아 지금 동작 그대로). 앱 반영은 다음 버전부터. 2026-10-28 사용자: 체험형 없는 앱은 영상 80 · 스크린샷 20(46판). 2026-10-29 사용자: 파티게임즈는 체험형 말고 영상 · 스크린샷으로 → mypartygame 의 playable 을 빼서 default(영상 80 · 스크린샷 20)를 씀(49판). 체험판 페이지는 그대로 둠."
+ "_doc_house_kind_mix": "2026-10-28 사용자: 자체 전면을 스크린샷 · 인스타 광고 30초 영상 · 체험형 세 가지로 순환, 체험형이 있는 앱은 체험형 80% · 영상 20%. 자체 전면 차례마다 고른 앱 칸에 playable 이 있으면 house_kind_mix.playable, 없으면 .default 가중치로 종류(shot · video · playable)를 무작위로 고른다. 영상은 apps[].ad_video({언어: mp4}, 없는 언어 en, 720×1280 30~35초, 인스타 광고와 같은 영상). 고른 종류가 실패하면 스크린샷, 그것도 없으면 거름. 키가 없으면 옛 동작(영상 > 체험판 > 스크린샷). 옛 키 apps[].video 는 쓰지 않음(옛 앱은 ad_video 를 읽지 않아 지금 동작 그대로). 앱 반영은 다음 버전부터. 2026-10-28 사용자: 체험형 없는 앱은 영상 80 · 스크린샷 20(46판). 2026-10-29 사용자: 파티게임즈는 체험형 말고 영상 · 스크린샷으로 → mypartygame 의 playable 을 빼서 default(영상 80 · 스크린샷 20)를 씀(49판). 체험판 페이지는 그대로 둠.",
+ "_doc_off": "2026-11-14 사용자 '자체앱광고에서 마이슬로우슬립은 꺼줘': myslowsleep 항목을 apps 에서 뺐다(다른 앱에 슬립 광고가 안 나감). 되돌리기: xpromo/off/myslowsleep.json 을 apps 에 다시 넣고 version 올리기."
 }

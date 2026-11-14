@@ -1,0 +1,155 @@
+{
+ "id": "weaponpop",
+ "name": "Ultimate Duck",
+ "icon": "https://mystudioapps.com/assets/weaponpop/icon.png",
+ "color": "#F6C453",
+ "store": {
+  "ios": "https://apps.apple.com/app/id6823883556",
+  "android": "https://play.google.com/store/apps/details?id=com.ymc.weaponpop"
+ },
+ "android_live": true,
+ "text": {
+  "ko": {
+   "name": "최강의 오리",
+   "headline": "무기를 모을수록, 오리는 강해진다",
+   "tagline": "무기 성장 액션 · 확률형 아이템 포함",
+   "cta": "무료로 받기"
+  },
+  "ja": {
+   "name": "最強アヒル伝説",
+   "headline": "武器を集めるほど、アヒルは強くなる",
+   "tagline": "武器を集めて育てるアヒルアクション",
+   "cta": "無料で入手"
+  },
+  "en": {
+   "headline": "More weapons, mightier duck",
+   "tagline": "Weapon-collecting duck action",
+   "cta": "Get it free"
+  },
+  "zh-Hant": {
+   "headline": "武器越多，鴨鴨越強",
+   "tagline": "收集武器養成鴨鴨的動作遊戲",
+   "cta": "免費下載"
+  },
+  "de": {
+   "headline": "Mehr Waffen, stärkere Ente",
+   "tagline": "Waffen sammeln · Ente stärken",
+   "cta": "Kostenlos laden"
+  },
+  "es": {
+   "headline": "Más armas, pato más fuerte",
+   "tagline": "Colecciona armas · Mejora tu pato",
+   "cta": "Consíguela gratis"
+  },
+  "fr": {
+   "headline": "Plus d'armes, canard plus fort",
+   "tagline": "Collectionne des armes · Renforce ton canard",
+   "cta": "Obtenir gratuitement"
+  },
+  "pt": {
+   "headline": "Mais armas, pato mais forte",
+   "tagline": "Colecione armas · Fortaleça seu pato",
+   "cta": "Baixar grátis"
+  },
+  "ar": {
+   "headline": "أسلحة أكثر، بطة أقوى",
+   "tagline": "اجمع الأسلحة وقوِّ بطتك",
+   "cta": "احصل عليه مجانًا"
+  }
+ },
+ "playable": "https://mystudioapps.com/playable/weaponpop/",
+ "shot": {
+  "ko": "https://mystudioapps.com/assets/weaponpop/ko_s1.jpg",
+  "ja": "https://mystudioapps.com/assets/weaponpop/ja_s1.jpg",
+  "en": "https://mystudioapps.com/assets/weaponpop/en_s1.jpg",
+  "zh-Hant": "https://mystudioapps.com/assets/weaponpop/zh-Hant_s1.jpg",
+  "de": "https://mystudioapps.com/assets/weaponpop/de_s1.jpg",
+  "es": "https://mystudioapps.com/assets/weaponpop/es_s1.jpg",
+  "fr": "https://mystudioapps.com/assets/weaponpop/fr_s1.jpg",
+  "pt": "https://mystudioapps.com/assets/weaponpop/pt_s1.jpg",
+  "ar": "https://mystudioapps.com/assets/weaponpop/ar_s1.jpg"
+ },
+ "shots": {
+  "ko": [
+   "https://mystudioapps.com/assets/weaponpop/ko_s1.jpg",
+   "https://mystudioapps.com/assets/weaponpop/ko_s2.jpg",
+   "https://mystudioapps.com/assets/weaponpop/ko_s3.jpg",
+   "https://mystudioapps.com/assets/weaponpop/ko_s4.jpg",
+   "https://mystudioapps.com/assets/weaponpop/ko_s5.jpg",
+   "https://mystudioapps.com/assets/weaponpop/ko_s6.jpg",
+   "https://mystudioapps.com/assets/weaponpop/ko_s7.jpg"
+  ],
+  "ja": [
+   "https://mystudioapps.com/assets/weaponpop/ja_s1.jpg",
+   "https://mystudioapps.com/assets/weaponpop/ja_s2.jpg",
+   "https://mystudioapps.com/assets/weaponpop/ja_s3.jpg",
+   "https://mystudioapps.com/assets/weaponpop/ja_s4.jpg",
+   "https://mystudioapps.com/assets/weaponpop/ja_s5.jpg",
+   "https://mystudioapps.com/assets/weaponpop/ja_s6.jpg",
+   "https://mystudioapps.com/assets/weaponpop/ja_s7.jpg"
+  ],
+  "en": [
+   "https://mystudioapps.com/assets/weaponpop/en_s1.jpg",
+   "https://mystudioapps.com/assets/weaponpop/en_s2.jpg",
+   "https://mystudioapps.com/assets/weaponpop/en_s3.jpg",
+   "https://mystudioapps.com/assets/weaponpop/en_s4.jpg",
+   "https://mystudioapps.com/assets/weaponpop/en_s5.jpg",
+   "https://mystudioapps.com/assets/weaponpop/en_s6.jpg",
+   "https://mystudioapps.com/assets/weaponpop/en_s7.jpg"
+  ],
+  "zh-Hant": [
+   "https://mystudioapps.com/assets/weaponpop/zh-Hant_s1.jpg",
+   "https://mystudioapps.com/assets/weaponpop/zh-Hant_s2.jpg",
+   "https://mystudioapps.com/assets/weaponpop/zh-Hant_s3.jpg",
+   "https://mystudioapps.com/assets/weaponpop/zh-Hant_s4.jpg",
+   "https://mystudioapps.com/assets/weaponpop/zh-Hant_s5.jpg",
+   "https://mystudioapps.com/assets/weaponpop/zh-Hant_s6.jpg",
+   "https://mystudioapps.com/assets/weaponpop/zh-Hant_s7.jpg"
+  ],
+  "de": [
+   "https://mystudioapps.com/assets/weaponpop/de_s1.jpg",
+   "https://mystudioapps.com/assets/weaponpop/de_s2.jpg",
+   "https://mystudioapps.com/assets/weaponpop/de_s3.jpg",
+   "https://mystudioapps.com/assets/weaponpop/de_s4.jpg",
+   "https://mystudioapps.com/assets/weaponpop/de_s5.jpg",
+   "https://mystudioapps.com/assets/weaponpop/de_s6.jpg",
+   "https://mystudioapps.com/assets/weaponpop/de_s7.jpg"
+  ],
+  "es": [
+   "https://mystudioapps.com/assets/weaponpop/es_s1.jpg",
+   "https://mystudioapps.com/assets/weaponpop/es_s2.jpg",
+   "https://mystudioapps.com/assets/weaponpop/es_s3.jpg",
+   "https://mystudioapps.com/assets/weaponpop/es_s4.jpg",
+   "https://mystudioapps.com/assets/weaponpop/es_s5.jpg",
+   "https://mystudioapps.com/assets/weaponpop/es_s6.jpg",
+   "https://mystudioapps.com/assets/weaponpop/es_s7.jpg"
+  ],
+  "fr": [
+   "https://mystudioapps.com/assets/weaponpop/fr_s1.jpg",
+   "https://mystudioapps.com/assets/weaponpop/fr_s2.jpg",
+   "https://mystudioapps.com/assets/weaponpop/fr_s3.jpg",
+   "https://mystudioapps.com/assets/weaponpop/fr_s4.jpg",
+   "https://mystudioapps.com/assets/weaponpop/fr_s5.jpg",
+   "https://mystudioapps.com/assets/weaponpop/fr_s6.jpg",
+   "https://mystudioapps.com/assets/weaponpop/fr_s7.jpg"
+  ],
+  "pt": [
+   "https://mystudioapps.com/assets/weaponpop/pt_s1.jpg",
+   "https://mystudioapps.com/assets/weaponpop/pt_s2.jpg",
+   "https://mystudioapps.com/assets/weaponpop/pt_s3.jpg",
+   "https://mystudioapps.com/assets/weaponpop/pt_s4.jpg",
+   "https://mystudioapps.com/assets/weaponpop/pt_s5.jpg",
+   "https://mystudioapps.com/assets/weaponpop/pt_s6.jpg",
+   "https://mystudioapps.com/assets/weaponpop/pt_s7.jpg"
+  ],
+  "ar": [
+   "https://mystudioapps.com/assets/weaponpop/ar_s1.jpg",
+   "https://mystudioapps.com/assets/weaponpop/ar_s2.jpg",
+   "https://mystudioapps.com/assets/weaponpop/ar_s3.jpg",
+   "https://mystudioapps.com/assets/weaponpop/ar_s4.jpg",
+   "https://mystudioapps.com/assets/weaponpop/ar_s5.jpg",
+   "https://mystudioapps.com/assets/weaponpop/ar_s6.jpg",
+   "https://mystudioapps.com/assets/weaponpop/ar_s7.jpg"
+  ]
+ }
+}

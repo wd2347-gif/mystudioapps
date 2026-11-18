@@ -50,8 +50,8 @@
 <main>
 <article data-lang="en" lang="en">
 <h1>Privacy Policy</h1>
-<p class="meta">Effective November 16, 2026 · App: MyVocal · Operator: MyStudio · Contact support@mystudioapps.com</p>
-<p>MyVocal (the "App") helps you practise the basics of singing: warm-ups, breathing, vocal scales, ear training and rhythm. It works <b>without an account</b>. The App itself keeps your data on your device, and microphone sound stays on your device: it is never saved to a file or sent (section 2). Only the purchase service, the ad service (free version only) and our usage-statistics and crash-report service receive some data (section 3).</p>
+<p class="meta">Effective November 18, 2026 · App: MyVocal · Operator: MyStudio · Contact support@mystudioapps.com</p>
+<p>MyVocal (the "App") helps you practise the basics of singing: warm-ups, breathing, vocal scales, ear training and rhythm. It works <b>without an account</b>. The App itself keeps your data on your device, and microphone sound stays on your device: it is never saved to a file or sent (section 2). Only the purchase service, the ad service (free version only), the ad-measurement service (Meta) and our usage-statistics and crash-report service receive some data (section 3).</p>
 
 <h2>1. Data that stays on your device</h2>
 <ul>
@@ -83,10 +83,20 @@
   <li>How you interact with ads (impressions, taps) and diagnostic data from the ad SDK</li>
   <li>On Android, information about other apps installed on the device</li>
   <li>The anonymous purchase ID that the App gives LevelPlay as a user ID (created by RevenueCat, used to match ad revenue to the same ID)</li>
-  <li>The device advertising identifier on Android (advertising ID). On iPhone the App does <b>not ask for tracking permission</b>, so the advertising identifier (IDFA) is not shared</li>
+  <li>The device advertising identifier (IDFA on iPhone, advertising ID on Android): on iPhone <b>only if you allow tracking</b> when the App asks (versions that do not ask never share it)</li>
 </ul>
-<p>They use this to show and measure ads and to prevent fraud. On iPhone, ads are not personalised with the advertising identifier, because the App does not ask for tracking permission. Elsewhere, ads are personalised only if you allow it (in the EEA and UK: the consent screen, which you can change any time with "Ad privacy settings" at the bottom of the Premium screen). The consent screen is provided by Google's User Messaging Platform (Google LLC, USA), and your choice is passed on to LevelPlay. Otherwise ads are not personalised. With Premium, the App no longer loads ads, so this data is no longer sent for ads. See <a href="https://unity.com/legal/game-player-and-app-user-privacy-policy">Unity's privacy policy</a>.</p>
+<p>They use this to show and measure ads and to prevent fraud. Ads are personalised only if you allow it (iPhone: the tracking prompt and Settings › Privacy &amp; Security › Tracking; in the EEA and UK: the consent screen, which you can change any time with "Ad privacy settings" at the bottom of the Premium screen). The consent screen is provided by Google's User Messaging Platform (Google LLC, USA), and your choice is passed on to LevelPlay. Otherwise ads are not personalised. With Premium, the App no longer loads ads, so this data is no longer sent for ads. See <a href="https://unity.com/legal/game-player-and-app-user-privacy-policy">Unity's privacy policy</a>.</p>
 <p>Other ad networks: to fill each ad slot, Unity LevelPlay may also request ads from the networks below. They receive the same kinds of information for the same purposes (device and app information, IP address (approximate location), how you interact with ads, and, on Android, the advertising identifier). Liftoff (Vungle, Inc., USA): <a href="https://liftoff.io/privacy-policy/">liftoff.io/privacy-policy</a>. Meta Audience Network (Meta Platforms, Inc., USA, and Meta Platforms Ireland Ltd.): <a href="https://www.facebook.com/privacy/policy/">facebook.com/privacy/policy</a>. Mintegral (Mintegral International Ltd., Singapore, a subsidiary of Mobvista, China): <a href="https://www.mintegral.com/en/privacy/">mintegral.com/en/privacy</a>. Google AdMob (Google LLC, USA): <a href="https://policies.google.com/privacy">policies.google.com/privacy</a>. This is also a transfer of personal information to another country.</p>
+
+<h3>Ad measurement: Meta App Events</h3>
+<p>To see whether our ads on Instagram and Facebook lead to installs and purchases, the App sends the following to Meta (Meta Platforms, Inc., USA, and Meta Platforms Ireland Ltd.) through the Meta App Events SDK:</p>
+<ul>
+  <li>That the App was opened (the first open counts as the install)</li>
+  <li>Completed in-app purchases: product ID, price and currency (no payment details)</li>
+  <li>Device and app information (model, OS and app version, language), IP address, and an anonymous device identifier created by Meta</li>
+  <li>The device advertising identifier (IDFA on iPhone, advertising ID on Android): on iPhone <b>only if you allow tracking</b></li>
+</ul>
+<p>Your name, email or other identity details are not sent, and test installs (debug builds, TestFlight, test devices) send nothing. Practice records and microphone sound are never sent, and automatic event logging is turned off: only app opens and purchases are sent. In the EEA, the UK and Switzerland, this is sent only if you agreed to storing and accessing information on your device on the consent screen. If you live in a US state with a privacy law and opted out of sale, sharing or targeted ads, it is sent with Meta's Limited Data Use. Meta uses this to measure and improve our ads and keeps it under its own policy. This is a transfer of personal information to another country. To limit it, on iPhone do not allow tracking (Settings › Privacy &amp; Security › Tracking); on Android, delete your advertising ID (Settings › Google › Ads). Meta's privacy policy: <a href="https://www.facebook.com/privacy/policy/">facebook.com/privacy/policy</a>.</p>
 
 <h3>Usage statistics and crash reports: Firebase Analytics, Crashlytics</h3>
 <p>To see which exercises are used and to fix problems, the App sends the following to Google Firebase (Google LLC, USA):</p>
@@ -101,28 +111,28 @@
 <ul>
   <li>No account or sign-in, and no server of our own</li>
   <li>Microphone sound is never saved to a file or sent</li>
-  <li>On iPhone, no tracking across other companies' apps or websites (the App does not ask for tracking permission)</li>
+  <li>No tracking across other companies' apps or websites unless you allow it (iPhone tracking prompt)</li>
   <li>No access to your camera, contacts or location. The App never reads your photos: only if you choose to save a shared result card, that image is added to your photo library (iPhone asks for add-only permission)</li>
   <li>Sharing a result card uses your device's share sheet and goes only to the app or person you pick, not through us</li>
   <li>We do not sell personal information</li>
 </ul>
 
 <h2>5. Children</h2>
-<p>The App is for a general audience and is not directed at children under 13. Ads are not personalised unless consent is allowed, and on iPhone the App does not ask for tracking permission. Purchases go through the store account, where parents can require approval (for example Ask to Buy).</p>
+<p>The App is for a general audience and is not directed at children under 13. Ads are not personalised unless tracking or consent is allowed. Purchases go through the store account, where parents can require approval (for example Ask to Buy).</p>
 
 <h2>6. Your rights and contact</h2>
 <p>You can ask us to access, correct or delete data related to your purchase, or to stop processing it. Your settings and practice records stay on your device and never reach us; deleting the App removes them. Contact <a href="mailto:support@mystudioapps.com">support@mystudioapps.com</a>. We answer within 10 days.</p>
 
 <h3>US state residents</h3>
-<p>If you live in a US state with a consumer privacy law, such as California, you have the right to know about and access the personal information about you, to delete or correct it, and to opt out of the "sale" or "sharing" of personal information for targeted advertising. We do not sell personal information for money. If you allow personalised ads, the advertising identifier and other data sent to Unity LevelPlay and its ad networks may count as "sharing" or targeted advertising under these laws. On iPhone, the App does not ask for tracking permission, so the advertising identifier is not shared. To opt out on Android, delete your advertising ID in Settings › Google › Ads. If the App shows <b>Ad privacy settings</b>, you can also opt out there. For any other request, write to support@mystudioapps.com. We will not treat you differently for using these rights.</p>
+<p>If you live in a US state with a consumer privacy law, such as California, you have the right to know about and access the personal information about you, to delete or correct it, and to opt out of the "sale" or "sharing" of personal information for targeted advertising. We do not sell personal information for money. If you allow personalised ads, the advertising identifier and other data sent to Unity LevelPlay and its ad networks, and to Meta, may count as "sharing" or targeted advertising under these laws. To opt out, on iPhone do not allow tracking in Settings › Privacy &amp; Security › Tracking; on Android, delete your advertising ID in Settings › Google › Ads. If the App shows <b>Ad privacy settings</b>, you can also opt out there. For any other request, write to support@mystudioapps.com. We will not treat you differently for using these rights.</p>
 
 <h2>7. Changes</h2>
 <p>If this policy changes, we will update this page and the effective date above. If what the App sends changes, we will update this policy first.</p>
 </article>
 <article data-lang="ko" lang="ko">
 <h1>개인정보처리방침</h1>
-<p class="meta">시행일 2026년 11월 16일 · 앱: 마이보컬(MyVocal) · 운영자: MyStudio(마이스튜디오) · 문의 support@mystudioapps.com</p>
-<p>마이보컬(MyVocal, 이하 "앱")은 목 풀기 · 호흡 · 발성 · 음감 · 리듬처럼 노래의 기본기를 연습하는 앱입니다. <b>계정 없이</b> 쓰며, 앱 자체는 정보를 기기에만 둡니다. 마이크 소리는 기기 안에서만 다루고 파일로 저장하거나 보내지 않습니다(2장). 결제 확인 서비스, 무료 버전이면 광고 서비스, 그리고 사용 통계 · 오류 보고 서비스만 일부 정보를 받습니다(3장).</p>
+<p class="meta">시행일 2026년 11월 18일 · 앱: 마이보컬(MyVocal) · 운영자: MyStudio(마이스튜디오) · 문의 support@mystudioapps.com</p>
+<p>마이보컬(MyVocal, 이하 "앱")은 목 풀기 · 호흡 · 발성 · 음감 · 리듬처럼 노래의 기본기를 연습하는 앱입니다. <b>계정 없이</b> 쓰며, 앱 자체는 정보를 기기에만 둡니다. 마이크 소리는 기기 안에서만 다루고 파일로 저장하거나 보내지 않습니다(2장). 결제 확인 서비스, 무료 버전이면 광고 서비스, 광고 성과 측정 서비스(Meta), 그리고 사용 통계 · 오류 보고 서비스만 일부 정보를 받습니다(3장).</p>
 
 <h2>1. 기기에만 남는 정보</h2>
 <ul>
@@ -154,10 +164,20 @@
   <li>광고 노출 · 클릭 같은 광고 이용 기록과 광고 SDK 의 진단 정보</li>
   <li>안드로이드에서는 기기에 설치된 다른 앱 정보</li>
   <li>앱이 LevelPlay 에 사용자 ID 로 넘기는 구매용 익명 ID(RevenueCat 이 만든 것으로, 광고 매출을 같은 ID 로 맞춰 보는 데 씀)</li>
-  <li>안드로이드 기기 광고 식별자(광고 ID). 아이폰에서는 앱이 <b>추적 허용을 묻지 않으므로</b> 광고 식별자(IDFA)를 보내지 않습니다</li>
+  <li>기기 광고 식별자(아이폰 IDFA, 안드로이드 광고 ID): 아이폰은 앱이 물었을 때 <b>추적을 허용한 경우에만</b>(묻지 않는 버전은 보내지 않음)</li>
 </ul>
-<p>이들은 이 정보로 광고를 보여 주고 측정하며 부정 사용을 막습니다. 아이폰에서는 앱이 추적 허용을 묻지 않으므로 광고 식별자로 맞춘 광고가 나오지 않습니다. 그 밖에는 맞춤 광고가 허용한 경우에만 나옵니다(유럽 · 영국: 동의 창: 프리미엄 창 아래 '광고 개인정보 설정'에서 언제든 바꿀 수 있음). 동의 창은 Google 의 User Messaging Platform(Google LLC, 미국)이 보여 주고, 고른 값은 LevelPlay 에 전달됩니다. 허용하지 않으면 맞춤이 아닌 광고가 나옵니다. 프리미엄이면 앱이 더 이상 광고를 불러오지 않아 이 정보도 광고에 보내지 않습니다. <a href="https://unity.com/legal/game-player-and-app-user-privacy-policy">Unity 개인정보처리방침</a></p>
+<p>이들은 이 정보로 광고를 보여 주고 측정하며 부정 사용을 막습니다. 맞춤 광고는 허용한 경우에만 나옵니다(아이폰: 추적 허용 창과 설정 › 개인정보 보호 및 보안 › 추적, 유럽 · 영국: 동의 창: 프리미엄 창 아래 '광고 개인정보 설정'에서 언제든 바꿀 수 있음). 동의 창은 Google 의 User Messaging Platform(Google LLC, 미국)이 보여 주고, 고른 값은 LevelPlay 에 전달됩니다. 허용하지 않으면 맞춤이 아닌 광고가 나옵니다. 프리미엄이면 앱이 더 이상 광고를 불러오지 않아 이 정보도 광고에 보내지 않습니다. <a href="https://unity.com/legal/game-player-and-app-user-privacy-policy">Unity 개인정보처리방침</a></p>
 <p>그 밖의 광고 회사: Unity LevelPlay 는 광고 자리를 채우기 위해 아래 광고 회사에도 광고를 요청할 수 있습니다. 이 회사들도 같은 목적으로 같은 종류의 정보(기기 · 앱 정보, IP 주소(대략적인 위치), 광고를 보고 누른 기록, 안드로이드의 광고 식별자)를 받습니다. Liftoff(Vungle, Inc., 미국): <a href="https://liftoff.io/privacy-policy/">liftoff.io/privacy-policy</a>. Meta Audience Network(Meta Platforms, Inc., 미국 · Meta Platforms Ireland Ltd.): <a href="https://www.facebook.com/privacy/policy/">facebook.com/privacy/policy</a>. Mintegral(Mintegral International Ltd., 싱가포르, 중국 Mobvista 의 자회사): <a href="https://www.mintegral.com/en/privacy/">mintegral.com/en/privacy</a>. Google AdMob(Google LLC, 미국): <a href="https://policies.google.com/privacy">policies.google.com/privacy</a>. 이것도 개인정보의 국외 이전입니다.</p>
+
+<h3>광고 성과 측정: Meta 앱 이벤트</h3>
+<p>인스타그램 · 페이스북에 낸 우리 광고가 설치와 구매로 이어졌는지 알려고, 앱은 Meta 앱 이벤트 SDK 로 다음을 Meta(Meta Platforms, Inc., 미국 · Meta Platforms Ireland Ltd.)에 보냅니다.</p>
+<ul>
+  <li>앱을 연 기록(처음 연 것이 설치로 잡힘)</li>
+  <li>끝난 앱 안 구매: 상품 ID · 금액 · 통화(결제 정보는 없음)</li>
+  <li>기기 · 앱 정보(모델, OS · 앱 버전, 언어), IP 주소, Meta 가 만드는 익명 기기 식별자</li>
+  <li>기기 광고 식별자(아이폰 IDFA, 안드로이드 광고 ID): 아이폰은 <b>추적을 허용한 경우에만</b></li>
+</ul>
+<p>이름 · 이메일 같은 신원 정보는 보내지 않고, 시험 설치(디버그 빌드 · TestFlight · 시험 기기)는 아무것도 보내지 않습니다. 연습 기록과 마이크 소리는 보내지 않고, 자동으로 기록하는 기능은 끄고 써서 앱 실행 · 결제만 갑니다. 유럽(EEA) · 영국 · 스위스는 동의 창에서 기기 정보 저장 · 접근에 동의한 경우에만 보내고, 개인정보 보호법이 있는 미국 주에서 판매 · 공유 · 맞춤 광고를 거부했으면 Meta 의 '제한된 데이터 사용'으로 보냅니다. Meta 는 이 정보로 우리 광고의 성과를 재고 개선하며, 자기 정책에 따라 보관합니다. 이는 개인정보의 국외 이전입니다. 막으려면 아이폰은 추적을 허용하지 않으면 되고(설정 › 개인정보 보호 및 보안 › 추적), 안드로이드는 광고 ID 를 삭제하면 됩니다(설정 › Google › 광고). Meta 개인정보처리방침: <a href="https://www.facebook.com/privacy/policy/">facebook.com/privacy/policy</a></p>
 
 <h3>사용 통계와 오류 보고: Firebase Analytics · Crashlytics</h3>
 <p>어떤 연습을 많이 쓰는지 알고 문제를 고치려고, 다음을 Google Firebase(Google LLC, 미국)에 보냅니다.</p>
@@ -172,28 +192,28 @@
 <ul>
   <li>계정 · 로그인이 없고, 운영자의 서버도 없습니다</li>
   <li>마이크 소리를 파일로 저장하거나 전송하지 않습니다</li>
-  <li>아이폰에서는 다른 회사의 앱 · 웹사이트를 넘나드는 추적을 하지 않습니다(앱이 추적 허용을 묻지 않음)</li>
+  <li>허용하지 않으면 다른 회사의 앱 · 웹사이트를 넘나드는 추적을 하지 않습니다(아이폰 추적 허용 창)</li>
   <li>카메라 · 연락처 · 위치에 접근하지 않습니다. 사진을 읽지 않으며, 결과 카드를 공유하다 저장을 고를 때만 그 그림을 사진에 더합니다(아이폰은 추가 전용 권한을 묻습니다)</li>
   <li>결과 카드 공유는 기기의 공유 창을 써서 고른 앱 · 사람에게만 가고, 운영자를 거치지 않습니다</li>
   <li>개인정보를 팔지 않습니다</li>
 </ul>
 
 <h2>5. 어린이</h2>
-<p>앱은 일반 이용자를 위한 것이며 13세 미만 어린이를 대상으로 하지 않습니다. 동의를 허용하지 않으면 맞춤 광고는 나오지 않고, 아이폰에서는 앱이 추적 허용을 묻지 않습니다. 결제는 스토어 계정으로 이뤄지고, 보호자는 구매 승인(예: 구입 요청)을 설정할 수 있습니다.</p>
+<p>앱은 일반 이용자를 위한 것이며 13세 미만 어린이를 대상으로 하지 않습니다. 추적 · 동의를 허용하지 않으면 맞춤 광고는 나오지 않습니다. 결제는 스토어 계정으로 이뤄지고, 보호자는 구매 승인(예: 구입 요청)을 설정할 수 있습니다.</p>
 
 <h2>6. 이용자의 권리와 문의</h2>
 <p>구매와 관련된 정보의 열람 · 정정 · 삭제 · 처리 정지를 요청할 수 있습니다. 설정과 연습 기록은 기기에만 있어 운영자에게 오지 않으며, 앱을 지우면 사라집니다. 문의 <a href="mailto:support@mystudioapps.com">support@mystudioapps.com</a>: 10일 안에 답합니다.</p>
 
 <h3>미국 주 거주자</h3>
-<p>캘리포니아 등 개인정보 보호법이 있는 미국 주에 사는 분은 자신에 관한 정보를 알고 받아 볼 권리, 지우거나 고칠 권리, 그리고 맞춤 광고를 위한 개인정보 '판매 · 공유'를 거부할 권리가 있습니다. 운영자는 개인정보를 돈을 받고 팔지 않습니다. 다만 맞춤 광고를 허용한 경우 Unity LevelPlay 와 그 광고 네트워크에 가는 광고 식별자 등은 이 법에서 말하는 '공유'나 맞춤 광고에 해당할 수 있습니다. 아이폰에서는 앱이 추적 허용을 묻지 않아 광고 식별자를 보내지 않습니다. 안드로이드에서 거부하려면 설정 › Google › 광고에서 광고 ID 를 삭제하면 됩니다. 앱에 <b>광고 개인정보 설정</b>이 보이면 그곳에서도 거부할 수 있습니다. 그 밖의 요청은 support@mystudioapps.com 으로 보내 주세요. 권리를 썼다고 차별하지 않습니다.</p>
+<p>캘리포니아 등 개인정보 보호법이 있는 미국 주에 사는 분은 자신에 관한 정보를 알고 받아 볼 권리, 지우거나 고칠 권리, 그리고 맞춤 광고를 위한 개인정보 '판매 · 공유'를 거부할 권리가 있습니다. 운영자는 개인정보를 돈을 받고 팔지 않습니다. 다만 맞춤 광고를 허용한 경우 Unity LevelPlay 와 그 광고 네트워크, Meta 에 가는 광고 식별자 등은 이 법에서 말하는 '공유'나 맞춤 광고에 해당할 수 있습니다. 거부하려면 아이폰은 설정 › 개인정보 보호 및 보안 › 추적에서 허용하지 않으면 되고, 안드로이드는 설정 › Google › 광고에서 광고 ID 를 삭제하면 됩니다. 앱에 <b>광고 개인정보 설정</b>이 보이면 그곳에서도 거부할 수 있습니다. 그 밖의 요청은 support@mystudioapps.com 으로 보내 주세요. 권리를 썼다고 차별하지 않습니다.</p>
 
 <h2>7. 바뀔 때</h2>
 <p>방침이 바뀌면 이 페이지와 위의 시행일을 고칩니다. 앱이 보내는 정보가 바뀌면 방침을 먼저 고칩니다.</p>
 </article>
 <article data-lang="ja" lang="ja">
 <h1>プライバシーポリシー</h1>
-<p class="meta">施行日 2026年11月16日 · アプリ: マイボーカル(MyVocal) · 運営者: MyStudio · お問い合わせ support@mystudioapps.com</p>
-<p>マイボーカル(MyVocal、以下「本アプリ」)は、ウォームアップ・呼吸・発声・音感・リズムなど、歌の基礎を練習するアプリです。<b>アカウントなし</b>で使え、本アプリ自体は情報を端末だけに保存します。マイクの音は端末の中だけで扱い、ファイルへの保存や送信はしません(第2章)。購入確認のサービス、無料版の場合の広告サービス、そして利用統計・クラッシュレポートのサービスだけが一部の情報を受け取ります(第3章)。</p>
+<p class="meta">施行日 2026年11月18日 · アプリ: マイボーカル(MyVocal) · 運営者: MyStudio · お問い合わせ support@mystudioapps.com</p>
+<p>マイボーカル(MyVocal、以下「本アプリ」)は、ウォームアップ・呼吸・発声・音感・リズムなど、歌の基礎を練習するアプリです。<b>アカウントなし</b>で使え、本アプリ自体は情報を端末だけに保存します。マイクの音は端末の中だけで扱い、ファイルへの保存や送信はしません(第2章)。購入確認のサービス、無料版の場合の広告サービス、広告効果測定のサービス(Meta)、そして利用統計・クラッシュレポートのサービスだけが一部の情報を受け取ります(第3章)。</p>
 
 <h2>1. 端末だけに残る情報</h2>
 <ul>
@@ -225,10 +245,20 @@
   <li>広告の表示・タップなどの利用状況と広告 SDK の診断情報</li>
   <li>Android では、端末にインストールされているほかのアプリの情報</li>
   <li>本アプリが LevelPlay にユーザー ID として渡す購入用の匿名 ID(RevenueCat が作るもので、広告収益を同じ ID で照らし合わせるために使われます)</li>
-  <li>Android 端末の広告識別子(広告 ID)。iPhone では本アプリは<b>トラッキングの許可を求めないため</b>、広告識別子(IDFA)は送られません</li>
+  <li>端末の広告識別子(iPhone の IDFA、Android の広告 ID): iPhone では本アプリが許可を求めたときに<b>トラッキングを許可した場合のみ</b>(許可を求めないバージョンでは送られません)</li>
 </ul>
-<p>これらの事業者は、この情報を広告の表示・測定と不正防止に使います。iPhone では本アプリはトラッキングの許可を求めないため、広告識別子によるパーソナライズ広告は表示されません。それ以外では、パーソナライズ広告は許可した場合のみです(EEA・英国: 同意画面：プレミアムの画面の下の「広告のプライバシー設定」でいつでも変更できます)。同意画面は Google の User Messaging Platform(Google LLC、米国)が表示し、選んだ内容は LevelPlay に渡されます。許可しない場合はパーソナライズされない広告が表示されます。プレミアムでは本アプリは広告を読み込まなくなり、これらの情報も広告のために送られなくなります。<a href="https://unity.com/legal/game-player-and-app-user-privacy-policy">Unity のプライバシーポリシー</a></p>
+<p>これらの事業者は、この情報を広告の表示・測定と不正防止に使います。パーソナライズ広告は許可した場合のみです(iPhone: トラッキングの確認と 設定 › プライバシーとセキュリティ › トラッキング、EEA・英国: 同意画面：プレミアムの画面の下の「広告のプライバシー設定」でいつでも変更できます)。同意画面は Google の User Messaging Platform(Google LLC、米国)が表示し、選んだ内容は LevelPlay に渡されます。許可しない場合はパーソナライズされない広告が表示されます。プレミアムでは本アプリは広告を読み込まなくなり、これらの情報も広告のために送られなくなります。<a href="https://unity.com/legal/game-player-and-app-user-privacy-policy">Unity のプライバシーポリシー</a></p>
 <p>その他の広告ネットワーク：Unity LevelPlay は広告枠を埋めるため、以下の広告ネットワークにも広告を要求する場合があります。これらの会社も同じ目的で同じ種類の情報（端末・アプリの情報、IP アドレス（おおよその位置）、広告の表示・タップ、Android の広告識別子）を受け取ります。Liftoff（Vungle, Inc.、米国）：<a href="https://liftoff.io/privacy-policy/">liftoff.io/privacy-policy</a>。Meta Audience Network（Meta Platforms, Inc.、米国・Meta Platforms Ireland Ltd.）：<a href="https://www.facebook.com/privacy/policy/">facebook.com/privacy/policy</a>。Mintegral（Mintegral International Ltd.、シンガポール、中国 Mobvista の子会社）：<a href="https://www.mintegral.com/en/privacy/">mintegral.com/en/privacy</a>。Google AdMob（Google LLC、米国）：<a href="https://policies.google.com/privacy">policies.google.com/privacy</a>。これも個人情報の国外への移転にあたります。</p>
+
+<h3>広告効果の測定：Meta アプリイベント</h3>
+<p>Instagram・Facebook に出した広告がインストールや購入につながったかを知るため、本アプリは Meta アプリイベント SDK で次の情報を Meta(Meta Platforms, Inc.、米国・Meta Platforms Ireland Ltd.)に送ります。</p>
+<ul>
+  <li>アプリを開いた記録(最初に開いたときがインストールとして数えられます)</li>
+  <li>完了したアプリ内購入：商品 ID・金額・通貨(支払い情報は含みません)</li>
+  <li>端末・アプリの情報(機種、OS・アプリのバージョン、言語)、IP アドレス、Meta が作る匿名の端末識別子</li>
+  <li>端末の広告識別子(iPhone の IDFA、Android の広告 ID): iPhone では<b>トラッキングを許可した場合のみ</b></li>
+</ul>
+<p>氏名・メールアドレスなどの本人を特定する情報は送らず、テスト用のインストール(デバッグビルド・TestFlight・テスト端末)からは何も送りません。 練習の記録とマイクの音は送らず、自動で記録する機能はオフにしているため、送るのは起動と購入だけです。 EEA・英国・スイスでは、同意画面で端末への情報の保存・アクセスに同意した場合のみ送ります。プライバシー法のある米国の州で販売・共有・ターゲティング広告を拒否した場合は、Meta の「限定データ使用」で送ります。Meta はこれらを広告効果の測定と改善に使い、自社のポリシーに従って保存します。これは個人情報の国外移転です。止めるには、iPhone では 設定 › プライバシーとセキュリティ › トラッキング で許可しない、Android では 設定 › Google › 広告 で広告 ID を削除してください。Meta のプライバシーポリシー: <a href="https://www.facebook.com/privacy/policy/">facebook.com/privacy/policy</a></p>
 
 <h3>利用統計とクラッシュレポート：Firebase Analytics・Crashlytics</h3>
 <p>どの練習がよく使われているかを知り、不具合を直すために、次の情報を Google Firebase(Google LLC、米国)に送ります。</p>
@@ -243,20 +273,20 @@
 <ul>
   <li>アカウントやログインはなく、運営者のサーバーもありません</li>
   <li>マイクの音をファイルに保存したり送信したりしません</li>
-  <li>iPhone では、他社のアプリやサイトをまたぐトラッキングはしません(本アプリはトラッキングの許可を求めません)</li>
+  <li>許可しない限り、他社のアプリやサイトをまたぐトラッキングはしません(iPhone のトラッキング確認)</li>
   <li>カメラ・連絡先・位置情報にアクセスしません。写真を読み取ることはなく、結果カードを共有するときに保存を選んだ場合だけ、その画像を写真に追加します(iPhone では追加のみの許可を求めます)</li>
   <li>結果カードの共有は端末の共有シートを使い、選んだアプリや相手にだけ届きます。運営者を経由しません</li>
   <li>個人情報を販売しません</li>
 </ul>
 
 <h2>5. お子さま</h2>
-<p>本アプリは一般向けで、13歳未満のお子さまを対象としていません。同意を許可しない限りパーソナライズ広告は表示されず、iPhone では本アプリはトラッキングの許可を求めません。購入はストアのアカウントで行われ、保護者は承認(例: 承認と購入のリクエスト)を設定できます。</p>
+<p>本アプリは一般向けで、13歳未満のお子さまを対象としていません。トラッキング・同意を許可しない限り、パーソナライズ広告は表示されません。購入はストアのアカウントで行われ、保護者は承認(例: 承認と購入のリクエスト)を設定できます。</p>
 
 <h2>6. 利用者の権利とお問い合わせ</h2>
 <p>購入に関する情報の開示・訂正・削除・利用停止を求めることができます。設定と練習記録は端末だけにあって運営者には届かず、本アプリを削除すると消えます。お問い合わせ <a href="mailto:support@mystudioapps.com">support@mystudioapps.com</a>: 10日以内にお返事します。</p>
 
 <h3>米国の州の居住者</h3>
-<p>カリフォルニア州など消費者プライバシー法のある米国の州にお住まいの方は、ご自身の個人情報を知り開示を受ける権利、削除・訂正を求める権利、ターゲティング広告のための個人情報の「販売・共有」を拒否する権利があります。運営者は個人情報を対価を得て販売しません。ただし、パーソナライズ広告を許可した場合に Unity LevelPlay とその広告ネットワークに送られる広告識別子などは、これらの法律でいう「共有」やターゲティング広告にあたることがあります。iPhone では本アプリはトラッキングの許可を求めないため、広告識別子は送られません。Android で拒否するには、設定 › Google › 広告 で広告 ID を削除してください。アプリに<b>広告のプライバシー設定</b>が表示される場合は、そこからも拒否できます。そのほかのご依頼は support@mystudioapps.com までお送りください。権利を行使したことを理由に不利益な扱いはしません。</p>
+<p>カリフォルニア州など消費者プライバシー法のある米国の州にお住まいの方は、ご自身の個人情報を知り開示を受ける権利、削除・訂正を求める権利、ターゲティング広告のための個人情報の「販売・共有」を拒否する権利があります。運営者は個人情報を対価を得て販売しません。ただし、パーソナライズ広告を許可した場合に Unity LevelPlay とその広告ネットワーク、Meta に送られる広告識別子などは、これらの法律でいう「共有」やターゲティング広告にあたることがあります。拒否するには、iPhone では 設定 › プライバシーとセキュリティ › トラッキング で許可しない、Android では 設定 › Google › 広告 で広告 ID を削除してください。アプリに<b>広告のプライバシー設定</b>が表示される場合は、そこからも拒否できます。そのほかのご依頼は support@mystudioapps.com までお送りください。権利を行使したことを理由に不利益な扱いはしません。</p>
 
 <h2>7. 変更</h2>
 <p>このポリシーを変更するときは、このページと上の施行日を更新します。本アプリが送る情報が変わるときは、先にこのポリシーを更新します。</p>

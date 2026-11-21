@@ -70,6 +70,13 @@
   .feature h3 { margin: 8px 0 4px; font-size: 16px; }
   .feature p { margin: 0; color: var(--ink-soft); font-size: 14.5px; }
   .devices { margin: 22px 0 0; text-align: center; color: var(--ink-soft); font-size: 14px; }
+  .top-rates { margin: 14px 0 0; font-size: 14px; font-weight: 700; }
+  .top-rates a { color: var(--ink-soft); text-decoration: underline; text-underline-offset: 3px; }
+  .rating { display: flex; align-items: center; gap: 14px; margin: 28px auto 0; max-width: 560px; padding: 14px 16px;
+    border: 1px solid var(--line); border-radius: 16px; background: rgba(255,255,255,.03); direction: ltr; text-align: left; }
+  .rating[hidden] { display: none; }
+  .rating img { width: 64px; height: 64px; flex: 0 0 auto; display: block; }
+  .rating p { margin: 0; font-size: 12.5px; line-height: 1.6; color: var(--ink-soft); }
   footer { max-width: 860px; margin: 0 auto; padding: 24px 20px 48px; border-top: 1px solid var(--line);
     display: flex; flex-wrap: wrap; gap: 8px 18px; justify-content: center; font-size: 14px; color: var(--ink-soft); }
   footer a { color: var(--ink-soft); text-decoration: none; }
@@ -104,10 +111,15 @@
     <p class="tagline" id="tagline"></p>
     <p class="desc" id="desc"></p>
     <div class="stores"><a class="soon store" id="store" href="https://apps.apple.com/app/apple-store/id6823883556?pt=129467809&ct=site_weaponpop&mt=8" rel="noopener"><svg aria-hidden="true" width="16" height="18" viewBox="0 0 384 512" fill="currentColor"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg><span id="soon"></span></a><a class="soon store" id="playstore" href="https://play.google.com/store/apps/details?id=com.ymc.weaponpop&amp;referrer=utm_source%3Dsite%26utm_medium%3Dweb%26utm_campaign%3Dsite_weaponpop" rel="noopener"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M3.6 1.8 13.8 12 3.6 22.2c-.4-.2-.6-.6-.6-1.1V2.9c0-.5.2-.9.6-1.1zm11.3 11.3 2.6 2.6-11.9 6.8 9.3-9.4zm3.8-3.8 2.8 1.6c.8.5.8 1.7 0 2.2l-2.8 1.6-2.9-2.8 2.9-2.6zM5.6 1.5l11.9 6.8-2.6 2.6-9.3-9.4z"/></svg><span id="play"></span></a></div>
+    <p class="top-rates"><a id="h-rates" href="rates.html"></a></p>
   </section>
   <section class="shots" id="shots"></section>
   <section class="features" id="features"></section>
   <p class="devices" id="devices"></p>
+  <section class="rating" id="rating" lang="zh-Hant" aria-label="遊戲軟體分級" hidden>
+    <img src="/assets/weaponpop/rating_fu12.png" alt="輔12級" width="64" height="64">
+    <p>※本遊戲內容涉及暴力（Q版鴨子與怪物戰鬥）及輕微恐怖（終局內容畫面較陰暗），依遊戲軟體分級管理辦法分類為輔12級。<br>※本遊戲為免費遊戲，遊戲內另提供購買虛擬遊戲幣、物品等付費服務。<br>※請注意使用時間，避免沉迷，遊戲虛擬情節請勿模仿。</p>
+  </section>
 </main>
 <footer>
   <a id="f-home" href="../">MyStudio</a>
@@ -306,6 +318,8 @@ function show(lang) {
   privacy.textContent = t.privacy; privacy.href = `privacy.html?lang=${lang}`;
   document.getElementById('f-support').textContent = t.support;
   const rates = document.getElementById('f-rates'); rates.textContent = RATES[lang]; rates.href = `rates.html?lang=${lang}`;
+  document.getElementById('rating').hidden = lang !== 'zh-Hant'; // 대만 분급 輔12(11/21): 번체 화면에만
+  const hr = document.getElementById('h-rates'); hr.textContent = RATES[lang]; hr.href = `rates.html?lang=${lang}`;
   document.getElementById('lang').value = lang;
 }
 document.getElementById('lang').addEventListener('change', e => {

@@ -1,0 +1,190 @@
+{
+ "id": "myslowbody",
+ "name": "MySlowBody",
+ "icon": "https://mystudioapps.com/assets/myslowbody/icon.png",
+ "color": "#1C9A46",
+ "shot": {
+  "ko": "https://mystudioapps.com/assets/myslowbody/ko_s1.jpg?v=1028",
+  "ja": "https://mystudioapps.com/assets/myslowbody/ja_s1.jpg?v=1028",
+  "en": "https://mystudioapps.com/assets/myslowbody/en_s1.jpg?v=1028",
+  "zh-Hant": "https://mystudioapps.com/assets/myslowbody/zh-Hant_s1.jpg?v=1028",
+  "de": "https://mystudioapps.com/assets/myslowbody/de_s1.jpg?v=1028",
+  "es": "https://mystudioapps.com/assets/myslowbody/es_s1.jpg?v=1028",
+  "fr": "https://mystudioapps.com/assets/myslowbody/fr_s1.jpg?v=1028",
+  "pt": "https://mystudioapps.com/assets/myslowbody/pt_s1.jpg?v=1028",
+  "ar": "https://mystudioapps.com/assets/myslowbody/ar_s1.jpg?v=1028"
+ },
+ "shots": {
+  "ko": [
+   "https://mystudioapps.com/assets/myslowbody/ko_s1.jpg?v=1028",
+   "https://mystudioapps.com/assets/myslowbody/ko_s2.jpg?v=1028",
+   "https://mystudioapps.com/assets/myslowbody/ko_s3.jpg?v=1028",
+   "https://mystudioapps.com/assets/myslowbody/ko_s4.jpg?v=1028",
+   "https://mystudioapps.com/assets/myslowbody/ko_s5.jpg?v=1028",
+   "https://mystudioapps.com/assets/myslowbody/ko_s6.jpg?v=1028",
+   "https://mystudioapps.com/assets/myslowbody/ko_s7.jpg?v=1028",
+   "https://mystudioapps.com/assets/myslowbody/ko_s8.jpg?v=1028",
+   "https://mystudioapps.com/assets/myslowbody/ko_s9.jpg?v=1028",
+   "https://mystudioapps.com/assets/myslowbody/ko_s10.jpg?v=1028"
+  ],
+  "ja": [
+   "https://mystudioapps.com/assets/myslowbody/ja_s1.jpg?v=1028",
+   "https://mystudioapps.com/assets/myslowbody/ja_s2.jpg?v=1028",
+   "https://mystudioapps.com/assets/myslowbody/ja_s3.jpg?v=1028",
+   "https://mystudioapps.com/assets/myslowbody/ja_s4.jpg?v=1028",
+   "https://mystudioapps.com/assets/myslowbody/ja_s5.jpg?v=1028",
+   "https://mystudioapps.com/assets/myslowbody/ja_s6.jpg?v=1028",
+   "https://mystudioapps.com/assets/myslowbody/ja_s7.jpg?v=1028",
+   "https://mystudioapps.com/assets/myslowbody/ja_s8.jpg?v=1028",
+   "https://mystudioapps.com/assets/myslowbody/ja_s9.jpg?v=1028",
+   "https://mystudioapps.com/assets/myslowbody/ja_s10.jpg?v=1028"
+  ],
+  "en": [
+   "https://mystudioapps.com/assets/myslowbody/en_s1.jpg?v=1028",
+   "https://mystudioapps.com/assets/myslowbody/en_s2.jpg?v=1028",
+   "https://mystudioapps.com/assets/myslowbody/en_s3.jpg?v=1028",
+   "https://mystudioapps.com/assets/myslowbody/en_s4.jpg?v=1028",
+   "https://mystudioapps.com/assets/myslowbody/en_s5.jpg?v=1028",
+   "https://mystudioapps.com/assets/myslowbody/en_s6.jpg?v=1028",
+   "https://mystudioapps.com/assets/myslowbody/en_s7.jpg?v=1028",
+   "https://mystudioapps.com/assets/myslowbody/en_s8.jpg?v=1028",
+   "https://mystudioapps.com/assets/myslowbody/en_s9.jpg?v=1028",
+   "https://mystudioapps.com/assets/myslowbody/en_s10.jpg?v=1028"
+  ],
+  "zh-Hant": [
+   "https://mystudioapps.com/assets/myslowbody/zh-Hant_s1.jpg?v=1028",
+   "https://mystudioapps.com/assets/myslowbody/zh-Hant_s2.jpg?v=1028",
+   "https://mystudioapps.com/assets/myslowbody/zh-Hant_s3.jpg?v=1028",
+   "https://mystudioapps.com/assets/myslowbody/zh-Hant_s4.jpg?v=1028",
+   "https://mystudioapps.com/assets/myslowbody/zh-Hant_s5.jpg?v=1028",
+   "https://mystudioapps.com/assets/myslowbody/zh-Hant_s6.jpg?v=1028",
+   "https://mystudioapps.com/assets/myslowbody/zh-Hant_s7.jpg?v=1028",
+   "https://mystudioapps.com/assets/myslowbody/zh-Hant_s8.jpg?v=1028",
+   "https://mystudioapps.com/assets/myslowbody/zh-Hant_s9.jpg?v=1028",
+   "https://mystudioapps.com/assets/myslowbody/zh-Hant_s10.jpg?v=1028"
+  ],
+  "de": [
+   "https://mystudioapps.com/assets/myslowbody/de_s1.jpg?v=1028",
+   "https://mystudioapps.com/assets/myslowbody/de_s2.jpg?v=1028",
+   "https://mystudioapps.com/assets/myslowbody/de_s3.jpg?v=1028",
+   "https://mystudioapps.com/assets/myslowbody/de_s4.jpg?v=1028",
+   "https://mystudioapps.com/assets/myslowbody/de_s5.jpg?v=1028",
+   "https://mystudioapps.com/assets/myslowbody/de_s6.jpg?v=1028",
+   "https://mystudioapps.com/assets/myslowbody/de_s7.jpg?v=1028",
+   "https://mystudioapps.com/assets/myslowbody/de_s8.jpg?v=1028",
+   "https://mystudioapps.com/assets/myslowbody/de_s9.jpg?v=1028",
+   "https://mystudioapps.com/assets/myslowbody/de_s10.jpg?v=1028"
+  ],
+  "es": [
+   "https://mystudioapps.com/assets/myslowbody/es_s1.jpg?v=1028",
+   "https://mystudioapps.com/assets/myslowbody/es_s2.jpg?v=1028",
+   "https://mystudioapps.com/assets/myslowbody/es_s3.jpg?v=1028",
+   "https://mystudioapps.com/assets/myslowbody/es_s4.jpg?v=1028",
+   "https://mystudioapps.com/assets/myslowbody/es_s5.jpg?v=1028",
+   "https://mystudioapps.com/assets/myslowbody/es_s6.jpg?v=1028",
+   "https://mystudioapps.com/assets/myslowbody/es_s7.jpg?v=1028",
+   "https://mystudioapps.com/assets/myslowbody/es_s8.jpg?v=1028",
+   "https://mystudioapps.com/assets/myslowbody/es_s9.jpg?v=1028",
+   "https://mystudioapps.com/assets/myslowbody/es_s10.jpg?v=1028"
+  ],
+  "fr": [
+   "https://mystudioapps.com/assets/myslowbody/fr_s1.jpg?v=1028",
+   "https://mystudioapps.com/assets/myslowbody/fr_s2.jpg?v=1028",
+   "https://mystudioapps.com/assets/myslowbody/fr_s3.jpg?v=1028",
+   "https://mystudioapps.com/assets/myslowbody/fr_s4.jpg?v=1028",
+   "https://mystudioapps.com/assets/myslowbody/fr_s5.jpg?v=1028",
+   "https://mystudioapps.com/assets/myslowbody/fr_s6.jpg?v=1028",
+   "https://mystudioapps.com/assets/myslowbody/fr_s7.jpg?v=1028",
+   "https://mystudioapps.com/assets/myslowbody/fr_s8.jpg?v=1028",
+   "https://mystudioapps.com/assets/myslowbody/fr_s9.jpg?v=1028",
+   "https://mystudioapps.com/assets/myslowbody/fr_s10.jpg?v=1028"
+  ],
+  "pt": [
+   "https://mystudioapps.com/assets/myslowbody/pt_s1.jpg?v=1028",
+   "https://mystudioapps.com/assets/myslowbody/pt_s2.jpg?v=1028",
+   "https://mystudioapps.com/assets/myslowbody/pt_s3.jpg?v=1028",
+   "https://mystudioapps.com/assets/myslowbody/pt_s4.jpg?v=1028",
+   "https://mystudioapps.com/assets/myslowbody/pt_s5.jpg?v=1028",
+   "https://mystudioapps.com/assets/myslowbody/pt_s6.jpg?v=1028",
+   "https://mystudioapps.com/assets/myslowbody/pt_s7.jpg?v=1028",
+   "https://mystudioapps.com/assets/myslowbody/pt_s8.jpg?v=1028",
+   "https://mystudioapps.com/assets/myslowbody/pt_s9.jpg?v=1028",
+   "https://mystudioapps.com/assets/myslowbody/pt_s10.jpg?v=1028"
+  ],
+  "ar": [
+   "https://mystudioapps.com/assets/myslowbody/ar_s1.jpg?v=1028",
+   "https://mystudioapps.com/assets/myslowbody/ar_s2.jpg?v=1028",
+   "https://mystudioapps.com/assets/myslowbody/ar_s3.jpg?v=1028",
+   "https://mystudioapps.com/assets/myslowbody/ar_s4.jpg?v=1028",
+   "https://mystudioapps.com/assets/myslowbody/ar_s5.jpg?v=1028",
+   "https://mystudioapps.com/assets/myslowbody/ar_s6.jpg?v=1028",
+   "https://mystudioapps.com/assets/myslowbody/ar_s7.jpg?v=1028",
+   "https://mystudioapps.com/assets/myslowbody/ar_s8.jpg?v=1028",
+   "https://mystudioapps.com/assets/myslowbody/ar_s9.jpg?v=1028",
+   "https://mystudioapps.com/assets/myslowbody/ar_s10.jpg?v=1028"
+  ]
+ },
+ "store": {
+  "ios": "https://apps.apple.com/app/id6812821519",
+  "android": "https://play.google.com/store/apps/details?id=com.ymc.myslowbody"
+ },
+ "text": {
+  "ko": {
+   "headline": "여유있는 사람되기",
+   "tagline": "스트레칭 · 느린 호흡 · 수면",
+   "cta": "무료로 받기"
+  },
+  "ja": {
+   "headline": "余裕のある大人へ",
+   "tagline": "ストレッチ・ゆっくり呼吸・睡眠",
+   "cta": "無料で入手"
+  },
+  "en": {
+   "headline": "Find your breathing room",
+   "tagline": "Stretch · Slow breathing · Sleep",
+   "cta": "Get it free"
+  },
+  "zh-Hant": {
+   "headline": "做個從容自在的人",
+   "tagline": "伸展 · 慢呼吸 · 睡眠",
+   "cta": "免費下載"
+  },
+  "de": {
+   "headline": "Werde die Ruhe selbst",
+   "tagline": "Dehnen · Langsam atmen · Schlaf",
+   "cta": "Kostenlos laden"
+  },
+  "es": {
+   "headline": "Vive sin prisa",
+   "tagline": "Estiramientos · Respiración lenta · Sueño",
+   "cta": "Consíguela gratis"
+  },
+  "fr": {
+   "headline": "Deviens quelqu'un de zen",
+   "tagline": "Étirements · Respiration lente · Sommeil",
+   "cta": "Obtenir gratuitement"
+  },
+  "pt": {
+   "headline": "Viva sem pressa",
+   "tagline": "Alongamento · Respiração lenta · Sono",
+   "cta": "Baixar grátis"
+  },
+  "ar": {
+   "headline": "كن رائق البال",
+   "tagline": "تمدد · تنفس بطيء · نوم",
+   "cta": "احصل عليه مجانًا"
+  }
+ },
+ "music": "https://mystudioapps.com/assets/myslowbody/ad_music.mp3",
+ "ad_video": {
+  "ko": "https://mystudioapps.com/xpromo/video/myslowbody_ko.mp4",
+  "en": "https://mystudioapps.com/xpromo/video/myslowbody_en.mp4",
+  "ja": "https://mystudioapps.com/xpromo/video/myslowbody_ja.mp4",
+  "zh-Hant": "https://mystudioapps.com/xpromo/video/myslowbody_zh-Hant.mp4",
+  "es": "https://mystudioapps.com/xpromo/video/myslowbody_es.mp4",
+  "fr": "https://mystudioapps.com/xpromo/video/myslowbody_fr.mp4",
+  "de": "https://mystudioapps.com/xpromo/video/myslowbody_de.mp4",
+  "pt": "https://mystudioapps.com/xpromo/video/myslowbody_pt.mp4",
+  "ar": "https://mystudioapps.com/xpromo/video/myslowbody_ar.mp4"
+ }
+}
